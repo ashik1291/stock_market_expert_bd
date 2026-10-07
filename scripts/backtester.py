@@ -113,10 +113,17 @@ def simulate_trades(df: pd.DataFrame, ticker: str, strategy: str = "scalp",
         macd_signal = (macd_val > prev["MACD"])
         vol_signal = (vol >= vol_avg * 1.0) if (require_vol_spike and vol_avg > 0) else True
 
-        # Enter trade if conditions met
+        # Enter trade at NEXT bar open (eliminates same-bar close execution bias)
         if rsi_signal and macd_signal and vol_signal:
-            entry_date  = row["date"].strftime("%Y-%m-%d")
-            entry_price = float(row["close"])
+            if i + 1 >= len(df):
+                break
+
+            next_bar = df.iloc[i + 1]
+            entry_date = next_bar["date"].strftime("%Y-%m-%d")
+            # Next-bar open execution + 0.10% conservative entry slippage
+            base_open = float(next_bar["open"])
+            entry_price = base_open * 1.0010 
+
             target_px   = entry_price * (1 + target_pct)
             stop_px     = entry_price * (1 - stop_pct)
 
@@ -127,11 +134,13 @@ def simulate_trades(df: pd.DataFrame, ticker: str, strategy: str = "scalp",
             highest_px  = entry_price
             hold_bars   = 0
 
-            for j in range(i + 1, min(i + 1 + max_hold, len(df))):
+            for j in range(i + 2, min(i + 2 + max_hold, len(df))):
                 f_row  = df.iloc[j]
+                f_open = float(f_row["open"])
                 f_high = float(f_row["high"])
                 f_low  = float(f_row["low"])
                 f_close= float(f_row["close"])
+                f_vol  = float(f_row["volume"])
                 hold_bars += 1
 
                 # Update trailing stop for swing
@@ -140,10 +149,18 @@ def simulate_trades(df: pd.DataFrame, ticker: str, strategy: str = "scalp",
                         highest_px = f_high
                         stop_px = highest_px * (1 - stop_pct)
 
+                # Lower Circuit Lock Check: If stock hit lower circuit limit (-9.5% or lower) with illiquidity,
+                # exit is blocked (cannot exit on lower circuit lock day)
+                prev_bar_close = float(df.iloc[j - 1]["close"])
+                lower_circuit_floor = prev_bar_close * 0.905
+                is_circuit_locked = (f_low <= lower_circuit_floor) and (f_close <= lower_circuit_floor)
+
                 # Conservative fill check: Stop-Loss evaluated BEFORE Target Hit
-                # If a bar has wide range hitting both stop and target, assume worst-case stop out
                 if f_low <= stop_px:
-                    exit_price  = stop_px
+                    if is_circuit_locked:
+                        # Cannot exit today due to circuit lock; carry over into next bar
+                        continue
+                    exit_price  = stop_px * 0.9990 # 0.10% exit slippage
                     exit_reason = "stop_hit"
                     exit_date   = f_row["date"].strftime("%Y-%m-%d")
                     break
