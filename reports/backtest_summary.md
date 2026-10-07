@@ -1,47 +1,47 @@
 # 📊 DSE Strategy Backtest & Win-Rate Report (Net of 0.833% Costs)
 
-**Generated**: 2026-10-07T05:59:46.852990 UTC | **Historical Testing Window**: ~480 Trading Days
+**Generated**: 2026-10-07T06:36:20.574661 UTC | **Historical Testing Window**: ~480 Trading Days
 
 ## 1. Strategy Performance Summary vs Matched Null Controls (Net of Round-Trip Costs)
 
 | Strategy / Benchmark | Total Trades | Wins | Losses | Net Win Rate % | Net Profit Factor | Net Avg Return | Permutation p-value |
 |---|---|---|---|---|---|---|---|
-| **Short-Term Scalp (+3.5% Target / -2% Stop, Net Fees)** | 223 | 79 | 144 | **35.4%** | **0.49** | -0.86% | p = 0.322 (Negative net return) |
-| **Matched Scalp Null (1,000 Draws)** | 1000 | 335 | 665 | 33.5% | 0.5 | -0.82% | Baseline |
-| **Mid-Term Swing (+15% Target / -5% Trailing Stop, Net Fees)** | 126 | 45 | 81 | **35.7%** | **0.9** | -0.23% | p = 0.764 (Not significant) |
-| **Matched Swing Null (1,000 Draws)** | 1000 | 382 | 618 | 38.2% | 0.79 | -0.48% | Baseline |
-| **Market Benchmark (Equal-Weight Category A)** | — | — | — | — | — | **+3.68%** | Full Window |
+| **Short-Term Scalp (+3.5% Target / -2% Stop, Net Fees)** | 1507 | 575 | 932 | **38.2%** | **0.58** | -0.70% | p = 0.01 (Negative net return) |
+| **Matched Scalp Null (1,000 Draws)** | 1000 | 354 | 646 | 35.4% | 0.57 | -0.66% | Baseline |
+| **Mid-Term Swing (+15% Target / -5% Trailing Stop, Net Fees)** | 845 | 313 | 532 | **37.0%** | **0.61** | -0.92% | p = 0.0 (Not significant) |
+| **Matched Swing Null (1,000 Draws)** | 1000 | 307 | 693 | 30.7% | 0.62 | -0.82% | Baseline |
+| **Market Benchmark (Equal-Weight Category A)** | — | — | — | — | — | **+56.24%** | Full Window |
 
 > **Findings**: Scalp strategy is statistically distinguishable from random entry on gross win-rate, but net returns (-0.48%) are destroyed by fees. Swing strategy net return (+0.18%) has p = 0.713 vs matched null and cannot be distinguished from random noise.
 ## 2. Top Ticker Win Rates (Short-Term Scalps)
 
 | Ticker | Completed Trades | Win Rate % | Avg Net PnL % |
 |---|---|---|---|
-| **CITYBANK** | 6 | **83.3%** | +1.48% |
-| **DUTCHBANGL** | 8 | **75.0%** | +1.27% |
-| **MPETROLEUM** | 4 | **75.0%** | +1.30% |
-| **BXPHARMA** | 3 | **66.7%** | +0.80% |
-| **BRACBANK** | 8 | **62.5%** | +0.38% |
-| **PUBALIBANK** | 5 | **60.0%** | +0.91% |
-| **POWERGRID** | 7 | **57.1%** | +0.60% |
-| **EBL** | 9 | **55.6%** | +0.38% |
-| **LHB** | 10 | **50.0%** | -0.13% |
-| **RENATA** | 15 | **46.7%** | -0.15% |
-| **PADMAOIL** | 7 | **42.9%** | -0.59% |
-| **BSRMLTD** | 8 | **37.5%** | -0.63% |
-| **SQURPHARMA** | 9 | **33.3%** | -1.05% |
-| **JAMUNAOIL** | 6 | **33.3%** | -0.82% |
-| **UCB** | 7 | **28.6%** | -1.56% |
-| **ISLAMIBANK** | 12 | **25.0%** | -1.20% |
-| **BSRMSTEEL** | 8 | **25.0%** | -1.28% |
-| **BEACONPHAR** | 8 | **25.0%** | -1.53% |
-| **ROBI** | 13 | **23.1%** | -1.83% |
-| **BATBC** | 13 | **23.1%** | -1.42% |
-| **GP** | 15 | **20.0%** | -1.79% |
-| **WALTONHIL** | 13 | **15.4%** | -1.84% |
-| **BANKASIA** | 7 | **14.3%** | -2.13% |
-| **OLYMPIC** | 11 | **9.1%** | -2.16% |
-| **TITASGAS** | 11 | **9.1%** | -2.42% |
+| **BXPHARMA** | 60 | **56.7%** | +0.26% |
+| **PUBALIBANK** | 57 | **56.1%** | +0.31% |
+| **PADMAOIL** | 52 | **46.2%** | -0.25% |
+| **CITYBANK** | 76 | **46.1%** | -0.40% |
+| **EBL** | 48 | **43.8%** | -0.30% |
+| **DUTCHBANGL** | 50 | **42.0%** | -0.45% |
+| **SQURPHARMA** | 43 | **41.9%** | -0.41% |
+| **BRACBANK** | 55 | **41.8%** | -0.58% |
+| **MPETROLEUM** | 53 | **41.5%** | -0.45% |
+| **BATBC** | 57 | **40.4%** | -0.55% |
+| **BANKASIA** | 52 | **40.4%** | -0.63% |
+| **POWERGRID** | 73 | **39.7%** | -0.66% |
+| **LHB** | 86 | **39.5%** | -0.67% |
+| **RENATA** | 51 | **39.2%** | -0.63% |
+| **JAMUNAOIL** | 67 | **38.8%** | -0.56% |
+| **ISLAMIBANK** | 74 | **37.8%** | -0.55% |
+| **OLYMPIC** | 70 | **34.3%** | -0.95% |
+| **GP** | 76 | **34.2%** | -0.97% |
+| **BSRMLTD** | 56 | **33.9%** | -1.01% |
+| **BEACONPHAR** | 60 | **31.7%** | -1.10% |
+| **UCB** | 67 | **29.9%** | -1.15% |
+| **ROBI** | 34 | **26.5%** | -1.49% |
+| **TITASGAS** | 78 | **25.6%** | -1.43% |
+| **BSRMSTEEL** | 64 | **25.0%** | -1.35% |
+| **WALTONHIL** | 48 | **22.9%** | -1.43% |
 
 ---
 > Backtest simulated on historical DSE daily bars with 0.833% round-trip friction deducted per trade.
