@@ -223,15 +223,32 @@ $$\text{Calibrated Weight } w = \max\left(0.60, \min\left(1.40, \frac{\hat{p}}{0
   - Mid-Term Swing (+15.0% / -5.0%): **37.6% net win rate** | Net profit factor: **1.09** | Avg net return: **+0.18%** (15.2-day hold). Matched Swing Null (1,000 Draws): 38.2% win rate, -0.48% net return. Permutation test: **$p = 0.608$ (Statistically indistinguishable from random noise)**.
   - Broad Market Benchmark (Equal-Weight Category A Universe): **+3.68% total return** over ~480 trading days.
 
-### 6.4 Pre-Registered Forward Validation Benchmark & Statistical Power
-* **Frozen Parameter Hash**: Epoch 1 frozen as of October 7, 2026.
-* **Statistical Power Reality**: Due to swing outcome variance ($\text{SD} \approx 5.0\%$), a small sample ($N=150$) lacks statistical power to detect $+0.50\%$ edge. True statistical validation requires:
-  1. Continuous estimate with 95% Confidence Interval versus matched null distribution.
-  2. Sequential probability ratio test (SPRT) across prospective live trades.
-* **Component Validation Status**:
-  - Scalp (+3.5% / -2%): **Failed & Disabled** (Negative expectancy net of fees).
-  - Swing (+15% / -5%): **Unproven / Within Noise** ($p = 0.608$).
-  - Core Compounders (12-Factor Screen): **Unvalidated Heuristic Screen** (480 price sessions cannot validate multi-year compounding edge).
+### 6.4 Component Empirical Status & Pre-Registered Forward Protocol
+* **Git Version Tag**: `baseline-v1.0` (commit `0817fab`)
+* **Statistical Power Reality**: Due to swing outcome variance ($\text{SD} \approx 9.0\%$), detecting a $+0.50\%$ edge takes $\sim 2,500$ independent trades. Proving alpha in short order is mathematically impossible. Therefore, the system enforces pre-registered kill criteria:
+  - Scalp (+3.5% / -2%): **Permanently Disabled** (Net expectancy $-0.48\%$).
+  - Swing (+15% / -5%): **Unproven / Within Noise** ($p = 0.608$). Pre-commit to kill if 12-month net excess return drops below $-1.0\%$.
+  - Core Compounders: **Unvalidated Heuristic Screen** (P/E, Graham ceiling, debt gate).
+  - Risk & Debt Filter: **Active Defense Filter** (Zero data corruption, unmapped split breaches $= 0$).
+
+### 6.5 Deterministic Pipeline, Point-in-Time Ledger & Panel Research
+1. **Deterministic Single-Command Rebuild (`scripts/rebuild_database.py`)**:
+   - Reconstructs `data/processed/dse.db` from raw JSON snapshots with automated backup.
+   - Populates `trading_calendar` table (explicitly classifying 480 trading dates, including DSE makeup Saturdays).
+   - Populates `corporate_actions` table (tracks ex-dividend bonus shares and splits to prevent spurious return spikes).
+2. **Point-in-Time Fundamentals (`fundamentals_pit`)**:
+   - Stores daily snapshots with timestamp, SHA-256 hash, and publication date.
+   - Eliminates lookahead bias by freezing balance sheet data as of observed date.
+3. **Automated Dynamic Audits (`database_audit_log`)**:
+   - Computes real-time violation counts for non-positive prices, high < low inversions, duplicate bars, synthetic constant volume, and unmapped circuit breaches.
+   - Fails pipeline execution if any violation is detected.
+4. **Unit & Regression Test Suite (`tests/test_quant_engine.py`)**:
+   - 6 automated regression tests for break-even math (0.833%), Graham ceiling, fair value blend, stop-first execution, and database integrity.
+5. **Cross-Sectional Panel Research Harness (`scripts/panel_research_harness.py`)**:
+   - Evaluates signals at date $t$ using data up to $t$ against forward realized return $t \to t+21$ across 34,259 observations:
+     - 14-day RSI: $\text{IC} = +0.0682$ ($t\text{-stat} = 12.62$)
+     - 20-day Momentum: $\text{IC} = -0.0060$ ($t\text{-stat} = -1.10$, negligible forward predictability)
+     - 20-day Volume Ratio: $\text{IC} = +0.0198$ ($t\text{-stat} = 3.66$)
 
 ---
 
