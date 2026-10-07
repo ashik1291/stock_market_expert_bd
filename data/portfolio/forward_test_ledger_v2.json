@@ -1,0 +1,167 @@
+{
+  "genesis_hash": "c3f63e011ab4f57bbbc4011e9a2b08bb29d4c98c7fa8f5c5eb4e239fe6d1bfd0",
+  "blocks": [
+    {
+      "block_index": 0,
+      "timestamp": "2026-10-07",
+      "prev_hash": "GENESIS",
+      "data": {
+        "epoch": "EPOCH-2-UNBIASED-FORWARD-2026",
+        "registered_at": "2026-10-07",
+        "git_commit": "9e55a79",
+        "parameter_hash": "acf502bc65914c48",
+        "initial_cash": 1000000.0,
+        "current_cash": 1000000.0,
+        "portfolio_nav": 1000000.0,
+        "dsex_baseline": 5099.61,
+        "rules": {
+          "max_sector_weight_pct": 20.0,
+          "max_single_stock_pct": 10.0,
+          "execution_fill": "NEXT_SESSION_OPEN_PLUS_10BPS_SLIPPAGE",
+          "round_trip_fee_pct": 0.833,
+          "precommitted_success_criterion": "12M Total Return exceeds DSEX by >= +4.0% with IR >= +0.50",
+          "precommitted_kill_criterion": "12M Excess Return < -3.0% OR Portfolio Max Drawdown < -25.0%"
+        },
+        "positions": []
+      },
+      "block_hash": "c3f63e011ab4f57bbbc4011e9a2b08bb29d4c98c7fa8f5c5eb4e239fe6d1bfd0"
+    },
+    {
+      "block_index": 1,
+      "timestamp": "2026-10-07",
+      "prev_hash": "c3f63e011ab4f57bbbc4011e9a2b08bb29d4c98c7fa8f5c5eb4e239fe6d1bfd0",
+      "data": {
+        "epoch": "EPOCH-2-UNBIASED-FORWARD-2026",
+        "registered_at": "2026-10-07",
+        "git_commit": "9e55a79",
+        "parameter_hash": "acf502bc65914c48",
+        "initial_cash": 1000000.0,
+        "current_cash": 429.15,
+        "portfolio_nav": 995868.94,
+        "dsex_baseline": 5099.61,
+        "rules": {
+          "max_sector_weight_pct": 20.0,
+          "max_single_stock_pct": 10.0,
+          "execution_fill": "NEXT_SESSION_OPEN_PLUS_10BPS_SLIPPAGE",
+          "round_trip_fee_pct": 0.833,
+          "precommitted_success_criterion": "12M Total Return exceeds DSEX by >= +4.0% with IR >= +0.50",
+          "precommitted_kill_criterion": "12M Excess Return < -3.0% OR Portfolio Max Drawdown < -25.0%"
+        },
+        "positions": [
+          {
+            "ticker": "JAMUNAOIL",
+            "sector": "Fuel_Power",
+            "entry_date": "2026-10-07",
+            "execution_price": 178.18,
+            "shares": 558,
+            "invested_equity": 99424.44,
+            "buy_fee_deducted": 412.61,
+            "pe": 3.0306643952299828,
+            "yield": 9.87
+          },
+          {
+            "ticker": "MPETROLEUM",
+            "sector": "Fuel_Power",
+            "entry_date": "2026-10-07",
+            "execution_price": 204.9,
+            "shares": 486,
+            "invested_equity": 99581.4,
+            "buy_fee_deducted": 413.26,
+            "pe": 3.352337514253136,
+            "yield": 9.76
+          },
+          {
+            "ticker": "EBL",
+            "sector": "Banking",
+            "entry_date": "2026-10-07",
+            "execution_price": 22.72,
+            "shares": 4383,
+            "invested_equity": 99581.76,
+            "buy_fee_deducted": 413.26,
+            "pe": 4.359464627151051,
+            "yield": 10.29
+          },
+          {
+            "ticker": "DHAKABANK",
+            "sector": "Banking",
+            "entry_date": "2026-10-07",
+            "execution_price": 11.11,
+            "shares": 8963,
+            "invested_equity": 99578.93,
+            "buy_fee_deducted": 413.25,
+            "pe": 4.188679245283019,
+            "yield": 8.85
+          },
+          {
+            "ticker": "BSRMLTD",
+            "sector": "Engineering",
+            "entry_date": "2026-10-07",
+            "execution_price": 94.19,
+            "shares": 1057,
+            "invested_equity": 99558.83,
+            "buy_fee_deducted": 413.17,
+            "pe": 4.555177442877977,
+            "yield": 6.61
+          },
+          {
+            "ticker": "GP",
+            "sector": "Telecom",
+            "entry_date": "2026-10-07",
+            "execution_price": 240.44,
+            "shares": 414,
+            "invested_equity": 99542.16,
+            "buy_fee_deducted": 413.1,
+            "pe": 10.968036529680365,
+            "yield": 8.34
+          },
+          {
+            "ticker": "ACMELAB",
+            "sector": "Pharmaceuticals",
+            "entry_date": "2026-10-07",
+            "execution_price": 76.78,
+            "shares": 1297,
+            "invested_equity": 99583.66,
+            "buy_fee_deducted": 413.27,
+            "pe": 6.7073170731707314,
+            "yield": 4.85
+          },
+          {
+            "ticker": "SQURPHARMA",
+            "sector": "Pharmaceuticals",
+            "entry_date": "2026-10-07",
+            "execution_price": 217.22,
+            "shares": 458,
+            "invested_equity": 99486.76,
+            "buy_fee_deducted": 412.87,
+            "pe": 8.04733727810651,
+            "yield": 5.74
+          },
+          {
+            "ticker": "LHB",
+            "sector": "Cement",
+            "entry_date": "2026-10-07",
+            "execution_price": 52.15,
+            "shares": 1909,
+            "invested_equity": 99554.35,
+            "buy_fee_deducted": 413.15,
+            "pe": 11.863636363636363,
+            "yield": 8.57
+          },
+          {
+            "ticker": "MALEKSPIN",
+            "sector": "Textile",
+            "entry_date": "2026-10-07",
+            "execution_price": 48.75,
+            "shares": 2042,
+            "invested_equity": 99547.5,
+            "buy_fee_deducted": 413.12,
+            "pe": 6.491228070175438,
+            "yield": 4.33
+          }
+        ],
+        "updated_at": "2026-10-07"
+      },
+      "block_hash": "53b19f2ffd4abbf2876b0b2d223cec87953ac34d877559de27c12703a79e2330"
+    }
+  ]
+}
