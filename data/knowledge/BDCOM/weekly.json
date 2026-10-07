@@ -1,0 +1,305 @@
+{
+  "ticker": "BDCOM",
+  "timeframe": "weekly",
+  "horizon": "short",
+  "analyzed_at": "2026-10-06T09:32:29.623236",
+  "signal": "BUY",
+  "confidence": 60.67,
+  "trajectory": {
+    "direction": "CONSOLIDATION_RANGE",
+    "direction_icon": "\ud83d\udfe1",
+    "rise_probability_pct": 56.1,
+    "momentum_status": "Neutral Range Consolidation",
+    "short_term": {
+      "predicted_path": "Upward momentum swing",
+      "upside_potential_pct": "+3.0%",
+      "downside_risk_pct": "-1.9%",
+      "target_price": 27.5,
+      "support_price": 26.2,
+      "risk_reward_ratio": "1.6x"
+    },
+    "mid_term": {
+      "predicted_path": "Cycle valuation recovery to historical median",
+      "upside_potential_pct": "+15.0%",
+      "downside_risk_pct": "-4.9%",
+      "target_price": 30.7,
+      "trailing_stop": 25.4,
+      "risk_reward_ratio": "3.1x"
+    },
+    "long_term": {
+      "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
+      "upside_potential_pct": "+30.0%",
+      "downside_risk_pct": "-8.8%",
+      "target_price": 34.7,
+      "dividend_cagr": "moderate (2.12%)",
+      "risk_reward_ratio": "3.4x"
+    }
+  },
+  "trade_levels": {
+    "entry": 26.7,
+    "stop_loss": 25.9,
+    "target": 28.3
+  },
+  "precision": {
+    "ticker": "BDCOM",
+    "smart_money": {
+      "status": "ACTIVE",
+      "latest_date": "Sep 30, 2026",
+      "smart_money_delta_pct": -0.28,
+      "institutional_pct": 8.5,
+      "foreign_pct": 0.0,
+      "sponsor_pct": 30.0,
+      "public_pct": 61.5,
+      "public_delta_pct": 0.28,
+      "classification": "STABLE_HOLDINGS",
+      "conviction_bonus": 0.0,
+      "signal": "Holding shift: Smart money -0.28%, Retail +0.28%"
+    },
+    "cash_flow": {
+      "nocfps": 0.73,
+      "is_estimated": true,
+      "dividend_per_share": 0.5,
+      "dividend_coverage_x": 1.46,
+      "fcf_yield_pct": 2.69,
+      "cash_quality_status": "PRISTINE_REAL_CASH_COVERAGE",
+      "conviction_bonus": 15.0,
+      "signal": "Dividend is 146% cash-covered by real operations (NOCFPS: Tk 0.73 vs DPS: Tk 0.5)"
+    },
+    "liquidity": {
+      "avg_daily_volume": 333171,
+      "daily_turnover_bdt_cr": 0.9,
+      "liquidity_rating": "MODERATE_LIQUIDITY",
+      "slippage_risk": "MEDIUM",
+      "max_single_order_shares": 16658,
+      "max_daily_accumulation_shares": 49975,
+      "max_order_bdt": 451432.0,
+      "directive": "Max single order: 16,658 shares (Tk 451,432) to prevent >1% execution slippage"
+    },
+    "earnings_acceleration": {
+      "status": "INSUFFICIENT_QUARTERLY_DATA",
+      "acceleration_status": "NORMAL_STABLE",
+      "bonus": 0.0,
+      "signal": "Standard annual EPS trajectory"
+    },
+    "total_precision_bonus": 15.0
+  },
+  "pattern_dna": {
+    "ticker": "BDCOM",
+    "audited_at": "2026-10-06 15:32:29",
+    "worth_vs_greed": {
+      "current_price": 26.7,
+      "intrinsic_worth": 17.36,
+      "margin_of_safety_pct": -35.0,
+      "greed_index": 8.0,
+      "rsi_14": 42.6,
+      "price_vs_ema50_pct": -9.5,
+      "price_vs_ema200_pct": -7.9,
+      "status": "CHRONIC_OVERVALUATION",
+      "worth_decision": "AVOID",
+      "reason": "Fundamental value severely lags stock price (MoS: -35.0%)."
+    },
+    "multi_interval_wave": {
+      "intervals": {
+        "weekly_5d": {
+          "return_pct": -5.99,
+          "high": 28.7,
+          "low": 26.5,
+          "range_volatility_pct": 8.3
+        },
+        "monthly_21d": {
+          "return_pct": -10.4,
+          "high": 30.6,
+          "low": 26.1,
+          "range_volatility_pct": 17.24
+        },
+        "quarterly_63d": {
+          "return_pct": -19.82,
+          "high": 36.8,
+          "low": 26.1,
+          "range_volatility_pct": 41.0
+        },
+        "half_yearly_126d": {
+          "return_pct": -2.91,
+          "high": 36.8,
+          "low": 26.1,
+          "range_volatility_pct": 41.0
+        },
+        "yearly_252d": {
+          "return_pct": -3.26,
+          "high": 36.8,
+          "low": 22.5,
+          "range_volatility_pct": 63.56
+        }
+      },
+      "wave_metrics": {
+        "median_rally_gain_pct": 24.1,
+        "median_correction_drop_pct": -14.5,
+        "avg_wave_duration_bars": 20.0
+      },
+      "current_wave_phase": "ACCUMULATION_TROUGH",
+      "phase_guidance": "Near local cyclical trough base. Maximum reward/risk entry point.",
+      "top_seasonal_months": [
+        {
+          "month": "Nov",
+          "avg_return": 8.8,
+          "win_rate": 100.0
+        },
+        {
+          "month": "Jul",
+          "avg_return": 8.3,
+          "win_rate": 100.0
+        },
+        {
+          "month": "Jun",
+          "avg_return": 7.5,
+          "win_rate": 100.0
+        }
+      ],
+      "weak_seasonal_months": [
+        {
+          "month": "May",
+          "avg_return": -6.9,
+          "win_rate": 0.0
+        },
+        {
+          "month": "Oct",
+          "avg_return": -13.4,
+          "win_rate": 0.0
+        }
+      ]
+    },
+    "causal_attributions": [
+      {
+        "event_name": "Banking NPL Revelations & Aggressive Monetary Tightening",
+        "category": "ECONOMIC_MONETARY_BANKING",
+        "period": "2024-10-06 to 2025-06-30",
+        "stock_move_pct": 5.36,
+        "behavior": "DEFENSIVE_STABILITY",
+        "root_cause_why": "True extent of banking non-performing loans exposed by Bangladesh Bank. Liquidity squeeze in weak banks, high 12-14% treasury bill yields drew liquidity away from stock market.",
+        "market_impact": "TIGHT_LIQUIDITY_AND_FLIGHT_TO_SAFETY"
+      },
+      {
+        "event_name": "Economic Normalization & Moat Flight",
+        "category": "SECTOR_MACRO_RECOVERY",
+        "period": "2025-07-02 to 2026-10-06",
+        "stock_move_pct": 11.72,
+        "behavior": "DEFENSIVE_STABILITY",
+        "root_cause_why": "FX reserves stabilized with IMF/World Bank assistance. Remittance surge. Selective institutional accumulation into debt-free cash cows with high dividend yields (Square, GP, Olympic, Padma Oil).",
+        "market_impact": "SELECTIVE_FUNDAMENTAL_ACCUMULATION"
+      }
+    ]
+  },
+  "technical": {
+    "score": null,
+    "signals": {
+      "error": "insufficient_data_lt_30_bars"
+    },
+    "sr": {}
+  },
+  "fundamental": {
+    "score": 60.83,
+    "signals": {
+      "eps": "positive (0.86)",
+      "pe": "expensive (31.511627906976745)",
+      "nav": 15.58,
+      "dividend_yield": "moderate (2.12%)",
+      "debt_equity_val": 0.109,
+      "long_term_debt_equity_val": 0.014,
+      "debt_equity": "pristine_low (0.109)",
+      "loan_trap_risk": "none",
+      "dividend_track_record_years": 5,
+      "dividend_consistency": "proven_compounder (5 yrs cash divs)",
+      "roe": "weak (5.52%)",
+      "downturn_resilience": {
+        "status": "growth_at_discount",
+        "drawdown_pct": 27.4,
+        "high_52w": 36.8,
+        "low_52w": 22.5,
+        "note": "Share price down 27.4% from 52w peak, yet earnings positive/steady (Conviction discount)"
+      }
+    }
+  },
+  "management": {
+    "ticker": "BDCOM",
+    "company_name": "BDCOM Online Limited",
+    "chairman": "Wahidul Haque Siddiqui",
+    "managing_director_ceo": "Sumon Ahmed Sabir",
+    "leadership_type": "Tech Pioneer Entrepreneurs (Internet pioneers of Bangladesh)",
+    "industry_experience_years": 29,
+    "governance_rating": "A",
+    "audit_credibility": "Standard Cat A Audit",
+    "key_moat": "Nationwide optical fiber backbone, VSAT, data center services, est 1997",
+    "management_risk": "Low",
+    "governance_score": 75
+  },
+  "news_intent": {
+    "ticker": "BDCOM",
+    "intent_score": 0.0,
+    "dominant_intent": "NO_RECENT_NEWS",
+    "articles_analyzed": 0,
+    "red_flags": [],
+    "catalysts": []
+  },
+  "sentiment": {
+    "score": 50.0,
+    "signals": {
+      "news_count": 0,
+      "note": "no_news_neutral"
+    }
+  },
+  "manipulation": {
+    "manipulation_score": 10,
+    "manipulation_risk": "low",
+    "block_buy": false,
+    "flags": [
+      "price_surge_no_news: price_-6.0pct_zero_news"
+    ],
+    "checks": {
+      "volume_price_divergence": {
+        "flag": false,
+        "price_chg": 0,
+        "last_volume": 239042,
+        "avg_volume": 339168.0,
+        "detail": "ok"
+      },
+      "volume_spike": {
+        "flag": false,
+        "spike_ratio": 0.69,
+        "avg_volume": 344964.0,
+        "today_volume": 239042,
+        "detail": "ok"
+      },
+      "serial_trading": {
+        "flag": false,
+        "suspicious_days": 0,
+        "detail": "ok"
+      },
+      "circuit_breaker": {
+        "flag": false,
+        "circuit_hits": 0,
+        "detail": "ok"
+      },
+      "sponsor_exit": {
+        "flag": false,
+        "detail": "insufficient_fundamental_history"
+      },
+      "price_surge_no_news": {
+        "flag": true,
+        "price_change_3d": -5.99,
+        "news_count_3d": 0,
+        "detail": "price_-6.0pct_zero_news"
+      }
+    }
+  },
+  "composite": {
+    "composite_score": 60.67,
+    "governance_score": 75,
+    "sentiment_score": 50.0,
+    "applied_weights": {
+      "fundamental": 0.692,
+      "technical": 0.077,
+      "governance": 0.127,
+      "sentiment": 0.104
+    }
+  }
+}

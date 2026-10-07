@@ -1,0 +1,301 @@
+{
+  "ticker": "ORIONPHARM",
+  "timeframe": "weekly",
+  "horizon": "short",
+  "analyzed_at": "2026-10-06T09:32:29.521499",
+  "signal": "HOLD",
+  "confidence": 54.33,
+  "trajectory": {
+    "direction": "CONSOLIDATION_RANGE",
+    "direction_icon": "\ud83d\udfe1",
+    "rise_probability_pct": 50.1,
+    "momentum_status": "Neutral Range Consolidation",
+    "short_term": {
+      "predicted_path": "Upward momentum swing",
+      "upside_potential_pct": "+3.0%",
+      "downside_risk_pct": "-1.9%",
+      "target_price": 27.7,
+      "support_price": 26.4,
+      "risk_reward_ratio": "1.6x"
+    },
+    "mid_term": {
+      "predicted_path": "Cycle valuation recovery to historical median",
+      "upside_potential_pct": "+14.9%",
+      "downside_risk_pct": "-4.8%",
+      "target_price": 30.9,
+      "trailing_stop": 25.6,
+      "risk_reward_ratio": "3.1x"
+    },
+    "long_term": {
+      "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
+      "upside_potential_pct": "+30.1%",
+      "downside_risk_pct": "-8.6%",
+      "target_price": 35.0,
+      "dividend_cagr": "no_dividend",
+      "risk_reward_ratio": "3.5x"
+    }
+  },
+  "trade_levels": {
+    "entry": 26.9,
+    "stop_loss": 26.09,
+    "target": 28.52
+  },
+  "precision": {
+    "ticker": "ORIONPHARM",
+    "smart_money": {
+      "status": "ACTIVE",
+      "latest_date": "Aug 31, 2026",
+      "smart_money_delta_pct": -0.04,
+      "institutional_pct": 21.44,
+      "foreign_pct": 0.15,
+      "sponsor_pct": 31.98,
+      "public_pct": 46.43,
+      "public_delta_pct": 0.04,
+      "classification": "STABLE_HOLDINGS",
+      "conviction_bonus": 0.0,
+      "signal": "Holding shift: Smart money -0.04%, Retail +0.04%"
+    },
+    "cash_flow": {
+      "nocfps": 0.0,
+      "is_estimated": true,
+      "dividend_per_share": 1.0,
+      "dividend_coverage_x": 0.0,
+      "fcf_yield_pct": 0.0,
+      "cash_quality_status": "TIGHT_CASH_COVERAGE",
+      "conviction_bonus": -10.0,
+      "signal": "Cash flow covers only 0% of dividend payout"
+    },
+    "liquidity": {
+      "avg_daily_volume": 498554,
+      "daily_turnover_bdt_cr": 1.36,
+      "liquidity_rating": "MODERATE_LIQUIDITY",
+      "slippage_risk": "MEDIUM",
+      "max_single_order_shares": 24927,
+      "max_daily_accumulation_shares": 74783,
+      "max_order_bdt": 678014.0,
+      "directive": "Max single order: 24,927 shares (Tk 678,014) to prevent >1% execution slippage"
+    },
+    "earnings_acceleration": {
+      "status": "INSUFFICIENT_QUARTERLY_DATA",
+      "acceleration_status": "NORMAL_STABLE",
+      "bonus": 0.0,
+      "signal": "Standard annual EPS trajectory"
+    },
+    "total_precision_bonus": -10.0
+  },
+  "pattern_dna": {
+    "ticker": "ORIONPHARM",
+    "audited_at": "2026-10-06 15:32:29",
+    "worth_vs_greed": {
+      "current_price": 26.9,
+      "intrinsic_worth": 68.87,
+      "margin_of_safety_pct": 156.0,
+      "greed_index": 40.0,
+      "rsi_14": 58.4,
+      "price_vs_ema50_pct": -1.4,
+      "price_vs_ema200_pct": -5.1,
+      "status": "UNDERVALUED_FEAR",
+      "worth_decision": "HIGH_CONVICTION_BUY",
+      "reason": "High Margin of Safety (+156.0%) with depressed market greed (40.0/100). Ideal entry."
+    },
+    "multi_interval_wave": {
+      "intervals": {
+        "weekly_5d": {
+          "return_pct": -9.43,
+          "high": 29.9,
+          "low": 26.7,
+          "range_volatility_pct": 11.99
+        },
+        "monthly_21d": {
+          "return_pct": 5.49,
+          "high": 33.2,
+          "low": 23.5,
+          "range_volatility_pct": 41.28
+        },
+        "quarterly_63d": {
+          "return_pct": -5.61,
+          "high": 33.2,
+          "low": 23.5,
+          "range_volatility_pct": 41.28
+        },
+        "half_yearly_126d": {
+          "return_pct": -7.56,
+          "high": 33.2,
+          "low": 23.5,
+          "range_volatility_pct": 41.28
+        },
+        "yearly_252d": {
+          "return_pct": -28.46,
+          "high": 37.7,
+          "low": 22.9,
+          "range_volatility_pct": 64.63
+        }
+      },
+      "wave_metrics": {
+        "median_rally_gain_pct": 23.9,
+        "median_correction_drop_pct": -15.3,
+        "avg_wave_duration_bars": 26.0
+      },
+      "current_wave_phase": "MARKUP_RALLY_MID",
+      "phase_guidance": "Midway through rally wave (+14.5% from base, historical target ~+23.9%).",
+      "top_seasonal_months": [
+        {
+          "month": "Jul",
+          "avg_return": 12.9,
+          "win_rate": 100.0
+        },
+        {
+          "month": "Nov",
+          "avg_return": 10.7,
+          "win_rate": 50.0
+        },
+        {
+          "month": "Jun",
+          "avg_return": 8.2,
+          "win_rate": 100.0
+        }
+      ],
+      "weak_seasonal_months": [
+        {
+          "month": "May",
+          "avg_return": -12.1,
+          "win_rate": 0.0
+        },
+        {
+          "month": "Feb",
+          "avg_return": -14.4,
+          "win_rate": 0.0
+        }
+      ]
+    },
+    "causal_attributions": [
+      {
+        "event_name": "Banking NPL Revelations & Aggressive Monetary Tightening",
+        "category": "ECONOMIC_MONETARY_BANKING",
+        "period": "2024-10-06 to 2025-06-30",
+        "stock_move_pct": -17.44,
+        "behavior": "SEVERE_VULNERABILITY",
+        "root_cause_why": "True extent of banking non-performing loans exposed by Bangladesh Bank. Liquidity squeeze in weak banks, high 12-14% treasury bill yields drew liquidity away from stock market.",
+        "market_impact": "TIGHT_LIQUIDITY_AND_FLIGHT_TO_SAFETY"
+      },
+      {
+        "event_name": "Economic Normalization & Moat Flight",
+        "category": "SECTOR_MACRO_RECOVERY",
+        "period": "2025-07-02 to 2026-10-06",
+        "stock_move_pct": -14.06,
+        "behavior": "MODERATE_CYCLICAL_DROP",
+        "root_cause_why": "FX reserves stabilized with IMF/World Bank assistance. Remittance surge. Selective institutional accumulation into debt-free cash cows with high dividend yields (Square, GP, Olympic, Padma Oil).",
+        "market_impact": "SELECTIVE_FUNDAMENTAL_ACCUMULATION"
+      }
+    ]
+  },
+  "technical": {
+    "score": null,
+    "signals": {
+      "error": "insufficient_data_lt_30_bars"
+    },
+    "sr": {}
+  },
+  "fundamental": {
+    "score": 51.67,
+    "signals": {
+      "nav": 86.09,
+      "dividend_yield": "no_dividend",
+      "debt_equity_val": 1.272,
+      "long_term_debt_equity_val": 1.248,
+      "debt_equity": "elevated (1.272)",
+      "loan_trap_risk": "moderate",
+      "dividend_track_record_years": 4,
+      "dividend_consistency": "proven_compounder (4 yrs cash divs)",
+      "downturn_resilience": {
+        "status": "normal",
+        "drawdown_pct": 26.5,
+        "high_52w": 36.6,
+        "low_52w": 22.9
+      }
+    }
+  },
+  "management": {
+    "ticker": "ORIONPHARM",
+    "company_name": "ORIONPHARM",
+    "chairman": "Board Appointed Chairman",
+    "managing_director_ceo": "Managing Director / CEO",
+    "leadership_type": "Public Listed Corporate Board",
+    "industry_experience_years": 20,
+    "governance_rating": "A",
+    "audit_credibility": "Standard Category A Audit",
+    "key_moat": "DSE Listed Franchise",
+    "management_risk": "Low",
+    "governance_score": 75
+  },
+  "news_intent": {
+    "ticker": "ORIONPHARM",
+    "intent_score": 0.0,
+    "dominant_intent": "NO_RECENT_NEWS",
+    "articles_analyzed": 0,
+    "red_flags": [],
+    "catalysts": []
+  },
+  "sentiment": {
+    "score": 50.0,
+    "signals": {
+      "news_count": 0,
+      "note": "no_news_neutral"
+    }
+  },
+  "manipulation": {
+    "manipulation_score": 10,
+    "manipulation_risk": "low",
+    "block_buy": false,
+    "flags": [
+      "price_surge_no_news: price_-8.2pct_zero_news"
+    ],
+    "checks": {
+      "volume_price_divergence": {
+        "flag": false,
+        "price_chg": 0,
+        "last_volume": 218142,
+        "avg_volume": 384024.0,
+        "detail": "ok"
+      },
+      "volume_spike": {
+        "flag": false,
+        "spike_ratio": 0.56,
+        "avg_volume": 386118.0,
+        "today_volume": 218142,
+        "detail": "ok"
+      },
+      "serial_trading": {
+        "flag": false,
+        "suspicious_days": 0,
+        "detail": "ok"
+      },
+      "circuit_breaker": {
+        "flag": false,
+        "circuit_hits": 0,
+        "detail": "ok"
+      },
+      "sponsor_exit": {
+        "flag": false,
+        "detail": "insufficient_fundamental_history"
+      },
+      "price_surge_no_news": {
+        "flag": true,
+        "price_change_3d": -8.19,
+        "news_count_3d": 0,
+        "detail": "price_-8.2pct_zero_news"
+      }
+    }
+  },
+  "composite": {
+    "composite_score": 54.33,
+    "governance_score": 75,
+    "sentiment_score": 50.0,
+    "applied_weights": {
+      "fundamental": 0.692,
+      "technical": 0.077,
+      "governance": 0.127,
+      "sentiment": 0.104
+    }
+  }
+}

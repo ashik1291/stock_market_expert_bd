@@ -1,0 +1,139 @@
+{
+  "ticker": "GREENINS",
+  "timeframe": "weekly",
+  "horizon": "short",
+  "analyzed_at": "2026-10-06T09:32:30.172702",
+  "signal": "HOLD",
+  "confidence": 53.17,
+  "trajectory": {},
+  "trade_levels": {},
+  "precision": {
+    "ticker": "GREENINS",
+    "smart_money": {
+      "status": "INSUFFICIENT_HISTORY",
+      "smart_money_delta_pct": 0.0,
+      "public_delta_pct": 0.0,
+      "classification": "NEUTRAL_HOLDING",
+      "conviction_bonus": 0.0,
+      "signal": "No monthly delta available"
+    },
+    "cash_flow": {
+      "nocfps": 0.0,
+      "is_estimated": true,
+      "dividend_per_share": 0.0,
+      "dividend_coverage_x": 0.0,
+      "fcf_yield_pct": 0.0,
+      "cash_quality_status": "TIGHT_CASH_COVERAGE",
+      "conviction_bonus": -10.0,
+      "signal": "Cash flow covers only 0% of dividend payout"
+    },
+    "liquidity": {
+      "liquidity_rating": "ILLIQUID",
+      "max_single_order_shares": 500,
+      "max_daily_accumulation_shares": 1500,
+      "max_order_bdt": 50000,
+      "slippage_risk": "HIGH"
+    },
+    "earnings_acceleration": {
+      "status": "INSUFFICIENT_QUARTERLY_DATA",
+      "acceleration_status": "NORMAL_STABLE",
+      "bonus": 0.0,
+      "signal": "Standard annual EPS trajectory"
+    },
+    "total_precision_bonus": -10.0
+  },
+  "pattern_dna": {
+    "error": "No price series found for GREENINS"
+  },
+  "technical": {
+    "score": null,
+    "signals": {
+      "error": "insufficient_price_data"
+    },
+    "sr": {}
+  },
+  "fundamental": {
+    "score": 50.0,
+    "signals": {
+      "downturn_resilience": {
+        "status": "normal",
+        "drawdown_pct": 0.0,
+        "high_52w": 0,
+        "low_52w": 0
+      }
+    }
+  },
+  "management": {
+    "ticker": "GREENINS",
+    "company_name": "GREENINS",
+    "chairman": "Board Appointed Chairman",
+    "managing_director_ceo": "Managing Director / CEO",
+    "leadership_type": "Public Listed Corporate Board",
+    "industry_experience_years": 20,
+    "governance_rating": "A",
+    "audit_credibility": "Standard Category A Audit",
+    "key_moat": "DSE Listed Franchise",
+    "management_risk": "Low",
+    "governance_score": 75
+  },
+  "news_intent": {
+    "ticker": "GREENINS",
+    "intent_score": 0.0,
+    "dominant_intent": "NO_RECENT_NEWS",
+    "articles_analyzed": 0,
+    "red_flags": [],
+    "catalysts": []
+  },
+  "sentiment": {
+    "score": 50.0,
+    "signals": {
+      "news_count": 0,
+      "note": "no_news_neutral"
+    }
+  },
+  "manipulation": {
+    "manipulation_score": 0,
+    "manipulation_risk": "low",
+    "block_buy": false,
+    "flags": [],
+    "checks": {
+      "volume_price_divergence": {
+        "flag": false,
+        "detail": "insufficient_data"
+      },
+      "volume_spike": {
+        "flag": false,
+        "detail": "insufficient_data"
+      },
+      "serial_trading": {
+        "flag": false,
+        "suspicious_days": 0,
+        "detail": "ok"
+      },
+      "circuit_breaker": {
+        "flag": false,
+        "circuit_hits": 0,
+        "detail": "ok"
+      },
+      "sponsor_exit": {
+        "flag": false,
+        "detail": "insufficient_fundamental_history"
+      },
+      "price_surge_no_news": {
+        "flag": false,
+        "detail": "insufficient_data"
+      }
+    }
+  },
+  "composite": {
+    "composite_score": 53.17,
+    "governance_score": 75,
+    "sentiment_score": 50.0,
+    "applied_weights": {
+      "fundamental": 0.692,
+      "technical": 0.077,
+      "governance": 0.127,
+      "sentiment": 0.104
+    }
+  }
+}

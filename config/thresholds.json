@@ -1,0 +1,53 @@
+{
+  "fundamentals": {
+    "min_eps": 0,
+    "min_eps_growth_yoy_pct": 10,
+    "max_pe_ratio": 15,
+    "undervalued_pe": 10,
+    "min_dividend_yield_pct": 5,
+    "max_debt_equity": 1.0,
+    "safe_debt_equity": 0.5,
+    "min_sponsor_holding_pct": 30,
+    "risk_sponsor_holding_pct": 20,
+    "min_free_float_pct": 10,
+    "illiquid_free_float_pct": 30,
+    "min_market_cap_crore_bdt": 500,
+    "nav_discount_threshold": 1.0,
+    "min_cfo_to_profit_ratio": 0.8,
+    "min_dividend_history_years": 3
+  },
+  "technical": {
+    "rsi_period": 14,
+    "rsi_oversold": 30,
+    "rsi_overbought": 70,
+    "volume_spike_multiplier": 2.0,
+    "sma_short": 20,
+    "sma_medium": 50,
+    "sma_long": 200,
+    "macd_fast": 12,
+    "macd_slow": 26,
+    "macd_signal": 9,
+    "atr_period": 14,
+    "bb_period": 20,
+    "bb_std": 2
+  },
+  "scoring": {
+    "fundamental_weight": 0.55,
+    "technical_weight": 0.25,
+    "sentiment_weight": 0.20,
+    "min_confidence_buy": 60,
+    "min_confidence_strong_buy": 75
+  },
+  "manipulation": {
+    "volume_spike_vs_avg_pct": 300,
+    "price_move_no_news_pct": 5.0,
+    "price_range_spike_pct": 10.0,
+    "circuit_breaker_consecutive_days": 3,
+    "sponsor_drop_alert_pct": 5.0,
+    "volume_price_divergence_threshold": 1.5,
+    "high_manipulation_score_block_buy": 70
+  },
+  "categories_allowed": ["A"],
+  "stop_loss_atr_multiplier": 1.5,
+  "target_risk_reward": 2.0
+}

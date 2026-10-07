@@ -1,0 +1,106 @@
+{
+  "ticker": "DESCO",
+  "audited_at": "2026-10-06 15:32:29",
+  "worth_vs_greed": {
+    "current_price": 24.2,
+    "intrinsic_worth": 28.26,
+    "margin_of_safety_pct": 16.8,
+    "greed_index": 70.0,
+    "rsi_14": 84.4,
+    "price_vs_ema50_pct": 3.2,
+    "price_vs_ema200_pct": 3.7,
+    "status": "NEUTRAL",
+    "worth_decision": "HOLD",
+    "reason": "Trading in neutral fair-value corridor."
+  },
+  "multi_interval_wave": {
+    "intervals": {
+      "weekly_5d": {
+        "return_pct": 6.61,
+        "high": 25.4,
+        "low": 22.5,
+        "range_volatility_pct": 12.89
+      },
+      "monthly_21d": {
+        "return_pct": 7.08,
+        "high": 25.4,
+        "low": 21.4,
+        "range_volatility_pct": 18.69
+      },
+      "quarterly_63d": {
+        "return_pct": -7.98,
+        "high": 27.8,
+        "low": 21.4,
+        "range_volatility_pct": 29.91
+      },
+      "half_yearly_126d": {
+        "return_pct": 2.98,
+        "high": 27.8,
+        "low": 21.1,
+        "range_volatility_pct": 31.75
+      },
+      "yearly_252d": {
+        "return_pct": 0.83,
+        "high": 27.8,
+        "low": 18.1,
+        "range_volatility_pct": 53.59
+      }
+    },
+    "wave_metrics": {
+      "median_rally_gain_pct": 30.1,
+      "median_correction_drop_pct": -18.8,
+      "avg_wave_duration_bars": 26
+    },
+    "current_wave_phase": "MARKUP_RALLY_MID",
+    "phase_guidance": "Midway through rally wave (+13.1% from base, historical target ~+30.1%).",
+    "top_seasonal_months": [
+      {
+        "month": "Jul",
+        "avg_return": 13.9,
+        "win_rate": 100.0
+      },
+      {
+        "month": "Jan",
+        "avg_return": 11.7,
+        "win_rate": 100.0
+      },
+      {
+        "month": "Jun",
+        "avg_return": 8.5,
+        "win_rate": 100.0
+      }
+    ],
+    "weak_seasonal_months": [
+      {
+        "month": "May",
+        "avg_return": -14.2,
+        "win_rate": 0.0
+      },
+      {
+        "month": "Oct",
+        "avg_return": -14.9,
+        "win_rate": 0.0
+      }
+    ]
+  },
+  "causal_attributions": [
+    {
+      "event_name": "Banking NPL Revelations & Aggressive Monetary Tightening",
+      "category": "ECONOMIC_MONETARY_BANKING",
+      "period": "2024-10-06 to 2025-06-30",
+      "stock_move_pct": -6.91,
+      "behavior": "MODERATE_CYCLICAL_DROP",
+      "root_cause_why": "True extent of banking non-performing loans exposed by Bangladesh Bank. Liquidity squeeze in weak banks, high 12-14% treasury bill yields drew liquidity away from stock market.",
+      "market_impact": "TIGHT_LIQUIDITY_AND_FLIGHT_TO_SAFETY"
+    },
+    {
+      "event_name": "Economic Normalization & Moat Flight",
+      "category": "SECTOR_MACRO_RECOVERY",
+      "period": "2025-07-02 to 2026-10-06",
+      "stock_move_pct": 5.22,
+      "behavior": "DEFENSIVE_STABILITY",
+      "root_cause_why": "FX reserves stabilized with IMF/World Bank assistance. Remittance surge. Selective institutional accumulation into debt-free cash cows with high dividend yields (Square, GP, Olympic, Padma Oil).",
+      "market_impact": "SELECTIVE_FUNDAMENTAL_ACCUMULATION"
+    }
+  ]
+}

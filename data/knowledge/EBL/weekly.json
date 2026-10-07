@@ -1,0 +1,302 @@
+{
+  "ticker": "EBL",
+  "timeframe": "weekly",
+  "horizon": "short",
+  "analyzed_at": "2026-10-06T09:32:29.368711",
+  "signal": "STRONG_BUY",
+  "confidence": 79.37,
+  "trajectory": {
+    "direction": "RISE_PREDICTED",
+    "direction_icon": "\ud83d\udfe2",
+    "rise_probability_pct": 84.1,
+    "momentum_status": "Bullish Reversal / Upward Accumulation",
+    "short_term": {
+      "predicted_path": "Upward momentum swing",
+      "upside_potential_pct": "+3.1%",
+      "downside_risk_pct": "-2.2%",
+      "target_price": 23.4,
+      "support_price": 22.2,
+      "risk_reward_ratio": "1.4x"
+    },
+    "mid_term": {
+      "predicted_path": "Cycle valuation recovery to historical median",
+      "upside_potential_pct": "+15.0%",
+      "downside_risk_pct": "-4.8%",
+      "target_price": 26.1,
+      "trailing_stop": 21.6,
+      "risk_reward_ratio": "3.1x"
+    },
+    "long_term": {
+      "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
+      "upside_potential_pct": "+30.0%",
+      "downside_risk_pct": "-8.6%",
+      "target_price": 29.5,
+      "dividend_cagr": "strong (10.29%)",
+      "risk_reward_ratio": "3.5x"
+    }
+  },
+  "trade_levels": {
+    "entry": 22.7,
+    "stop_loss": 22.02,
+    "target": 24.06
+  },
+  "precision": {
+    "ticker": "EBL",
+    "smart_money": {
+      "status": "ACTIVE",
+      "latest_date": "Sep 30, 2026",
+      "smart_money_delta_pct": -0.78,
+      "institutional_pct": 42.81,
+      "foreign_pct": 0.1,
+      "sponsor_pct": 30.44,
+      "public_pct": 26.65,
+      "public_delta_pct": -0.22,
+      "classification": "STABLE_HOLDINGS",
+      "conviction_bonus": 0.0,
+      "signal": "Holding shift: Smart money -0.78%, Retail -0.22%"
+    },
+    "cash_flow": {
+      "nocfps": 4.45,
+      "is_estimated": true,
+      "dividend_per_share": 2.5,
+      "dividend_coverage_x": 1.78,
+      "fcf_yield_pct": 19.52,
+      "cash_quality_status": "PRISTINE_REAL_CASH_COVERAGE",
+      "conviction_bonus": 15.0,
+      "signal": "Dividend is 178% cash-covered by real operations (NOCFPS: Tk 4.45 vs DPS: Tk 2.5)"
+    },
+    "liquidity": {
+      "avg_daily_volume": 4863289,
+      "daily_turnover_bdt_cr": 11.09,
+      "liquidity_rating": "DEEP_INSTITUTIONAL_LIQUIDITY",
+      "slippage_risk": "VERY_LOW",
+      "max_single_order_shares": 243164,
+      "max_daily_accumulation_shares": 729493,
+      "max_order_bdt": 5544139.0,
+      "directive": "Max single order: 243,164 shares (Tk 5,544,139) to prevent >1% execution slippage"
+    },
+    "earnings_acceleration": {
+      "status": "INSUFFICIENT_QUARTERLY_DATA",
+      "acceleration_status": "NORMAL_STABLE",
+      "bonus": 0.0,
+      "signal": "Standard annual EPS trajectory"
+    },
+    "total_precision_bonus": 15.0
+  },
+  "pattern_dna": {
+    "ticker": "EBL",
+    "audited_at": "2026-10-06 15:32:29",
+    "worth_vs_greed": {
+      "current_price": 22.7,
+      "intrinsic_worth": 60.77,
+      "margin_of_safety_pct": 167.7,
+      "greed_index": 8.0,
+      "rsi_14": 44.4,
+      "price_vs_ema50_pct": -3.4,
+      "price_vs_ema200_pct": -7.1,
+      "status": "UNDERVALUED_FEAR",
+      "worth_decision": "HIGH_CONVICTION_BUY",
+      "reason": "High Margin of Safety (+167.7%) with depressed market greed (8.0/100). Ideal entry."
+    },
+    "multi_interval_wave": {
+      "intervals": {
+        "weekly_5d": {
+          "return_pct": 0.0,
+          "high": 23.1,
+          "low": 22.6,
+          "range_volatility_pct": 2.21
+        },
+        "monthly_21d": {
+          "return_pct": -4.22,
+          "high": 23.9,
+          "low": 22.3,
+          "range_volatility_pct": 7.17
+        },
+        "quarterly_63d": {
+          "return_pct": -7.72,
+          "high": 25.0,
+          "low": 22.3,
+          "range_volatility_pct": 12.11
+        },
+        "half_yearly_126d": {
+          "return_pct": -15.3,
+          "high": 28.3,
+          "low": 22.3,
+          "range_volatility_pct": 26.91
+        },
+        "yearly_252d": {
+          "return_pct": -10.63,
+          "high": 28.9,
+          "low": 21.8,
+          "range_volatility_pct": 32.57
+        }
+      },
+      "wave_metrics": {
+        "median_rally_gain_pct": 10.8,
+        "median_correction_drop_pct": -9.1,
+        "avg_wave_duration_bars": 38.0
+      },
+      "current_wave_phase": "ACCUMULATION_TROUGH",
+      "phase_guidance": "Near local cyclical trough base. Maximum reward/risk entry point.",
+      "top_seasonal_months": [
+        {
+          "month": "Jul",
+          "avg_return": 7.9,
+          "win_rate": 100.0
+        },
+        {
+          "month": "Mar",
+          "avg_return": 6.6,
+          "win_rate": 50.0
+        },
+        {
+          "month": "Feb",
+          "avg_return": 4.9,
+          "win_rate": 100.0
+        }
+      ],
+      "weak_seasonal_months": [
+        {
+          "month": "Oct",
+          "avg_return": -7.2,
+          "win_rate": 0.0
+        },
+        {
+          "month": "May",
+          "avg_return": -13.4,
+          "win_rate": 0.0
+        }
+      ]
+    },
+    "causal_attributions": [
+      {
+        "event_name": "Banking NPL Revelations & Aggressive Monetary Tightening",
+        "category": "ECONOMIC_MONETARY_BANKING",
+        "period": "2024-10-06 to 2025-06-30",
+        "stock_move_pct": -8.76,
+        "behavior": "MODERATE_CYCLICAL_DROP",
+        "root_cause_why": "True extent of banking non-performing loans exposed by Bangladesh Bank. Liquidity squeeze in weak banks, high 12-14% treasury bill yields drew liquidity away from stock market.",
+        "market_impact": "TIGHT_LIQUIDITY_AND_FLIGHT_TO_SAFETY"
+      },
+      {
+        "event_name": "Economic Normalization & Moat Flight",
+        "category": "SECTOR_MACRO_RECOVERY",
+        "period": "2025-07-02 to 2026-10-06",
+        "stock_move_pct": -1.3,
+        "behavior": "MODERATE_CYCLICAL_DROP",
+        "root_cause_why": "FX reserves stabilized with IMF/World Bank assistance. Remittance surge. Selective institutional accumulation into debt-free cash cows with high dividend yields (Square, GP, Olympic, Padma Oil).",
+        "market_impact": "SELECTIVE_FUNDAMENTAL_ACCUMULATION"
+      }
+    ]
+  },
+  "technical": {
+    "score": null,
+    "signals": {
+      "error": "insufficient_data_lt_30_bars"
+    },
+    "sr": {}
+  },
+  "fundamental": {
+    "score": 84.17,
+    "signals": {
+      "eps": "positive (5.23)",
+      "pe": "deep_value (4.359464627151051)",
+      "nav": 31.38,
+      "dividend_yield": "strong (10.29%)",
+      "bank_npl_pct": 3.5,
+      "debt_equity": "bank_pristine_npl (3.5%)",
+      "loan_trap_risk": "none",
+      "dividend_track_record_years": 5,
+      "dividend_consistency": "proven_compounder (5 yrs cash divs)",
+      "roe": "strong (16.67%)",
+      "downturn_resilience": {
+        "status": "growth_at_discount",
+        "drawdown_pct": 21.5,
+        "high_52w": 28.9,
+        "low_52w": 21.8,
+        "note": "Share price down 21.5% from 52w peak, yet earnings positive/steady (Conviction discount)"
+      }
+    }
+  },
+  "management": {
+    "ticker": "EBL",
+    "company_name": "Eastern Bank PLC",
+    "chairman": "Md. Showkat Ali Chowdhury",
+    "managing_director_ceo": "Ali Reza Iftekhar",
+    "leadership_type": "Professional Banker CEO (Longest serving) + Conservative Corporate Board",
+    "industry_experience_years": 37,
+    "governance_rating": "AA+",
+    "audit_credibility": "High (Hoda Vasi Chowdhury & Co)",
+    "key_moat": "Premier corporate & trade finance bank, disciplined risk management, steady 10%+ dividend yield",
+    "management_risk": "Low",
+    "governance_score": 95
+  },
+  "news_intent": {
+    "ticker": "EBL",
+    "intent_score": 0.0,
+    "dominant_intent": "NO_RECENT_NEWS",
+    "articles_analyzed": 0,
+    "red_flags": [],
+    "catalysts": []
+  },
+  "sentiment": {
+    "score": 50.0,
+    "signals": {
+      "news_count": 0,
+      "note": "no_news_neutral"
+    }
+  },
+  "manipulation": {
+    "manipulation_score": 0,
+    "manipulation_risk": "low",
+    "block_buy": false,
+    "flags": [],
+    "checks": {
+      "volume_price_divergence": {
+        "flag": false,
+        "price_chg": 0,
+        "last_volume": 836434,
+        "avg_volume": 3446725.0,
+        "detail": "ok"
+      },
+      "volume_spike": {
+        "flag": false,
+        "spike_ratio": 0.24,
+        "avg_volume": 3444049.0,
+        "today_volume": 836434,
+        "detail": "ok"
+      },
+      "serial_trading": {
+        "flag": false,
+        "suspicious_days": 0,
+        "detail": "ok"
+      },
+      "circuit_breaker": {
+        "flag": false,
+        "circuit_hits": 0,
+        "detail": "ok"
+      },
+      "sponsor_exit": {
+        "flag": false,
+        "detail": "insufficient_fundamental_history"
+      },
+      "price_surge_no_news": {
+        "flag": false,
+        "price_change_3d": -1.73,
+        "news_count_3d": 0,
+        "detail": "ok"
+      }
+    }
+  },
+  "composite": {
+    "composite_score": 79.37,
+    "governance_score": 95,
+    "sentiment_score": 50.0,
+    "applied_weights": {
+      "fundamental": 0.692,
+      "technical": 0.077,
+      "governance": 0.127,
+      "sentiment": 0.104
+    }
+  }
+}

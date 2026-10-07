@@ -1,0 +1,106 @@
+{
+  "ticker": "APEXFOODS",
+  "audited_at": "2026-10-06 15:32:29",
+  "worth_vs_greed": {
+    "current_price": 328.1,
+    "intrinsic_worth": 134.83,
+    "margin_of_safety_pct": -58.9,
+    "greed_index": 90.0,
+    "rsi_14": 79.4,
+    "price_vs_ema50_pct": 20.0,
+    "price_vs_ema200_pct": 25.9,
+    "status": "OVERVALUED_EUPHORIA",
+    "worth_decision": "SELL_TAKE_PROFIT",
+    "reason": "Price is 58.9% above intrinsic worth while market greed is euphoric (90.0/100). Danger of sharp mean reversion."
+  },
+  "multi_interval_wave": {
+    "intervals": {
+      "weekly_5d": {
+        "return_pct": 24.71,
+        "high": 337.3,
+        "low": 255.8,
+        "range_volatility_pct": 31.86
+      },
+      "monthly_21d": {
+        "return_pct": 26.29,
+        "high": 337.3,
+        "low": 241.0,
+        "range_volatility_pct": 39.96
+      },
+      "quarterly_63d": {
+        "return_pct": 16.89,
+        "high": 337.3,
+        "low": 241.0,
+        "range_volatility_pct": 39.96
+      },
+      "half_yearly_126d": {
+        "return_pct": 44.92,
+        "high": 337.3,
+        "low": 222.5,
+        "range_volatility_pct": 51.6
+      },
+      "yearly_252d": {
+        "return_pct": 34.91,
+        "high": 337.3,
+        "low": 195.0,
+        "range_volatility_pct": 72.97
+      }
+    },
+    "wave_metrics": {
+      "median_rally_gain_pct": 20.8,
+      "median_correction_drop_pct": -19.2,
+      "avg_wave_duration_bars": 20.0
+    },
+    "current_wave_phase": "LATE_MARKUP",
+    "phase_guidance": "Approaching historical rally limit (+36.1% vs median +20.8%). Tighten stop.",
+    "top_seasonal_months": [
+      {
+        "month": "Jul",
+        "avg_return": 13.8,
+        "win_rate": 100.0
+      },
+      {
+        "month": "Dec",
+        "avg_return": 10.0,
+        "win_rate": 100.0
+      },
+      {
+        "month": "Aug",
+        "avg_return": 6.9,
+        "win_rate": 50.0
+      }
+    ],
+    "weak_seasonal_months": [
+      {
+        "month": "Oct",
+        "avg_return": -9.1,
+        "win_rate": 0.0
+      },
+      {
+        "month": "Sep",
+        "avg_return": -12.2,
+        "win_rate": 0.0
+      }
+    ]
+  },
+  "causal_attributions": [
+    {
+      "event_name": "Banking NPL Revelations & Aggressive Monetary Tightening",
+      "category": "ECONOMIC_MONETARY_BANKING",
+      "period": "2024-10-06 to 2025-06-30",
+      "stock_move_pct": -16.29,
+      "behavior": "SEVERE_VULNERABILITY",
+      "root_cause_why": "True extent of banking non-performing loans exposed by Bangladesh Bank. Liquidity squeeze in weak banks, high 12-14% treasury bill yields drew liquidity away from stock market.",
+      "market_impact": "TIGHT_LIQUIDITY_AND_FLIGHT_TO_SAFETY"
+    },
+    {
+      "event_name": "Economic Normalization & Moat Flight",
+      "category": "SECTOR_MACRO_RECOVERY",
+      "period": "2025-07-02 to 2026-10-06",
+      "stock_move_pct": 66.38,
+      "behavior": "STRONG_RESILIENCE_OR_BENEFICIARY",
+      "root_cause_why": "FX reserves stabilized with IMF/World Bank assistance. Remittance surge. Selective institutional accumulation into debt-free cash cows with high dividend yields (Square, GP, Olympic, Padma Oil).",
+      "market_impact": "SELECTIVE_FUNDAMENTAL_ACCUMULATION"
+    }
+  ]
+}

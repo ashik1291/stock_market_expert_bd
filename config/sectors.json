@@ -1,0 +1,49 @@
+{
+  "sectors": {
+    "Banking": {
+      "top_tickers": ["BRACBANK", "PUBALIBANK", "CITYBANK", "EBL", "DUTCHBANGL", "MTB", "UCB", "BANKASIA", "ISLAMIBANK", "DHAKABANK"],
+      "key_metrics": ["NPL_ratio", "CAR", "ROE", "NIM", "dividend_yield"]
+    },
+    "Pharmaceuticals": {
+      "top_tickers": ["SQURPHARMA", "RENATA", "BXPHARMA", "ACI", "IBNSINA", "ACMELAB", "ORIONPHARM", "BEACONPHAR", "SILCOPHL", "ACIFORMULA"],
+      "key_metrics": ["EPS_growth", "export_revenue_pct", "R&D_spend", "pe_ratio"]
+    },
+    "Telecom": {
+      "top_tickers": ["GP", "ROBI"],
+      "key_metrics": ["ARPU", "subscriber_growth", "EBITDA_margin", "capex_revenue_ratio"]
+    },
+    "IT": {
+      "top_tickers": ["AAMRANET", "AAMRATECH", "AGNISYSL", "BDCOM", "GENEXIL", "INTECH"],
+      "key_metrics": ["revenue_growth", "export_revenue", "client_retention", "EPS_growth"]
+    },
+    "Cement": {
+      "top_tickers": ["LHB", "HEIDELBCEM", "CROWNCEMNT", "CONFIDCEM", "PREMIERCEM", "MEGHNACEM", "ARAMITCEM"],
+      "key_metrics": ["capacity_utilization", "clinker_cost", "gross_margin", "volume_growth"]
+    },
+    "Fuel_Power": {
+      "top_tickers": ["POWERGRID", "TITASGAS", "JAMUNAOIL", "PADMAOIL", "MPETROLEUM", "DESCO", "SUMITPOWER", "BARKAPOWER", "DOREENPWR", "SAIFPOWER"],
+      "key_metrics": ["capacity_factor", "PPA_tariff", "fuel_cost_coverage", "dividend_yield"]
+    },
+    "Food_Beverage": {
+      "top_tickers": ["BATBC", "OLYMPIC", "APEXFOODS", "AMCL(PRAN)", "FINEFOODS", "BANGAS"],
+      "key_metrics": ["revenue_growth", "EBITDA_margin", "brand_strength", "distribution_reach"]
+    },
+    "Engineering": {
+      "top_tickers": ["BSRMSTEEL", "BSRMLTD", "WALTONHIL", "GPHISPAT", "SINGERBD", "AFTABAUTO", "ANWARGALV", "RUNNERAUTO", "NAVANACNG"],
+      "key_metrics": ["capacity_utilization", "raw_material_cost", "order_book", "EBITDA_margin"]
+    },
+    "Textile": {
+      "top_tickers": ["ENVOYTEX", "ARGONDENIM", "MATINSPINN", "MALEKSPIN", "PTL", "SAIHAMTEX", "SAIHAMCOT", "HWAWELLTEX", "HRTEX", "ALLTEX"],
+      "key_metrics": ["export_growth", "order_book", "RMG_revenue", "gross_margin"]
+    },
+    "Insurance": {
+      "top_tickers": ["RELIANCINS", "DELTALIFE", "SONALILIFE", "GREENINS", "EASTERNINS", "CENTRALINS", "CITYGENINS", "CRYSTALINS", "ASIAINS", "CONTININS"],
+      "key_metrics": ["claims_ratio", "premium_growth", "investment_income", "NAV"]
+    }
+  },
+  "dse_indices": {
+    "DSEX": "DSE Broad Index",
+    "DS30": "DSE 30 Index",
+    "DSES": "DSE Shariah Index"
+  }
+}

@@ -1,0 +1,299 @@
+{
+  "ticker": "ALLTEX",
+  "timeframe": "weekly",
+  "horizon": "short",
+  "analyzed_at": "2026-10-06T09:32:30.130581",
+  "signal": "HOLD_LOAN_TRAP_RISK",
+  "confidence": 32.4,
+  "trajectory": {
+    "direction": "CONSOLIDATION_RANGE",
+    "direction_icon": "\ud83d\udfe1",
+    "rise_probability_pct": 50.1,
+    "momentum_status": "Neutral Range Consolidation",
+    "short_term": {
+      "predicted_path": "Upward momentum swing",
+      "upside_potential_pct": "+3.0%",
+      "downside_risk_pct": "-2.2%",
+      "target_price": 23.7,
+      "support_price": 22.5,
+      "risk_reward_ratio": "1.4x"
+    },
+    "mid_term": {
+      "predicted_path": "Cycle valuation recovery to historical median",
+      "upside_potential_pct": "+14.8%",
+      "downside_risk_pct": "-5.2%",
+      "target_price": 26.4,
+      "trailing_stop": 21.8,
+      "risk_reward_ratio": "2.8x"
+    },
+    "long_term": {
+      "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
+      "upside_potential_pct": "+30.0%",
+      "downside_risk_pct": "-9.4%",
+      "target_price": 29.9,
+      "dividend_cagr": "no_dividend",
+      "risk_reward_ratio": "3.2x"
+    }
+  },
+  "trade_levels": {
+    "entry": 23.0,
+    "stop_loss": 22.31,
+    "target": 24.38
+  },
+  "precision": {
+    "ticker": "ALLTEX",
+    "smart_money": {
+      "status": "ACTIVE",
+      "latest_date": "Aug 31, 2026",
+      "smart_money_delta_pct": 0.78,
+      "institutional_pct": 16.13,
+      "foreign_pct": 0.0,
+      "sponsor_pct": 36.25,
+      "public_pct": 47.62,
+      "public_delta_pct": -0.78,
+      "classification": "INSTITUTIONAL_ACCUMULATION",
+      "conviction_bonus": 15.0,
+      "signal": "Smart money accumulated +0.78% (Institutes: 0.78%, Foreign: 0.0%) while retail decreased -0.78%"
+    },
+    "cash_flow": {
+      "nocfps": 0.0,
+      "is_estimated": true,
+      "dividend_per_share": 0.1,
+      "dividend_coverage_x": 0.0,
+      "fcf_yield_pct": 0.0,
+      "cash_quality_status": "TIGHT_CASH_COVERAGE",
+      "conviction_bonus": -10.0,
+      "signal": "Cash flow covers only 0% of dividend payout"
+    },
+    "liquidity": {
+      "avg_daily_volume": 121860,
+      "daily_turnover_bdt_cr": 0.28,
+      "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
+      "slippage_risk": "HIGH",
+      "max_single_order_shares": 6093,
+      "max_daily_accumulation_shares": 18279,
+      "max_order_bdt": 140139.0,
+      "directive": "Max single order: 6,093 shares (Tk 140,139) to prevent >1% execution slippage"
+    },
+    "earnings_acceleration": {
+      "status": "INSUFFICIENT_QUARTERLY_DATA",
+      "acceleration_status": "NORMAL_STABLE",
+      "bonus": 0.0,
+      "signal": "Standard annual EPS trajectory"
+    },
+    "total_precision_bonus": 5.0
+  },
+  "pattern_dna": {
+    "ticker": "ALLTEX",
+    "audited_at": "2026-10-06 15:32:30",
+    "worth_vs_greed": {
+      "current_price": 23.0,
+      "intrinsic_worth": 19.82,
+      "margin_of_safety_pct": -13.8,
+      "greed_index": 15.0,
+      "rsi_14": 33.3,
+      "price_vs_ema50_pct": 1.5,
+      "price_vs_ema200_pct": 25.3,
+      "status": "NEUTRAL",
+      "worth_decision": "HOLD",
+      "reason": "Trading in neutral fair-value corridor."
+    },
+    "multi_interval_wave": {
+      "intervals": {
+        "weekly_5d": {
+          "return_pct": -1.29,
+          "high": 24.1,
+          "low": 22.5,
+          "range_volatility_pct": 7.11
+        },
+        "monthly_21d": {
+          "return_pct": -3.77,
+          "high": 24.6,
+          "low": 21.0,
+          "range_volatility_pct": 17.14
+        },
+        "quarterly_63d": {
+          "return_pct": 32.95,
+          "high": 26.0,
+          "low": 17.2,
+          "range_volatility_pct": 51.16
+        },
+        "half_yearly_126d": {
+          "return_pct": 66.67,
+          "high": 26.0,
+          "low": 12.7,
+          "range_volatility_pct": 104.72
+        },
+        "yearly_252d": {
+          "return_pct": 66.67,
+          "high": 26.0,
+          "low": 12.1,
+          "range_volatility_pct": 114.88
+        }
+      },
+      "wave_metrics": {
+        "median_rally_gain_pct": 42.4,
+        "median_correction_drop_pct": -17.6,
+        "avg_wave_duration_bars": 25
+      },
+      "current_wave_phase": "MARKDOWN_PULLBACK",
+      "phase_guidance": "Ongoing pullback from peak (-11.5%). Wait for stabilizing base.",
+      "top_seasonal_months": [
+        {
+          "month": "Feb",
+          "avg_return": 36.0,
+          "win_rate": 100.0
+        },
+        {
+          "month": "Jul",
+          "avg_return": 19.1,
+          "win_rate": 100.0
+        },
+        {
+          "month": "Aug",
+          "avg_return": 18.9,
+          "win_rate": 100.0
+        }
+      ],
+      "weak_seasonal_months": [
+        {
+          "month": "Dec",
+          "avg_return": -9.1,
+          "win_rate": 0.0
+        },
+        {
+          "month": "Apr",
+          "avg_return": -10.7,
+          "win_rate": 0.0
+        }
+      ]
+    },
+    "causal_attributions": [
+      {
+        "event_name": "Banking NPL Revelations & Aggressive Monetary Tightening",
+        "category": "ECONOMIC_MONETARY_BANKING",
+        "period": "2024-10-06 to 2025-06-30",
+        "stock_move_pct": -15.83,
+        "behavior": "SEVERE_VULNERABILITY",
+        "root_cause_why": "True extent of banking non-performing loans exposed by Bangladesh Bank. Liquidity squeeze in weak banks, high 12-14% treasury bill yields drew liquidity away from stock market.",
+        "market_impact": "TIGHT_LIQUIDITY_AND_FLIGHT_TO_SAFETY"
+      },
+      {
+        "event_name": "Economic Normalization & Moat Flight",
+        "category": "SECTOR_MACRO_RECOVERY",
+        "period": "2025-07-02 to 2026-10-06",
+        "stock_move_pct": 123.3,
+        "behavior": "STRONG_RESILIENCE_OR_BENEFICIARY",
+        "root_cause_why": "FX reserves stabilized with IMF/World Bank assistance. Remittance surge. Selective institutional accumulation into debt-free cash cows with high dividend yields (Square, GP, Olympic, Padma Oil).",
+        "market_impact": "SELECTIVE_FUNDAMENTAL_ACCUMULATION"
+      }
+    ]
+  },
+  "technical": {
+    "score": null,
+    "signals": {
+      "error": "insufficient_data_lt_30_bars"
+    },
+    "sr": {}
+  },
+  "fundamental": {
+    "score": 20.0,
+    "signals": {
+      "nav": 24.77,
+      "dividend_yield": "no_dividend",
+      "debt_equity_val": 2.218,
+      "long_term_debt_equity_val": 0.146,
+      "debt_equity": "danger_high_loan (2.218)",
+      "loan_trap_risk": "high",
+      "dividend_track_record_years": 1,
+      "dividend_consistency": "irregular",
+      "downturn_resilience": {
+        "status": "normal",
+        "drawdown_pct": 11.5,
+        "high_52w": 26.0,
+        "low_52w": 12.1
+      }
+    }
+  },
+  "management": {
+    "ticker": "ALLTEX",
+    "company_name": "ALLTEX",
+    "chairman": "Board Appointed Chairman",
+    "managing_director_ceo": "Managing Director / CEO",
+    "leadership_type": "Public Listed Corporate Board",
+    "industry_experience_years": 20,
+    "governance_rating": "A",
+    "audit_credibility": "Standard Category A Audit",
+    "key_moat": "DSE Listed Franchise",
+    "management_risk": "Low",
+    "governance_score": 75
+  },
+  "news_intent": {
+    "ticker": "ALLTEX",
+    "intent_score": 0.0,
+    "dominant_intent": "NO_RECENT_NEWS",
+    "articles_analyzed": 0,
+    "red_flags": [],
+    "catalysts": []
+  },
+  "sentiment": {
+    "score": 50.0,
+    "signals": {
+      "news_count": 0,
+      "note": "no_news_neutral"
+    }
+  },
+  "manipulation": {
+    "manipulation_score": 0,
+    "manipulation_risk": "low",
+    "block_buy": false,
+    "flags": [],
+    "checks": {
+      "volume_price_divergence": {
+        "flag": false,
+        "price_chg": 0,
+        "last_volume": 151229,
+        "avg_volume": 192324.0,
+        "detail": "ok"
+      },
+      "volume_spike": {
+        "flag": false,
+        "spike_ratio": 0.75,
+        "avg_volume": 201003.0,
+        "today_volume": 151229,
+        "detail": "ok"
+      },
+      "serial_trading": {
+        "flag": false,
+        "suspicious_days": 0,
+        "detail": "ok"
+      },
+      "circuit_breaker": {
+        "flag": false,
+        "circuit_hits": 0,
+        "detail": "ok"
+      },
+      "sponsor_exit": {
+        "flag": false,
+        "detail": "insufficient_fundamental_history"
+      },
+      "price_surge_no_news": {
+        "flag": false,
+        "price_change_3d": 2.22,
+        "news_count_3d": 0,
+        "detail": "ok"
+      }
+    }
+  },
+  "composite": {
+    "composite_score": 32.4,
+    "governance_score": 75,
+    "sentiment_score": 50.0,
+    "applied_weights": {
+      "fundamental": 0.692,
+      "technical": 0.077,
+      "governance": 0.127,
+      "sentiment": 0.104
+    }
+  }
+}

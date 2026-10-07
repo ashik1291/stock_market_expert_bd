@@ -1,0 +1,106 @@
+{
+  "ticker": "FINEFOODS",
+  "audited_at": "2026-10-06 15:32:29",
+  "worth_vs_greed": {
+    "current_price": 473.5,
+    "intrinsic_worth": 37.12,
+    "margin_of_safety_pct": -92.2,
+    "greed_index": 43.0,
+    "rsi_14": 67.9,
+    "price_vs_ema50_pct": 2.9,
+    "price_vs_ema200_pct": 5.9,
+    "status": "CHRONIC_OVERVALUATION",
+    "worth_decision": "AVOID",
+    "reason": "Fundamental value severely lags stock price (MoS: -92.2%)."
+  },
+  "multi_interval_wave": {
+    "intervals": {
+      "weekly_5d": {
+        "return_pct": 5.15,
+        "high": 476.9,
+        "low": 448.5,
+        "range_volatility_pct": 6.33
+      },
+      "monthly_21d": {
+        "return_pct": 6.05,
+        "high": 476.9,
+        "low": 420.4,
+        "range_volatility_pct": 13.44
+      },
+      "quarterly_63d": {
+        "return_pct": -6.5,
+        "high": 517.7,
+        "low": 395.7,
+        "range_volatility_pct": 30.83
+      },
+      "half_yearly_126d": {
+        "return_pct": -2.39,
+        "high": 595.9,
+        "low": 395.7,
+        "range_volatility_pct": 50.59
+      },
+      "yearly_252d": {
+        "return_pct": 57.2,
+        "high": 595.9,
+        "low": 270.0,
+        "range_volatility_pct": 120.7
+      }
+    },
+    "wave_metrics": {
+      "median_rally_gain_pct": 27.6,
+      "median_correction_drop_pct": -14.8,
+      "avg_wave_duration_bars": 38.0
+    },
+    "current_wave_phase": "MARKDOWN_PULLBACK",
+    "phase_guidance": "Ongoing pullback from peak (-1.1%). Wait for stabilizing base.",
+    "top_seasonal_months": [
+      {
+        "month": "Dec",
+        "avg_return": 27.4,
+        "win_rate": 100.0
+      },
+      {
+        "month": "May",
+        "avg_return": 13.4,
+        "win_rate": 100.0
+      },
+      {
+        "month": "Jan",
+        "avg_return": 12.7,
+        "win_rate": 100.0
+      }
+    ],
+    "weak_seasonal_months": [
+      {
+        "month": "Jul",
+        "avg_return": -1.1,
+        "win_rate": 50.0
+      },
+      {
+        "month": "Feb",
+        "avg_return": -23.5,
+        "win_rate": 0.0
+      }
+    ]
+  },
+  "causal_attributions": [
+    {
+      "event_name": "Banking NPL Revelations & Aggressive Monetary Tightening",
+      "category": "ECONOMIC_MONETARY_BANKING",
+      "period": "2024-10-06 to 2025-06-30",
+      "stock_move_pct": 46.99,
+      "behavior": "STRONG_RESILIENCE_OR_BENEFICIARY",
+      "root_cause_why": "True extent of banking non-performing loans exposed by Bangladesh Bank. Liquidity squeeze in weak banks, high 12-14% treasury bill yields drew liquidity away from stock market.",
+      "market_impact": "TIGHT_LIQUIDITY_AND_FLIGHT_TO_SAFETY"
+    },
+    {
+      "event_name": "Economic Normalization & Moat Flight",
+      "category": "SECTOR_MACRO_RECOVERY",
+      "period": "2025-07-02 to 2026-10-06",
+      "stock_move_pct": 100.13,
+      "behavior": "STRONG_RESILIENCE_OR_BENEFICIARY",
+      "root_cause_why": "FX reserves stabilized with IMF/World Bank assistance. Remittance surge. Selective institutional accumulation into debt-free cash cows with high dividend yields (Square, GP, Olympic, Padma Oil).",
+      "market_impact": "SELECTIVE_FUNDAMENTAL_ACCUMULATION"
+    }
+  ]
+}

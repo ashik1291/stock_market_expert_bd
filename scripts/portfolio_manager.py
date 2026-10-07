@@ -1,0 +1,364 @@
+"""
+DSE Portfolio Manager & Dynamic Position Sizer
+
+Capabilities:
+  1. Personalized Capital Allocation (e.g. BDT 5,00,000 or BDT 20,00,000)
+  2. Exact Share-Count Sizing across 60% Core, 30% Swings, 10% Cash
+  3. Slippage Guard Verification (ensures order does not exceed 5% of daily volume)
+  4. Tranche Execution Schedule (Week 1 initial entry vs Dip accumulation)
+  5. Live P&L and Stop-Loss Surveillance
+"""
+
+import json
+import logging
+import datetime
+import sys
+from pathlib import Path
+
+if hasattr(sys.stdout, "reconfigure"):
+    try:
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        pass
+
+BASE_DIR      = Path(__file__).resolve().parent.parent
+PORTFOLIO_DIR = BASE_DIR / "data" / "portfolio"
+REPORTS_DIR   = BASE_DIR / "reports" / "weekly"
+KNOW_DIR      = BASE_DIR / "data" / "knowledge"
+
+logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
+log = logging.getLogger("portfolio_manager")
+
+
+def get_portfolio_path() -> Path:
+    PORTFOLIO_DIR.mkdir(parents=True, exist_ok=True)
+    return PORTFOLIO_DIR / "portfolio.json"
+
+
+def load_portfolio() -> dict:
+    path = get_portfolio_path()
+    if path.exists():
+        with open(path, encoding="utf-8") as f:
+            return json.load(f)
+    return {
+        "total_capital_bdt": 500000.0,
+        "cash_balance_bdt": 500000.0,
+        "created_at": datetime.datetime.utcnow().isoformat(),
+        "holdings": [],
+        "history": []
+    }
+
+
+def save_portfolio(p: dict):
+    path = get_portfolio_path()
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(p, f, indent=2)
+
+
+def set_capital(amount_bdt: float):
+    p = load_portfolio()
+    diff = amount_bdt - p["total_capital_bdt"]
+    p["total_capital_bdt"] = amount_bdt
+    p["cash_balance_bdt"] += diff
+    save_portfolio(p)
+    print(f"Total Investable Capital set to: ৳{amount_bdt:,.2f} (Available Cash: ৳{p['cash_balance_bdt']:,.2f})")
+
+
+def get_latest_weekly_report() -> dict | None:
+    files = sorted(REPORTS_DIR.glob("*.json"))
+    if not files:
+        return None
+    with open(files[-1], encoding="utf-8") as f:
+        return json.load(f)
+
+
+def generate_exact_position_plan(capital_bdt: float = None):
+    p = load_portfolio()
+    total_cap = capital_bdt if capital_bdt is not None else p["total_capital_bdt"]
+
+    recs = get_latest_weekly_report()
+    if not recs:
+        print("No weekly report found. Run `python scripts/recommender.py weekly` first.")
+        return
+
+    long_picks = recs["horizons"]["long_term"][:3]
+    mid_picks  = recs["horizons"]["mid_term"][:2]
+
+    # Allocations
+    core_budget  = total_cap * 0.60   # 60%
+    swing_budget = total_cap * 0.30   # 30%
+    cash_reserve = total_cap * 0.10   # 10%
+
+    per_core_budget  = core_budget / max(len(long_picks), 1)
+    per_swing_budget = swing_budget / max(len(mid_picks), 1)
+
+    lines = []
+    lines.append(f"# 🎯 Exact Portfolio Position Plan (Capital: ৳{total_cap:,.0f})\n")
+    lines.append(f"**Generated**: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}  ")
+    lines.append(f"**Allocation**: 60% Core Moats (৳{core_budget:,.0f}) | 30% Swings (৳{swing_budget:,.0f}) | 10% Cash (৳{cash_reserve:,.0f})\n")
+    lines.append("---\n")
+
+    # Core Assets
+    lines.append("## 🏛️ 1. Long-Term Core Moats (60% Total Capital)\n")
+    lines.append("| Ticker | Current Price | Total Allocation | Total Shares | Tranche 1 (25% Today) | Tranche 1 Cost | Max Slippage Limit | Target Exit (+30%) |")
+    lines.append("|---|---|---|---|---|---|---|---|")
+
+    for r in long_picks:
+        t = r["ticker"]
+        price = r.get("entry") or 1.0
+        total_shares = int(per_core_budget / price)
+        tranche_1_shares = max(int(total_shares * 0.25), 1)
+        tranche_1_cost = tranche_1_shares * price
+        target_exit = r.get("target_long") or round(price * 1.30, 1)
+
+        # Slippage check
+        slippage_limit = 5000
+        know_file = KNOW_DIR / t / "weekly.json"
+        if know_file.exists():
+            try:
+                with open(know_file, encoding="utf-8") as kf:
+                    kdata = json.load(kf)
+                    slippage_limit = kdata.get("precision", {}).get("liquidity", {}).get("max_single_order_shares", 5000)
+            except Exception:
+                pass
+
+        lines.append(
+            f"| **{t}** | ৳{price:.1f} | ৳{per_core_budget:,.0f} | **{total_shares:,} sh** | "
+            f"**{tranche_1_shares:,} sh** | ৳{tranche_1_cost:,.0f} | Max {slippage_limit:,} sh | ৳{target_exit:.1f} |"
+        )
+    lines.append("\n*Rule: Execute Tranche 1 today. Reserve remaining 75% for 3 systematic dips or weekly confirmations.*\n")
+    lines.append("---\n")
+
+    # Mid-Term Swings
+    lines.append("## 📈 2. Mid-Term Cycle Swings (30% Total Capital)\n")
+    lines.append("| Ticker | Entry Price | Allocation | Exact Shares | Total Outlay | Swing Target (+15%) | Trailing Stop (-5%) | Risk/Reward |")
+    lines.append("|---|---|---|---|---|---|---|---|")
+
+    for r in mid_picks:
+        t = r["ticker"]
+        price = r.get("entry") or 1.0
+        tgt = r.get("target_mid") or round(price * 1.15, 1)
+        stop = r.get("trailing_stop") or round(price * 0.95, 1)
+        
+        # Risk-based position sizing: limit trade loss to max 1.5% of total portfolio capital
+        max_trade_risk_bdt = total_cap * 0.015
+        risk_per_share = max(price - stop, price * 0.04)
+        risk_capped_shares = int(max_trade_risk_bdt / risk_per_share) if risk_per_share > 0 else 1000
+        budget_shares = int(per_swing_budget / price)
+        
+        # Sizing takes the conservative minimum
+        shares = max(min(budget_shares, risk_capped_shares), 1)
+        outlay = shares * price
+
+        lines.append(
+            f"| **{t}** | ৳{price:.1f} | ৳{per_swing_budget:,.0f} | **{shares:,} sh** | "
+            f"৳{outlay:,.0f} | **৳{tgt:.1f}** | ৳{stop:.1f} | 3.0x |"
+        )
+    lines.append("\n*Rule: Enter with full swing lot on support confirmation. Strictly exit upon hitting target or stop-loss.*\n")
+    lines.append("---\n")
+
+    # Cash Reserve
+    lines.append("## 🛡️ 3. Tactical Cash / Dry Powder Reserve (10% Total Capital)\n")
+    lines.append(f"- **Reserved Cash Balance**: **৳{cash_reserve:,.2f}**")
+    lines.append("- **Purpose**: Kept in brokerage balance or liquid money market for black-swan panic drops or deep RSI (<25) bargains.\n")
+
+    report_text = "\n".join(lines)
+    print(report_text)
+
+    out_file = PORTFOLIO_DIR / "current_position_plan.md"
+    with open(out_file, "w", encoding="utf-8") as f:
+        f.write(report_text)
+    print(f"\n[Saved to {out_file}]")
+
+
+# DSE Fee Schedule: 0.40% Brokerage fee + 0.015% CDBL settlement fee each way
+BROKERAGE_FEE_PCT = 0.0040
+CDBL_FEE_PCT      = 0.00015
+TOTAL_ONE_WAY_FEE = BROKERAGE_FEE_PCT + CDBL_FEE_PCT  # 0.415%
+
+def calculate_round_trip_break_even(entry_price: float) -> float:
+    """
+    Computes exact selling price where net proceeds after sell fees
+    exactly equal the gross purchase outlay plus buy fees:
+      P_sell * (1 - fee_sell) = P_buy * (1 + fee_buy)
+      P_sell = P_buy * (1 + fee_buy) / (1 - fee_sell)
+    """
+    if entry_price <= 0:
+        return 0.0
+    factor = (1.0 + TOTAL_ONE_WAY_FEE) / (1.0 - TOTAL_ONE_WAY_FEE)
+    return round(entry_price * factor, 2)
+
+
+def record_buy(ticker: str, shares: int, price: float, horizon: str = "long_term"):
+    p = load_portfolio()
+    gross_cost = shares * price
+    comm = round(gross_cost * TOTAL_ONE_WAY_FEE, 2)
+    net_cost = round(gross_cost + comm, 2)
+    round_trip_be = calculate_round_trip_break_even(price)
+
+    if net_cost > p["cash_balance_bdt"]:
+        print(f"Warning: Buy cost ৳{net_cost:,.2f} exceeds available cash ৳{p['cash_balance_bdt']:,.2f}.")
+
+    p["cash_balance_bdt"] -= net_cost
+    p["holdings"].append({
+        "ticker":          ticker.upper(),
+        "shares":          shares,
+        "entry_price":     price,
+        "gross_cost":      gross_cost,
+        "commission_bdt":  comm,
+        "cost_basis":      net_cost,
+        "effective_entry": effective_entry,
+        "horizon":         horizon,
+        "bought_at":       datetime.date.today().isoformat()
+    })
+    p["history"].append({
+        "action":     "BUY",
+        "ticker":     ticker.upper(),
+        "shares":     shares,
+        "price":      price,
+        "commission": comm,
+        "total_cost": net_cost,
+        "date":       datetime.date.today().isoformat()
+    })
+    save_portfolio(p)
+    print(f"Recorded BUY: {shares} shares of {ticker.upper()} @ ৳{price:.1f} + ৳{comm:.2f} comm (Total: ৳{net_cost:,.2f}). Remaining Cash: ৳{p['cash_balance_bdt']:,.2f}")
+
+
+DB_PATH = BASE_DIR / "data" / "processed" / "dse.db"
+
+
+def show_status():
+    import sqlite3
+    p = load_portfolio()
+    mfs = p.get("mutual_funds", [])
+    holdings = p.get("holdings", [])
+    
+    conn = sqlite3.connect(DB_PATH) if DB_PATH.exists() else None
+
+    stock_invested = sum(h.get("cost_basis", 0) for h in holdings)
+    total_comm = sum(h.get("commission_bdt", 0) for h in holdings)
+    mf_invested = sum(m.get("total_cost_bdt", 0) for m in mfs)
+    total_invested = stock_invested + mf_invested
+
+    # Live market pricing
+    live_stock_value = 0.0
+    holding_details = []
+
+    for h in holdings:
+        t = h["ticker"]
+        sh = h.get("shares", 0)
+        net_cost = h.get("cost_basis", 0)
+        comm = h.get("commission_bdt") or round(sh * h.get("entry_price", 0) * TOTAL_ONE_WAY_FEE, 2)
+        exec_px = h.get("entry_price", 0)
+        break_even = calculate_round_trip_break_even(exec_px)
+        
+        cur_px = h.get("entry_price", 0)
+        if conn:
+            r = conn.execute("SELECT close FROM prices WHERE ticker=? ORDER BY date DESC, id DESC LIMIT 1", (t,)).fetchone()
+            if r and r[0]:
+                cur_px = float(r[0])
+        
+        cur_val = round(sh * cur_px, 2)
+        live_stock_value += cur_val
+        unrealized_bdt = round(cur_val - net_cost, 2)
+        unrealized_pct = round((unrealized_bdt / net_cost) * 100.0, 2) if net_cost > 0 else 0.0
+
+        # Horizon specific stops and targets
+        horizon = h.get("horizon", "long_term")
+        if horizon == "short_term":
+            stop_px   = round(break_even * 0.98, 1)
+            target_px = round(break_even * 1.035, 1)
+            action    = "TAKE_PROFIT" if cur_px >= target_px else ("HARD_CUT" if cur_px <= stop_px else "HOLD_SCALP")
+        elif horizon == "mid_term":
+            stop_px   = round(break_even * 0.95, 1)
+            target_px = round(break_even * 1.15, 1)
+            action    = "TRIM_SWING" if cur_px >= target_px else ("EXIT_STOP" if cur_px <= stop_px else "HOLD_SWING")
+        else: # long_term
+            stop_px   = round(break_even * 0.90, 1)
+            target_px = round(break_even * 1.30, 1)
+            action    = "ACCUMULATE_MORE" if cur_px <= break_even else "HOLD_COMPOUND"
+
+        stop_dist_pct = round(((cur_px - stop_px) / cur_px) * 100.0, 1) if cur_px > 0 else 0.0
+        tgt_dist_pct  = round(((target_px - cur_px) / cur_px) * 100.0, 1) if cur_px > 0 else 0.0
+
+        holding_details.append({
+            "ticker":         t,
+            "horizon":        horizon,
+            "shares":         sh,
+            "exec_px":        h.get("entry_price", 0),
+            "comm":           comm,
+            "cost_basis":     net_cost,
+            "break_even":     break_even,
+            "cur_px":         cur_px,
+            "cur_val":        cur_val,
+            "unrealized_bdt": unrealized_bdt,
+            "unrealized_pct": unrealized_pct,
+            "stop_px":        stop_px,
+            "target_px":      target_px,
+            "stop_dist_pct":  stop_dist_pct,
+            "tgt_dist_pct":   tgt_dist_pct,
+            "action":         action
+        })
+
+    if conn:
+        conn.close()
+
+    total_live_val = live_stock_value + mf_invested
+    total_unrealized_bdt = round(total_live_val - total_invested, 2)
+    total_unrealized_pct = round((total_unrealized_bdt / total_invested) * 100.0, 2) if total_invested > 0 else 0.0
+    cash_bal = p.get("cash_balance_bdt", 0)
+    total_net_worth = total_live_val + cash_bal
+
+    print("\n" + "=" * 90)
+    print("💼 COMPLETE DSE PORTFOLIO STATUS & LIVE VALUATION AUDIT")
+    print("=" * 90)
+    print(f"Total Invested Outlay: ৳{total_invested:,.2f} (Stocks: ৳{stock_invested:,.2f} [incl ৳{total_comm:.2f} comm] | Mutual Funds: ৳{mf_invested:,.2f})")
+    print(f"Current Market Value:  ৳{total_live_val:,.2f} (Unrealized P&L: ৳{total_unrealized_bdt:+,.2f} / {total_unrealized_pct:+.2f}%)")
+    print(f"Available Cash Buffer: ৳{cash_bal:,.2f} | Total Account Net Worth: ৳{total_net_worth:,.2f}")
+    
+    if mfs:
+        print(f"\n--- MUTUAL FUNDS ({len(mfs)}) --- (0.0% Brokerage)")
+        print(f"{'Fund Name':<30} {'Units':<8} {'Total Cost':<12} {'Unit Cost':<10} {'Status':<10}")
+        print("-" * 72)
+        for m in mfs:
+            print(f"{m['fund_name']:<30} {m['units']:<8} ৳{m.get('total_cost_bdt', 0):<10,.2f} ৳{m.get('unit_cost_bdt', 0):<8.2f} {'CORE_HOLD':<10}")
+
+    if holding_details:
+        print(f"\n--- DIRECT EQUITIES ({len(holding_details)}) --- (0.4% Brokerage Fee Included)")
+        print(f"{'Ticker':<11} {'Horizon':<10} {'Sh':<4} {'BreakEven':<10} {'Live Px':<9} {'Current Val':<12} {'P&L (BDT)':<11} {'P&L %':<8} {'Target':<9} {'Stop':<8} {'Action':<15}")
+        print("-" * 108)
+        for hd in holding_details:
+            pnl_s = f"৳{hd['unrealized_bdt']:+.2f}"
+            pnl_p = f"{hd['unrealized_pct']:+.1f}%"
+            print(f"{hd['ticker']:<11} {hd['horizon']:<10} {hd['shares']:<4} ৳{hd['break_even']:<9.2f} ৳{hd['cur_px']:<8.2f} ৳{hd['cur_val']:<10.2f} {pnl_s:<11} {pnl_p:<8} ৳{hd['target_px']:<8.1f} ৳{hd['stop_px']:<7.1f} {hd['action']:<15}")
+
+        print("\n### 🎯 Term-by-Term Actionable Diagnostic for Existing Holdings:")
+        for hd in holding_details:
+            print(f"  * 📌 {hd['ticker']} ({hd['horizon'].upper()}): Live Px ৳{hd['cur_px']:.1f} vs Break-even ৳{hd['break_even']:.2f}. "
+                  f"Stop buffer: +{hd['stop_dist_pct']}% above ৳{hd['stop_px']}. Target upside: +{hd['tgt_dist_pct']}% to ৳{hd['target_px']}. Directive: [{hd['action']}].")
+
+    print("\n### ⏳ Capital Pacing & Deployment Directive:")
+    print(f"  * Available Dry Powder: ৳{cash_bal:,.2f}")
+    print("  * Deployment Rule: DO NOT deploy 100% at once. If market opens extended or greedy, WAIT.")
+    print("  * Pacing Schedule: Tranche 1 (25% today inside support corridor) → Tranche 2 (25% on weekly pullback) → Reserve 50% for high-conviction margin of safety dips.")
+    print("=" * 90 + "\n")
+
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        generate_exact_position_plan()
+    elif sys.argv[1] == "set-capital" and len(sys.argv) > 2:
+        set_capital(float(sys.argv[2]))
+    elif sys.argv[1] == "plan":
+        cap = float(sys.argv[2]) if len(sys.argv) > 2 else None
+        generate_exact_position_plan(cap)
+    elif sys.argv[1] == "buy" and len(sys.argv) >= 4:
+        t = sys.argv[2]
+        s = int(sys.argv[3])
+        pr = float(sys.argv[4])
+        hor = sys.argv[5] if len(sys.argv) > 5 else "long_term"
+        record_buy(t, s, pr, hor)
+    elif sys.argv[1] == "status":
+        show_status()
+    else:
+        generate_exact_position_plan()

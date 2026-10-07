@@ -1,0 +1,305 @@
+{
+  "ticker": "SONALILIFE",
+  "timeframe": "weekly",
+  "horizon": "short",
+  "analyzed_at": "2026-10-06T09:32:30.168288",
+  "signal": "HOLD_MARKET_GREED_EXTREME",
+  "confidence": 60.67,
+  "trajectory": {
+    "direction": "CONSOLIDATION_RANGE",
+    "direction_icon": "\ud83d\udfe1",
+    "rise_probability_pct": 56.1,
+    "momentum_status": "Neutral Range Consolidation",
+    "short_term": {
+      "predicted_path": "Upward momentum swing",
+      "upside_potential_pct": "+3.0%",
+      "downside_risk_pct": "-2.0%",
+      "target_price": 105.5,
+      "support_price": 100.4,
+      "risk_reward_ratio": "1.5x"
+    },
+    "mid_term": {
+      "predicted_path": "Cycle valuation recovery to historical median",
+      "upside_potential_pct": "+15.0%",
+      "downside_risk_pct": "-5.0%",
+      "target_price": 117.8,
+      "trailing_stop": 97.3,
+      "risk_reward_ratio": "3.0x"
+    },
+    "long_term": {
+      "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
+      "upside_potential_pct": "+30.0%",
+      "downside_risk_pct": "-9.0%",
+      "target_price": 133.1,
+      "dividend_cagr": "moderate (2.47%)",
+      "risk_reward_ratio": "3.3x"
+    }
+  },
+  "trade_levels": {
+    "entry": 102.4,
+    "stop_loss": 99.33,
+    "target": 108.54
+  },
+  "precision": {
+    "ticker": "SONALILIFE",
+    "smart_money": {
+      "status": "ACTIVE",
+      "latest_date": "Aug 31, 2026",
+      "smart_money_delta_pct": 0.01,
+      "institutional_pct": 3.99,
+      "foreign_pct": 0.0,
+      "sponsor_pct": 54.85,
+      "public_pct": 41.16,
+      "public_delta_pct": -0.01,
+      "classification": "STABLE_HOLDINGS",
+      "conviction_bonus": 0.0,
+      "signal": "Holding shift: Smart money +0.01%, Retail -0.01%"
+    },
+    "cash_flow": {
+      "nocfps": 1.38,
+      "is_estimated": true,
+      "dividend_per_share": 1.5,
+      "dividend_coverage_x": 0.92,
+      "fcf_yield_pct": 1.42,
+      "cash_quality_status": "ADEQUATE_CASH_COVERAGE",
+      "conviction_bonus": 5.0,
+      "signal": "Dividend is 92% cash-covered by operations"
+    },
+    "liquidity": {
+      "avg_daily_volume": 377475,
+      "daily_turnover_bdt_cr": 3.66,
+      "liquidity_rating": "HEALTHY_LIQUIDITY",
+      "slippage_risk": "LOW",
+      "max_single_order_shares": 18873,
+      "max_daily_accumulation_shares": 56621,
+      "max_order_bdt": 1830681.0,
+      "directive": "Max single order: 18,873 shares (Tk 1,830,681) to prevent >1% execution slippage"
+    },
+    "earnings_acceleration": {
+      "status": "INSUFFICIENT_QUARTERLY_DATA",
+      "acceleration_status": "NORMAL_STABLE",
+      "bonus": 0.0,
+      "signal": "Standard annual EPS trajectory"
+    },
+    "total_precision_bonus": 5.0
+  },
+  "pattern_dna": {
+    "ticker": "SONALILIFE",
+    "audited_at": "2026-10-06 15:32:30",
+    "worth_vs_greed": {
+      "current_price": 102.4,
+      "intrinsic_worth": 34.23,
+      "margin_of_safety_pct": -66.6,
+      "greed_index": 83.0,
+      "rsi_14": 82.3,
+      "price_vs_ema50_pct": 18.8,
+      "price_vs_ema200_pct": 34.3,
+      "status": "OVERVALUED_EUPHORIA",
+      "worth_decision": "SELL_TAKE_PROFIT",
+      "reason": "Price is 66.6% above intrinsic worth while market greed is euphoric (83.0/100). Danger of sharp mean reversion."
+    },
+    "multi_interval_wave": {
+      "intervals": {
+        "weekly_5d": {
+          "return_pct": 18.93,
+          "high": 104.9,
+          "low": 86.0,
+          "range_volatility_pct": 21.98
+        },
+        "monthly_21d": {
+          "return_pct": 20.9,
+          "high": 104.9,
+          "low": 78.6,
+          "range_volatility_pct": 33.46
+        },
+        "quarterly_63d": {
+          "return_pct": 21.33,
+          "high": 104.9,
+          "low": 78.6,
+          "range_volatility_pct": 33.46
+        },
+        "half_yearly_126d": {
+          "return_pct": 54.68,
+          "high": 104.9,
+          "low": 57.0,
+          "range_volatility_pct": 84.04
+        },
+        "yearly_252d": {
+          "return_pct": 62.28,
+          "high": 104.9,
+          "low": 57.0,
+          "range_volatility_pct": 84.04
+        }
+      },
+      "wave_metrics": {
+        "median_rally_gain_pct": 22.6,
+        "median_correction_drop_pct": -21.6,
+        "avg_wave_duration_bars": 24
+      },
+      "current_wave_phase": "LATE_MARKUP",
+      "phase_guidance": "Approaching historical rally limit (+30.3% vs median +22.6%). Tighten stop.",
+      "top_seasonal_months": [
+        {
+          "month": "Jul",
+          "avg_return": 14.0,
+          "win_rate": 100.0
+        },
+        {
+          "month": "Aug",
+          "avg_return": 10.2,
+          "win_rate": 100.0
+        },
+        {
+          "month": "Jun",
+          "avg_return": 7.8,
+          "win_rate": 100.0
+        }
+      ],
+      "weak_seasonal_months": [
+        {
+          "month": "Feb",
+          "avg_return": -8.5,
+          "win_rate": 0.0
+        },
+        {
+          "month": "Nov",
+          "avg_return": -9.3,
+          "win_rate": 0.0
+        }
+      ]
+    },
+    "causal_attributions": [
+      {
+        "event_name": "Banking NPL Revelations & Aggressive Monetary Tightening",
+        "category": "ECONOMIC_MONETARY_BANKING",
+        "period": "2024-10-06 to 2025-06-30",
+        "stock_move_pct": -15.36,
+        "behavior": "SEVERE_VULNERABILITY",
+        "root_cause_why": "True extent of banking non-performing loans exposed by Bangladesh Bank. Liquidity squeeze in weak banks, high 12-14% treasury bill yields drew liquidity away from stock market.",
+        "market_impact": "TIGHT_LIQUIDITY_AND_FLIGHT_TO_SAFETY"
+      },
+      {
+        "event_name": "Economic Normalization & Moat Flight",
+        "category": "SECTOR_MACRO_RECOVERY",
+        "period": "2025-07-02 to 2026-10-06",
+        "stock_move_pct": 106.04,
+        "behavior": "STRONG_RESILIENCE_OR_BENEFICIARY",
+        "root_cause_why": "FX reserves stabilized with IMF/World Bank assistance. Remittance surge. Selective institutional accumulation into debt-free cash cows with high dividend yields (Square, GP, Olympic, Padma Oil).",
+        "market_impact": "SELECTIVE_FUNDAMENTAL_ACCUMULATION"
+      }
+    ]
+  },
+  "technical": {
+    "score": null,
+    "signals": {
+      "error": "insufficient_data_lt_30_bars"
+    },
+    "sr": {}
+  },
+  "fundamental": {
+    "score": 60.83,
+    "signals": {
+      "eps": "positive (1.62)",
+      "pe": "expensive (59.87654320987654)",
+      "nav": 32.15,
+      "dividend_yield": "moderate (2.47%)",
+      "debt_equity_val": 0.0,
+      "long_term_debt_equity_val": 0.0,
+      "debt_equity": "pristine_low (0.0)",
+      "loan_trap_risk": "none",
+      "dividend_track_record_years": 5,
+      "dividend_consistency": "proven_compounder (5 yrs cash divs)",
+      "roe": "weak (5.04%)",
+      "downturn_resilience": {
+        "status": "normal",
+        "drawdown_pct": 2.4,
+        "high_52w": 104.9,
+        "low_52w": 57.0
+      }
+    }
+  },
+  "management": {
+    "ticker": "SONALILIFE",
+    "company_name": "SONALILIFE",
+    "chairman": "Board Appointed Chairman",
+    "managing_director_ceo": "Managing Director / CEO",
+    "leadership_type": "Public Listed Corporate Board",
+    "industry_experience_years": 20,
+    "governance_rating": "A",
+    "audit_credibility": "Standard Category A Audit",
+    "key_moat": "DSE Listed Franchise",
+    "management_risk": "Low",
+    "governance_score": 75
+  },
+  "news_intent": {
+    "ticker": "SONALILIFE",
+    "intent_score": 0.0,
+    "dominant_intent": "NO_RECENT_NEWS",
+    "articles_analyzed": 0,
+    "red_flags": [],
+    "catalysts": []
+  },
+  "sentiment": {
+    "score": 50.0,
+    "signals": {
+      "news_count": 0,
+      "note": "no_news_neutral"
+    }
+  },
+  "manipulation": {
+    "manipulation_score": 25,
+    "manipulation_risk": "low",
+    "block_buy": false,
+    "flags": [
+      "volume_spike: volume_3.4x_avg",
+      "price_surge_no_news: price_12.9pct_zero_news"
+    ],
+    "checks": {
+      "volume_price_divergence": {
+        "flag": false,
+        "price_chg": 0,
+        "last_volume": 954254,
+        "avg_volume": 306827.0,
+        "detail": "ok"
+      },
+      "volume_spike": {
+        "flag": true,
+        "spike_ratio": 3.43,
+        "avg_volume": 278291.0,
+        "today_volume": 954254,
+        "detail": "volume_3.4x_avg"
+      },
+      "serial_trading": {
+        "flag": false,
+        "suspicious_days": 0,
+        "detail": "ok"
+      },
+      "circuit_breaker": {
+        "flag": false,
+        "circuit_hits": 0,
+        "detail": "ok"
+      },
+      "sponsor_exit": {
+        "flag": false,
+        "detail": "insufficient_fundamental_history"
+      },
+      "price_surge_no_news": {
+        "flag": true,
+        "price_change_3d": 12.9,
+        "news_count_3d": 0,
+        "detail": "price_12.9pct_zero_news"
+      }
+    }
+  },
+  "composite": {
+    "composite_score": 60.67,
+    "governance_score": 75,
+    "sentiment_score": 50.0,
+    "applied_weights": {
+      "fundamental": 0.692,
+      "technical": 0.077,
+      "governance": 0.127,
+      "sentiment": 0.104
+    }
+  }
+}

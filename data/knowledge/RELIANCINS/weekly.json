@@ -1,0 +1,305 @@
+{
+  "ticker": "RELIANCINS",
+  "timeframe": "weekly",
+  "horizon": "short",
+  "analyzed_at": "2026-10-06T09:32:30.141723",
+  "signal": "STRONG_BUY",
+  "confidence": 72.5,
+  "trajectory": {
+    "direction": "RISE_PREDICTED",
+    "direction_icon": "\ud83d\udfe2",
+    "rise_probability_pct": 90.1,
+    "momentum_status": "Bullish Reversal / Upward Accumulation",
+    "short_term": {
+      "predicted_path": "Upward momentum swing",
+      "upside_potential_pct": "+3.0%",
+      "downside_risk_pct": "-2.1%",
+      "target_price": 100.4,
+      "support_price": 95.5,
+      "risk_reward_ratio": "1.4x"
+    },
+    "mid_term": {
+      "predicted_path": "Cycle valuation recovery to historical median",
+      "upside_potential_pct": "+15.0%",
+      "downside_risk_pct": "-5.0%",
+      "target_price": 112.1,
+      "trailing_stop": 92.6,
+      "risk_reward_ratio": "3.0x"
+    },
+    "long_term": {
+      "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
+      "upside_potential_pct": "+30.1%",
+      "downside_risk_pct": "-9.0%",
+      "target_price": 126.8,
+      "dividend_cagr": "moderate (4.6%)",
+      "risk_reward_ratio": "3.3x"
+    }
+  },
+  "trade_levels": {
+    "entry": 97.5,
+    "stop_loss": 94.58,
+    "target": 103.34
+  },
+  "precision": {
+    "ticker": "RELIANCINS",
+    "smart_money": {
+      "status": "ACTIVE",
+      "latest_date": "Sep 30, 2026",
+      "smart_money_delta_pct": 0.46,
+      "institutional_pct": 10.37,
+      "foreign_pct": 0.0,
+      "sponsor_pct": 67.95,
+      "public_pct": 21.68,
+      "public_delta_pct": -0.46,
+      "classification": "INSTITUTIONAL_ACCUMULATION",
+      "conviction_bonus": 15.0,
+      "signal": "Smart money accumulated +0.46% (Institutes: 0.46%, Foreign: 0.0%) while retail decreased -0.46%"
+    },
+    "cash_flow": {
+      "nocfps": 7.16,
+      "is_estimated": true,
+      "dividend_per_share": 3.0,
+      "dividend_coverage_x": 2.39,
+      "fcf_yield_pct": 7.08,
+      "cash_quality_status": "PRISTINE_REAL_CASH_COVERAGE",
+      "conviction_bonus": 15.0,
+      "signal": "Dividend is 239% cash-covered by real operations (NOCFPS: Tk 7.16 vs DPS: Tk 3.0)"
+    },
+    "liquidity": {
+      "avg_daily_volume": 960989,
+      "daily_turnover_bdt_cr": 9.73,
+      "liquidity_rating": "DEEP_INSTITUTIONAL_LIQUIDITY",
+      "slippage_risk": "VERY_LOW",
+      "max_single_order_shares": 48049,
+      "max_daily_accumulation_shares": 144148,
+      "max_order_bdt": 4862559.0,
+      "directive": "Max single order: 48,049 shares (Tk 4,862,559) to prevent >1% execution slippage"
+    },
+    "earnings_acceleration": {
+      "status": "INSUFFICIENT_QUARTERLY_DATA",
+      "acceleration_status": "NORMAL_STABLE",
+      "bonus": 0.0,
+      "signal": "Standard annual EPS trajectory"
+    },
+    "total_precision_bonus": 30.0
+  },
+  "pattern_dna": {
+    "ticker": "RELIANCINS",
+    "audited_at": "2026-10-06 15:32:30",
+    "worth_vs_greed": {
+      "current_price": 97.5,
+      "intrinsic_worth": 122.3,
+      "margin_of_safety_pct": 25.4,
+      "greed_index": 23.0,
+      "rsi_14": 40.4,
+      "price_vs_ema50_pct": -9.1,
+      "price_vs_ema200_pct": 4.1,
+      "status": "UNDERVALUED_FEAR",
+      "worth_decision": "HIGH_CONVICTION_BUY",
+      "reason": "High Margin of Safety (+25.4%) with depressed market greed (23.0/100). Ideal entry."
+    },
+    "multi_interval_wave": {
+      "intervals": {
+        "weekly_5d": {
+          "return_pct": -9.55,
+          "high": 109.3,
+          "low": 97.0,
+          "range_volatility_pct": 12.68
+        },
+        "monthly_21d": {
+          "return_pct": -4.88,
+          "high": 117.8,
+          "low": 93.3,
+          "range_volatility_pct": 26.26
+        },
+        "quarterly_63d": {
+          "return_pct": -18.82,
+          "high": 128.2,
+          "low": 92.4,
+          "range_volatility_pct": 38.74
+        },
+        "half_yearly_126d": {
+          "return_pct": 42.13,
+          "high": 128.2,
+          "low": 64.0,
+          "range_volatility_pct": 100.31
+        },
+        "yearly_252d": {
+          "return_pct": 51.63,
+          "high": 128.2,
+          "low": 56.6,
+          "range_volatility_pct": 126.5
+        }
+      },
+      "wave_metrics": {
+        "median_rally_gain_pct": 25.4,
+        "median_correction_drop_pct": -14.2,
+        "avg_wave_duration_bars": 27.0
+      },
+      "current_wave_phase": "MARKUP_RALLY_MID",
+      "phase_guidance": "Midway through rally wave (+5.5% from base, historical target ~+25.4%).",
+      "top_seasonal_months": [
+        {
+          "month": "Jul",
+          "avg_return": 14.4,
+          "win_rate": 100.0
+        },
+        {
+          "month": "May",
+          "avg_return": 13.7,
+          "win_rate": 50.0
+        },
+        {
+          "month": "Jun",
+          "avg_return": 11.2,
+          "win_rate": 50.0
+        }
+      ],
+      "weak_seasonal_months": [
+        {
+          "month": "Mar",
+          "avg_return": -4.8,
+          "win_rate": 0.0
+        },
+        {
+          "month": "Sep",
+          "avg_return": -6.3,
+          "win_rate": 0.0
+        }
+      ]
+    },
+    "causal_attributions": [
+      {
+        "event_name": "Banking NPL Revelations & Aggressive Monetary Tightening",
+        "category": "ECONOMIC_MONETARY_BANKING",
+        "period": "2024-10-06 to 2025-06-30",
+        "stock_move_pct": -5.49,
+        "behavior": "MODERATE_CYCLICAL_DROP",
+        "root_cause_why": "True extent of banking non-performing loans exposed by Bangladesh Bank. Liquidity squeeze in weak banks, high 12-14% treasury bill yields drew liquidity away from stock market.",
+        "market_impact": "TIGHT_LIQUIDITY_AND_FLIGHT_TO_SAFETY"
+      },
+      {
+        "event_name": "Economic Normalization & Moat Flight",
+        "category": "SECTOR_MACRO_RECOVERY",
+        "period": "2025-07-02 to 2026-10-06",
+        "stock_move_pct": 85.36,
+        "behavior": "STRONG_RESILIENCE_OR_BENEFICIARY",
+        "root_cause_why": "FX reserves stabilized with IMF/World Bank assistance. Remittance surge. Selective institutional accumulation into debt-free cash cows with high dividend yields (Square, GP, Olympic, Padma Oil).",
+        "market_impact": "SELECTIVE_FUNDAMENTAL_ACCUMULATION"
+      }
+    ]
+  },
+  "technical": {
+    "score": null,
+    "signals": {
+      "error": "insufficient_data_lt_30_bars"
+    },
+    "sr": {}
+  },
+  "fundamental": {
+    "score": 73.33,
+    "signals": {
+      "eps": "positive (8.42)",
+      "pe": "fair_value (12.019002375296912)",
+      "nav": 78.95,
+      "dividend_yield": "moderate (4.6%)",
+      "debt_equity_val": 0.0,
+      "long_term_debt_equity_val": 0.0,
+      "debt_equity": "pristine_low (0.0)",
+      "loan_trap_risk": "none",
+      "dividend_track_record_years": 5,
+      "dividend_consistency": "proven_compounder (5 yrs cash divs)",
+      "roe": "moderate (10.66%)",
+      "downturn_resilience": {
+        "status": "growth_at_discount",
+        "drawdown_pct": 23.9,
+        "high_52w": 128.2,
+        "low_52w": 56.6,
+        "note": "Share price down 23.9% from 52w peak, yet earnings positive/steady (Conviction discount)"
+      }
+    }
+  },
+  "management": {
+    "ticker": "RELIANCINS",
+    "company_name": "Reliance Insurance Limited",
+    "chairman": "Shahnaz Rahman (Transcom Group)",
+    "managing_director_ceo": "Md. Khaled Mamun",
+    "leadership_type": "Reputed Transcom Conglomerate Sponsor + Actuarial Leadership",
+    "industry_experience_years": 38,
+    "governance_rating": "AAA",
+    "audit_credibility": "Pristine",
+    "key_moat": "Highest solvency ratio and reserve strength in non-life insurance, zero bank debt",
+    "management_risk": "Low",
+    "governance_score": 100
+  },
+  "news_intent": {
+    "ticker": "RELIANCINS",
+    "intent_score": 0.0,
+    "dominant_intent": "NO_RECENT_NEWS",
+    "articles_analyzed": 0,
+    "red_flags": [],
+    "catalysts": []
+  },
+  "sentiment": {
+    "score": 50.0,
+    "signals": {
+      "news_count": 0,
+      "note": "no_news_neutral"
+    }
+  },
+  "manipulation": {
+    "manipulation_score": 10,
+    "manipulation_risk": "low",
+    "block_buy": false,
+    "flags": [
+      "price_surge_no_news: price_-7.6pct_zero_news"
+    ],
+    "checks": {
+      "volume_price_divergence": {
+        "flag": false,
+        "price_chg": 0,
+        "last_volume": 553930,
+        "avg_volume": 766825.0,
+        "detail": "ok"
+      },
+      "volume_spike": {
+        "flag": false,
+        "spike_ratio": 0.74,
+        "avg_volume": 751988.0,
+        "today_volume": 553930,
+        "detail": "ok"
+      },
+      "serial_trading": {
+        "flag": false,
+        "suspicious_days": 0,
+        "detail": "ok"
+      },
+      "circuit_breaker": {
+        "flag": false,
+        "circuit_hits": 0,
+        "detail": "ok"
+      },
+      "sponsor_exit": {
+        "flag": false,
+        "detail": "insufficient_fundamental_history"
+      },
+      "price_surge_no_news": {
+        "flag": true,
+        "price_change_3d": -7.58,
+        "news_count_3d": 0,
+        "detail": "price_-7.6pct_zero_news"
+      }
+    }
+  },
+  "composite": {
+    "composite_score": 72.5,
+    "governance_score": 100,
+    "sentiment_score": 50.0,
+    "applied_weights": {
+      "fundamental": 0.692,
+      "technical": 0.077,
+      "governance": 0.127,
+      "sentiment": 0.104
+    }
+  }
+}

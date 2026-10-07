@@ -1,0 +1,106 @@
+{
+  "ticker": "BXPHARMA",
+  "audited_at": "2026-10-06 15:32:29",
+  "worth_vs_greed": {
+    "current_price": 139.6,
+    "intrinsic_worth": 177.78,
+    "margin_of_safety_pct": 27.3,
+    "greed_index": 10.0,
+    "rsi_14": 25.9,
+    "price_vs_ema50_pct": -4.4,
+    "price_vs_ema200_pct": 6.0,
+    "status": "UNDERVALUED_FEAR",
+    "worth_decision": "HIGH_CONVICTION_BUY",
+    "reason": "High Margin of Safety (+27.3%) with depressed market greed (10.0/100). Ideal entry."
+  },
+  "multi_interval_wave": {
+    "intervals": {
+      "weekly_5d": {
+        "return_pct": -5.16,
+        "high": 150.2,
+        "low": 138.5,
+        "range_volatility_pct": 8.45
+      },
+      "monthly_21d": {
+        "return_pct": -6.93,
+        "high": 153.8,
+        "low": 138.5,
+        "range_volatility_pct": 11.05
+      },
+      "quarterly_63d": {
+        "return_pct": -9.94,
+        "high": 158.5,
+        "low": 138.5,
+        "range_volatility_pct": 14.44
+      },
+      "half_yearly_126d": {
+        "return_pct": 22.46,
+        "high": 158.5,
+        "low": 110.0,
+        "range_volatility_pct": 44.09
+      },
+      "yearly_252d": {
+        "return_pct": 14.33,
+        "high": 158.5,
+        "low": 99.5,
+        "range_volatility_pct": 59.3
+      }
+    },
+    "wave_metrics": {
+      "median_rally_gain_pct": 14.2,
+      "median_correction_drop_pct": -16.3,
+      "avg_wave_duration_bars": 19.0
+    },
+    "current_wave_phase": "MARKDOWN_PULLBACK",
+    "phase_guidance": "Ongoing pullback from peak (-9.6%). Wait for stabilizing base.",
+    "top_seasonal_months": [
+      {
+        "month": "Jul",
+        "avg_return": 26.1,
+        "win_rate": 100.0
+      },
+      {
+        "month": "Aug",
+        "avg_return": 9.4,
+        "win_rate": 50.0
+      },
+      {
+        "month": "Mar",
+        "avg_return": 8.5,
+        "win_rate": 100.0
+      }
+    ],
+    "weak_seasonal_months": [
+      {
+        "month": "Jun",
+        "avg_return": -2.7,
+        "win_rate": 50.0
+      },
+      {
+        "month": "Sep",
+        "avg_return": -5.1,
+        "win_rate": 50.0
+      }
+    ]
+  },
+  "causal_attributions": [
+    {
+      "event_name": "Banking NPL Revelations & Aggressive Monetary Tightening",
+      "category": "ECONOMIC_MONETARY_BANKING",
+      "period": "2024-10-06 to 2025-06-30",
+      "stock_move_pct": 23.88,
+      "behavior": "STRONG_RESILIENCE_OR_BENEFICIARY",
+      "root_cause_why": "True extent of banking non-performing loans exposed by Bangladesh Bank. Liquidity squeeze in weak banks, high 12-14% treasury bill yields drew liquidity away from stock market.",
+      "market_impact": "TIGHT_LIQUIDITY_AND_FLIGHT_TO_SAFETY"
+    },
+    {
+      "event_name": "Economic Normalization & Moat Flight",
+      "category": "SECTOR_MACRO_RECOVERY",
+      "period": "2025-07-02 to 2026-10-06",
+      "stock_move_pct": 59.73,
+      "behavior": "STRONG_RESILIENCE_OR_BENEFICIARY",
+      "root_cause_why": "FX reserves stabilized with IMF/World Bank assistance. Remittance surge. Selective institutional accumulation into debt-free cash cows with high dividend yields (Square, GP, Olympic, Padma Oil).",
+      "market_impact": "SELECTIVE_FUNDAMENTAL_ACCUMULATION"
+    }
+  ]
+}

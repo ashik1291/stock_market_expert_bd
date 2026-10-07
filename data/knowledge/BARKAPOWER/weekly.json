@@ -1,0 +1,305 @@
+{
+  "ticker": "BARKAPOWER",
+  "timeframe": "weekly",
+  "horizon": "short",
+  "analyzed_at": "2026-10-06T09:32:29.825621",
+  "signal": "HOLD",
+  "confidence": 57.79,
+  "trajectory": {
+    "direction": "CONSOLIDATION_RANGE",
+    "direction_icon": "\ud83d\udfe1",
+    "rise_probability_pct": 56.1,
+    "momentum_status": "Neutral Range Consolidation",
+    "short_term": {
+      "predicted_path": "Upward momentum swing",
+      "upside_potential_pct": "+3.3%",
+      "downside_risk_pct": "-2.2%",
+      "target_price": 9.4,
+      "support_price": 8.9,
+      "risk_reward_ratio": "1.5x"
+    },
+    "mid_term": {
+      "predicted_path": "Cycle valuation recovery to historical median",
+      "upside_potential_pct": "+15.4%",
+      "downside_risk_pct": "-5.5%",
+      "target_price": 10.5,
+      "trailing_stop": 8.6,
+      "risk_reward_ratio": "2.8x"
+    },
+    "long_term": {
+      "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
+      "upside_potential_pct": "+29.7%",
+      "downside_risk_pct": "-9.9%",
+      "target_price": 11.8,
+      "dividend_cagr": "no_dividend",
+      "risk_reward_ratio": "3.0x"
+    }
+  },
+  "trade_levels": {
+    "entry": 9.1,
+    "stop_loss": 8.83,
+    "target": 9.64
+  },
+  "precision": {
+    "ticker": "BARKAPOWER",
+    "smart_money": {
+      "status": "ACTIVE",
+      "latest_date": "Sep 30, 2026",
+      "smart_money_delta_pct": -0.81,
+      "institutional_pct": 22.9,
+      "foreign_pct": 0.0,
+      "sponsor_pct": 22.64,
+      "public_pct": 54.46,
+      "public_delta_pct": 0.81,
+      "classification": "STABLE_HOLDINGS",
+      "conviction_bonus": 0.0,
+      "signal": "Holding shift: Smart money -0.81%, Retail +0.81%"
+    },
+    "cash_flow": {
+      "nocfps": 0.31,
+      "is_estimated": true,
+      "dividend_per_share": 0.35,
+      "dividend_coverage_x": 0.89,
+      "fcf_yield_pct": 3.23,
+      "cash_quality_status": "ADEQUATE_CASH_COVERAGE",
+      "conviction_bonus": 5.0,
+      "signal": "Dividend is 89% cash-covered by operations"
+    },
+    "liquidity": {
+      "avg_daily_volume": 437021,
+      "daily_turnover_bdt_cr": 0.42,
+      "liquidity_rating": "MODERATE_LIQUIDITY",
+      "slippage_risk": "MEDIUM",
+      "max_single_order_shares": 21851,
+      "max_daily_accumulation_shares": 65553,
+      "max_order_bdt": 209770.0,
+      "directive": "Max single order: 21,851 shares (Tk 209,770) to prevent >1% execution slippage"
+    },
+    "earnings_acceleration": {
+      "status": "INSUFFICIENT_QUARTERLY_DATA",
+      "acceleration_status": "NORMAL_STABLE",
+      "bonus": 0.0,
+      "signal": "Standard annual EPS trajectory"
+    },
+    "total_precision_bonus": 5.0
+  },
+  "pattern_dna": {
+    "ticker": "BARKAPOWER",
+    "audited_at": "2026-10-06 15:32:29",
+    "worth_vs_greed": {
+      "current_price": 9.1,
+      "intrinsic_worth": 13.54,
+      "margin_of_safety_pct": 48.8,
+      "greed_index": 3.0,
+      "rsi_14": 33.3,
+      "price_vs_ema50_pct": -6.3,
+      "price_vs_ema200_pct": 2.0,
+      "status": "UNDERVALUED_FEAR",
+      "worth_decision": "HIGH_CONVICTION_BUY",
+      "reason": "High Margin of Safety (+48.8%) with depressed market greed (3.0/100). Ideal entry."
+    },
+    "multi_interval_wave": {
+      "intervals": {
+        "weekly_5d": {
+          "return_pct": -9.0,
+          "high": 10.2,
+          "low": 8.9,
+          "range_volatility_pct": 14.61
+        },
+        "monthly_21d": {
+          "return_pct": -10.78,
+          "high": 10.5,
+          "low": 8.9,
+          "range_volatility_pct": 17.98
+        },
+        "quarterly_63d": {
+          "return_pct": 9.64,
+          "high": 12.2,
+          "low": 7.9,
+          "range_volatility_pct": 54.43
+        },
+        "half_yearly_126d": {
+          "return_pct": 13.75,
+          "high": 12.2,
+          "low": 7.4,
+          "range_volatility_pct": 64.86
+        },
+        "yearly_252d": {
+          "return_pct": -19.47,
+          "high": 12.2,
+          "low": 5.2,
+          "range_volatility_pct": 134.62
+        }
+      },
+      "wave_metrics": {
+        "median_rally_gain_pct": 29.6,
+        "median_correction_drop_pct": -16.7,
+        "avg_wave_duration_bars": 18.0
+      },
+      "current_wave_phase": "BOTTOMING_SUPPORT",
+      "phase_guidance": "Drop (-25.4%) matches historical correction depth (-16.7%). Prepare to accumulate.",
+      "top_seasonal_months": [
+        {
+          "month": "Aug",
+          "avg_return": 10.8,
+          "win_rate": 50.0
+        },
+        {
+          "month": "May",
+          "avg_return": 5.3,
+          "win_rate": 100.0
+        },
+        {
+          "month": "Mar",
+          "avg_return": 4.6,
+          "win_rate": 100.0
+        }
+      ],
+      "weak_seasonal_months": [
+        {
+          "month": "Sep",
+          "avg_return": -10.3,
+          "win_rate": 0.0
+        },
+        {
+          "month": "Oct",
+          "avg_return": -21.1,
+          "win_rate": 0.0
+        }
+      ]
+    },
+    "causal_attributions": [
+      {
+        "event_name": "Banking NPL Revelations & Aggressive Monetary Tightening",
+        "category": "ECONOMIC_MONETARY_BANKING",
+        "period": "2024-10-06 to 2025-06-30",
+        "stock_move_pct": -14.17,
+        "behavior": "MODERATE_CYCLICAL_DROP",
+        "root_cause_why": "True extent of banking non-performing loans exposed by Bangladesh Bank. Liquidity squeeze in weak banks, high 12-14% treasury bill yields drew liquidity away from stock market.",
+        "market_impact": "TIGHT_LIQUIDITY_AND_FLIGHT_TO_SAFETY"
+      },
+      {
+        "event_name": "Economic Normalization & Moat Flight",
+        "category": "SECTOR_MACRO_RECOVERY",
+        "period": "2025-07-02 to 2026-10-06",
+        "stock_move_pct": -13.33,
+        "behavior": "MODERATE_CYCLICAL_DROP",
+        "root_cause_why": "FX reserves stabilized with IMF/World Bank assistance. Remittance surge. Selective institutional accumulation into debt-free cash cows with high dividend yields (Square, GP, Olympic, Padma Oil).",
+        "market_impact": "SELECTIVE_FUNDAMENTAL_ACCUMULATION"
+      }
+    ]
+  },
+  "technical": {
+    "score": null,
+    "signals": {
+      "error": "insufficient_data_lt_30_bars"
+    },
+    "sr": {}
+  },
+  "fundamental": {
+    "score": 56.67,
+    "signals": {
+      "eps": "positive (0.36)",
+      "pe": "expensive (26.666666666666668)",
+      "nav": 22.63,
+      "dividend_yield": "no_dividend",
+      "debt_equity_val": 0.032,
+      "long_term_debt_equity_val": 0.027,
+      "debt_equity": "pristine_low (0.032)",
+      "loan_trap_risk": "none",
+      "dividend_track_record_years": 4,
+      "dividend_consistency": "proven_compounder (4 yrs cash divs)",
+      "roe": "weak (1.59%)",
+      "downturn_resilience": {
+        "status": "growth_at_discount",
+        "drawdown_pct": 25.4,
+        "high_52w": 12.2,
+        "low_52w": 5.2,
+        "note": "Share price down 25.4% from 52w peak, yet earnings positive/steady (Conviction discount)"
+      }
+    }
+  },
+  "management": {
+    "ticker": "BARKAPOWER",
+    "company_name": "BARKAPOWER",
+    "chairman": "Board Appointed Chairman",
+    "managing_director_ceo": "Managing Director / CEO",
+    "leadership_type": "Public Listed Corporate Board",
+    "industry_experience_years": 20,
+    "governance_rating": "A",
+    "audit_credibility": "Standard Category A Audit",
+    "key_moat": "DSE Listed Franchise",
+    "management_risk": "Low",
+    "governance_score": 75
+  },
+  "news_intent": {
+    "ticker": "BARKAPOWER",
+    "intent_score": 0.0,
+    "dominant_intent": "NO_RECENT_NEWS",
+    "articles_analyzed": 0,
+    "red_flags": [],
+    "catalysts": []
+  },
+  "sentiment": {
+    "score": 50.0,
+    "signals": {
+      "news_count": 0,
+      "note": "no_news_neutral"
+    }
+  },
+  "manipulation": {
+    "manipulation_score": 10,
+    "manipulation_risk": "low",
+    "block_buy": false,
+    "flags": [
+      "price_surge_no_news: price_-9.0pct_zero_news"
+    ],
+    "checks": {
+      "volume_price_divergence": {
+        "flag": false,
+        "price_chg": 0,
+        "last_volume": 489590,
+        "avg_volume": 541906.0,
+        "detail": "ok"
+      },
+      "volume_spike": {
+        "flag": false,
+        "spike_ratio": 0.87,
+        "avg_volume": 562499.0,
+        "today_volume": 489590,
+        "detail": "ok"
+      },
+      "serial_trading": {
+        "flag": false,
+        "suspicious_days": 0,
+        "detail": "ok"
+      },
+      "circuit_breaker": {
+        "flag": false,
+        "circuit_hits": 0,
+        "detail": "ok"
+      },
+      "sponsor_exit": {
+        "flag": false,
+        "detail": "insufficient_fundamental_history"
+      },
+      "price_surge_no_news": {
+        "flag": true,
+        "price_change_3d": -9.0,
+        "news_count_3d": 0,
+        "detail": "price_-9.0pct_zero_news"
+      }
+    }
+  },
+  "composite": {
+    "composite_score": 57.79,
+    "governance_score": 75,
+    "sentiment_score": 50.0,
+    "applied_weights": {
+      "fundamental": 0.692,
+      "technical": 0.077,
+      "governance": 0.127,
+      "sentiment": 0.104
+    }
+  }
+}
