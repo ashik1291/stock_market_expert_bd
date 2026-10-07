@@ -1,0 +1,106 @@
+{
+  "ticker": "GENEXIL",
+  "audited_at": "2026-10-06 15:32:29",
+  "worth_vs_greed": {
+    "current_price": 30.4,
+    "intrinsic_worth": 32.86,
+    "margin_of_safety_pct": 8.1,
+    "greed_index": 8.0,
+    "rsi_14": 35.2,
+    "price_vs_ema50_pct": -13.6,
+    "price_vs_ema200_pct": -5.9,
+    "status": "FAIR_VALUE_ACCUMULATION",
+    "worth_decision": "ACCUMULATE_ON_DIPS",
+    "reason": "Solid intrinsic worth backing (MoS: +8.1%) with balanced market sentiment."
+  },
+  "multi_interval_wave": {
+    "intervals": {
+      "weekly_5d": {
+        "return_pct": -10.59,
+        "high": 34.5,
+        "low": 29.6,
+        "range_volatility_pct": 16.55
+      },
+      "monthly_21d": {
+        "return_pct": -14.37,
+        "high": 36.9,
+        "low": 29.6,
+        "range_volatility_pct": 24.66
+      },
+      "quarterly_63d": {
+        "return_pct": -16.48,
+        "high": 44.2,
+        "low": 29.6,
+        "range_volatility_pct": 49.32
+      },
+      "half_yearly_126d": {
+        "return_pct": 15.15,
+        "high": 44.2,
+        "low": 25.0,
+        "range_volatility_pct": 76.8
+      },
+      "yearly_252d": {
+        "return_pct": 17.37,
+        "high": 44.2,
+        "low": 21.0,
+        "range_volatility_pct": 110.48
+      }
+    },
+    "wave_metrics": {
+      "median_rally_gain_pct": 25.4,
+      "median_correction_drop_pct": -11.2,
+      "avg_wave_duration_bars": 21.0
+    },
+    "current_wave_phase": "BOTTOMING_SUPPORT",
+    "phase_guidance": "Drop (-31.2%) matches historical correction depth (-11.2%). Prepare to accumulate.",
+    "top_seasonal_months": [
+      {
+        "month": "Jun",
+        "avg_return": 19.9,
+        "win_rate": 100.0
+      },
+      {
+        "month": "Jul",
+        "avg_return": 15.2,
+        "win_rate": 100.0
+      },
+      {
+        "month": "Dec",
+        "avg_return": 7.0,
+        "win_rate": 100.0
+      }
+    ],
+    "weak_seasonal_months": [
+      {
+        "month": "Apr",
+        "avg_return": -9.5,
+        "win_rate": 0.0
+      },
+      {
+        "month": "Nov",
+        "avg_return": -10.1,
+        "win_rate": 0.0
+      }
+    ]
+  },
+  "causal_attributions": [
+    {
+      "event_name": "Banking NPL Revelations & Aggressive Monetary Tightening",
+      "category": "ECONOMIC_MONETARY_BANKING",
+      "period": "2024-10-06 to 2025-06-30",
+      "stock_move_pct": -37.39,
+      "behavior": "SEVERE_VULNERABILITY",
+      "root_cause_why": "True extent of banking non-performing loans exposed by Bangladesh Bank. Liquidity squeeze in weak banks, high 12-14% treasury bill yields drew liquidity away from stock market.",
+      "market_impact": "TIGHT_LIQUIDITY_AND_FLIGHT_TO_SAFETY"
+    },
+    {
+      "event_name": "Economic Normalization & Moat Flight",
+      "category": "SECTOR_MACRO_RECOVERY",
+      "period": "2025-07-02 to 2026-10-06",
+      "stock_move_pct": 35.71,
+      "behavior": "STRONG_RESILIENCE_OR_BENEFICIARY",
+      "root_cause_why": "FX reserves stabilized with IMF/World Bank assistance. Remittance surge. Selective institutional accumulation into debt-free cash cows with high dividend yields (Square, GP, Olympic, Padma Oil).",
+      "market_impact": "SELECTIVE_FUNDAMENTAL_ACCUMULATION"
+    }
+  ]
+}

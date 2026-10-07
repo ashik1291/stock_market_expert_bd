@@ -1,0 +1,106 @@
+{
+  "ticker": "MTB",
+  "audited_at": "2026-10-06 15:32:29",
+  "worth_vs_greed": {
+    "current_price": 13.3,
+    "intrinsic_worth": 44.56,
+    "margin_of_safety_pct": 235.0,
+    "greed_index": 43.0,
+    "rsi_14": 69.2,
+    "price_vs_ema50_pct": 0.0,
+    "price_vs_ema200_pct": 2.0,
+    "status": "UNDERVALUED_FEAR",
+    "worth_decision": "HIGH_CONVICTION_BUY",
+    "reason": "High Margin of Safety (+235.0%) with depressed market greed (43.0/100). Ideal entry."
+  },
+  "multi_interval_wave": {
+    "intervals": {
+      "weekly_5d": {
+        "return_pct": -1.48,
+        "high": 13.6,
+        "low": 13.2,
+        "range_volatility_pct": 3.03
+      },
+      "monthly_21d": {
+        "return_pct": 0.76,
+        "high": 13.9,
+        "low": 12.3,
+        "range_volatility_pct": 13.01
+      },
+      "quarterly_63d": {
+        "return_pct": -0.75,
+        "high": 14.5,
+        "low": 12.3,
+        "range_volatility_pct": 17.89
+      },
+      "half_yearly_126d": {
+        "return_pct": 3.91,
+        "high": 14.7,
+        "low": 11.3,
+        "range_volatility_pct": 30.09
+      },
+      "yearly_252d": {
+        "return_pct": 4.72,
+        "high": 14.7,
+        "low": 10.9,
+        "range_volatility_pct": 34.86
+      }
+    },
+    "wave_metrics": {
+      "median_rally_gain_pct": 11.8,
+      "median_correction_drop_pct": -9.8,
+      "avg_wave_duration_bars": 16.0
+    },
+    "current_wave_phase": "MARKUP_RALLY_MID",
+    "phase_guidance": "Midway through rally wave (+8.1% from base, historical target ~+11.8%).",
+    "top_seasonal_months": [
+      {
+        "month": "Jul",
+        "avg_return": 16.3,
+        "win_rate": 100.0
+      },
+      {
+        "month": "Feb",
+        "avg_return": 6.5,
+        "win_rate": 100.0
+      },
+      {
+        "month": "Jan",
+        "avg_return": 5.8,
+        "win_rate": 100.0
+      }
+    ],
+    "weak_seasonal_months": [
+      {
+        "month": "Apr",
+        "avg_return": -5.1,
+        "win_rate": 0.0
+      },
+      {
+        "month": "Sep",
+        "avg_return": -5.6,
+        "win_rate": 0.0
+      }
+    ]
+  },
+  "causal_attributions": [
+    {
+      "event_name": "Banking NPL Revelations & Aggressive Monetary Tightening",
+      "category": "ECONOMIC_MONETARY_BANKING",
+      "period": "2024-10-06 to 2025-06-30",
+      "stock_move_pct": -7.63,
+      "behavior": "MODERATE_CYCLICAL_DROP",
+      "root_cause_why": "True extent of banking non-performing loans exposed by Bangladesh Bank. Liquidity squeeze in weak banks, high 12-14% treasury bill yields drew liquidity away from stock market.",
+      "market_impact": "TIGHT_LIQUIDITY_AND_FLIGHT_TO_SAFETY"
+    },
+    {
+      "event_name": "Economic Normalization & Moat Flight",
+      "category": "SECTOR_MACRO_RECOVERY",
+      "period": "2025-07-02 to 2026-10-06",
+      "stock_move_pct": 22.02,
+      "behavior": "STRONG_RESILIENCE_OR_BENEFICIARY",
+      "root_cause_why": "FX reserves stabilized with IMF/World Bank assistance. Remittance surge. Selective institutional accumulation into debt-free cash cows with high dividend yields (Square, GP, Olympic, Padma Oil).",
+      "market_impact": "SELECTIVE_FUNDAMENTAL_ACCUMULATION"
+    }
+  ]
+}

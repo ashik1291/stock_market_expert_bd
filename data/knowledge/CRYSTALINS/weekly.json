@@ -1,0 +1,305 @@
+{
+  "ticker": "CRYSTALINS",
+  "timeframe": "weekly",
+  "horizon": "short",
+  "analyzed_at": "2026-10-06T09:32:30.216897",
+  "signal": "BUY",
+  "confidence": 67.02,
+  "trajectory": {
+    "direction": "RISE_PREDICTED",
+    "direction_icon": "\ud83d\udfe2",
+    "rise_probability_pct": 68.3,
+    "momentum_status": "Bullish Reversal / Upward Accumulation",
+    "short_term": {
+      "predicted_path": "Upward momentum swing",
+      "upside_potential_pct": "+2.9%",
+      "downside_risk_pct": "-2.0%",
+      "target_price": 66.5,
+      "support_price": 63.3,
+      "risk_reward_ratio": "1.4x"
+    },
+    "mid_term": {
+      "predicted_path": "Cycle valuation recovery to historical median",
+      "upside_potential_pct": "+15.0%",
+      "downside_risk_pct": "-5.0%",
+      "target_price": 74.3,
+      "trailing_stop": 61.4,
+      "risk_reward_ratio": "3.0x"
+    },
+    "long_term": {
+      "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
+      "upside_potential_pct": "+30.0%",
+      "downside_risk_pct": "-9.0%",
+      "target_price": 84.0,
+      "dividend_cagr": "moderate (2.1%)",
+      "risk_reward_ratio": "3.3x"
+    }
+  },
+  "trade_levels": {
+    "entry": 64.6,
+    "stop_loss": 62.66,
+    "target": 68.48
+  },
+  "precision": {
+    "ticker": "CRYSTALINS",
+    "smart_money": {
+      "status": "ACTIVE",
+      "latest_date": "Sep 30, 2026",
+      "smart_money_delta_pct": 1.44,
+      "institutional_pct": 14.41,
+      "foreign_pct": 0.02,
+      "sponsor_pct": 58.0,
+      "public_pct": 27.57,
+      "public_delta_pct": -1.44,
+      "classification": "INSTITUTIONAL_ACCUMULATION",
+      "conviction_bonus": 15.0,
+      "signal": "Smart money accumulated +1.44% (Institutes: 1.45%, Foreign: -0.01%) while retail decreased -1.44%"
+    },
+    "cash_flow": {
+      "nocfps": 2.84,
+      "is_estimated": true,
+      "dividend_per_share": 1.2,
+      "dividend_coverage_x": 2.37,
+      "fcf_yield_pct": 4.32,
+      "cash_quality_status": "PRISTINE_REAL_CASH_COVERAGE",
+      "conviction_bonus": 15.0,
+      "signal": "Dividend is 237% cash-covered by real operations (NOCFPS: Tk 2.84 vs DPS: Tk 1.2)"
+    },
+    "liquidity": {
+      "avg_daily_volume": 408326,
+      "daily_turnover_bdt_cr": 2.68,
+      "liquidity_rating": "HEALTHY_LIQUIDITY",
+      "slippage_risk": "LOW",
+      "max_single_order_shares": 20416,
+      "max_daily_accumulation_shares": 61249,
+      "max_order_bdt": 1341331.0,
+      "directive": "Max single order: 20,416 shares (Tk 1,341,331) to prevent >1% execution slippage"
+    },
+    "earnings_acceleration": {
+      "status": "INSUFFICIENT_QUARTERLY_DATA",
+      "acceleration_status": "NORMAL_STABLE",
+      "bonus": 0.0,
+      "signal": "Standard annual EPS trajectory"
+    },
+    "total_precision_bonus": 30.0
+  },
+  "pattern_dna": {
+    "ticker": "CRYSTALINS",
+    "audited_at": "2026-10-06 15:32:30",
+    "worth_vs_greed": {
+      "current_price": 64.6,
+      "intrinsic_worth": 45.58,
+      "margin_of_safety_pct": -29.4,
+      "greed_index": 40.0,
+      "rsi_14": 59.8,
+      "price_vs_ema50_pct": -4.0,
+      "price_vs_ema200_pct": -4.0,
+      "status": "NEUTRAL",
+      "worth_decision": "HOLD",
+      "reason": "Trading in neutral fair-value corridor."
+    },
+    "multi_interval_wave": {
+      "intervals": {
+        "weekly_5d": {
+          "return_pct": -10.4,
+          "high": 73.0,
+          "low": 63.7,
+          "range_volatility_pct": 14.6
+        },
+        "monthly_21d": {
+          "return_pct": 5.56,
+          "high": 76.4,
+          "low": 57.1,
+          "range_volatility_pct": 33.8
+        },
+        "quarterly_63d": {
+          "return_pct": -10.4,
+          "high": 76.4,
+          "low": 57.1,
+          "range_volatility_pct": 33.8
+        },
+        "half_yearly_126d": {
+          "return_pct": -22.54,
+          "high": 92.1,
+          "low": 57.1,
+          "range_volatility_pct": 61.3
+        },
+        "yearly_252d": {
+          "return_pct": 10.43,
+          "high": 92.1,
+          "low": 40.9,
+          "range_volatility_pct": 125.18
+        }
+      },
+      "wave_metrics": {
+        "median_rally_gain_pct": 26.1,
+        "median_correction_drop_pct": -20.5,
+        "avg_wave_duration_bars": 21.0
+      },
+      "current_wave_phase": "MARKUP_RALLY_MID",
+      "phase_guidance": "Midway through rally wave (+13.1% from base, historical target ~+26.1%).",
+      "top_seasonal_months": [
+        {
+          "month": "Jan",
+          "avg_return": 23.9,
+          "win_rate": 50.0
+        },
+        {
+          "month": "Aug",
+          "avg_return": 9.5,
+          "win_rate": 50.0
+        },
+        {
+          "month": "Dec",
+          "avg_return": 7.5,
+          "win_rate": 100.0
+        }
+      ],
+      "weak_seasonal_months": [
+        {
+          "month": "Sep",
+          "avg_return": -10.8,
+          "win_rate": 0.0
+        },
+        {
+          "month": "Mar",
+          "avg_return": -11.2,
+          "win_rate": 0.0
+        }
+      ]
+    },
+    "causal_attributions": [
+      {
+        "event_name": "Banking NPL Revelations & Aggressive Monetary Tightening",
+        "category": "ECONOMIC_MONETARY_BANKING",
+        "period": "2024-10-06 to 2025-06-30",
+        "stock_move_pct": -6.8,
+        "behavior": "MODERATE_CYCLICAL_DROP",
+        "root_cause_why": "True extent of banking non-performing loans exposed by Bangladesh Bank. Liquidity squeeze in weak banks, high 12-14% treasury bill yields drew liquidity away from stock market.",
+        "market_impact": "TIGHT_LIQUIDITY_AND_FLIGHT_TO_SAFETY"
+      },
+      {
+        "event_name": "Economic Normalization & Moat Flight",
+        "category": "SECTOR_MACRO_RECOVERY",
+        "period": "2025-07-02 to 2026-10-06",
+        "stock_move_pct": 44.84,
+        "behavior": "STRONG_RESILIENCE_OR_BENEFICIARY",
+        "root_cause_why": "FX reserves stabilized with IMF/World Bank assistance. Remittance surge. Selective institutional accumulation into debt-free cash cows with high dividend yields (Square, GP, Olympic, Padma Oil).",
+        "market_impact": "SELECTIVE_FUNDAMENTAL_ACCUMULATION"
+      }
+    ]
+  },
+  "technical": {
+    "score": null,
+    "signals": {
+      "error": "insufficient_data_lt_30_bars"
+    },
+    "sr": {}
+  },
+  "fundamental": {
+    "score": 70.0,
+    "signals": {
+      "eps": "positive (3.34)",
+      "pe": "slightly_expensive (19.67065868263473)",
+      "nav": 27.65,
+      "dividend_yield": "moderate (2.1%)",
+      "debt_equity_val": 0.0,
+      "long_term_debt_equity_val": 0.0,
+      "debt_equity": "pristine_low (0.0)",
+      "loan_trap_risk": "none",
+      "dividend_track_record_years": 5,
+      "dividend_consistency": "proven_compounder (5 yrs cash divs)",
+      "roe": "moderate (12.08%)",
+      "downturn_resilience": {
+        "status": "growth_at_discount",
+        "drawdown_pct": 29.9,
+        "high_52w": 92.1,
+        "low_52w": 40.9,
+        "note": "Share price down 29.9% from 52w peak, yet earnings positive/steady (Conviction discount)"
+      }
+    }
+  },
+  "management": {
+    "ticker": "CRYSTALINS",
+    "company_name": "CRYSTALINS",
+    "chairman": "Board Appointed Chairman",
+    "managing_director_ceo": "Managing Director / CEO",
+    "leadership_type": "Public Listed Corporate Board",
+    "industry_experience_years": 20,
+    "governance_rating": "A",
+    "audit_credibility": "Standard Category A Audit",
+    "key_moat": "DSE Listed Franchise",
+    "management_risk": "Low",
+    "governance_score": 75
+  },
+  "news_intent": {
+    "ticker": "CRYSTALINS",
+    "intent_score": 0.0,
+    "dominant_intent": "NO_RECENT_NEWS",
+    "articles_analyzed": 0,
+    "red_flags": [],
+    "catalysts": []
+  },
+  "sentiment": {
+    "score": 50.0,
+    "signals": {
+      "news_count": 0,
+      "note": "no_news_neutral"
+    }
+  },
+  "manipulation": {
+    "manipulation_score": 10,
+    "manipulation_risk": "low",
+    "block_buy": false,
+    "flags": [
+      "price_surge_no_news: price_-7.3pct_zero_news"
+    ],
+    "checks": {
+      "volume_price_divergence": {
+        "flag": false,
+        "price_chg": 0,
+        "last_volume": 330530,
+        "avg_volume": 306910.0,
+        "detail": "ok"
+      },
+      "volume_spike": {
+        "flag": false,
+        "spike_ratio": 1.1,
+        "avg_volume": 300261.0,
+        "today_volume": 330530,
+        "detail": "ok"
+      },
+      "serial_trading": {
+        "flag": false,
+        "suspicious_days": 0,
+        "detail": "ok"
+      },
+      "circuit_breaker": {
+        "flag": false,
+        "circuit_hits": 0,
+        "detail": "ok"
+      },
+      "sponsor_exit": {
+        "flag": false,
+        "detail": "insufficient_fundamental_history"
+      },
+      "price_surge_no_news": {
+        "flag": true,
+        "price_change_3d": -7.32,
+        "news_count_3d": 0,
+        "detail": "price_-7.3pct_zero_news"
+      }
+    }
+  },
+  "composite": {
+    "composite_score": 67.02,
+    "governance_score": 75,
+    "sentiment_score": 50.0,
+    "applied_weights": {
+      "fundamental": 0.692,
+      "technical": 0.077,
+      "governance": 0.127,
+      "sentiment": 0.104
+    }
+  }
+}

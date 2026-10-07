@@ -1,0 +1,106 @@
+{
+  "ticker": "TITASGAS",
+  "audited_at": "2026-10-06 15:32:29",
+  "worth_vs_greed": {
+    "current_price": 16.9,
+    "intrinsic_worth": 72.1,
+    "margin_of_safety_pct": 326.6,
+    "greed_index": 8.0,
+    "rsi_14": 43.7,
+    "price_vs_ema50_pct": -6.2,
+    "price_vs_ema200_pct": -6.6,
+    "status": "UNDERVALUED_FEAR",
+    "worth_decision": "HIGH_CONVICTION_BUY",
+    "reason": "High Margin of Safety (+326.6%) with depressed market greed (8.0/100). Ideal entry."
+  },
+  "multi_interval_wave": {
+    "intervals": {
+      "weekly_5d": {
+        "return_pct": -5.06,
+        "high": 18.1,
+        "low": 16.8,
+        "range_volatility_pct": 7.74
+      },
+      "monthly_21d": {
+        "return_pct": -3.98,
+        "high": 18.7,
+        "low": 16.5,
+        "range_volatility_pct": 13.33
+      },
+      "quarterly_63d": {
+        "return_pct": -13.33,
+        "high": 22.2,
+        "low": 16.5,
+        "range_volatility_pct": 34.55
+      },
+      "half_yearly_126d": {
+        "return_pct": -1.74,
+        "high": 22.2,
+        "low": 15.9,
+        "range_volatility_pct": 39.62
+      },
+      "yearly_252d": {
+        "return_pct": -21.03,
+        "high": 22.2,
+        "low": 14.5,
+        "range_volatility_pct": 53.1
+      }
+    },
+    "wave_metrics": {
+      "median_rally_gain_pct": 17.4,
+      "median_correction_drop_pct": -20.8,
+      "avg_wave_duration_bars": 13.0
+    },
+    "current_wave_phase": "ACCUMULATION_TROUGH",
+    "phase_guidance": "Near local cyclical trough base. Maximum reward/risk entry point.",
+    "top_seasonal_months": [
+      {
+        "month": "Jul",
+        "avg_return": 18.6,
+        "win_rate": 100.0
+      },
+      {
+        "month": "Jun",
+        "avg_return": 7.7,
+        "win_rate": 100.0
+      },
+      {
+        "month": "Mar",
+        "avg_return": 7.4,
+        "win_rate": 100.0
+      }
+    ],
+    "weak_seasonal_months": [
+      {
+        "month": "Sep",
+        "avg_return": -13.0,
+        "win_rate": 0.0
+      },
+      {
+        "month": "Oct",
+        "avg_return": -13.7,
+        "win_rate": 0.0
+      }
+    ]
+  },
+  "causal_attributions": [
+    {
+      "event_name": "Banking NPL Revelations & Aggressive Monetary Tightening",
+      "category": "ECONOMIC_MONETARY_BANKING",
+      "period": "2024-10-06 to 2025-06-30",
+      "stock_move_pct": -16.88,
+      "behavior": "SEVERE_VULNERABILITY",
+      "root_cause_why": "True extent of banking non-performing loans exposed by Bangladesh Bank. Liquidity squeeze in weak banks, high 12-14% treasury bill yields drew liquidity away from stock market.",
+      "market_impact": "TIGHT_LIQUIDITY_AND_FLIGHT_TO_SAFETY"
+    },
+    {
+      "event_name": "Economic Normalization & Moat Flight",
+      "category": "SECTOR_MACRO_RECOVERY",
+      "period": "2025-07-02 to 2026-10-06",
+      "stock_move_pct": -12.44,
+      "behavior": "MODERATE_CYCLICAL_DROP",
+      "root_cause_why": "FX reserves stabilized with IMF/World Bank assistance. Remittance surge. Selective institutional accumulation into debt-free cash cows with high dividend yields (Square, GP, Olympic, Padma Oil).",
+      "market_impact": "SELECTIVE_FUNDAMENTAL_ACCUMULATION"
+    }
+  ]
+}

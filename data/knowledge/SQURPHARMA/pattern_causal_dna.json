@@ -1,0 +1,117 @@
+{
+  "ticker": "SQURPHARMA",
+  "audited_at": "2026-10-07 09:49:01",
+  "worth_vs_greed": {
+    "current_price": 217.0,
+    "intrinsic_worth": 263.12,
+    "margin_of_safety_pct": 21.3,
+    "greed_index": 20.0,
+    "rsi_14": 71.8,
+    "price_vs_ema50_pct": -0.1,
+    "price_vs_ema200_pct": 0.4,
+    "merit_status": "EARNINGS_BACKED_MERIT",
+    "merit_reason": "Price supported by solid earnings (EPS: \u09f327.04, P/E: 8.0). Growth is fundamentally justified.",
+    "timing_directives": {
+      "optimal_entry_corridor": "\u09f3212.7 \u2013 \u09f3219.2",
+      "chase_cutoff_price": 222.4,
+      "when_to_wait": "If price opens or rises above \u09f3222.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3212.7.",
+      "weekly_target_short": 224.6,
+      "monthly_target_swing": 249.5,
+      "long_term_target_asset": 282.1,
+      "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
+    },
+    "status": "UNDERVALUED_FEAR",
+    "worth_decision": "HIGH_CONVICTION_BUY",
+    "reason": "High Margin of Safety (+21.3%) with depressed market greed (20.0/100) and EARNINGS_BACKED_MERIT. Ideal entry."
+  },
+  "multi_interval_wave": {
+    "intervals": {
+      "weekly_5d": {
+        "return_pct": -0.18,
+        "high": 218.8,
+        "low": 216.6,
+        "range_volatility_pct": 1.02
+      },
+      "monthly_21d": {
+        "return_pct": 0.51,
+        "high": 218.8,
+        "low": 210.0,
+        "range_volatility_pct": 4.19
+      },
+      "quarterly_63d": {
+        "return_pct": -2.78,
+        "high": 227.0,
+        "low": 210.0,
+        "range_volatility_pct": 8.1
+      },
+      "half_yearly_126d": {
+        "return_pct": 1.45,
+        "high": 228.0,
+        "low": 207.0,
+        "range_volatility_pct": 10.14
+      },
+      "yearly_252d": {
+        "return_pct": -1.59,
+        "high": 236.0,
+        "low": 198.0,
+        "range_volatility_pct": 19.19
+      }
+    },
+    "wave_metrics": {
+      "median_rally_gain_pct": 8.7,
+      "median_correction_drop_pct": -7.9,
+      "avg_wave_duration_bars": 26.0
+    },
+    "current_wave_phase": "ACCUMULATION_TROUGH",
+    "phase_guidance": "Near local cyclical trough base. Maximum reward/risk entry point.",
+    "top_seasonal_months": [
+      {
+        "month": "Jul",
+        "avg_return": 5.9,
+        "win_rate": 100.0
+      },
+      {
+        "month": "Jan",
+        "avg_return": 4.9,
+        "win_rate": 100.0
+      },
+      {
+        "month": "Mar",
+        "avg_return": 1.3,
+        "win_rate": 100.0
+      }
+    ],
+    "weak_seasonal_months": [
+      {
+        "month": "Apr",
+        "avg_return": -3.2,
+        "win_rate": 0.0
+      },
+      {
+        "month": "Nov",
+        "avg_return": -3.8,
+        "win_rate": 0.0
+      }
+    ]
+  },
+  "causal_attributions": [
+    {
+      "event_name": "Banking NPL Revelations & Aggressive Monetary Tightening",
+      "category": "ECONOMIC_MONETARY_BANKING",
+      "period": "2024-10-06 to 2025-06-30",
+      "stock_move_pct": -7.81,
+      "behavior": "MODERATE_CYCLICAL_DROP",
+      "root_cause_why": "True extent of banking non-performing loans exposed by Bangladesh Bank. Liquidity squeeze in weak banks, high 12-14% treasury bill yields drew liquidity away from stock market.",
+      "market_impact": "TIGHT_LIQUIDITY_AND_FLIGHT_TO_SAFETY"
+    },
+    {
+      "event_name": "Economic Normalization & Moat Flight",
+      "category": "SECTOR_MACRO_RECOVERY",
+      "period": "2025-07-02 to 2026-10-06",
+      "stock_move_pct": 4.48,
+      "behavior": "DEFENSIVE_STABILITY",
+      "root_cause_why": "FX reserves stabilized with IMF/World Bank assistance. Remittance surge. Selective institutional accumulation into debt-free cash cows with high dividend yields (Square, GP, Olympic, Padma Oil).",
+      "market_impact": "SELECTIVE_FUNDAMENTAL_ACCUMULATION"
+    }
+  ]
+}

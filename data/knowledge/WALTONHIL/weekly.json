@@ -1,0 +1,303 @@
+{
+  "ticker": "WALTONHIL",
+  "timeframe": "weekly",
+  "horizon": "short",
+  "analyzed_at": "2026-10-06T09:32:29.956475",
+  "signal": "STRONG_BUY",
+  "confidence": 69.38,
+  "trajectory": {
+    "direction": "RISE_PREDICTED",
+    "direction_icon": "\ud83d\udfe2",
+    "rise_probability_pct": 86.5,
+    "momentum_status": "Bullish Reversal / Upward Accumulation",
+    "short_term": {
+      "predicted_path": "Upward momentum swing",
+      "upside_potential_pct": "+3.0%",
+      "downside_risk_pct": "-2.0%",
+      "target_price": 341.0,
+      "support_price": 324.5,
+      "risk_reward_ratio": "1.5x"
+    },
+    "mid_term": {
+      "predicted_path": "Cycle valuation recovery to historical median",
+      "upside_potential_pct": "+15.0%",
+      "downside_risk_pct": "-5.0%",
+      "target_price": 380.8,
+      "trailing_stop": 314.5,
+      "risk_reward_ratio": "3.0x"
+    },
+    "long_term": {
+      "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
+      "upside_potential_pct": "+30.0%",
+      "downside_risk_pct": "-9.0%",
+      "target_price": 430.4,
+      "dividend_cagr": "moderate (4.31%)",
+      "risk_reward_ratio": "3.3x"
+    }
+  },
+  "trade_levels": {
+    "entry": 331.1,
+    "stop_loss": 321.17,
+    "target": 350.96
+  },
+  "precision": {
+    "ticker": "WALTONHIL",
+    "smart_money": {
+      "status": "ACTIVE",
+      "latest_date": "Aug 31, 2026",
+      "smart_money_delta_pct": 0.04,
+      "institutional_pct": 1.04,
+      "foreign_pct": 0.03,
+      "sponsor_pct": 71.09,
+      "public_pct": 27.84,
+      "public_delta_pct": -4.04,
+      "classification": "STABLE_HOLDINGS",
+      "conviction_bonus": 0.0,
+      "signal": "Holding shift: Smart money +0.04%, Retail -4.04%"
+    },
+    "cash_flow": {
+      "nocfps": 29.09,
+      "is_estimated": true,
+      "dividend_per_share": 17.5,
+      "dividend_coverage_x": 1.66,
+      "fcf_yield_pct": 8.77,
+      "cash_quality_status": "PRISTINE_REAL_CASH_COVERAGE",
+      "conviction_bonus": 15.0,
+      "signal": "Dividend is 166% cash-covered by real operations (NOCFPS: Tk 29.09 vs DPS: Tk 17.5)"
+    },
+    "liquidity": {
+      "avg_daily_volume": 55752,
+      "daily_turnover_bdt_cr": 1.85,
+      "liquidity_rating": "HEALTHY_LIQUIDITY",
+      "slippage_risk": "LOW",
+      "max_single_order_shares": 2787,
+      "max_daily_accumulation_shares": 8362,
+      "max_order_bdt": 924448.0,
+      "directive": "Max single order: 2,787 shares (Tk 924,448) to prevent >1% execution slippage"
+    },
+    "earnings_acceleration": {
+      "status": "INSUFFICIENT_QUARTERLY_DATA",
+      "acceleration_status": "NORMAL_STABLE",
+      "bonus": 0.0,
+      "signal": "Standard annual EPS trajectory"
+    },
+    "total_precision_bonus": 15.0
+  },
+  "pattern_dna": {
+    "ticker": "WALTONHIL",
+    "audited_at": "2026-10-06 15:32:29",
+    "worth_vs_greed": {
+      "current_price": 331.1,
+      "intrinsic_worth": 554.78,
+      "margin_of_safety_pct": 67.6,
+      "greed_index": 3.0,
+      "rsi_14": 2.1,
+      "price_vs_ema50_pct": -10.7,
+      "price_vs_ema200_pct": -14.5,
+      "status": "UNDERVALUED_FEAR",
+      "worth_decision": "HIGH_CONVICTION_BUY",
+      "reason": "High Margin of Safety (+67.6%) with depressed market greed (3.0/100). Ideal entry."
+    },
+    "multi_interval_wave": {
+      "intervals": {
+        "weekly_5d": {
+          "return_pct": -1.9,
+          "high": 338.0,
+          "low": 330.3,
+          "range_volatility_pct": 2.33
+        },
+        "monthly_21d": {
+          "return_pct": -14.58,
+          "high": 397.5,
+          "low": 330.3,
+          "range_volatility_pct": 20.35
+        },
+        "quarterly_63d": {
+          "return_pct": -16.75,
+          "high": 415.6,
+          "low": 330.3,
+          "range_volatility_pct": 25.83
+        },
+        "half_yearly_126d": {
+          "return_pct": -12.82,
+          "high": 415.6,
+          "low": 330.3,
+          "range_volatility_pct": 25.83
+        },
+        "yearly_252d": {
+          "return_pct": -30.46,
+          "high": 486.0,
+          "low": 330.3,
+          "range_volatility_pct": 47.14
+        }
+      },
+      "wave_metrics": {
+        "median_rally_gain_pct": 16.5,
+        "median_correction_drop_pct": -17.8,
+        "avg_wave_duration_bars": 22.0
+      },
+      "current_wave_phase": "BOTTOMING_SUPPORT",
+      "phase_guidance": "Drop (-19.2%) matches historical correction depth (-17.8%). Prepare to accumulate.",
+      "top_seasonal_months": [
+        {
+          "month": "Jul",
+          "avg_return": 11.9,
+          "win_rate": 100.0
+        },
+        {
+          "month": "Jan",
+          "avg_return": 2.2,
+          "win_rate": 100.0
+        },
+        {
+          "month": "Sep",
+          "avg_return": 2.2,
+          "win_rate": 50.0
+        }
+      ],
+      "weak_seasonal_months": [
+        {
+          "month": "May",
+          "avg_return": -8.1,
+          "win_rate": 0.0
+        },
+        {
+          "month": "Oct",
+          "avg_return": -20.0,
+          "win_rate": 0.0
+        }
+      ]
+    },
+    "causal_attributions": [
+      {
+        "event_name": "Banking NPL Revelations & Aggressive Monetary Tightening",
+        "category": "ECONOMIC_MONETARY_BANKING",
+        "period": "2024-10-06 to 2025-06-30",
+        "stock_move_pct": -25.93,
+        "behavior": "SEVERE_VULNERABILITY",
+        "root_cause_why": "True extent of banking non-performing loans exposed by Bangladesh Bank. Liquidity squeeze in weak banks, high 12-14% treasury bill yields drew liquidity away from stock market.",
+        "market_impact": "TIGHT_LIQUIDITY_AND_FLIGHT_TO_SAFETY"
+      },
+      {
+        "event_name": "Economic Normalization & Moat Flight",
+        "category": "SECTOR_MACRO_RECOVERY",
+        "period": "2025-07-02 to 2026-10-06",
+        "stock_move_pct": -19.28,
+        "behavior": "SEVERE_VULNERABILITY",
+        "root_cause_why": "FX reserves stabilized with IMF/World Bank assistance. Remittance surge. Selective institutional accumulation into debt-free cash cows with high dividend yields (Square, GP, Olympic, Padma Oil).",
+        "market_impact": "SELECTIVE_FUNDAMENTAL_ACCUMULATION"
+      }
+    ]
+  },
+  "technical": {
+    "score": null,
+    "signals": {
+      "error": "insufficient_data_lt_30_bars"
+    },
+    "sr": {}
+  },
+  "fundamental": {
+    "score": 72.5,
+    "signals": {
+      "eps": "positive (34.22)",
+      "pe": "deep_value (9.693161893629457)",
+      "nav": 399.74,
+      "dividend_yield": "moderate (4.31%)",
+      "debt_equity_val": 0.181,
+      "long_term_debt_equity_val": 0.038,
+      "debt_equity": "pristine_low (0.181)",
+      "loan_trap_risk": "none",
+      "dividend_track_record_years": 5,
+      "dividend_consistency": "proven_compounder (5 yrs cash divs)",
+      "roe": "weak (8.56%)",
+      "downturn_resilience": {
+        "status": "growth_at_discount",
+        "drawdown_pct": 27.7,
+        "high_52w": 458.1,
+        "low_52w": 330.3,
+        "note": "Share price down 27.7% from 52w peak, yet earnings positive/steady (Conviction discount)"
+      }
+    }
+  },
+  "management": {
+    "ticker": "WALTONHIL",
+    "company_name": "Walton Hi-Tech Industries PLC",
+    "chairman": "S.M. Nurul Alam Rezvi",
+    "managing_director_ceo": "S.M. Shamsul Alam",
+    "leadership_type": "Industrial Manufacturing Pioneer Family + Professional Board",
+    "industry_experience_years": 32,
+    "governance_rating": "A+",
+    "audit_credibility": "High",
+    "key_moat": "70%+ domestic refrigerator market share, integrated compressor manufacturing, low debt",
+    "management_risk": "Low",
+    "governance_score": 80
+  },
+  "news_intent": {
+    "ticker": "WALTONHIL",
+    "intent_score": 0.0,
+    "dominant_intent": "NO_RECENT_NEWS",
+    "articles_analyzed": 0,
+    "red_flags": [],
+    "catalysts": []
+  },
+  "sentiment": {
+    "score": 50.0,
+    "signals": {
+      "news_count": 0,
+      "note": "no_news_neutral"
+    }
+  },
+  "manipulation": {
+    "manipulation_score": 0,
+    "manipulation_risk": "low",
+    "block_buy": false,
+    "flags": [],
+    "checks": {
+      "volume_price_divergence": {
+        "flag": false,
+        "price_chg": 0,
+        "last_volume": 28528,
+        "avg_volume": 56780.0,
+        "detail": "ok"
+      },
+      "volume_spike": {
+        "flag": false,
+        "spike_ratio": 0.51,
+        "avg_volume": 56463.0,
+        "today_volume": 28528,
+        "detail": "ok"
+      },
+      "serial_trading": {
+        "flag": false,
+        "suspicious_days": 0,
+        "detail": "ok"
+      },
+      "circuit_breaker": {
+        "flag": false,
+        "circuit_hits": 0,
+        "detail": "ok"
+      },
+      "sponsor_exit": {
+        "flag": false,
+        "detail": "insufficient_fundamental_history"
+      },
+      "price_surge_no_news": {
+        "flag": false,
+        "price_change_3d": -1.72,
+        "news_count_3d": 0,
+        "detail": "ok"
+      }
+    }
+  },
+  "composite": {
+    "composite_score": 69.38,
+    "governance_score": 80,
+    "sentiment_score": 50.0,
+    "applied_weights": {
+      "fundamental": 0.692,
+      "technical": 0.077,
+      "governance": 0.127,
+      "sentiment": 0.104
+    }
+  }
+}

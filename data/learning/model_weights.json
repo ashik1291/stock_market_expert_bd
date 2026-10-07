@@ -1,0 +1,30 @@
+{
+  "smart_money_weight": 0.939,
+  "valuation_mos_weight": 0.939,
+  "debt_npl_weight": 0.939,
+  "rsi_momentum_weight": 1.092,
+  "macd_trend_weight": 1.0,
+  "governance_weight": 1.1,
+  "macro_bias_weight": 1.0,
+  "learning_rate": 0.05,
+  "total_training_cycles": 125,
+  "overall_accuracy_pct": 66.4,
+  "updated_at": "2026-10-07T11:04:29.141022",
+  "accuracy_ci_95": "[57.7% \u2013 74.1%]",
+  "net_expectancy_pct": 2.23,
+  "avg_win_pct": 8.3,
+  "avg_loss_pct": 7.29,
+  "brier_score": 0.2439,
+  "reliability_calibration": {
+    "65-80%": {
+      "count": 90,
+      "mean_predicted_prob_pct": 70.0,
+      "observed_hit_rate_pct": 71.1
+    },
+    "80-100%": {
+      "count": 35,
+      "mean_predicted_prob_pct": 85.0,
+      "observed_hit_rate_pct": 54.3
+    }
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "ticker": "PADMAOIL",
+  "audited_at": "2026-10-06 15:32:29",
+  "worth_vs_greed": {
+    "current_price": 193.6,
+    "intrinsic_worth": 595.28,
+    "margin_of_safety_pct": 207.5,
+    "greed_index": 8.0,
+    "rsi_14": 49.5,
+    "price_vs_ema50_pct": -0.6,
+    "price_vs_ema200_pct": 2.4,
+    "status": "UNDERVALUED_FEAR",
+    "worth_decision": "HIGH_CONVICTION_BUY",
+    "reason": "High Margin of Safety (+207.5%) with depressed market greed (8.0/100). Ideal entry."
+  },
+  "multi_interval_wave": {
+    "intervals": {
+      "weekly_5d": {
+        "return_pct": -1.53,
+        "high": 198.5,
+        "low": 192.0,
+        "range_volatility_pct": 3.39
+      },
+      "monthly_21d": {
+        "return_pct": 0.26,
+        "high": 198.5,
+        "low": 191.3,
+        "range_volatility_pct": 3.76
+      },
+      "quarterly_63d": {
+        "return_pct": -5.28,
+        "high": 205.4,
+        "low": 191.3,
+        "range_volatility_pct": 7.37
+      },
+      "half_yearly_126d": {
+        "return_pct": 9.81,
+        "high": 205.5,
+        "low": 172.7,
+        "range_volatility_pct": 18.99
+      },
+      "yearly_252d": {
+        "return_pct": -1.93,
+        "high": 205.5,
+        "low": 163.8,
+        "range_volatility_pct": 25.46
+      }
+    },
+    "wave_metrics": {
+      "median_rally_gain_pct": 16.8,
+      "median_correction_drop_pct": -6.4,
+      "avg_wave_duration_bars": 37.0
+    },
+    "current_wave_phase": "BOTTOMING_SUPPORT",
+    "phase_guidance": "Drop (-5.8%) matches historical correction depth (-6.4%). Prepare to accumulate.",
+    "top_seasonal_months": [
+      {
+        "month": "Jul",
+        "avg_return": 10.9,
+        "win_rate": 100.0
+      },
+      {
+        "month": "Nov",
+        "avg_return": 6.6,
+        "win_rate": 100.0
+      },
+      {
+        "month": "Jun",
+        "avg_return": 2.7,
+        "win_rate": 100.0
+      }
+    ],
+    "weak_seasonal_months": [
+      {
+        "month": "Jan",
+        "avg_return": -2.2,
+        "win_rate": 50.0
+      },
+      {
+        "month": "Dec",
+        "avg_return": -12.9,
+        "win_rate": 0.0
+      }
+    ]
+  },
+  "causal_attributions": [
+    {
+      "event_name": "Banking NPL Revelations & Aggressive Monetary Tightening",
+      "category": "ECONOMIC_MONETARY_BANKING",
+      "period": "2024-10-06 to 2025-06-30",
+      "stock_move_pct": -6.3,
+      "behavior": "MODERATE_CYCLICAL_DROP",
+      "root_cause_why": "True extent of banking non-performing loans exposed by Bangladesh Bank. Liquidity squeeze in weak banks, high 12-14% treasury bill yields drew liquidity away from stock market.",
+      "market_impact": "TIGHT_LIQUIDITY_AND_FLIGHT_TO_SAFETY"
+    },
+    {
+      "event_name": "Economic Normalization & Moat Flight",
+      "category": "SECTOR_MACRO_RECOVERY",
+      "period": "2025-07-02 to 2026-10-06",
+      "stock_move_pct": 5.68,
+      "behavior": "DEFENSIVE_STABILITY",
+      "root_cause_why": "FX reserves stabilized with IMF/World Bank assistance. Remittance surge. Selective institutional accumulation into debt-free cash cows with high dividend yields (Square, GP, Olympic, Padma Oil).",
+      "market_impact": "SELECTIVE_FUNDAMENTAL_ACCUMULATION"
+    }
+  ]
+}
