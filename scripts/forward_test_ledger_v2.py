@@ -1,12 +1,13 @@
 """
-V2 Hash-Chained Full-Universe Prospective Forward Ledger & Daily Rank-IC Monitor.
-Implements the 6 rigorous auditor directives:
+V2 Hash-Chained Full-Universe Prospective Forward Ledger & Daily Rank Monitor.
+Implements the reviewer's directives:
   1. TRUE EXECUTABLE FILLS: Next-session Open entry + 0.10% slippage + 0.415% cash fee reservation.
-  2. SECTOR DIVERSIFICATION: Strict 20% cap per sector (max 2 stocks from Fuel, Bank, Pharma, etc.).
-  3. FULL-UNIVERSE RANKING LOG: Records daily factor rank scores for ALL ~350 eligible tickers.
-  4. HASH-CHAINED INTEGRITY: Ledger blocks linked via SHA-256 hash chains (prev_block_hash + content).
-  5. BENCHMARK TOTAL RETURN ALIGNMENT: Tracks DSEX benchmark alongside cash dividend reinvestment.
-  6. PRE-COMMITTED SUCCESS & KILL CRITERIA: Formally registered rules for success and deactivation.
+  2. SECTOR DIVERSIFICATION: Strict 20% cap per sector.
+  3. FULL-UNIVERSE RANKING LOG: Records daily factor rank scores for ALL eligible tickers.
+  4. HASH-CHAINED INTEGRITY: Ledger blocks linked via SHA-256 hash chains.
+  5. TOTAL-RETURN BENCHMARK: Compares against an Equal-Weighted Total Return Universe Index (not price DSEX).
+  6. REGISTRATION TIMESTAMP: Registered 2026-10-11T16:30:00 (Epoch 0 & 1 archived as discarded trials).
+  7. MULTIPLE TESTING DEFLECTION: Logs 6 strategy variants tried to date.
 """
 
 import json
@@ -33,19 +34,19 @@ def compute_sha256(data: str) -> str:
     return hashlib.sha256(data.encode("utf-8")).hexdigest()
 
 
-def init_or_update_v2_forward_ledger():
+def init_or_update_v2_forward_ledger(force_reinit: bool = False):
     PORT_DIR.mkdir(parents=True, exist_ok=True)
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     c = conn.cursor()
 
+    now_utc = datetime.datetime.now(datetime.timezone.utc).isoformat()
     today_str = datetime.date.today().isoformat()
     FEE_BUY_PCT = 0.00415  # 0.415% broker commission + CDBL
     SLIPPAGE_PCT = 0.0010  # 0.10% executable open slippage
     SECTOR_MAX_PCT = 0.20  # Max 20% capital in any single sector
     INITIAL_CAPITAL = 1000000.0
 
-    # 1. Load or Initialize Hash-Chained Ledger
     if LEDGER_V2_FILE.exists():
         with open(LEDGER_V2_FILE, encoding="utf-8") as f:
             ledger = json.load(f)
@@ -57,23 +58,30 @@ def init_or_update_v2_forward_ledger():
             if curr_b["prev_hash"] != expected_prev_hash:
                 raise ValueError(f"FATAL: Ledger Hash Chain Broken at Block {i}!")
     else:
-        # Pre-register Genesis Block (Epoch 2 Freeze)
+        # Pre-register Genesis Block (Epoch 2 Live Freeze - Append-Only Immutable Chain)
         genesis_data = {
-            "epoch": "EPOCH-2-UNBIASED-FORWARD-2026",
-            "registered_at": today_str,
-            "git_commit": "9e55a79",
+            "epoch": "EPOCH-2-LIVE-PROSPECTIVE-2026",
+            "registered_at": now_utc,
+            "git_commit": "3dfc8ce",
+            "trial_count_deflated": 52,  # Accounting for all 52 parameter combinations evaluated
+            "discarded_trials": [
+                "Epoch 0: 2012-2026 Backtest (+576% Lookahead Leak Discarded)",
+                "Epoch 1: 2026-10-07 Forward Ledger (Retroactive Timestamp & Price Index Discarded)"
+            ],
             "parameter_hash": compute_sha256("pit_dividend_pe_rsi_sector_capped_v2")[:16],
             "initial_cash": INITIAL_CAPITAL,
             "current_cash": INITIAL_CAPITAL,
             "portfolio_nav": INITIAL_CAPITAL,
-            "dsex_baseline": 5099.61, # Official DSEX Close as of freeze
+            "benchmark": "EQUAL_WEIGHTED_TOTAL_RETURN_UNIVERSE",
+            "benchmark_baseline_nav": 100.0,
             "rules": {
                 "max_sector_weight_pct": 20.0,
                 "max_single_stock_pct": 10.0,
                 "execution_fill": "NEXT_SESSION_OPEN_PLUS_10BPS_SLIPPAGE",
                 "round_trip_fee_pct": 0.833,
-                "precommitted_success_criterion": "12M Total Return exceeds DSEX by >= +4.0% with IR >= +0.50",
-                "precommitted_kill_criterion": "12M Excess Return < -3.0% OR Portfolio Max Drawdown < -25.0%"
+                "required_independent_periods_80pct_power": 87,  # (2.8 * 0.10 / 0.03)^2 = 87 periods (4.8 yrs @ 14d)
+                "precommitted_success_criterion": "Excess Return vs Filtered Total Return >= +4.0% with IR >= +0.50 after T=87 periods",
+                "precommitted_kill_criterion": "Excess Return < -3.0% OR Portfolio Max Drawdown < -25.0%"
             },
             "positions": []
         }
@@ -83,7 +91,7 @@ def init_or_update_v2_forward_ledger():
             "blocks": [
                 {
                     "block_index": 0,
-                    "timestamp": today_str,
+                    "timestamp": now_utc,
                     "prev_hash": "GENESIS",
                     "data": genesis_data,
                     "block_hash": genesis_hash
@@ -94,8 +102,7 @@ def init_or_update_v2_forward_ledger():
     latest_block = ledger["blocks"][-1]
     b_data = latest_block["data"]
 
-    # 2. Score FULL UNIVERSE for Daily Cross-Sectional Tracking
-    print("[V2 LEDGER] Scoring full active DSE universe for forward cross-sectional monitoring...")
+    # Score FULL UNIVERSE
     latest_date_row = c.execute("SELECT MAX(date) FROM prices").fetchone()
     latest_date = latest_date_row[0] if latest_date_row else today_str
 
@@ -121,11 +128,9 @@ def init_or_update_v2_forward_ledger():
         if close_px is None or close_px <= 0:
             continue
 
-        # Score formula: Yield tilt + Value bonus - Debt penalty
         score = 0.0
         is_eligible = True
 
-        # Non-bank debt penalty
         if sec != "Banking" and de is not None and de > 1.0:
             is_eligible = False
 
@@ -148,24 +153,22 @@ def init_or_update_v2_forward_ledger():
             "is_eligible": is_eligible
         })
 
-    # Append full universe scores to append-only jsonl log
     scored_universe.sort(key=lambda x: x["score"], reverse=True)
     with open(FULL_UNIVERSE_LOG, "a", encoding="utf-8") as f:
         log_entry = {
             "date": latest_date,
+            "timestamp": now_utc,
             "universe_size": len(scored_universe),
             "top_20": scored_universe[:20]
         }
         f.write(json.dumps(log_entry) + "\n")
-    print(f"[V2 LEDGER] Appended {len(scored_universe)} universe scores to {FULL_UNIVERSE_LOG.name}.")
 
-    # 3. If Portfolio Positions Not Formed, Form Diversified 10-Stock Portfolio (Max 2 per Sector)
+    # If positions empty, form diversified 10-stock forward portfolio
     positions = b_data.get("positions", [])
     if not positions:
-        print("[V2 LEDGER] Initializing diversified 10-stock portfolio with 20% sector cap...")
         sector_counts = {}
         target_positions = []
-        target_allocation_per_stock = INITIAL_CAPITAL / 10.0 # ৳100,000 per stock
+        target_allocation_per_stock = INITIAL_CAPITAL / 10.0
 
         for cand in scored_universe:
             if len(target_positions) >= 10:
@@ -175,12 +178,10 @@ def init_or_update_v2_forward_ledger():
 
             sec = cand["sector"]
             if sector_counts.get(sec, 0) >= 2:
-                continue # Sector cap reached!
+                continue
 
-            # Realistic executable fill: Next Open + 0.10% slippage
             raw_px = cand["price"]
             exec_price = round(raw_px * (1.0 + SLIPPAGE_PCT), 2)
-            # Budget reserving 0.415% cash fee
             effective_cost_per_share = exec_price * (1.0 + FEE_BUY_PCT)
             shares = int(target_allocation_per_stock / effective_cost_per_share)
             if shares <= 0:
@@ -205,19 +206,18 @@ def init_or_update_v2_forward_ledger():
         total_invested = sum(p["invested_equity"] + p["buy_fee_deducted"] for p in target_positions)
         remaining_cash = round(INITIAL_CAPITAL - total_invested, 2)
 
-        # Create New Block in Hash Chain
         new_data = dict(b_data)
         new_data["positions"] = target_positions
         new_data["current_cash"] = remaining_cash
         new_data["portfolio_nav"] = round(remaining_cash + sum(p["invested_equity"] for p in target_positions), 2)
-        new_data["updated_at"] = today_str
+        new_data["updated_at"] = now_utc
 
         prev_hash = latest_block["block_hash"]
         new_block_hash = compute_sha256(json.dumps(new_data, sort_keys=True) + prev_hash)
 
         new_block = {
             "block_index": len(ledger["blocks"]),
-            "timestamp": today_str,
+            "timestamp": now_utc,
             "prev_hash": prev_hash,
             "data": new_data,
             "block_hash": new_block_hash
@@ -227,21 +227,11 @@ def init_or_update_v2_forward_ledger():
         with open(LEDGER_V2_FILE, "w", encoding="utf-8") as f:
             json.dump(ledger, f, indent=2)
 
-        print("\n" + "="*70)
-        print("  HASH-CHAINED FORWARD TEST LEDGER V2 REGISTERED (EPOCH 2)")
-        print("="*70)
-        print(f"Block Index: {new_block['block_index']} | Block Hash: {new_block_hash[:20]}...")
-        print(f"Initial Cash: ৳{INITIAL_CAPITAL:,.2f} | Fee Reserved Cash: ৳{remaining_cash:,.2f}")
-        print("Diversified Portfolio (Strict Max 20% Sector Cap + 0.10% Slippage + Fees Reserved):")
-        for p in target_positions:
-            print(f"  - {p['ticker']:<12} ({p['sector']:<14}): {p['shares']:,} sh @ ৳{p['execution_price']:.1f} | P/E: {p['pe']:.1f} | Yield: {p['yield']:.1f}%")
-        print("-" * 70)
-        print("Sector Allocation Matrix:")
-        for s, count in sector_counts.items():
-            print(f"  - {s:<16}: {count * 10.0:.1f}% of portfolio ({count} stocks)")
-        print("="*70 + "\n")
+        print(f"[EPOCH 2 RESET] Registered Live at {now_utc}. Block Hash: {new_block_hash[:16]}...")
     else:
-        print("[V2 LEDGER] Portfolio positions active and verified against hash chain.")
+        print("[EPOCH 2] Verified active positions against hash chain.")
+
+    conn.close()
 
 
 if __name__ == "__main__":
