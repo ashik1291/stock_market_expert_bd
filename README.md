@@ -53,10 +53,10 @@ The **DSE Quantitative Intelligence Engine** is engineered to eliminate **guessw
          ┌────────────────────────────────┴────────────────────────────────┐
          ▼                                                                 ▼
 [Approved Actionable Lists]                                    [Quarantine / Blockades]
- • Long-Term Moats (1–5y)                                       • Debt Traps (D/E > 1.2)
- • Mid-Term Swings (+15% Target)                                • Manipulation Risks
- • Short-Term Scalps (2–5% Target)                              • Retail Distribution Traps
- • Exact Entry, ATR Stop, Max Safe Order                        • Market Greed Euphoria Traps
+ • Long-Term Moats (1–5y Compounders)                           • Debt Traps (D/E >= 1.0)
+ • Mid-Term Swings (+15% Target)                                • Manipulation & Syndicate Pumps
+ • Scalps Disabled (Friction kills expectancy)                  • Retail Distribution Traps
+ • Exact Entry, Stop-Loss, Max Safe Order                       • Bubble Multiples (Graham Product > 22.5)
          └────────────────────────────────┬────────────────────────────────┘
                                           │
                                           ▼

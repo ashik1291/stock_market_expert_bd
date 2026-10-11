@@ -104,6 +104,14 @@ Knowledge base of real-world lessons, verified endpoints, and operational guardr
    - **Adaptive Weights**: Bank NPL (2.0x), Margin of Safety (2.0x), and Smart Money Delta (2.0x) rewarded for high predictive win-rates; isolated RSI oversold bounces downweighted (0.4x) to avoid falling knives.
    - **Mistake Diagnostics Report**: Publishes root-cause failure autopsies to `reports/learning/prediction_accuracy_evaluation.md`.
 
+15. **Quantitative Epistemic Autopsy & Reviewer Lessons (October 2026 Audit)**:
+    - **Backtest Lookahead Deconstruction**: Naive backtests using modern fundamentals joined to historical prices create massive phantom alpha (+576%). Under strict point-in-time rules and 0.833% friction, factor models underperform random 1,000-draw nulls ($p = 0.865$).
+    - **Friction Completely Kills High-Turnover Technical Alpha**: Tested 14-day RSI oversold decile (2020–2026, 112 periods). Rebalance turnover is 90.9% per cycle. Round-trip friction (1.033% fee + slippage) consumes all gross edge ($t_{\text{gross}} = +0.26$), yielding **-15.47% net annualized return vs benchmark ($t = -3.12$)**. Single-factor technical anomalies are dead net of costs.
+    - **Fundamental Data Provenance Boundary**: The Mendeley 14-year archive has daily OHLCV prices, but NO historical quarterly balance sheet filing dates from 2012–2025. Claiming 14-year fundamental backtests leaks future financial health. D/E < 1.0 and P/E multiples are textbook defensive screening heuristics, evaluated strictly forward.
+    - **Independent Period Power Math**: Statistical power requires independent time periods ($T$), not stock-pairs. For 80% power at $IC = 0.03$ and $sd(IC) = 0.10$, requires $T \approx 87$ independent periods (**4.8 years** at 14d rebalance; **22 years** at 63d). True alpha validation cannot be rushed.
+    - **Append-Only Immutable Ledger (Epoch 2)**: The forward paper test (`forward_test_ledger_v2.json`) is strictly append-only, sealed with live UTC system timestamps, benchmarks against an Equal-Weighted Total Return Universe, and tracks 52 deflated trial configurations.
+    - **The Subtractive Edge**: The true role of the engine is not predicting short-term prices, but **eliminating the 90% worst stocks** on DSE (debt traps, zombie firms, retail pumps) and enforcing disciplined 5-year accumulation in zero-debt, cash-generating moats.
+
 ---
 
 ## 4. Visual Chart Capabilities

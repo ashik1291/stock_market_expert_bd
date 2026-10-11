@@ -20,21 +20,33 @@
 
 ---
 
-## 2. Monthly ৳2,000 Deployment Rotation (3 + 3 Structure)
+## 2. Monthly ৳2,000 Deployment Rotation & Fair Price Corridors
 
-### Odd Months (Months 1, 3, 5, ...): High Yield & Healthcare Anchor
-- **SQURPHARMA**: Buy 4 shares @ ~৳217.2 = ৳868.80
-- **JAMUNAOIL**: Buy 3 shares @ ~৳177.4 = ৳532.20
-- **GP**: Buy 2 shares @ ~৳242.6 = ৳485.20
-- **Fees (0.4%)**: ~৳7.55
-- **Outlay**: ~৳1,893.75 (Remaining cash carried forward: ~৳106.25)
+### 🛡️ Safe Buy Price Corridors (Buy With No Issues Through Daily Fluctuations)
+*Because daily prices rise and fall 1%–2%, buy anytime the stock is inside this Safe Price Corridor. These prices guarantee high dividend yields and strong margins of safety:*
 
-### Even Months (Months 2, 4, 6, ...): Infrastructure, Steel & Consumer
-- **BSRMLTD**: Buy 6 shares @ ~৳101.5 = ৳609.00
-- **OLYMPIC**: Buy 4 shares @ ~৳144.7 = ৳578.80
-- **LHB**: Buy 14 shares @ ~৳52.2 = ৳730.80
-- **Fees (0.4%)**: ~৳7.67
-- **Outlay**: ~৳1,926.27 (Remaining cash carried forward: ~৳73.73 + prior reserve)
+| Ticker | Current Live Px | Safe Buy Corridor (No Issues) | Maximum Price Ceiling | Intrinsic Fair Value | Why It Is Safe |
+|---|---|---|---|---|---|
+| **JAMUNAOIL** | ৳179.20 | **৳172.00 – ৳185.00** | ৳195.00 | **৳515.80** | Trades below book value (`NAV ৳274`), 9.9% cash yield, zero debt. |
+| **SQURPHARMA** | ৳218.50 | **৳214.00 – ৳222.00** | ৳230.00 | **৳344.24** | 5-year structural floor, P/E 8.0x, 18% domestic share, cash rich. |
+| **GP** | ৳241.70 | **৳238.00 – ৳248.00** | ৳255.00 | **৳285.00** | Generates 8.3% cash dividend; guaranteed >8% yield below ৳250. |
+
+---
+
+### Month 1 Execution (End of October / Right Now):
+*Current portfolio has 0 shares of JAMUNAOIL. Anchor sovereign energy cash machine first:*
+- **JAMUNAOIL**: Buy **5 shares** (Budget: ~৳896.00 @ limit ৳178–180)
+- **SQURPHARMA**: Buy **3 shares** (Budget: ~৳655.50 @ limit ৳217–219)
+- **GP**: Buy **1 share** (Budget: ~৳241.70 @ limit ৳240–242)
+- **Estimated Brokerage (0.4%)**: ~৳7.17
+- **Total Month 1 Deployed**: **৳1,800.37** (Cash buffer remaining: ~৳199.63)
+
+### Month 2 Execution (End of Next Month):
+*Expands into Steel, FMCG & Infrastructure:*
+- **BSRMLTD**: Buy **6 shares** @ ৳98–101 = ~৳595.20 (Safe Corridor: ৳95–103)
+- **OLYMPIC**: Buy **4 shares** @ ৳140–143 = ~৳564.00 (Safe Corridor: ৳138–145)
+- **LHB**: Buy **15 shares** @ ৳51–53 = ~৳783.00 (Safe Corridor: ৳50–54)
+- **Total Month 2 Deployed**: **৳1,949.97** (Cash buffer rolls over)
 
 ---
 
