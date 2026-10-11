@@ -94,7 +94,9 @@ def cmd_refresh():
         ("6. Daily Rise vs Fall Directional Scanner", "daily_rise_fall_scanner.py", ["weekly"]),
         ("7. Tri-Horizon Recommender & Visual Chart Generator", "recommender.py", ["weekly"]),
         ("8. 5-Sector Matrix Evaluation", "sector_matrix_evaluator.py", []),
-        ("9. V2 Forward Epoch Tracker & Daily Universe Rank", "forward_test_ledger_v2.py", [])
+        ("9. V2 Forward Epoch Tracker & Daily Universe Rank", "forward_test_ledger_v2.py", []),
+        ("10. Auditor Footnote & Regulatory Risk Parser", "auditor_footnote_parser.py", []),
+        ("11. Forward IC & Benchmark Alpha Evaluator", "forward_ic_evaluator.py", [])
     ]
 
     for idx, (title, script, args) in enumerate(steps, 1):

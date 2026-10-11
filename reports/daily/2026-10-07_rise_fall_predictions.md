@@ -1,7 +1,7 @@
 # 📊 Daily DSE Directional Predictions: Rise vs Fall Matrix — 2026-10-07
 
-**Generated**: 2026-10-07 11:37:48 | **Total Instruments Audited**: 80 Category A Companies  
-**Engine Version**: `baseline-v1.0` (`0817fab`) | **Data Snapshot ID**: `DB-2026-10-07-PIT`  
+**Generated**: 2026-10-07 14:30:24 | **Total Instruments Audited**: 80 Category A Companies  
+**Engine Version**: `baseline-v1.0` (`3dfc8ce`) | **Data Snapshot ID**: `DB-2026-10-07-PIT`  
 **Empirical Status**: *Validated as Risk/Junk Filter (0.0% data corruption). Unvalidated as Profit-Generating Predictor (Permutation p = 0.608 vs Random Null).*
 
 **Macro Bias**: `Neutral / No Recent News` (Score: 0/100)
@@ -48,9 +48,9 @@
 | **MEGHNACEM** | ৳28.2 | Excessive Loan Burden (D/E: 10.733) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
 | **ARAMITCEM** | ৳10.7 | Excessive Loan Burden (D/E: 17.553) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
 
-## 🛡️ Daily Execution Rules for Capital Profit
+## 🛡️ Daily Execution Rules for Capital Protection
 
-1. **Buy Green Only**: Allocate capital exclusively to companies with 🟢 **Tier 1 Strong Conviction**.
+1. **Screened Candidates Only**: Evaluate investments exclusively from companies passing debt, cash flow, and Margin of Safety filters.
 2. **Zero Tolerance on Red**: Never buy any stock on the 🔴 **Predicted to Fall** list, no matter how cheap the share price appears.
 3. **Slippage Enforcement**: Never place a single order larger than the **Max Safe Order** limit.
 

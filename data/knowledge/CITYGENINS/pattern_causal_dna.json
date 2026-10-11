@@ -1,94 +1,151 @@
 {
   "ticker": "CITYGENINS",
-  "audited_at": "2026-10-06 15:32:30",
+  "audited_at": "2026-10-11 19:10:53",
   "worth_vs_greed": {
-    "current_price": 131.0,
-    "intrinsic_worth": 42.16,
-    "margin_of_safety_pct": -67.8,
-    "greed_index": 30.0,
-    "rsi_14": 61.1,
-    "price_vs_ema50_pct": 5.1,
-    "price_vs_ema200_pct": 25.9,
+    "current_price": 130.5,
+    "intrinsic_worth": 34.68,
+    "margin_of_safety_pct": -73.4,
+    "extension_froth_score": 20.0,
+    "greed_index": 20.0,
+    "rsi_14": 59.5,
+    "price_vs_ema50_pct": 4.3,
+    "price_vs_ema200_pct": 24.5,
+    "merit_status": "NEUTRAL_MERIT",
+    "merit_reason": "Valuation is within normal historical ranges.",
+    "timing_directives": {
+      "optimal_entry_corridor": "\u09f3127.9 \u2013 \u09f3131.8",
+      "chase_cutoff_price": 133.8,
+      "when_to_wait": "If price opens or rises above \u09f3133.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3127.9.",
+      "weekly_target_short": 135.1,
+      "monthly_target_swing": 150.1,
+      "long_term_target_asset": 169.7,
+      "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
+    },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -67.8%)."
+    "reason": "Fundamental value severely lags stock price (MoS: -73.4%)."
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 0.38,
+        "return_pct": -0.84,
         "high": 135.0,
-        "low": 128.9,
-        "range_volatility_pct": 4.73
+        "low": 129.3,
+        "range_volatility_pct": 4.41
       },
       "monthly_21d": {
-        "return_pct": 2.18,
+        "return_pct": 2.59,
         "high": 135.0,
         "low": 127.0,
         "range_volatility_pct": 6.3
       },
       "quarterly_63d": {
-        "return_pct": 22.32,
+        "return_pct": 21.62,
         "high": 135.0,
         "low": 106.5,
         "range_volatility_pct": 26.76
       },
       "half_yearly_126d": {
-        "return_pct": 32.59,
+        "return_pct": 30.76,
         "high": 135.0,
-        "low": 98.6,
-        "range_volatility_pct": 36.92
+        "low": 98.7,
+        "range_volatility_pct": 36.78
       },
       "yearly_252d": {
-        "return_pct": 101.23,
+        "return_pct": 98.33,
         "high": 135.0,
-        "low": 65.0,
-        "range_volatility_pct": 107.69
+        "low": 65.6,
+        "range_volatility_pct": 105.79
       }
     },
     "wave_metrics": {
-      "median_rally_gain_pct": 15.2,
-      "median_correction_drop_pct": -9.2,
-      "avg_wave_duration_bars": 18.0
+      "median_rally_gain_pct": 21.4,
+      "median_correction_drop_pct": -17.3,
+      "avg_wave_duration_bars": 26.0
     },
     "current_wave_phase": "LATE_MARKUP",
-    "phase_guidance": "Approaching historical rally limit (+28.6% vs median +15.2%). Tighten stop.",
+    "phase_guidance": "Approaching historical rally limit (+28.1% vs median +21.4%). Tighten stop.",
     "top_seasonal_months": [
       {
-        "month": "Aug",
-        "avg_return": 19.2,
-        "win_rate": 100.0
+        "month": "Sep",
+        "avg_return": 5.6,
+        "win_rate": 71.0
       },
       {
         "month": "May",
-        "avg_return": 18.2,
-        "win_rate": 100.0
+        "avg_return": 3.9,
+        "win_rate": 58.0
       },
       {
-        "month": "Oct",
-        "avg_return": 11.0,
-        "win_rate": 100.0
+        "month": "Jan",
+        "avg_return": 3.5,
+        "win_rate": 43.0
       }
     ],
     "weak_seasonal_months": [
       {
-        "month": "Feb",
-        "avg_return": -5.9,
-        "win_rate": 0.0
+        "month": "Nov",
+        "avg_return": -1.8,
+        "win_rate": 29.0
       },
       {
-        "month": "Nov",
-        "avg_return": -8.3,
-        "win_rate": 50.0
+        "month": "Mar",
+        "avg_return": -3.5,
+        "win_rate": 29.0
       }
     ]
   },
   "causal_attributions": [
     {
+      "event_name": "BSEC Floor Price Regime",
+      "category": "REGULATORY_LAW_AND_ORDER",
+      "period": "2022-07-28 to 2024-01-18",
+      "stock_move_pct": 87.02,
+      "behavior": "STRONG_RESILIENCE_OR_BENEFICIARY",
+      "root_cause_why": "Floor prices imposed on all stocks to stop free-fall. Artificially froze liquidity, trapped institutional capital, volume dried up to historic lows.",
+      "market_impact": "LIQUIDITY_FREEZE"
+    },
+    {
+      "event_name": "Phased Floor Price Removal & Price Discovery",
+      "category": "REGULATORY_LAW_AND_ORDER",
+      "period": "2024-01-18 to 2024-03-31",
+      "stock_move_pct": 81.02,
+      "behavior": "STRONG_RESILIENCE_OR_BENEFICIARY",
+      "root_cause_why": "BSEC lifted floor prices in waves. Triggered sharp 1,000+ point DSEX correction as artificial valuations collapsed to fair market levels.",
+      "market_impact": "SHARP_DELEVERAGING"
+    },
+    {
+      "event_name": "SMART Interest Rate & Lending Cap Removal",
+      "category": "ECONOMIC_MONETARY",
+      "period": "2023-07-02 to 2024-05-08",
+      "stock_move_pct": 86.78,
+      "behavior": "STRONG_RESILIENCE_OR_BENEFICIARY",
+      "root_cause_why": "Bangladesh Bank replaced fixed 9% lending cap with SMART rate, later moving to pure market-based repo tightening (repo hiked to 8.5%-10.0%). Corporate borrowing cost surged from 9% to 14-16%.",
+      "market_impact": "DEBT_BURDEN_SHOCK"
+    },
+    {
+      "event_name": "Political Turmoil & National Student Revolution",
+      "category": "POLITICAL_COUNTRY_CONDITION",
+      "period": "2024-06-02 to 2024-08-04",
+      "stock_move_pct": -3.55,
+      "behavior": "MODERATE_CYCLICAL_DROP",
+      "root_cause_why": "Mass protests, nationwide curfews, internet blackouts, supply chain shutdowns leading to resignation of government on Aug 5.",
+      "market_impact": "SYSTEMIC_DISRUPTION"
+    },
+    {
+      "event_name": "Interim Government Formation & Anti-Corruption Drive",
+      "category": "POLITICAL_REGULATORY",
+      "period": "2024-08-06 to 2024-09-15",
+      "stock_move_pct": -26.47,
+      "behavior": "SEVERE_VULNERABILITY",
+      "root_cause_why": "Interim government established under Dr. Yunus. BSEC leadership replaced, investigation task force formed against financial market manipulators and money laundering.",
+      "market_impact": "POST_CRISIS_HOPE_RALLY"
+    },
+    {
       "event_name": "Banking NPL Revelations & Aggressive Monetary Tightening",
       "category": "ECONOMIC_MONETARY_BANKING",
-      "period": "2024-10-06 to 2025-06-30",
-      "stock_move_pct": -22.01,
+      "period": "2024-09-17 to 2025-06-30",
+      "stock_move_pct": -30.45,
       "behavior": "SEVERE_VULNERABILITY",
       "root_cause_why": "True extent of banking non-performing loans exposed by Bangladesh Bank. Liquidity squeeze in weak banks, high 12-14% treasury bill yields drew liquidity away from stock market.",
       "market_impact": "TIGHT_LIQUIDITY_AND_FLIGHT_TO_SAFETY"

@@ -1,95 +1,152 @@
 {
   "ticker": "EBL",
-  "audited_at": "2026-10-06 15:32:29",
+  "audited_at": "2026-10-11 19:10:51",
   "worth_vs_greed": {
-    "current_price": 22.7,
-    "intrinsic_worth": 60.77,
-    "margin_of_safety_pct": 167.7,
-    "greed_index": 8.0,
-    "rsi_14": 44.4,
-    "price_vs_ema50_pct": -3.4,
-    "price_vs_ema200_pct": -7.1,
+    "current_price": 22.8,
+    "intrinsic_worth": 51.3,
+    "margin_of_safety_pct": 125.0,
+    "extension_froth_score": 10.0,
+    "greed_index": 10.0,
+    "rsi_14": 47.4,
+    "price_vs_ema50_pct": -2.8,
+    "price_vs_ema200_pct": -6.5,
+    "merit_status": "EARNINGS_BACKED_MERIT",
+    "merit_reason": "Price supported by solid earnings (EPS: \u09f35.23, P/E: 4.4). Growth is fundamentally justified.",
+    "timing_directives": {
+      "optimal_entry_corridor": "\u09f322.3 \u2013 \u09f323.0",
+      "chase_cutoff_price": 23.4,
+      "when_to_wait": "If price opens or rises above \u09f323.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f322.3.",
+      "weekly_target_short": 23.6,
+      "monthly_target_swing": 26.2,
+      "long_term_target_asset": 29.6,
+      "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
+    },
     "status": "UNDERVALUED_FEAR",
     "worth_decision": "HIGH_CONVICTION_BUY",
-    "reason": "High Margin of Safety (+167.7%) with depressed market greed (8.0/100). Ideal entry."
+    "reason": "High Margin of Safety (+125.0%) with depressed market greed (10.0/100) and EARNINGS_BACKED_MERIT. Ideal entry."
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 0.0,
+        "return_pct": -0.87,
         "high": 23.1,
         "low": 22.6,
         "range_volatility_pct": 2.21
       },
       "monthly_21d": {
-        "return_pct": -4.22,
-        "high": 23.9,
+        "return_pct": -2.98,
+        "high": 23.8,
         "low": 22.3,
-        "range_volatility_pct": 7.17
+        "range_volatility_pct": 6.73
       },
       "quarterly_63d": {
-        "return_pct": -7.72,
+        "return_pct": -6.94,
         "high": 25.0,
         "low": 22.3,
         "range_volatility_pct": 12.11
       },
       "half_yearly_126d": {
-        "return_pct": -15.3,
+        "return_pct": -12.64,
         "high": 28.3,
         "low": 22.3,
         "range_volatility_pct": 26.91
       },
       "yearly_252d": {
-        "return_pct": -10.63,
+        "return_pct": -9.88,
         "high": 28.9,
         "low": 21.8,
         "range_volatility_pct": 32.57
       }
     },
     "wave_metrics": {
-      "median_rally_gain_pct": 10.8,
-      "median_correction_drop_pct": -9.1,
-      "avg_wave_duration_bars": 38.0
+      "median_rally_gain_pct": 17.8,
+      "median_correction_drop_pct": -11.2,
+      "avg_wave_duration_bars": 25.0
     },
     "current_wave_phase": "ACCUMULATION_TROUGH",
     "phase_guidance": "Near local cyclical trough base. Maximum reward/risk entry point.",
     "top_seasonal_months": [
       {
-        "month": "Jul",
-        "avg_return": 7.9,
-        "win_rate": 100.0
+        "month": "Jan",
+        "avg_return": 3.0,
+        "win_rate": 69.0
       },
       {
-        "month": "Mar",
-        "avg_return": 6.6,
-        "win_rate": 50.0
+        "month": "Aug",
+        "avg_return": 2.8,
+        "win_rate": 42.0
       },
       {
         "month": "Feb",
-        "avg_return": 4.9,
-        "win_rate": 100.0
+        "avg_return": 1.6,
+        "win_rate": 71.0
       }
     ],
     "weak_seasonal_months": [
       {
-        "month": "Oct",
-        "avg_return": -7.2,
-        "win_rate": 0.0
+        "month": "Jun",
+        "avg_return": -1.0,
+        "win_rate": 31.0
       },
       {
         "month": "May",
-        "avg_return": -13.4,
-        "win_rate": 0.0
+        "avg_return": -3.1,
+        "win_rate": 46.0
       }
     ]
   },
   "causal_attributions": [
     {
+      "event_name": "BSEC Floor Price Regime",
+      "category": "REGULATORY_LAW_AND_ORDER",
+      "period": "2022-07-28 to 2024-01-18",
+      "stock_move_pct": -5.7,
+      "behavior": "MODERATE_CYCLICAL_DROP",
+      "root_cause_why": "Floor prices imposed on all stocks to stop free-fall. Artificially froze liquidity, trapped institutional capital, volume dried up to historic lows.",
+      "market_impact": "LIQUIDITY_FREEZE"
+    },
+    {
+      "event_name": "Phased Floor Price Removal & Price Discovery",
+      "category": "REGULATORY_LAW_AND_ORDER",
+      "period": "2024-01-18 to 2024-03-31",
+      "stock_move_pct": 7.38,
+      "behavior": "DEFENSIVE_STABILITY",
+      "root_cause_why": "BSEC lifted floor prices in waves. Triggered sharp 1,000+ point DSEX correction as artificial valuations collapsed to fair market levels.",
+      "market_impact": "SHARP_DELEVERAGING"
+    },
+    {
+      "event_name": "SMART Interest Rate & Lending Cap Removal",
+      "category": "ECONOMIC_MONETARY",
+      "period": "2023-07-02 to 2024-05-08",
+      "stock_move_pct": 1.4,
+      "behavior": "DEFENSIVE_STABILITY",
+      "root_cause_why": "Bangladesh Bank replaced fixed 9% lending cap with SMART rate, later moving to pure market-based repo tightening (repo hiked to 8.5%-10.0%). Corporate borrowing cost surged from 9% to 14-16%.",
+      "market_impact": "DEBT_BURDEN_SHOCK"
+    },
+    {
+      "event_name": "Political Turmoil & National Student Revolution",
+      "category": "POLITICAL_COUNTRY_CONDITION",
+      "period": "2024-06-02 to 2024-08-04",
+      "stock_move_pct": -0.39,
+      "behavior": "MODERATE_CYCLICAL_DROP",
+      "root_cause_why": "Mass protests, nationwide curfews, internet blackouts, supply chain shutdowns leading to resignation of government on Aug 5.",
+      "market_impact": "SYSTEMIC_DISRUPTION"
+    },
+    {
+      "event_name": "Interim Government Formation & Anti-Corruption Drive",
+      "category": "POLITICAL_REGULATORY",
+      "period": "2024-08-06 to 2024-09-15",
+      "stock_move_pct": -1.12,
+      "behavior": "MODERATE_CYCLICAL_DROP",
+      "root_cause_why": "Interim government established under Dr. Yunus. BSEC leadership replaced, investigation task force formed against financial market manipulators and money laundering.",
+      "market_impact": "POST_CRISIS_HOPE_RALLY"
+    },
+    {
       "event_name": "Banking NPL Revelations & Aggressive Monetary Tightening",
       "category": "ECONOMIC_MONETARY_BANKING",
-      "period": "2024-10-06 to 2025-06-30",
-      "stock_move_pct": -8.76,
-      "behavior": "MODERATE_CYCLICAL_DROP",
+      "period": "2024-09-17 to 2025-06-30",
+      "stock_move_pct": 2.7,
+      "behavior": "DEFENSIVE_STABILITY",
       "root_cause_why": "True extent of banking non-performing loans exposed by Bangladesh Bank. Liquidity squeeze in weak banks, high 12-14% treasury bill yields drew liquidity away from stock market.",
       "market_impact": "TIGHT_LIQUIDITY_AND_FLIGHT_TO_SAFETY"
     },
