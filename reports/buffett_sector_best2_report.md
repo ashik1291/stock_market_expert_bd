@@ -1,5 +1,5 @@
 # DSE 12-Factor Buffett Value Analysis & Sector Best 2 Portfolio
-**Audit Timestamp:** 2026-10-07 10:11:13 | **Coverage:** 80 Category A Stocks | **Engine:** Strict Graham/Buffett Principles
+**Audit Timestamp:** 2026-10-11 19:10:53 | **Coverage:** 80 Category A Stocks | **Engine:** Strict Graham/Buffett Principles
 
 ---
 ## Executive Summary: The Best 2 Stocks per Sector
@@ -259,7 +259,7 @@ Below are the verified **Top 2 Best Companies** selected from each sector for st
 - **6. Reinvestment & Reserves:** NAV Tk 37.01 vs Tk 10 Face Value. Reserve per Share: **Tk 27.01**. Payout Ratio: 22.7%. Status: EXCELLENT: Payout 22.7% + Reserve Tk 27.01.
 - **7. P/NAV Sanity Check:** P/NAV **0.51x**. Status: **HEALTHY: Solid Asset Backing (P/NAV 0.51x)** (No suspicious asset bubble).
 - **8. Ownership & Institutional Trust:** Promoter 33.0% | Institutional 21.8% | Public Float 45.2%. Status: **HIGH_TRUST: Sponsor 33.0% + Inst 21.8% + Public 45.2%**.
-- **10. Buffett Contrarian Strategy:** 52-Week Peak Tk 21.9 | Drawdown: **-14.61%**. Signal: **NEUTRAL_RANGE: Drawdown -14.61%**.
+- **10. Buffett Contrarian Strategy:** 52-Week Peak Tk 21.8 | Drawdown: **-14.22%**. Signal: **NEUTRAL_RANGE: Drawdown -14.22%**.
 - **11. Dual Engine Total Return:** Cash Dividend Yield **2.99%** + Projected Capital Upside **40.0%** = **42.99% Annualized Return Potential**.
 
 #### #2 GENEXIL — Score: 73.16/100
@@ -387,7 +387,7 @@ Below are the verified **Top 2 Best Companies** selected from each sector for st
 - **6. Reinvestment & Reserves:** NAV Tk 41.49 vs Tk 10 Face Value. Reserve per Share: **Tk 31.49**. Payout Ratio: 91.5%. Status: ADEQUATE: Solid Reserve Tk 31.49 (Payout 91.5%).
 - **7. P/NAV Sanity Check:** P/NAV **5.79x**. Status: **PREMIUM: High P/NAV 5.79x backed by Exceptional ROE 52.78%** (No suspicious asset bubble).
 - **8. Ownership & Institutional Trust:** Promoter 90.0% | Institutional 6.8% | Public Float 3.0%. Status: **PROMOTER_BACKED: Sponsor 90.0% but Low Inst (6.8%)**.
-- **10. Buffett Contrarian Strategy:** 52-Week Peak Tk 294.7 | Drawdown: **-18.49%**. Signal: **GREEDY_BUY_TRIGGER: Deep Drawdown -18.49% in Quality Asset (Accumulate Tranches)**.
+- **10. Buffett Contrarian Strategy:** 52-Week Peak Tk 294.0 | Drawdown: **-18.3%**. Signal: **GREEDY_BUY_TRIGGER: Deep Drawdown -18.3% in Quality Asset (Accumulate Tranches)**.
 - **11. Dual Engine Total Return:** Cash Dividend Yield **8.34%** + Projected Capital Upside **0.0%** = **8.34% Annualized Return Potential**.
 
 #### #2 ROBI — Score: 70.62/100
@@ -449,7 +449,7 @@ Below are the verified **Top 2 Best Companies** selected from each sector for st
 | ARGONDENIM | 21.4 | 1.68 | 24.57 | 12.7 | 77.8 | QUALIFIED |
 | MATINSPINN | 72.9 | 4.7 | 69.89 | 15.5 | 70.32 | MONITOR |
 | SAIHAMCOT | 22.3 | 0.99 | 38.26 | 22.5 | 70.22 | MONITOR |
-| SAIHAMTEX | 43.1 | 0.59 | 43.77 | 73.1 | 65.05 | MONITOR |
+| SAIHAMTEX | 43.1 | 0.59 | 43.77 | 73.1 | 65.96 | MONITOR |
 | ALLTEX | 23.0 | 0.0 | 24.77 | 0.0 | 30.0 | REJECT/AVOID |
 | HRTEX | 16.1 | 0.0 | 21.43 | 0.0 | 30.0 | REJECT/AVOID |
 

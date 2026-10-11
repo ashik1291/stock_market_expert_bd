@@ -2,14 +2,14 @@
   "ticker": "DHAKABANK",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-10-06T09:32:29.436562",
+  "analyzed_at": "2026-10-11T13:10:51.281733",
   "signal": "STRONG_BUY",
-  "confidence": 72.21,
+  "confidence": 67.04,
   "trajectory": {
-    "direction": "RISE_PREDICTED",
-    "direction_icon": "\ud83d\udfe2",
-    "rise_probability_pct": 74.4,
-    "momentum_status": "Bullish Reversal / Upward Accumulation",
+    "direction": "CONSOLIDATION_RANGE",
+    "direction_icon": "\ud83d\udfe1",
+    "rise_probability_pct": 48.2,
+    "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Upward momentum swing",
       "upside_potential_pct": "+2.7%",
@@ -66,14 +66,14 @@
       "signal": "Dividend is 225% cash-covered by real operations (NOCFPS: Tk 2.25 vs DPS: Tk 1.0)"
     },
     "liquidity": {
-      "avg_daily_volume": 1373289,
-      "daily_turnover_bdt_cr": 1.52,
+      "avg_daily_volume": 1492020,
+      "daily_turnover_bdt_cr": 1.66,
       "liquidity_rating": "HEALTHY_LIQUIDITY",
       "slippage_risk": "LOW",
-      "max_single_order_shares": 68664,
-      "max_daily_accumulation_shares": 205993,
-      "max_order_bdt": 762170.0,
-      "directive": "Max single order: 68,664 shares (Tk 762,170) to prevent >1% execution slippage"
+      "max_single_order_shares": 74601,
+      "max_daily_accumulation_shares": 223803,
+      "max_order_bdt": 828071.0,
+      "directive": "Max single order: 74,601 shares (Tk 828,071) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -85,32 +85,44 @@
   },
   "pattern_dna": {
     "ticker": "DHAKABANK",
-    "audited_at": "2026-10-06 15:32:29",
+    "audited_at": "2026-10-11 19:10:51",
     "worth_vs_greed": {
       "current_price": 11.1,
-      "intrinsic_worth": 37.54,
-      "margin_of_safety_pct": 238.2,
-      "greed_index": 3.0,
-      "rsi_14": 0.0,
-      "price_vs_ema50_pct": -5.3,
-      "price_vs_ema200_pct": -6.9,
+      "intrinsic_worth": 29.37,
+      "margin_of_safety_pct": 164.6,
+      "extension_froth_score": 20.0,
+      "greed_index": 20.0,
+      "rsi_14": 14.3,
+      "price_vs_ema50_pct": -5.0,
+      "price_vs_ema200_pct": -6.7,
+      "merit_status": "EARNINGS_BACKED_MERIT",
+      "merit_reason": "Price supported by solid earnings (EPS: \u09f32.65, P/E: 4.2). Growth is fundamentally justified.",
+      "timing_directives": {
+        "optimal_entry_corridor": "\u09f310.9 \u2013 \u09f311.2",
+        "chase_cutoff_price": 11.4,
+        "when_to_wait": "If price opens or rises above \u09f311.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f310.9.",
+        "weekly_target_short": 11.5,
+        "monthly_target_swing": 12.8,
+        "long_term_target_asset": 14.4,
+        "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
+      },
       "status": "UNDERVALUED_FEAR",
       "worth_decision": "HIGH_CONVICTION_BUY",
-      "reason": "High Margin of Safety (+238.2%) with depressed market greed (3.0/100). Ideal entry."
+      "reason": "High Margin of Safety (+164.6%) with depressed market greed (20.0/100) and EARNINGS_BACKED_MERIT. Ideal entry."
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
           "return_pct": -1.77,
-          "high": 11.4,
+          "high": 11.3,
           "low": 11.0,
-          "range_volatility_pct": 3.64
+          "range_volatility_pct": 2.73
         },
         "monthly_21d": {
-          "return_pct": -6.72,
-          "high": 12.0,
+          "return_pct": -5.93,
+          "high": 11.9,
           "low": 11.0,
-          "range_volatility_pct": 9.09
+          "range_volatility_pct": 8.18
         },
         "quarterly_63d": {
           "return_pct": -8.26,
@@ -119,61 +131,106 @@
           "range_volatility_pct": 15.45
         },
         "half_yearly_126d": {
-          "return_pct": -11.2,
+          "return_pct": -8.26,
           "high": 13.4,
           "low": 10.8,
           "range_volatility_pct": 24.07
         },
         "yearly_252d": {
-          "return_pct": -3.48,
+          "return_pct": -1.77,
           "high": 16.0,
           "low": 10.2,
           "range_volatility_pct": 56.86
         }
       },
       "wave_metrics": {
-        "median_rally_gain_pct": 9.5,
-        "median_correction_drop_pct": -9.9,
-        "avg_wave_duration_bars": 12.0
+        "median_rally_gain_pct": 11.6,
+        "median_correction_drop_pct": -12.8,
+        "avg_wave_duration_bars": 20.0
       },
       "current_wave_phase": "BOTTOMING_SUPPORT",
-      "phase_guidance": "Drop (-12.6%) matches historical correction depth (-9.9%). Prepare to accumulate.",
+      "phase_guidance": "Drop (-12.6%) matches historical correction depth (-12.8%). Prepare to accumulate.",
       "top_seasonal_months": [
         {
-          "month": "Jul",
-          "avg_return": 11.5,
-          "win_rate": 100.0
-        },
-        {
           "month": "Jan",
-          "avg_return": 4.0,
-          "win_rate": 100.0
+          "avg_return": 3.5,
+          "win_rate": 64.0
         },
         {
-          "month": "Mar",
-          "avg_return": 4.0,
-          "win_rate": 50.0
+          "month": "May",
+          "avg_return": 3.0,
+          "win_rate": 38.0
+        },
+        {
+          "month": "Aug",
+          "avg_return": 2.8,
+          "win_rate": 58.0
         }
       ],
       "weak_seasonal_months": [
         {
-          "month": "Sep",
-          "avg_return": -6.2,
-          "win_rate": 0.0
+          "month": "Nov",
+          "avg_return": -2.0,
+          "win_rate": 21.0
         },
         {
           "month": "Apr",
-          "avg_return": -8.2,
-          "win_rate": 0.0
+          "avg_return": -6.1,
+          "win_rate": 8.0
         }
       ]
     },
     "causal_attributions": [
       {
+        "event_name": "BSEC Floor Price Regime",
+        "category": "REGULATORY_LAW_AND_ORDER",
+        "period": "2022-07-28 to 2024-01-18",
+        "stock_move_pct": -6.02,
+        "behavior": "MODERATE_CYCLICAL_DROP",
+        "root_cause_why": "Floor prices imposed on all stocks to stop free-fall. Artificially froze liquidity, trapped institutional capital, volume dried up to historic lows.",
+        "market_impact": "LIQUIDITY_FREEZE"
+      },
+      {
+        "event_name": "Phased Floor Price Removal & Price Discovery",
+        "category": "REGULATORY_LAW_AND_ORDER",
+        "period": "2024-01-18 to 2024-03-31",
+        "stock_move_pct": -6.4,
+        "behavior": "MODERATE_CYCLICAL_DROP",
+        "root_cause_why": "BSEC lifted floor prices in waves. Triggered sharp 1,000+ point DSEX correction as artificial valuations collapsed to fair market levels.",
+        "market_impact": "SHARP_DELEVERAGING"
+      },
+      {
+        "event_name": "SMART Interest Rate & Lending Cap Removal",
+        "category": "ECONOMIC_MONETARY",
+        "period": "2023-07-02 to 2024-05-08",
+        "stock_move_pct": -11.2,
+        "behavior": "MODERATE_CYCLICAL_DROP",
+        "root_cause_why": "Bangladesh Bank replaced fixed 9% lending cap with SMART rate, later moving to pure market-based repo tightening (repo hiked to 8.5%-10.0%). Corporate borrowing cost surged from 9% to 14-16%.",
+        "market_impact": "DEBT_BURDEN_SHOCK"
+      },
+      {
+        "event_name": "Political Turmoil & National Student Revolution",
+        "category": "POLITICAL_COUNTRY_CONDITION",
+        "period": "2024-06-02 to 2024-08-04",
+        "stock_move_pct": -4.85,
+        "behavior": "MODERATE_CYCLICAL_DROP",
+        "root_cause_why": "Mass protests, nationwide curfews, internet blackouts, supply chain shutdowns leading to resignation of government on Aug 5.",
+        "market_impact": "SYSTEMIC_DISRUPTION"
+      },
+      {
+        "event_name": "Interim Government Formation & Anti-Corruption Drive",
+        "category": "POLITICAL_REGULATORY",
+        "period": "2024-08-06 to 2024-09-15",
+        "stock_move_pct": 7.48,
+        "behavior": "DEFENSIVE_STABILITY",
+        "root_cause_why": "Interim government established under Dr. Yunus. BSEC leadership replaced, investigation task force formed against financial market manipulators and money laundering.",
+        "market_impact": "POST_CRISIS_HOPE_RALLY"
+      },
+      {
         "event_name": "Banking NPL Revelations & Aggressive Monetary Tightening",
         "category": "ECONOMIC_MONETARY_BANKING",
-        "period": "2024-10-06 to 2025-06-30",
-        "stock_move_pct": -11.21,
+        "period": "2024-09-17 to 2025-06-30",
+        "stock_move_pct": -3.44,
         "behavior": "MODERATE_CYCLICAL_DROP",
         "root_cause_why": "True extent of banking non-performing loans exposed by Bangladesh Bank. Liquidity squeeze in weak banks, high 12-14% treasury bill yields drew liquidity away from stock market.",
         "market_impact": "TIGHT_LIQUIDITY_AND_FLIGHT_TO_SAFETY"
@@ -197,7 +254,7 @@
     "sr": {}
   },
   "fundamental": {
-    "score": 77.5,
+    "score": 81.0,
     "signals": {
       "eps": "positive (2.65)",
       "pe": "deep_value (4.188679245283019)",
@@ -208,7 +265,7 @@
       "loan_trap_risk": "low",
       "dividend_track_record_years": 5,
       "dividend_consistency": "proven_compounder (5 yrs cash divs)",
-      "roe": "moderate (11.21%)",
+      "earnings_quality": "financial_asset_quality_mode",
       "downturn_resilience": {
         "status": "growth_at_discount",
         "drawdown_pct": 30.6,
@@ -255,15 +312,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 735726,
-        "avg_volume": 1273277.0,
+        "last_volume": 960437,
+        "avg_volume": 1251560.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.57,
-        "avg_volume": 1300673.0,
-        "today_volume": 735726,
+        "spike_ratio": 0.73,
+        "avg_volume": 1316555.0,
+        "today_volume": 960437,
         "detail": "ok"
       },
       "serial_trading": {
@@ -282,21 +339,21 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": -1.77,
+        "price_change_3d": -0.89,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 72.21,
+    "composite_score": 67.04,
     "governance_score": 75,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.692,
-      "technical": 0.077,
-      "governance": 0.127,
-      "sentiment": 0.104
+      "fundamental": 0.418,
+      "technical": 0.27,
+      "governance": 0.163,
+      "sentiment": 0.148
     }
   }
 }

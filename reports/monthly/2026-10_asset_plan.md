@@ -27,21 +27,21 @@ Do NOT deploy 100% capital in a single day. Spread monthly allocation across 4 s
 
 | Ticker | Entry Zone | Direction & Prob | Upside / Risk | P/E | Debt/Equity | Leadership & Experience | Tranche Pacing | Target Exit |
 |---|---|---|---|---|---|---|---|---|
-| **SQURPHARMA** | ৳212.7–৳219.2 | 🟢 RISE (87.7%) | +30.0% / -9.0% | 8.0 | D/E: 0.006 | Tapan Chowdhury (45y exp, AAA) | 20% per tranche | ৳282.1 |
-| **EBL** | ৳22.2–৳22.9 | 🟢 RISE (84.1%) | +30.0% / -8.6% | 4.4 | D/E: None | Ali Reza Iftekhar (37y exp, AA+) | 20% per tranche | ৳29.5 |
-| **JAMUNAOIL** | ৳174.4–৳179.8 | 🟢 RISE (92.0%) | +30.0% / -9.0% | 3.0 | D/E: 0.0 | Md. Gias Uddin Ansary (32y exp, AA+) | 20% per tranche | ৳231.4 |
-| **PADMAOIL** | ৳189.7–৳195.5 | 🟢 RISE (92.0%) | +30.0% / -9.0% | 3.4 | D/E: 0.007 | Md. Masudur Rahman (30y exp, AA+) | 20% per tranche | ৳251.7 |
-| **MPETROLEUM** | ৳200.6–৳206.7 | 🟢 RISE (92.0%) | +30.0% / -9.0% | 3.4 | D/E: 0.006 | Engr. Md. Rehanul Islam (30y exp, AA+) | 20% per tranche | ৳266.1 |
+| **SQURPHARMA** | ৳214.1–৳220.7 | 🟢 RISE (80.8%) | +30.0% / -9.0% | 8.0 | D/E: 0.006 | Tapan Chowdhury (45y exp, AAA) | 20% per tranche | ৳284.1 |
+| **EBL** | ৳22.3–৳23.0 | 🟡 RISE (59.6%) | +29.8% / -8.6% | 4.4 | D/E: None | Ali Reza Iftekhar (37y exp, AA+) | 20% per tranche | ৳29.6 |
+| **JAMUNAOIL** | ৳175.6–৳181.0 | 🟢 RISE (80.8%) | +30.0% / -9.0% | 3.0 | D/E: 0.0 | Md. Gias Uddin Ansary (32y exp, AA+) | 20% per tranche | ৳233.0 |
+| **PADMAOIL** | ৳191.5–৳197.4 | 🟢 RISE (80.8%) | +30.0% / -9.0% | 3.4 | D/E: 0.007 | Md. Masudur Rahman (30y exp, AA+) | 20% per tranche | ৳254.0 |
+| **MPETROLEUM** | ৳200.0–৳206.1 | 🟢 RISE (80.8%) | +30.0% / -9.0% | 3.4 | D/E: 0.006 | Engr. Md. Rehanul Islam (30y exp, AA+) | 20% per tranche | ৳265.3 |
 
 ## 🚀 4. Top Mid-Term Cycle Swings (1–6 Months)
 
 | Ticker | Entry Price | Direction & Prob | Target (+15%) | Trailing Stop (-5%) | Risk/Reward | P/E |
 |---|---|---|---|---|---|---|
-| **SQURPHARMA** | ৳217.0 | 🟢 87.7% | **৳249.5** | ৳206.1 | 3.0x | 8.0 |
-| **EBL** | ৳22.7 | 🟢 84.1% | **৳26.1** | ৳21.6 | 3.1x | 4.4 |
-| **JAMUNAOIL** | ৳178.0 | 🟢 92.0% | **৳204.7** | ৳169.1 | 3.0x | 3.0 |
-| **PADMAOIL** | ৳193.6 | 🟢 92.0% | **৳222.6** | ৳183.9 | 3.0x | 3.4 |
-| **MPETROLEUM** | ৳204.7 | 🟢 92.0% | **৳235.4** | ৳194.5 | 3.0x | 3.4 |
+| **SQURPHARMA** | ৳218.5 | 🟢 80.8% | **৳251.3** | ৳207.6 | 3.0x | 8.0 |
+| **EBL** | ৳22.8 | 🟡 59.6% | **৳26.2** | ৳21.7 | 3.1x | 4.4 |
+| **JAMUNAOIL** | ৳179.2 | 🟢 80.8% | **৳206.1** | ৳170.2 | 3.0x | 3.0 |
+| **PADMAOIL** | ৳195.4 | 🟢 80.8% | **৳224.7** | ৳185.6 | 3.0x | 3.4 |
+| **MPETROLEUM** | ৳204.1 | 🟢 80.8% | **৳234.7** | ৳193.9 | 3.0x | 3.4 |
 
 ## 🛡️ 5. Monthly Risk Filter & Governance Directive
 

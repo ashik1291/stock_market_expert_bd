@@ -2,43 +2,43 @@
   "ticker": "ORIONPHARM",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-10-06T09:32:29.521499",
+  "analyzed_at": "2026-10-11T13:10:51.526781",
   "signal": "HOLD",
-  "confidence": 54.33,
+  "confidence": 54.78,
   "trajectory": {
-    "direction": "CONSOLIDATION_RANGE",
-    "direction_icon": "\ud83d\udfe1",
-    "rise_probability_pct": 50.1,
-    "momentum_status": "Neutral Range Consolidation",
+    "direction": "FALL_RISK",
+    "direction_icon": "\ud83d\udd34",
+    "rise_probability_pct": 15.0,
+    "momentum_status": "Bearish Breakdown / Selling Pressure",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+3.0%",
-      "downside_risk_pct": "-1.9%",
-      "target_price": 27.7,
-      "support_price": 26.4,
+      "upside_potential_pct": "+3.1%",
+      "downside_risk_pct": "-2.0%",
+      "target_price": 26.3,
+      "support_price": 25.0,
       "risk_reward_ratio": "1.6x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
       "upside_potential_pct": "+14.9%",
-      "downside_risk_pct": "-4.8%",
-      "target_price": 30.9,
-      "trailing_stop": 25.6,
-      "risk_reward_ratio": "3.1x"
+      "downside_risk_pct": "-5.1%",
+      "target_price": 29.3,
+      "trailing_stop": 24.2,
+      "risk_reward_ratio": "2.9x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-      "upside_potential_pct": "+30.1%",
-      "downside_risk_pct": "-8.6%",
-      "target_price": 35.0,
+      "upside_potential_pct": "+29.8%",
+      "downside_risk_pct": "-9.2%",
+      "target_price": 33.1,
       "dividend_cagr": "no_dividend",
-      "risk_reward_ratio": "3.5x"
+      "risk_reward_ratio": "3.2x"
     }
   },
   "trade_levels": {
-    "entry": 26.9,
-    "stop_loss": 26.09,
-    "target": 28.52
+    "entry": 25.5,
+    "stop_loss": 24.73,
+    "target": 27.04
   },
   "precision": {
     "ticker": "ORIONPHARM",
@@ -66,14 +66,14 @@
       "signal": "Cash flow covers only 0% of dividend payout"
     },
     "liquidity": {
-      "avg_daily_volume": 498554,
-      "daily_turnover_bdt_cr": 1.36,
+      "avg_daily_volume": 512550,
+      "daily_turnover_bdt_cr": 1.39,
       "liquidity_rating": "MODERATE_LIQUIDITY",
       "slippage_risk": "MEDIUM",
-      "max_single_order_shares": 24927,
-      "max_daily_accumulation_shares": 74783,
-      "max_order_bdt": 678014.0,
-      "directive": "Max single order: 24,927 shares (Tk 678,014) to prevent >1% execution slippage"
+      "max_single_order_shares": 25627,
+      "max_daily_accumulation_shares": 76882,
+      "max_order_bdt": 697054.0,
+      "directive": "Max single order: 25,627 shares (Tk 697,054) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -85,95 +85,152 @@
   },
   "pattern_dna": {
     "ticker": "ORIONPHARM",
-    "audited_at": "2026-10-06 15:32:29",
+    "audited_at": "2026-10-11 19:10:51",
     "worth_vs_greed": {
-      "current_price": 26.9,
+      "current_price": 25.5,
       "intrinsic_worth": 68.87,
-      "margin_of_safety_pct": 156.0,
-      "greed_index": 40.0,
-      "rsi_14": 58.4,
-      "price_vs_ema50_pct": -1.4,
-      "price_vs_ema200_pct": -5.1,
-      "status": "UNDERVALUED_FEAR",
-      "worth_decision": "HIGH_CONVICTION_BUY",
-      "reason": "High Margin of Safety (+156.0%) with depressed market greed (40.0/100). Ideal entry."
+      "margin_of_safety_pct": 170.1,
+      "extension_froth_score": 70.0,
+      "greed_index": 70.0,
+      "rsi_14": 51.6,
+      "price_vs_ema50_pct": -6.1,
+      "price_vs_ema200_pct": -10.5,
+      "merit_status": "NEUTRAL_MERIT",
+      "merit_reason": "Valuation is within normal historical ranges.",
+      "timing_directives": {
+        "optimal_entry_corridor": "\u09f325.0 \u2013 \u09f325.8",
+        "chase_cutoff_price": 26.1,
+        "when_to_wait": "If price opens or rises above \u09f326.1, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f325.0.",
+        "weekly_target_short": 26.4,
+        "monthly_target_swing": 29.3,
+        "long_term_target_asset": 33.1,
+        "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
+      },
+      "status": "NEUTRAL",
+      "worth_decision": "HOLD",
+      "reason": "Trading in neutral fair-value corridor."
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -9.43,
-          "high": 29.9,
-          "low": 26.7,
-          "range_volatility_pct": 11.99
+          "return_pct": -12.07,
+          "high": 29.7,
+          "low": 25.4,
+          "range_volatility_pct": 16.93
         },
         "monthly_21d": {
-          "return_pct": 5.49,
+          "return_pct": 1.59,
           "high": 33.2,
           "low": 23.5,
           "range_volatility_pct": 41.28
         },
         "quarterly_63d": {
-          "return_pct": -5.61,
+          "return_pct": -16.94,
           "high": 33.2,
           "low": 23.5,
           "range_volatility_pct": 41.28
         },
         "half_yearly_126d": {
-          "return_pct": -7.56,
+          "return_pct": -8.93,
           "high": 33.2,
           "low": 23.5,
           "range_volatility_pct": 41.28
         },
         "yearly_252d": {
-          "return_pct": -28.46,
+          "return_pct": -27.35,
           "high": 37.7,
           "low": 22.9,
           "range_volatility_pct": 64.63
         }
       },
       "wave_metrics": {
-        "median_rally_gain_pct": 23.9,
-        "median_correction_drop_pct": -15.3,
-        "avg_wave_duration_bars": 26.0
+        "median_rally_gain_pct": 17.7,
+        "median_correction_drop_pct": -15.8,
+        "avg_wave_duration_bars": 22.0
       },
       "current_wave_phase": "MARKUP_RALLY_MID",
-      "phase_guidance": "Midway through rally wave (+14.5% from base, historical target ~+23.9%).",
+      "phase_guidance": "Midway through rally wave (+8.5% from base, historical target ~+17.7%).",
       "top_seasonal_months": [
         {
-          "month": "Jul",
-          "avg_return": 12.9,
-          "win_rate": 100.0
+          "month": "Aug",
+          "avg_return": 8.4,
+          "win_rate": 42.0
         },
         {
-          "month": "Nov",
-          "avg_return": 10.7,
-          "win_rate": 50.0
+          "month": "Feb",
+          "avg_return": 5.6,
+          "win_rate": 42.0
         },
         {
-          "month": "Jun",
-          "avg_return": 8.2,
-          "win_rate": 100.0
+          "month": "Dec",
+          "avg_return": 1.4,
+          "win_rate": 25.0
         }
       ],
       "weak_seasonal_months": [
         {
-          "month": "May",
-          "avg_return": -12.1,
-          "win_rate": 0.0
+          "month": "Oct",
+          "avg_return": -2.9,
+          "win_rate": 21.0
         },
         {
-          "month": "Feb",
-          "avg_return": -14.4,
-          "win_rate": 0.0
+          "month": "Apr",
+          "avg_return": -5.3,
+          "win_rate": 17.0
         }
       ]
     },
     "causal_attributions": [
       {
+        "event_name": "BSEC Floor Price Regime",
+        "category": "REGULATORY_LAW_AND_ORDER",
+        "period": "2022-07-28 to 2024-01-18",
+        "stock_move_pct": 1.14,
+        "behavior": "DEFENSIVE_STABILITY",
+        "root_cause_why": "Floor prices imposed on all stocks to stop free-fall. Artificially froze liquidity, trapped institutional capital, volume dried up to historic lows.",
+        "market_impact": "LIQUIDITY_FREEZE"
+      },
+      {
+        "event_name": "Phased Floor Price Removal & Price Discovery",
+        "category": "REGULATORY_LAW_AND_ORDER",
+        "period": "2024-01-18 to 2024-03-31",
+        "stock_move_pct": -10.43,
+        "behavior": "MODERATE_CYCLICAL_DROP",
+        "root_cause_why": "BSEC lifted floor prices in waves. Triggered sharp 1,000+ point DSEX correction as artificial valuations collapsed to fair market levels.",
+        "market_impact": "SHARP_DELEVERAGING"
+      },
+      {
+        "event_name": "SMART Interest Rate & Lending Cap Removal",
+        "category": "ECONOMIC_MONETARY",
+        "period": "2023-07-02 to 2024-05-08",
+        "stock_move_pct": -9.55,
+        "behavior": "MODERATE_CYCLICAL_DROP",
+        "root_cause_why": "Bangladesh Bank replaced fixed 9% lending cap with SMART rate, later moving to pure market-based repo tightening (repo hiked to 8.5%-10.0%). Corporate borrowing cost surged from 9% to 14-16%.",
+        "market_impact": "DEBT_BURDEN_SHOCK"
+      },
+      {
+        "event_name": "Political Turmoil & National Student Revolution",
+        "category": "POLITICAL_COUNTRY_CONDITION",
+        "period": "2024-06-02 to 2024-08-04",
+        "stock_move_pct": -9.26,
+        "behavior": "MODERATE_CYCLICAL_DROP",
+        "root_cause_why": "Mass protests, nationwide curfews, internet blackouts, supply chain shutdowns leading to resignation of government on Aug 5.",
+        "market_impact": "SYSTEMIC_DISRUPTION"
+      },
+      {
+        "event_name": "Interim Government Formation & Anti-Corruption Drive",
+        "category": "POLITICAL_REGULATORY",
+        "period": "2024-08-06 to 2024-09-15",
+        "stock_move_pct": -23.09,
+        "behavior": "SEVERE_VULNERABILITY",
+        "root_cause_why": "Interim government established under Dr. Yunus. BSEC leadership replaced, investigation task force formed against financial market manipulators and money laundering.",
+        "market_impact": "POST_CRISIS_HOPE_RALLY"
+      },
+      {
         "event_name": "Banking NPL Revelations & Aggressive Monetary Tightening",
         "category": "ECONOMIC_MONETARY_BANKING",
-        "period": "2024-10-06 to 2025-06-30",
-        "stock_move_pct": -17.44,
+        "period": "2024-09-17 to 2025-06-30",
+        "stock_move_pct": -35.81,
         "behavior": "SEVERE_VULNERABILITY",
         "root_cause_why": "True extent of banking non-performing loans exposed by Bangladesh Bank. Liquidity squeeze in weak banks, high 12-14% treasury bill yields drew liquidity away from stock market.",
         "market_impact": "TIGHT_LIQUIDITY_AND_FLIGHT_TO_SAFETY"
@@ -209,8 +266,8 @@
       "dividend_consistency": "proven_compounder (4 yrs cash divs)",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 26.5,
-        "high_52w": 36.6,
+        "drawdown_pct": 27.1,
+        "high_52w": 35.0,
         "low_52w": 22.9
       }
     }
@@ -244,25 +301,23 @@
     }
   },
   "manipulation": {
-    "manipulation_score": 10,
+    "manipulation_score": 0,
     "manipulation_risk": "low",
     "block_buy": false,
-    "flags": [
-      "price_surge_no_news: price_-8.2pct_zero_news"
-    ],
+    "flags": [],
     "checks": {
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 218142,
-        "avg_volume": 384024.0,
+        "last_volume": 218817,
+        "avg_volume": 383966.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.56,
-        "avg_volume": 386118.0,
-        "today_volume": 218142,
+        "spike_ratio": 0.57,
+        "avg_volume": 385709.0,
+        "today_volume": 218817,
         "detail": "ok"
       },
       "serial_trading": {
@@ -280,22 +335,22 @@
         "detail": "insufficient_fundamental_history"
       },
       "price_surge_no_news": {
-        "flag": true,
-        "price_change_3d": -8.19,
+        "flag": false,
+        "price_change_3d": -2.67,
         "news_count_3d": 0,
-        "detail": "price_-8.2pct_zero_news"
+        "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 54.33,
+    "composite_score": 54.78,
     "governance_score": 75,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.692,
-      "technical": 0.077,
-      "governance": 0.127,
-      "sentiment": 0.104
+      "fundamental": 0.418,
+      "technical": 0.27,
+      "governance": 0.163,
+      "sentiment": 0.148
     }
   }
 }
