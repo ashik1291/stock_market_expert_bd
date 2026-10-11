@@ -87,13 +87,14 @@ def cmd_refresh():
     print("=" * 80, flush=True)
     steps = [
         ("1. Live Price & Market Summary Scrape", "scraper.py", ["price"]),
-        ("2. Database Ingestion & Normalization", "processor.py", []),
+        ("2. Database Ingestion (Point-In-Time)", "processor.py", []),
         ("3. Macro Sentiment & Crisis Monitor", "macro_sentiment_engine.py", []),
         ("4. Technical, Fundamental & Manipulation Analysis", "analyzer.py", ["all", "weekly"]),
         ("5. 12-Factor Buffett Value & Sector Best 2 Screener", "buffett_value_screener.py", []),
         ("6. Daily Rise vs Fall Directional Scanner", "daily_rise_fall_scanner.py", ["weekly"]),
         ("7. Tri-Horizon Recommender & Visual Chart Generator", "recommender.py", ["weekly"]),
-        ("8. 5-Sector Matrix Evaluation", "sector_matrix_evaluator.py", [])
+        ("8. 5-Sector Matrix Evaluation", "sector_matrix_evaluator.py", []),
+        ("9. V2 Forward Epoch Tracker & Daily Universe Rank", "forward_test_ledger_v2.py", [])
     ]
 
     for idx, (title, script, args) in enumerate(steps, 1):
@@ -103,7 +104,7 @@ def cmd_refresh():
             print(f"⚠️ Warning: Step {script} exited with code {code}.", flush=True)
 
     print("\n" + "=" * 80, flush=True)
-    print("✅ REFRESH COMPLETE: ALL 80 CATEGORY A ASSETS AUDITED & REPORTS PUBLISHED", flush=True)
+    print("✅ REFRESH COMPLETE: V2 QUANT ENGINE & ALL CATEGORY A ASSETS AUDITED", flush=True)
     print("=" * 80, flush=True)
 
 
