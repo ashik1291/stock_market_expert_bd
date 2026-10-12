@@ -2,7 +2,8 @@
 name: dse-help
 description: >
   Displays the quick command menu and available instructions for the DSE Stock Analysis System.
-  Trigger when user types 'help', 'commands', 'menu', 'options', 'how to use', or asks what to do.
+  Trigger when user types 'help', 'commands', 'menu', 'options', 'how to use', or minimal words like
+  'refresh', 'audit', 'climate', 'predict', 'best', 'plan', 'alpha', 'check'.
 ---
 
 # dse-help
@@ -11,6 +12,7 @@ Quick cheat-sheet of instructions for the user to trigger DSE analysis workflows
 
 ## When to trigger
 - User says "help", "menu", "commands", "what can you do", "options"
+- User types minimal trigger words: "refresh", "audit", "climate", "predict", "best", "plan", "alpha", "check [TICKER]"
 - User forgets what phrases or commands to give
 
 ## Response Template to Display
@@ -18,7 +20,19 @@ Quick cheat-sheet of instructions for the user to trigger DSE analysis workflows
 ```markdown
 # 📈 DSE System Commands Menu
 
-Choose what you want to do and type the phrase in chat:
+### ⚡ Minimal 1-Word Fast Triggers
+| Command | Action |
+| :--- | :--- |
+| **`refresh`** | Full end-to-end data pipeline refresh (scraper + processor + footnotes + alpha) |
+| **`audit`** | Audit active portfolio holdings, live P&L, cost basis, cash reserve |
+| **`climate`** | Market climate, interest rates, inflation, macro systemic risk |
+| **`predict`** | Daily directional rise/fall scanner with probability % |
+| **`best`** | 12-Factor Buffett value screener for Top 2 compounders per sector |
+| **`plan`** | Monthly asset accumulation plan & safe buy ceilings for ৳2,000 budget |
+| **`alpha`** | Daily statistical alpha update, forward ledger logging & Bayesian calibration |
+| **`check [TICKER]`** | Deep fundamental + technical + debt audit of a single ticker |
+
+Choose what you want to do and type the phrase or word in chat:
 
 ### 🏆 1. Master Rankings & Sector Matrix
 - **`Best 2 per sector`** or **`Buffett screener`** or **`12 factor check`**
