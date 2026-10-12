@@ -9,6 +9,7 @@ Commands:
   best2         Run 12-factor Graham/Buffett screener and show Top 2 stocks per sector
   scan          Run daily directional Rise vs Fall scanner across Category A stocks
   refresh       Execute complete end-to-end knowledge base refresh pipeline
+  alpha         Execute automated statistical alpha routine, ledger advance & Bayesian calibration
   pattern [TICKER] Analyze company pattern DNA, multi-interval waves, causal 'WHY', & worth vs greed
   portfolio     Show current portfolio holdings (Mutual Funds + Equities + P&L)
   plan [BDT]    Generate exact capital deployment plan (default BDT 50,000)
@@ -142,6 +143,13 @@ def cmd_learn():
             print(f.read(), flush=True)
 
 
+def cmd_alpha():
+    print("=" * 80, flush=True)
+    print("🧠 DSE DAILY STATISTICAL ALPHA & ADAPTIVE LEARNING CYCLE", flush=True)
+    print("=" * 80, flush=True)
+    run_script("auto_daily_alpha_routine.py")
+
+
 def cmd_pattern(ticker: str):
     run_script("pattern_causal_engine.py", [ticker])
 
@@ -164,6 +172,8 @@ def main():
         cmd_scan()
     elif cmd in ("refresh", "update"):
         cmd_refresh()
+    elif cmd in ("alpha", "daily-alpha"):
+        cmd_alpha()
     elif cmd in ("learn", "accuracy", "feedback"):
         cmd_learn()
     elif cmd in ("pattern", "cycles", "why", "dna"):
