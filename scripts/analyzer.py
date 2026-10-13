@@ -307,12 +307,19 @@ def compute_fundamental_score(fund_list: list[dict], thresholds: dict) -> dict:
     if not fund_list:
         return {"score": None, "signals": {"error": "no_fundamental_data"}}
 
-    f = fund_list[0]  # most recent
+    # Anchor to the most recent audited annual record for balance sheet metrics (NAV, PE, Dividend)
+    annual_records = [r for r in fund_list if r.get("nav") is not None]
+    f = annual_records[0] if annual_records else fund_list[0]
     t = thresholds["fundamentals"]
     signals     = {}
     score_parts = []
 
-    # EPS
+    # Note latest interim quarterly EPS if present
+    if fund_list and fund_list[0].get("quarter") and fund_list[0].get("quarter") < 4:
+        iq = fund_list[0]
+        signals["latest_interim_eps"] = f"FY{iq.get('year')}Q{iq.get('quarter')} ({iq.get('eps')})"
+
+    # Annual Audited EPS
     eps = f.get("eps")
     if eps is not None:
         if eps > 0:
@@ -322,12 +329,15 @@ def compute_fundamental_score(fund_list: list[dict], thresholds: dict) -> dict:
             score_parts.append(20)
             signals["eps"] = f"negative ({eps})"
 
-    # EPS YoY growth (if 2+ periods available)
-    if len(fund_list) >= 2:
-        prev_eps = fund_list[1].get("eps")
-        if eps and prev_eps and prev_eps != 0:
-            growth_pct = ((eps - prev_eps) / abs(prev_eps)) * 100
+    # EPS YoY growth across consecutive audited annual years
+    if len(annual_records) >= 2:
+        curr, prev = annual_records[0], annual_records[1]
+        prev_eps = prev.get("eps")
+        curr_eps = curr.get("eps")
+        if curr_eps is not None and prev_eps is not None and prev_eps != 0:
+            growth_pct = ((curr_eps - prev_eps) / abs(prev_eps)) * 100
             signals["eps_yoy_growth_pct"] = round(growth_pct, 1)
+            signals["eps_growth_comparison"] = f"FY{curr.get('year')} vs FY{prev.get('year')}"
             if growth_pct >= t["min_eps_growth_yoy_pct"]:
                 score_parts.append(85)
             elif growth_pct >= 0:

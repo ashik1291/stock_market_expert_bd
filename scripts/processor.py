@@ -232,34 +232,42 @@ def _normalize_key(k: str) -> str:
 
 def _detect_fiscal_period(raw: dict) -> tuple[int, int]:
     """
-    Try to extract year/quarter from raw scraped data.
-    DSE often shows 'Year Ended December 2025' or 'Q3 FY2025'.
-    Falls back to today's year/quarter.
+    Extract year/quarter from raw scraped data.
+    Authoritative source: multi_year_financials[-1]['year']
+    Falls back to current year/quarter with strict sanity bounds (2015 <= year <= current_year + 1).
     """
     import re
     today = datetime.date.today()
     default_year = today.year
     default_q = (today.month - 1) // 3 + 1
 
+    # Authoritative: latest audited year from multi_year_financials
+    my = raw.get("multi_year_financials")
+    if isinstance(my, list) and my:
+        latest = my[-1].get("year")
+        if latest and 2015 <= int(latest) <= default_year + 1:
+            return int(latest), 4
+
     for k, v in raw.items():
         if not isinstance(v, str):
             continue
-        # Pattern: 'FY2025', 'FY 2025', '2025-26', 'June 2025'
-        year_match = re.search(r"20(\d{2})", v)
+        # Pattern: exact 4-digit year bounded by word boundaries
+        year_match = re.search(r"\b20([1-3]\d)\b", v)
         if year_match:
-            year = int("20" + year_match.group(1))
-            q_match = re.search(r"Q([1-4])", v, re.I)
-            if q_match:
-                return year, int(q_match.group(1))
-            # Fiscal year end month → Q4
-            month_map = {
-                "jan": 2, "feb": 2, "mar": 4, "apr": 1, "may": 1, "jun": 4,
-                "jul": 1, "aug": 2, "sep": 3, "oct": 2, "nov": 3, "dec": 4,
-            }
-            for mon, q in month_map.items():
-                if mon in v.lower():
-                    return year, q
-            return year, default_q
+            cand_year = int("20" + year_match.group(1))
+            if 2015 <= cand_year <= default_year + 1:
+                q_match = re.search(r"Q([1-4])", v, re.I)
+                if q_match:
+                    return cand_year, int(q_match.group(1))
+                # Fiscal year end month → Q4
+                month_map = {
+                    "jan": 2, "feb": 2, "mar": 4, "apr": 1, "may": 1, "jun": 4,
+                    "jul": 1, "aug": 2, "sep": 3, "oct": 2, "nov": 3, "dec": 4,
+                }
+                for mon, q in month_map.items():
+                    if mon in v.lower():
+                        return cand_year, q
+                return cand_year, default_q
 
     return default_year, default_q
 
@@ -397,6 +405,109 @@ def upsert_fundamentals(conn: sqlite3.Connection, parsed: dict, raw: dict):
         parsed.get("cash_flow_ops"),
         hash_val, datetime.datetime.utcnow().isoformat(),
     ))
+
+    # ── Ingest Multi-Year Audited Financials if available ──
+    multi_year = raw.get("multi_year_financials")
+    if isinstance(multi_year, list):
+        for my_item in multi_year:
+            my_year = my_item.get("year")
+            if not my_year:
+                continue
+            my_eps = _to_float(my_item.get("epsBasic") or my_item.get("eps"))
+            my_nav = _to_float(my_item.get("nav"))
+            my_pe = _to_float(my_item.get("pe"))
+            my_div_yield = _to_float(my_item.get("dividendYield"))
+            my_profit = _to_float(my_item.get("profit"))
+            profit_cr = round(my_profit / 10.0, 2) if my_profit is not None else None
+            my_raw_str = json.dumps(my_item, ensure_ascii=False)
+            my_hash = hashlib.sha256(my_raw_str.encode("utf-8")).hexdigest()[:16]
+
+            # Ingest into fundamentals table (quarter 4 = full year audited)
+            conn.execute("""
+                INSERT INTO fundamentals
+                    (ticker, year, quarter, eps, nav, pe_ratio, dividend_yield,
+                     net_profit_cr, raw_data, updated_at)
+                VALUES (?,?,?,?,?,?,?,?,?,?)
+                ON CONFLICT(ticker, year, quarter) DO UPDATE SET
+                    eps           = COALESCE(excluded.eps, fundamentals.eps),
+                    nav           = COALESCE(excluded.nav, fundamentals.nav),
+                    pe_ratio      = COALESCE(excluded.pe_ratio, fundamentals.pe_ratio),
+                    dividend_yield= COALESCE(excluded.dividend_yield, fundamentals.dividend_yield),
+                    net_profit_cr = COALESCE(excluded.net_profit_cr, fundamentals.net_profit_cr),
+                    updated_at    = excluded.updated_at
+            """, (
+                parsed["ticker"], my_year, 4,
+                my_eps, my_nav, my_pe, my_div_yield, profit_cr,
+                my_raw_str, datetime.datetime.utcnow().isoformat()
+            ))
+
+            # Ingest into fundamentals_pit (snapshot_date at fiscal year end)
+            my_snap = f"{my_year}-06-30"
+            conn.execute("""
+                INSERT INTO fundamentals_pit
+                    (ticker, snapshot_date, publication_date, fiscal_year, fiscal_quarter,
+                     eps, nav, pe_ratio, dividend_yield, net_profit_cr, source_hash, created_at)
+                VALUES (?,?,?,?,?,?,?,?,?,?,?,?)
+                ON CONFLICT(ticker, snapshot_date) DO UPDATE SET
+                    eps           = COALESCE(excluded.eps, fundamentals_pit.eps),
+                    nav           = COALESCE(excluded.nav, fundamentals_pit.nav),
+                    pe_ratio      = COALESCE(excluded.pe_ratio, fundamentals_pit.pe_ratio),
+                    dividend_yield= COALESCE(excluded.dividend_yield, fundamentals_pit.dividend_yield),
+                    net_profit_cr = COALESCE(excluded.net_profit_cr, fundamentals_pit.net_profit_cr),
+                    source_hash   = excluded.source_hash
+            """, (
+                parsed["ticker"], my_snap, my_snap, my_year, 4,
+                my_eps, my_nav, my_pe, my_div_yield, profit_cr,
+                my_hash, datetime.datetime.utcnow().isoformat()
+            ))
+
+    # ── Ingest Interim Quarterly Financials if available ──
+    interim = raw.get("interim_financials")
+    if isinstance(interim, dict):
+        period_ends = interim.get("periodEnds", {})
+        for row in interim.get("rows", []):
+            metric_name = row.get("metric", "")
+            if "Earnings Per Share" in metric_name and "Diluted" not in metric_name:
+                for qk in ["q1", "q2", "q3"]:
+                    q_eps = _to_float(row.get(qk))
+                    pend = period_ends.get(qk)
+                    if q_eps is not None and pend and len(str(pend)) >= 6:
+                        pend_str = str(pend)
+                        pyear = int(pend_str[:4])
+                        pmonth = int(pend_str[4:6])
+                        last_day = 31 if pmonth in [1, 3, 5, 7, 8, 10, 12] else (28 if pmonth == 2 else 30)
+                        snap_date = f"{pyear}-{pmonth:02d}-{last_day:02d}"
+                        q_num = int(qk[1])
+                        fiscal_yr = pyear if pmonth <= 6 else pyear + 1
+                        int_raw_str = json.dumps({"metric": metric_name, "period": pend_str, "eps": q_eps}, ensure_ascii=False)
+                        int_hash = hashlib.sha256(int_raw_str.encode("utf-8")).hexdigest()[:16]
+
+                        conn.execute("""
+                            INSERT INTO fundamentals
+                                (ticker, year, quarter, eps, raw_data, updated_at)
+                            VALUES (?,?,?,?,?,?)
+                            ON CONFLICT(ticker, year, quarter) DO UPDATE SET
+                                eps        = excluded.eps,
+                                updated_at = excluded.updated_at
+                        """, (
+                            parsed["ticker"], fiscal_yr, q_num,
+                            q_eps, int_raw_str, datetime.datetime.utcnow().isoformat()
+                        ))
+
+                        conn.execute("""
+                            INSERT INTO fundamentals_pit
+                                (ticker, snapshot_date, publication_date, fiscal_year, fiscal_quarter,
+                                 eps, source_hash, created_at)
+                            VALUES (?,?,?,?,?,?,?,?)
+                            ON CONFLICT(ticker, snapshot_date) DO UPDATE SET
+                                eps         = excluded.eps,
+                                fiscal_year = excluded.fiscal_year,
+                                fiscal_quarter = excluded.fiscal_quarter,
+                                source_hash = excluded.source_hash
+                        """, (
+                            parsed["ticker"], snap_date, snap_date, fiscal_yr, q_num,
+                            q_eps, int_hash, datetime.datetime.utcnow().isoformat()
+                        ))
 
 
 def insert_prices(conn: sqlite3.Connection, ticker: str, records: list[dict],
