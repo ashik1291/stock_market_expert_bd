@@ -105,4 +105,12 @@ When making recommendations (portfolio-specific or general):
    - Compare Cheapness (P/E, P/NAV) vs Quality/Compounding (ROE, Private Management, Innovation).
    - Explicitly highlight hidden flaws/vulnerabilities of every candidate (e.g., government margin control, interest rate reliance, cyclical scrap import dependency).
 4. **Exact Budget Fit**: Provide whole share counts, total outlay, and remaining cash reserve matched strictly to user budget (e.g., ৳1,000, ৳2,000, ৳50,000).
+5. **Timing Gate & Pullback Probability ("Wait vs Buy Now")**:
+   - Check technical extension (distance from 20-DMA support, RSI level, weekly market trend).
+   - If overextended or risk of short-term dip is high, explicitly tell the user: **"DO NOT BUY TODAY. Wait for next week / wait for dip"**.
+   - Quantify pullback probability (% chance) and give the target safe dip price (e.g., "Wait for dip to ৳YYY").
+6. **Budget Stretch Buffer (+৳100 to +৳500 Buffer Analysis)**:
+   - **Base Allocation**: Provide best whole-share execution strictly within user's exact budget.
+   - **Stretch Suggestion**: If adding a small buffer (+৳100, +৳200, or +৳500) unlocks a higher-tier compounder or prevents dead idle cash from buying an extra share, explicitly advise: *"Add +৳XXX to unlock [TICKER] / buy N shares"*.
+   - **Zero Buffer Rule**: If the best stock fits cleanly into the budget without dead cash, state: *"Zero budget increase needed."*
 
