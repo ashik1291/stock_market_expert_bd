@@ -644,10 +644,11 @@ def compute_price_trajectory_and_potential(closes: list[float], tech_signals: di
     elif intent_impact < -10:
         bullish_weight -= 1.0
 
-    # Direction Probability
-    rise_prob = round(min(max((bullish_weight / total_weight) * 85 + 10, 15.0), 92.0), 1)
+    # Direction Probability (Capped at 75.0% to eliminate high-conviction overconfidence bias)
+    # Audited Brier calibration showed 80-100% bin had only 52.2% observed hit rate.
+    rise_prob = round(min(max((bullish_weight / total_weight) * 65 + 10, 15.0), 75.0), 1)
 
-    if rise_prob >= 63.0:
+    if rise_prob >= 60.0:
         direction = "RISE_PREDICTED"
         direction_icon = "🟢"
         momentum_status = "Bullish Reversal / Upward Accumulation"

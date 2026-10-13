@@ -52,7 +52,7 @@ DEFAULT_WEIGHTS = {
     "macd_trend_weight": 1.00,
     "governance_weight": 1.10,
     "macro_bias_weight": 0.90,
-    "learning_rate": 0.05,
+    "learning_rate": 0.02,
     "total_training_cycles": 0,
     "overall_accuracy_pct": 74.5,
     "updated_at": datetime.now().isoformat()
@@ -293,8 +293,11 @@ def evaluate_pending_predictions(eval_window_days: int = 14) -> dict:
                 # Shrinkage posterior mean
                 shrunk_p = (k_f + prior_alpha) / (n_f + prior_alpha + prior_beta)
                 # Calibrated weight bounded between 0.60x and 1.40x
-                calibrated_w = round(max(0.60, min(1.40, shrunk_p / prior_mean)), 3)
-                weights[w_key] = calibrated_w
+                target_w = round(max(0.60, min(1.40, shrunk_p / prior_mean)), 3)
+                # Exponential moving average smoothing with learning rate 0.02 (prevent small-sample oscillations)
+                old_w = weights.get(w_key, 1.0)
+                lr = weights.get("learning_rate", 0.02)
+                weights[w_key] = round((1.0 - lr) * old_w + lr * target_w, 3)
             else:
                 # Retain neutral 1.0x prior when sample is too small
                 weights[w_key] = 1.00
