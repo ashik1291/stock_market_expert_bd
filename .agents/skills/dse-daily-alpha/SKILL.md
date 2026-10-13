@@ -34,9 +34,15 @@ python c:\Users\BS01671\Documents\stock_market\scripts\auto_daily_alpha_routine.
 
 ## Background Rules for the Agent
 
-1. When user asks "what should I buy today", "daily predictions", or "portfolio audit":
-   - Ensure the latest market session data is ingested.
-   - Run `auto_daily_alpha_routine.py` if not executed for today.
-   - Present recommendations strictly grounded in the resulting reports.
-2. Always report measured accuracy and Brier calibration score if asked.
-3. Keep user constraints active: 100% Halal/Shariah, zero banks, zero high-debt traps, 4-tranche deployment.
+1. **Autonomous Silent Sync on ANY User Interaction**:
+   - The user NEVER needs to remember manual schedules or trigger words.
+   - On the FIRST interaction of any day (or whenever the user speaks), silently execute:
+     `python scripts/check_daily_sync.py`
+   - If market close has passed (after 3:30 PM BST, Sun–Thu) and today's session has not been ingested, it will pull closing prices, scrape news, step the forward ledger, and tune weights automatically.
+   - If fundamentals data is older than 7 days, it will harvest multi-year & quarterly updates automatically.
+   - Do this SILENTLY in the background without complaining or asking permission, then immediately fulfill whatever the user actually asked.
+2. When user asks for recommendations or portfolio decisions:
+   - Present recommendations strictly grounded in the latest processed database.
+   - Follow the 3-option multi-sector comparative rule, timing gate ("Wait vs Buy Now"), and budget stretch buffer (+৳100 to +৳500).
+3. Always report measured accuracy and Brier calibration score if asked.
+4. Keep user constraints active: 100% Halal/Shariah, zero banks, zero high-debt traps, 4-tranche deployment.
