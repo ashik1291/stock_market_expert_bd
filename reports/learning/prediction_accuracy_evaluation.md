@@ -1,21 +1,21 @@
 # 🔬 DSE Empirical Bayes Online Calibration & Expectancy Audit
-**Audit Timestamp:** 2026-10-12 11:00:14 | **Calibration Engine:** Empirical Bayes Shrinkage & Expectancy
+**Audit Timestamp:** 2026-10-14 00:20:01 | **Calibration Engine:** Empirical Bayes Shrinkage & Expectancy
 
 ---
 ## 1. Statistical Performance, Expectancy & Probability Calibration
-- **Evaluated Closed Calls**: **169**
-- **Empirical Win Rate**: **65.7%** *(Wilson 95% Confidence Interval: [58.2% – 72.4%])*
-- **Brier Calibration Score**: **0.2540** *(Benchmark: 0.25 is uninformative coin toss, <0.20 is sharp)*
-- **Average Win**: **+5.65%** | **Average Loss**: **-5.47%**
+- **Evaluated Closed Calls**: **191**
+- **Empirical Win Rate**: **64.4%** *(Wilson 95% Confidence Interval: [57.4% – 70.8%])*
+- **Brier Calibration Score**: **0.2468** *(Benchmark: 0.25 is uninformative coin toss, <0.20 is sharp)*
+- **Average Win**: **+5.54%** | **Average Loss**: **-4.8%**
 - **Round-Trip Friction (Brokerage 0.8% + CDBL 0.03%)**: **-0.83%**
-- **Net Mathematical Trade Expectancy**: **+1.00% per trade**
-- **Successful Calls**: **111** | **Mistakes / Stopped Out**: **58**
+- **Net Mathematical Trade Expectancy**: **+1.03% per trade**
+- **Successful Calls**: **123** | **Mistakes / Stopped Out**: **68**
 
 ### Reliability Calibration Table
 | Confidence Bin | Prediction Count | Mean Predicted Prob % | Observed Actual Hit Rate % | Calibration Status |
 |---|---|---|---|---|
-| **50-65%** | 9 | 55.3% | **66.7%** | 🟢 Underconfident |
-| **65-80%** | 114 | 70.5% | **71.1%** | ✅ Well-Calibrated |
+| **50-65%** | 20 | 52.7% | **40.0%** | ⚠️ Overconfident |
+| **65-80%** | 125 | 70.2% | **72.8%** | ✅ Well-Calibrated |
 | **80-100%** | 46 | 85.9% | **52.2%** | ⚠️ Overconfident |
 
 ---
@@ -24,9 +24,9 @@ Weights shrunk toward conservative prior (60% baseline) to prevent small-sample 
 
 | Factor / Indicator | Dynamic Weight | Calibration Method | Bounded Range |
 |---|---|---|---|
-| **Bank Asset Quality & NPL Filter** | **0.92x** | Empirical Bayes Shrinkage | [0.60x – 1.40x] |
-| **Valuation & Margin of Safety** | **0.92x** | Empirical Bayes Shrinkage | [0.60x – 1.40x] |
-| **Smart Money Delta** | **0.92x** | Empirical Bayes Shrinkage | [0.60x – 1.40x] |
+| **Bank Asset Quality & NPL Filter** | **0.83x** | Empirical Bayes Shrinkage | [0.60x – 1.40x] |
+| **Valuation & Margin of Safety** | **0.83x** | Empirical Bayes Shrinkage | [0.60x – 1.40x] |
+| **Smart Money Delta** | **0.83x** | Empirical Bayes Shrinkage | [0.60x – 1.40x] |
 | **Corporate Governance (AAA/AA)** | **1.10x** | Empirical Bayes Shrinkage | [0.60x – 1.40x] |
 | **MACD Trend Structure** | **1.00x** | Baseline Baseline | [0.80x – 1.20x] |
 | **RSI Momentum Oversold** | **1.09x** | Downweighted on bear false-breaks | [0.50x – 1.00x] |
