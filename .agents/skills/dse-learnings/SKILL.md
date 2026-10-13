@@ -56,6 +56,10 @@ Knowledge base of real-world lessons, verified endpoints, and operational guardr
 | **2026-10-06** | Scalp trades faded into the afternoon bell | In compressed turnover sessions (<BDT 600 Cr), liquidity dries up after 12:30 PM | Morning spike limit orders enforced for daily/weekly scalps rather than holding to closing bell |
 | **2026-10-06** | Chasing momentum led to buying overvalued peaks | Technical momentum overextended past fundamental fair value | Built `pattern_causal_engine.py`: Intrinsic Worth vs Market Greed Index (0-100) hard-blocks buys when Greed > 70 |
 | **2026-10-13** | Algorithmic screening bias toward state monopolies | Low P/E and high dividend yield heuristics favored SOEs over private growth compounders | Mandated Unbiased Comparative Protocol: evaluate 3-4 multi-sector options comparing cheapness vs compounding quality |
+| **2026-10-14** | Overconfidence in directional predictions | Linear indicator stacking produced 85-95% rise probabilities that failed Brier calibration | Implemented strict 75.0% rise probability ceiling in `analyzer.py` |
+| **2026-10-14** | Missing quarterly and historical financials | Scraper only grabbed top-level snapshot tags, missing DSE's Next.js SSR state arrays | Extracted `multiYearFinancials` (8-year audited history) and `interimFinancials` (live Q1-Q3 EPS) in `scraper.py` and `processor.py` |
+| **2026-10-14** | Numbers parsed as future calendar years (e.g. 2046, 2065) | Unbounded 4-digit regex matched market cap / share counts | Bounded fiscal year parser strictly to `2015 <= year <= current_year + 1` |
+| **2026-10-14** | Windows dead sandbox proxy blocked scraping | Default requests session inherited broken HTTP proxy env vars | Enforced `SESSION.trust_env = False` across all scraper network sessions |
 
 ---
 
