@@ -37,6 +37,7 @@ HEADERS = {
     "Accept-Language": "en-US,en;q=0.9",
 }
 SESSION = requests.Session()
+SESSION.trust_env = False
 SESSION.headers.update(HEADERS)
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
@@ -94,6 +95,9 @@ def save_raw(category: str, data: dict | list, date_str: str = None):
     out_dir = RAW_DIR / date_str
     out_dir.mkdir(parents=True, exist_ok=True)
     out_file = out_dir / f"{category}.json"
+    if not data and out_file.exists():
+        log.warning(f"Empty data received for {category}; preserving existing {out_file}")
+        return
     with open(out_file, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
     log.info(f"Saved {out_file}")
