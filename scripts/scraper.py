@@ -366,6 +366,22 @@ def scrape_fundamentals(ticker: str) -> dict:
         if div_history:
             data["dividend_history"] = div_history
 
+        # Multi-Year Financials (Historical Audited EPS, NAV, Profit, PE)
+        m_my = re.search(r'"multiYearFinancials"\s*:\s*(\[.*?\])\s*,\s*"interimFinancials"', combined)
+        if m_my:
+            try:
+                data["multi_year_financials"] = json.loads(m_my.group(1))
+            except Exception as e:
+                log.debug(f"multiYearFinancials json parse error {ticker}: {e}")
+
+        # Interim Financials (Quarterly EPS Q1, Q2, Q3)
+        m_int = re.search(r'"interimFinancials"\s*:\s*(\{.*?\})\s*,\s*"peTrend"', combined)
+        if m_int:
+            try:
+                data["interim_financials"] = json.loads(m_int.group(1))
+            except Exception as e:
+                log.debug(f"interimFinancials json parse error {ticker}: {e}")
+
         # Calculate empirical Debt/Equity and Long-Term Debt/Equity
         nav_val = _to_float(data.get("nav") or data.get("book_value"))
         puc_val = _to_float(data.get("paid_up_capital"))
