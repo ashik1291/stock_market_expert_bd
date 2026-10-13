@@ -555,11 +555,17 @@ def run_full_scrape(tickers: list[str] = None, historical_years: int = 5):
 
 
 def run_price_only_scrape():
-    """Quick daily price refresh — market summary + all prices only."""
+    """Daily price & macro news refresh."""
     date_str = today_str()
     save_raw("market_summary", scrape_market_summary(), date_str)
     save_raw("all_prices", scrape_all_prices(), date_str)
-    log.info(f"Price-only scrape done: {date_str}")
+    try:
+        # Scrape global macro news headlines daily
+        news_articles = scrape_all_news()
+        save_raw("market_news", news_articles, date_str)
+    except Exception as e:
+        log.warning(f"Daily news scrape skipped: {e}")
+    log.info(f"Price & news scrape done: {date_str}")
     return date_str
 
 

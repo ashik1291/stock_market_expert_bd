@@ -38,6 +38,7 @@ HEADERS = {
     "Accept-Language": "en-US,en;q=0.9",
 }
 SESSION = requests.Session()
+SESSION.trust_env = False
 SESSION.headers.update(HEADERS)
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
