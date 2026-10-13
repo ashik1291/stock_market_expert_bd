@@ -93,3 +93,16 @@ reports/
 | **Short (Daily/Weekly)** | 5–10% of portfolio | Strict -2.0% hard stop | +2.5% to +5.0% (take profit immediately) |
 | **Mid (1–6 Months)** | 10–20% | Trailing stop -5.0% | +12% to +20% |
 | **Long (1–5+ Years)** | 15–30% (Tranches) | Structural breach / NAV drop | Wealth accumulation & dividend compounding |
+
+---
+
+## ⚖️ Mandatory Unbiased Multi-Option Comparative Protocol
+
+When making recommendations (portfolio-specific or general):
+1. **Never Recommend a Single Stock in Isolation**: Avoid anchoring on one metric (e.g. state-owned deep-value cash cows like `JAMUNAOIL`).
+2. **Multi-Sector Cross Comparison**: Always surface and rank at least 3–4 distinct candidates across separate sectors (e.g., Pharma, Industrial/Steel, Cement, Energy, Telecom).
+3. **Objective Trade-Off Transparency**:
+   - Compare Cheapness (P/E, P/NAV) vs Quality/Compounding (ROE, Private Management, Innovation).
+   - Explicitly highlight hidden flaws/vulnerabilities of every candidate (e.g., government margin control, interest rate reliance, cyclical scrap import dependency).
+4. **Exact Budget Fit**: Provide whole share counts, total outlay, and remaining cash reserve matched strictly to user budget (e.g., ৳1,000, ৳2,000, ৳50,000).
+

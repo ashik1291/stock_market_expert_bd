@@ -55,6 +55,7 @@ Knowledge base of real-world lessons, verified endpoints, and operational guardr
 | **2026-10-06** | Debt-laden companies crashed in high interest rate regime | 12-14% corporate lending rates erode profits for highly leveraged firms | Empirical D/E > 1.2 screen achieved 100% accuracy in predicting falls (Crown Cement, Premier Cement, Genex, Runner) |
 | **2026-10-06** | Scalp trades faded into the afternoon bell | In compressed turnover sessions (<BDT 600 Cr), liquidity dries up after 12:30 PM | Morning spike limit orders enforced for daily/weekly scalps rather than holding to closing bell |
 | **2026-10-06** | Chasing momentum led to buying overvalued peaks | Technical momentum overextended past fundamental fair value | Built `pattern_causal_engine.py`: Intrinsic Worth vs Market Greed Index (0-100) hard-blocks buys when Greed > 70 |
+| **2026-10-13** | Algorithmic screening bias toward state monopolies | Low P/E and high dividend yield heuristics favored SOEs over private growth compounders | Mandated Unbiased Comparative Protocol: evaluate 3-4 multi-sector options comparing cheapness vs compounding quality |
 
 ---
 
