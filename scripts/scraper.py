@@ -577,7 +577,7 @@ def run_price_only_scrape():
     save_raw("all_prices", scrape_all_prices(), date_str)
     try:
         # Scrape global macro news headlines daily
-        news_articles = scrape_all_news()
+        news_articles = scrape_news(ticker=None)
         save_raw("market_news", news_articles, date_str)
     except Exception as e:
         log.warning(f"Daily news scrape skipped: {e}")
