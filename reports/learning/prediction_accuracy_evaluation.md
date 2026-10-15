@@ -1,21 +1,21 @@
 # 🔬 DSE Empirical Bayes Online Calibration & Expectancy Audit
-**Audit Timestamp:** 2026-10-14 00:20:01 | **Calibration Engine:** Empirical Bayes Shrinkage & Expectancy
+**Audit Timestamp:** 2026-10-15 15:17:45 | **Calibration Engine:** Empirical Bayes Shrinkage & Expectancy
 
 ---
 ## 1. Statistical Performance, Expectancy & Probability Calibration
-- **Evaluated Closed Calls**: **191**
-- **Empirical Win Rate**: **64.4%** *(Wilson 95% Confidence Interval: [57.4% – 70.8%])*
-- **Brier Calibration Score**: **0.2468** *(Benchmark: 0.25 is uninformative coin toss, <0.20 is sharp)*
-- **Average Win**: **+5.54%** | **Average Loss**: **-4.8%**
+- **Evaluated Closed Calls**: **231**
+- **Empirical Win Rate**: **63.6%** *(Wilson 95% Confidence Interval: [57.3% – 69.6%])*
+- **Brier Calibration Score**: **0.2383** *(Benchmark: 0.25 is uninformative coin toss, <0.20 is sharp)*
+- **Average Win**: **+4.65%** | **Average Loss**: **-3.93%**
 - **Round-Trip Friction (Brokerage 0.8% + CDBL 0.03%)**: **-0.83%**
-- **Net Mathematical Trade Expectancy**: **+1.03% per trade**
-- **Successful Calls**: **123** | **Mistakes / Stopped Out**: **68**
+- **Net Mathematical Trade Expectancy**: **+0.70% per trade**
+- **Successful Calls**: **147** | **Mistakes / Stopped Out**: **84**
 
 ### Reliability Calibration Table
 | Confidence Bin | Prediction Count | Mean Predicted Prob % | Observed Actual Hit Rate % | Calibration Status |
 |---|---|---|---|---|
-| **50-65%** | 20 | 52.7% | **40.0%** | ⚠️ Overconfident |
-| **65-80%** | 125 | 70.2% | **72.8%** | ✅ Well-Calibrated |
+| **50-65%** | 40 | 51.4% | **35.0%** | ⚠️ Overconfident |
+| **65-80%** | 145 | 69.7% | **75.2%** | ✅ Well-Calibrated |
 | **80-100%** | 46 | 85.9% | **52.2%** | ⚠️ Overconfident |
 
 ---
