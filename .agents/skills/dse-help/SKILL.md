@@ -23,6 +23,7 @@ Quick cheat-sheet of instructions for the user to trigger DSE analysis workflows
 ### ⚡ Minimal 1-Word Fast Triggers
 | Command | Action |
 | :--- | :--- |
+| **`ready`** | Bootstrap dependencies, verify DB integrity, self-heal, and ready system on this machine |
 | **`refresh`** | Full end-to-end data pipeline refresh (scraper + processor + footnotes + alpha) |
 | **`audit`** | Audit active portfolio holdings, live P&L, cost basis, cash reserve |
 | **`climate`** | Market climate, interest rates, inflation, macro systemic risk |

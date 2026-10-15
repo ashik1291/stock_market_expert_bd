@@ -5,6 +5,7 @@ Usage:
   python main.py [COMMAND] [ARGS]
 
 Commands:
+  ready         Bootstrap dependencies, verify database integrity, and ready system on this machine
   status        Check complete system health, macro bias, active alerts, and portfolio ledger
   best2         Run 12-factor Graham/Buffett screener and show Top 2 stocks per sector
   scan          Run daily directional Rise vs Fall scanner across Category A stocks
@@ -154,6 +155,10 @@ def cmd_pattern(ticker: str):
     run_script("pattern_causal_engine.py", [ticker])
 
 
+def cmd_ready():
+    run_script("bootstrap.py")
+
+
 def cmd_help():
     print(__doc__)
 
@@ -164,7 +169,9 @@ def main():
         return
 
     cmd = sys.argv[1].lower().strip("-")
-    if cmd in ("status", "info"):
+    if cmd in ("ready", "bootstrap", "setup", "init"):
+        cmd_ready()
+    elif cmd in ("status", "info"):
         cmd_status()
     elif cmd in ("best2", "screener", "buffett"):
         cmd_best2()
