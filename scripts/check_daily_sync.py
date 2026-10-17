@@ -28,8 +28,8 @@ def auto_sync_if_needed():
     now = datetime.datetime.now()
     today_str = now.strftime("%Y-%m-%d")
     weekday = now.weekday()  # 0=Mon, 1=Tue, 2=Wed, 3=Thu, 4=Fri, 5=Sat, 6=Sun
-    # DSE trading days: Sun(6), Mon(0), Tue(1), Wed(2), Thu(3), plus Sat(5) for special government sessions.
-    is_trading_day = weekday in (6, 0, 1, 2, 3, 5)
+    # DSE standard trading days: Sunday (6) through Thursday (3). Friday and Saturday closed.
+    is_trading_day = weekday in (6, 0, 1, 2, 3)
     market_closed_today = now.hour >= 16 or (now.hour == 15 and now.minute >= 30)
 
     # 1. Check prices DB
