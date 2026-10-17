@@ -240,14 +240,46 @@ def analyze_macro_sentiment(days: int = 14) -> dict:
     # Clamp sector adjustments between -25 and +25
     clamped_sectors = {k: max(-25, min(25, v)) for k, v in sector_scores.items()}
 
+    # 6. Global Macro Commodities & FX (High-Signal Numerical Data)
+    global_macro = fetch_global_macro_indicators()
+
     return {
         "systemic_market_bias": norm_bias,
         "bias_label": label,
         "total_news_analyzed": len(news_items),
         "macro_alerts": list(dict.fromkeys(alerts))[:10],  # dedupe top 10
         "sector_adjustments": clamped_sectors,
-        "ticker_news_catalysts": ticker_catalysts
+        "ticker_news_catalysts": ticker_catalysts,
+        "global_macro_indicators": global_macro
     }
+
+
+def fetch_global_macro_indicators() -> dict:
+    """
+    Fetches real numeric indicators that directly impact DSE operating margins:
+    - Brent Crude (BZ=F): Impact on Jamuna Oil, Meghna, Padma, fuel costs
+    - USD/BDT (BDT=X): Impact on BSRM steel scrap import costs, pharma API import costs
+    """
+    import urllib.request
+    indicators = {}
+    tickers = {"brent_crude_usd": "BZ=F", "usd_bdt": "BDT=X"}
+    for name, sym in tickers.items():
+        try:
+            url = f"https://query1.finance.yahoo.com/v8/finance/chart/{sym}?interval=1d&range=5d"
+            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+            with urllib.request.urlopen(req, timeout=5) as resp:
+                data = json.loads(resp.read().decode())
+                meta = data["chart"]["result"][0]["meta"]
+                indicators[name] = {
+                    "symbol": sym,
+                    "price": meta.get("regularMarketPrice"),
+                    "prev_close": meta.get("chartPreviousClose"),
+                    "currency": meta.get("currency")
+                }
+        except Exception as e:
+            log.debug(f"Failed to fetch global macro {sym}: {e}")
+            indicators[name] = {"symbol": sym, "error": str(e)}
+    return indicators
 
 
 if __name__ == "__main__":
@@ -258,3 +290,4 @@ if __name__ == "__main__":
     print("Top Alerts:", len(report["macro_alerts"]))
     for a in report["macro_alerts"][:5]:
         print("  *", a)
+    print("Global Macro Indicators:", json.dumps(report["global_macro_indicators"], indent=2))

@@ -82,6 +82,20 @@ NEWS_SOURCES = [
         "base_url": "https://www.tbsnews.net",
     },
     {
+        "name": "TBS_Economy",
+        "url": "https://www.tbsnews.net/economy",
+        "type": "links",
+        "selector": "h3.title a, h2.title a, .card-title a, a[href*='/economy/']",
+        "base_url": "https://www.tbsnews.net",
+    },
+    {
+        "name": "Daily_Star_Economy",
+        "url": "https://www.thedailystar.net/business/economy",
+        "type": "links",
+        "selector": "h3 a, h2 a, .card-title a, .title a, a[href*='/economy/']",
+        "base_url": "https://www.thedailystar.net",
+    },
+    {
         "name": "FE_Bangladesh_Stock",
         "url": "https://thefinancialexpress.com.bd/stock/bangladesh",
         "type": "links",
