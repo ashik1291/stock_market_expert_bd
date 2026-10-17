@@ -75,6 +75,27 @@ NEWS_SOURCES = [
         "base_url": "https://www.thefinancialexpress.com.bd",
     },
     {
+        "name": "TBS_Corporates",
+        "url": "https://www.tbsnews.net/economy/corporates",
+        "type": "links",
+        "selector": "h3.title a, h2.title a, .card-title a, a[href*='/corporates/']",
+        "base_url": "https://www.tbsnews.net",
+    },
+    {
+        "name": "FE_Bangladesh_Stock",
+        "url": "https://thefinancialexpress.com.bd/stock/bangladesh",
+        "type": "links",
+        "selector": "article h2 a, h3.entry-title a, .post-title a, a[href*='/stock/']",
+        "base_url": "https://thefinancialexpress.com.bd",
+    },
+    {
+        "name": "Dhaka_Tribune_Biz",
+        "url": "https://www.dhakatribune.com/business",
+        "type": "links",
+        "selector": "h3 a, h2 a, .title a, a[href*='/business/']",
+        "base_url": "https://www.dhakatribune.com",
+    },
+    {
         "name": "bdnews24_Business",
         "url": "https://bdnews24.com/business",
         "type": "links",
