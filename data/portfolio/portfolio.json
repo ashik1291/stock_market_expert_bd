@@ -2,18 +2,32 @@
   "total_capital_bdt": 50000.0,
   "cash_balance_bdt": 47984.96,
   "created_at": "2026-10-06T00:20:00",
-  "updated_at": "2026-10-12T11:08:00",
+  "updated_at": "2026-10-18T16:03:00",
   "brokerage_commission_pct": 0.4,
   "mutual_funds": [
     {
       "fund_name": "Shanta Amana Shariah Fund",
       "fund_type": "Open-End Shariah Mutual Fund",
       "asset_manager": "Shanta Asset Management Limited",
-      "units": 419,
-      "total_cost_bdt": 4500.00,
-      "unit_cost_bdt": 10.74,
+      "units": 839,
+      "total_cost_bdt": 8999.52,
+      "unit_cost_bdt": 10.7265,
       "commission_bdt": 0.00,
-      "current_nav_est": 10.74,
+      "current_nav_est": 10.718,
+      "tranches": [
+        {
+          "date": "2026-09-15",
+          "units": 419,
+          "nav": 10.735,
+          "cost_bdt": 4497.965
+        },
+        {
+          "date": "2026-10-18",
+          "units": 420,
+          "nav": 10.718,
+          "cost_bdt": 4501.56
+        }
+      ],
       "objective": "Capital preservation, Shariah-compliant equities & sukuk, steady NAV compounding"
     }
   ],
@@ -169,6 +183,15 @@
       "price": 141.00,
       "cost": 141.00,
       "date": "2026-10-12"
+    },
+    {
+      "action": "BUY",
+      "ticker": "SHANTA_AMANA_SHARIAH_FUND",
+      "shares": 420,
+      "price": 10.718,
+      "cost": 4501.56,
+      "date": "2026-10-18",
+      "asset_type": "mutual_fund"
     }
   ]
 }
