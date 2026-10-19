@@ -1,30 +1,30 @@
 {
-  "smart_money_weight": 0.825,
-  "valuation_mos_weight": 0.825,
-  "debt_npl_weight": 0.825,
+  "smart_money_weight": 0.823,
+  "valuation_mos_weight": 0.823,
+  "debt_npl_weight": 0.823,
   "rsi_momentum_weight": 1.092,
   "macd_trend_weight": 1.0,
   "governance_weight": 1.1,
   "macro_bias_weight": 1.0,
   "learning_rate": 0.02,
-  "total_training_cycles": 251,
-  "overall_accuracy_pct": 63.7,
-  "updated_at": "2026-10-18T15:56:50.480573",
-  "accuracy_ci_95": "[57.6% \u2013 69.4%]",
-  "net_expectancy_pct": 0.61,
-  "avg_win_pct": 4.36,
-  "avg_loss_pct": 3.7,
-  "brier_score": 0.2364,
+  "total_training_cycles": 271,
+  "overall_accuracy_pct": 63.1,
+  "updated_at": "2026-10-19T18:00:15.284223",
+  "accuracy_ci_95": "[57.2% \u2013 68.6%]",
+  "net_expectancy_pct": 0.51,
+  "avg_win_pct": 4.14,
+  "avg_loss_pct": 3.46,
+  "brier_score": 0.236,
   "reliability_calibration": {
     "50-65%": {
-      "count": 50,
-      "mean_predicted_prob_pct": 51.1,
-      "observed_hit_rate_pct": 38.0
+      "count": 60,
+      "mean_predicted_prob_pct": 50.9,
+      "observed_hit_rate_pct": 38.3
     },
     "65-80%": {
-      "count": 155,
-      "mean_predicted_prob_pct": 69.5,
-      "observed_hit_rate_pct": 75.5
+      "count": 165,
+      "mean_predicted_prob_pct": 69.3,
+      "observed_hit_rate_pct": 75.2
     },
     "80-100%": {
       "count": 46,
