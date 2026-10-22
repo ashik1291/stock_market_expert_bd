@@ -88,5 +88,21 @@ def auto_sync_if_needed():
     if needs_fund_harvest:
         run_script_silent("update_all_fundamentals.py")
 
+    # 3. Check if month-end rebalance plan needs generation (runs between 28th and last day of month)
+    today = datetime.date.today()
+    if today.day >= 28:
+        rebalance_report_dir = BASE_DIR / "reports" / "monthly"
+        rebalance_report_dir.mkdir(parents=True, exist_ok=True)
+        month_order_file = rebalance_report_dir / f"{today.strftime('%Y-%m')}_rebalance_order.md"
+        # Generate if not created today
+        if not month_order_file.exists():
+            try:
+                from monthly_rebalance_engine import calculate_monthly_deployment
+                res = calculate_monthly_deployment(2000.0)
+                with open(month_order_file, "w", encoding="utf-8") as f:
+                    f.write(res["report_markdown"])
+            except Exception:
+                pass
+
 if __name__ == "__main__":
     auto_sync_if_needed()

@@ -34,11 +34,21 @@ def harvest_fundamentals(tickers: list[str] = None):
 
     # Flatten sector map
     ticker_sector = {}
-    for sec, t_list in sectors.items():
-        for t in t_list:
-            ticker_sector[t] = sec
+    if isinstance(sectors.get("sectors"), dict):
+        for sec, sdata in sectors["sectors"].items():
+            for t in sdata.get("top_tickers", []):
+                ticker_sector[t] = sec
+    else:
+        for sec, t_list in sectors.items():
+            if isinstance(t_list, list):
+                for t in t_list:
+                    ticker_sector[t] = sec
 
-    target_tickers = tickers or list(company_names.keys())
+    # Ensure all DB Category A companies are included in target tickers
+    conn = get_db()
+    cat_a_tickers = [r[0] for r in conn.execute("SELECT ticker FROM companies WHERE category='A'").fetchall()]
+    all_targets = list(dict.fromkeys(list(company_names.keys()) + cat_a_tickers))
+    target_tickers = tickers or all_targets
     log.info(f"Starting fundamentals harvest for {len(target_tickers)} tickers...")
 
     date_str = today_str()

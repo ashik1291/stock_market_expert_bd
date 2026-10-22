@@ -529,6 +529,19 @@ def insert_prices(conn: sqlite3.Connection, ticker: str, records: list[dict],
             log.warning(f"Data error {ticker} {date_val}: high({high_val}) < low({low_val}). Skipping.")
             continue
 
+        # Check for corporate action factor adjustments (splits/bonus dividends)
+        adj_factor = 1.0
+        ca_row = conn.execute("""
+            SELECT adjustment_factor FROM corporate_actions
+            WHERE ticker = ? AND record_date > ? AND adjustment_factor IS NOT NULL
+        """, (ticker, date_val)).fetchone()
+        if ca_row and ca_row[0] and ca_row[0] > 0:
+            adj_factor = float(ca_row[0])
+            open_val = round(open_val * adj_factor, 2)
+            high_val = round(high_val * adj_factor, 2)
+            low_val = round(low_val * adj_factor, 2)
+            close_val = round(close_val * adj_factor, 2)
+
         conn.execute("""
             INSERT OR IGNORE INTO prices
                 (ticker, date, open, high, low, close, volume, value)
