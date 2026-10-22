@@ -2,14 +2,14 @@
   "ticker": "LHB",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-10-11T13:10:51.867812",
+  "analyzed_at": "2026-10-22T09:42:27.601613",
   "signal": "BUY",
-  "confidence": 69.06,
+  "confidence": 69.02,
   "trajectory": {
-    "direction": "RISE_PREDICTED",
-    "direction_icon": "\ud83d\udfe2",
-    "rise_probability_pct": 70.9,
-    "momentum_status": "Bullish Reversal / Upward Accumulation",
+    "direction": "CONSOLIDATION_RANGE",
+    "direction_icon": "\ud83d\udfe1",
+    "rise_probability_pct": 56.6,
+    "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Upward momentum swing",
       "upside_potential_pct": "+3.1%",
@@ -43,37 +43,32 @@
   "precision": {
     "ticker": "LHB",
     "smart_money": {
-      "status": "ACTIVE",
-      "latest_date": "Sep 30, 2026",
-      "smart_money_delta_pct": -0.17,
-      "institutional_pct": 23.29,
-      "foreign_pct": 0.74,
-      "sponsor_pct": 62.66,
-      "public_pct": 13.31,
-      "public_delta_pct": 0.17,
-      "classification": "STABLE_HOLDINGS",
+      "status": "INSUFFICIENT_HISTORY",
+      "smart_money_delta_pct": 0.0,
+      "public_delta_pct": 0.0,
+      "classification": "NEUTRAL_HOLDING",
       "conviction_bonus": 0.0,
-      "signal": "Holding shift: Smart money -0.17%, Retail +0.17%"
+      "signal": "No monthly delta available"
     },
     "cash_flow": {
-      "nocfps": 3.74,
+      "nocfps": 0.77,
       "is_estimated": true,
-      "dividend_per_share": 4.0,
-      "dividend_coverage_x": 0.94,
-      "fcf_yield_pct": 7.16,
-      "cash_quality_status": "ADEQUATE_CASH_COVERAGE",
-      "conviction_bonus": 5.0,
-      "signal": "Dividend is 94% cash-covered by operations"
+      "dividend_per_share": 0.0,
+      "dividend_coverage_x": 5.0,
+      "fcf_yield_pct": 77.0,
+      "cash_quality_status": "PRISTINE_REAL_CASH_COVERAGE",
+      "conviction_bonus": 15.0,
+      "signal": "Dividend is 500% cash-covered by real operations (NOCFPS: Tk 0.77 vs DPS: Tk 0.0)"
     },
     "liquidity": {
-      "avg_daily_volume": 550133,
-      "daily_turnover_bdt_cr": 2.87,
-      "liquidity_rating": "HEALTHY_LIQUIDITY",
-      "slippage_risk": "LOW",
-      "max_single_order_shares": 27506,
-      "max_daily_accumulation_shares": 82520,
-      "max_order_bdt": 1435813.0,
-      "directive": "Max single order: 27,506 shares (Tk 1,435,813) to prevent >1% execution slippage"
+      "avg_daily_volume": 411477,
+      "daily_turnover_bdt_cr": 0.04,
+      "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
+      "slippage_risk": "HIGH",
+      "max_single_order_shares": 20573,
+      "max_daily_accumulation_shares": 61721,
+      "max_order_bdt": 20573.0,
+      "directive": "Max single order: 20,573 shares (Tk 20,573) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -81,22 +76,22 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 5.0
+    "total_precision_bonus": 15.0
   },
   "pattern_dna": {
     "ticker": "LHB",
-    "audited_at": "2026-10-11 19:10:51",
+    "audited_at": "2026-10-22 15:42:27",
     "worth_vs_greed": {
       "current_price": 52.2,
-      "intrinsic_worth": 36.99,
-      "margin_of_safety_pct": -29.1,
+      "intrinsic_worth": 7.2,
+      "margin_of_safety_pct": -86.2,
       "extension_froth_score": 10.0,
       "greed_index": 10.0,
-      "rsi_14": 33.9,
-      "price_vs_ema50_pct": -2.5,
-      "price_vs_ema200_pct": -2.0,
+      "rsi_14": 63.2,
+      "price_vs_ema50_pct": -1.9,
+      "price_vs_ema200_pct": -1.9,
       "merit_status": "EARNINGS_BACKED_MERIT",
-      "merit_reason": "Price supported by solid earnings (EPS: \u09f34.40, P/E: 11.9). Growth is fundamentally justified.",
+      "merit_reason": "Price supported by solid earnings (EPS: \u09f30.90, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
         "optimal_entry_corridor": "\u09f351.2 \u2013 \u09f352.7",
         "chase_cutoff_price": 53.5,
@@ -106,38 +101,38 @@
         "long_term_target_asset": 67.9,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
-      "status": "NEUTRAL",
-      "worth_decision": "HOLD",
-      "reason": "Trading in neutral fair-value corridor."
+      "status": "CHRONIC_OVERVALUATION",
+      "worth_decision": "AVOID",
+      "reason": "Fundamental value severely lags stock price (MoS: -86.2%)."
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -0.57,
-          "high": 52.7,
-          "low": 51.8,
-          "range_volatility_pct": 1.74
+          "return_pct": 0.38,
+          "high": 52.5,
+          "low": 51.5,
+          "range_volatility_pct": 1.94
         },
         "monthly_21d": {
-          "return_pct": 1.16,
+          "return_pct": -0.57,
           "high": 55.2,
-          "low": 50.0,
-          "range_volatility_pct": 10.4
+          "low": 51.4,
+          "range_volatility_pct": 7.39
         },
         "quarterly_63d": {
-          "return_pct": -6.62,
-          "high": 62.4,
+          "return_pct": -13.29,
+          "high": 61.6,
           "low": 50.0,
-          "range_volatility_pct": 24.8
+          "range_volatility_pct": 23.2
         },
         "half_yearly_126d": {
-          "return_pct": 2.96,
+          "return_pct": 2.55,
           "high": 62.4,
           "low": 48.4,
           "range_volatility_pct": 28.93
         },
         "yearly_252d": {
-          "return_pct": -0.38,
+          "return_pct": -6.95,
           "high": 62.4,
           "low": 45.0,
           "range_volatility_pct": 38.67
@@ -148,8 +143,8 @@
         "median_correction_drop_pct": -16.1,
         "avg_wave_duration_bars": 27.0
       },
-      "current_wave_phase": "MARKUP_RALLY_MID",
-      "phase_guidance": "Midway through rally wave (+4.4% from base, historical target ~+11.7%).",
+      "current_wave_phase": "MARKDOWN_PULLBACK",
+      "phase_guidance": "Ongoing pullback from peak (-5.4%). Wait for stabilizing base.",
       "top_seasonal_months": [
         {
           "month": "Aug",
@@ -254,10 +249,13 @@
     "sr": {}
   },
   "fundamental": {
-    "score": 78.0,
+    "score": 79.17,
     "signals": {
+      "latest_interim_eps": "FY2026Q2 (0.9)",
       "eps": "positive (4.4)",
-      "pe": "fair_value (11.863636363636363)",
+      "eps_yoy_growth_pct": 33.7,
+      "eps_growth_comparison": "FY2025 vs FY2024",
+      "pe": "fair_value (10.62)",
       "nav": 16.41,
       "dividend_yield": "strong (8.57%)",
       "debt_equity_val": 0.0,
@@ -312,15 +310,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 143149,
-        "avg_volume": 616299.0,
+        "last_volume": 236940,
+        "avg_volume": 505758.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.23,
-        "avg_volume": 632592.0,
-        "today_volume": 143149,
+        "spike_ratio": 0.46,
+        "avg_volume": 513435.0,
+        "today_volume": 236940,
         "detail": "ok"
       },
       "serial_trading": {
@@ -335,7 +333,7 @@
       },
       "sponsor_exit": {
         "flag": false,
-        "detail": "insufficient_fundamental_history"
+        "detail": "sponsor_holding_not_available"
       },
       "price_surge_no_news": {
         "flag": false,
@@ -346,14 +344,14 @@
     }
   },
   "composite": {
-    "composite_score": 69.06,
+    "composite_score": 69.02,
     "governance_score": 95,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.418,
-      "technical": 0.27,
-      "governance": 0.163,
-      "sentiment": 0.148
+      "fundamental": 0.386,
+      "technical": 0.285,
+      "governance": 0.172,
+      "sentiment": 0.157
     }
   }
 }

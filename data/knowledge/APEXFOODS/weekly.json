@@ -2,78 +2,73 @@
   "ticker": "APEXFOODS",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-10-11T13:10:52.503846",
-  "signal": "HOLD_MARKET_GREED_EXTREME",
-  "confidence": 60.77,
+  "analyzed_at": "2026-10-22T09:42:28.471761",
+  "signal": "HOLD",
+  "confidence": 54.31,
   "trajectory": {
     "direction": "FALL_RISK",
     "direction_icon": "\ud83d\udd34",
-    "rise_probability_pct": 34.1,
+    "rise_probability_pct": 31.7,
     "momentum_status": "Bearish Breakdown / Selling Pressure",
     "short_term": {
       "predicted_path": "Upward momentum swing",
       "upside_potential_pct": "+3.0%",
       "downside_risk_pct": "-2.0%",
-      "target_price": 326.5,
-      "support_price": 310.7,
+      "target_price": 307.0,
+      "support_price": 292.1,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
       "upside_potential_pct": "+15.0%",
       "downside_risk_pct": "-5.0%",
-      "target_price": 364.5,
-      "trailing_stop": 301.1,
+      "target_price": 342.8,
+      "trailing_stop": 283.2,
       "risk_reward_ratio": "3.0x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.0%",
       "downside_risk_pct": "-9.0%",
-      "target_price": 412.1,
-      "dividend_cagr": "moderate (1.03%)",
+      "target_price": 387.5,
+      "dividend_cagr": "5%\u20138%",
       "risk_reward_ratio": "3.3x"
     }
   },
   "trade_levels": {
-    "entry": 317.0,
-    "stop_loss": 307.49,
-    "target": 336.02
+    "entry": 298.1,
+    "stop_loss": 289.16,
+    "target": 315.98
   },
   "precision": {
     "ticker": "APEXFOODS",
     "smart_money": {
-      "status": "ACTIVE",
-      "latest_date": "Sep 30, 2026",
-      "smart_money_delta_pct": -0.05,
-      "institutional_pct": 7.45,
-      "foreign_pct": 0.0,
-      "sponsor_pct": 53.39,
-      "public_pct": 39.16,
-      "public_delta_pct": 0.05,
-      "classification": "STABLE_HOLDINGS",
+      "status": "INSUFFICIENT_HISTORY",
+      "smart_money_delta_pct": 0.0,
+      "public_delta_pct": 0.0,
+      "classification": "NEUTRAL_HOLDING",
       "conviction_bonus": 0.0,
-      "signal": "Holding shift: Smart money -0.05%, Retail +0.05%"
+      "signal": "No monthly delta available"
     },
     "cash_flow": {
-      "nocfps": 5.45,
+      "nocfps": 0.0,
       "is_estimated": true,
-      "dividend_per_share": 2.0,
-      "dividend_coverage_x": 2.73,
-      "fcf_yield_pct": 1.75,
-      "cash_quality_status": "PRISTINE_REAL_CASH_COVERAGE",
-      "conviction_bonus": 15.0,
-      "signal": "Dividend is 273% cash-covered by real operations (NOCFPS: Tk 5.45 vs DPS: Tk 2.0)"
+      "dividend_per_share": 0.0,
+      "dividend_coverage_x": 0.0,
+      "fcf_yield_pct": 0.0,
+      "cash_quality_status": "TIGHT_CASH_COVERAGE",
+      "conviction_bonus": -10.0,
+      "signal": "Cash flow covers only 0% of dividend payout"
     },
     "liquidity": {
-      "avg_daily_volume": 92332,
-      "daily_turnover_bdt_cr": 2.88,
-      "liquidity_rating": "HEALTHY_LIQUIDITY",
-      "slippage_risk": "LOW",
-      "max_single_order_shares": 4616,
-      "max_daily_accumulation_shares": 13849,
-      "max_order_bdt": 1437884.0,
-      "directive": "Max single order: 4,616 shares (Tk 1,437,884) to prevent >1% execution slippage"
+      "avg_daily_volume": 123926,
+      "daily_turnover_bdt_cr": 0.01,
+      "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
+      "slippage_risk": "HIGH",
+      "max_single_order_shares": 6196,
+      "max_daily_accumulation_shares": 18588,
+      "max_order_bdt": 6196.0,
+      "directive": "Max single order: 6,196 shares (Tk 6,196) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -81,63 +76,63 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 15.0
+    "total_precision_bonus": -10.0
   },
   "pattern_dna": {
     "ticker": "APEXFOODS",
-    "audited_at": "2026-10-11 19:10:52",
+    "audited_at": "2026-10-22 15:42:28",
     "worth_vs_greed": {
-      "current_price": 317.0,
-      "intrinsic_worth": 93.06,
-      "margin_of_safety_pct": -70.6,
-      "extension_froth_score": 90.0,
-      "greed_index": 90.0,
-      "rsi_14": 69.3,
-      "price_vs_ema50_pct": 14.2,
-      "price_vs_ema200_pct": 20.8,
+      "current_price": 298.1,
+      "intrinsic_worth": 149.05,
+      "margin_of_safety_pct": -50.0,
+      "extension_froth_score": 80.0,
+      "greed_index": 80.0,
+      "rsi_14": 61.9,
+      "price_vs_ema50_pct": 4.8,
+      "price_vs_ema200_pct": 12.5,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f3310.7 \u2013 \u09f3320.2",
-        "chase_cutoff_price": 324.9,
-        "when_to_wait": "If price opens or rises above \u09f3324.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3310.7.",
-        "weekly_target_short": 328.1,
-        "monthly_target_swing": 364.5,
-        "long_term_target_asset": 412.1,
+        "optimal_entry_corridor": "\u09f3292.1 \u2013 \u09f3301.1",
+        "chase_cutoff_price": 305.6,
+        "when_to_wait": "If price opens or rises above \u09f3305.6, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3292.1.",
+        "weekly_target_short": 308.5,
+        "monthly_target_swing": 342.8,
+        "long_term_target_asset": 387.5,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "OVERVALUED_EUPHORIA",
       "worth_decision": "SELL_TAKE_PROFIT",
-      "reason": "Price is 70.6% above intrinsic worth while market greed is euphoric (90.0/100). Danger of sharp mean reversion."
+      "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (80.0/100). Danger of sharp mean reversion."
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 22.3,
+          "return_pct": -3.84,
+          "high": 329.0,
+          "low": 295.1,
+          "range_volatility_pct": 11.49
+        },
+        "monthly_21d": {
+          "return_pct": 10.53,
           "high": 347.0,
           "low": 255.8,
           "range_volatility_pct": 35.65
         },
-        "monthly_21d": {
-          "return_pct": 23.01,
-          "high": 347.0,
-          "low": 241.0,
-          "range_volatility_pct": 43.98
-        },
         "quarterly_63d": {
-          "return_pct": 7.75,
+          "return_pct": 3.15,
           "high": 347.0,
           "low": 241.0,
           "range_volatility_pct": 43.98
         },
         "half_yearly_126d": {
-          "return_pct": 40.58,
+          "return_pct": 23.03,
           "high": 347.0,
-          "low": 223.3,
-          "range_volatility_pct": 55.4
+          "low": 232.0,
+          "range_volatility_pct": 49.57
         },
         "yearly_252d": {
-          "return_pct": 33.92,
+          "return_pct": 17.36,
           "high": 347.0,
           "low": 195.0,
           "range_volatility_pct": 77.95
@@ -149,7 +144,7 @@
         "avg_wave_duration_bars": 20.0
       },
       "current_wave_phase": "LATE_MARKUP",
-      "phase_guidance": "Approaching historical rally limit (+31.5% vs median +14.0%). Tighten stop.",
+      "phase_guidance": "Approaching historical rally limit (+23.7% vs median +14.0%). Tighten stop.",
       "top_seasonal_months": [
         {
           "month": "Aug",
@@ -254,21 +249,12 @@
     "sr": {}
   },
   "fundamental": {
-    "score": 66.0,
+    "score": null,
     "signals": {
-      "eps": "positive (6.41)",
-      "pe": "expensive (48.59594383775351)",
-      "nav": 126.05,
-      "dividend_yield": "moderate (1.03%)",
-      "debt_equity_val": 0.0,
-      "long_term_debt_equity_val": 0.0,
-      "debt_equity": "pristine_low (0.0)",
-      "loan_trap_risk": "none",
-      "dividend_track_record_years": 5,
-      "dividend_consistency": "proven_compounder (5 yrs cash divs)",
+      "error": "no_fundamental_data",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 8.6,
+        "drawdown_pct": 14.1,
         "high_52w": 347.0,
         "low_52w": 195.0
       }
@@ -303,27 +289,24 @@
     }
   },
   "manipulation": {
-    "manipulation_score": 25,
+    "manipulation_score": 0,
     "manipulation_risk": "low",
     "block_buy": false,
-    "flags": [
-      "volume_spike: volume_3.8x_avg",
-      "price_surge_no_news: price_-6.4pct_zero_news"
-    ],
+    "flags": [],
     "checks": {
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 229280,
-        "avg_volume": 67088.0,
+        "last_volume": 83704,
+        "avg_volume": 89358.0,
         "detail": "ok"
       },
       "volume_spike": {
-        "flag": true,
-        "spike_ratio": 3.83,
-        "avg_volume": 59935.0,
-        "today_volume": 229280,
-        "detail": "volume_3.8x_avg"
+        "flag": false,
+        "spike_ratio": 0.96,
+        "avg_volume": 87220.0,
+        "today_volume": 83704,
+        "detail": "ok"
       },
       "serial_trading": {
         "flag": false,
@@ -340,22 +323,22 @@
         "detail": "insufficient_fundamental_history"
       },
       "price_surge_no_news": {
-        "flag": true,
-        "price_change_3d": -6.43,
+        "flag": false,
+        "price_change_3d": 0.0,
         "news_count_3d": 0,
-        "detail": "price_-6.4pct_zero_news"
+        "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 60.77,
+    "composite_score": 54.31,
     "governance_score": 75,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.418,
-      "technical": 0.27,
-      "governance": 0.163,
-      "sentiment": 0.148
+      "fundamental": 0.386,
+      "technical": 0.285,
+      "governance": 0.172,
+      "sentiment": 0.157
     }
   }
 }

@@ -1,70 +1,70 @@
 {
   "ticker": "ANWARGALV",
-  "audited_at": "2026-10-11 19:10:52",
+  "audited_at": "2026-10-22 15:42:28",
   "worth_vs_greed": {
-    "current_price": 114.1,
-    "intrinsic_worth": 1.1,
-    "margin_of_safety_pct": -99.0,
+    "current_price": 119.6,
+    "intrinsic_worth": 7.76,
+    "margin_of_safety_pct": -93.5,
     "extension_froth_score": 40.0,
     "greed_index": 40.0,
-    "rsi_14": 53.5,
-    "price_vs_ema50_pct": 1.4,
-    "price_vs_ema200_pct": 10.1,
-    "merit_status": "NEUTRAL_MERIT",
-    "merit_reason": "Valuation is within normal historical ranges.",
+    "rsi_14": 54.7,
+    "price_vs_ema50_pct": 5.2,
+    "price_vs_ema200_pct": 14.5,
+    "merit_status": "EARNINGS_BACKED_MERIT",
+    "merit_reason": "Price supported by solid earnings (EPS: \u09f30.97, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f3111.8 \u2013 \u09f3115.2",
-      "chase_cutoff_price": 117.0,
-      "when_to_wait": "If price opens or rises above \u09f3117.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3111.8.",
-      "weekly_target_short": 118.1,
-      "monthly_target_swing": 131.2,
-      "long_term_target_asset": 148.3,
+      "optimal_entry_corridor": "\u09f3117.2 \u2013 \u09f3120.8",
+      "chase_cutoff_price": 122.6,
+      "when_to_wait": "If price opens or rises above \u09f3122.6, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3117.2.",
+      "weekly_target_short": 123.8,
+      "monthly_target_swing": 137.5,
+      "long_term_target_asset": 155.5,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -99.0%)."
+    "reason": "Fundamental value severely lags stock price (MoS: -93.5%)."
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -0.78,
-        "high": 117.6,
-        "low": 111.7,
-        "range_volatility_pct": 5.28
+        "return_pct": 4.82,
+        "high": 121.8,
+        "low": 115.2,
+        "range_volatility_pct": 5.73
       },
       "monthly_21d": {
-        "return_pct": 7.14,
+        "return_pct": 6.88,
         "high": 123.5,
-        "low": 106.3,
-        "range_volatility_pct": 16.18
+        "low": 111.5,
+        "range_volatility_pct": 10.76
       },
       "quarterly_63d": {
-        "return_pct": -2.65,
-        "high": 123.6,
+        "return_pct": 3.73,
+        "high": 123.5,
         "low": 102.0,
-        "range_volatility_pct": 21.18
+        "range_volatility_pct": 21.08
       },
       "half_yearly_126d": {
-        "return_pct": 27.49,
+        "return_pct": 22.92,
         "high": 127.6,
-        "low": 88.2,
-        "range_volatility_pct": 44.67
+        "low": 94.0,
+        "range_volatility_pct": 35.74
       },
       "yearly_252d": {
-        "return_pct": 52.13,
+        "return_pct": 64.97,
         "high": 127.6,
         "low": 56.2,
         "range_volatility_pct": 127.05
       }
     },
     "wave_metrics": {
-      "median_rally_gain_pct": 25.1,
+      "median_rally_gain_pct": 24.7,
       "median_correction_drop_pct": -21.6,
       "avg_wave_duration_bars": 22.0
     },
-    "current_wave_phase": "MARKUP_RALLY_MID",
-    "phase_guidance": "Midway through rally wave (+11.9% from base, historical target ~+25.1%).",
+    "current_wave_phase": "MARKDOWN_PULLBACK",
+    "phase_guidance": "Ongoing pullback from peak (-3.2%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Sep",

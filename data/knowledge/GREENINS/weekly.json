@@ -2,9 +2,9 @@
   "ticker": "GREENINS",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-10-11T13:10:53.293995",
+  "analyzed_at": "2026-10-22T09:42:29.588238",
   "signal": "HOLD",
-  "confidence": 54.08,
+  "confidence": 54.31,
   "trajectory": {},
   "trade_levels": {},
   "precision": {
@@ -53,9 +53,9 @@
     "sr": {}
   },
   "fundamental": {
-    "score": 50.0,
+    "score": null,
     "signals": {
-      "earnings_quality": "financial_asset_quality_mode",
+      "error": "no_fundamental_data",
       "downturn_resilience": {
         "status": "normal",
         "drawdown_pct": 0.0,
@@ -127,14 +127,14 @@
     }
   },
   "composite": {
-    "composite_score": 54.08,
+    "composite_score": 54.31,
     "governance_score": 75,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.418,
-      "technical": 0.27,
-      "governance": 0.163,
-      "sentiment": 0.148
+      "fundamental": 0.386,
+      "technical": 0.285,
+      "governance": 0.172,
+      "sentiment": 0.157
     }
   }
 }

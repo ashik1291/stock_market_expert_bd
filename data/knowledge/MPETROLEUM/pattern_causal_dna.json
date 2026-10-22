@@ -1,58 +1,58 @@
 {
   "ticker": "MPETROLEUM",
-  "audited_at": "2026-10-11 19:10:52",
+  "audited_at": "2026-10-22 15:42:28",
   "worth_vs_greed": {
-    "current_price": 204.1,
-    "intrinsic_worth": 536.31,
-    "margin_of_safety_pct": 162.8,
+    "current_price": 208.9,
+    "intrinsic_worth": 103.36,
+    "margin_of_safety_pct": -50.5,
     "extension_froth_score": 20.0,
     "greed_index": 20.0,
-    "rsi_14": 36.9,
-    "price_vs_ema50_pct": -1.6,
-    "price_vs_ema200_pct": -1.3,
+    "rsi_14": 64.2,
+    "price_vs_ema50_pct": 0.9,
+    "price_vs_ema200_pct": 1.1,
     "merit_status": "EARNINGS_BACKED_MERIT",
-    "merit_reason": "Price supported by solid earnings (EPS: \u09f361.39, P/E: 3.4). Growth is fundamentally justified.",
+    "merit_reason": "Price supported by solid earnings (EPS: \u09f312.92, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f3200.0 \u2013 \u09f3206.1",
-      "chase_cutoff_price": 209.2,
-      "when_to_wait": "If price opens or rises above \u09f3209.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3200.0.",
-      "weekly_target_short": 211.2,
-      "monthly_target_swing": 234.7,
-      "long_term_target_asset": 265.3,
+      "optimal_entry_corridor": "\u09f3204.7 \u2013 \u09f3211.0",
+      "chase_cutoff_price": 214.1,
+      "when_to_wait": "If price opens or rises above \u09f3214.1, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3204.7.",
+      "weekly_target_short": 216.2,
+      "monthly_target_swing": 240.2,
+      "long_term_target_asset": 271.6,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
-    "status": "UNDERVALUED_FEAR",
-    "worth_decision": "HIGH_CONVICTION_BUY",
-    "reason": "High Margin of Safety (+162.8%) with depressed market greed (20.0/100) and EARNINGS_BACKED_MERIT. Ideal entry."
+    "status": "CHRONIC_OVERVALUATION",
+    "worth_decision": "AVOID",
+    "reason": "Fundamental value severely lags stock price (MoS: -50.5%)."
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -1.11,
-        "high": 206.9,
-        "low": 203.9,
-        "range_volatility_pct": 1.47
+        "return_pct": 1.9,
+        "high": 209.5,
+        "low": 204.5,
+        "range_volatility_pct": 2.44
       },
       "monthly_21d": {
-        "return_pct": -0.92,
-        "high": 208.2,
+        "return_pct": 1.06,
+        "high": 209.5,
         "low": 203.8,
-        "range_volatility_pct": 2.16
+        "range_volatility_pct": 2.8
       },
       "quarterly_63d": {
-        "return_pct": -4.27,
-        "high": 217.0,
+        "return_pct": -3.06,
+        "high": 216.7,
         "low": 203.8,
-        "range_volatility_pct": 6.48
+        "range_volatility_pct": 6.33
       },
       "half_yearly_126d": {
-        "return_pct": 2.2,
+        "return_pct": 4.35,
         "high": 219.0,
         "low": 198.1,
         "range_volatility_pct": 10.55
       },
       "yearly_252d": {
-        "return_pct": -0.92,
+        "return_pct": -2.2,
         "high": 219.0,
         "low": 187.3,
         "range_volatility_pct": 16.92
@@ -60,11 +60,11 @@
     },
     "wave_metrics": {
       "median_rally_gain_pct": 7.2,
-      "median_correction_drop_pct": -9.9,
+      "median_correction_drop_pct": -9.8,
       "avg_wave_duration_bars": 24.0
     },
-    "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-6.8%). Wait for stabilizing base.",
+    "current_wave_phase": "ACCUMULATION_TROUGH",
+    "phase_guidance": "Near local cyclical trough base. Maximum reward/risk entry point.",
     "top_seasonal_months": [
       {
         "month": "Jul",

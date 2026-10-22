@@ -1,58 +1,58 @@
 {
   "ticker": "CROWNCEMNT",
-  "audited_at": "2026-10-11 19:10:51",
+  "audited_at": "2026-10-22 15:42:27",
   "worth_vs_greed": {
-    "current_price": 58.2,
-    "intrinsic_worth": 57.99,
-    "margin_of_safety_pct": -0.4,
+    "current_price": 55.1,
+    "intrinsic_worth": 27.55,
+    "margin_of_safety_pct": -50.0,
     "extension_froth_score": 30.0,
     "greed_index": 30.0,
-    "rsi_14": 36.5,
-    "price_vs_ema50_pct": -4.1,
-    "price_vs_ema200_pct": 1.8,
-    "merit_status": "EARNINGS_BACKED_MERIT",
-    "merit_reason": "Price supported by solid earnings (EPS: \u09f34.52, P/E: 12.8). Growth is fundamentally justified.",
+    "rsi_14": 35.9,
+    "price_vs_ema50_pct": -7.7,
+    "price_vs_ema200_pct": -3.5,
+    "merit_status": "NEUTRAL_MERIT",
+    "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f357.0 \u2013 \u09f358.8",
-      "chase_cutoff_price": 59.7,
-      "when_to_wait": "If price opens or rises above \u09f359.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f357.0.",
-      "weekly_target_short": 60.2,
-      "monthly_target_swing": 66.9,
-      "long_term_target_asset": 75.7,
+      "optimal_entry_corridor": "\u09f354.0 \u2013 \u09f355.7",
+      "chase_cutoff_price": 56.5,
+      "when_to_wait": "If price opens or rises above \u09f356.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f354.0.",
+      "weekly_target_short": 57.0,
+      "monthly_target_swing": 63.4,
+      "long_term_target_asset": 71.6,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
-    "status": "NEUTRAL",
-    "worth_decision": "HOLD",
-    "reason": "Trading in neutral fair-value corridor."
+    "status": "CHRONIC_OVERVALUATION",
+    "worth_decision": "AVOID",
+    "reason": "Fundamental value severely lags stock price (MoS: -50.0%)."
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 0.0,
-        "high": 60.8,
-        "low": 55.5,
-        "range_volatility_pct": 9.55
+        "return_pct": -4.17,
+        "high": 58.9,
+        "low": 52.8,
+        "range_volatility_pct": 11.55
       },
       "monthly_21d": {
-        "return_pct": -2.02,
-        "high": 63.0,
-        "low": 55.5,
-        "range_volatility_pct": 13.51
+        "return_pct": -8.01,
+        "high": 62.9,
+        "low": 52.8,
+        "range_volatility_pct": 19.13
       },
       "quarterly_63d": {
-        "return_pct": -13.0,
+        "return_pct": -21.84,
         "high": 74.7,
-        "low": 55.5,
-        "range_volatility_pct": 34.59
+        "low": 52.8,
+        "range_volatility_pct": 41.48
       },
       "half_yearly_126d": {
-        "return_pct": 20.5,
+        "return_pct": 12.22,
         "high": 74.7,
-        "low": 48.0,
-        "range_volatility_pct": 55.62
+        "low": 48.2,
+        "range_volatility_pct": 54.98
       },
       "yearly_252d": {
-        "return_pct": 0.17,
+        "return_pct": -0.18,
         "high": 74.7,
         "low": 44.0,
         "range_volatility_pct": 69.77

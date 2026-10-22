@@ -1,58 +1,58 @@
 {
   "ticker": "CENTRALINS",
-  "audited_at": "2026-10-11 19:10:53",
+  "audited_at": "2026-10-22 15:42:29",
   "worth_vs_greed": {
-    "current_price": 42.0,
-    "intrinsic_worth": 30.57,
-    "margin_of_safety_pct": -27.2,
+    "current_price": 42.8,
+    "intrinsic_worth": 21.4,
+    "margin_of_safety_pct": -50.0,
     "extension_froth_score": 20.0,
     "greed_index": 20.0,
-    "rsi_14": 42.9,
-    "price_vs_ema50_pct": -3.1,
-    "price_vs_ema200_pct": -0.2,
+    "rsi_14": 40.5,
+    "price_vs_ema50_pct": -0.8,
+    "price_vs_ema200_pct": 1.7,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f341.2 \u2013 \u09f342.4",
-      "chase_cutoff_price": 43.0,
-      "when_to_wait": "If price opens or rises above \u09f343.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f341.2.",
-      "weekly_target_short": 43.5,
-      "monthly_target_swing": 48.3,
-      "long_term_target_asset": 54.6,
+      "optimal_entry_corridor": "\u09f341.9 \u2013 \u09f343.2",
+      "chase_cutoff_price": 43.9,
+      "when_to_wait": "If price opens or rises above \u09f343.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f341.9.",
+      "weekly_target_short": 44.3,
+      "monthly_target_swing": 49.2,
+      "long_term_target_asset": 55.6,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
-    "status": "NEUTRAL",
-    "worth_decision": "HOLD",
-    "reason": "Trading in neutral fair-value corridor."
+    "status": "CHRONIC_OVERVALUATION",
+    "worth_decision": "AVOID",
+    "reason": "Fundamental value severely lags stock price (MoS: -50.0%)."
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -4.76,
-        "high": 44.2,
-        "low": 41.0,
-        "range_volatility_pct": 7.8
+        "return_pct": 3.63,
+        "high": 43.6,
+        "low": 41.1,
+        "range_volatility_pct": 6.08
       },
       "monthly_21d": {
-        "return_pct": -2.55,
+        "return_pct": 0.94,
         "high": 45.1,
-        "low": 40.5,
-        "range_volatility_pct": 11.36
+        "low": 40.6,
+        "range_volatility_pct": 11.08
       },
       "quarterly_63d": {
-        "return_pct": -3.67,
+        "return_pct": -0.47,
         "high": 51.8,
         "low": 40.0,
         "range_volatility_pct": 29.5
       },
       "half_yearly_126d": {
-        "return_pct": 6.6,
+        "return_pct": 3.13,
         "high": 51.8,
-        "low": 38.3,
-        "range_volatility_pct": 35.25
+        "low": 39.5,
+        "range_volatility_pct": 31.14
       },
       "yearly_252d": {
-        "return_pct": 5.53,
+        "return_pct": 6.47,
         "high": 51.8,
         "low": 30.7,
         "range_volatility_pct": 68.73
@@ -63,8 +63,8 @@
       "median_correction_drop_pct": -16.9,
       "avg_wave_duration_bars": 22.0
     },
-    "current_wave_phase": "ACCUMULATION_TROUGH",
-    "phase_guidance": "Near local cyclical trough base. Maximum reward/risk entry point.",
+    "current_wave_phase": "MARKUP_RALLY_MID",
+    "phase_guidance": "Midway through rally wave (+5.7% from base, historical target ~+17.3%).",
     "top_seasonal_months": [
       {
         "month": "Jun",

@@ -21,6 +21,9 @@ from bs4 import BeautifulSoup
 # ── bdshare import ────────────────────────────────────────────────────────────
 try:
     from bdshare import BDShare, get_current_trade_data, get_historical_data
+    import bdshare.stock.trading as bd_trading
+    # Point directly to verified legacy endpoints to eliminate 403 retries on dead Next.js API
+    bd_trading.vs.DSE_SOURCE = "legacy"
     BDSHARE_OK = True
 except ImportError:
     BDSHARE_OK = False

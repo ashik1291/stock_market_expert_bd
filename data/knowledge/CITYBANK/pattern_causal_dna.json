@@ -1,58 +1,58 @@
 {
   "ticker": "CITYBANK",
-  "audited_at": "2026-10-11 19:10:51",
+  "audited_at": "2026-10-22 15:42:26",
   "worth_vs_greed": {
-    "current_price": 29.9,
-    "intrinsic_worth": 76.54,
-    "margin_of_safety_pct": 156.0,
+    "current_price": 29.6,
+    "intrinsic_worth": 13.04,
+    "margin_of_safety_pct": -55.9,
     "extension_froth_score": 10.0,
     "greed_index": 10.0,
-    "rsi_14": 42.1,
-    "price_vs_ema50_pct": -0.9,
-    "price_vs_ema200_pct": 3.1,
+    "rsi_14": 37.5,
+    "price_vs_ema50_pct": -1.6,
+    "price_vs_ema200_pct": 1.9,
     "merit_status": "EARNINGS_BACKED_MERIT",
-    "merit_reason": "Price supported by solid earnings (EPS: \u09f38.71, P/E: 3.4). Growth is fundamentally justified.",
+    "merit_reason": "Price supported by solid earnings (EPS: \u09f31.63, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f329.3 \u2013 \u09f330.2",
-      "chase_cutoff_price": 30.6,
-      "when_to_wait": "If price opens or rises above \u09f330.6, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f329.3.",
-      "weekly_target_short": 30.9,
-      "monthly_target_swing": 34.4,
-      "long_term_target_asset": 38.9,
+      "optimal_entry_corridor": "\u09f329.0 \u2013 \u09f329.9",
+      "chase_cutoff_price": 30.3,
+      "when_to_wait": "If price opens or rises above \u09f330.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f329.0.",
+      "weekly_target_short": 30.6,
+      "monthly_target_swing": 34.0,
+      "long_term_target_asset": 38.5,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
-    "status": "UNDERVALUED_FEAR",
-    "worth_decision": "HIGH_CONVICTION_BUY",
-    "reason": "High Margin of Safety (+156.0%) with depressed market greed (10.0/100) and EARNINGS_BACKED_MERIT. Ideal entry."
+    "status": "CHRONIC_OVERVALUATION",
+    "worth_decision": "AVOID",
+    "reason": "Fundamental value severely lags stock price (MoS: -55.9%)."
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 0.0,
-        "high": 30.2,
-        "low": 29.6,
-        "range_volatility_pct": 2.03
+        "return_pct": -1.0,
+        "high": 29.9,
+        "low": 29.3,
+        "range_volatility_pct": 2.05
       },
       "monthly_21d": {
-        "return_pct": 0.0,
+        "return_pct": -1.33,
         "high": 30.3,
-        "low": 29.2,
-        "range_volatility_pct": 3.77
+        "low": 29.3,
+        "range_volatility_pct": 3.41
       },
       "quarterly_63d": {
-        "return_pct": -2.61,
+        "return_pct": -5.73,
         "high": 32.2,
         "low": 28.7,
         "range_volatility_pct": 12.2
       },
       "half_yearly_126d": {
-        "return_pct": 1.01,
+        "return_pct": -2.95,
         "high": 33.9,
         "low": 26.1,
         "range_volatility_pct": 29.89
       },
       "yearly_252d": {
-        "return_pct": 18.65,
+        "return_pct": 17.0,
         "high": 33.9,
         "low": 22.6,
         "range_volatility_pct": 50.0

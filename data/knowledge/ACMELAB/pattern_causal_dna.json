@@ -1,55 +1,55 @@
 {
   "ticker": "ACMELAB",
-  "audited_at": "2026-10-11 19:10:51",
+  "audited_at": "2026-10-22 15:42:27",
   "worth_vs_greed": {
-    "current_price": 77.5,
-    "intrinsic_worth": 136.25,
-    "margin_of_safety_pct": 75.8,
+    "current_price": 77.4,
+    "intrinsic_worth": 26.4,
+    "margin_of_safety_pct": -65.9,
     "extension_froth_score": 10.0,
     "greed_index": 10.0,
-    "rsi_14": 36.2,
-    "price_vs_ema50_pct": -2.0,
+    "rsi_14": 43.2,
+    "price_vs_ema50_pct": -1.7,
     "price_vs_ema200_pct": -1.3,
     "merit_status": "EARNINGS_BACKED_MERIT",
-    "merit_reason": "Price supported by solid earnings (EPS: \u09f311.48, P/E: 6.7). Growth is fundamentally justified.",
+    "merit_reason": "Price supported by solid earnings (EPS: \u09f33.30, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f376.0 \u2013 \u09f378.3",
-      "chase_cutoff_price": 79.4,
-      "when_to_wait": "If price opens or rises above \u09f379.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f376.0.",
-      "weekly_target_short": 80.2,
-      "monthly_target_swing": 89.1,
-      "long_term_target_asset": 100.8,
+      "optimal_entry_corridor": "\u09f375.9 \u2013 \u09f378.2",
+      "chase_cutoff_price": 79.3,
+      "when_to_wait": "If price opens or rises above \u09f379.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f375.9.",
+      "weekly_target_short": 80.1,
+      "monthly_target_swing": 89.0,
+      "long_term_target_asset": 100.6,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
-    "status": "UNDERVALUED_FEAR",
-    "worth_decision": "HIGH_CONVICTION_BUY",
-    "reason": "High Margin of Safety (+75.8%) with depressed market greed (10.0/100) and EARNINGS_BACKED_MERIT. Ideal entry."
+    "status": "CHRONIC_OVERVALUATION",
+    "worth_decision": "AVOID",
+    "reason": "Fundamental value severely lags stock price (MoS: -65.9%)."
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -0.9,
-        "high": 78.7,
-        "low": 76.2,
-        "range_volatility_pct": 3.28
+        "return_pct": 0.0,
+        "high": 78.3,
+        "low": 76.9,
+        "range_volatility_pct": 1.82
       },
       "monthly_21d": {
-        "return_pct": 0.0,
+        "return_pct": -0.51,
         "high": 80.7,
-        "low": 75.8,
-        "range_volatility_pct": 6.46
+        "low": 76.2,
+        "range_volatility_pct": 5.91
       },
       "quarterly_63d": {
-        "return_pct": -8.28,
-        "high": 87.8,
+        "return_pct": -7.86,
+        "high": 85.4,
         "low": 75.8,
-        "range_volatility_pct": 15.83
+        "range_volatility_pct": 12.66
       },
       "half_yearly_126d": {
-        "return_pct": 4.31,
+        "return_pct": 2.79,
         "high": 88.7,
-        "low": 74.2,
-        "range_volatility_pct": 19.54
+        "low": 74.8,
+        "range_volatility_pct": 18.58
       },
       "yearly_252d": {
         "return_pct": -0.77,
@@ -63,8 +63,8 @@
       "median_correction_drop_pct": -10.2,
       "avg_wave_duration_bars": 15.0
     },
-    "current_wave_phase": "ACCUMULATION_TROUGH",
-    "phase_guidance": "Near local cyclical trough base. Maximum reward/risk entry point.",
+    "current_wave_phase": "MARKDOWN_PULLBACK",
+    "phase_guidance": "Ongoing pullback from peak (-4.1%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Aug",

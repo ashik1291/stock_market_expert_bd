@@ -1,58 +1,58 @@
 {
   "ticker": "ENVOYTEX",
-  "audited_at": "2026-10-11 19:10:52",
+  "audited_at": "2026-10-22 15:42:29",
   "worth_vs_greed": {
-    "current_price": 70.1,
-    "intrinsic_worth": 86.09,
-    "margin_of_safety_pct": 22.8,
-    "extension_froth_score": 40.0,
-    "greed_index": 40.0,
-    "rsi_14": 43.0,
+    "current_price": 70.8,
+    "intrinsic_worth": 35.4,
+    "margin_of_safety_pct": -50.0,
+    "extension_froth_score": 30.0,
+    "greed_index": 30.0,
+    "rsi_14": 51.3,
     "price_vs_ema50_pct": 5.4,
-    "price_vs_ema200_pct": 23.5,
-    "merit_status": "EARNINGS_BACKED_MERIT",
-    "merit_reason": "Price supported by solid earnings (EPS: \u09f38.40, P/E: 8.5). Growth is fundamentally justified.",
+    "price_vs_ema200_pct": 23.1,
+    "merit_status": "NEUTRAL_MERIT",
+    "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f368.7 \u2013 \u09f370.8",
-      "chase_cutoff_price": 71.9,
-      "when_to_wait": "If price opens or rises above \u09f371.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f368.7.",
-      "weekly_target_short": 72.6,
-      "monthly_target_swing": 80.6,
-      "long_term_target_asset": 91.1,
+      "optimal_entry_corridor": "\u09f369.4 \u2013 \u09f371.5",
+      "chase_cutoff_price": 72.6,
+      "when_to_wait": "If price opens or rises above \u09f372.6, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f369.4.",
+      "weekly_target_short": 73.3,
+      "monthly_target_swing": 81.4,
+      "long_term_target_asset": 92.0,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
-    "status": "UNDERVALUED_FEAR",
-    "worth_decision": "HIGH_CONVICTION_BUY",
-    "reason": "High Margin of Safety (+22.8%) with depressed market greed (40.0/100) and EARNINGS_BACKED_MERIT. Ideal entry."
+    "status": "CHRONIC_OVERVALUATION",
+    "worth_decision": "AVOID",
+    "reason": "Fundamental value severely lags stock price (MoS: -50.0%)."
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -3.71,
-        "high": 73.3,
-        "low": 69.9,
-        "range_volatility_pct": 4.86
+        "return_pct": 2.16,
+        "high": 71.9,
+        "low": 67.0,
+        "range_volatility_pct": 7.31
       },
       "monthly_21d": {
-        "return_pct": -5.4,
-        "high": 76.4,
+        "return_pct": 1.0,
+        "high": 75.3,
         "low": 67.0,
-        "range_volatility_pct": 14.03
+        "range_volatility_pct": 12.39
       },
       "quarterly_63d": {
-        "return_pct": 19.22,
+        "return_pct": 24.21,
         "high": 76.4,
         "low": 51.8,
         "range_volatility_pct": 47.49
       },
       "half_yearly_126d": {
-        "return_pct": 45.13,
+        "return_pct": 45.98,
         "high": 76.4,
         "low": 47.5,
         "range_volatility_pct": 60.84
       },
       "yearly_252d": {
-        "return_pct": 20.03,
+        "return_pct": 26.2,
         "high": 76.4,
         "low": 42.9,
         "range_volatility_pct": 78.09
@@ -64,7 +64,7 @@
       "avg_wave_duration_bars": 28.0
     },
     "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-8.2%). Wait for stabilizing base.",
+    "phase_guidance": "Ongoing pullback from peak (-7.3%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Aug",

@@ -1,70 +1,70 @@
 {
   "ticker": "ACI",
-  "audited_at": "2026-10-11 19:10:51",
+  "audited_at": "2026-10-22 15:42:26",
   "worth_vs_greed": {
-    "current_price": 184.5,
-    "intrinsic_worth": 73.31,
-    "margin_of_safety_pct": -60.3,
-    "extension_froth_score": 20.0,
-    "greed_index": 20.0,
-    "rsi_14": 42.9,
-    "price_vs_ema50_pct": -2.3,
-    "price_vs_ema200_pct": -4.1,
+    "current_price": 180.0,
+    "intrinsic_worth": 90.0,
+    "margin_of_safety_pct": -50.0,
+    "extension_froth_score": 10.0,
+    "greed_index": 10.0,
+    "rsi_14": 41.7,
+    "price_vs_ema50_pct": -3.8,
+    "price_vs_ema200_pct": -6.1,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f3180.8 \u2013 \u09f3186.3",
-      "chase_cutoff_price": 189.1,
-      "when_to_wait": "If price opens or rises above \u09f3189.1, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3180.8.",
-      "weekly_target_short": 191.0,
-      "monthly_target_swing": 212.2,
-      "long_term_target_asset": 239.8,
+      "optimal_entry_corridor": "\u09f3176.4 \u2013 \u09f3181.8",
+      "chase_cutoff_price": 184.5,
+      "when_to_wait": "If price opens or rises above \u09f3184.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3176.4.",
+      "weekly_target_short": 186.3,
+      "monthly_target_swing": 207.0,
+      "long_term_target_asset": 234.0,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -60.3%)."
+    "reason": "Fundamental value severely lags stock price (MoS: -50.0%)."
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -0.27,
-        "high": 188.0,
-        "low": 179.9,
-        "range_volatility_pct": 4.5
+        "return_pct": -0.61,
+        "high": 184.4,
+        "low": 178.1,
+        "range_volatility_pct": 3.54
       },
       "monthly_21d": {
-        "return_pct": -0.91,
+        "return_pct": -2.33,
         "high": 193.5,
-        "low": 176.2,
-        "range_volatility_pct": 9.82
+        "low": 178.1,
+        "range_volatility_pct": 8.65
       },
       "quarterly_63d": {
-        "return_pct": -9.16,
-        "high": 211.4,
+        "return_pct": -11.72,
+        "high": 208.9,
         "low": 176.2,
-        "range_volatility_pct": 19.98
+        "range_volatility_pct": 18.56
       },
       "half_yearly_126d": {
-        "return_pct": -6.39,
+        "return_pct": -13.0,
         "high": 213.6,
         "low": 176.2,
         "range_volatility_pct": 21.23
       },
       "yearly_252d": {
-        "return_pct": 4.12,
+        "return_pct": -1.91,
         "high": 231.0,
         "low": 165.1,
         "range_volatility_pct": 39.92
       }
     },
     "wave_metrics": {
-      "median_rally_gain_pct": 17.7,
+      "median_rally_gain_pct": 17.5,
       "median_correction_drop_pct": -19.0,
       "avg_wave_duration_bars": 22.0
     },
-    "current_wave_phase": "MARKUP_RALLY_MID",
-    "phase_guidance": "Midway through rally wave (+4.7% from base, historical target ~+17.7%).",
+    "current_wave_phase": "MARKDOWN_PULLBACK",
+    "phase_guidance": "Ongoing pullback from peak (-7.0%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Aug",
@@ -84,14 +84,14 @@
     ],
     "weak_seasonal_months": [
       {
+        "month": "Oct",
+        "avg_return": -2.1,
+        "win_rate": 33.0
+      },
+      {
         "month": "Feb",
         "avg_return": -2.4,
         "win_rate": 50.0
-      },
-      {
-        "month": "Oct",
-        "avg_return": -2.4,
-        "win_rate": 27.0
       }
     ]
   },

@@ -1,70 +1,70 @@
 {
   "ticker": "ORIONPHARM",
-  "audited_at": "2026-10-11 19:10:51",
+  "audited_at": "2026-10-22 15:42:27",
   "worth_vs_greed": {
-    "current_price": 25.5,
-    "intrinsic_worth": 68.87,
-    "margin_of_safety_pct": 170.1,
-    "extension_froth_score": 70.0,
-    "greed_index": 70.0,
-    "rsi_14": 51.6,
-    "price_vs_ema50_pct": -6.1,
-    "price_vs_ema200_pct": -10.5,
+    "current_price": 28.9,
+    "intrinsic_worth": 14.45,
+    "margin_of_safety_pct": -50.0,
+    "extension_froth_score": 60.0,
+    "greed_index": 60.0,
+    "rsi_14": 46.6,
+    "price_vs_ema50_pct": 6.2,
+    "price_vs_ema200_pct": 1.7,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f325.0 \u2013 \u09f325.8",
-      "chase_cutoff_price": 26.1,
-      "when_to_wait": "If price opens or rises above \u09f326.1, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f325.0.",
-      "weekly_target_short": 26.4,
-      "monthly_target_swing": 29.3,
-      "long_term_target_asset": 33.1,
+      "optimal_entry_corridor": "\u09f328.3 \u2013 \u09f329.2",
+      "chase_cutoff_price": 29.6,
+      "when_to_wait": "If price opens or rises above \u09f329.6, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f328.3.",
+      "weekly_target_short": 29.9,
+      "monthly_target_swing": 33.2,
+      "long_term_target_asset": 37.6,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
-    "status": "NEUTRAL",
-    "worth_decision": "HOLD",
-    "reason": "Trading in neutral fair-value corridor."
+    "status": "CHRONIC_OVERVALUATION",
+    "worth_decision": "AVOID",
+    "reason": "Fundamental value severely lags stock price (MoS: -50.0%)."
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -12.07,
-        "high": 29.7,
-        "low": 25.4,
-        "range_volatility_pct": 16.93
+        "return_pct": 12.02,
+        "high": 29.5,
+        "low": 25.5,
+        "range_volatility_pct": 15.69
       },
       "monthly_21d": {
-        "return_pct": 1.59,
+        "return_pct": 14.68,
         "high": 33.2,
-        "low": 23.5,
-        "range_volatility_pct": 41.28
+        "low": 24.1,
+        "range_volatility_pct": 37.76
       },
       "quarterly_63d": {
-        "return_pct": -16.94,
+        "return_pct": -3.02,
         "high": 33.2,
         "low": 23.5,
         "range_volatility_pct": 41.28
       },
       "half_yearly_126d": {
-        "return_pct": -8.93,
+        "return_pct": 3.96,
         "high": 33.2,
         "low": 23.5,
         "range_volatility_pct": 41.28
       },
       "yearly_252d": {
-        "return_pct": -27.35,
-        "high": 37.7,
+        "return_pct": -20.6,
+        "high": 37.2,
         "low": 22.9,
-        "range_volatility_pct": 64.63
+        "range_volatility_pct": 62.45
       }
     },
     "wave_metrics": {
-      "median_rally_gain_pct": 17.7,
+      "median_rally_gain_pct": 17.9,
       "median_correction_drop_pct": -15.8,
-      "avg_wave_duration_bars": 22.0
+      "avg_wave_duration_bars": 21.0
     },
-    "current_wave_phase": "MARKUP_RALLY_MID",
-    "phase_guidance": "Midway through rally wave (+8.5% from base, historical target ~+17.7%).",
+    "current_wave_phase": "BOTTOMING_SUPPORT",
+    "phase_guidance": "Drop (-13.0%) matches historical correction depth (-15.8%). Prepare to accumulate.",
     "top_seasonal_months": [
       {
         "month": "Aug",
