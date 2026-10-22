@@ -641,6 +641,41 @@ def run_recommender(timeframe: str = "weekly", tickers: list[str] = None):
     with open(md_path, "w", encoding="utf-8") as f:
         f.write(md)
 
+    # Persist structured recommendations into SQLite recommendations table
+    try:
+        import sqlite3
+        db_path = BASE_DIR / "data" / "processed" / "dse.db"
+        if db_path.exists():
+            conn = sqlite3.connect(db_path)
+            cur = conn.cursor()
+            inserted_count = 0
+            for h_key, h_list in recs.get("horizons", {}).items():
+                for item in h_list:
+                    ticker = item.get("ticker")
+                    if not ticker:
+                        continue
+                    sig = item.get("signal")
+                    conf = item.get("confidence")
+                    m_risk = item.get("manipulation", {}).get("manipulation_risk") or "low"
+                    entry = item.get("entry")
+                    target = item.get("target")
+                    stop = item.get("stop_loss")
+                    reason = item.get("loan_trap_risk") or item.get("pe") or ""
+                    try:
+                        cur.execute("""
+                            INSERT OR REPLACE INTO recommendations
+                            (ticker, date, horizon, signal, confidence, manipulation_risk, entry_price, target, stop_loss, reasoning)
+                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                        """, (ticker, now_str, h_key, sig, conf, m_risk, entry, target, stop, str(reason)))
+                        inserted_count += 1
+                    except Exception:
+                        pass
+            conn.commit()
+            conn.close()
+            log.info(f"Persisted {inserted_count} recommendations to SQLite database.")
+    except Exception as e:
+        log.warning(f"Could not persist recommendations to SQLite: {e}")
+
     # Automatically generate monthly asset plan
     monthly_plan_path = None
     try:
