@@ -524,11 +524,11 @@ def compute_fundamental_score(fund_list: list[dict], thresholds: dict) -> dict:
 # ── Sentiment Score ───────────────────────────────────────────────────────────
 
 def compute_sentiment_score(news_list: list[dict]) -> dict:
-    """Keyword-based sentiment. Replace with transformer model for production."""
+    """Keyword-based sentiment with headline deduplication and dampening."""
     positive_kw = [
         "profit", "growth", "dividend", "record", "expansion", "strong",
         "upgrade", "buy", "bullish", "recovery", "surplus", "beat", "export",
-        "approved", "license", "award", "contract", "bonus", "IPO",
+        "approved", "license", "award", "contract", "bonus", "ipo",
     ]
     negative_kw = [
         "loss", "decline", "fall", "bearish", "defaulted", "probe",
@@ -540,23 +540,35 @@ def compute_sentiment_score(news_list: list[dict]) -> dict:
     if not news_list:
         return {"score": 50.0, "signals": {"news_count": 0, "note": "no_news_neutral"}}
 
+    # Deduplicate headlines to prevent syndication spam distortion
+    seen_headlines = set()
+    deduped_news = []
+    for art in news_list:
+        h = art.get("headline", art.get("title", "")).strip()
+        if h and h not in seen_headlines:
+            seen_headlines.add(h)
+            deduped_news.append(art)
+
+    if not deduped_news:
+        return {"score": 50.0, "signals": {"news_count": 0, "note": "no_news_neutral"}}
+
     total = 0
     details = []
-    for art in news_list:
+    for art in deduped_news:
         headline = art.get("headline", art.get("title", "")).lower()
         pos = sum(1 for kw in positive_kw if kw in headline)
         neg = sum(1 for kw in negative_kw if kw in headline)
         if pos > neg:
-            total += 70
+            total += 65  # Dampened from 70
             details.append("positive")
         elif neg > pos:
-            total += 30
+            total += 35  # Dampened from 30
             details.append("negative")
         else:
             total += 50
             details.append("neutral")
 
-    score = total / len(news_list)
+    score = total / len(deduped_news)
     pos_count  = details.count("positive")
     neg_count  = details.count("negative")
     neut_count = details.count("neutral")
@@ -564,7 +576,7 @@ def compute_sentiment_score(news_list: list[dict]) -> dict:
     return {
         "score": round(score, 2),
         "signals": {
-            "news_count": len(news_list),
+            "news_count": len(deduped_news),
             "positive":   pos_count,
             "negative":   neg_count,
             "neutral":    neut_count,
