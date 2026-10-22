@@ -27,7 +27,7 @@ Do NOT deploy 100% capital in a single day. Spread monthly allocation across 4 s
 
 | Ticker | Entry Zone | Direction & Prob | Upside / Risk | P/E | Debt/Equity | Leadership & Experience | Tranche Pacing | Target Exit |
 |---|---|---|---|---|---|---|---|---|
-| **SQURPHARMA** | ৳214.1–৳220.7 | 🟢 RISE (80.8%) | +30.0% / -9.0% | 8.0 | D/E: 0.006 | Tapan Chowdhury (45y exp, AAA) | 20% per tranche | ৳284.1 |
+| **SQURPHARMA** | ৳215.2–৳221.8 | 🟢 RISE (64.2%) | +30.0% / -9.0% | 7.7 | D/E: 0.006 | Tapan Chowdhury (45y exp, AAA) | 20% per tranche | ৳285.5 |
 | **EBL** | ৳22.3–৳23.0 | 🟡 RISE (59.6%) | +29.8% / -8.6% | 4.4 | D/E: None | Ali Reza Iftekhar (37y exp, AA+) | 20% per tranche | ৳29.6 |
 | **JAMUNAOIL** | ৳175.6–৳181.0 | 🟢 RISE (80.8%) | +30.0% / -9.0% | 3.0 | D/E: 0.0 | Md. Gias Uddin Ansary (32y exp, AA+) | 20% per tranche | ৳233.0 |
 | **PADMAOIL** | ৳191.5–৳197.4 | 🟢 RISE (80.8%) | +30.0% / -9.0% | 3.4 | D/E: 0.007 | Md. Masudur Rahman (30y exp, AA+) | 20% per tranche | ৳254.0 |
@@ -37,7 +37,7 @@ Do NOT deploy 100% capital in a single day. Spread monthly allocation across 4 s
 
 | Ticker | Entry Price | Direction & Prob | Target (+15%) | Trailing Stop (-5%) | Risk/Reward | P/E |
 |---|---|---|---|---|---|---|
-| **SQURPHARMA** | ৳218.5 | 🟢 80.8% | **৳251.3** | ৳207.6 | 3.0x | 8.0 |
+| **SQURPHARMA** | ৳219.6 | 🟢 64.2% | **৳252.5** | ৳208.6 | 3.0x | 7.7 |
 | **EBL** | ৳22.8 | 🟡 59.6% | **৳26.2** | ৳21.7 | 3.1x | 4.4 |
 | **JAMUNAOIL** | ৳179.2 | 🟢 80.8% | **৳206.1** | ৳170.2 | 3.0x | 3.0 |
 | **PADMAOIL** | ৳195.4 | 🟢 80.8% | **৳224.7** | ৳185.6 | 3.0x | 3.4 |

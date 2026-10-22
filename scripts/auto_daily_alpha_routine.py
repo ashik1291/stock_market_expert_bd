@@ -41,14 +41,23 @@ def execute_daily_alpha_cycle():
     run_step("1. Scrape Daily Price Snapshots", "scraper.py", ["price"])
     run_step("2. Ingest PIT Snapshots & Audits", "processor.py", [])
 
-    # Step 2: Advance V2 Hash-Chained Forward Ledger
-    run_step("3. Advance V2 Hash-Chained Forward Ledger & Log Full Universe", "forward_test_ledger_v2.py", [])
+    # Step 2: Audit Footnotes & Regulatory Disclosures
+    run_step("3. Parse Auditor Disclosures & Regulatory Risk Flags", "auditor_footnote_parser.py", [])
 
-    # Step 3: Run Reinforcement Learning Engine to learn from past mistakes
-    run_step("4. Calibrate Empirical Bayes Weights & Evaluate Accuracy", "reinforcement_learning_engine.py", ["evaluate"])
+    # Step 3: Advance V2 Hash-Chained Forward Ledger
+    run_step("4. Advance V2 Hash-Chained Forward Ledger & Log Full Universe", "forward_test_ledger_v2.py", [])
 
-    # Step 4: Run Daily Directional Scanner with latest learned weights
-    run_step("5. Scan Daily Directional Rise/Fall with Moat & Debt Gates", "daily_rise_fall_scanner.py", ["weekly"])
+    # Step 4: Run Reinforcement Learning Engine to learn from past mistakes
+    run_step("5. Calibrate Empirical Bayes Weights & Evaluate Accuracy", "reinforcement_learning_engine.py", ["evaluate"])
+
+    # Step 5: Refresh Knowledge Base via Analyzer for active universe
+    run_step("6. Update Scoring & Knowledge Base (analyzer.py all weekly)", "analyzer.py", ["all", "weekly"])
+
+    # Step 6: Run Daily Directional Scanner with latest learned weights
+    run_step("7. Scan Daily Directional Rise/Fall with Moat & Debt Gates", "daily_rise_fall_scanner.py", ["weekly"])
+
+    # Step 7: Update structured recommendations in SQLite DB
+    run_step("8. Refresh Tri-Horizon Recommendations & Position Plan", "recommender.py", ["weekly"])
 
     print("\n" + "=" * 80)
     print("✅ AUTO-ALPHA CYCLE COMPLETE: SYSTEM LEARNED & FACTOR LOGS ADVANCED")

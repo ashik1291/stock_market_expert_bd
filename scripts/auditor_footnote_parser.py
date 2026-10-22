@@ -40,7 +40,8 @@ WARNING_FLAGS = [
     (r"\bdispute(d)?\b.*?\b(tax|nbr|vat|customs)\b", "TAX_DISPUTE", "Pending large tax/customs demand"),
     (r"\bnbr\b.*?\bdemand\b", "TAX_DISPUTE", "NBR tax demand under dispute"),
     (r"\bemphasis of matter\b", "EMPHASIS_OF_MATTER", "Auditor flagged specific operational risk"),
-    (r"\bbsec\b.*?\b(probe|inquir(y|ies)|investigat|fine|penalty)\b", "REGULATORY_PROBE", "BSEC regulatory enforcement"),
+    (r"\bbsec\b.*?\b(probe|inquir\w*|investigat\w*|fine\w*|penalt\w*|manipulat\w*)\b", "REGULATORY_PROBE", "BSEC regulatory enforcement / probe"),
+    (r"\b(fine|penalty|penalised|penalized)\b.*?\b(manipulation|rules violation|bsec)\b", "REGULATORY_PROBE", "Penalty for securities rules violation"),
     (r"\bunpaid\b.*?\b(pf|provident|gratuity|wppf)\b", "UNPAID_STAFF_FUND", "Company failing to fund staff liability"),
     (r"\barrear\b.*?\b(gas|electricity|power|rent)\b", "UTILITY_ARREARS", "Utility bills unpaid"),
 ]
@@ -70,9 +71,33 @@ def scan_news_and_disclosures():
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
 
+    # Load company aliases for ticker resolution
+    company_aliases = {
+        "RAHIMAFOOD": ["rahima food", "rahima"],
+        "LOVELLO": ["lovello", "taufika foods"],
+        "SEAPHL": ["sea pearl", "seapearl"],
+        "NAVANAPHARM": ["navana pharma", "navana"],
+        "RACE": ["race management", "bangladesh race"],
+    }
+    try:
+        config_path = BASE_DIR / "config" / "company_names.json"
+        if config_path.exists():
+            with open(config_path, encoding="utf-8") as f:
+                c_names = json.load(f)
+                for tick, name in c_names.items():
+                    if tick not in company_aliases:
+                        company_aliases[tick] = []
+                    clean = re.sub(r"\b(ltd|limited|plc|bd|bangladesh)\b", "", name.lower()).strip()
+                    if len(clean) >= 3:
+                        company_aliases[tick].append(clean)
+                    company_aliases[tick].append(name.lower().strip())
+                    company_aliases[tick].append(tick.lower())
+    except Exception:
+        pass
+
     # Fetch news headlines
     news_items = conn.execute("""
-        SELECT ticker, headline, date FROM news WHERE ticker IS NOT NULL
+        SELECT ticker, headline, date FROM news
     """).fetchall()
 
     flagged_records = []
@@ -81,6 +106,19 @@ def scan_news_and_disclosures():
         t = item["ticker"]
         dt = item["date"] or datetime.date.today().isoformat()
         full_text = str(item["headline"] or "").lower()
+
+        # If ticker is missing, try to resolve via company aliases
+        if not t:
+            for tick, aliases in company_aliases.items():
+                for a in aliases:
+                    if re.search(r"\b" + re.escape(a) + r"\b", full_text):
+                        t = tick
+                        break
+                if t:
+                    break
+
+        if not t:
+            t = "MARKET_WIDE"
 
         # Check critical flags
         for pattern, code, desc in CRITICAL_FLAGS:
