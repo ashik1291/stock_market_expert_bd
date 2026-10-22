@@ -23,11 +23,12 @@ if hasattr(sys.stdout, "reconfigure"):
         pass
 
 # Target weights for the 6-pillar equity basket (Total: 100%)
+# Max concentration cap: 25% per single equity pillar to mitigate company-specific risk
 TARGET_WEIGHTS = {
-    "SQURPHARMA": 0.35,  # 35% Healthcare Moat
+    "SQURPHARMA": 0.25,  # 25% Capped Healthcare Moat
     "GP":         0.20,  # 20% Telecom Monopolistic Cash Cow
-    "JAMUNAOIL":  0.15,  # 15% Sovereign Fuel Distribution & High Dividend
-    "BSRMLTD":    0.10,  # 10% Infrastructure Steel Leader
+    "JAMUNAOIL":  0.20,  # 20% Sovereign Fuel Distribution & High Dividend
+    "BSRMLTD":    0.15,  # 15% Infrastructure Steel Leader
     "LHB":        0.10,  # 10% Clinker Self-Sufficient Cement
     "OLYMPIC":    0.10,  # 10% Packaged Consumer Goods
 }
