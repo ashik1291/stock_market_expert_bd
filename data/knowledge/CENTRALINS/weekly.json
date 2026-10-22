@@ -2,78 +2,73 @@
   "ticker": "CENTRALINS",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-10-11T13:10:53.353511",
-  "signal": "BUY",
-  "confidence": 63.28,
+  "analyzed_at": "2026-10-22T09:42:29.662979",
+  "signal": "HOLD",
+  "confidence": 54.31,
   "trajectory": {
-    "direction": "CONSOLIDATION_RANGE",
-    "direction_icon": "\ud83d\udfe1",
-    "rise_probability_pct": 48.2,
-    "momentum_status": "Neutral Range Consolidation",
+    "direction": "FALL_RISK",
+    "direction_icon": "\ud83d\udd34",
+    "rise_probability_pct": 31.7,
+    "momentum_status": "Bearish Breakdown / Selling Pressure",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+3.1%",
-      "downside_risk_pct": "-1.9%",
-      "target_price": 43.3,
-      "support_price": 41.2,
-      "risk_reward_ratio": "1.6x"
+      "upside_potential_pct": "+3.0%",
+      "downside_risk_pct": "-2.1%",
+      "target_price": 44.1,
+      "support_price": 41.9,
+      "risk_reward_ratio": "1.4x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
       "upside_potential_pct": "+15.0%",
-      "downside_risk_pct": "-5.0%",
-      "target_price": 48.3,
-      "trailing_stop": 39.9,
-      "risk_reward_ratio": "3.0x"
+      "downside_risk_pct": "-4.9%",
+      "target_price": 49.2,
+      "trailing_stop": 40.7,
+      "risk_reward_ratio": "3.1x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-      "upside_potential_pct": "+30.0%",
-      "downside_risk_pct": "-9.0%",
-      "target_price": 54.6,
-      "dividend_cagr": "moderate (3.0%)",
-      "risk_reward_ratio": "3.3x"
+      "upside_potential_pct": "+29.9%",
+      "downside_risk_pct": "-8.8%",
+      "target_price": 55.6,
+      "dividend_cagr": "5%\u20138%",
+      "risk_reward_ratio": "3.4x"
     }
   },
   "trade_levels": {
-    "entry": 42.0,
-    "stop_loss": 40.74,
-    "target": 44.52
+    "entry": 42.8,
+    "stop_loss": 41.52,
+    "target": 45.36
   },
   "precision": {
     "ticker": "CENTRALINS",
     "smart_money": {
-      "status": "ACTIVE",
-      "latest_date": "Sep 30, 2026",
-      "smart_money_delta_pct": 0.7,
-      "institutional_pct": 14.36,
-      "foreign_pct": 0.0,
-      "sponsor_pct": 39.33,
-      "public_pct": 46.02,
-      "public_delta_pct": -0.95,
-      "classification": "INSTITUTIONAL_ACCUMULATION",
-      "conviction_bonus": 15.0,
-      "signal": "Smart money accumulated +0.7% (Institutes: 0.7%, Foreign: 0.0%) while retail decreased -0.95%"
+      "status": "INSUFFICIENT_HISTORY",
+      "smart_money_delta_pct": 0.0,
+      "public_delta_pct": 0.0,
+      "classification": "NEUTRAL_HOLDING",
+      "conviction_bonus": 0.0,
+      "signal": "No monthly delta available"
     },
     "cash_flow": {
-      "nocfps": 1.59,
+      "nocfps": 0.0,
       "is_estimated": true,
-      "dividend_per_share": 1.2,
-      "dividend_coverage_x": 1.33,
-      "fcf_yield_pct": 3.8,
-      "cash_quality_status": "PRISTINE_REAL_CASH_COVERAGE",
-      "conviction_bonus": 15.0,
-      "signal": "Dividend is 133% cash-covered by real operations (NOCFPS: Tk 1.59 vs DPS: Tk 1.2)"
+      "dividend_per_share": 0.0,
+      "dividend_coverage_x": 0.0,
+      "fcf_yield_pct": 0.0,
+      "cash_quality_status": "TIGHT_CASH_COVERAGE",
+      "conviction_bonus": -10.0,
+      "signal": "Cash flow covers only 0% of dividend payout"
     },
     "liquidity": {
-      "avg_daily_volume": 301539,
-      "daily_turnover_bdt_cr": 1.26,
-      "liquidity_rating": "MODERATE_LIQUIDITY",
-      "slippage_risk": "MEDIUM",
-      "max_single_order_shares": 15076,
-      "max_daily_accumulation_shares": 45230,
-      "max_order_bdt": 630177.0,
-      "directive": "Max single order: 15,076 shares (Tk 630,177) to prevent >1% execution slippage"
+      "avg_daily_volume": 256923,
+      "daily_turnover_bdt_cr": 0.03,
+      "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
+      "slippage_risk": "HIGH",
+      "max_single_order_shares": 12846,
+      "max_daily_accumulation_shares": 38538,
+      "max_order_bdt": 12846.0,
+      "directive": "Max single order: 12,846 shares (Tk 12,846) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -81,63 +76,63 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 30.0
+    "total_precision_bonus": -10.0
   },
   "pattern_dna": {
     "ticker": "CENTRALINS",
-    "audited_at": "2026-10-11 19:10:53",
+    "audited_at": "2026-10-22 15:42:29",
     "worth_vs_greed": {
-      "current_price": 42.0,
-      "intrinsic_worth": 30.57,
-      "margin_of_safety_pct": -27.2,
+      "current_price": 42.8,
+      "intrinsic_worth": 21.4,
+      "margin_of_safety_pct": -50.0,
       "extension_froth_score": 20.0,
       "greed_index": 20.0,
-      "rsi_14": 42.9,
-      "price_vs_ema50_pct": -3.1,
-      "price_vs_ema200_pct": -0.2,
+      "rsi_14": 40.5,
+      "price_vs_ema50_pct": -0.8,
+      "price_vs_ema200_pct": 1.7,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f341.2 \u2013 \u09f342.4",
-        "chase_cutoff_price": 43.0,
-        "when_to_wait": "If price opens or rises above \u09f343.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f341.2.",
-        "weekly_target_short": 43.5,
-        "monthly_target_swing": 48.3,
-        "long_term_target_asset": 54.6,
+        "optimal_entry_corridor": "\u09f341.9 \u2013 \u09f343.2",
+        "chase_cutoff_price": 43.9,
+        "when_to_wait": "If price opens or rises above \u09f343.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f341.9.",
+        "weekly_target_short": 44.3,
+        "monthly_target_swing": 49.2,
+        "long_term_target_asset": 55.6,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
-      "status": "NEUTRAL",
-      "worth_decision": "HOLD",
-      "reason": "Trading in neutral fair-value corridor."
+      "status": "CHRONIC_OVERVALUATION",
+      "worth_decision": "AVOID",
+      "reason": "Fundamental value severely lags stock price (MoS: -50.0%)."
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -4.76,
-          "high": 44.2,
-          "low": 41.0,
-          "range_volatility_pct": 7.8
+          "return_pct": 3.63,
+          "high": 43.6,
+          "low": 41.1,
+          "range_volatility_pct": 6.08
         },
         "monthly_21d": {
-          "return_pct": -2.55,
+          "return_pct": 0.94,
           "high": 45.1,
-          "low": 40.5,
-          "range_volatility_pct": 11.36
+          "low": 40.6,
+          "range_volatility_pct": 11.08
         },
         "quarterly_63d": {
-          "return_pct": -3.67,
+          "return_pct": -0.47,
           "high": 51.8,
           "low": 40.0,
           "range_volatility_pct": 29.5
         },
         "half_yearly_126d": {
-          "return_pct": 6.6,
+          "return_pct": 3.13,
           "high": 51.8,
-          "low": 38.3,
-          "range_volatility_pct": 35.25
+          "low": 39.5,
+          "range_volatility_pct": 31.14
         },
         "yearly_252d": {
-          "return_pct": 5.53,
+          "return_pct": 6.47,
           "high": 51.8,
           "low": 30.7,
           "range_volatility_pct": 68.73
@@ -148,8 +143,8 @@
         "median_correction_drop_pct": -16.9,
         "avg_wave_duration_bars": 22.0
       },
-      "current_wave_phase": "ACCUMULATION_TROUGH",
-      "phase_guidance": "Near local cyclical trough base. Maximum reward/risk entry point.",
+      "current_wave_phase": "MARKUP_RALLY_MID",
+      "phase_guidance": "Midway through rally wave (+5.7% from base, historical target ~+17.3%).",
       "top_seasonal_months": [
         {
           "month": "Jun",
@@ -254,25 +249,14 @@
     "sr": {}
   },
   "fundamental": {
-    "score": 72.0,
+    "score": null,
     "signals": {
-      "eps": "positive (1.87)",
-      "pe": "slightly_expensive (22.352941176470587)",
-      "nav": 50.69,
-      "dividend_yield": "moderate (3.0%)",
-      "debt_equity_val": 0.0,
-      "long_term_debt_equity_val": 0.0,
-      "debt_equity": "pristine_low (0.0)",
-      "loan_trap_risk": "none",
-      "dividend_track_record_years": 5,
-      "dividend_consistency": "proven_compounder (5 yrs cash divs)",
-      "earnings_quality": "financial_asset_quality_mode",
+      "error": "no_fundamental_data",
       "downturn_resilience": {
-        "status": "growth_at_discount",
-        "drawdown_pct": 18.9,
+        "status": "normal",
+        "drawdown_pct": 17.4,
         "high_52w": 51.8,
-        "low_52w": 30.7,
-        "note": "Share price down 18.9% from 52w peak, yet earnings positive/steady (Conviction discount)"
+        "low_52w": 30.7
       }
     }
   },
@@ -313,15 +297,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 133670,
-        "avg_volume": 314034.0,
+        "last_volume": 69158,
+        "avg_volume": 268515.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.42,
-        "avg_volume": 318612.0,
-        "today_volume": 133670,
+        "spike_ratio": 0.25,
+        "avg_volume": 277725.0,
+        "today_volume": 69158,
         "detail": "ok"
       },
       "serial_trading": {
@@ -340,21 +324,21 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": 0.48,
+        "price_change_3d": 0.0,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 63.28,
+    "composite_score": 54.31,
     "governance_score": 75,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.418,
-      "technical": 0.27,
-      "governance": 0.163,
-      "sentiment": 0.148
+      "fundamental": 0.386,
+      "technical": 0.285,
+      "governance": 0.172,
+      "sentiment": 0.157
     }
   }
 }

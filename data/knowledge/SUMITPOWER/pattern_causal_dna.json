@@ -1,58 +1,58 @@
 {
   "ticker": "SUMITPOWER",
-  "audited_at": "2026-10-11 19:10:52",
+  "audited_at": "2026-10-22 15:42:28",
   "worth_vs_greed": {
-    "current_price": 15.5,
-    "intrinsic_worth": 10.83,
-    "margin_of_safety_pct": -30.1,
+    "current_price": 15.3,
+    "intrinsic_worth": 7.65,
+    "margin_of_safety_pct": -50.0,
     "extension_froth_score": 20.0,
     "greed_index": 20.0,
-    "rsi_14": 46.7,
-    "price_vs_ema50_pct": -0.7,
-    "price_vs_ema200_pct": 2.7,
+    "rsi_14": 47.1,
+    "price_vs_ema50_pct": -1.6,
+    "price_vs_ema200_pct": 1.2,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f315.2 \u2013 \u09f315.7",
-      "chase_cutoff_price": 15.9,
-      "when_to_wait": "If price opens or rises above \u09f315.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f315.2.",
-      "weekly_target_short": 16.0,
-      "monthly_target_swing": 17.8,
-      "long_term_target_asset": 20.2,
+      "optimal_entry_corridor": "\u09f315.0 \u2013 \u09f315.5",
+      "chase_cutoff_price": 15.7,
+      "when_to_wait": "If price opens or rises above \u09f315.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f315.0.",
+      "weekly_target_short": 15.8,
+      "monthly_target_swing": 17.6,
+      "long_term_target_asset": 19.9,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -30.1%)."
+    "reason": "Fundamental value severely lags stock price (MoS: -50.0%)."
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 1.31,
-        "high": 15.7,
-        "low": 14.9,
-        "range_volatility_pct": 5.37
+        "return_pct": -1.29,
+        "high": 15.5,
+        "low": 15.1,
+        "range_volatility_pct": 2.65
       },
       "monthly_21d": {
-        "return_pct": 0.65,
-        "high": 16.1,
+        "return_pct": 0.0,
+        "high": 15.8,
         "low": 14.9,
-        "range_volatility_pct": 8.05
+        "range_volatility_pct": 6.04
       },
       "quarterly_63d": {
-        "return_pct": -7.19,
-        "high": 17.9,
+        "return_pct": -10.0,
+        "high": 17.5,
         "low": 14.9,
-        "range_volatility_pct": 20.13
+        "range_volatility_pct": 17.45
       },
       "half_yearly_126d": {
-        "return_pct": 13.97,
+        "return_pct": 11.68,
         "high": 17.9,
         "low": 13.5,
         "range_volatility_pct": 32.59
       },
       "yearly_252d": {
-        "return_pct": 3.33,
+        "return_pct": 1.32,
         "high": 17.9,
         "low": 12.0,
         "range_volatility_pct": 49.17

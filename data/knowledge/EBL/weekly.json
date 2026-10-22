@@ -2,43 +2,43 @@
   "ticker": "EBL",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-10-11T13:10:51.067265",
+  "analyzed_at": "2026-10-22T09:42:26.375727",
   "signal": "STRONG_BUY",
-  "confidence": 71.98,
+  "confidence": 71.27,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
-    "rise_probability_pct": 59.6,
+    "rise_probability_pct": 47.9,
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+3.1%",
-      "downside_risk_pct": "-2.2%",
-      "target_price": 23.5,
-      "support_price": 22.3,
+      "upside_potential_pct": "+3.0%",
+      "downside_risk_pct": "-2.1%",
+      "target_price": 24.2,
+      "support_price": 23.0,
       "risk_reward_ratio": "1.4x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
       "upside_potential_pct": "+14.9%",
-      "downside_risk_pct": "-4.8%",
-      "target_price": 26.2,
-      "trailing_stop": 21.7,
-      "risk_reward_ratio": "3.1x"
+      "downside_risk_pct": "-5.1%",
+      "target_price": 27.0,
+      "trailing_stop": 22.3,
+      "risk_reward_ratio": "2.9x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-      "upside_potential_pct": "+29.8%",
-      "downside_risk_pct": "-8.6%",
-      "target_price": 29.6,
+      "upside_potential_pct": "+30.2%",
+      "downside_risk_pct": "-9.2%",
+      "target_price": 30.6,
       "dividend_cagr": "strong (10.29%)",
-      "risk_reward_ratio": "3.5x"
+      "risk_reward_ratio": "3.3x"
     }
   },
   "trade_levels": {
-    "entry": 22.8,
-    "stop_loss": 22.12,
-    "target": 24.16
+    "entry": 23.5,
+    "stop_loss": 22.8,
+    "target": 24.9
   },
   "precision": {
     "ticker": "EBL",
@@ -66,14 +66,14 @@
       "signal": "Dividend is 178% cash-covered by real operations (NOCFPS: Tk 4.45 vs DPS: Tk 2.5)"
     },
     "liquidity": {
-      "avg_daily_volume": 4904952,
-      "daily_turnover_bdt_cr": 11.18,
+      "avg_daily_volume": 2464322,
+      "daily_turnover_bdt_cr": 5.62,
       "liquidity_rating": "DEEP_INSTITUTIONAL_LIQUIDITY",
       "slippage_risk": "VERY_LOW",
-      "max_single_order_shares": 245247,
-      "max_daily_accumulation_shares": 735742,
-      "max_order_bdt": 5591632.0,
-      "directive": "Max single order: 245,247 shares (Tk 5,591,632) to prevent >1% execution slippage"
+      "max_single_order_shares": 123216,
+      "max_daily_accumulation_shares": 369648,
+      "max_order_bdt": 2809325.0,
+      "directive": "Max single order: 123,216 shares (Tk 2,809,325) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -85,59 +85,59 @@
   },
   "pattern_dna": {
     "ticker": "EBL",
-    "audited_at": "2026-10-11 19:10:51",
+    "audited_at": "2026-10-22 15:42:26",
     "worth_vs_greed": {
-      "current_price": 22.8,
+      "current_price": 23.5,
       "intrinsic_worth": 51.3,
-      "margin_of_safety_pct": 125.0,
-      "extension_froth_score": 10.0,
-      "greed_index": 10.0,
-      "rsi_14": 47.4,
-      "price_vs_ema50_pct": -2.8,
-      "price_vs_ema200_pct": -6.5,
+      "margin_of_safety_pct": 118.3,
+      "extension_froth_score": 20.0,
+      "greed_index": 20.0,
+      "rsi_14": 68.4,
+      "price_vs_ema50_pct": 0.7,
+      "price_vs_ema200_pct": -3.3,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f35.23, P/E: 4.4). Growth is fundamentally justified.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f322.3 \u2013 \u09f323.0",
-        "chase_cutoff_price": 23.4,
-        "when_to_wait": "If price opens or rises above \u09f323.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f322.3.",
-        "weekly_target_short": 23.6,
-        "monthly_target_swing": 26.2,
-        "long_term_target_asset": 29.6,
+        "optimal_entry_corridor": "\u09f323.0 \u2013 \u09f323.7",
+        "chase_cutoff_price": 24.1,
+        "when_to_wait": "If price opens or rises above \u09f324.1, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f323.0.",
+        "weekly_target_short": 24.3,
+        "monthly_target_swing": 27.0,
+        "long_term_target_asset": 30.6,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "UNDERVALUED_FEAR",
       "worth_decision": "HIGH_CONVICTION_BUY",
-      "reason": "High Margin of Safety (+125.0%) with depressed market greed (10.0/100) and EARNINGS_BACKED_MERIT. Ideal entry."
+      "reason": "High Margin of Safety (+118.3%) with depressed market greed (20.0/100) and EARNINGS_BACKED_MERIT. Ideal entry."
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -0.87,
-          "high": 23.1,
-          "low": 22.6,
-          "range_volatility_pct": 2.21
+          "return_pct": 3.52,
+          "high": 23.8,
+          "low": 22.7,
+          "range_volatility_pct": 4.85
         },
         "monthly_21d": {
-          "return_pct": -2.98,
+          "return_pct": 2.62,
           "high": 23.8,
-          "low": 22.3,
-          "range_volatility_pct": 6.73
+          "low": 22.5,
+          "range_volatility_pct": 5.78
         },
         "quarterly_63d": {
-          "return_pct": -6.94,
+          "return_pct": -3.69,
           "high": 25.0,
           "low": 22.3,
           "range_volatility_pct": 12.11
         },
         "half_yearly_126d": {
-          "return_pct": -12.64,
+          "return_pct": -13.28,
           "high": 28.3,
           "low": 22.3,
           "range_volatility_pct": 26.91
         },
         "yearly_252d": {
-          "return_pct": -9.88,
+          "return_pct": -5.24,
           "high": 28.9,
           "low": 21.8,
           "range_volatility_pct": 32.57
@@ -148,8 +148,8 @@
         "median_correction_drop_pct": -11.2,
         "avg_wave_duration_bars": 25.0
       },
-      "current_wave_phase": "ACCUMULATION_TROUGH",
-      "phase_guidance": "Near local cyclical trough base. Maximum reward/risk entry point.",
+      "current_wave_phase": "MARKUP_RALLY_MID",
+      "phase_guidance": "Midway through rally wave (+5.4% from base, historical target ~+17.8%).",
       "top_seasonal_months": [
         {
           "month": "Jan",
@@ -267,10 +267,10 @@
       "dividend_consistency": "proven_compounder (5 yrs cash divs)",
       "downturn_resilience": {
         "status": "growth_at_discount",
-        "drawdown_pct": 21.1,
+        "drawdown_pct": 18.7,
         "high_52w": 28.9,
         "low_52w": 21.8,
-        "note": "Share price down 21.1% from 52w peak, yet earnings positive/steady (Conviction discount)"
+        "note": "Share price down 18.7% from 52w peak, yet earnings positive/steady (Conviction discount)"
       }
     }
   },
@@ -311,15 +311,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 589191,
-        "avg_volume": 3499676.0,
+        "last_volume": 2079824,
+        "avg_volume": 3479303.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.17,
-        "avg_volume": 3497139.0,
-        "today_volume": 589191,
+        "spike_ratio": 0.61,
+        "avg_volume": 3435339.0,
+        "today_volume": 2079824,
         "detail": "ok"
       },
       "serial_trading": {
@@ -345,14 +345,14 @@
     }
   },
   "composite": {
-    "composite_score": 71.98,
+    "composite_score": 71.27,
     "governance_score": 95,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.418,
-      "technical": 0.27,
-      "governance": 0.163,
-      "sentiment": 0.148
+      "fundamental": 0.386,
+      "technical": 0.285,
+      "governance": 0.172,
+      "sentiment": 0.157
     }
   }
 }

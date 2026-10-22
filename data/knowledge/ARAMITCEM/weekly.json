@@ -2,13 +2,13 @@
   "ticker": "ARAMITCEM",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-10-11T13:10:52.060673",
-  "signal": "HOLD_LOAN_TRAP_RISK",
-  "confidence": 41.54,
+  "analyzed_at": "2026-10-22T09:42:27.836669",
+  "signal": "HOLD",
+  "confidence": 54.31,
   "trajectory": {
     "direction": "FALL_RISK",
     "direction_icon": "\ud83d\udd34",
-    "rise_probability_pct": 15.0,
+    "rise_probability_pct": 31.7,
     "momentum_status": "Bearish Breakdown / Selling Pressure",
     "short_term": {
       "predicted_path": "Upward momentum swing",
@@ -31,7 +31,7 @@
       "upside_potential_pct": "+30.0%",
       "downside_risk_pct": "-9.9%",
       "target_price": 14.3,
-      "dividend_cagr": "no_dividend",
+      "dividend_cagr": "5%\u20138%",
       "risk_reward_ratio": "3.0x"
     }
   },
@@ -43,22 +43,17 @@
   "precision": {
     "ticker": "ARAMITCEM",
     "smart_money": {
-      "status": "ACTIVE",
-      "latest_date": "Dec 31, 2025",
-      "smart_money_delta_pct": -0.02,
-      "institutional_pct": 9.99,
-      "foreign_pct": 0.0,
-      "sponsor_pct": 45.92,
-      "public_pct": 44.09,
-      "public_delta_pct": 0.02,
-      "classification": "STABLE_HOLDINGS",
+      "status": "INSUFFICIENT_HISTORY",
+      "smart_money_delta_pct": 0.0,
+      "public_delta_pct": 0.0,
+      "classification": "NEUTRAL_HOLDING",
       "conviction_bonus": 0.0,
-      "signal": "Holding shift: Smart money -0.02%, Retail +0.02%"
+      "signal": "No monthly delta available"
     },
     "cash_flow": {
       "nocfps": 0.0,
       "is_estimated": true,
-      "dividend_per_share": 0.5,
+      "dividend_per_share": 0.0,
       "dividend_coverage_x": 0.0,
       "fcf_yield_pct": 0.0,
       "cash_quality_status": "TIGHT_CASH_COVERAGE",
@@ -66,14 +61,14 @@
       "signal": "Cash flow covers only 0% of dividend payout"
     },
     "liquidity": {
-      "avg_daily_volume": 12713,
-      "daily_turnover_bdt_cr": 0.01,
+      "avg_daily_volume": 10757,
+      "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 635,
-      "max_daily_accumulation_shares": 1907,
-      "max_order_bdt": 7176.0,
-      "directive": "Max single order: 635 shares (Tk 7,176) to prevent >1% execution slippage"
+      "max_single_order_shares": 537,
+      "max_daily_accumulation_shares": 1613,
+      "max_order_bdt": 537.0,
+      "directive": "Max single order: 537 shares (Tk 537) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -85,16 +80,16 @@
   },
   "pattern_dna": {
     "ticker": "ARAMITCEM",
-    "audited_at": "2026-10-11 19:10:52",
+    "audited_at": "2026-10-22 15:42:27",
     "worth_vs_greed": {
       "current_price": 11.0,
-      "intrinsic_worth": 8.93,
-      "margin_of_safety_pct": -18.8,
+      "intrinsic_worth": 5.5,
+      "margin_of_safety_pct": -50.0,
       "extension_froth_score": 30.0,
       "greed_index": 30.0,
-      "rsi_14": 43.5,
-      "price_vs_ema50_pct": -4.8,
-      "price_vs_ema200_pct": -5.7,
+      "rsi_14": 55.0,
+      "price_vs_ema50_pct": -3.8,
+      "price_vs_ema200_pct": -5.4,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -106,38 +101,38 @@
         "long_term_target_asset": 14.3,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
-      "status": "NEUTRAL",
-      "worth_decision": "HOLD",
-      "reason": "Trading in neutral fair-value corridor."
+      "status": "CHRONIC_OVERVALUATION",
+      "worth_decision": "AVOID",
+      "reason": "Fundamental value severely lags stock price (MoS: -50.0%)."
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -2.65,
+          "return_pct": 0.92,
+          "high": 11.5,
+          "low": 10.8,
+          "range_volatility_pct": 6.48
+        },
+        "monthly_21d": {
+          "return_pct": -1.79,
           "high": 11.7,
           "low": 10.6,
           "range_volatility_pct": 10.38
         },
-        "monthly_21d": {
-          "return_pct": -2.65,
-          "high": 11.8,
-          "low": 10.2,
-          "range_volatility_pct": 15.69
-        },
         "quarterly_63d": {
-          "return_pct": -6.78,
+          "return_pct": -12.7,
           "high": 14.2,
           "low": 10.2,
           "range_volatility_pct": 39.22
         },
         "half_yearly_126d": {
-          "return_pct": 0.92,
+          "return_pct": -9.84,
           "high": 15.0,
           "low": 10.0,
           "range_volatility_pct": 50.0
         },
         "yearly_252d": {
-          "return_pct": -13.39,
+          "return_pct": -5.17,
           "high": 15.0,
           "low": 7.6,
           "range_volatility_pct": 97.37
@@ -254,16 +249,9 @@
     "sr": {}
   },
   "fundamental": {
-    "score": 20.0,
+    "score": null,
     "signals": {
-      "nav": 11.16,
-      "dividend_yield": "no_dividend",
-      "debt_equity_val": 17.553,
-      "long_term_debt_equity_val": 13.456,
-      "debt_equity": "danger_high_loan (17.553)",
-      "loan_trap_risk": "high",
-      "dividend_track_record_years": 1,
-      "dividend_consistency": "irregular",
+      "error": "no_fundamental_data",
       "downturn_resilience": {
         "status": "normal",
         "drawdown_pct": 26.7,
@@ -309,15 +297,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 10956,
-        "avg_volume": 13436.0,
+        "last_volume": 350,
+        "avg_volume": 11104.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.81,
-        "avg_volume": 13504.0,
-        "today_volume": 10956,
+        "spike_ratio": 0.03,
+        "avg_volume": 12221.0,
+        "today_volume": 350,
         "detail": "ok"
       },
       "serial_trading": {
@@ -343,14 +331,14 @@
     }
   },
   "composite": {
-    "composite_score": 41.54,
+    "composite_score": 54.31,
     "governance_score": 75,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.418,
-      "technical": 0.27,
-      "governance": 0.163,
-      "sentiment": 0.148
+      "fundamental": 0.386,
+      "technical": 0.285,
+      "governance": 0.172,
+      "sentiment": 0.157
     }
   }
 }

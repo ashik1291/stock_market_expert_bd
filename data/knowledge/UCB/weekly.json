@@ -2,9 +2,9 @@
   "ticker": "UCB",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-10-11T13:10:51.169798",
+  "analyzed_at": "2026-10-22T09:42:26.533618",
   "signal": "HOLD_LOAN_TRAP_RISK",
-  "confidence": 50.32,
+  "confidence": 50.83,
   "trajectory": {
     "direction": "FALL_RISK",
     "direction_icon": "\ud83d\udd34",
@@ -12,33 +12,33 @@
     "momentum_status": "Bearish Breakdown / Selling Pressure",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+2.5%",
-      "downside_risk_pct": "-2.5%",
-      "target_price": 8.3,
-      "support_price": 7.9,
+      "upside_potential_pct": "+2.4%",
+      "downside_risk_pct": "-2.4%",
+      "target_price": 8.4,
+      "support_price": 8.0,
       "risk_reward_ratio": "1.0x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+14.8%",
+      "upside_potential_pct": "+14.6%",
       "downside_risk_pct": "-4.9%",
-      "target_price": 9.3,
-      "trailing_stop": 7.7,
+      "target_price": 9.4,
+      "trailing_stop": 7.8,
       "risk_reward_ratio": "3.0x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-      "upside_potential_pct": "+29.6%",
+      "upside_potential_pct": "+30.5%",
       "downside_risk_pct": "-8.8%",
-      "target_price": 10.5,
+      "target_price": 10.7,
       "dividend_cagr": "no_dividend",
-      "risk_reward_ratio": "3.4x"
+      "risk_reward_ratio": "3.5x"
     }
   },
   "trade_levels": {
-    "entry": 8.1,
-    "stop_loss": 7.86,
-    "target": 8.58
+    "entry": 8.2,
+    "stop_loss": 7.95,
+    "target": 8.7
   },
   "precision": {
     "ticker": "UCB",
@@ -66,14 +66,14 @@
       "signal": "Cash flow covers only 26% of dividend payout"
     },
     "liquidity": {
-      "avg_daily_volume": 312937,
-      "daily_turnover_bdt_cr": 0.27,
+      "avg_daily_volume": 288205,
+      "daily_turnover_bdt_cr": 0.25,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 15646,
-      "max_daily_accumulation_shares": 46940,
-      "max_order_bdt": 136120.0,
-      "directive": "Max single order: 15,646 shares (Tk 136,120) to prevent >1% execution slippage"
+      "max_single_order_shares": 14410,
+      "max_daily_accumulation_shares": 43230,
+      "max_order_bdt": 125367.0,
+      "directive": "Max single order: 14,410 shares (Tk 125,367) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -85,59 +85,59 @@
   },
   "pattern_dna": {
     "ticker": "UCB",
-    "audited_at": "2026-10-11 19:10:51",
+    "audited_at": "2026-10-22 15:42:26",
     "worth_vs_greed": {
-      "current_price": 8.1,
+      "current_price": 8.2,
       "intrinsic_worth": 5.26,
-      "margin_of_safety_pct": -35.1,
+      "margin_of_safety_pct": -35.9,
       "extension_froth_score": 20.0,
       "greed_index": 20.0,
-      "rsi_14": 22.2,
-      "price_vs_ema50_pct": -10.3,
-      "price_vs_ema200_pct": -13.6,
+      "rsi_14": 35.0,
+      "price_vs_ema50_pct": -7.3,
+      "price_vs_ema200_pct": -11.9,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f37.9 \u2013 \u09f38.2",
-        "chase_cutoff_price": 8.3,
-        "when_to_wait": "If price opens or rises above \u09f38.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f37.9.",
-        "weekly_target_short": 8.4,
-        "monthly_target_swing": 9.3,
-        "long_term_target_asset": 10.5,
+        "optimal_entry_corridor": "\u09f38.0 \u2013 \u09f38.3",
+        "chase_cutoff_price": 8.4,
+        "when_to_wait": "If price opens or rises above \u09f38.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f38.0.",
+        "weekly_target_short": 8.5,
+        "monthly_target_swing": 9.4,
+        "long_term_target_asset": 10.7,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
       "worth_decision": "AVOID",
-      "reason": "Fundamental value severely lags stock price (MoS: -35.1%)."
+      "reason": "Fundamental value severely lags stock price (MoS: -35.9%)."
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -6.9,
-          "high": 8.8,
+          "return_pct": 0.0,
+          "high": 8.4,
           "low": 8.0,
-          "range_volatility_pct": 10.0
+          "range_volatility_pct": 5.0
         },
         "monthly_21d": {
-          "return_pct": -14.74,
-          "high": 9.9,
+          "return_pct": -11.83,
+          "high": 9.4,
           "low": 8.0,
-          "range_volatility_pct": 23.75
+          "range_volatility_pct": 17.5
         },
         "quarterly_63d": {
-          "return_pct": -10.99,
+          "return_pct": -10.87,
           "high": 10.2,
           "low": 8.0,
           "range_volatility_pct": 27.5
         },
         "half_yearly_126d": {
-          "return_pct": -13.83,
+          "return_pct": -9.89,
           "high": 10.2,
           "low": 8.0,
           "range_volatility_pct": 27.5
         },
         "yearly_252d": {
-          "return_pct": -26.36,
+          "return_pct": -22.64,
           "high": 11.1,
           "low": 8.0,
           "range_volatility_pct": 38.75
@@ -149,7 +149,7 @@
         "avg_wave_duration_bars": 21.0
       },
       "current_wave_phase": "BOTTOMING_SUPPORT",
-      "phase_guidance": "Drop (-18.2%) matches historical correction depth (-12.9%). Prepare to accumulate.",
+      "phase_guidance": "Drop (-17.2%) matches historical correction depth (-12.9%). Prepare to accumulate.",
       "top_seasonal_months": [
         {
           "month": "Aug",
@@ -157,14 +157,14 @@
           "win_rate": 50.0
         },
         {
-          "month": "Oct",
-          "avg_return": 2.0,
-          "win_rate": 38.0
-        },
-        {
           "month": "May",
           "avg_return": 1.5,
           "win_rate": 46.0
+        },
+        {
+          "month": "Feb",
+          "avg_return": 1.2,
+          "win_rate": 42.0
         }
       ],
       "weak_seasonal_months": [
@@ -267,10 +267,10 @@
       "dividend_consistency": "steady_payer (2 yrs cash divs)",
       "downturn_resilience": {
         "status": "growth_at_discount",
-        "drawdown_pct": 25.0,
+        "drawdown_pct": 24.1,
         "high_52w": 10.8,
         "low_52w": 8.0,
-        "note": "Share price down 25.0% from 52w peak, yet earnings positive/steady (Conviction discount)"
+        "note": "Share price down 24.1% from 52w peak, yet earnings positive/steady (Conviction discount)"
       }
     }
   },
@@ -311,15 +311,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 110945,
-        "avg_volume": 383910.0,
+        "last_volume": 418440,
+        "avg_volume": 353728.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.29,
-        "avg_volume": 388598.0,
-        "today_volume": 110945,
+        "spike_ratio": 1.17,
+        "avg_volume": 356120.0,
+        "today_volume": 418440,
         "detail": "ok"
       },
       "serial_trading": {
@@ -338,21 +338,21 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": -3.57,
+        "price_change_3d": 0.0,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 50.32,
+    "composite_score": 50.83,
     "governance_score": 75,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.418,
-      "technical": 0.27,
-      "governance": 0.163,
-      "sentiment": 0.148
+      "fundamental": 0.386,
+      "technical": 0.285,
+      "governance": 0.172,
+      "sentiment": 0.157
     }
   }
 }

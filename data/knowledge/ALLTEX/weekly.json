@@ -2,9 +2,9 @@
   "ticker": "ALLTEX",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-10-11T13:10:53.208423",
+  "analyzed_at": "2026-10-22T09:42:29.486507",
   "signal": "HOLD_LOAN_TRAP_RISK",
-  "confidence": 41.54,
+  "confidence": 43.2,
   "trajectory": {
     "direction": "FALL_RISK",
     "direction_icon": "\ud83d\udd34",
@@ -12,68 +12,63 @@
     "momentum_status": "Bearish Breakdown / Selling Pressure",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+3.0%",
-      "downside_risk_pct": "-1.8%",
-      "target_price": 27.9,
-      "support_price": 26.6,
-      "risk_reward_ratio": "1.7x"
+      "upside_potential_pct": "+2.9%",
+      "downside_risk_pct": "-2.2%",
+      "target_price": 28.7,
+      "support_price": 27.3,
+      "risk_reward_ratio": "1.3x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
       "upside_potential_pct": "+15.1%",
-      "downside_risk_pct": "-5.2%",
-      "target_price": 31.2,
-      "trailing_stop": 25.7,
-      "risk_reward_ratio": "2.9x"
+      "downside_risk_pct": "-5.0%",
+      "target_price": 32.1,
+      "trailing_stop": 26.5,
+      "risk_reward_ratio": "3.0x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-      "upside_potential_pct": "+29.9%",
-      "downside_risk_pct": "-9.4%",
-      "target_price": 35.2,
+      "upside_potential_pct": "+30.1%",
+      "downside_risk_pct": "-9.0%",
+      "target_price": 36.3,
       "dividend_cagr": "no_dividend",
-      "risk_reward_ratio": "3.2x"
+      "risk_reward_ratio": "3.3x"
     }
   },
   "trade_levels": {
-    "entry": 27.1,
-    "stop_loss": 26.29,
-    "target": 28.72
+    "entry": 27.9,
+    "stop_loss": 27.06,
+    "target": 29.58
   },
   "precision": {
     "ticker": "ALLTEX",
     "smart_money": {
-      "status": "ACTIVE",
-      "latest_date": "Aug 31, 2026",
-      "smart_money_delta_pct": 0.78,
-      "institutional_pct": 16.13,
-      "foreign_pct": 0.0,
-      "sponsor_pct": 36.25,
-      "public_pct": 47.62,
-      "public_delta_pct": -0.78,
-      "classification": "INSTITUTIONAL_ACCUMULATION",
-      "conviction_bonus": 15.0,
-      "signal": "Smart money accumulated +0.78% (Institutes: 0.78%, Foreign: 0.0%) while retail decreased -0.78%"
+      "status": "INSUFFICIENT_HISTORY",
+      "smart_money_delta_pct": 0.0,
+      "public_delta_pct": 0.0,
+      "classification": "NEUTRAL_HOLDING",
+      "conviction_bonus": 0.0,
+      "signal": "No monthly delta available"
     },
     "cash_flow": {
-      "nocfps": 0.0,
+      "nocfps": -0.01,
       "is_estimated": true,
-      "dividend_per_share": 0.1,
+      "dividend_per_share": 0.0,
       "dividend_coverage_x": 0.0,
-      "fcf_yield_pct": 0.0,
+      "fcf_yield_pct": -1.0,
       "cash_quality_status": "TIGHT_CASH_COVERAGE",
       "conviction_bonus": -10.0,
       "signal": "Cash flow covers only 0% of dividend payout"
     },
     "liquidity": {
-      "avg_daily_volume": 169894,
-      "daily_turnover_bdt_cr": 0.39,
-      "liquidity_rating": "MODERATE_LIQUIDITY",
-      "slippage_risk": "MEDIUM",
-      "max_single_order_shares": 8494,
-      "max_daily_accumulation_shares": 25484,
-      "max_order_bdt": 195362.0,
-      "directive": "Max single order: 8,494 shares (Tk 195,362) to prevent >1% execution slippage"
+      "avg_daily_volume": 240702,
+      "daily_turnover_bdt_cr": 0.02,
+      "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
+      "slippage_risk": "HIGH",
+      "max_single_order_shares": 12035,
+      "max_daily_accumulation_shares": 36105,
+      "max_order_bdt": 12035.0,
+      "directive": "Max single order: 12,035 shares (Tk 12,035) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -81,66 +76,66 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 5.0
+    "total_precision_bonus": -10.0
   },
   "pattern_dna": {
     "ticker": "ALLTEX",
-    "audited_at": "2026-10-11 19:10:53",
+    "audited_at": "2026-10-22 15:42:29",
     "worth_vs_greed": {
-      "current_price": 27.1,
-      "intrinsic_worth": 19.82,
-      "margin_of_safety_pct": -26.9,
-      "extension_froth_score": 50.0,
-      "greed_index": 50.0,
-      "rsi_14": 74.3,
-      "price_vs_ema50_pct": 18.6,
-      "price_vs_ema200_pct": 46.3,
+      "current_price": 27.9,
+      "intrinsic_worth": 13.95,
+      "margin_of_safety_pct": -50.0,
+      "extension_froth_score": 60.0,
+      "greed_index": 60.0,
+      "rsi_14": 79.3,
+      "price_vs_ema50_pct": 17.2,
+      "price_vs_ema200_pct": 46.6,
       "merit_status": "SPECULATIVE_JUNK_PUMP",
       "merit_reason": "Price is surging aggressively without positive EPS backing. Pure speculative risk.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f326.6 \u2013 \u09f327.4",
-        "chase_cutoff_price": 27.8,
-        "when_to_wait": "If price opens or rises above \u09f327.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f326.6.",
-        "weekly_target_short": 28.0,
-        "monthly_target_swing": 31.2,
-        "long_term_target_asset": 35.2,
+        "optimal_entry_corridor": "\u09f327.3 \u2013 \u09f328.2",
+        "chase_cutoff_price": 28.6,
+        "when_to_wait": "If price opens or rises above \u09f328.6, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f327.3.",
+        "weekly_target_short": 28.9,
+        "monthly_target_swing": 32.1,
+        "long_term_target_asset": 36.3,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "SPECULATIVE_GREED",
       "worth_decision": "DO_NOT_BUY_WAIT_FOR_PULLBACK",
-      "reason": "Extreme short-term greed (50.0/100) or speculative pump without earnings merit. Risk of buying at local peak."
+      "reason": "Extreme short-term greed (60.0/100) or speculative pump without earnings merit. Risk of buying at local peak."
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 17.32,
-          "high": 27.7,
-          "low": 22.5,
-          "range_volatility_pct": 23.11
+          "return_pct": 6.08,
+          "high": 28.8,
+          "low": 26.0,
+          "range_volatility_pct": 10.77
         },
         "monthly_21d": {
-          "return_pct": 11.52,
-          "high": 27.7,
+          "return_pct": 16.25,
+          "high": 28.8,
           "low": 21.0,
-          "range_volatility_pct": 31.9
+          "range_volatility_pct": 37.14
         },
         "quarterly_63d": {
-          "return_pct": 49.72,
-          "high": 27.7,
-          "low": 17.7,
-          "range_volatility_pct": 56.5
+          "return_pct": 43.08,
+          "high": 28.8,
+          "low": 18.8,
+          "range_volatility_pct": 53.19
         },
         "half_yearly_126d": {
-          "return_pct": 108.46,
-          "high": 27.7,
-          "low": 12.7,
-          "range_volatility_pct": 118.11
+          "return_pct": 109.77,
+          "high": 28.8,
+          "low": 13.2,
+          "range_volatility_pct": 118.18
         },
         "yearly_252d": {
-          "return_pct": 102.24,
-          "high": 27.7,
+          "return_pct": 103.65,
+          "high": 28.8,
           "low": 12.1,
-          "range_volatility_pct": 128.93
+          "range_volatility_pct": 138.02
         }
       },
       "wave_metrics": {
@@ -149,7 +144,7 @@
         "avg_wave_duration_bars": 16.0
       },
       "current_wave_phase": "MARKDOWN_PULLBACK",
-      "phase_guidance": "Ongoing pullback from peak (4.2%). Wait for stabilizing base.",
+      "phase_guidance": "Ongoing pullback from peak (7.3%). Wait for stabilizing base.",
       "top_seasonal_months": [
         {
           "month": "Aug",
@@ -254,8 +249,12 @@
     "sr": {}
   },
   "fundamental": {
-    "score": 20.0,
+    "score": 21.25,
     "signals": {
+      "latest_interim_eps": "FY2026Q3 (-0.01)",
+      "eps": "negative (-0.18)",
+      "eps_yoy_growth_pct": -1700.0,
+      "eps_growth_comparison": "FY2025 vs FY2024",
       "nav": 24.77,
       "dividend_yield": "no_dividend",
       "debt_equity_val": 2.218,
@@ -266,9 +265,9 @@
       "dividend_consistency": "irregular",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 2.2,
-        "high_52w": 27.7,
-        "low_52w": 12.1
+        "drawdown_pct": 3.1,
+        "high_52w": 28.8,
+        "low_52w": 12.5
       }
     }
   },
@@ -301,27 +300,24 @@
     }
   },
   "manipulation": {
-    "manipulation_score": 25,
+    "manipulation_score": 0,
     "manipulation_risk": "low",
     "block_buy": false,
-    "flags": [
-      "volume_spike: volume_5.5x_avg",
-      "price_surge_no_news: price_17.8pct_zero_news"
-    ],
+    "flags": [],
     "checks": {
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 984879,
-        "avg_volume": 197640.0,
+        "last_volume": 218884,
+        "avg_volume": 216324.0,
         "detail": "ok"
       },
       "volume_spike": {
-        "flag": true,
-        "spike_ratio": 5.54,
-        "avg_volume": 177775.0,
-        "today_volume": 984879,
-        "detail": "volume_5.5x_avg"
+        "flag": false,
+        "spike_ratio": 0.97,
+        "avg_volume": 226405.0,
+        "today_volume": 218884,
+        "detail": "ok"
       },
       "serial_trading": {
         "flag": false,
@@ -335,25 +331,25 @@
       },
       "sponsor_exit": {
         "flag": false,
-        "detail": "insufficient_fundamental_history"
+        "detail": "sponsor_holding_not_available"
       },
       "price_surge_no_news": {
-        "flag": true,
-        "price_change_3d": 17.83,
+        "flag": false,
+        "price_change_3d": 0.0,
         "news_count_3d": 0,
-        "detail": "price_17.8pct_zero_news"
+        "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 41.54,
+    "composite_score": 43.2,
     "governance_score": 75,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.418,
-      "technical": 0.27,
-      "governance": 0.163,
-      "sentiment": 0.148
+      "fundamental": 0.386,
+      "technical": 0.285,
+      "governance": 0.172,
+      "sentiment": 0.157
     }
   }
 }

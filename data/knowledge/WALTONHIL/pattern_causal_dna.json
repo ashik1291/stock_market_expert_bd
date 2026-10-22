@@ -1,61 +1,61 @@
 {
   "ticker": "WALTONHIL",
-  "audited_at": "2026-10-11 19:10:52",
+  "audited_at": "2026-10-22 15:42:28",
   "worth_vs_greed": {
-    "current_price": 330.9,
-    "intrinsic_worth": 414.27,
-    "margin_of_safety_pct": 25.2,
+    "current_price": 330.1,
+    "intrinsic_worth": 67.12,
+    "margin_of_safety_pct": -79.7,
     "extension_froth_score": 10.0,
     "greed_index": 10.0,
-    "rsi_14": 3.1,
-    "price_vs_ema50_pct": -10.0,
-    "price_vs_ema200_pct": -14.6,
+    "rsi_14": 24.7,
+    "price_vs_ema50_pct": -8.2,
+    "price_vs_ema200_pct": -14.0,
     "merit_status": "EARNINGS_BACKED_MERIT",
-    "merit_reason": "Price supported by solid earnings (EPS: \u09f334.22, P/E: 9.7). Growth is fundamentally justified.",
+    "merit_reason": "Price supported by solid earnings (EPS: \u09f38.39, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f3324.3 \u2013 \u09f3334.2",
-      "chase_cutoff_price": 339.2,
-      "when_to_wait": "If price opens or rises above \u09f3339.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3324.3.",
-      "weekly_target_short": 342.5,
-      "monthly_target_swing": 380.5,
-      "long_term_target_asset": 430.2,
+      "optimal_entry_corridor": "\u09f3323.5 \u2013 \u09f3333.4",
+      "chase_cutoff_price": 338.4,
+      "when_to_wait": "If price opens or rises above \u09f3338.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3323.5.",
+      "weekly_target_short": 341.7,
+      "monthly_target_swing": 379.6,
+      "long_term_target_asset": 429.1,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
-    "status": "UNDERVALUED_FEAR",
-    "worth_decision": "HIGH_CONVICTION_BUY",
-    "reason": "High Margin of Safety (+25.2%) with depressed market greed (10.0/100) and EARNINGS_BACKED_MERIT. Ideal entry."
+    "status": "CHRONIC_OVERVALUATION",
+    "worth_decision": "AVOID",
+    "reason": "Fundamental value severely lags stock price (MoS: -79.7%)."
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -1.72,
-        "high": 336.9,
-        "low": 330.3,
-        "range_volatility_pct": 2.0
+        "return_pct": 0.09,
+        "high": 333.4,
+        "low": 328.0,
+        "range_volatility_pct": 1.65
       },
       "monthly_21d": {
-        "return_pct": -15.15,
-        "high": 397.5,
-        "low": 330.3,
-        "range_volatility_pct": 20.35
+        "return_pct": -16.35,
+        "high": 394.6,
+        "low": 328.0,
+        "range_volatility_pct": 20.3
       },
       "quarterly_63d": {
-        "return_pct": -16.42,
-        "high": 415.6,
-        "low": 330.3,
-        "range_volatility_pct": 25.83
+        "return_pct": -16.6,
+        "high": 410.0,
+        "low": 328.0,
+        "range_volatility_pct": 25.0
       },
       "half_yearly_126d": {
-        "return_pct": -11.22,
+        "return_pct": -12.02,
         "high": 415.6,
-        "low": 330.3,
-        "range_volatility_pct": 25.83
+        "low": 328.0,
+        "range_volatility_pct": 26.71
       },
       "yearly_252d": {
-        "return_pct": -29.49,
-        "high": 476.0,
-        "low": 330.3,
-        "range_volatility_pct": 44.11
+        "return_pct": -19.66,
+        "high": 458.1,
+        "low": 328.0,
+        "range_volatility_pct": 39.66
       }
     },
     "wave_metrics": {
@@ -64,17 +64,17 @@
       "avg_wave_duration_bars": 21.0
     },
     "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-19.3%). Wait for stabilizing base.",
+    "phase_guidance": "Ongoing pullback from peak (-19.5%). Wait for stabilizing base.",
     "top_seasonal_months": [
-      {
-        "month": "Oct",
-        "avg_return": 9.6,
-        "win_rate": 17.0
-      },
       {
         "month": "Dec",
         "avg_return": 6.7,
         "win_rate": 50.0
+      },
+      {
+        "month": "Oct",
+        "avg_return": 6.0,
+        "win_rate": 14.0
       },
       {
         "month": "Jul",

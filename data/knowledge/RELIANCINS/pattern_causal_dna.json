@@ -1,58 +1,58 @@
 {
   "ticker": "RELIANCINS",
-  "audited_at": "2026-10-11 19:10:53",
+  "audited_at": "2026-10-22 15:42:29",
   "worth_vs_greed": {
-    "current_price": 91.7,
+    "current_price": 93.5,
     "intrinsic_worth": 94.83,
-    "margin_of_safety_pct": 3.4,
-    "extension_froth_score": 60.0,
-    "greed_index": 60.0,
-    "rsi_14": 19.1,
-    "price_vs_ema50_pct": -13.7,
-    "price_vs_ema200_pct": -2.1,
+    "margin_of_safety_pct": 1.4,
+    "extension_froth_score": 40.0,
+    "greed_index": 40.0,
+    "rsi_14": 19.7,
+    "price_vs_ema50_pct": -9.5,
+    "price_vs_ema200_pct": -0.1,
     "merit_status": "EARNINGS_BACKED_MERIT",
     "merit_reason": "Price supported by solid earnings (EPS: \u09f38.42, P/E: 12.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f389.9 \u2013 \u09f392.6",
-      "chase_cutoff_price": 94.0,
-      "when_to_wait": "If price opens or rises above \u09f394.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f389.9.",
-      "weekly_target_short": 94.9,
-      "monthly_target_swing": 105.5,
-      "long_term_target_asset": 119.2,
+      "optimal_entry_corridor": "\u09f391.6 \u2013 \u09f394.4",
+      "chase_cutoff_price": 95.8,
+      "when_to_wait": "If price opens or rises above \u09f395.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f391.6.",
+      "weekly_target_short": 96.8,
+      "monthly_target_swing": 107.5,
+      "long_term_target_asset": 121.5,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "FAIR_VALUE_ACCUMULATION",
     "worth_decision": "ACCUMULATE_ON_DIPS",
-    "reason": "Solid intrinsic worth backing (MoS: +3.4%) with balanced market sentiment."
+    "reason": "Solid intrinsic worth backing (MoS: +1.4%) with balanced market sentiment."
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -12.75,
-        "high": 107.0,
-        "low": 90.2,
-        "range_volatility_pct": 18.63
+        "return_pct": 4.7,
+        "high": 96.0,
+        "low": 86.5,
+        "range_volatility_pct": 10.98
       },
       "monthly_21d": {
-        "return_pct": -11.49,
+        "return_pct": -17.04,
         "high": 117.8,
-        "low": 90.2,
-        "range_volatility_pct": 30.6
+        "low": 86.5,
+        "range_volatility_pct": 36.18
       },
       "quarterly_63d": {
-        "return_pct": -24.71,
-        "high": 128.2,
-        "low": 90.2,
-        "range_volatility_pct": 42.13
+        "return_pct": -14.06,
+        "high": 121.0,
+        "low": 86.5,
+        "range_volatility_pct": 39.88
       },
       "half_yearly_126d": {
-        "return_pct": 40.43,
+        "return_pct": 30.04,
         "high": 128.2,
-        "low": 64.0,
-        "range_volatility_pct": 100.31
+        "low": 70.0,
+        "range_volatility_pct": 83.14
       },
       "yearly_252d": {
-        "return_pct": 43.73,
+        "return_pct": 41.24,
         "high": 128.2,
         "low": 56.6,
         "range_volatility_pct": 126.5
@@ -63,8 +63,8 @@
       "median_correction_drop_pct": -15.3,
       "avg_wave_duration_bars": 23.0
     },
-    "current_wave_phase": "ACCUMULATION_TROUGH",
-    "phase_guidance": "Near local cyclical trough base. Maximum reward/risk entry point.",
+    "current_wave_phase": "BOTTOMING_SUPPORT",
+    "phase_guidance": "Drop (-20.6%) matches historical correction depth (-15.3%). Prepare to accumulate.",
     "top_seasonal_months": [
       {
         "month": "Jun",

@@ -1,58 +1,58 @@
 {
   "ticker": "ISLAMIBANK",
-  "audited_at": "2026-10-11 19:10:51",
+  "audited_at": "2026-10-22 15:42:26",
   "worth_vs_greed": {
-    "current_price": 25.4,
-    "intrinsic_worth": 17.99,
-    "margin_of_safety_pct": -29.2,
+    "current_price": 24.8,
+    "intrinsic_worth": 12.4,
+    "margin_of_safety_pct": -50.0,
     "extension_froth_score": 20.0,
     "greed_index": 20.0,
-    "rsi_14": 19.0,
-    "price_vs_ema50_pct": -9.0,
-    "price_vs_ema200_pct": -23.2,
+    "rsi_14": 4.8,
+    "price_vs_ema50_pct": -9.2,
+    "price_vs_ema200_pct": -23.9,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f324.9 \u2013 \u09f325.7",
-      "chase_cutoff_price": 26.0,
-      "when_to_wait": "If price opens or rises above \u09f326.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f324.9.",
-      "weekly_target_short": 26.3,
-      "monthly_target_swing": 29.2,
-      "long_term_target_asset": 33.0,
+      "optimal_entry_corridor": "\u09f324.3 \u2013 \u09f325.0",
+      "chase_cutoff_price": 25.4,
+      "when_to_wait": "If price opens or rises above \u09f325.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f324.3.",
+      "weekly_target_short": 25.7,
+      "monthly_target_swing": 28.5,
+      "long_term_target_asset": 32.2,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
-    "status": "NEUTRAL",
-    "worth_decision": "HOLD",
-    "reason": "Trading in neutral fair-value corridor."
+    "status": "CHRONIC_OVERVALUATION",
+    "worth_decision": "AVOID",
+    "reason": "Fundamental value severely lags stock price (MoS: -50.0%)."
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -4.87,
-        "high": 27.0,
-        "low": 25.4,
-        "range_volatility_pct": 6.3
+        "return_pct": -1.2,
+        "high": 25.5,
+        "low": 24.2,
+        "range_volatility_pct": 5.37
       },
       "monthly_21d": {
-        "return_pct": -7.64,
-        "high": 27.9,
-        "low": 25.4,
-        "range_volatility_pct": 9.84
+        "return_pct": -7.81,
+        "high": 27.3,
+        "low": 24.2,
+        "range_volatility_pct": 12.81
       },
       "quarterly_63d": {
-        "return_pct": -18.59,
-        "high": 32.8,
-        "low": 25.4,
-        "range_volatility_pct": 29.13
+        "return_pct": -23.46,
+        "high": 32.7,
+        "low": 24.2,
+        "range_volatility_pct": 35.12
       },
       "half_yearly_126d": {
-        "return_pct": -34.2,
-        "high": 40.8,
+        "return_pct": -35.25,
+        "high": 38.8,
         "low": 23.9,
-        "range_volatility_pct": 70.71
+        "range_volatility_pct": 62.34
       },
       "yearly_252d": {
-        "return_pct": -38.65,
+        "return_pct": -38.92,
         "high": 56.2,
         "low": 23.9,
         "range_volatility_pct": 135.15
@@ -64,7 +64,7 @@
       "avg_wave_duration_bars": 22.0
     },
     "current_wave_phase": "BOTTOMING_SUPPORT",
-    "phase_guidance": "Drop (-34.4%) matches historical correction depth (-13.2%). Prepare to accumulate.",
+    "phase_guidance": "Drop (-35.9%) matches historical correction depth (-13.2%). Prepare to accumulate.",
     "top_seasonal_months": [
       {
         "month": "Aug",
@@ -77,9 +77,9 @@
         "win_rate": 54.0
       },
       {
-        "month": "Oct",
-        "avg_return": 4.5,
-        "win_rate": 45.0
+        "month": "Jul",
+        "avg_return": 3.8,
+        "win_rate": 50.0
       }
     ],
     "weak_seasonal_months": [

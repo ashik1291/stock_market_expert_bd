@@ -1,15 +1,15 @@
 {
   "ticker": "ARAMITCEM",
-  "audited_at": "2026-10-11 19:10:52",
+  "audited_at": "2026-10-22 15:42:27",
   "worth_vs_greed": {
     "current_price": 11.0,
-    "intrinsic_worth": 8.93,
-    "margin_of_safety_pct": -18.8,
+    "intrinsic_worth": 5.5,
+    "margin_of_safety_pct": -50.0,
     "extension_froth_score": 30.0,
     "greed_index": 30.0,
-    "rsi_14": 43.5,
-    "price_vs_ema50_pct": -4.8,
-    "price_vs_ema200_pct": -5.7,
+    "rsi_14": 55.0,
+    "price_vs_ema50_pct": -3.8,
+    "price_vs_ema200_pct": -5.4,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
@@ -21,38 +21,38 @@
       "long_term_target_asset": 14.3,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
-    "status": "NEUTRAL",
-    "worth_decision": "HOLD",
-    "reason": "Trading in neutral fair-value corridor."
+    "status": "CHRONIC_OVERVALUATION",
+    "worth_decision": "AVOID",
+    "reason": "Fundamental value severely lags stock price (MoS: -50.0%)."
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -2.65,
+        "return_pct": 0.92,
+        "high": 11.5,
+        "low": 10.8,
+        "range_volatility_pct": 6.48
+      },
+      "monthly_21d": {
+        "return_pct": -1.79,
         "high": 11.7,
         "low": 10.6,
         "range_volatility_pct": 10.38
       },
-      "monthly_21d": {
-        "return_pct": -2.65,
-        "high": 11.8,
-        "low": 10.2,
-        "range_volatility_pct": 15.69
-      },
       "quarterly_63d": {
-        "return_pct": -6.78,
+        "return_pct": -12.7,
         "high": 14.2,
         "low": 10.2,
         "range_volatility_pct": 39.22
       },
       "half_yearly_126d": {
-        "return_pct": 0.92,
+        "return_pct": -9.84,
         "high": 15.0,
         "low": 10.0,
         "range_volatility_pct": 50.0
       },
       "yearly_252d": {
-        "return_pct": -13.39,
+        "return_pct": -5.17,
         "high": 15.0,
         "low": 7.6,
         "range_volatility_pct": 97.37

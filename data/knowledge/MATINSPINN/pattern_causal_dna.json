@@ -1,61 +1,61 @@
 {
   "ticker": "MATINSPINN",
-  "audited_at": "2026-10-11 19:10:52",
+  "audited_at": "2026-10-22 15:42:29",
   "worth_vs_greed": {
-    "current_price": 71.0,
-    "intrinsic_worth": 61.79,
-    "margin_of_safety_pct": -13.0,
-    "extension_froth_score": 80.0,
-    "greed_index": 80.0,
-    "rsi_14": 65.1,
-    "price_vs_ema50_pct": 10.3,
-    "price_vs_ema200_pct": 27.1,
-    "merit_status": "EARNINGS_BACKED_MERIT",
-    "merit_reason": "Price supported by solid earnings (EPS: \u09f34.70, P/E: 15.5). Growth is fundamentally justified.",
+    "current_price": 78.3,
+    "intrinsic_worth": 39.15,
+    "margin_of_safety_pct": -50.0,
+    "extension_froth_score": 60.0,
+    "greed_index": 60.0,
+    "rsi_14": 77.2,
+    "price_vs_ema50_pct": 18.0,
+    "price_vs_ema200_pct": 37.6,
+    "merit_status": "SPECULATIVE_JUNK_PUMP",
+    "merit_reason": "Price is surging aggressively without positive EPS backing. Pure speculative risk.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f369.6 \u2013 \u09f371.7",
-      "chase_cutoff_price": 72.8,
-      "when_to_wait": "If price opens or rises above \u09f372.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f369.6.",
-      "weekly_target_short": 73.5,
-      "monthly_target_swing": 81.6,
-      "long_term_target_asset": 92.3,
+      "optimal_entry_corridor": "\u09f376.7 \u2013 \u09f379.1",
+      "chase_cutoff_price": 80.3,
+      "when_to_wait": "If price opens or rises above \u09f380.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f376.7.",
+      "weekly_target_short": 81.0,
+      "monthly_target_swing": 90.0,
+      "long_term_target_asset": 101.8,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "SPECULATIVE_GREED",
     "worth_decision": "DO_NOT_BUY_WAIT_FOR_PULLBACK",
-    "reason": "Extreme short-term greed (80.0/100) or speculative pump without earnings merit. Risk of buying at local peak."
+    "reason": "Extreme short-term greed (60.0/100) or speculative pump without earnings merit. Risk of buying at local peak."
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 4.11,
-        "high": 75.2,
-        "low": 65.0,
-        "range_volatility_pct": 15.69
+        "return_pct": 11.22,
+        "high": 84.0,
+        "low": 69.9,
+        "range_volatility_pct": 20.17
       },
       "monthly_21d": {
-        "return_pct": 5.97,
-        "high": 75.2,
+        "return_pct": 22.54,
+        "high": 84.0,
         "low": 57.5,
-        "range_volatility_pct": 30.78
+        "range_volatility_pct": 46.09
       },
       "quarterly_63d": {
-        "return_pct": 21.37,
-        "high": 75.2,
+        "return_pct": 35.23,
+        "high": 84.0,
         "low": 55.0,
-        "range_volatility_pct": 36.73
+        "range_volatility_pct": 52.73
       },
       "half_yearly_126d": {
-        "return_pct": 55.02,
-        "high": 75.2,
-        "low": 44.9,
-        "range_volatility_pct": 67.48
+        "return_pct": 73.61,
+        "high": 84.0,
+        "low": 45.1,
+        "range_volatility_pct": 86.25
       },
       "yearly_252d": {
-        "return_pct": 26.11,
-        "high": 75.2,
+        "return_pct": 39.32,
+        "high": 84.0,
         "low": 43.8,
-        "range_volatility_pct": 71.69
+        "range_volatility_pct": 91.78
       }
     },
     "wave_metrics": {
@@ -64,7 +64,7 @@
       "avg_wave_duration_bars": 21.0
     },
     "current_wave_phase": "LATE_MARKUP",
-    "phase_guidance": "Approaching historical rally limit (+20.3% vs median +14.9%). Tighten stop.",
+    "phase_guidance": "Approaching historical rally limit (+36.2% vs median +14.9%). Tighten stop.",
     "top_seasonal_months": [
       {
         "month": "Aug",
@@ -85,8 +85,8 @@
     "weak_seasonal_months": [
       {
         "month": "Oct",
-        "avg_return": -3.5,
-        "win_rate": 27.0
+        "avg_return": -2.2,
+        "win_rate": 33.0
       },
       {
         "month": "Mar",

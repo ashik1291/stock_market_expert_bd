@@ -32,8 +32,9 @@ def auto_sync_if_needed():
     is_trading_day = weekday in (6, 0, 1, 2, 3)
     market_closed_today = now.hour >= 16 or (now.hour == 15 and now.minute >= 30)
 
-    # 1. Check prices DB
+    # 1. Check prices DB and trading calendar
     latest_price_date = None
+    is_calendar_holiday = False
     if DB_PATH.exists():
         try:
             conn = sqlite3.connect(DB_PATH)
@@ -41,13 +42,17 @@ def auto_sync_if_needed():
             row = cur.execute("SELECT MAX(date) FROM prices").fetchone()
             if row and row[0]:
                 latest_price_date = row[0]
+            # Check calendar for official exchange holiday
+            cal_row = cur.execute("SELECT is_trading_day FROM trading_calendar WHERE date = ?", (today_str,)).fetchone()
+            if cal_row and cal_row[0] == 0:
+                is_calendar_holiday = True
             conn.close()
         except Exception:
             pass
 
-    # Check if we need to run daily alpha
+    # Check if we need to run daily alpha (skip if market holiday)
     needs_alpha = False
-    if is_trading_day and market_closed_today and latest_price_date != today_str:
+    if is_trading_day and not is_calendar_holiday and market_closed_today and latest_price_date != today_str:
         needs_alpha = True
     elif latest_price_date is None:
         needs_alpha = True

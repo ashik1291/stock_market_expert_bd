@@ -1,75 +1,75 @@
 {
   "ticker": "MTB",
-  "audited_at": "2026-10-11 19:10:51",
+  "audited_at": "2026-10-22 15:42:26",
   "worth_vs_greed": {
-    "current_price": 13.2,
-    "intrinsic_worth": 34.84,
-    "margin_of_safety_pct": 163.9,
+    "current_price": 13.0,
+    "intrinsic_worth": 6.5,
+    "margin_of_safety_pct": -50.0,
     "extension_froth_score": 10.0,
     "greed_index": 10.0,
-    "rsi_14": 44.4,
-    "price_vs_ema50_pct": -0.7,
-    "price_vs_ema200_pct": 1.2,
-    "merit_status": "EARNINGS_BACKED_MERIT",
-    "merit_reason": "Price supported by solid earnings (EPS: \u09f33.14, P/E: 4.2). Growth is fundamentally justified.",
+    "rsi_14": 22.2,
+    "price_vs_ema50_pct": -1.7,
+    "price_vs_ema200_pct": -0.3,
+    "merit_status": "NEUTRAL_MERIT",
+    "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f312.9 \u2013 \u09f313.3",
-      "chase_cutoff_price": 13.5,
-      "when_to_wait": "If price opens or rises above \u09f313.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f312.9.",
-      "weekly_target_short": 13.7,
-      "monthly_target_swing": 15.2,
-      "long_term_target_asset": 17.2,
+      "optimal_entry_corridor": "\u09f312.7 \u2013 \u09f313.1",
+      "chase_cutoff_price": 13.3,
+      "when_to_wait": "If price opens or rises above \u09f313.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f312.7.",
+      "weekly_target_short": 13.5,
+      "monthly_target_swing": 14.9,
+      "long_term_target_asset": 16.9,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
-    "status": "UNDERVALUED_FEAR",
-    "worth_decision": "HIGH_CONVICTION_BUY",
-    "reason": "High Margin of Safety (+163.9%) with depressed market greed (10.0/100) and EARNINGS_BACKED_MERIT. Ideal entry."
+    "status": "CHRONIC_OVERVALUATION",
+    "worth_decision": "AVOID",
+    "reason": "Fundamental value severely lags stock price (MoS: -50.0%)."
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -2.22,
-        "high": 13.5,
-        "low": 13.1,
-        "range_volatility_pct": 3.05
+        "return_pct": -1.52,
+        "high": 13.3,
+        "low": 12.7,
+        "range_volatility_pct": 4.72
       },
       "monthly_21d": {
-        "return_pct": 2.33,
+        "return_pct": 0.78,
         "high": 13.9,
-        "low": 12.3,
-        "range_volatility_pct": 13.01
+        "low": 12.7,
+        "range_volatility_pct": 9.45
       },
       "quarterly_63d": {
-        "return_pct": -3.65,
+        "return_pct": -4.41,
         "high": 14.5,
         "low": 12.3,
         "range_volatility_pct": 17.89
       },
       "half_yearly_126d": {
-        "return_pct": 5.6,
+        "return_pct": 2.36,
         "high": 14.7,
         "low": 11.3,
         "range_volatility_pct": 30.09
       },
       "yearly_252d": {
-        "return_pct": 3.94,
+        "return_pct": 4.0,
         "high": 14.7,
         "low": 10.9,
         "range_volatility_pct": 34.86
       }
     },
     "wave_metrics": {
-      "median_rally_gain_pct": 7.8,
+      "median_rally_gain_pct": 8.0,
       "median_correction_drop_pct": -14.1,
       "avg_wave_duration_bars": 20.0
     },
-    "current_wave_phase": "LATE_MARKUP",
-    "phase_guidance": "Approaching historical rally limit (+7.3% vs median +7.8%). Tighten stop.",
+    "current_wave_phase": "MARKDOWN_PULLBACK",
+    "phase_guidance": "Ongoing pullback from peak (-6.5%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Oct",
-        "avg_return": 5.0,
-        "win_rate": 46.0
+        "avg_return": 4.9,
+        "win_rate": 50.0
       },
       {
         "month": "Jun",
