@@ -293,6 +293,27 @@ def scrape_historical(ticker: str, from_date: str, to_date: str) -> list[dict]:
 
 # ── Company Fundamentals ──────────────────────────────────────────────────────
 
+def parse_flexible_dse_date(date_str: str) -> str:
+    """Parses various DSE date formats into canonical YYYY-MM-DD ISO string."""
+    date_str = date_str.strip()
+    # Format: August 12, 2026 or Aug 12, 2026
+    for fmt in ("%B %d, %Y", "%b %d, %Y", "%d %b %Y", "%d %B %Y"):
+        try:
+            return datetime.datetime.strptime(date_str, fmt).strftime("%Y-%m-%d")
+        except Exception:
+            pass
+    # Format: DD.MM.YYYY, DD/MM/YYYY, DD-MM-YYYY
+    clean = re.sub(r'[\/\-]', '.', date_str)
+    parts = clean.split('.')
+    if len(parts) == 3:
+        try:
+            day, month, year = int(parts[0]), int(parts[1]), int(parts[2])
+            return f"{year:04d}-{month:02d}-{day:02d}"
+        except Exception:
+            pass
+    return date_str
+
+
 def scrape_fundamentals(ticker: str) -> dict:
     """
     Scrape fundamentals from modern DSE company page:
@@ -411,6 +432,64 @@ def scrape_fundamentals(ticker: str) -> dict:
                 data["multi_year_financials"] = json.loads(m_my.group(1))
             except Exception as e:
                 log.debug(f"multiYearFinancials json parse error {ticker}: {e}")
+
+        # Operating Cash Flow Per Share (NOCFPS) from latest audited/interim DSE notices
+        nocf_matches = re.findall(r'NOCFPS\s*(?:was|of)?\s*Tk\.?\s*([-\d\.]+)', combined, re.IGNORECASE)
+        valid_nocf = []
+        for nm in nocf_matches:
+            try:
+                val = float(nm)
+                if abs(val) > 0.01:
+                    valid_nocf.append(val)
+            except Exception:
+                continue
+        if valid_nocf:
+            data["nocfps"] = valid_nocf[0]  # Latest declared NOCFPS
+            data["nocfps_history"] = valid_nocf[:5]
+
+        # Real Corporate Actions (Cash Dividend, Bonus, and Real Record Dates)
+        real_actions = []
+        # Pattern 1: Recommended Cash/Stock Dividend with Record Date
+        pat1 = re.finditer(
+            r'recommended\s*([\d\.]+)%\s*(?:final\s*)?(cash|stock)\s*dividend[\s\S]*?record\s*date\s*[:i\.e\s]+(\d{1,2}[\.\/-]\d{1,2}[\.\/-]\d{4}|[A-Za-z]+\s+\d{1,2},\s*\d{4})',
+            combined, re.IGNORECASE
+        )
+        for m in pat1:
+            pct = float(m.group(1))
+            action_type = "cash_dividend" if "cash" in m.group(2).lower() else "bonus_dividend"
+            rec_date = parse_flexible_dse_date(m.group(3))
+            cash_amt = round((pct / 100.0) * 10.0, 2) if action_type == "cash_dividend" else 0.0
+            bonus_ratio = round(pct / 100.0, 4) if action_type == "bonus_dividend" else 0.0
+            real_actions.append({
+                "ticker": ticker,
+                "record_date": rec_date,
+                "action_type": action_type,
+                "pct": pct,
+                "cash_amount": cash_amt,
+                "bonus_ratio": bonus_ratio,
+                "source": "DSE Official Company Notice"
+            })
+
+        # Pattern 2: Declared Interim Cash Dividend with Record Date
+        pat2 = re.finditer(
+            r'declared\s*(?:interim\s*)?cash\s*dividend[\s\S]*?(\d+(?:\.\d+)?)%[\s\S]*?record\s*date[^\.]*?([A-Za-z]+\s+\d{1,2},\s*\d{4}|\d{1,2}[\.\/-]\d{1,2}[\.\/-]\d{4})',
+            combined, re.IGNORECASE
+        )
+        for m in pat2:
+            pct = float(m.group(1))
+            rec_date = parse_flexible_dse_date(m.group(2))
+            real_actions.append({
+                "ticker": ticker,
+                "record_date": rec_date,
+                "action_type": "cash_dividend",
+                "pct": pct,
+                "cash_amount": round((pct / 100.0) * 10.0, 2),
+                "bonus_ratio": 0.0,
+                "source": "DSE Interim Dividend Notice"
+            })
+
+        if real_actions:
+            data["real_corporate_actions"] = real_actions
 
         # Interim Financials (Quarterly EPS Q1, Q2, Q3)
         m_int = re.search(r'"interimFinancials"\s*:\s*(\{.*?\})\s*,\s*"peTrend"', combined)

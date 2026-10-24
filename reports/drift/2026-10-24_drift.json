@@ -1,0 +1,90 @@
+{
+  "generated_at": "2026-10-24T22:34:25.584696",
+  "week_of": "2026-10-24",
+  "champion": "frozen_epoch2_pit_v2",
+  "champion_hash": "acf502bc65914c48",
+  "challengers": [
+    "shadow_v3_ic_weighted",
+    "challenger_equal_weight_v2"
+  ],
+  "trial_count": 52,
+  "factor_ic_weights": {
+    "div": 1.0,
+    "value": 1.0,
+    "rsi": 1.0,
+    "debt": 1.0
+  },
+  "factor_ic_stats": {
+    "div": {
+      "n": 36,
+      "ema_ic": -0.0638,
+      "mean_ic": -0.0111,
+      "se_nw": 0.038,
+      "t_nw": -0.293,
+      "weight": 0.0
+    },
+    "value": {
+      "n": 36,
+      "ema_ic": -0.0014,
+      "mean_ic": -0.0063,
+      "se_nw": 0.0355,
+      "t_nw": -0.177,
+      "weight": 0.0
+    },
+    "rsi": {
+      "n": 36,
+      "ema_ic": -0.0031,
+      "mean_ic": 0.0318,
+      "se_nw": 0.0376,
+      "t_nw": 0.846,
+      "weight": 0.0
+    },
+    "debt": {
+      "n": 36,
+      "ema_ic": 0.0,
+      "mean_ic": 0.0,
+      "se_nw": 0.0,
+      "t_nw": 0.0,
+      "weight": 0.0
+    }
+  },
+  "shadow_ic_tail": {},
+  "turnover": {
+    "recent_buys": 2,
+    "recent_sells": 3,
+    "positions": 9,
+    "turnover_proxy": 0.556,
+    "note": "proxy = (buys+sells)/n_pos over last ~10 blocks"
+  },
+  "hit_rate_by_tier": {
+    "UNK": {
+      "n": 146,
+      "hit_rate_pct": 60.3
+    }
+  },
+  "calibration_bins": {
+    "50-65": {
+      "n": 60,
+      "wins": 23,
+      "observed_hit_pct": 38.3
+    },
+    "65-80": {
+      "n": 75,
+      "wins": 60,
+      "observed_hit_pct": 80.0
+    },
+    "80-100": {
+      "n": 11,
+      "wins": 5,
+      "observed_hit_pct": 45.5
+    }
+  },
+  "portfolio": {
+    "nav": 989301.77,
+    "excess_vs_eqw_pct": -1.07,
+    "max_drawdown_pct": -1.07,
+    "strategy_status": "ACTIVE",
+    "asof": "2026-10-24"
+  },
+  "evaluated_labels": 146
+}

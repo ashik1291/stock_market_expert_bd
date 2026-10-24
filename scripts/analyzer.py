@@ -29,21 +29,20 @@ log = logging.getLogger("dse_analyzer")
 
 Timeframe = Literal["weekly", "monthly", "quarterly", "yearly"]
 
-# How many days of price history to pass to get_ticker_data per timeframe
-# Extra buffer so SMA200 has enough data even for short timeframe analysis
+# How many calendar days of price history to fetch (must cover SMA200+)
 TIMEFRAME_FETCH_DAYS = {
-    "weekly":    365,   # need 200+ bars for SMA200 even for weekly signals
-    "monthly":   365,
-    "quarterly": 730,
-    "yearly":    1825,
+    "weekly":    400,
+    "monthly":   400,
+    "quarterly": 800,
+    "yearly":    2000,
 }
 
-# Analysis window: bars to include in technical signal computation
-TIMEFRAME_SIGNAL_DAYS = {
-    "weekly":    30,    # last 30 days for weekly signal
-    "monthly":   90,
-    "quarterly": 365,
-    "yearly":    1825,
+# Signal window: trading BARS (not calendar days). Min 60 so RSI/SMA50 resolve.
+TIMEFRAME_SIGNAL_BARS = {
+    "weekly":    60,
+    "monthly":   120,
+    "quarterly": 252,
+    "yearly":    504,
 }
 
 
@@ -586,20 +585,59 @@ def compute_sentiment_score(news_list: list[dict]) -> dict:
 
 # ── Composite Score ───────────────────────────────────────────────────────────
 
-def composite_score(tech: dict, fund: dict, sent: dict, thresholds: dict) -> dict:
-    w = thresholds["scoring"]
+def resolve_composite_weights(thresholds: dict, rl_weights: dict | None = None) -> dict:
+    """
+    Base weights from config/thresholds.json. Optional RL multipliers rescale then renormalize.
+    Governance splits from fundamental when RL present; else fund/tech/sent only.
+    """
+    scoring = thresholds.get("scoring", {})
+    w_fund = float(scoring.get("fundamental_weight", 0.65))
+    w_tech = float(scoring.get("technical_weight", 0.25))
+    w_sent = float(scoring.get("sentiment_weight", 0.10))
+    w_gov = 0.0
 
+    if rl_weights:
+        # Split a slice of fundamental into governance (config has no gov weight)
+        gov_share = 0.15
+        w_gov = w_fund * gov_share
+        w_fund = w_fund * (1.0 - gov_share)
+        w_fund *= float(rl_weights.get("valuation_mos_weight", 1.0))
+        w_tech *= float(rl_weights.get("rsi_momentum_weight", 1.0))
+        w_gov *= float(rl_weights.get("governance_weight", 1.0))
+        w_sent *= float(rl_weights.get("macro_bias_weight", 1.0))
+
+    total = w_fund + w_tech + w_gov + w_sent
+    if total <= 0:
+        return {"fundamental": 0.65, "technical": 0.25, "governance": 0.0, "sentiment": 0.10}
+    return {
+        "fundamental": w_fund / total,
+        "technical":   w_tech / total,
+        "governance":  w_gov / total,
+        "sentiment":   w_sent / total,
+    }
+
+
+def composite_score(tech: dict, fund: dict, sent: dict, thresholds: dict,
+                    gov_score: float | None = None, rl_weights: dict | None = None) -> dict:
     # FIX: use 'is not None' — prevents 0 → 50 substitution bug
     t_score = tech.get("score") if tech.get("score") is not None else 50.0
     f_score = fund.get("score") if fund.get("score") is not None else 50.0
     s_score = sent.get("score") if sent.get("score") is not None else 50.0
+    g_score = gov_score if gov_score is not None else 50.0
 
+    w = resolve_composite_weights(thresholds, rl_weights)
     comp = (
-        t_score * w["technical_weight"]   +
-        f_score * w["fundamental_weight"] +
-        s_score * w["sentiment_weight"]
+        f_score * w["fundamental"] +
+        t_score * w["technical"] +
+        g_score * w["governance"] +
+        s_score * w["sentiment"]
     )
-    return {"composite_score": round(comp, 2)}
+    return {
+        "composite_score": round(comp, 2),
+        "governance_score": round(g_score, 2),
+        "sentiment_score": round(s_score, 2),
+        "applied_weights": {k: round(v, 3) for k, v in w.items()},
+    }
 
 
 def compute_price_trajectory_and_potential(closes: list[float], tech_signals: dict,
@@ -791,34 +829,51 @@ def analyze_ticker(ticker: str, timeframe: Timeframe, ticker_data: dict) -> dict
     from manipulation_detector import compute_manipulation_score
 
     thresholds   = load_thresholds()
-    signal_days  = TIMEFRAME_SIGNAL_DAYS[timeframe]
+    signal_bars  = TIMEFRAME_SIGNAL_BARS[timeframe]
 
     all_prices   = ticker_data.get("prices", [])
     fund         = ticker_data.get("fundamentals", [])
     news         = ticker_data.get("news", [])
 
-    # Filter prices to signal window
-    cutoff    = (datetime.date.today() - datetime.timedelta(days=signal_days)).isoformat()
-    tf_prices = [p for p in all_prices if (p.get("date") or "") >= cutoff]
-
-    closes, highs, lows = [], [], []
+    # Build full OHLC series from fetch (already date-ordered ASC).
+    # Anchor to last available price date — never wall-clock today.
+    closes_all, highs_all, lows_all = [], [], []
     fallback_warn = False
-    for p in tf_prices:
+    for p in all_prices:
         c = p.get("close")
         if c is None:
             continue
-        closes.append(float(c))
+        closes_all.append(float(c))
         h = p.get("high")
         l = p.get("low")
         if h is None or l is None:
             fallback_warn = True
-        highs.append(float(h) if h is not None else float(c))
-        lows.append(float(l) if l is not None else float(c))
+        highs_all.append(float(h) if h is not None else float(c))
+        lows_all.append(float(l) if l is not None else float(c))
 
     if fallback_warn:
         log.warning(f"{ticker}: some high/low missing, substituted close as fallback")
 
-    log.info(f"Analyzing {ticker}/{timeframe}: {len(closes)} price bars")
+    # Indicators need SMA200 room: score on full fetch, never calendar-day slice.
+    # Keep at least signal_bars; prefer full history when available.
+    closes, highs, lows = closes_all, highs_all, lows_all
+    if len(closes_all) > max(signal_bars, 220):
+        # Trim only excess beyond ~220 bars (SMA200 + buffer) when fetch is huge
+        keep = max(signal_bars, 220)
+        closes = closes_all[-keep:]
+        highs = highs_all[-keep:]
+        lows = lows_all[-keep:]
+
+    last_price_date = None
+    for p in reversed(all_prices):
+        if p.get("close") is not None and p.get("date"):
+            last_price_date = p["date"]
+            break
+
+    log.info(
+        f"Analyzing {ticker}/{timeframe}: {len(closes)} price bars "
+        f"(asof={last_price_date}, signal_bars={signal_bars})"
+    )
 
     # Technical
     tech_result = (
@@ -877,51 +932,29 @@ def analyze_ticker(ticker: str, timeframe: Timeframe, ticker_data: dict) -> dict
     manip_risk   = manip_result["manipulation_risk"]
     loan_risk    = fund_result.get("signals", {}).get("loan_trap_risk", "none")
 
-    # Composite with Adaptive RL Learned Weights
-    t_score = tech_result.get("score") if tech_result.get("score") is not None else 50.0
-    f_score = fund_result.get("score") if fund_result.get("score") is not None else 50.0
+    # Composite: base weights from thresholds.json, RL multipliers optional
     s_score = sent_result.get("score") if sent_result.get("score") is not None else 50.0
-    g_score = mgmt_profile.get("governance_score", 75.0)
+    g_score = mgmt_profile.get("governance_score")
+    if g_score is None:
+        g_score = 50.0
 
     # Adjust sentiment score by news intent impact
     adjusted_s_score = max(min(s_score + (news_intent.get("intent_score", 0.0) * 0.2), 100.0), 0.0)
+    sent_for_comp = dict(sent_result)
+    sent_for_comp["score"] = adjusted_s_score
 
-    # Load learned weights from reinforcement learning feedback engine
+    rl_w = None
     rl_weights_file = BASE_DIR / "data" / "learning" / "model_weights.json"
-    w_fund = 0.45
-    w_tech = 0.25
-    w_gov  = 0.15
-    w_sent = 0.15
     if rl_weights_file.exists():
         try:
             with open(rl_weights_file, encoding="utf-8") as rlf:
                 rl_w = json.load(rlf)
-                w_fund *= float(rl_w.get("valuation_mos_weight", 1.0))
-                w_tech *= float(rl_w.get("rsi_momentum_weight", 1.0))
-                w_gov  *= float(rl_w.get("governance_weight", 1.0))
-                w_sent *= float(rl_w.get("macro_bias_weight", 1.0))
-                total_w = w_fund + w_tech + w_gov + w_sent
-                if total_w > 0:
-                    w_fund /= total_w
-                    w_tech /= total_w
-                    w_gov  /= total_w
-                    w_sent /= total_w
         except Exception:
-            pass
+            rl_w = None
 
-    comp_val = round((f_score * w_fund) + (t_score * w_tech) + (g_score * w_gov) + (adjusted_s_score * w_sent), 2)
-    comp = {
-        "composite_score": comp_val,
-        "governance_score": g_score,
-        "sentiment_score": round(adjusted_s_score, 2),
-        "applied_weights": {
-            "fundamental": round(w_fund, 3),
-            "technical": round(w_tech, 3),
-            "governance": round(w_gov, 3),
-            "sentiment": round(w_sent, 3)
-        }
-    }
-    score = comp_val
+    comp = composite_score(tech_result, fund_result, sent_for_comp, thresholds,
+                           gov_score=g_score, rl_weights=rl_w)
+    score = comp["composite_score"]
 
     # Downgrades signal if manipulation, loan trap, or governance/legal probe triggered
     if manip_risk == "high":
@@ -970,11 +1003,32 @@ def analyze_ticker(ticker: str, timeframe: Timeframe, ticker_data: dict) -> dict
     except Exception as e:
         pattern_audit = {"error": str(e)}
 
+    # Phase 2: attach served-model score from features_daily (same as forward ledger)
+    served = None
+    try:
+        from feature_store import get_feature_row, build_features_for_date
+        if last_price_date:
+            served = get_feature_row(ticker, last_price_date)
+            if not served:
+                build_features_for_date(last_price_date)
+                served = get_feature_row(ticker, last_price_date)
+    except Exception as e:
+        log.warning(f"{ticker}: feature_store attach skipped: {e}")
+
     analysis = {
         "ticker":       ticker,
         "timeframe":    timeframe,
         "horizon":      horizon,
         "analyzed_at":  datetime.datetime.utcnow().isoformat(),
+        "asof_price_date": last_price_date,
+        "served_model": {
+            "model_id": (served or {}).get("model_id"),
+            "score": (served or {}).get("score"),
+            "is_eligible": bool((served or {}).get("is_eligible")) if served else None,
+            "rsi_14": (served or {}).get("rsi_14"),
+            "pe_ratio": (served or {}).get("pe_ratio"),
+            "debt_equity": (served or {}).get("debt_equity"),
+        } if served else None,
         "signal":       signal,
         "confidence":   score,
         "trajectory":   trajectory,

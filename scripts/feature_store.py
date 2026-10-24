@@ -134,11 +134,21 @@ def build_features_for_date(asof: str | None = None, category: str = "A") -> dic
             """
             SELECT snapshot_date, tradable_date, publication_date, eps, nav, pe_ratio, debt_equity, dividend_yield
             FROM fundamentals_pit
-            WHERE ticker=? AND tradable_date <= ? AND publication_date <= ?
+            WHERE ticker=? AND tradable_date <= ? AND publication_date <= ? AND pe_ratio IS NOT NULL
             ORDER BY tradable_date DESC, snapshot_date DESC LIMIT 1
             """,
             (ticker, asof, asof),
         ).fetchone()
+        if pit is None:
+            pit = conn.execute(
+                """
+                SELECT snapshot_date, tradable_date, publication_date, eps, nav, pe_ratio, debt_equity, dividend_yield
+                FROM fundamentals_pit
+                WHERE ticker=? AND tradable_date <= ? AND publication_date <= ?
+                ORDER BY tradable_date DESC, snapshot_date DESC LIMIT 1
+                """,
+                (ticker, asof, asof),
+            ).fetchone()
         # Strong PIT assert: snapshot may equal or precede tradable; tradable/publication must be <= asof
         if pit is not None:
             assert pit["tradable_date"] is not None and pit["tradable_date"] <= asof, \

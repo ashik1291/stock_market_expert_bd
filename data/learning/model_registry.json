@@ -1,0 +1,86 @@
+{
+  "updated_at": "2026-10-22T10:43:37.795664+00:00",
+  "trial_count": 52,
+  "required_periods": 12,
+  "holm_alpha": 0.05,
+  "champion": {
+    "model_id": "frozen_epoch2_pit_v2",
+    "parameter_hash": "acf502bc65914c48",
+    "params": {
+      "model_id": "frozen_epoch2_pit_v2",
+      "canonical_spec": "pit_dividend_pe_rsi_sector_capped_v2",
+      "score": "frozen_epoch2_pit_formula",
+      "gates": [
+        "debt_le_1_nonbank",
+        "pe_0_25"
+      ],
+      "factors": [
+        "div",
+        "value",
+        "debt",
+        "rsi"
+      ],
+      "factor_weights": {
+        "div": 1.0,
+        "value": 1.0,
+        "debt": 0.0,
+        "rsi": 0.0
+      }
+    },
+    "promoted_at": "2026-10-11T10:39:34.252678+00:00",
+    "role": "champion"
+  },
+  "challengers": [
+    {
+      "model_id": "shadow_v3_ic_weighted",
+      "parameter_hash": "5993d5c51d1d3530",
+      "params": {
+        "model_id": "shadow_v3_ic_weighted",
+        "score": "ic_weighted_v3",
+        "gates": [
+          "debt_le_1_nonbank",
+          "pe_0_25"
+        ],
+        "factors": [
+          "div",
+          "value",
+          "rsi",
+          "debt"
+        ],
+        "ic_weight_source": "factor_ic_weights.json"
+      },
+      "registered_at": "2026-10-22T10:43:37.795664+00:00",
+      "role": "challenger",
+      "status": "SHADOW"
+    },
+    {
+      "model_id": "challenger_equal_weight_v2",
+      "parameter_hash": "775cac073cd92555",
+      "params": {
+        "model_id": "challenger_equal_weight_v2",
+        "score": "equal_weight_heuristic",
+        "gates": [
+          "debt_le_1_nonbank",
+          "pe_0_25"
+        ],
+        "factors": [
+          "div",
+          "value",
+          "rsi",
+          "debt"
+        ],
+        "factor_weights": {
+          "div": 1.0,
+          "value": 1.0,
+          "rsi": 1.0,
+          "debt": 1.0
+        }
+      },
+      "registered_at": "2026-10-22T10:43:37.795664+00:00",
+      "role": "challenger",
+      "status": "SHADOW"
+    }
+  ],
+  "retired": [],
+  "promotion_log": []
+}

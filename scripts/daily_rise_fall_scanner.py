@@ -107,16 +107,16 @@ def scan_daily_rise_and_fall(timeframe: str = "weekly") -> dict:
         if any("LEGAL_PROBE" in rf for rf in news.get("red_flags", [])):
             fall_reasons.append(f"Legal/Regulatory Probe: {news.get('red_flags')[0]}")
 
-        # Classification: Use Empirical Base Rate (66.4%) + Qualitative Conviction Tier
-        # Eliminates uncalibrated pseudo-probabilities until out-of-sample scaling is established.
-        base_rate_pct = 66.4
-        if fall_reasons or direction == "FALL_RISK" or rise_prob < 45.0:
+        # Phase 3: conviction tiers — no fake base_rate_pct until 200 labels
+        served = data.get("served_model") or {}
+        served_score = served.get("score")
+        if fall_reasons or direction == "FALL_RISK" or (rise_prob is not None and rise_prob < 45.0):
             fall_tier = "HIGH_CONVICTION_RISK" if len(fall_reasons) >= 2 else "MODERATE_RISK"
             fall_list.append({
                 "ticker":               ticker,
                 "price":                price,
                 "conviction_tier":      fall_tier,
-                "base_rate_pct":        base_rate_pct,
+                "served_score":         served_score,
                 "pe":                   fund.get("pe"),
                 "debt_equity":          de_val,
                 "primary_fall_trigger": fall_reasons[0] if fall_reasons else "Bearish technical breakdown & weak cash flow",
@@ -124,33 +124,50 @@ def scan_daily_rise_and_fall(timeframe: str = "weekly") -> dict:
                 "management":           mgmt.get("managing_director_ceo"),
                 "directive":            "DO NOT BUY / EXIT ON BOUNCE"
             })
-        elif direction == "RISE_PREDICTED" and rise_prob >= 60.0:
-            st_info = traj.get("short_term", {})
-            mt_info = traj.get("mid_term", {})
-            lt_info = traj.get("long_term", {})
+        elif direction == "RISE_PREDICTED" and (rise_prob is None or rise_prob >= 60.0):
+            st_info = traj.get("short_term") or {}
+            mt_info = traj.get("mid_term") or {}
+            lt_info = traj.get("long_term") or {}
+            _cov = cash_flow.get("dividend_coverage_x")
             rise_list.append({
                 "ticker":               ticker,
                 "price":                price,
+                "served_score":         served_score,
                 "pe":                   fund.get("pe"),
                 "debt_equity":          de_val,
-                "short_term_upside":    st_info.get("upside_potential_pct", "+3.5%"),
-                "mid_term_target":      mt_info.get("target_price", price),
-                "long_term_target":     lt_info.get("target_price", price),
-                "smart_money_flow":     smart_money.get("classification", "STABLE"),
-                "cash_flow_cov":        cash_flow.get("dividend_coverage_x", 1.5),
-                "max_order_shares":     liquidity.get("max_single_order_shares", 5000),
-                "primary_catalyst":     f"{mgmt.get('key_moat', 'Core Value')} | {cash_flow.get('cash_quality_status', 'Cash Backed')}",
-                "directive":            "UNVALIDATED SCREENING CANDIDATE"
+                "short_term_upside":    st_info.get("upside_potential_pct"),
+                "mid_term_target":      mt_info.get("target_price") or price,
+                "long_term_target":     lt_info.get("target_price") or price,
+                "smart_money_flow":     smart_money.get("classification") or "unknown",
+                "cash_flow_cov":        _cov,
+                "max_order_shares":     liquidity.get("max_single_order_shares"),
+                "primary_catalyst":     f"{mgmt.get('key_moat') or 'unknown'} | {cash_flow.get('cash_quality_status') or 'unknown'}",
+                "directive":            "SCREENING_CANDIDATE_TIER_PENDING"
             })
         else:
             range_list.append({
                 "ticker":    ticker,
                 "price":     price,
                 "rise_prob": rise_prob,
+                "served_score": served_score,
                 "status":    "Consolidation Range / Waiting for Breakout"
             })
 
-    rise_list.sort(key=lambda x: x["price"], reverse=True)
+    try:
+        from confidence_tiers import score_to_tier
+        elig_scores = [x.get("served_score") for x in rise_list if x.get("served_score") is not None]
+        for item in rise_list:
+            tinfo = score_to_tier(item.get("served_score") or -999, elig_scores)
+            item["conviction_tier"] = tinfo["tier"]
+            item["tier_percentile"] = tinfo["percentile"]
+            item["tier_note"] = tinfo["note"]
+            if tinfo["show_probability"]:
+                item["calibrated_prob_pct"] = tinfo["probability_pct"]
+            item["directive"] = f"TIER_{tinfo['tier']}_CANDIDATE"
+    except Exception as e:
+        log.warning(f"tier attach skipped: {e}")
+
+    rise_list.sort(key=lambda x: (x.get("served_score") is not None, x.get("served_score") or -999), reverse=True)
     fall_list.sort(key=lambda x: len(x["all_triggers"]), reverse=True)
 
     result = {
@@ -192,15 +209,20 @@ def publish_rise_fall_report(res: dict):
     lines.append("## 🟢 1. High-Conviction Stocks Screened for Value & Moats (Upside Trajectory)\n")
     lines.append("*Screened for: RSI oversold turns, debt-free moats, 100%+ real cash dividend coverage, smart-money buying.*\n")
     lines.append("> ⚠️ **Horizon Notice**: Short-term scalps (+3.5% / -2%) have negative expectancy (-0.48% net) after round-trip fees. The system disables fast scalp recommendations and allocates exclusively to 3–12 month swings and multi-year core compounders.\n")
-    lines.append("| Ticker | Current Price | Mid Target (+15%) | Long Target (+30%) | Smart Money | Max Safe Order | Status / Action |")
-    lines.append("|---|---|---|---|---|---|---|")
+    lines.append("| Ticker | Price | Tier | Served Score | Mid Target | Smart Money | Max Order | Action |")
+    lines.append("|---|---|---|---|---|---|---|---|")
 
     for r in res["predicted_to_rise"][:12]:
-        p = f"৳{r['price']:.1f}"
+        p = f"৳{r['price']:.1f}" if r.get("price") else "—"
+        mt = r.get("mid_term_target")
+        mt_s = f"৳{mt:.1f}" if isinstance(mt, (int, float)) else "—"
+        mo = r.get("max_order_shares")
+        mo_s = f"{mo:,} sh" if mo is not None else "—"
+        sc = r.get("served_score")
+        sc_s = f"{sc:.1f}" if sc is not None else "—"
         lines.append(
-            f"| **{r['ticker']}** | {p} | "
-            f"৳{r['mid_term_target']:.1f} | ৳{r['long_term_target']:.1f} | "
-            f"`{r['smart_money_flow']}` | {r['max_order_shares']:,} sh | **{r['directive']}** |"
+            f"| **{r['ticker']}** | {p} | **{r.get('conviction_tier', '—')}** | {sc_s} | "
+            f"{mt_s} | `{r.get('smart_money_flow') or '—'}` | {mo_s} | **{r.get('directive')}** |"
         )
     lines.append("")
 
@@ -233,33 +255,55 @@ def publish_rise_fall_report(res: dict):
     with open(json_path, "w", encoding="utf-8") as f:
         json.dump(res, f, indent=2)
 
-    # Reinforcement Learning Feedback & Mistake Loop
+    # Phase-2 learning loop: real feature flags + asof price date (not wall-clock)
     try:
         from reinforcement_learning_engine import record_prediction, evaluate_pending_predictions
+        from feature_store import get_feature_row, latest_price_date, build_features_for_date
+        import sqlite3
+        build_features_for_date()
+        db = sqlite3.connect(BASE_DIR / "data" / "processed" / "dse.db")
+        asof = latest_price_date(db)
+        db.close()
+        asof = asof or today_str
+
         for item in res.get("predicted_to_rise", [])[:10]:
+            feat = get_feature_row(item["ticker"], asof) or {}
             record_prediction(
-                date_str=today_str,
+                date_str=asof,
                 ticker=item["ticker"],
                 timeframe="daily",
                 direction="RISE",
-                prob_pct=item.get("base_rate_pct", 50.0),
+                prob_pct=50.0,
                 entry_price=item["price"],
                 target_price=item.get("mid_term_target") or round(item["price"] * 1.05, 2),
                 stop_loss=round(item["price"] * 0.96, 2),
-                active_signals={"smart_money_active": True, "valuation_mos_positive": True, "debt_clean": True}
+                active_signals={
+                    "debt_clean": bool(feat.get("debt_clean")),
+                    "valuation_mos_positive": bool(feat.get("valuation_mos_positive")),
+                    "rsi_oversold_triggered": bool(feat.get("rsi_oversold_triggered")),
+                    "smart_money_active": item.get("smart_money_flow") in ("INSTITUTIONAL_ACCUMULATION", "FOREIGN_BUYING", "STABLE"),
+                },
+                score=feat.get("score"),
             )
         for item in res.get("predicted_to_fall", [])[:10]:
             p = item.get("price") or 0.0
+            feat = get_feature_row(item["ticker"], asof) or {}
             record_prediction(
-                date_str=today_str,
+                date_str=asof,
                 ticker=item["ticker"],
                 timeframe="daily",
                 direction="FALL",
-                prob_pct=item.get("base_rate_pct", 50.0),
+                prob_pct=50.0,
                 entry_price=p,
-                target_price=round(p * 0.90, 2),
-                stop_loss=round(p * 1.05, 2),
-                active_signals={"smart_money_active": False, "debt_clean": False}
+                target_price=round(p * 0.90, 2) if p else 0.0,
+                stop_loss=round(p * 1.05, 2) if p else 0.0,
+                active_signals={
+                    "debt_clean": bool(feat.get("debt_clean")),
+                    "valuation_mos_positive": bool(feat.get("valuation_mos_positive")),
+                    "rsi_oversold_triggered": bool(feat.get("rsi_oversold_triggered")),
+                    "smart_money_active": False,
+                },
+                score=feat.get("score"),
             )
         evaluate_pending_predictions()
     except Exception as e:

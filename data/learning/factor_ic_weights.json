@@ -1,0 +1,130 @@
+{
+  "ok": true,
+  "horizon_bars": 21,
+  "stride": 5,
+  "eval_dates": 36,
+  "ema_halflife_periods": 6,
+  "weights": {
+    "div": 1.0,
+    "value": 1.0,
+    "rsi": 1.0,
+    "debt": 1.0
+  },
+  "stats": {
+    "div": {
+      "n": 36,
+      "ema_ic": -0.0638,
+      "mean_ic": -0.0111,
+      "se_nw": 0.038,
+      "t_nw": -0.293,
+      "weight": 0.0
+    },
+    "value": {
+      "n": 36,
+      "ema_ic": -0.0014,
+      "mean_ic": -0.0063,
+      "se_nw": 0.0355,
+      "t_nw": -0.177,
+      "weight": 0.0
+    },
+    "rsi": {
+      "n": 36,
+      "ema_ic": -0.0031,
+      "mean_ic": 0.0318,
+      "se_nw": 0.0376,
+      "t_nw": 0.846,
+      "weight": 0.0
+    },
+    "debt": {
+      "n": 36,
+      "ema_ic": 0.0,
+      "mean_ic": 0.0,
+      "se_nw": 0.0,
+      "t_nw": 0.0,
+      "weight": 0.0
+    }
+  },
+  "recent_ics": [
+    {
+      "date": "2026-07-28",
+      "n": 79,
+      "ics": {
+        "div": -0.005,
+        "value": 0.0,
+        "rsi": 0.0647,
+        "debt": 0.0
+      }
+    },
+    {
+      "date": "2026-08-04",
+      "n": 79,
+      "ics": {
+        "div": -0.0497,
+        "value": 0.0,
+        "rsi": 0.0526,
+        "debt": 0.0
+      }
+    },
+    {
+      "date": "2026-08-12",
+      "n": 79,
+      "ics": {
+        "div": -0.1142,
+        "value": 0.0,
+        "rsi": -0.1548,
+        "debt": 0.0
+      }
+    },
+    {
+      "date": "2026-08-19",
+      "n": 79,
+      "ics": {
+        "div": -0.1142,
+        "value": 0.0,
+        "rsi": 0.036,
+        "debt": 0.0
+      }
+    },
+    {
+      "date": "2026-08-27",
+      "n": 79,
+      "ics": {
+        "div": -0.144,
+        "value": 0.0,
+        "rsi": -0.0046,
+        "debt": 0.0
+      }
+    },
+    {
+      "date": "2026-09-03",
+      "n": 79,
+      "ics": {
+        "div": -0.1192,
+        "value": 0.0,
+        "rsi": -0.0428,
+        "debt": 0.0
+      }
+    },
+    {
+      "date": "2026-09-10",
+      "n": 79,
+      "ics": {
+        "div": -0.1043,
+        "value": 0.0,
+        "rsi": 0.0996,
+        "debt": 0.0
+      }
+    },
+    {
+      "date": "2026-09-17",
+      "n": 79,
+      "ics": {
+        "div": -0.0795,
+        "value": 0.0,
+        "rsi": -0.0487,
+        "debt": 0.0
+      }
+    }
+  ],
+  "model_note": "weights = max(0, EMA_IC)/0.03 capped 1.4; shrink toward 0"
+}
