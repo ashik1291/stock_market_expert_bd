@@ -145,20 +145,23 @@ def classify_horizons(records: list[dict]) -> dict:
         drawdown_info = r.get("downturn_resilience", {})
         is_discount = drawdown_info.get("status") == "growth_at_discount"
 
-        # Trajectory metadata
-        dir_icon    = traj.get("direction_icon", "🟢")
-        direction   = traj.get("direction", "RISE_PREDICTED")
-        rise_prob   = traj.get("rise_probability_pct", 65.0)
-        st_info     = traj.get("short_term", {})
-        mt_info     = traj.get("mid_term", {})
-        lt_info     = traj.get("long_term", {})
+        # Trajectory metadata — no invented defaults
+        dir_icon    = traj.get("direction_icon") or "—"
+        direction   = traj.get("direction")
+        rise_prob   = traj.get("rise_probability_pct")
+        st_info     = traj.get("short_term") or {}
+        mt_info     = traj.get("mid_term") or {}
+        lt_info     = traj.get("long_term") or {}
 
-        # Leadership & Governance Metadata
-        chairman = mgmt.get("chairman", "Board Chairman")
-        md_ceo   = mgmt.get("managing_director_ceo", "Managing Director")
-        exp_yrs  = mgmt.get("industry_experience_years", 20)
-        rating   = mgmt.get("governance_rating", "A")
-        leadership_summary = f"{md_ceo} ({exp_yrs}y exp, {rating})"
+        # Leadership & Governance Metadata — missing stays unknown
+        chairman = mgmt.get("chairman") or "unknown"
+        md_ceo   = mgmt.get("managing_director_ceo") or "unknown"
+        exp_yrs  = mgmt.get("industry_experience_years")
+        rating   = mgmt.get("governance_rating") or "unknown"
+        if exp_yrs is not None:
+            leadership_summary = f"{md_ceo} ({exp_yrs}y exp, {rating})"
+        else:
+            leadership_summary = f"{md_ceo} (exp unknown, {rating})"
 
         # 1. Long-Term Asset Checklist:
         # P/E <= 16, low manipulation risk, debt/equity <= 0.8, veteran leadership, proven dividend, confident score
@@ -183,25 +186,27 @@ def classify_horizons(records: list[dict]) -> dict:
             long_rec["st_info"] = st_info
             long_rec["mt_info"] = mt_info
             long_rec["lt_info"] = lt_info
-            long_rec["lt_upside"] = lt_info.get("upside_potential_pct", "+30.0%")
-            long_rec["lt_downside"] = lt_info.get("downside_risk_pct", "-10.0%")
+            long_rec["lt_upside"] = lt_info.get("upside_potential_pct") or "—"
+            long_rec["lt_downside"] = lt_info.get("downside_risk_pct") or "—"
             long_rec["leadership_summary"] = leadership_summary
             long_rec["chairman"] = chairman
             long_rec["md_ceo"] = md_ceo
             long_rec["exp_yrs"] = exp_yrs
             long_rec["governance_rating"] = rating
-            long_rec["key_moat"] = mgmt.get("key_moat", "Core Category A Franchise")
-            long_rec["audit_credibility"] = mgmt.get("audit_credibility", "Standard Audit")
+            long_rec["key_moat"] = mgmt.get("key_moat") or "unknown"
+            long_rec["audit_credibility"] = mgmt.get("audit_credibility") or "unknown"
             long_rec["dominant_intent"] = dominant_intent
 
-            # Precision Suite Details
-            long_rec["smart_money_sig"] = smart_money.get("signal", "Stable institutional holdings")
-            long_rec["smart_money_class"] = smart_money.get("classification", "STABLE")
-            long_rec["cash_flow_cov"] = f"{cash_flow.get('dividend_coverage_x', 1.5):.1f}x real cash covered"
-            long_rec["fcf_yield"] = f"{cash_flow.get('fcf_yield_pct', 0.0)}%"
-            long_rec["liquidity_directive"] = liquidity.get("directive", "Liquid")
-            long_rec["max_single_order"] = liquidity.get("max_single_order_shares", 5000)
-            long_rec["earnings_acc_sig"] = earn_acc.get("signal", "Stable quarterly runrate")
+            # Precision Suite Details — missing fields stay unknown, never invent coverage
+            _cov = cash_flow.get("dividend_coverage_x")
+            _fcf = cash_flow.get("fcf_yield_pct")
+            long_rec["smart_money_sig"] = smart_money.get("signal") or "unknown"
+            long_rec["smart_money_class"] = smart_money.get("classification") or "unknown"
+            long_rec["cash_flow_cov"] = f"{_cov:.1f}x real cash covered" if _cov is not None else "unknown"
+            long_rec["fcf_yield"] = f"{_fcf}%" if _fcf is not None else "unknown"
+            long_rec["liquidity_directive"] = liquidity.get("directive") or "unknown"
+            long_rec["max_single_order"] = liquidity.get("max_single_order_shares")
+            long_rec["earnings_acc_sig"] = earn_acc.get("signal") or "unknown"
 
             long_rec["when_to_buy"] = (
                 f"Buy on support dips between ৳{support_low}–৳{support_high}; "
@@ -243,17 +248,17 @@ def classify_horizons(records: list[dict]) -> dict:
             mid_rec["dir_icon"] = dir_icon
             mid_rec["direction"] = direction
             mid_rec["rise_prob"] = rise_prob
-            mid_rec["mt_upside"] = mt_info.get("upside_potential_pct", "+15.0%")
-            mid_rec["mt_downside"] = mt_info.get("downside_risk_pct", "-5.0%")
-            mid_rec["mt_rr"] = mt_info.get("risk_reward_ratio", "3.0x")
+            mid_rec["mt_upside"] = mt_info.get("upside_potential_pct") or "—"
+            mid_rec["mt_downside"] = mt_info.get("downside_risk_pct") or "—"
+            mid_rec["mt_rr"] = mt_info.get("risk_reward_ratio") or "—"
             mid_rec["leadership_summary"] = leadership_summary
             mid_rec["dominant_intent"] = dominant_intent
             mid_rec["st_info"] = st_info
             mid_rec["mt_info"] = mt_info
             mid_rec["lt_info"] = lt_info
-            mid_rec["smart_money_sig"] = smart_money.get("signal", "Stable")
-            mid_rec["liquidity_directive"] = liquidity.get("directive", "Liquid")
-            mid_rec["max_single_order"] = liquidity.get("max_single_order_shares", 5000)
+            mid_rec["smart_money_sig"] = smart_money.get("signal") or "unknown"
+            mid_rec["liquidity_directive"] = liquidity.get("directive") or "unknown"
+            mid_rec["max_single_order"] = liquidity.get("max_single_order_shares")
 
             mid_rec["when_to_buy"] = (
                 f"Enter on support confirmation (৳{round(entry*0.99, 1)}–৳{round(entry*1.01, 1)}) "
@@ -279,10 +284,10 @@ def classify_horizons(records: list[dict]) -> dict:
             short_rec["tight_stop"]   = tight_stop
             short_rec["dir_icon"]     = dir_icon
             short_rec["rise_prob"]    = rise_prob
-            short_rec["st_upside"]    = st_info.get("upside_potential_pct", "+3.5%")
-            short_rec["st_downside"]  = st_info.get("downside_risk_pct", "-2.0%")
-            short_rec["st_rr"]        = st_info.get("risk_reward_ratio", "1.75x")
-            short_rec["max_single_order"] = liquidity.get("max_single_order_shares", 1000)
+            short_rec["st_upside"]    = st_info.get("upside_potential_pct") or "—"
+            short_rec["st_downside"]  = st_info.get("downside_risk_pct") or "—"
+            short_rec["st_rr"]        = st_info.get("risk_reward_ratio") or "—"
+            short_rec["max_single_order"] = liquidity.get("max_single_order_shares")
             short_rec["when_to_buy"]  = f"Buy on intraday support test near ৳{entry:.1f}; tight bounce confirmation."
             short_rec["when_not_to_buy"] = f"Do NOT buy if opening gap > 1.5% or RSI > 65."
             short_rec["when_to_sell"] = f"Take profit strictly at ৳{quick_tgt} ({short_rec['st_upside']}); hard cut at ৳{tight_stop} ({short_rec['st_downside']})."
@@ -363,7 +368,75 @@ def build_recommendations(timeframe: str, tickers: list[str] = None) -> dict:
             "timeframe":                   timeframe,
         })
 
-    horizons = classify_horizons(records)
+    # --- Halal guard (view-only, S6 advisory): invariant ranking halal-blind, filter before horizon buckets ---
+    _halal_tier = "flexible"
+    _halal_gates = {}
+    _halal_blocked: list[dict] = []
+    _eligible_records: list[dict] = records
+    try:
+        from halal_guard import HalalGuard
+        from profile import load_profile
+        _prof = load_profile()
+        _halal_tier = _prof.get("halal_tier", "flexible")
+        _guard = HalalGuard(profile=_prof)
+        _halal_gates = _guard.gates_for(_halal_tier)
+        # Sector + DSES enrichment for L1/L5 (BATBC override via sector_map)
+        _sector_map: dict[str, str] = {}
+        _dses_asof: str | None = None
+        try:
+            import sqlite3 as _sql
+            _db = BASE_DIR / "data" / "processed" / "dse.db"
+            if _db.exists():
+                _conn = _sql.connect(str(_db))
+                _conn.row_factory = _sql.Row
+                try:
+                    for _r in _conn.execute("SELECT ticker, sector FROM companies"):
+                        _sector_map[_r["ticker"]] = _r["sector"]
+                except Exception:
+                    pass
+                try:
+                    _row = _conn.execute("SELECT MAX(date) as d FROM market_summary WHERE dses IS NOT NULL").fetchone()
+                    _dses_asof = _row["d"] if _row and _row["d"] else None
+                except Exception:
+                    pass
+                _conn.close()
+        except Exception:
+            pass
+        for _r in records:
+            if not _r.get("sector"):
+                _r["sector"] = _sector_map.get(_r["ticker"])
+            _r["dses_asof"] = _dses_asof
+        _eligible_records = _guard.apply(records, _halal_tier)
+        _eligible_set = {x["ticker"] for x in _eligible_records}
+        for _r in records:
+            _res = _guard.is_eligible(_r["ticker"], asof=_r.get("dses_asof"), tier=_halal_tier, pit_row=_r, dses_row=_r)
+            _r["purification_rate"] = _res.get("purification_rate", 0.0)
+            _r["halal_reasons"] = _res.get("reasons", [])
+            _r["data_gaps"] = _res.get("data_gaps", [])
+            _r["halal_tier"] = _halal_tier
+            _r["halal_eligible"] = _res.get("eligible", True)
+            if _r["ticker"] not in _eligible_set:
+                _halal_blocked.append(_r)
+        # Ensure eligible carry same annotations
+        for _r in _eligible_records:
+            # sync annotations from original record
+            _orig = next((x for x in records if x["ticker"] == _r["ticker"]), None)
+            if _orig:
+                _r["purification_rate"] = _orig.get("purification_rate", 0.0)
+                _r["halal_reasons"] = _orig.get("halal_reasons", [])
+                _r["data_gaps"] = _orig.get("data_gaps", [])
+                _r["halal_tier"] = _halal_tier
+                _r["halal_eligible"] = True
+                _r["dses_asof"] = _orig.get("dses_asof")
+                _r["sector"] = _orig.get("sector")
+    except Exception as _e:
+        log.warning(f"Halal guard unavailable, passthrough: {_e}")
+        _eligible_records = records
+
+    horizons = classify_horizons(_eligible_records)
+    horizons["halal_blocked"] = _halal_blocked
+    horizons["_halal_tier"] = _halal_tier
+    horizons["_halal_gates"] = _halal_gates
 
     # Run macro sentiment engine
     try:
@@ -409,10 +482,13 @@ def generate_markdown_report(recs: dict) -> str:
         lines.append("|---|---|---|---|---|---|---|---|")
         for r in h["long_term"][:8]:
             entry = f"৳{r['entry']:.1f}" if r['entry'] else "—"
-            traj_str = f"**{r.get('dir_icon', '🟢')} RISE ({r.get('rise_prob', 70)}%)**"
-            cf_cov = r.get("cash_flow_cov", "100% Cash")
-            sm_status = f"`{r.get('smart_money_class', 'STABLE')}`"
-            max_ord = f"{r.get('max_single_order', 5000):,} sh"
+            _rp = r.get("rise_prob")
+            _rp_s = f"{_rp}%" if _rp is not None else "—"
+            traj_str = f"**{r.get('dir_icon') or '—'} ({_rp_s})**"
+            cf_cov = r.get("cash_flow_cov") or "unknown"
+            sm_status = f"`{r.get('smart_money_class') or 'unknown'}`"
+            _mo = r.get("max_single_order")
+            max_ord = f"{_mo:,} sh" if _mo is not None else "—"
             lines.append(
                 f"| **{r['ticker']}** | {entry} | {traj_str} | {_fmt_pe(r['pe'])} | "
                 f"{cf_cov} | {sm_status} | {max_ord} | **ACCUMULATE TRANCHES** |"
@@ -422,15 +498,17 @@ def generate_markdown_report(recs: dict) -> str:
             st_info = r.get("st_info", {})
             mt_info = r.get("mt_info", {})
             lt_info = r.get("lt_info", {})
-            lines.append(f"#### 📌 **{r['ticker']}** ({r.get('dir_icon', '🟢')} Rise Prob: {r.get('rise_prob', 70)}%, P/E: {_fmt_pe(r['pe'])}, Debt: {r['debt_health']})")
-            lines.append(f"- **👔 Top Management**: {r.get('chairman')} (Chairman), {r.get('md_ceo')} (MD/CEO, {r.get('exp_yrs')}y exp, Rating: {r.get('governance_rating')})")
-            lines.append(f"- **🌊 Smart Money Shift**: {r.get('smart_money_sig')}")
-            lines.append(f"- **💰 Real Cash Flow & FCF**: {r.get('cash_flow_cov')} | FCF Yield: {r.get('fcf_yield')} | Audit: *{r.get('audit_credibility')}*")
-            lines.append(f"- **💧 Liquidity Guard**: {r.get('liquidity_directive')}")
+            _rp = r.get("rise_prob")
+            _rp_s = f"{_rp}%" if _rp is not None else "unknown"
+            lines.append(f"#### 📌 **{r['ticker']}** ({r.get('dir_icon') or '—'} Rise Prob: {_rp_s}, P/E: {_fmt_pe(r['pe'])}, Debt: {r['debt_health']})")
+            lines.append(f"- **👔 Top Management**: {r.get('chairman')} (Chairman), {r.get('md_ceo')} (MD/CEO, {r.get('exp_yrs') or 'unknown'}y exp, Rating: {r.get('governance_rating')})")
+            lines.append(f"- **🌊 Smart Money Shift**: {r.get('smart_money_sig') or 'unknown'}")
+            lines.append(f"- **💰 Real Cash Flow & FCF**: {r.get('cash_flow_cov') or 'unknown'} | FCF Yield: {r.get('fcf_yield') or 'unknown'} | Audit: *{r.get('audit_credibility') or 'unknown'}*")
+            lines.append(f"- **💧 Liquidity Guard**: {r.get('liquidity_directive') or 'unknown'}")
             lines.append(f"- **📊 3-Term Potential Breakdown**:")
-            lines.append(f"  * ⚡ **Short-Term (1–10d)**: Path: {st_info.get('predicted_path', 'Bounce')} | Upside: **{st_info.get('upside_potential_pct', '+3.5%')}** vs Downside: {st_info.get('downside_risk_pct', '-2%')} (R:R: {st_info.get('risk_reward_ratio', '1.8x')})")
-            lines.append(f"  * 📈 **Mid-Term (1–6m)**: Path: {mt_info.get('predicted_path', 'Mean-Reversion')} | Target: **৳{mt_info.get('target_price', r.get('entry'))} ({mt_info.get('upside_potential_pct', '+15%')})** | Stop: ৳{mt_info.get('trailing_stop', r.get('entry'))} (R:R: {mt_info.get('risk_reward_ratio', '3.0x')})")
-            lines.append(f"  * 🏛️ **Long-Term (1–5y)**: Path: {lt_info.get('predicted_path', 'Compounding')} | Target: **৳{lt_info.get('target_price', r.get('entry'))} ({lt_info.get('upside_potential_pct', '+30%')})** | Div Yield: {lt_info.get('dividend_cagr', '5%–8%')}")
+            lines.append(f"  * ⚡ **Short-Term (1–10d)**: Path: {st_info.get('predicted_path') or '—'} | Upside: **{st_info.get('upside_potential_pct') or '—'}** vs Downside: {st_info.get('downside_risk_pct') or '—'} (R:R: {st_info.get('risk_reward_ratio') or '—'})")
+            lines.append(f"  * 📈 **Mid-Term (1–6m)**: Path: {mt_info.get('predicted_path') or '—'} | Target: **৳{mt_info.get('target_price') or '—'} ({mt_info.get('upside_potential_pct') or '—'})** | Stop: ৳{mt_info.get('trailing_stop') or '—'} (R:R: {mt_info.get('risk_reward_ratio') or '—'})")
+            lines.append(f"  * 🏛️ **Long-Term (1–5y)**: Path: {lt_info.get('predicted_path') or '—'} | Target: **৳{lt_info.get('target_price') or '—'} ({lt_info.get('upside_potential_pct') or '—'})** | Div Yield: {lt_info.get('dividend_cagr') or '—'}")
             lines.append(f"- **✅ When to Buy**: {r['when_to_buy']}")
             lines.append(f"- **⛔ When NOT to Buy**: {r['when_not_to_buy']}")
             lines.append(f"- **🎯 When to Sell**: {r['when_to_sell']}\n")
@@ -449,9 +527,11 @@ def generate_markdown_report(recs: dict) -> str:
             entry = f"৳{r['entry']:.1f}" if r['entry'] else "—"
             tgt   = f"৳{r['target_mid']:.1f}" if r.get('target_mid') else "—"
             stop  = f"৳{r['trailing_stop']:.1f}" if r.get('trailing_stop') else "—"
-            traj_str = f"**{r.get('dir_icon', '🟢')} {r.get('rise_prob', 65)}%**"
-            max_ord = f"{r.get('max_single_order', 3000):,} sh"
-            lines.append(f"| **{r['ticker']}** | {entry} | {traj_str} | **{tgt}** | {stop} | {r.get('mt_rr', '3.0x')} | {max_ord} | {_fmt_pe(r['pe'])} |")
+            _rp = r.get("rise_prob")
+            traj_str = f"**{r.get('dir_icon') or '—'} {_rp if _rp is not None else '—'}%**"
+            _mo = r.get("max_single_order")
+            max_ord = f"{_mo:,} sh" if _mo is not None else "—"
+            lines.append(f"| **{r['ticker']}** | {entry} | {traj_str} | **{tgt}** | {stop} | {r.get('mt_rr') or '—'} | {max_ord} | {_fmt_pe(r['pe'])} |")
         lines.append("\n### 🎯 Mid-Term Execution Playbook:\n")
         for r in h["mid_term"][:5]:
             lines.append(f"#### 📌 **{r['ticker']}** (Target: ৳{r.get('target_mid')}, Stop: ৳{r.get('trailing_stop')}, R:R: {r.get('mt_rr')})")
@@ -475,9 +555,11 @@ def generate_markdown_report(recs: dict) -> str:
             entry = f"৳{r['entry']:.1f}" if r['entry'] else "—"
             tgt   = f"৳{r['quick_target']:.1f}" if r.get('quick_target') else "—"
             stop  = f"৳{r['tight_stop']:.1f}" if r.get('tight_stop') else "—"
-            traj_str = f"{r.get('dir_icon', '🟢')} {r.get('rise_prob', 60)}%"
-            max_ord = f"{r.get('max_single_order', 1000):,} sh"
-            lines.append(f"| **{r['ticker']}** | {entry} | {traj_str} | **{tgt}** | {stop} | {max_ord} | {r.get('st_rr', '1.8x')} | {r['confidence']:.0f}% |")
+            _rp = r.get("rise_prob")
+            traj_str = f"{r.get('dir_icon') or '—'} {_rp if _rp is not None else '—'}%"
+            _mo = r.get("max_single_order")
+            max_ord = f"{_mo:,} sh" if _mo is not None else "—"
+            lines.append(f"| **{r['ticker']}** | {entry} | {traj_str} | **{tgt}** | {stop} | {max_ord} | {r.get('st_rr') or '—'} | {r['confidence']:.0f}% |")
         lines.append("")
     else:
         lines.append("> No high-conviction short-term scalps meeting risk criteria today.\n")
@@ -541,6 +623,36 @@ def generate_markdown_report(recs: dict) -> str:
             lines.append(f"| **{r['ticker']}** | **{r['manipulation_risk'].upper()}** | {flags} |")
         lines.append("")
 
+    # 9. Halal Filter — view-only advisory (tier-aware, invariant ranking)
+    _tier_label = h.get("_halal_tier", "flexible")
+    _gates = h.get("_halal_gates", {}) or {}
+    _hb = h.get("halal_blocked", []) or []
+    lines.append(f"## ☪️ Halal Screen — Tier: `{_tier_label}` (view-only, ranking halal-blind)")
+    if _gates:
+        lines.append(f"_Gates: L1 excluded { _gates.get('L1_sectors_excluded')} · L2 D/E ≤ {_gates.get('L2_debt_equity_max')} LT ≤ {_gates.get('L2_long_term_debt_equity_max')} · L5 DSES {'required' if _gates.get('L5_dses_required') else 'advisory'} · DSES asof `{_hb[0].get('dses_asof') if _hb else (h.get('long_term', [{}])[0].get('dses_asof') if h.get('long_term') else '—')}`_  ")
+    if _hb:
+        lines.append("| Ticker | Sector | D/E | Halal | DSES asof | Reasons | Purification | Data gaps |")
+        lines.append("|---|---|---|---|---|---|---|---|")
+        for r in _hb[:20]:
+            _de = r.get("debt_equity_val")
+            _de_s = f"{_de:.2f}" if isinstance(_de, (int, float)) else "—"
+            _hal = "Blocked" if not r.get("halal_eligible", False) else "Pass"
+            _asof = r.get("dses_asof") or "—"
+            _rs = "; ".join(r.get("halal_reasons", []) or []) or "—"
+            _pur = f"{r.get('purification_rate', 0.0):.2%}"
+            _gaps = "; ".join(r.get("data_gaps", []) or []) or "—"
+            lines.append(f"| **{r['ticker']}** | {r.get('sector') or '—'} | {_de_s} | {_hal} | {_asof} | {_rs} | {_pur} | {_gaps} |")
+        lines.append("")
+    else:
+        if _tier_label == "off":
+            lines.append("> Halal filter OFF — no tickers blocked.  ")
+        else:
+            lines.append(f"> No tickers blocked under `{_tier_label}` halal screen for this universe.  ")
+    # Advisory: still show Halal+DSES columns for displayed horizons so reader can audit
+    if h.get("long_term") or h.get("mid_term"):
+        lines.append(f"_Halal attribution: eligible horizons above are after guard (_halal='Pass'); blocked list is advisory. DSES membership checked as-of above; purification_rate is advisory._  ")
+    lines.append("")
+
     lines.append("---")
     lines.append("> ⚠️ Generated by DSE Quantitative Engine. Cross-verify against official DSE disclosures. Not financial advice.")
     return "\n".join(lines)
@@ -586,7 +698,8 @@ def generate_monthly_asset_plan(recs: dict) -> str:
             zone = f"৳{round(entry*0.98, 1)}–৳{round(entry*1.01, 1)}"
             tgt  = f"৳{r.get('target_long', round(entry*1.3, 1))}"
             de   = r.get("debt_equity_val", "Low")
-            traj_str = f"{r.get('dir_icon', '🟢')} RISE ({r.get('rise_prob', 70)}%)"
+            _rp = r.get("rise_prob")
+            traj_str = f"{r.get('dir_icon') or '—'} ({_rp if _rp is not None else '—'}%)"
             potential_str = f"{r.get('lt_upside', '+30%')} / {r.get('lt_downside', '-10%')}"
             lines.append(f"| **{r['ticker']}** | {zone} | {traj_str} | {potential_str} | {_fmt_pe(r['pe'])} | D/E: {de} | {r.get('leadership_summary') or 'Veteran'} | 20% per tranche | {tgt} |")
         lines.append("")
@@ -601,7 +714,8 @@ def generate_monthly_asset_plan(recs: dict) -> str:
             entry = f"৳{r['entry']:.1f}" if r['entry'] else "—"
             tgt   = f"৳{r['target_mid']:.1f}" if r.get('target_mid') else "—"
             stop  = f"৳{r['trailing_stop']:.1f}" if r.get('trailing_stop') else "—"
-            traj_str = f"{r.get('dir_icon', '🟢')} {r.get('rise_prob', 65)}%"
+            _rp = r.get("rise_prob")
+            traj_str = f"{r.get('dir_icon') or '—'} {_rp if _rp is not None else '—'}%"
             lines.append(f"| **{r['ticker']}** | {entry} | {traj_str} | **{tgt}** | {stop} | {r.get('mt_rr', '3.0x')} | {_fmt_pe(r['pe'])} |")
         lines.append("")
     else:
@@ -656,7 +770,12 @@ def run_recommender(timeframe: str = "weekly", tickers: list[str] = None):
                         continue
                     sig = item.get("signal")
                     conf = item.get("confidence")
-                    m_risk = item.get("manipulation", {}).get("manipulation_risk") or "low"
+                    # Records store flat manipulation_risk; nested .manipulation is absent
+                    m_risk = item.get("manipulation_risk")
+                    if m_risk is None and isinstance(item.get("manipulation"), dict):
+                        m_risk = item["manipulation"].get("manipulation_risk")
+                    if m_risk is None:
+                        m_risk = "unknown"
                     entry = item.get("entry")
                     target = item.get("target")
                     stop = item.get("stop_loss")

@@ -1,0 +1,63 @@
+{
+  "version": "1.0",
+  "description": "Generic halal guard policy — single invariant ranking halal-blind, view-only filter at S6 advisory. Tiers strict/flexible/off.",
+  "tiers": {
+    "strict": {
+      "L1_sectors_excluded": ["Banking", "Insurance", "Financial Institutions", "Mutual Funds", "Tobacco"],
+      "L2_debt_equity_max": 0.5,
+      "L2_long_term_debt_equity_max": 0.2,
+      "L5_dses_required": true,
+      "note": "Strict: L1 universal_haram + tobacco, L2 D/E<=0.5 LT<=0.2, L5 DSES membership required"
+    },
+    "flexible": {
+      "L1_sectors_excluded": ["Banking", "Insurance", "Financial Institutions", "Mutual Funds", "Tobacco"],
+      "L2_debt_equity_max": 0.8,
+      "L2_long_term_debt_equity_max": 1.0,
+      "L5_dses_required": false,
+      "note": "Flexible: L1 universal + tobacco, L2 D/E<=0.8, L5 advisory only"
+    },
+    "off": {
+      "L1_sectors_excluded": [],
+      "L2_debt_equity_max": 1.0,
+      "L2_long_term_debt_equity_max": 1.0,
+      "L5_dses_required": false,
+      "note": "Off: no halal filter, debt gate 1.0 passthrough"
+    }
+  },
+  "L1": {
+    "universal_haram": ["Banking", "Insurance", "Financial Institutions", "Mutual Funds"],
+    "halal_sensitive": ["Tobacco"],
+    "sector_map": {
+      "BATBC": "Tobacco"
+    },
+    "tobacco_tickers": ["BATBC"],
+    "note": "sector_map overrides Food_Beverage for BATBC to Tobacco; universal_haram + halal_sensitive merged per tier"
+  },
+  "L2": {
+    "debt_gates": {
+      "strict": 0.5,
+      "strict_long_term": 0.2,
+      "flexible": 0.8,
+      "off": 1.0
+    },
+    "fields": ["debt_equity", "debt_equity_val", "long_term_debt_equity", "long_term_debt_equity_val"]
+  },
+  "L5": {
+    "dses": {
+      "strict_requires_membership": true,
+      "flexible_requires_membership": false,
+      "off_requires_membership": false,
+      "source": "market_summary.dses or dses_row membership flag",
+      "note": "DSES Shariah index membership checked as-of; data_gaps if unavailable"
+    }
+  },
+  "candidate_universe": {
+    "top_k": 12,
+    "ordering": "unified_score DESC (halal-blind)",
+    "note": "Guard applied after ranking; view-only filter at S6"
+  },
+  "purification": {
+    "method": "debt_ratio_proportional",
+    "note": "purification_rate = max(0, debt_equity / gate) * 0.05 capped 0.05; 0 if clean"
+  }
+}

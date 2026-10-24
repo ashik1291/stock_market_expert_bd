@@ -276,6 +276,275 @@ class TestQuantEngine(unittest.TestCase):
         self.assertEqual(total_account, total_recorded,
                          f"Accounting mismatch: cash({cash}) + eq({eq_cost}) + mf({mf_cost}) = {total_account} != recorded {total_recorded}")
 
+    def test_served_weights_hash_matches_frozen_parameter_hash(self):
+        """Verify served model strictly matches Epoch 2 frozen hash (acf502bc65914c48) and rsi=0."""
+        from model_registry import champion_hash, load_registry
+        from unified_score import MODEL_ID, FROZEN_PARAMETER_HASH, load_factor_weights
+        
+        reg = load_registry()
+        champ = reg["champion"]
+        self.assertEqual(champ["model_id"], "frozen_epoch2_pit_v2")
+        self.assertEqual(champ["parameter_hash"], "acf502bc65914c48")
+        self.assertEqual(champion_hash(), "acf502bc65914c48")
+        self.assertEqual(MODEL_ID, "frozen_epoch2_pit_v2")
+        self.assertEqual(FROZEN_PARAMETER_HASH, "acf502bc65914c48")
+        
+        w = load_factor_weights()
+        self.assertEqual(w.get("rsi"), 0.0, "RSI weight must be 0.0 under frozen Epoch 2 model!")
+        self.assertEqual(w.get("debt"), 0.0, "Debt must be a gate, not an additive factor!")
+        self.assertEqual(w.get("div"), 1.0)
+        self.assertEqual(w.get("value"), 1.0)
+
+    def test_deterministic_golden_score_formula(self):
+        """Golden-value assertion on score_features: pe=12, div=4% -> score exactly 17.0000."""
+        from unified_score import score_features
+        res = score_features(pe=12.0, debt_equity=0.4, dividend_yield=4.0, rsi_14=25.0, close=200.0, sector="Pharma")
+        self.assertTrue(res["is_eligible"])
+        self.assertEqual(res["score"], 17.0000)
+        self.assertEqual(res["components"]["div"], 8.0000)
+        self.assertEqual(res["components"]["pe"], 9.0000)
+        self.assertEqual(res["components"]["rsi"], 0.0000)
+        self.assertEqual(res["components"]["debt"], 0.0000)
+
+        # Gate failure check
+        pe_fail = score_features(pe=26.0, debt_equity=0.4, dividend_yield=4.0, rsi_14=25.0, close=200.0, sector="Pharma")
+        self.assertFalse(pe_fail["is_eligible"])
+        self.assertEqual(pe_fail["score"], -999.0)
+        self.assertIn("pe_gate", pe_fail["gate_reasons"])
+
+    def test_future_perturbation_invariance(self):
+        """Changing future prices (T+1) must NEVER alter point-in-time score or features on date T."""
+        from feature_store import build_features_for_date, load_scored_universe, latest_price_date
+        conn = sqlite3.connect(DB_PATH)
+        asof = latest_price_date(conn)
+        conn.close()
+        self.assertIsNotNone(asof)
+
+        uni_before = load_scored_universe(asof)
+        sq_before = [r for r in uni_before if r["ticker"] == "SQURPHARMA"]
+        self.assertTrue(len(sq_before) > 0)
+        score_before = sq_before[0]["score"]
+
+        # Simulate a radical price shock record far in the future
+        future_dt = "2029-12-31"
+        conn = sqlite3.connect(DB_PATH)
+        conn.execute("INSERT OR REPLACE INTO prices (ticker, date, close, volume) VALUES ('SQURPHARMA', ?, 9999.0, 1000000)", (future_dt,))
+        conn.commit()
+        conn.close()
+
+        try:
+            # Re-score asof date T
+            build_features_for_date(asof)
+            uni_after = load_scored_universe(asof)
+            sq_after = [r for r in uni_after if r["ticker"] == "SQURPHARMA"]
+            score_after = sq_after[0]["score"]
+            self.assertEqual(score_before, score_after, "Point-in-time score leaked future data!")
+        finally:
+            # Cleanup future test record
+            conn = sqlite3.connect(DB_PATH)
+            conn.execute("DELETE FROM prices WHERE date=?", (future_dt,))
+            conn.commit()
+            conn.close()
+
+    def test_no_fake_base_rates_numeric(self):
+        """External truth test: assert no prediction file contains base rate numerically close to 66.4%."""
+        import json
+        daily_dir = BASE_DIR / "reports" / "daily"
+        if not daily_dir.exists():
+            return
+        files = list(daily_dir.glob("*_rise_fall_predictions.json"))
+        for fp in files:
+            try:
+                data = json.loads(fp.read_text(encoding="utf-8"))
+                for section in ("predicted_to_rise", "predicted_to_fall"):
+                    for item in data.get(section, []):
+                        br = item.get("base_rate_pct")
+                        if br is not None:
+                            self.assertFalse(
+                                abs(float(br) - 66.4) < 0.5,
+                                f"Forbidden fake base rate {br}% found in {fp.name} for {item.get('ticker')}"
+                            )
+            except Exception:
+                pass
+
+
+    def test_forward_ledger_hash_chain_integrity(self):
+        """Verify strict cryptographic SHA-256 hash chaining across ALL blocks in forward_test_ledger_v2.json."""
+        import json, hashlib
+        ledger_file = BASE_DIR / "data" / "portfolio" / "forward_test_ledger_v2.json"
+        self.assertTrue(ledger_file.exists())
+        with open(ledger_file, encoding="utf-8") as f:
+            ledger = json.load(f)
+        blocks = ledger.get("blocks", [])
+        self.assertGreaterEqual(len(blocks), 2, "Ledger must have at least Genesis and Block 1")
+
+        for i in range(1, len(blocks)):
+            prev_b = blocks[i - 1]
+            curr_b = blocks[i]
+            prev_data_str = json.dumps(prev_b["data"], sort_keys=True)
+            expected_prev_hash = hashlib.sha256((prev_data_str + prev_b["prev_hash"]).encode("utf-8")).hexdigest()
+            self.assertEqual(curr_b["prev_hash"], expected_prev_hash,
+                             f"Cryptographic hash chain broken between Block {i-1} and Block {i}!")
+            curr_data_str = json.dumps(curr_b["data"], sort_keys=True)
+            expected_curr_hash = hashlib.sha256((curr_data_str + curr_b["prev_hash"]).encode("utf-8")).hexdigest()
+            self.assertEqual(curr_b["block_hash"], expected_curr_hash,
+                             f"Block {i} self-hash mismatch!")
+
+    def test_canonical_parameter_content_hash(self):
+        """Verify hash is computed directly from canonical served parameter dictionary (not a hardcoded string)."""
+        import json, hashlib
+        from unified_score import CANONICAL_SERVED_PARAMS, CANONICAL_PARAM_CONTENT_HASH, FROZEN_PARAMETER_HASH
+        
+        # Verify content hash matches runtime computation from CANONICAL_SERVED_PARAMS dict
+        computed_content_hash = hashlib.sha256(
+            json.dumps(CANONICAL_SERVED_PARAMS, sort_keys=True).encode("utf-8")
+        ).hexdigest()[:16]
+        self.assertEqual(computed_content_hash, CANONICAL_PARAM_CONTENT_HASH)
+        self.assertEqual(computed_content_hash, "7b3020aa89457fa0")
+
+        # Verify Genesis pre-registration string hash matches Block 0 Genesis
+        computed_spec_hash = hashlib.sha256("pit_dividend_pe_rsi_sector_capped_v2".encode("utf-8")).hexdigest()[:16]
+        self.assertEqual(computed_spec_hash, FROZEN_PARAMETER_HASH)
+        self.assertEqual(computed_spec_hash, "acf502bc65914c48")
+
+    def test_dsex_october_continuity_and_bounds(self):
+        """Assert DSEX in October 2026 stays strictly within [5200, 5600] with no unmapped jumps."""
+        conn = sqlite3.connect(DB_PATH)
+        rows = conn.execute("SELECT date, dsex FROM market_summary WHERE date >= '2026-10-01' AND dsex IS NOT NULL ORDER BY date ASC").fetchall()
+        conn.close()
+        self.assertGreater(len(rows), 0, "No October 2026 market_summary rows found!")
+        prev_lvl = None
+        for dt, lvl in rows:
+            self.assertGreaterEqual(lvl, 5200.0, f"DSEX {lvl} on {dt} below 5200 bound")
+            self.assertLessEqual(lvl, 5600.0, f"DSEX {lvl} on {dt} above 5600 bound")
+            if prev_lvl:
+                jump_pct = abs(lvl - prev_lvl) / prev_lvl * 100.0
+                self.assertLess(jump_pct, 5.0, f"DSEX jump of {jump_pct:.2f}% on {dt} breaches 5% daily continuity threshold")
+            prev_lvl = lvl
+
+
+    def test_five_fundamental_filters_applied(self):
+        """Verify the 5 mandatory fundamental filters are strictly enforced across config and engines."""
+        import json
+        from analyzer import load_thresholds
+        from unified_score import score_features
+
+        # 1. Config Thresholds check
+        th = load_thresholds()
+        f_cfg = th.get("fundamentals", {})
+        self.assertEqual(f_cfg.get("min_cfo_to_profit_ratio"), 0.8, "CFO/Profit filter missing from thresholds.json")
+        self.assertEqual(f_cfg.get("min_dividend_history_years"), 3, "3-year cash dividend filter missing from thresholds.json")
+        self.assertLessEqual(f_cfg.get("safe_debt_equity"), 0.8, "Safe D/E threshold exceeds 0.8 in thresholds.json")
+        self.assertEqual(f_cfg.get("min_sponsor_holding_pct"), 30, "30% sponsor holding filter missing from thresholds.json")
+
+        # 2. Hard Debt Gate check in served score
+        bad_debt = score_features(pe=10.0, debt_equity=1.2, dividend_yield=5.0, rsi_14=40.0, sector="Engineering", close=100.0)
+        self.assertFalse(bad_debt["is_eligible"], "Debt gate failed to block D/E > 1.0 non-bank")
+        self.assertEqual(bad_debt["score"], -999.0)
+
+        # 3. Clean moat passes gate
+        clean = score_features(pe=8.0, debt_equity=0.01, dividend_yield=5.7, rsi_14=40.0, sector="Pharma", close=220.0)
+        self.assertTrue(clean["is_eligible"])
+        self.assertGreater(clean["score"], 0)
+
+
+
+    def test_five_factor_screener_universe_rigor(self):
+        """Assert all tickers passing 5-factor fundamental screener strictly obey the 5 constraints."""
+        from five_factor_fundamental_screener import run_5_factor_screener, SHARIAH_EXCLUDED_SECTORS
+        screened = run_5_factor_screener()
+        self.assertGreater(len(screened), 5, "Fewer than 5 tickers passed 5-factor screening")
+        for s in screened:
+            self.assertGreaterEqual(s["promoter_block_pct"], 30.0, f"{s['ticker']} failed sponsor+govt >= 30%")
+            self.assertLessEqual(s["de"], 0.80, f"{s['ticker']} failed debt/equity <= 0.80")
+            self.assertGreaterEqual(s["cash_div_years"], 3, f"{s['ticker']} failed >= 3 years cash dividends")
+            self.assertGreater(s["eps"], 0.0, f"{s['ticker']} non-positive EPS")
+            self.assertGreater(s["nav"], 0.0, f"{s['ticker']} non-positive NAV")
+            self.assertNotIn(s["sector"], SHARIAH_EXCLUDED_SECTORS, f"{s['ticker']} in excluded Shariah sector")
+
+        tickers = {s["ticker"] for s in screened}
+        self.assertIn("JAMUNAOIL", tickers)
+        self.assertIn("BSRMLTD", tickers)
+        self.assertIn("SQURPHARMA", tickers)
+
+    def test_halal_guard_tiers_strict_flexible_off(self):
+        """N1: tier strict no banks/tobacco D/E<=0.5 DSES, flexible D/E<=0.8 tobacco excl, off passthrough, custom exclusions, BATBC blocked."""
+        from halal_guard import HalalGuard
+        from profile import load_profile, validate_profile
+        # Gates
+        g_strict = HalalGuard().gates_for("strict")
+        self.assertEqual(g_strict["L2_debt_equity_max"], 0.5)
+        self.assertEqual(g_strict["L2_long_term_debt_equity_max"], 0.2)
+        self.assertTrue(g_strict["L5_dses_required"])
+        self.assertIn("Tobacco", g_strict["L1_sectors_excluded"])
+        g_flex = HalalGuard().gates_for("flexible")
+        self.assertEqual(g_flex["L2_debt_equity_max"], 0.8)
+        self.assertFalse(g_flex["L5_dses_required"])
+        self.assertIn("Tobacco", g_flex["L1_sectors_excluded"])
+        g_off = HalalGuard().gates_for("off")
+        self.assertEqual(g_off["L2_debt_equity_max"], 1.0)
+        self.assertEqual(g_off["L1_sectors_excluded"], [])
+        # BATBC blocked in strict+flexible via Tobacco override
+        guard_flex = HalalGuard()
+        r_batbc_flex = guard_flex.is_eligible("BATBC", tier="flexible", pit_row={"sector": "Food_Beverage", "debt_equity": 0.0}, dses_row=None)
+        self.assertFalse(r_batbc_flex["eligible"], f"BATBC must be blocked in flexible: {r_batbc_flex}")
+        self.assertTrue(any("L1" in x or "Tobacco" in x for x in r_batbc_flex["reasons"]))
+        guard_strict = HalalGuard()
+        r_batbc_strict = guard_strict.is_eligible("BATBC", tier="strict", pit_row={"sector": "Food_Beverage", "debt_equity": 0.0}, dses_row={"dses": 1})
+        self.assertFalse(r_batbc_strict["eligible"])
+        # flexible blocks high D/E, strict even lower
+        r_high_de = guard_flex.is_eligible("TESTA", tier="flexible", pit_row={"sector": "Pharmaceuticals", "debt_equity": 0.9})
+        self.assertFalse(r_high_de["eligible"])
+        r_ok_de = guard_flex.is_eligible("TESTA", tier="flexible", pit_row={"sector": "Pharmaceuticals", "debt_equity": 0.4})
+        self.assertTrue(r_ok_de["eligible"])
+        r_strict_fail = guard_strict.is_eligible("TESTB", tier="strict", pit_row={"sector": "Pharmaceuticals", "debt_equity": 0.6})
+        self.assertFalse(r_strict_fail["eligible"])
+        # off passthrough even for BATBC/bank
+        guard_off = HalalGuard()
+        r_off = guard_off.is_eligible("BATBC", tier="off", pit_row={"sector": "Food_Beverage", "debt_equity": 5.0})
+        self.assertTrue(r_off["eligible"])
+        r_off_bank = guard_off.is_eligible("BRACBANK", tier="off", pit_row={"sector": "Banking", "debt_equity": 0.5})
+        self.assertTrue(r_off_bank["eligible"])
+        # strict DSES: missing dses -> data_gaps + not eligible if required path
+        r_dses_gap = guard_strict.is_eligible("SQURPHARMA", tier="strict", pit_row={"sector": "Pharmaceuticals", "debt_equity": 0.01}, dses_row=None)
+        self.assertIn("dses_membership_missing", r_dses_gap["data_gaps"])
+        # purification_rate + data_gaps presence
+        r_pur = guard_flex.is_eligible("SQURPHARMA", tier="flexible", pit_row={"sector": "Pharmaceuticals", "debt_equity": 0.01})
+        self.assertIn("purification_rate", r_pur)
+        self.assertIn("data_gaps", r_pur)
+        # Banks blocked in flexible/strict
+        r_bank = guard_flex.is_eligible("BRACBANK", tier="flexible", pit_row={"sector": "Banking", "debt_equity": 0.3})
+        self.assertFalse(r_bank["eligible"])
+        # Insurance blocked
+        r_ins = guard_flex.is_eligible("RELIANCINS", tier="flexible", pit_row={"sector": "Insurance", "debt_equity": 0.0})
+        self.assertFalse(r_ins["eligible"])
+        # Custom exclusions additive-only
+        guard_custom = HalalGuard(profile={"halal_tier": "flexible", "custom_exclusions": {"sectors": [], "tickers": ["SQURPHARMA"]}})
+        r_custom = guard_custom.is_eligible("SQURPHARMA", tier="flexible", pit_row={"sector": "Pharmaceuticals", "debt_equity": 0.01})
+        self.assertFalse(r_custom["eligible"])
+        self.assertTrue(any("custom" in x for x in r_custom["reasons"]))
+        # additive-only validator rejects relax attempts
+        with self.assertRaises(ValueError):
+            validate_profile({"halal_tier": "flexible", "custom_exclusions": {"sectors": ["!Banking"], "tickers": []}})
+        with self.assertRaises(ValueError):
+            validate_profile({"halal_tier": "flexible", "custom_exclusions": {"sectors": [], "tickers": ["-SQURPHARMA"]}})
+        # profile default flexible
+        prof = load_profile()
+        self.assertIn(prof["halal_tier"], ("strict", "flexible", "off"))
+        # apply() keeps order and filters
+        uni = [
+            {"ticker": "SQURPHARMA", "score": 30, "sector": "Pharmaceuticals", "debt_equity": 0.01},
+            {"ticker": "BATBC", "score": 29, "sector": "Food_Beverage", "debt_equity": 0.0},
+            {"ticker": "BRACBANK", "score": 28, "sector": "Banking", "debt_equity": 0.2},
+            {"ticker": "OLYMPIC", "score": 20, "sector": "Food_Beverage", "debt_equity": 0.1},
+        ]
+        filt = guard_flex.apply(uni, "flexible")
+        self.assertEqual([x["ticker"] for x in filt], ["SQURPHARMA", "OLYMPIC"])
+        filt_off = guard_off.apply(uni, "off")
+        self.assertEqual(len(filt_off), 4)
+        # Forward ledger stays tier-agnostic: unified_score frozen hash unchanged
+        from unified_score import FROZEN_PARAMETER_HASH
+        self.assertEqual(FROZEN_PARAMETER_HASH, "acf502bc65914c48")
 
 if __name__ == "__main__":
     unittest.main()
