@@ -122,6 +122,15 @@ def run_5_factor_screener(halal_tier: str = "flexible") -> list[dict]:
         ticker = r["ticker"]
         sec = r["sector"] or "Unknown"
 
+        # Universal Gate 0: Anti-Manipulation / BSEC Probe Blacklist
+        try:
+            from anti_manipulation_engine import is_ticker_blacklisted
+            is_blocked, _ = is_ticker_blacklisted(ticker)
+            if is_blocked:
+                continue
+        except Exception:
+            pass
+
         # Reverse lookup sector if unknown
         if sec == "Unknown" and ticker in ticker_sector_map:
             sec = ticker_sector_map[ticker]

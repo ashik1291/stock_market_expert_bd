@@ -60,7 +60,13 @@ def candidate_universe(asof: str | None = None, tier: str | None = None, top_k: 
         from five_factor_fundamental_screener import run_5_factor_screener
         screened = run_5_factor_screener(halal_tier=_tier)
         if screened:
-            return [s["ticker"] for s in screened[: int(_k)]]
+            from anti_manipulation_engine import is_ticker_blacklisted
+            clean_list = []
+            for s in screened:
+                is_b, _ = is_ticker_blacklisted(s["ticker"])
+                if not is_b:
+                    clean_list.append(s["ticker"])
+            return clean_list[: int(_k)]
     except Exception:
         pass
 
