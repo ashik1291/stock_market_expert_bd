@@ -1,5 +1,5 @@
 # 💰 Opportunistic Capital Deployment Plan — 2026-10
-**Budget**: ৳5,000.00 | **Generated**: `2026-10-25 00:16:16`
+**Budget**: ৳2,000.00 | **Generated**: `2026-10-25 01:22:25`
 **Strategy**: 5-Factor Screened Moats, Verified NOCFPS, Benjamin Graham Margin of Safety
 
 ## 🏛️ Valuation & Margin of Safety Evaluation
@@ -26,11 +26,12 @@
 
 ## 🎯 Primary Recommendation: **JAMUNAOIL**
 
-- **Target Quantity**: **27 shares** @ ৳179.40
-- **Gross Outlay**: ৳4,843.80
-- **Broker & CDBL Fee (0.415%)**: ৳20.10
-- **Total Capital Required**: **৳4,863.90**
-- **Surplus Cash Retained**: ৳136.10
+- **Target Quantity**: **9 shares** @ ৳179.40
+- **Gross Outlay**: ৳1,614.60
+- **Broker & CDBL Fee (0.415%)**: ৳6.70
+- **Total Capital Required**: **৳1,621.30**
+- **Mandatory 10% Cash Reserve**: ৳200.00
+- **Total Surplus Cash Retained**: ৳378.70
 - **Intrinsic Value**: ৳601.60 (Deepest Discount: **+70.2% MOS**)
 
 > Execution Rule: Submit passive limit order at best ask during opening 15 minutes.

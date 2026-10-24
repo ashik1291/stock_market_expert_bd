@@ -232,7 +232,11 @@ def calculate_opportunistic_deployment(budget_bdt: float = 2000.0) -> dict:
     best = undervalued[0]
     px = best["price"]
     cost_per_sh = px * (1.0 + COMMISSION_RATE)
-    shares = int(budget_bdt / cost_per_sh)
+
+    # ENFORCE MANDATORY 10% TACTICAL CASH BUFFER
+    cash_buffer_reserve = round(budget_bdt * 0.10, 2)
+    investable_capital = max(budget_bdt - cash_buffer_reserve, 0.0)
+    shares = int(investable_capital / cost_per_sh)
     gross_cost = round(shares * px, 2)
     comm = round(gross_cost * COMMISSION_RATE, 2)
     total_outlay = round(gross_cost + comm, 2)
@@ -240,6 +244,8 @@ def calculate_opportunistic_deployment(budget_bdt: float = 2000.0) -> dict:
 
     return {
         "budget_bdt": budget_bdt,
+        "cash_buffer_reserve": cash_buffer_reserve,
+        "investable_capital": investable_capital,
         "best_stock": best["ticker"],
         "shares": shares,
         "price": px,
@@ -283,7 +289,8 @@ def generate_monthly_rebalance_reports(budget_bdt: float = 2000.0) -> tuple[Path
             f"- **Gross Outlay**: ৳{plan['gross_cost']:,.2f}",
             f"- **Broker & CDBL Fee (0.415%)**: ৳{plan['commission']:,.2f}",
             f"- **Total Capital Required**: **৳{plan['total_outlay']:,.2f}**",
-            f"- **Surplus Cash Retained**: ৳{plan['surplus_cash']:,.2f}",
+            f"- **Mandatory 10% Cash Reserve**: ৳{plan.get('cash_buffer_reserve', 0):,.2f}",
+            f"- **Total Surplus Cash Retained**: ৳{plan['surplus_cash']:,.2f}",
             f"- **Intrinsic Value**: ৳{plan['graham_value']:.2f} (Deepest Discount: **{plan['margin_of_safety_pct']:+.1f}% MOS**)\n",
             "> Execution Rule: Submit passive limit order at best ask during opening 15 minutes."
         ])
@@ -321,7 +328,8 @@ def generate_monthly_rebalance_reports(budget_bdt: float = 2000.0) -> tuple[Path
             f"- **মোট শেয়ার মূল্য**: ৳{plan['gross_cost']:,.2f}",
             f"- **ব্রোকারেজ ও CDBL ফি (০.৪১৫%)**: ৳{plan['commission']:,.2f}",
             f"- **মোট বিনিয়োগ খরচ**: **৳{plan['total_outlay']:,.2f}**",
-            f"- **অবশিষ্ট ক্যাশ রিজার্ভ**: ৳{plan['surplus_cash']:,.2f}",
+            f"- **বাধ্যতামূলক ১০% তরল রিজার্ভ বাফার**: ৳{plan.get('cash_buffer_reserve', 0):,.2f}",
+            f"- **মোট উদ্বৃত্ত ক্যাশ রিজার্ভ**: ৳{plan['surplus_cash']:,.2f}",
             f"- **অন্তর্নিহিত ফেয়ার ভ্যালু**: ৳{plan['graham_value']:.2f} (সর্বোচ্চ ডিসকাউন্ট: **{plan['margin_of_safety_pct']:+.1f}% MOS**)\n",
             "> এক্সিকিউশন পরামর্শ: বাজার খোলার প্রথম ১৫ মিনিটে Best Ask প্রাইসে লিমিট অর্ডার স্থাপন করুন।"
         ])
