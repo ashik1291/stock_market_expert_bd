@@ -707,5 +707,27 @@ class TestQuantEngine(unittest.TestCase):
         self.assertGreater(large_sim["recommended_tranches"], 1)
         self.assertIn("SPLIT", large_sim["execution_guidance"])
 
+    def test_anti_manipulation_engine_surveillance(self):
+        """Assert market-wide surveillance scan, volume anomaly detection, and blacklist guard."""
+        from anti_manipulation_engine import run_surveillance_scan, is_ticker_blacklisted, generate_surveillance_reports
+        
+        alerts = run_surveillance_scan()
+        self.assertIsInstance(alerts, list)
+        self.assertGreater(len(alerts), 0, "No alerts triggered in market surveillance")
+
+        # Verify regulatory probe detection on known flagged stock
+        is_blocked, reason = is_ticker_blacklisted("LOVELLO")
+        self.assertTrue(is_blocked, "LOVELLO should be flagged due to BSEC manipulation probe")
+        self.assertIn("BSEC", reason)
+
+        # Verify clean blue-chip moat is not falsely blacklisted
+        is_clean_jamuna, j_reason = is_ticker_blacklisted("JAMUNAOIL")
+        self.assertFalse(is_clean_jamuna, f"JAMUNAOIL falsely blacklisted: {j_reason}")
+
+        # Verify report generation
+        en_p, bn_p = generate_surveillance_reports()
+        self.assertTrue(en_p.exists(), "English surveillance report missing")
+        self.assertTrue(bn_p.exists(), "Bengali surveillance report missing")
+
 if __name__ == "__main__":
     unittest.main()
