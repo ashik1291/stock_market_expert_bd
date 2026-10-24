@@ -71,21 +71,41 @@ def evaluate_ticker_12factors(ticker: str, conn: sqlite3.Connection, reg: dict, 
     # 1. Fetch Company & Fundamental Data
     c_row = conn.execute("""
         SELECT c.ticker, c.name, c.sector, c.category, c.market_cap_cr,
-               c.sponsor_holding_pct, c.govt_holding_pct, c.institutional_pct, c.public_holding_pct,
-               f.eps, f.nav, f.pe_ratio, f.dividend_yield, f.roe, f.raw_data
+               c.sponsor_holding_pct, c.govt_holding_pct, c.institutional_pct, c.public_holding_pct
         FROM companies c
-        LEFT JOIN fundamentals f ON c.ticker = f.ticker
         WHERE c.ticker = ?
     """, (ticker,)).fetchone()
 
     if not c_row:
         return None
 
-    (t, name, sector, category, mcap, sponsor_pct, govt_pct, inst_pct, pub_pct,
-     eps, nav, pe, div_yield, roe, raw_data_str) = c_row
+    (t, name, sector, category, mcap, sponsor_pct, govt_pct, inst_pct, pub_pct) = c_row
+
+    # Fetch latest closing price from prices table
+    p_row = conn.execute("""
+        SELECT close FROM prices WHERE ticker = ? ORDER BY date DESC LIMIT 1
+    """, (ticker,)).fetchone()
+    price = float(p_row[0]) if (p_row and p_row[0]) else 0.0
+
+    # Fetch primary fundamental record
+    f_row = conn.execute("""
+        SELECT eps, nav, pe_ratio, dividend_yield, roe, raw_data, debt_equity, cash_flow_ops
+        FROM fundamentals
+        WHERE ticker = ? AND (pe_ratio IS NOT NULL OR raw_data LIKE '%"price":%')
+        ORDER BY id ASC LIMIT 1
+    """, (ticker,)).fetchone()
+
+    if not f_row:
+        f_row = conn.execute("""
+            SELECT eps, nav, pe_ratio, dividend_yield, roe, raw_data, debt_equity, cash_flow_ops
+            FROM fundamentals WHERE ticker = ? ORDER BY id DESC LIMIT 1
+        """, (ticker,)).fetchone()
+
+    (eps, nav, pe, div_yield, roe, raw_data_str, debt_equity, cash_flow_ops) = f_row if f_row else (0,0,0,0,0,None,None,None)
 
     raw = json.loads(raw_data_str) if raw_data_str else {}
-    price = float(raw.get("price") or 0.0)
+    if price == 0.0:
+        price = float(raw.get("price") or 0.0)
     eps = float(eps or 0.0)
     nav = float(nav or 0.0)
     pe = float(pe or 0.0) if pe else 0.0
@@ -433,16 +453,36 @@ def evaluate_ticker_12factors(ticker: str, conn: sqlite3.Connection, reg: dict, 
     weights = {k: v / w_sum for k, v in weights.items()}
     composite_score = round(sum(scores[k] * weights[k] for k in weights), 2)
 
-    # Disqualification overrides:
-    # If a bank fails NPL (NPL >= 6.0%), cap composite score at 35
+    # Disqualification overrides & Risk Filter Integration:
+    # 1. Bank NPL filter
     if sector == "Banking" and bank_npl is not None and bank_npl >= 6.0:
         composite_score = min(35.0, composite_score)
-    # If company has negative EPS, cap at 30
+    # 2. Negative EPS filter
     if eps <= 0:
         composite_score = min(30.0, composite_score)
-    # If company is high P/NAV bubble trap without ROE, cap at 45
-    if pb_ratio > 3.5 and roe < 15.0:
+    # 3. High P/NAV bubble trap without ROE
+    if pb_val > 3.5 and roe < 15.0:
         composite_score = min(45.0, composite_score)
+
+    # 4. Solvency & Debt Trap Filter (D/E > 0.80 for non-financials)
+    de_float = float(debt_equity) if debt_equity is not None else None
+    if de_float is not None and de_float > 0.80 and sector not in ("Banking", "Bank", "Financial In"):
+        composite_score = min(38.0, composite_score)
+        scores["debt_disqualified"] = True
+
+    # 5. Smart Money Distribution Trap & Anti-Manipulation Check
+    know_file = DATA_DIR / "knowledge" / ticker / "weekly.json"
+    if know_file.exists():
+        try:
+            with open(know_file, encoding="utf-8") as kf:
+                kd = json.load(kf)
+                sm_class = kd.get("precision", {}).get("smart_money", {}).get("classification")
+                if sm_class == "RETAIL_DISTRIBUTION_TRAP":
+                    composite_score = min(35.0, composite_score)
+                if kd.get("manipulation", {}).get("block_buy"):
+                    composite_score = min(25.0, composite_score)
+        except Exception:
+            pass
 
     return {
         "ticker": ticker,
