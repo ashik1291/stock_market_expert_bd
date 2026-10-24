@@ -113,7 +113,17 @@ def classify_horizons(records: list[dict]) -> dict:
         earn_acc    = prec.get("earnings_acceleration", {})
 
         # 0. Risk Blockades
-        if r.get("signal") == "HOLD_MANIPULATION_RISK" or r.get("manipulation_risk") == "high":
+        is_blocked = False
+        try:
+            from anti_manipulation_engine import is_ticker_blacklisted
+            is_blocked, bl_reason = is_ticker_blacklisted(ticker)
+        except Exception:
+            pass
+
+        if is_blocked or r.get("signal") == "HOLD_MANIPULATION_RISK" or r.get("manipulation_risk") == "high":
+            if is_blocked:
+                r["manipulation_risk"] = "high"
+                r["manipulation_flags"] = [bl_reason]
             manip_risk.append(r)
             continue
 

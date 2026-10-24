@@ -49,6 +49,7 @@ def execute_daily_alpha_cycle():
 
     # Step 4: Audit Footnotes & Regulatory Disclosures
     run_step("5. Parse Auditor Disclosures & Regulatory Risk Flags", "auditor_footnote_parser.py", [])
+    run_step("5b. Full Market Surveillance & Anti-Manipulation Scanner", "anti_manipulation_engine.py", [])
 
     # Step 5: Advance V2 Hash-Chained Forward Ledger
     run_step("6. Advance V2 Hash-Chained Forward Ledger & Log Full Universe", "forward_test_ledger_v2.py", [])
