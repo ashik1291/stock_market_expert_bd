@@ -60,6 +60,12 @@ Knowledge base of real-world lessons, verified endpoints, and operational guardr
 | **2026-10-14** | Missing quarterly and historical financials | Scraper only grabbed top-level snapshot tags, missing DSE's Next.js SSR state arrays | Extracted `multiYearFinancials` (8-year audited history) and `interimFinancials` (live Q1-Q3 EPS) in `scraper.py` and `processor.py` |
 | **2026-10-14** | Numbers parsed as future calendar years (e.g. 2046, 2065) | Unbounded 4-digit regex matched market cap / share counts | Bounded fiscal year parser strictly to `2015 <= year <= current_year + 1` |
 | **2026-10-14** | Windows dead sandbox proxy blocked scraping | Default requests session inherited broken HTTP proxy env vars | Enforced `SESSION.trust_env = False` across all scraper network sessions |
+| **2026-10-24** | Fake CFO Quality Bypass (`CAT_A_REGULAR`) | Over-reliance on docstring/function presence without querying SQLite database state (`cash_flow_ops` was 90% NULL) | Extracted audited `NOCFPS` from DSE Next.js notices (`Consolidated NOCFPS was Tk. XX.XX`), deleted fake `CAT_A_REGULAR` bypass, enforced strict NOCFPS/EPS >= 0.75x cash earnings quality |
+| **2026-10-24** | Stale Macro T-Bill Rate (11.65% vs 8.84%) | Believing external BB scraper succeeded despite HTTP 403 WAF blocking; silent fallback to stale benchmarks distorted ERP | Updated risk-free rate to verified 8.84% auction cut-off; added resilient `--update t_bill_91d 8.84` CLI tool; adjusted hurdle rate dynamically |
+| **2026-10-24** | Synthetic Record Dates in Corporate Actions | `{year}-11-15` hardcoded as estimated record date for 351 corporate actions, resulting in zero dividend credits | Scraped real record dates and cash dividend percentages from official DSE PSI disclosures; ingested exact notice dates into SQLite |
+| **2026-10-24** | Nomenclature Inflation ("Order Book Depth" vs OHLCV) | Dressing up academic Corwin-Schultz (2012) High-Low spread proxy as live Level-2 market depth | Explicitly renamed/documented as "Historical OHLCV Liquidity & Execution Friction Estimator"; calibrated single-tranche passive limit orders for retail tickets <= ৳100,000 |
+| **2026-10-24** | Empty Language Support | `profile.json` had `"language": "bengali"`, but zero Python scripts read this setting; all reports were 100% English | Built native bilingual report generators across screener, liquidity, surveillance, and monthly asset plans |
+| **2026-10-25** | Lack of Full-Universe Anomaly Detection | Manipulation detector only ran per-ticker inside knowledge base generator; no daily full-market surveillance | Built `anti_manipulation_engine.py` scanning all 395 tickers daily for Volume Anomaly Ratio >= 3x-5x, speculative junk pumps, and integrating BSEC regulatory probe flags directly into `is_ticker_blacklisted()` |
 
 ---
 
@@ -116,6 +122,13 @@ Knowledge base of real-world lessons, verified endpoints, and operational guardr
     - **Independent Period Power Math**: Statistical power requires independent time periods ($T$), not stock-pairs. For 80% power at $IC = 0.03$ and $sd(IC) = 0.10$, requires $T \approx 87$ independent periods (**4.8 years** at 14d rebalance; **22 years** at 63d). True alpha validation cannot be rushed.
     - **Append-Only Immutable Ledger (Epoch 2)**: The forward paper test (`forward_test_ledger_v2.json`) is strictly append-only, sealed with live UTC system timestamps, benchmarks against an Equal-Weighted Total Return Universe, and tracks 52 deflated trial configurations.
     - **The Subtractive Edge**: The true role of the engine is not predicting short-term prices, but **eliminating the 90% worst stocks** on DSE (debt traps, zombie firms, retail pumps) and enforcing disciplined 5-year accumulation in zero-debt, cash-generating moats.
+
+16. **Cognitive Bias & Epistemic Humility Guardrails (October 2026 Audit Mandate)**:
+    - **Zero Docstring Faith**: Never assume a function works because its docstring or name sounds sophisticated. Query the SQLite database and inspect the actual rows before declaring functionality.
+    - **No Silent Bypasses**: Never write fallback code that marks missing data as 'PASS' or 'REGULAR'. Missing critical forensic data (like cash flow) MUST trigger failure, not a bypass.
+    - **Radical Nomenclature Honesty**: If a metric is a statistical proxy (e.g. Corwin-Schultz spread proxy), name it as a proxy. Never market an estimation as 'Level-2 Order Book'.
+    - **End-to-End Bilingual Verification**: If the user selects a language, the output reports must be verified in that language, not just stored in a dormant JSON profile.
+    - **Independent Adversarial Auditing**: Regularly run independent subagent audits with read-only access to verify code vs database truth.
 
 ---
 
