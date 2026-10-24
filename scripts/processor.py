@@ -184,6 +184,28 @@ CREATE INDEX IF NOT EXISTS idx_recommendations_ticker ON recommendations(ticker)
 """
 
 
+def _next_trading_day_for_migration(conn: sqlite3.Connection, iso_date: str) -> str:
+    """Nearest trading day on or after iso_date via trading_calendar, fallback Mon-Fri."""
+    try:
+        row = conn.execute(
+            "SELECT date FROM trading_calendar WHERE date >= ? AND is_trading_day = 1 ORDER BY date ASC LIMIT 1",
+            (iso_date,),
+        ).fetchone()
+        if row and row[0]:
+            return str(row[0])
+    except Exception:
+        pass
+    try:
+        d = datetime.date.fromisoformat(iso_date[:10])
+        for _ in range(7):
+            d += datetime.timedelta(days=1)
+            if d.weekday() < 5:
+                return d.isoformat()
+        return d.isoformat()
+    except Exception:
+        return iso_date
+
+
 def get_db() -> sqlite3.Connection:
     PROC_DIR.mkdir(parents=True, exist_ok=True)
     conn = sqlite3.connect(DB_PATH)
@@ -201,12 +223,85 @@ def get_db() -> sqlite3.Connection:
     except Exception:
         pass
     conn.executescript(DDL)
-    # Backfill + idempotent indexes (DDL may have already created them)
+    # Idempotent indexes (DDL may have already created them)
     try:
-        conn.execute("UPDATE fundamentals_pit SET tradable_date = COALESCE(publication_date, snapshot_date) WHERE tradable_date IS NULL")
         conn.execute("CREATE INDEX IF NOT EXISTS idx_pit_publication_date ON fundamentals_pit(publication_date)")
         conn.execute("CREATE INDEX IF NOT EXISTS idx_pit_tradable_date    ON fundamentals_pit(tradable_date)")
         conn.commit()
+    except Exception:
+        pass
+    # Backfill legacy rows where disclosure-lag columns are NULL/placeholder:
+    # publication_source IS NULL means row predates PIT lag model; recompute
+    # annual (Q4) -> snapshot+75d next trading day; interim (Q1-3) -> +45d next trading day
+    # tradable = next trading day after publication_date
+    try:
+        legacy = conn.execute(
+            "SELECT id, snapshot_date, fiscal_quarter FROM fundamentals_pit "
+            "WHERE publication_source IS NULL"
+        ).fetchall()
+        if legacy:
+            for r in legacy:
+                rid, snap, fq = r[0], r[1], r[2]
+                # snap may be malformed (e.g. 2015.3-06-30); skip if not ISO
+                try:
+                    base = datetime.date.fromisoformat(str(snap)[:10])
+                except Exception:
+                    continue
+                lag = 75 if (fq == 4 or fq is None) else 45
+                filing = "annual" if (fq == 4 or fq is None) else "interim"
+                pub_raw = (base + datetime.timedelta(days=lag)).isoformat()
+                pub = _next_trading_day_for_migration(conn, pub_raw)
+                trad = _next_trading_day_for_migration(
+                    conn, (datetime.date.fromisoformat(pub) + datetime.timedelta(days=1)).isoformat()
+                )
+                conn.execute(
+                    "UPDATE fundamentals_pit SET publication_date=?, tradable_date=?, "
+                    "filing_type=COALESCE(filing_type, ?), publication_is_estimated=1, "
+                    "publication_source='estimated' WHERE id=?",
+                    (pub, trad, filing, rid),
+                )
+            conn.commit()
+        # Any remaining rows with tradable_date still NULL but publication_date set
+        # (e.g. rows inserted with old tradable=pub backfill) -> push tradable to next trading day after pub
+        remaining = conn.execute(
+            "SELECT id, publication_date FROM fundamentals_pit WHERE tradable_date IS NULL AND publication_date IS NOT NULL"
+        ).fetchall()
+        for r in remaining:
+            rid, pub = r[0], r[1]
+            try:
+                trad = _next_trading_day_for_migration(
+                    conn, (datetime.date.fromisoformat(str(pub)[:10]) + datetime.timedelta(days=1)).isoformat()
+                )
+            except Exception:
+                trad = pub
+            conn.execute("UPDATE fundamentals_pit SET tradable_date=? WHERE id=?", (trad, rid))
+        if remaining:
+            conn.commit()
+        # Legacy tradable == snapshot rows that should have lag but publication_source already set to estimated
+        # with pub==snapshot (first backfill was naive). Fix those too.
+        naive = conn.execute(
+            "SELECT id, snapshot_date, publication_date, tradable_date, fiscal_quarter "
+            "FROM fundamentals_pit WHERE publication_source='estimated' "
+            "AND publication_date = snapshot_date"
+        ).fetchall()
+        for r in naive:
+            rid, snap, _, _, fq = r[0], r[1], r[2], r[3], r[4]
+            try:
+                base = datetime.date.fromisoformat(str(snap)[:10])
+            except Exception:
+                continue
+            lag = 75 if (fq == 4 or fq is None) else 45
+            pub_raw = (base + datetime.timedelta(days=lag)).isoformat()
+            pub = _next_trading_day_for_migration(conn, pub_raw)
+            trad = _next_trading_day_for_migration(
+                conn, (datetime.date.fromisoformat(pub) + datetime.timedelta(days=1)).isoformat()
+            )
+            conn.execute(
+                "UPDATE fundamentals_pit SET publication_date=?, tradable_date=? WHERE id=?",
+                (pub, trad, rid),
+            )
+        if naive:
+            conn.commit()
     except Exception:
         pass
     return conn
