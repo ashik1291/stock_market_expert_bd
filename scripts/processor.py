@@ -411,7 +411,7 @@ def parse_fundamentals_row(ticker: str, raw: dict) -> dict:
         "public_pct":     ["public_holding_pct", "public_%", "public_pct"],
         "revenue_cr":     ["revenue", "net_revenue", "turnover", "total_revenue", "net_sales"],
         "net_profit_cr":  ["net_profit", "profit_after_tax", "pat", "net_income"],
-        "cash_flow_ops":  ["cash_flow_from_operations", "cfo", "operating_cash_flow"],
+        "cash_flow_ops":  ["cash_flow_from_operations", "cfo", "operating_cash_flow", "nocfps"],
     }
 
     result = {"ticker": ticker}
@@ -424,6 +424,21 @@ def parse_fundamentals_row(ticker: str, raw: dict) -> dict:
             if alias in raw_norm:
                 result[canonical] = _to_float(raw_norm[alias])
                 break
+
+    # Fallback profit from multi_year_financials (profit in mn -> / 10 for Cr)
+    if result.get("net_profit_cr") is None:
+        my = raw.get("multi_year_financials", [])
+        if my and isinstance(my, list):
+            latest_my = my[-1]
+            p = latest_my.get("profit") or latest_my.get("profitForYear")
+            if p:
+                result["net_profit_cr"] = round(float(p) / 10.0, 2)
+
+    # Fallback cash_flow_ops from NOCFPS if present
+    if result.get("cash_flow_ops") is None:
+        nocf = raw.get("nocfps") or raw_norm.get("nocfps")
+        if nocf is not None:
+            result["cash_flow_ops"] = _to_float(nocf)
 
     if "name" in raw_norm and raw_norm["name"]:
         result["name"] = str(raw_norm["name"]).strip()
@@ -625,6 +640,12 @@ def upsert_fundamentals(conn: sqlite3.Connection, parsed: dict, raw: dict):
             my_year = my_item.get("year")
             if not my_year:
                 continue
+            try:
+                my_year = int(float(str(my_year).strip()))
+            except Exception:
+                continue
+            if my_year < 1990 or my_year > 2050:
+                continue
             my_eps = _to_float(my_item.get("epsBasic") or my_item.get("eps"))
             my_nav = _to_float(my_item.get("nav"))
             my_pe = _to_float(my_item.get("pe"))
@@ -744,7 +765,7 @@ def upsert_fundamentals(conn: sqlite3.Connection, parsed: dict, raw: dict):
                                  publication_is_estimated, publication_source, ingest_id,
                                  fiscal_year, fiscal_quarter,
                                  eps, source_hash, created_at)
-                            VALUES (?,?,?,?,?,?,?,?,?,?,?,?)
+                            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)
                             ON CONFLICT(ticker, snapshot_date) DO UPDATE SET
                                 publication_date         = excluded.publication_date,
                                 tradable_date            = excluded.tradable_date,

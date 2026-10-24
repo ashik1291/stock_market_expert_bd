@@ -52,7 +52,6 @@ CANONICAL_SERVED_PARAMS = {
         # without over-concentration in shallow value. This is a COMMENT/NOTE ONLY — the
         # active cap remains 10% until PIT dividend/cover completeness justifies the MoS bump.
         "max_single_stock_pct": 10.0,
-        "max_single_stock_mos_note": "cap 10% -> 20-25% with MoS weighting when PIT complete (comment only, not active)",
         "round_trip_fee_pct": ROUND_TRIP_COST_PCT,
     },
     "pre_registration_spec_string": CANONICAL_SPEC,

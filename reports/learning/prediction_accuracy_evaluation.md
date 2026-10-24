@@ -1,97 +1,43 @@
-# 🔬 DSE Empirical Bayes Online Calibration & Expectancy Audit
-**Audit Timestamp:** 2026-10-22 15:17:55 | **Calibration Engine:** Empirical Bayes Shrinkage & Expectancy
+# DSE Phase-2 Learning Audit (Net Excess vs EQW)
+**Audit Timestamp:** 2026-10-24 22:34:10
+**Model:** `frozen_epoch2_pit_v2`
+**Label:** `net_excess_vs_eqw_h21_minus_0.833pct`
 
 ---
-## 1. Statistical Performance, Expectancy & Probability Calibration
-- **Evaluated Closed Calls**: **271**
-- **Empirical Win Rate**: **63.1%** *(Wilson 95% Confidence Interval: [57.2% – 68.6%])*
-- **Brier Calibration Score**: **0.2360** *(Benchmark: 0.25 is uninformative coin toss, <0.20 is sharp)*
-- **Average Win**: **+4.14%** | **Average Loss**: **-3.46%**
-- **Round-Trip Friction (Brokerage 0.8% + CDBL 0.03%)**: **-0.83%**
-- **Net Mathematical Trade Expectancy**: **+0.51% per trade**
-- **Successful Calls**: **171** | **Mistakes / Stopped Out**: **100**
+## 1. Performance
+- Evaluated closed calls: **146**
+- Hit rate (net excess sign): **60.3%** CI [52.2% – 67.9%]
+- Mean net excess: **0.0%**
+- Round-trip cost charged: **0.833%**
+- Horizon: **21** trading bars
+- Brier: **0.2292**
 
-### Reliability Calibration Table
-| Confidence Bin | Prediction Count | Mean Predicted Prob % | Observed Actual Hit Rate % | Calibration Status |
-|---|---|---|---|---|
-| **50-65%** | 60 | 50.9% | **38.3%** | ⚠️ Overconfident |
-| **65-80%** | 165 | 69.3% | **75.2%** | ✅ Well-Calibrated |
-| **80-100%** | 46 | 85.9% | **52.2%** | ⚠️ Overconfident |
+## 2. Factor Weights (Beta[2,2] prior @ 50%, floor 0)
+| Factor | Weight |
+|---|---|
+| debt_npl_weight | 0.817 |
+| valuation_mos_weight | 0.817 |
+| rsi_momentum_weight | 1.094 |
+| smart_money_weight | 0.817 |
 
----
-## 2. Empirical Bayes Calibrated Indicator Weights (Shrinkage Prior: Beta[12, 8])
-Weights shrunk toward conservative prior (60% baseline) to prevent small-sample overfitting:
+## 3. Recent Mistakes
 
-| Factor / Indicator | Dynamic Weight | Calibration Method | Bounded Range |
-|---|---|---|---|
-| **Bank Asset Quality & NPL Filter** | **0.82x** | Empirical Bayes Shrinkage | [0.60x – 1.40x] |
-| **Valuation & Margin of Safety** | **0.82x** | Empirical Bayes Shrinkage | [0.60x – 1.40x] |
-| **Smart Money Delta** | **0.82x** | Empirical Bayes Shrinkage | [0.60x – 1.40x] |
-| **Corporate Governance (AAA/AA)** | **1.10x** | Empirical Bayes Shrinkage | [0.60x – 1.40x] |
-| **MACD Trend Structure** | **1.00x** | Baseline Baseline | [0.80x – 1.20x] |
-| **RSI Momentum Oversold** | **1.09x** | Downweighted on bear false-breaks | [0.50x – 1.00x] |
-| **Systemic Macro Bias** | **1.00x** | Macro risk adjustment | [0.80x – 1.20x] |
+- `MPETROLEUM` 2026-10-06 RISE: Flat/down drift: Closed at ৳205.0 (-0.1%)
+- `LHB` 2026-10-06 RISE: Flat/down drift: Closed at ৳52.0 (-0.38%)
+- `OLYMPIC` 2026-10-06 RISE: Flat/down drift: Closed at ৳141.0 (-0.98%)
+- `RELIANCINS` 2026-10-06 RISE: Stopped out: Low ৳88.7 breached stop ৳97.15 (Drawdown -12.35%)
+- `AAMRANET` 2026-10-06 RISE: Stopped out: Low ৳17.9 breached stop ৳17.95 (Drawdown -4.28%)
+- `WALTONHIL` 2026-10-06 RISE: Flat/down drift: Closed at ৳329.8 (-0.57%)
+- `ACIFORMULA` 2026-10-06 FALL: Bearish call failed: Price rallied +7.09% above entry
+- `ARAMITCEM` 2026-10-06 FALL: Bearish call failed: Price rallied +7.34% above entry
 
----
-## 3. Mistake Log & Root-Cause Diagnostics (Learning from Errors)
-
-Recent false predictions identified and heuristics integrated into system guardrails:
-
-### ❌ AAMRANET — 2025-12-10 (RISE Call)
-- **Predicted**: RISE (85.0%) @ ৳18.0
-- **Realized Performance**: Realized Return: **-11.11%** (Max Drawdown: **-12.78%**)
-- **Diagnosis / Mistake Reason**: `Stopped out: Low ৳15.7 breached stop ৳17.46 (Drawdown -12.78%)`
-- **Corrective Heuristic**: Downweighted isolated technical indicators without smart money confirmation.
-
-### ❌ AAMRANET — 2026-02-15 (RISE Call)
-- **Predicted**: RISE (85.0%) @ ৳17.8
-- **Realized Performance**: Realized Return: **-8.99%** (Max Drawdown: **-15.73%**)
-- **Diagnosis / Mistake Reason**: `Stopped out: Low ৳15.0 breached stop ৳17.27 (Drawdown -15.73%)`
-- **Corrective Heuristic**: Downweighted isolated technical indicators without smart money confirmation.
-
-### ❌ AAMRANET — 2026-08-02 (RISE Call)
-- **Predicted**: RISE (85.0%) @ ৳21.4
-- **Realized Performance**: Realized Return: **-15.42%** (Max Drawdown: **-20.56%**)
-- **Diagnosis / Mistake Reason**: `Stopped out: Low ৳17.0 breached stop ৳20.76 (Drawdown -20.56%)`
-- **Corrective Heuristic**: Downweighted isolated technical indicators without smart money confirmation.
-
-### ❌ AAMRATECH — 2026-05-10 (FALL Call)
-- **Predicted**: FALL (70.0%) @ ৳11.8
-- **Realized Performance**: Realized Return: **29.66%** (Max Drawdown: **-0.85%**)
-- **Diagnosis / Mistake Reason**: `Bearish call failed: Price rallied +33.9% above entry`
-- **Corrective Heuristic**: Downweighted isolated technical indicators without smart money confirmation.
-
-### ❌ ACI — 2025-10-15 (FALL Call)
-- **Predicted**: FALL (70.0%) @ ৳167.9
-- **Realized Performance**: Realized Return: **4.88%** (Max Drawdown: **-1.67%**)
-- **Diagnosis / Mistake Reason**: `Bearish call failed: Price rallied +11.32% above entry`
-- **Corrective Heuristic**: Downweighted isolated technical indicators without smart money confirmation.
-
-### ❌ ACI — 2025-12-10 (FALL Call)
-- **Predicted**: FALL (70.0%) @ ৳189.5
-- **Realized Performance**: Realized Return: **9.13%** (Max Drawdown: **-0.21%**)
-- **Diagnosis / Mistake Reason**: `Bearish call failed: Price rallied +13.98% above entry`
-- **Corrective Heuristic**: Downweighted isolated technical indicators without smart money confirmation.
-
-### ❌ ACIFORMULA — 2025-12-10 (FALL Call)
-- **Predicted**: FALL (70.0%) @ ৳128.8
-- **Realized Performance**: Realized Return: **1.63%** (Max Drawdown: **-2.95%**)
-- **Diagnosis / Mistake Reason**: `Bearish call failed: Price rallied +7.84% above entry`
-- **Corrective Heuristic**: Downweighted isolated technical indicators without smart money confirmation.
-
-### ❌ ACIFORMULA — 2026-05-10 (FALL Call)
-- **Predicted**: FALL (70.0%) @ ৳140.1
-- **Realized Performance**: Realized Return: **6.42%** (Max Drawdown: **-1.71%**)
-- **Diagnosis / Mistake Reason**: `Bearish call failed: Price rallied +6.64% above entry`
-- **Corrective Heuristic**: Downweighted isolated technical indicators without smart money confirmation.
+## 4. Wins
+- `JAMUNAOIL` 2026-10-06: net_excess=None%
+- `PADMAOIL` 2026-10-06: net_excess=None%
+- `GP` 2026-10-06: net_excess=None%
+- `SQURPHARMA` 2026-10-06: net_excess=None%
+- `GENEXIL` 2026-10-06: net_excess=None%
+- `PREMIERCEM` 2026-10-06: net_excess=None%
 
 ---
-
-## 4. Top Successful High-Confidence Calls
-
-- 🟢 **AAMRANET** (2025-10-15): Predicted **RISE** @ ৳19.0 $ightarrow$ Max Gain: **+12.63%** (Target Achieved).
-- 🟢 **AAMRANET** (2026-05-10): Predicted **RISE** @ ৳15.9 $ightarrow$ Max Gain: **+27.67%** (Target Achieved).
-- 🟢 **AAMRATECH** (2025-10-15): Predicted **FALL** @ ৳12.4 $ightarrow$ Max Gain: **+6.45%** (Target Achieved).
-- 🟢 **AAMRATECH** (2025-12-10): Predicted **FALL** @ ৳11.7 $ightarrow$ Max Gain: **+6.84%** (Target Achieved).
-- 🟢 **AAMRATECH** (2026-02-15): Predicted **FALL** @ ৳12.5 $ightarrow$ Max Gain: **+27.2%** (Target Achieved).
-- 🟢 **AAMRATECH** (2026-08-02): Predicted **FALL** @ ৳21.5 $ightarrow$ Max Gain: **+12.09%** (Target Achieved).
+Epoch-1 archive: `data/learning/prediction_ledger_epoch1_invalid.json` (do not train).

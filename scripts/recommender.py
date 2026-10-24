@@ -735,6 +735,63 @@ def generate_monthly_asset_plan(recs: dict) -> str:
     with open(plan_path, "w", encoding="utf-8") as f:
         f.write("\n".join(lines))
     log.info(f"Monthly asset plan published to {plan_path}")
+
+    # Generate Bengali Version
+    bn_lines = []
+    bn_lines.append(f"# 🏛️ মাসিক বিনিয়োগ ও ক্যাপিটাল সঞ্চয়ন লেজার — {month_str}\n")
+    bn_lines.append(f"**সময়কাল**: {month_str} মাস | **কৌশল**: ভ্যালু মোটস, ঋণমুক্ত কম্পাউন্ডিং, শীর্ষ ব্যবস্থাপনা\n")
+    bn_lines.append("## 💼 ১. টার্গেট পোর্টফোলিও বরাদ্দ মডেল\n")
+    bn_lines.append("| কৌশল দিগন্ত | লক্ষ্য বরাদ্দ | মূল উদ্দেশ্য | ঝুঁকি ব্যবস্থাপনা বিধি |")
+    bn_lines.append("|---|---|---|---|")
+    bn_lines.append("| **দীর্ঘমেয়াদী কোর সম্পদ** | **৬০%** | সম্পদ সুরক্ষা, অডিটেড কম-ঋণ মোটস, ডিভিডেন্ড পুনঃবিনিয়োগ | ১–৫ বছর ধারণ; ৩-৫% মার্কেট ডিপে ট্রাঞ্চ সঞ্চয় |")
+    bn_lines.append("| **মিড-টার্ম পজিশন সুইং** | **৩০%** | মূলধন বৃদ্ধি (+১২% থেকে +২০%), সেক্টর রোটেশন সাইকেল | ১–৬ মাস ধারণ; কঠোর ৫% ট্রেইলিং স্টপ শৃঙ্খলা |")
+    bn_lines.append("| **ক্যাশ ও ট্যাকটিক্যাল স্ক্যাল্প** | **১০%** | ব্ল্যাক সোয়ান ইভেন্টের জন্য ক্যাশ পাউডার, দ্রুত ২-৪% স্ক্যাল্প | প্রতি স্ক্যাল্পে মোট মূলধনের ২%-এর বেশি ঝুঁকি নয় |")
+    bn_lines.append("\n---\n")
+
+    bn_lines.append("## 🏆 ২. শীর্ষ দীর্ঘমেয়াদী কোর সম্পদ (অডিটেড লিডারশিপ ও কম ঋণ)\n")
+    if h["long_term"]:
+        bn_lines.append("| Ticker | এন্ট্রি জোন | অভিমুখ ও সম্ভাবনা | আপসাইড / ডাউনসাইড | P/E | Debt/Equity | ট্রাঞ্চ সঞ্চয় | টার্গেট প্রফিট |")
+        bn_lines.append("|---|---|---|---|---|---|---|---|")
+        for r in h["long_term"][:5]:
+            entry = r.get("entry") or 0.0
+            zone = f"৳{round(entry*0.98, 1)}–৳{round(entry*1.01, 1)}"
+            tgt  = f"৳{r.get('target_long', round(entry*1.3, 1))}"
+            de   = r.get("debt_equity_val", "Low")
+            _rp = r.get("rise_prob")
+            traj_str = f"{r.get('dir_icon') or '—'} ({_rp if _rp is not None else '—'}%)"
+            potential_str = f"{r.get('lt_upside', '+30%')} / {r.get('lt_downside', '-10%')}"
+            bn_lines.append(f"| **{r['ticker']}** | {zone} | {traj_str} | {potential_str} | {_fmt_pe(r['pe'])} | D/E: {de} | ২০% প্রতি ট্রাঞ্চ | {tgt} |")
+        bn_lines.append("")
+    else:
+        bn_lines.append("> এই মাসে কোনো স্টক দীর্ঘমেয়াদী কোর হিসেবে উত্তীর্ণ হয়নি।\n")
+
+    bn_lines.append("## 🚀 ৩. শীর্ষ মিড-টার্ম সাইকেল সুইং ট্রেড (১–৬ মাস)\n")
+    if h["mid_term"]:
+        bn_lines.append("| Ticker | এন্ট্রি দর | অভিমুখ ও সম্ভাবনা | লক্ষ্য (+১৫%) | ট্রেইলিং স্টপ (-৫%) | রিস্ক/রিওয়ার্ড | P/E |")
+        bn_lines.append("|---|---|---|---|---|---|---|")
+        for r in h["mid_term"][:5]:
+            entry = f"৳{r['entry']:.1f}" if r['entry'] else "—"
+            tgt   = f"৳{r['target_mid']:.1f}" if r.get('target_mid') else "—"
+            stop  = f"৳{r['trailing_stop']:.1f}" if r.get('trailing_stop') else "—"
+            _rp = r.get("rise_prob")
+            traj_str = f"{r.get('dir_icon') or '—'} {_rp if _rp is not None else '—'}%"
+            bn_lines.append(f"| **{r['ticker']}** | {entry} | {traj_str} | **{tgt}** | {stop} | {r.get('mt_rr', '3.0x')} | {_fmt_pe(r['pe'])} |")
+        bn_lines.append("")
+    else:
+        bn_lines.append("> কোনো মিড-টার্ম সুইং সেটআপ সক্রিয় নেই।\n")
+
+    bn_lines.append("## 🛡️ ৪. মাসিক রিস্ক ফিল্টার ও সুশাসন নীতিমালা\n")
+    bn_lines.append("১. **ঋণ সীমা**: বর্তমান উচ্চ সুদের হারে Debt/Equity > ০.৮০ বা অতিরিক্ত ঋণযুক্ত নন-ফাইন্যান্সিয়াল কোম্পানি বর্জন করুন।")
+    bn_lines.append("২. **বাস্তব ক্যাশ ফ্লো আবশ্যক**: শেয়ার প্রতি ঘোষিত ডিভিডেন্ড অবশ্যই অপারেটিং ক্যাশ ফ্লো (NOCFPS) দ্বারা ১০০% সুরক্ষিত হতে হবে।")
+    bn_lines.append("৩. **স্মার্ট মানি অ্যালাইনমেন্ট**: যে সব শেয়ারে সাধারণ রিটেইল হোল্ডিং হঠাৎ ১.৫% এর বেশি বেড়েছে কিন্তু বিদেশি/প্রতিষ্ঠান বিক্রি করেছে তা বর্জন করুন।")
+    bn_lines.append("৪. **লিকুইডিটি গার্ড**: স্লিপেজ কমাতে কোনো একক অর্ডার কখনোই ২০ দিনের গড় দৈনিক ট্রেডেড ভলিউমের ৫%-এর বেশি হওয়া উচিত নয়।")
+    bn_lines.append("\n---\n> DSE কোয়ান্টেটিভ ইনভেস্টমেন্ট ইঞ্জিন দ্বারা প্রকাশিত।")
+
+    bn_plan_path = out_dir / f"{month_str}_asset_plan_bn.md"
+    with open(bn_plan_path, "w", encoding="utf-8") as f:
+        f.write("\n".join(bn_lines))
+    log.info(f"Bengali monthly asset plan published to {bn_plan_path}")
+
     return "\n".join(lines), plan_path
 
 
@@ -765,6 +822,8 @@ def run_recommender(timeframe: str = "weekly", tickers: list[str] = None):
             inserted_count = 0
             for h_key, h_list in recs.get("horizons", {}).items():
                 for item in h_list:
+                    if not isinstance(item, dict):
+                        continue
                     ticker = item.get("ticker")
                     if not ticker:
                         continue

@@ -41,23 +41,38 @@ def execute_daily_alpha_cycle():
     run_step("1. Scrape Daily Price Snapshots", "scraper.py", ["price"])
     run_step("2. Ingest PIT Snapshots & Audits", "processor.py", [])
 
-    # Step 2: Audit Footnotes & Regulatory Disclosures
-    run_step("3. Parse Auditor Disclosures & Regulatory Risk Flags", "auditor_footnote_parser.py", [])
+    # Step 2: Ingest Bangladesh Bank Macro Benchmark Rates
+    run_step("3. Sync Bangladesh Bank Macro Rates & Hurdle Engine", "macro_rate_feed.py", [])
 
-    # Step 3: Advance V2 Hash-Chained Forward Ledger
-    run_step("4. Advance V2 Hash-Chained Forward Ledger & Log Full Universe", "forward_test_ledger_v2.py", [])
+    # Step 3: Sync Corporate Actions & Process Cash Dividends
+    run_step("4. Corporate Actions & Idempotent Dividend Distribution", "corporate_action_processor.py", [])
 
-    # Step 4: Run Reinforcement Learning Engine to learn from past mistakes
-    run_step("5. Calibrate Empirical Bayes Weights & Evaluate Accuracy", "reinforcement_learning_engine.py", ["evaluate"])
+    # Step 4: Audit Footnotes & Regulatory Disclosures
+    run_step("5. Parse Auditor Disclosures & Regulatory Risk Flags", "auditor_footnote_parser.py", [])
 
-    # Step 5: Refresh Knowledge Base via Analyzer for active universe
-    run_step("6. Update Scoring & Knowledge Base (analyzer.py all weekly)", "analyzer.py", ["all", "weekly"])
+    # Step 5: Advance V2 Hash-Chained Forward Ledger
+    run_step("6. Advance V2 Hash-Chained Forward Ledger & Log Full Universe", "forward_test_ledger_v2.py", [])
 
-    # Step 6: Run Daily Directional Scanner with latest learned weights
-    run_step("7. Scan Daily Directional Rise/Fall with Moat & Debt Gates", "daily_rise_fall_scanner.py", ["weekly"])
+    # Step 6: Run Reinforcement Learning Engine to learn from past mistakes
+    run_step("7. Calibrate Empirical Bayes Weights & Evaluate Accuracy", "reinforcement_learning_engine.py", ["evaluate"])
 
-    # Step 7: Update structured recommendations in SQLite DB
-    run_step("8. Refresh Tri-Horizon Recommendations & Position Plan", "recommender.py", ["weekly"])
+    # Step 7: Refresh Knowledge Base via Analyzer for active universe
+    run_step("8. Update Scoring & Knowledge Base (analyzer.py all weekly)", "analyzer.py", ["all", "weekly"])
+
+    # Step 8: Run Daily Directional Scanner with latest learned weights
+    run_step("9. Scan Daily Directional Rise/Fall with Moat & Debt Gates", "daily_rise_fall_scanner.py", ["weekly"])
+
+    # Step 9: Run 5-Factor Fundamental Value Screener with Macro ERP Hurdle
+    run_step("10. 5-Factor Fundamental Moat Screener with Macro ERP", "five_factor_fundamental_screener.py", [])
+
+    # Step 10: Run Order Book Depth & Execution Liquidity Matrix
+    run_step("11. Order Book Depth & Market Impact Analyzer", "orderbook_depth_analyzer.py", [])
+
+    # Step 11: Update structured recommendations in SQLite DB
+    run_step("12. Refresh Tri-Horizon Recommendations & Position Plan", "recommender.py", ["weekly"])
+
+    # Step 12: Nightly System Integrity Harness Verification
+    run_step("13. Execute System Integrity Harness (9/9 Gatekeeper)", "integrity_harness.py", [])
 
     print("\n" + "=" * 80)
     print("✅ AUTO-ALPHA CYCLE COMPLETE: SYSTEM LEARNED & FACTOR LOGS ADVANCED")

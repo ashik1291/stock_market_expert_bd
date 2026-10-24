@@ -35,24 +35,32 @@ def get_portfolio_path() -> Path:
     return PORTFOLIO_DIR / "portfolio.json"
 
 
-def load_portfolio() -> dict:
-    path = get_portfolio_path()
-    if path.exists():
-        with open(path, encoding="utf-8") as f:
-            return json.load(f)
-    return {
-        "total_capital_bdt": 500000.0,
-        "cash_balance_bdt": 500000.0,
-        "created_at": datetime.datetime.utcnow().isoformat(),
-        "holdings": [],
-        "history": []
-    }
+def load_portfolio(user_id: str = "default_user") -> dict:
+    try:
+        from user_manager import load_user_portfolio
+        return load_user_portfolio(user_id)
+    except Exception:
+        path = get_portfolio_path()
+        if path.exists():
+            with open(path, encoding="utf-8") as f:
+                return json.load(f)
+        return {
+            "total_capital_bdt": 500000.0,
+            "cash_balance_bdt": 500000.0,
+            "created_at": datetime.datetime.utcnow().isoformat(),
+            "holdings": [],
+            "history": []
+        }
 
 
-def save_portfolio(p: dict):
-    path = get_portfolio_path()
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(p, f, indent=2)
+def save_portfolio(p: dict, user_id: str = "default_user"):
+    try:
+        from user_manager import save_user_portfolio
+        save_user_portfolio(user_id, p)
+    except Exception:
+        path = get_portfolio_path()
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(p, f, indent=2)
 
 
 def set_capital(amount_bdt: float):
@@ -169,6 +177,60 @@ def generate_exact_position_plan(capital_bdt: float = None):
     with open(out_file, "w", encoding="utf-8") as f:
         f.write(report_text)
     print(f"\n[Saved to {out_file}]")
+
+    # Native Bengali companion plan
+    bn_lines = []
+    bn_lines.append(f"# 🎯 পোর্টফোলিও পজিশন ও অ্যাকুমুলেশন প্ল্যান (মোট মূলধন: ৳{total_cap:,.0f})\n")
+    bn_lines.append(f"**তৈরির সময়**: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}  ")
+    bn_lines.append(f"**বিনিয়োগ বণ্টন**: ৬০% কোর মোটস (৳{core_budget:,.0f}) | ৩০% সাইকেল সুইং (৳{swing_budget:,.0f}) | ১০% ক্যাশ রিজার্ভ (৳{cash_reserve:,.0f})\n")
+    bn_lines.append("---\n")
+
+    bn_lines.append("## 🏛️ ১. দীর্ঘমেয়াদী কোর মোটস (৬০% মূলধন)\n")
+    bn_lines.append("| Ticker | বর্তমান দর | মোট বরাদ্দ | মোট শেয়ার | ১ম ট্রাঞ্চ (আজ ২৫%) | ১ম ট্রাঞ্চ খরচ | স্লিপেজ সীমা | টার্গেট প্রফিট (+৩০%) |")
+    bn_lines.append("|---|---|---|---|---|---|---|---|")
+    for r in long_picks:
+        t = r["ticker"]
+        price = r.get("entry") or 1.0
+        total_shares = int(per_core_budget / price)
+        tranche_1_shares = max(int(total_shares * 0.25), 1)
+        tranche_1_cost = tranche_1_shares * price
+        target_exit = r.get("target_long") or round(price * 1.30, 1)
+        bn_lines.append(
+            f"| **{t}** | ৳{price:.1f} | ৳{per_core_budget:,.0f} | **{total_shares:,} টি** | "
+            f"**{tranche_1_shares:,} টি** | ৳{tranche_1_cost:,.0f} | নিরাপদ রিটেইল লিমিট | ৳{target_exit:.1f} |"
+        )
+    bn_lines.append("\n*নিয়ম: ট্রাঞ্চ ১ আজ এক্সিকিউট করুন। বাকি ৭৫% মূলধন ৩টি পরবর্তী ডিপ বা উইকলি কনফার্মেশনের জন্য রাখুন।*\n")
+    bn_lines.append("---\n")
+
+    bn_lines.append("## 📈 ২. মিড-টার্ম সাইকেল সুইং ট্রেড (৩০% মূলধন)\n")
+    bn_lines.append("| Ticker | এন্ট্রি দর | বরাদ্দ | শেয়ার সংখ্যা | মোট বিনিয়োগ | সুইং টার্গেট (+১৫%) | ট্রেইলিং স্টপ (-৫%) | রিস্ক/রিওয়ার্ড |")
+    bn_lines.append("|---|---|---|---|---|---|---|---|")
+    for r in mid_picks:
+        t = r["ticker"]
+        price = r.get("entry") or 1.0
+        tgt = r.get("target_mid") or round(price * 1.15, 1)
+        stop = r.get("trailing_stop") or round(price * 0.95, 1)
+        max_trade_risk_bdt = total_cap * 0.015
+        risk_per_share = max(price - stop, price * 0.04)
+        risk_capped_shares = int(max_trade_risk_bdt / risk_per_share) if risk_per_share > 0 else 1000
+        budget_shares = int(per_swing_budget / price)
+        shares = max(min(budget_shares, risk_capped_shares), 1)
+        outlay = shares * price
+        bn_lines.append(
+            f"| **{t}** | ৳{price:.1f} | ৳{per_swing_budget:,.0f} | **{shares:,} টি** | "
+            f"৳{outlay:,.0f} | **৳{tgt:.1f}** | ৳{stop:.1f} | 3.0x |"
+        )
+    bn_lines.append("\n*নিয়ম: সাপোর্ট কনফার্মেশনে সুইং লটে প্রবেশ করুন। টার্গেট বা স্টপ-লস স্পর্শ করা মাত্রই শৃঙ্খলা মেনে এক্সিট করুন।*\n")
+    bn_lines.append("---\n")
+
+    bn_lines.append("## 🛡️ ৩. ট্যাকটিক্যাল ক্যাশ / রিজার্ভ ফান্ড (১০% মূলধন)\n")
+    bn_lines.append(f"- **সংরক্ষিত ক্যাশ ব্যালেন্স**: **৳{cash_reserve:,.2f}**")
+    bn_lines.append("- **উদ্দেশ্য**: ব্ল্যাক-সোয়ান মার্কেট প্যানিক বা ডিপ ওভারসোল্ড (<২৫ RSI) অতি-মূল্যবান সুযোগের জন্য প্রস্তুত রাখা。\n")
+
+    bn_out_file = PORTFOLIO_DIR / "current_position_plan_bn.md"
+    with open(bn_out_file, "w", encoding="utf-8") as f:
+        f.write("\n".join(bn_lines))
+    print(f"[Saved to {bn_out_file}]")
 
 
 # DSE Fee Schedule: 0.40% Brokerage fee + 0.015% CDBL settlement fee each way

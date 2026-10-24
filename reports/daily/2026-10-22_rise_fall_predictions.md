@@ -1,10 +1,10 @@
 # 📊 Daily DSE Directional Predictions: Rise vs Fall Matrix — 2026-10-22
 
-**Generated**: 2026-10-22 15:17:54 | **Total Instruments Audited**: 80 Category A Companies  
-**Engine Version**: `baseline-v1.0` (`efe6d15`) | **Data Snapshot ID**: `DB-2026-10-22-PIT`  
+**Generated**: 2026-10-22 18:04:02 | **Total Instruments Audited**: 80 Category A Companies  
+**Engine Version**: `baseline-v1.0` (`aab440b`) | **Data Snapshot ID**: `DB-2026-10-22-PIT`  
 **Empirical Status**: *Validated as Risk/Junk Filter (0.0% data corruption). Unvalidated as Profit-Generating Predictor (Permutation p = 0.608 vs Random Null).*
 
-**Macro Bias**: `High Macro/Crisis Caution` (Score: -39.0/100)
+**Macro Bias**: `High Macro/Crisis Caution` (Score: -57.0/100)
 
 ---
 
@@ -14,18 +14,10 @@
 
 > ⚠️ **Horizon Notice**: Short-term scalps (+3.5% / -2%) have negative expectancy (-0.48% net) after round-trip fees. The system disables fast scalp recommendations and allocates exclusively to 3–12 month swings and multi-year core compounders.
 
-| Ticker | Current Price | Mid Target (+15%) | Long Target (+30%) | Smart Money | Max Safe Order | Status / Action |
-|---|---|---|---|---|---|---|
-| **WALTONHIL** | ৳330.9 | ৳380.5 | ৳430.2 | `STABLE_HOLDINGS` | 2,607 sh | **UNVALIDATED SCREENING CANDIDATE** |
-| **GP** | ৳241.7 | ৳278.0 | ৳314.2 | `STABLE_HOLDINGS` | 2,563 sh | **UNVALIDATED SCREENING CANDIDATE** |
-| **SQURPHARMA** | ৳219.6 | ৳252.5 | ৳285.5 | `NEUTRAL_HOLDING` | 17,447 sh | **UNVALIDATED SCREENING CANDIDATE** |
-| **MPETROLEUM** | ৳204.1 | ৳234.7 | ৳265.3 | `STABLE_HOLDINGS` | 1,359 sh | **UNVALIDATED SCREENING CANDIDATE** |
-| **PADMAOIL** | ৳195.4 | ৳224.7 | ৳254.0 | `STABLE_HOLDINGS` | 948 sh | **UNVALIDATED SCREENING CANDIDATE** |
-| **JAMUNAOIL** | ৳179.2 | ৳206.1 | ৳233.0 | `STABLE_HOLDINGS` | 527 sh | **UNVALIDATED SCREENING CANDIDATE** |
-| **OLYMPIC** | ৳141.0 | ৳162.1 | ৳183.3 | `STABLE_HOLDINGS` | 2,015 sh | **UNVALIDATED SCREENING CANDIDATE** |
-| **RELIANCINS** | ৳91.7 | ৳105.5 | ৳119.2 | `INSTITUTIONAL_ACCUMULATION` | 48,277 sh | **UNVALIDATED SCREENING CANDIDATE** |
-| **LHB** | ৳52.2 | ৳60.0 | ৳67.9 | `STABLE_HOLDINGS` | 27,506 sh | **UNVALIDATED SCREENING CANDIDATE** |
-| **AAMRANET** | ৳18.0 | ৳20.7 | ৳23.4 | `STABLE_HOLDINGS` | 8,536 sh | **UNVALIDATED SCREENING CANDIDATE** |
+| Ticker | Price | Tier | Served Score | Mid Target | Smart Money | Max Order | Action |
+|---|---|---|---|---|---|---|---|
+| **WALTONHIL** | ৳330.1 | **HIGH** | 21.1 | ৳379.6 | `STABLE_HOLDINGS` | 1,317 sh | **TIER_HIGH_CANDIDATE** |
+| **OLYMPIC** | ৳137.4 | **MED** | 10.4 | ৳158.0 | `STABLE_HOLDINGS` | 1,890 sh | **TIER_MED_CANDIDATE** |
 
 ## 🔴 2. Stocks Predicted to FALL / CRASH (Severe Capital Erosion Risk)
 
@@ -33,17 +25,17 @@
 
 | Ticker | Price | Primary Fall Trigger / Trap | Action |
 |---|---|---|---|
-| **UCB** | ৳8.1 | Excessive Loan Burden (D/E: None) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
-| **ISLAMIBANK** | ৳25.4 | Excessive Loan Burden (D/E: None) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
-| **GENEXIL** | ৳30.2 | Excessive Loan Burden (D/E: 1.312) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
-| **RUNNERAUTO** | ৳42.5 | Excessive Loan Burden (D/E: 1.273) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
-| **ORIONPHARM** | ৳25.5 | Excessive Loan Burden (D/E: 1.272) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
-| **BEACONPHAR** | ৳102.0 | Excessive Loan Burden (D/E: 1.512) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
-| **ACIFORMULA** | ৳154.6 | Retail Distribution Trap: Smart money selling into retail buying | **DO NOT BUY / EXIT ON BOUNCE** |
-| **AAMRATECH** | ৳15.7 | Retail Distribution Trap: Smart money selling into retail buying | **DO NOT BUY / EXIT ON BOUNCE** |
-| **CROWNCEMNT** | ৳58.2 | Excessive Loan Burden (D/E: 1.6) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
-| **PREMIERCEM** | ৳40.1 | Excessive Loan Burden (D/E: 3.638) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
-| **MEGHNACEM** | ৳28.0 | Excessive Loan Burden (D/E: 10.733) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
+| **UCB** | ৳8.2 | Excessive Loan Burden (D/E: None) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
+| **ISLAMIBANK** | ৳24.8 | Excessive Loan Burden (D/E: None) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
+| **GENEXIL** | ৳29.8 | Excessive Loan Burden (D/E: 1.312) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
+| **RUNNERAUTO** | ৳45.4 | Excessive Loan Burden (D/E: 1.273) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
+| **ORIONPHARM** | ৳28.9 | Excessive Loan Burden (D/E: 1.272) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
+| **BEACONPHAR** | ৳96.1 | Excessive Loan Burden (D/E: 1.512) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
+| **ACIFORMULA** | ৳143.5 | Retail Distribution Trap: Smart money selling into retail buying | **DO NOT BUY / EXIT ON BOUNCE** |
+| **AAMRATECH** | ৳15.6 | Retail Distribution Trap: Smart money selling into retail buying | **DO NOT BUY / EXIT ON BOUNCE** |
+| **CROWNCEMNT** | ৳55.1 | Excessive Loan Burden (D/E: 1.6) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
+| **PREMIERCEM** | ৳40.0 | Excessive Loan Burden (D/E: 3.638) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
+| **MEGHNACEM** | ৳28.5 | Excessive Loan Burden (D/E: 10.733) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
 | **ARAMITCEM** | ৳11.0 | Excessive Loan Burden (D/E: 17.553) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
 
 ## 🛡️ Daily Execution Rules for Capital Protection
