@@ -668,6 +668,127 @@ def generate_markdown_report(recs: dict) -> str:
     return "\n".join(lines)
 
 
+
+
+def generate_markdown_report_bn(recs: dict) -> str:
+    now   = datetime.date.today().isoformat()
+    tf    = recs["timeframe"]
+    macro = recs.get("macro", {})
+    h     = recs["horizons"]
+
+    lines = []
+    lines.append(f"# 📈 ডিএসই প্রাতিষ্ঠানিক বিনিয়োগ ও ট্রেডিং স্ট্র্যাটেজি — {now} ({tf.upper()})\n")
+    lines.append(f"**প্রস্তুতির সময়**: {recs['generated_at']} UTC | **মোট নিরীক্ষিত কোম্পানি**: {recs['total_analyzed']} টি  ")
+
+    bias = macro.get("systemic_market_bias", 0)
+    label = macro.get("bias_label", "Neutral")
+    lbl_bn = "উর্ধমুখী (Bullish)" if "Bull" in label else ("মন্দাভাব (Bearish)" if "Bear" in label else "নিরপেক্ষ (Neutral)")
+    lines.append(f"**সামষ্টিক অর্থনৈতিক পরিস্থিতি (Macro Climate)**: `{lbl_bn}` (স্কোর: {bias}/১০০)  ")
+    if macro.get("macro_alerts"):
+        lines.append("\n### 🚨 সক্রিয় সামষ্টিক ও রাজনৈতিক ঝুঁকি সতর্কতা:")
+        for alert in macro["macro_alerts"][:4]:
+            lines.append(f"- ⚠️ {alert}")
+    lines.append("\n---\n")
+
+    # 1. Long-Term Asset Building List
+    lines.append("## 🏛️ ১. দীর্ঘমেয়াদী সম্পদ গঠন পরিকল্পনা (সময়সীমা: ১–৫+ বছর)\n")
+    lines.append("*বাছাইয়ের ভিত্তি: ব্যবসায়িক পরিখা (Moat), শূন্য/স্বল্প ব্যাংক ঋণ, প্রকৃত অপারেটিং ক্যাশ-ফ্লো দ্বারা সমর্থিত নগদ ডিভিডেন্ড এবং স্মার্ট মানি সঞ্চয়ন।*\n")
+    if h["long_term"]:
+        lines.append("| কোম্পানি | বর্তমান দর | গতিপথ ও সম্ভাবনা | P/E অনুপাত | ক্যাশ ফ্লো কাভারেজ | স্মার্ট মানি অবস্থা | সর্বোচ্চ নিরাপদ লট | সঞ্চয়ন নির্দেশিকা |")
+        lines.append("|---|---|---|---|---|---|---|---|")
+        for r in h["long_term"][:8]:
+            entry = f"৳{r['entry']:.1f}" if r['entry'] else "—"
+            _rp = r.get("rise_prob")
+            _rp_s = f"{_rp}%" if _rp is not None else "—"
+            traj_str = f"**{r.get('dir_icon') or '—'} ({_rp_s})**"
+            cf_cov = r.get("cash_flow_cov") or "অজানা"
+            sm_status = f"`{r.get('smart_money_class') or 'অজানা'}`"
+            _mo = r.get("max_single_order")
+            max_ord = f"{_mo:,} শেয়ার" if _mo is not None else "—"
+            lines.append(
+                f"| **{r['ticker']}** | {entry} | {traj_str} | {_fmt_pe(r['pe'])} | "
+                f"{cf_cov} | {sm_status} | {max_ord} | **ধাপে ধাপে সঞ্চয়ন (Accumulate)** |"
+            )
+        lines.append("\n### 🎯 দীর্ঘমেয়াদী বাস্তবায়ন কৌশল (প্রাতিষ্ঠানিক নিরীক্ষা):\n")
+        for r in h["long_term"][:5]:
+            st_info = r.get("st_info", {})
+            mt_info = r.get("mt_info", {})
+            lt_info = r.get("lt_info", {})
+            _rp = r.get("rise_prob")
+            _rp_s = f"{_rp}%" if _rp is not None else "অজানা"
+            lines.append(f"#### 📌 **{r['ticker']}** ({r.get('dir_icon') or '—'} বৃদ্ধির সম্ভাবনা: {_rp_s}, P/E: {_fmt_pe(r['pe'])}, ঋণ স্থিতি: {r['debt_health']})")
+            lines.append(f"- **👔 শীর্ষ ব্যবস্থাপনা**: {r.get('chairman')} (চেয়ারম্যান), {r.get('md_ceo')} (এমডি/সিইও, অভিজ্ঞতা: {r.get('exp_yrs') or '—'} বছর, সুশাসন রেটিং: {r.get('governance_rating')})")
+            lines.append(f"- **🌊 স্মার্ট মানি প্রবাহ**: {r.get('smart_money_sig') or 'অজানা'}")
+            lines.append(f"- **💰 প্রকৃত ক্যাশ ফ্লো ও FCF**: {r.get('cash_flow_cov') or 'অজানা'} | ফ্রি ক্যাশ ফ্লো ইল্ড: {r.get('fcf_yield') or '—'} | নিরীক্ষা বিশ্বাসযোগ্যতা: *{r.get('audit_credibility') or '—'}*")
+            lines.append(f"- **💧 লিকুইডিটি গার্ড**: {r.get('liquidity_directive') or 'অজানা'}")
+            lines.append(f"- **📊 ৩ মেয়াদের সম্ভাব্য গতিপ্রকৃতি**:")
+            lines.append(f"  * ⚡ **স্বল্পমেয়াদী (১–১০ দিন)**: গতিপথ: {st_info.get('predicted_path') or '—'} | সম্ভাব্য বৃদ্ধি: **{st_info.get('upside_potential_pct') or '—'}** বনাম ডাউনসাইড ঝুঁকি: {st_info.get('downside_risk_pct') or '—'}")
+            lines.append(f"  * 📈 **মধ্যমেয়াদী (১–৬ মাস)**: গতিপথ: {mt_info.get('predicted_path') or '—'} | লক্ষ্যমাত্রা: **৳{mt_info.get('target_price') or '—'} ({mt_info.get('upside_potential_pct') or '—'})** | ট্রেইলিং স্টপ: ৳{mt_info.get('trailing_stop') or '—'}")
+            lines.append(f"  * 🏛️ **দীর্ঘমেয়াদী (১–৫ বছর)**: গতিপথ: {lt_info.get('predicted_path') or '—'} | লক্ষ্যমাত্রা: **৳{lt_info.get('target_price') or '—'} ({lt_info.get('upside_potential_pct') or '—'})** | ডিভিডেন্ড প্রবৃদ্ধি: {lt_info.get('dividend_cagr') or '—'}")
+            lines.append(f"- **✅ কখন কিনবেন**: {r.get('when_to_buy') or 'সাপোর্ট লেভেলে কিস্তিতে'}")
+            lines.append(f"- **⛔ কখন কিনবেন না**: {r.get('when_not_to_buy') or 'উত্তেজিত বা ওভারবট অবস্থায়'}")
+            lines.append(f"- **🎯 কখন প্রস্থান করবেন**: {r.get('when_to_sell') or 'মৌলিক ভিত্তি দুর্বল হলে বা অতিমূল্যায়িত হলে'}\n")
+    else:
+        lines.append("> বর্তমানে কঠোর দীর্ঘমেয়াদী শর্ত পূরণ করার মতো শেয়ার সীমিত।\n")
+
+    lines.append("---\n")
+
+    # 2. Mid-Term Swing Plan
+    lines.append("## 📈 ২. মধ্যমেয়াদী সুইং ট্রেডিং পরিকল্পনা (সময়সীমা: ১–৬ মাস)\n")
+    lines.append("*বাছাইয়ের ভিত্তি: আর্নিংস মোমেন্টাম, সহনীয় ঋণ, ন্যায্য মূল্যে প্রত্যাবর্তনের সম্ভাবনা (টার্গেট: +১২% থেকে +২০%)।*\n")
+    if h["mid_term"]:
+        lines.append("| কোম্পানি | এন্ট্রি দর | গতিপথ | সুইং টার্গেট (+১৫%) | ট্রেইলিং স্টপ (-৫%) | রিস্ক/রিওয়ার্ড | সর্বোচ্চ নিরাপদ লট | P/E |")
+        lines.append("|---|---|---|---|---|---|---|---|")
+        for r in h["mid_term"][:8]:
+            entry = f"৳{r['entry']:.1f}" if r['entry'] else "—"
+            tgt   = f"৳{r['target_mid']:.1f}" if r.get('target_mid') else "—"
+            stop  = f"৳{r['trailing_stop']:.1f}" if r.get('trailing_stop') else "—"
+            _rp = r.get("rise_prob")
+            traj_str = f"**{r.get('dir_icon') or '—'} {_rp if _rp is not None else '—'}%**"
+            _mo = r.get("max_single_order")
+            max_ord = f"{_mo:,} শেয়ার" if _mo is not None else "—"
+            lines.append(f"| **{r['ticker']}** | {entry} | {traj_str} | **{tgt}** | {stop} | {r.get('mt_rr') or '—'} | {max_ord} | {_fmt_pe(r['pe'])} |")
+        lines.append("")
+    else:
+        lines.append("> কোনো মধ্যমেয়াদী সুইং ট্রিগার বর্তমানে সক্রিয় নেই।\n")
+
+    lines.append("---\n")
+
+    # 3. Debt Trap Warning Table
+    if h.get("debt_trap_blocked"):
+        lines.append("## 🚫 অতিরিক্ত ব্যাংক ঋণের ফাঁদ — কখনোই ক্রয় করবেন না\n")
+        lines.append("| কোম্পানি | ঋণ/ইকুইটি অনুপাত (D/E) | ঋণ ঝুঁকি স্থিতি | মূল কারণ |")
+        lines.append("|---|---|---|---|")
+        for r in h["debt_trap_blocked"][:8]:
+            de_s = f"{r.get('debt_equity_val', 'N/A')}"
+            lines.append(f"| **{r['ticker']}** | {de_s} | **উচ্চ ঋণ ঝুঁকি** | ১২-১৪% চড়া সুদের যুগে মাত্রাতিরিক্ত ঋণ মূলধন গ্রাসকারী |")
+        lines.append("")
+
+    # 4. Governance & Legal Inquiry Warning Table
+    if h.get("governance_blocked"):
+        lines.append("## ⚖️ করপোরেট সুশাসন ও নিয়ন্ত্রক তদন্ত — কেনা সম্পূর্ণ নিষিদ্ধ\n")
+        lines.append("| কোম্পানি | সুশাসন রেটিং | নিয়ন্ত্রক বা আইনি তদন্তের কারণ |")
+        lines.append("|---|---|---|")
+        for r in h["governance_blocked"][:8]:
+            mgmt = r.get("management", {})
+            news_int = r.get("news_intent", {})
+            reasons = "; ".join(news_int.get("red_flags", [f"ব্যবস্থাপনা ঝুঁকি: {mgmt.get('management_risk', 'High')}"]))
+            lines.append(f"| **{r['ticker']}** | **{mgmt.get('governance_rating', 'ঝুঁকিপূর্ণ')}** | {reasons} |")
+        lines.append("")
+
+    # 5. Halal Compliance Exclusions
+    if h.get("halal_blocked"):
+        lines.append("## 🕌 শরীয়াহ স্ক্রীনিং বহির্ভূত তালিকা (DSES / AAOIFI)\n")
+        lines.append("| কোম্পানি | খাত | শরীয়াহ বাদ পড়ার কারণ |")
+        lines.append("|---|---|---|")
+        for r in h["halal_blocked"][:8]:
+            lines.append(f"| **{r.get('ticker')}** | {r.get('sector') or 'Financials/Other'} | সুদী বা অ-অনুমোদিত ব্যবসায়িক কার্যক্রম |")
+        lines.append("")
+
+    lines.append("\n---\n> ডিএসই কোয়ান্টাম ইন্টেলিজেন্স ইঞ্জিন দ্বারা স্বয়ংক্রিয়ভাবে প্রকাশিত।\n")
+    return "\n".join(lines)
+
+
 def generate_monthly_asset_plan(recs: dict) -> str:
     """
     Piles daily and weekly analysis into a structured monthly accumulation ledger:
@@ -821,6 +942,15 @@ def run_recommender(timeframe: str = "weekly", tickers: list[str] = None):
     md_path = out_dir / f"{now_str}.md"
     with open(md_path, "w", encoding="utf-8") as f:
         f.write(md)
+
+    try:
+        md_bn = generate_markdown_report_bn(recs)
+        bn_md_path = out_dir / f"{now_str}_bn.md"
+        with open(bn_md_path, "w", encoding="utf-8") as f:
+            f.write(md_bn)
+        log.info(f"Bengali recommendation report published to {bn_md_path}")
+    except Exception as e:
+        log.warning(f"Could not generate Bengali markdown report: {e}")
 
     # Persist structured recommendations into SQLite recommendations table
     try:

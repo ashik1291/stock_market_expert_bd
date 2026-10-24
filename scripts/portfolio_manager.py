@@ -258,8 +258,12 @@ def record_buy(ticker: str, shares: int, price: float, horizon: str = "long_term
     net_cost = round(gross_cost + comm, 2)
     round_trip_be = calculate_round_trip_break_even(price)
 
+    min_cash_buffer = p.get("total_capital_bdt", 0) * 0.10
+    remaining_cash = p["cash_balance_bdt"] - net_cost
     if net_cost > p["cash_balance_bdt"]:
-        print(f"Warning: Buy cost ৳{net_cost:,.2f} exceeds available cash ৳{p['cash_balance_bdt']:,.2f}.")
+        print(f"⚠️ CRITICAL DEFICIT: Buy cost ৳{net_cost:,.2f} exceeds available cash ৳{p['cash_balance_bdt']:,.2f}.")
+    elif remaining_cash < min_cash_buffer:
+        print(f"⚠️ LIQUIDITY BUFFER WARNING: Purchase leaves cash (৳{remaining_cash:,.2f}) below mandatory 10% buffer (৳{min_cash_buffer:,.2f}). Reserve dry-powder!")
 
     p["cash_balance_bdt"] -= net_cost
     p["holdings"].append({
@@ -376,7 +380,11 @@ def show_status():
     print("=" * 90)
     print(f"Total Invested Outlay: ৳{total_invested:,.2f} (Stocks: ৳{stock_invested:,.2f} [incl ৳{total_comm:.2f} comm] | Mutual Funds: ৳{mf_invested:,.2f})")
     print(f"Current Market Value:  ৳{total_live_val:,.2f} (Unrealized P&L: ৳{total_unrealized_bdt:+,.2f} / {total_unrealized_pct:+.2f}%)")
-    print(f"Available Cash Buffer: ৳{cash_bal:,.2f} | Total Account Net Worth: ৳{total_net_worth:,.2f}")
+    min_buffer = (total_invested + cash_bal) * 0.10
+    buffer_pct = round((cash_bal / (total_invested + cash_bal)) * 100.0, 1) if (total_invested + cash_bal) > 0 else 0.0
+    buffer_status = "✅ HEALTHY" if cash_bal >= min_buffer else f"⚠️ DEFICIT (Need ৳{min_buffer - cash_bal:,.2f} to reach 10%)"
+    print(f"Available Cash Buffer: ৳{cash_bal:,.2f} ({buffer_pct}% of Net Worth) | Status: {buffer_status}")
+    print(f"Total Account Net Worth: ৳{total_net_worth:,.2f} (Target 10% Liquid Reserve: ৳{min_buffer:,.2f})")
     
     if mfs:
         print(f"\n--- MUTUAL FUNDS ({len(mfs)}) --- (0.0% Brokerage)")

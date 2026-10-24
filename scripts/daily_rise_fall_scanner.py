@@ -248,12 +248,75 @@ def publish_rise_fall_report(res: dict):
     lines.append("\n---\n> Published by DSE Quantitative Intelligence Engine.")
 
     md_path = REPORT_DIR / f"{today_str}_rise_fall_predictions.md"
+    bn_md_path = REPORT_DIR / f"{today_str}_rise_fall_predictions_bn.md"
     json_path = REPORT_DIR / f"{today_str}_rise_fall_predictions.json"
 
     with open(md_path, "w", encoding="utf-8") as f:
         f.write("\n".join(lines))
     with open(json_path, "w", encoding="utf-8") as f:
         json.dump(res, f, indent=2)
+
+    # Bengali Version Generation
+    bn_lines = []
+    bn_lines.append(f"# 📊 দৈনিক ডিএসই দিকনির্দেশক পূর্বাভাস: উত্থান বনাম পতন ম্যাট্রিক্স — {today_str}\n")
+    bn_lines.append(f"**প্রস্তুতির সময়**: {res['generated_at']} | **মোট নিরীক্ষিত কোম্পানি**: {res['total_scanned']} টি কোম্পানি  ")
+    bn_lines.append(f"**ইঞ্জিন সংস্করণ**: `baseline-v1.0` (`{git_hash}`) | **ডেটা স্ন্যাপশট আইডি**: `{snapshot_id}`  ")
+    bn_lines.append(f"**যাচাইকরণ স্থিতি**: *ঝুঁকি ও জাঙ্ক ফিল্টার হিসেবে শতভাগ কার্যকর (০.০% ডেটা বিকৃতি)। লাভজনক ভবিষ্যদ্বাণী হিসেবে এখনও ফরওয়ার্ড ট্রায়ালে চলমান (Permutation p = 0.608 vs Random Null)।*\n")
+
+    bias_val = macro.get('systemic_market_bias', 0)
+    bias_lbl = macro.get('bias_label', 'Neutral')
+    bias_lbl_bn = 'উর্ধমুখী (Bullish)' if 'Bull' in bias_lbl else ('মন্দাভাব (Bearish)' if 'Bear' in bias_lbl else 'নিরপেক্ষ (Neutral)')
+    bn_lines.append(f"**সার্বিক ম্যাক্রো পূর্বাভাস**: `{bias_lbl_bn}` (স্কোর: {bias_val}/১০০)\n")
+    bn_lines.append("---\n")
+
+    # 1. Stocks Predicted to RISE (Bengali)
+    bn_lines.append("## 🟢 ১. মৌলিক শক্তি ও পরিখা সম্পন্ন শেয়ার (সম্ভাব্য উত্থান ও মূল্য বৃদ্ধি)\n")
+    bn_lines.append("*বাছাইয়ের মানদণ্ড: RSI ওভারসোল্ড থেকে রিভার্সাল, স্বল্প/শূন্য ব্যাংক ঋণ, ১০০%+ প্রকৃত নগদ ক্যাশ-ফ্লো ডিভিডেন্ড কাভারেজ এবং স্মার্ট মানি সঞ্চয়ন।*\n")
+    bn_lines.append("> ⚠️ **সময়সীমা সতর্কতা**: স্বল্পমেয়াদী অতি-দ্রুত স্ক্যাল্পিংয়ে (+৩.৫% / -২%) ব্রোকারেজ ফি ও স্লিপেজের পর প্রত্যাশিত লাভ নেতিবাচক (-০.৪৮% নিট)। তাই সিস্টেম দ্রুত স্ক্যাল্পিং নিরুৎসাহিত করে ৩–১২ মাসের সুইং এবং বহুবর্ষীয় কোর কম্পাউন্ডিংয়ে মূলধন বরাদ্দ করে।\n")
+    bn_lines.append("| কোম্পানি | বর্তমান দর | স্তর (Tier) | সার্ভড স্কোর | মধ্যমেয়াদী টার্গেট | স্মার্ট মানি প্রবাহ | সর্বোচ্চ নিরাপদ লট | নির্দেশিকা |")
+    bn_lines.append("|---|---|---|---|---|---|---|---|")
+
+    for r in res["predicted_to_rise"][:12]:
+        p = f"৳{r['price']:.1f}" if r.get("price") else "—"
+        mt = r.get("mid_term_target")
+        mt_s = f"৳{mt:.1f}" if isinstance(mt, (int, float)) else "—"
+        mo = r.get("max_order_shares")
+        mo_s = f"{mo:,} শেয়ার" if mo is not None else "—"
+        sc = r.get("served_score")
+        sc_s = f"{sc:.1f}" if sc is not None else "—"
+        tier_s = r.get('conviction_tier', '—')
+        direct_s = r.get('directive', '—')
+        sm_s = r.get('smart_money_flow') or '—'
+        bn_lines.append(
+            f"| **{r['ticker']}** | {p} | **{tier_s}** | {sc_s} | "
+            f"{mt_s} | `{sm_s}` | {mo_s} | **{direct_s}** |"
+        )
+    bn_lines.append("")
+
+    # 2. Stocks Predicted to FALL / CRASH (Bengali)
+    bn_lines.append("## 🔴 ২. মূলধন ক্ষতির চরম ঝুঁকি ও ফাঁদ (সম্ভাব্য দরপতন / ক্র্যাশ)\n")
+    bn_lines.append("*বাছাইয়ের মানদণ্ড: ১২-১৪% চড়া সুদের বাজারে অতিরিক্ত ঋণ বোঝা, রিটেইল ইনভেস্টরদের কাছে ডাম্পিং, নেগেটিভ অপারেটিং ক্যাশ ফ্লো (NOCFPS) এবং নিয়ন্ত্রক তদন্ত (BSEC probe)।*\n")
+    bn_lines.append("| কোম্পানি | বর্তমান দর | দরপতন / মূলধনী ফাঁদের প্রধান কারণ | অ্যাকশন নির্দেশিকা |")
+    bn_lines.append("|---|---|---|---|")
+
+    for r in res["predicted_to_fall"][:12]:
+        p = f"৳{r['price']:.1f}" if r['price'] else "—"
+        bn_lines.append(
+            f"| **{r['ticker']}** | {p} | "
+            f"{r['primary_fall_trigger']} | **{r['directive']}** |"
+        )
+    bn_lines.append("")
+
+    # 3. Actionable Rule (Bengali)
+    bn_lines.append("## 🛡️ মূলধন সুরক্ষার দৈনিক ট্রেডিং ও বিনিয়োগ নীতি\n")
+    bn_lines.append("1. **শুধুমাত্র ফিল্টার উত্তীর্ণ শেয়ার**: ঋণমুক্ত, প্রকৃত ক্যাশ-ফ্লো নিশ্চিত এবং পর্যাপ্ত মার্জিন অব সেফটি সম্পন্ন কোম্পানিতেই বিনিয়োগ সীমিত রাখুন।")
+    bn_lines.append("2. **লাল তালিকায় শূন্য সহনশীলতা**: পতন বা ক্র্যাশ তালিকায় (🔴 **Predicted to Fall**) থাকা কোনো শেয়ার কখনোই কিনবেন না, দর যতই সস্তা মনে হোক।")
+    bn_lines.append("3. **স্লিপেজ নিয়ন্ত্রণ**: লিকুইডিটি ড্রপ এড়াতে কখনোই **Max Safe Order** সীমার বেশি একক অর্ডার প্লেস করবেন না।")
+    bn_lines.append("\n---\n> ডিএসই কোয়ান্টাম ইন্টেলিজেন্স ইঞ্জিন দ্বারা স্বয়ংক্রিয়ভাবে প্রকাশিত।")
+
+    with open(bn_md_path, "w", encoding="utf-8") as f:
+        f.write("\n".join(bn_lines))
+    log.info(f"Bengali Daily Rise/Fall report published to {bn_md_path}")
 
     # Phase-2 learning loop: real feature flags + asof price date (not wall-clock)
     try:
