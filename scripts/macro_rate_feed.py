@@ -63,10 +63,10 @@ CURRENT_MACRO_BENCHMARKS = [
     },
     {
         "indicator": "t_bill_91d",
-        "value": 11.65,
+        "value": 8.84,
         "unit": "percent",
-        "source": "Bangladesh Bank Primary Treasury Auction",
-        "notes": "Risk-free benchmark yield for short-term sovereign paper"
+        "source": "Bangladesh Bank Primary Treasury Auction Cut-off Yield",
+        "notes": "Verified risk-free auction cut-off yield as of October 2026"
     },
     {
         "indicator": "t_bill_182d",
@@ -277,7 +277,7 @@ def get_latest_macro_rates(conn: Optional[sqlite3.Connection] = None) -> dict:
         conn.close()
 
     # Core indicators with fail-safe defaults if table empty
-    rf_rate = data.get("t_bill_91d", 11.65)
+    rf_rate = data.get("t_bill_91d", 8.84)
     repo_rate = data.get("policy_repo_rate", 10.00)
     inflation = data.get("cpi_inflation", 9.92)
     call_money = data.get("call_money_rate", 9.75)
