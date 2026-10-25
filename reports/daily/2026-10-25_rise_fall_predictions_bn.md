@@ -1,7 +1,7 @@
 # 📊 দৈনিক ডিএসই দিকনির্দেশক পূর্বাভাস: উত্থান বনাম পতন ম্যাট্রিক্স — 2026-10-25
 
-**প্রস্তুতির সময়**: 2026-10-25 01:22:14 | **মোট নিরীক্ষিত কোম্পানি**: 80 টি কোম্পানি  
-**ইঞ্জিন সংস্করণ**: `baseline-v1.0` (`e213f72`) | **ডেটা স্ন্যাপশট আইডি**: `DB-2026-10-25-PIT`  
+**প্রস্তুতির সময়**: 2026-10-25 14:45:08 | **মোট নিরীক্ষিত কোম্পানি**: 80 টি কোম্পানি  
+**ইঞ্জিন সংস্করণ**: `baseline-v1.0` (`224d72e`) | **ডেটা স্ন্যাপশট আইডি**: `DB-2026-10-25-PIT`  
 **যাচাইকরণ স্থিতি**: *ঝুঁকি ও জাঙ্ক ফিল্টার হিসেবে শতভাগ কার্যকর (০.০% ডেটা বিকৃতি)। লাভজনক ভবিষ্যদ্বাণী হিসেবে এখনও ফরওয়ার্ড ট্রায়ালে চলমান (Permutation p = 0.608 vs Random Null)।*
 
 **সার্বিক ম্যাক্রো পূর্বাভাস**: `নিরপেক্ষ (Neutral)` (স্কোর: -57.0/১০০)
@@ -16,6 +16,8 @@
 
 | কোম্পানি | বর্তমান দর | স্তর (Tier) | সার্ভড স্কোর | মধ্যমেয়াদী টার্গেট | স্মার্ট মানি প্রবাহ | সর্বোচ্চ নিরাপদ লট | নির্দেশিকা |
 |---|---|---|---|---|---|---|---|
+| **PADMAOIL** | ৳194.5 | **HIGH** | 39.7 | ৳223.7 | `NEUTRAL_HOLDING` | 735 শেয়ার | **TIER_HIGH_CANDIDATE** |
+| **LHB** | ৳49.6 | **MED** | 28.2 | ৳57.0 | `NEUTRAL_HOLDING` | 19,931 শেয়ার | **TIER_MED_CANDIDATE** |
 
 ## 🔴 ২. মূলধন ক্ষতির চরম ঝুঁকি ও ফাঁদ (সম্ভাব্য দরপতন / ক্র্যাশ)
 
@@ -23,18 +25,18 @@
 
 | কোম্পানি | বর্তমান দর | দরপতন / মূলধনী ফাঁদের প্রধান কারণ | অ্যাকশন নির্দেশিকা |
 |---|---|---|---|
-| **UCB** | ৳8.2 | Excessive Loan Burden (D/E: None) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
-| **ISLAMIBANK** | ৳24.8 | Excessive Loan Burden (D/E: None) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
-| **RUNNERAUTO** | ৳45.4 | Excessive Loan Burden (D/E: 1.273) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
-| **GENEXIL** | ৳29.8 | Excessive Loan Burden (D/E: 1.312) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
-| **PREMIERCEM** | ৳40.0 | Excessive Loan Burden (D/E: 3.638) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
-| **MEGHNACEM** | ৳28.5 | Excessive Loan Burden (D/E: 10.733) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
-| **DESCO** | ৳23.0 | Excessive Loan Burden (D/E: 3.001) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
-| **AMCL(PRAN)** | ৳211.7 | Excessive Loan Burden (D/E: 1.287) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
-| **AFTABAUTO** | ৳25.3 | Excessive Loan Burden (D/E: 2.955) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
-| **ANWARGALV** | ৳119.6 | Excessive Loan Burden (D/E: 3.315) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
-| **ARGONDENIM** | ৳19.7 | Retail Distribution Trap: Smart money selling into retail buying | **DO NOT BUY / EXIT ON BOUNCE** |
-| **SAIHAMCOT** | ৳20.8 | Retail Distribution Trap: Smart money selling into retail buying | **DO NOT BUY / EXIT ON BOUNCE** |
+| **UCB** | ৳8.6 | Forensic Surveillance Blacklist: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP — Price up +4.88% with poor fundamentals (Negative EPS)] | **DO NOT BUY / EXIT ON BOUNCE** |
+| **ISLAMIBANK** | ৳23.8 | Excessive Loan Burden (D/E: None) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
+| **RUNNERAUTO** | ৳44.3 | Excessive Loan Burden (D/E: 1.273) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
+| **ORIONPHARM** | ৳28.2 | Excessive Loan Burden (D/E: 1.272) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
+| **BEACONPHAR** | ৳94.2 | Excessive Loan Burden (D/E: 1.512) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
+| **GENEXIL** | ৳28.5 | Excessive Loan Burden (D/E: 1.312) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
+| **CROWNCEMNT** | ৳55.4 | Excessive Loan Burden (D/E: 1.6) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
+| **PREMIERCEM** | ৳39.6 | Excessive Loan Burden (D/E: 3.638) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
+| **MEGHNACEM** | ৳28.4 | Excessive Loan Burden (D/E: 10.733) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
+| **ARAMITCEM** | ৳10.4 | Excessive Loan Burden (D/E: 17.553) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
+| **POWERGRID** | ৳38.4 | Excessive Loan Burden (D/E: 4.808) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
+| **DESCO** | ৳22.7 | Excessive Loan Burden (D/E: 3.001) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
 
 ## 🛡️ মূলধন সুরক্ষার দৈনিক ট্রেডিং ও বিনিয়োগ নীতি
 
