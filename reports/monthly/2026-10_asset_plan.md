@@ -27,21 +27,21 @@ Do NOT deploy 100% capital in a single day. Spread monthly allocation across 4 s
 
 | Ticker | Entry Zone | Direction & Prob | Upside / Risk | P/E | Debt/Equity | Leadership & Experience | Tranche Pacing | Target Exit |
 |---|---|---|---|---|---|---|---|---|
-| **EBL** | ৳23.4–৳24.1 | 🔴 (34.9%) | +30.1% / -9.0% | 4.4 | D/E: None | Ali Reza Iftekhar (37y exp, AA+) | 20% per tranche | ৳31.1 |
-| **PADMAOIL** | ৳191.1–৳196.9 | 🟡 (51.2%) | +30.0% / -9.0% | 3.2 | D/E: 0.007 | Md. Masudur Rahman (30y exp, AA+) | 20% per tranche | ৳253.5 |
+| **EBL** | ৳23.6–৳24.3 | 🔴 (34.9%) | +29.9% / -9.0% | 4.4 | D/E: None | Ali Reza Iftekhar (37y exp, AA+) | 20% per tranche | ৳31.3 |
 | **SQURPHARMA** | ৳214.4–৳221.0 | 🟡 (51.2%) | +30.0% / -9.0% | 7.7 | D/E: 0.006 | Tapan Chowdhury (45y exp, AAA) | 20% per tranche | ৳284.4 |
-| **MPETROLEUM** | ৳204.0–৳210.3 | 🟡 (51.2%) | +30.0% / -9.0% | 3.3 | D/E: 0.006 | Engr. Md. Rehanul Islam (30y exp, AA+) | 20% per tranche | ৳270.7 |
-| **LHB** | ৳48.3–৳49.8 | 🟢 (65.2%) | +30.0% / -9.2% | 10.6 | D/E: 0.0 | Mohammad Iqbal Chowdhury (25y exp, AAA) | 20% per tranche | ৳64.1 |
+| **PADMAOIL** | ৳191.0–৳196.8 | 🟢 (64.2%) | +30.0% / -9.0% | 3.2 | D/E: 0.007 | Md. Masudur Rahman (30y exp, AA+) | 20% per tranche | ৳253.4 |
+| **MPETROLEUM** | ৳203.5–৳209.8 | 🟡 (51.2%) | +30.0% / -9.0% | 3.3 | D/E: 0.006 | Engr. Md. Rehanul Islam (30y exp, AA+) | 20% per tranche | ৳270.0 |
+| **LHB** | ৳47.9–৳49.4 | 🟢 (65.2%) | +30.1% / -8.8% | 10.6 | D/E: 0.0 | Mohammad Iqbal Chowdhury (25y exp, AAA) | 20% per tranche | ৳63.6 |
 
 ## 🚀 4. Top Mid-Term Cycle Swings (1–6 Months)
 
 | Ticker | Entry Price | Direction & Prob | Target (+15%) | Trailing Stop (-5%) | Risk/Reward | P/E |
 |---|---|---|---|---|---|---|
-| **EBL** | ৳23.9 | 🔴 34.9% | **৳27.5** | ৳22.7 | 3.0x | 4.4 |
-| **PADMAOIL** | ৳195.0 | 🟡 51.2% | **৳224.2** | ৳185.2 | 3.0x | 3.2 |
+| **EBL** | ৳24.1 | 🔴 34.9% | **৳27.7** | ৳22.9 | 3.0x | 4.4 |
 | **SQURPHARMA** | ৳218.8 | 🟡 51.2% | **৳251.6** | ৳207.9 | 3.0x | 7.7 |
-| **MPETROLEUM** | ৳208.2 | 🟡 51.2% | **৳239.4** | ৳197.8 | 3.0x | 3.3 |
-| **LHB** | ৳49.3 | 🟢 65.2% | **৳56.7** | ৳46.8 | 2.9x | 10.6 |
+| **PADMAOIL** | ৳194.9 | 🟢 64.2% | **৳224.1** | ৳185.2 | 3.0x | 3.2 |
+| **MPETROLEUM** | ৳207.7 | 🟡 51.2% | **৳238.9** | ৳197.3 | 3.0x | 3.3 |
+| **LHB** | ৳48.9 | 🟢 65.2% | **৳56.2** | ৳46.5 | 3.0x | 10.6 |
 
 ## 🛡️ 5. Monthly Risk Filter & Governance Directive
 
