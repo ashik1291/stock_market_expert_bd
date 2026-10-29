@@ -2,43 +2,52 @@
   "ticker": "PUBALIBANK",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-10-22T09:45:54.474160",
-  "signal": "BUY",
-  "confidence": 71.14,
+  "analyzed_at": "2026-10-29T09:18:40.787203",
+  "asof_price_date": "2026-10-29",
+  "served_model": {
+    "model_id": "frozen_epoch2_pit_v2",
+    "score": 27.945,
+    "is_eligible": true,
+    "rsi_14": 75.9967,
+    "pe_ratio": 3.69,
+    "debt_equity": 0.77
+  },
+  "signal": "STRONG_BUY",
+  "confidence": 75.89,
   "trajectory": {
-    "direction": "CONSOLIDATION_RANGE",
-    "direction_icon": "\ud83d\udfe1",
-    "rise_probability_pct": 47.9,
-    "momentum_status": "Neutral Range Consolidation",
+    "direction": "FALL_RISK",
+    "direction_icon": "\ud83d\udd34",
+    "rise_probability_pct": 24.1,
+    "momentum_status": "Bearish Breakdown / Selling Pressure",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+3.0%",
-      "downside_risk_pct": "-2.0%",
-      "target_price": 41.5,
-      "support_price": 39.5,
-      "risk_reward_ratio": "1.5x"
+      "upside_potential_pct": "+3.3%",
+      "downside_risk_pct": "-2.1%",
+      "target_price": 44.3,
+      "support_price": 42.0,
+      "risk_reward_ratio": "1.6x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
       "upside_potential_pct": "+14.9%",
-      "downside_risk_pct": "-5.0%",
-      "target_price": 46.3,
-      "trailing_stop": 38.3,
+      "downside_risk_pct": "-4.9%",
+      "target_price": 49.3,
+      "trailing_stop": 40.8,
       "risk_reward_ratio": "3.0x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-      "upside_potential_pct": "+30.0%",
-      "downside_risk_pct": "-9.0%",
-      "target_price": 52.4,
+      "upside_potential_pct": "+30.1%",
+      "downside_risk_pct": "-8.8%",
+      "target_price": 55.8,
       "dividend_cagr": "moderate (3.24%)",
-      "risk_reward_ratio": "3.3x"
+      "risk_reward_ratio": "3.4x"
     }
   },
   "trade_levels": {
-    "entry": 40.3,
-    "stop_loss": 39.09,
-    "target": 42.72
+    "entry": 42.9,
+    "stop_loss": 41.52,
+    "target": 45.66
   },
   "precision": {
     "ticker": "PUBALIBANK",
@@ -61,14 +70,14 @@
       "signal": "Dividend is 500% cash-covered by real operations (NOCFPS: Tk 2.51 vs DPS: Tk 0.0)"
     },
     "liquidity": {
-      "avg_daily_volume": 676262,
-      "daily_turnover_bdt_cr": 0.07,
+      "avg_daily_volume": 995350,
+      "daily_turnover_bdt_cr": 0.1,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 33813,
-      "max_daily_accumulation_shares": 101439,
-      "max_order_bdt": 33813.0,
-      "directive": "Max single order: 33,813 shares (Tk 33,813) to prevent >1% execution slippage"
+      "max_single_order_shares": 49767,
+      "max_daily_accumulation_shares": 149302,
+      "max_order_bdt": 49767.0,
+      "directive": "Max single order: 49,767 shares (Tk 49,767) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -80,59 +89,59 @@
   },
   "pattern_dna": {
     "ticker": "PUBALIBANK",
-    "audited_at": "2026-10-22 15:45:54",
+    "audited_at": "2026-10-29 15:18:40",
     "worth_vs_greed": {
-      "current_price": 40.3,
+      "current_price": 42.9,
       "intrinsic_worth": 23.6,
-      "margin_of_safety_pct": -41.4,
-      "extension_froth_score": 30.0,
-      "greed_index": 30.0,
-      "rsi_14": 70.4,
-      "price_vs_ema50_pct": 3.6,
-      "price_vs_ema200_pct": 10.3,
+      "margin_of_safety_pct": -45.0,
+      "extension_froth_score": 50.0,
+      "greed_index": 50.0,
+      "rsi_14": 79.7,
+      "price_vs_ema50_pct": 9.0,
+      "price_vs_ema200_pct": 16.5,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f32.95, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f339.5 \u2013 \u09f340.7",
-        "chase_cutoff_price": 41.3,
-        "when_to_wait": "If price opens or rises above \u09f341.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f339.5.",
-        "weekly_target_short": 41.7,
-        "monthly_target_swing": 46.3,
-        "long_term_target_asset": 52.4,
+        "optimal_entry_corridor": "\u09f342.0 \u2013 \u09f343.3",
+        "chase_cutoff_price": 44.0,
+        "when_to_wait": "If price opens or rises above \u09f344.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f342.0.",
+        "weekly_target_short": 44.4,
+        "monthly_target_swing": 49.3,
+        "long_term_target_asset": 55.8,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
       "worth_decision": "AVOID",
-      "reason": "Fundamental value severely lags stock price (MoS: -41.4%)."
+      "reason": "Fundamental value severely lags stock price (MoS: -45.0%)."
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 0.0,
-          "high": 40.8,
-          "low": 39.8,
-          "range_volatility_pct": 2.51
+          "return_pct": 6.45,
+          "high": 43.7,
+          "low": 39.3,
+          "range_volatility_pct": 11.2
         },
         "monthly_21d": {
-          "return_pct": 3.6,
-          "high": 41.2,
+          "return_pct": 12.6,
+          "high": 43.7,
           "low": 37.7,
-          "range_volatility_pct": 9.28
+          "range_volatility_pct": 15.92
         },
         "quarterly_63d": {
-          "return_pct": 8.92,
-          "high": 41.2,
-          "low": 36.9,
-          "range_volatility_pct": 11.65
+          "return_pct": 12.6,
+          "high": 43.7,
+          "low": 37.1,
+          "range_volatility_pct": 17.79
         },
         "half_yearly_126d": {
-          "return_pct": 9.81,
-          "high": 41.2,
+          "return_pct": 20.51,
+          "high": 43.7,
           "low": 31.8,
-          "range_volatility_pct": 29.56
+          "range_volatility_pct": 37.42
         },
         "yearly_252d": {
-          "return_pct": 38.97,
+          "return_pct": 54.32,
           "high": 44.0,
           "low": 25.5,
           "range_volatility_pct": 72.55
@@ -144,7 +153,7 @@
         "avg_wave_duration_bars": 33.0
       },
       "current_wave_phase": "LATE_MARKUP",
-      "phase_guidance": "Approaching historical rally limit (+8.6% vs median +11.1%). Tighten stop.",
+      "phase_guidance": "Approaching historical rally limit (+15.6% vs median +11.1%). Tighten stop.",
       "top_seasonal_months": [
         {
           "month": "Aug",
@@ -242,11 +251,43 @@
     ]
   },
   "technical": {
-    "score": null,
+    "score": 55.0,
     "signals": {
-      "error": "insufficient_data_lt_30_bars"
+      "rsi": "overbought_bearish",
+      "macd": "bullish_crossover",
+      "sma_trend": "bullish",
+      "bb": "at_upper_band_bearish",
+      "atr": 0.92,
+      "rsi_value": 76.09,
+      "last_close": 42.9,
+      "sma20": 39.98,
+      "sma50": 39.17,
+      "sma200": 37.71,
+      "support_resistance": {
+        "supports": [
+          33.2,
+          34.7,
+          37.4
+        ],
+        "resistances": [
+          39.5,
+          40.2,
+          42.1
+        ]
+      }
     },
-    "sr": {}
+    "sr": {
+      "supports": [
+        33.2,
+        34.7,
+        37.4
+      ],
+      "resistances": [
+        39.5,
+        40.2,
+        42.1
+      ]
+    }
   },
   "fundamental": {
     "score": 80.83,
@@ -266,7 +307,7 @@
       "earnings_quality": "financial_asset_quality_mode",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 8.4,
+        "drawdown_pct": 2.5,
         "high_52w": 44.0,
         "low_52w": 25.5
       }
@@ -303,26 +344,26 @@
     }
   },
   "manipulation": {
-    "manipulation_score": 15,
+    "manipulation_score": 10,
     "manipulation_risk": "low",
     "block_buy": false,
     "flags": [
-      "volume_spike: volume_3.9x_avg"
+      "price_surge_no_news: price_6.5pct_zero_news"
     ],
     "checks": {
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 2175195,
-        "avg_volume": 621108.0,
+        "last_volume": 1930595,
+        "avg_volume": 807619.0,
         "detail": "ok"
       },
       "volume_spike": {
-        "flag": true,
-        "spike_ratio": 3.93,
-        "avg_volume": 553907.0,
-        "today_volume": 2175195,
-        "detail": "volume_3.9x_avg"
+        "flag": false,
+        "spike_ratio": 2.54,
+        "avg_volume": 761161.0,
+        "today_volume": 1930595,
+        "detail": "ok"
       },
       "serial_trading": {
         "flag": false,
@@ -339,22 +380,22 @@
         "detail": "sponsor_holding_not_available"
       },
       "price_surge_no_news": {
-        "flag": false,
-        "price_change_3d": 0.0,
+        "flag": true,
+        "price_change_3d": 6.45,
         "news_count_3d": 0,
-        "detail": "ok"
+        "detail": "price_6.5pct_zero_news"
       }
     }
   },
   "composite": {
-    "composite_score": 71.14,
+    "composite_score": 75.89,
     "governance_score": 90,
     "sentiment_score": 65.0,
     "applied_weights": {
-      "fundamental": 0.386,
-      "technical": 0.285,
-      "governance": 0.172,
-      "sentiment": 0.157
+      "fundamental": 0.61,
+      "technical": 0.243,
+      "governance": 0.147,
+      "sentiment": 0.0
     }
   }
 }

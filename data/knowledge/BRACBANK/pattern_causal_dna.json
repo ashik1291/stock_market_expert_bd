@@ -1,58 +1,58 @@
 {
   "ticker": "BRACBANK",
-  "audited_at": "2026-10-22 15:45:54",
+  "audited_at": "2026-10-29 15:18:40",
   "worth_vs_greed": {
-    "current_price": 67.8,
+    "current_price": 67.5,
     "intrinsic_worth": 20.4,
-    "margin_of_safety_pct": -69.9,
-    "extension_froth_score": 20.0,
-    "greed_index": 20.0,
-    "rsi_14": 77.6,
-    "price_vs_ema50_pct": 4.8,
-    "price_vs_ema200_pct": 2.8,
+    "margin_of_safety_pct": -69.8,
+    "extension_froth_score": 30.0,
+    "greed_index": 30.0,
+    "rsi_14": 65.3,
+    "price_vs_ema50_pct": 3.1,
+    "price_vs_ema200_pct": 2.2,
     "merit_status": "EARNINGS_BACKED_MERIT",
     "merit_reason": "Price supported by solid earnings (EPS: \u09f32.55, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f366.4 \u2013 \u09f368.5",
-      "chase_cutoff_price": 69.5,
-      "when_to_wait": "If price opens or rises above \u09f369.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f366.4.",
-      "weekly_target_short": 70.2,
-      "monthly_target_swing": 78.0,
-      "long_term_target_asset": 88.1,
+      "optimal_entry_corridor": "\u09f366.2 \u2013 \u09f368.2",
+      "chase_cutoff_price": 69.2,
+      "when_to_wait": "If price opens or rises above \u09f369.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f366.2.",
+      "weekly_target_short": 69.9,
+      "monthly_target_swing": 77.6,
+      "long_term_target_asset": 87.8,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -69.9%)."
+    "reason": "Fundamental value severely lags stock price (MoS: -69.8%)."
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 3.04,
-        "high": 68.0,
-        "low": 65.9,
-        "range_volatility_pct": 3.19
+        "return_pct": -0.44,
+        "high": 68.9,
+        "low": 67.1,
+        "range_volatility_pct": 2.68
       },
       "monthly_21d": {
-        "return_pct": 6.1,
-        "high": 68.0,
-        "low": 63.2,
-        "range_volatility_pct": 7.59
+        "return_pct": 4.49,
+        "high": 68.9,
+        "low": 64.3,
+        "range_volatility_pct": 7.15
       },
       "quarterly_63d": {
-        "return_pct": 6.1,
-        "high": 68.0,
+        "return_pct": 5.3,
+        "high": 68.9,
         "low": 61.5,
-        "range_volatility_pct": 10.57
+        "range_volatility_pct": 12.03
       },
       "half_yearly_126d": {
-        "return_pct": -3.42,
+        "return_pct": -7.79,
         "high": 75.0,
         "low": 60.8,
         "range_volatility_pct": 23.36
       },
       "yearly_252d": {
-        "return_pct": -2.31,
+        "return_pct": -1.03,
         "high": 89.6,
         "low": 60.0,
         "range_volatility_pct": 49.33
@@ -64,7 +64,7 @@
       "avg_wave_duration_bars": 28.0
     },
     "current_wave_phase": "MARKUP_RALLY_MID",
-    "phase_guidance": "Midway through rally wave (+10.2% from base, historical target ~+26.1%).",
+    "phase_guidance": "Midway through rally wave (+9.8% from base, historical target ~+26.1%).",
     "top_seasonal_months": [
       {
         "month": "Aug",

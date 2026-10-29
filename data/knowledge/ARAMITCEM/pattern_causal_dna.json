@@ -1,24 +1,24 @@
 {
   "ticker": "ARAMITCEM",
-  "audited_at": "2026-10-22 15:45:56",
+  "audited_at": "2026-10-29 15:18:42",
   "worth_vs_greed": {
-    "current_price": 11.0,
-    "intrinsic_worth": 5.5,
+    "current_price": 10.7,
+    "intrinsic_worth": 5.35,
     "margin_of_safety_pct": -50.0,
     "extension_froth_score": 30.0,
     "greed_index": 30.0,
-    "rsi_14": 55.0,
-    "price_vs_ema50_pct": -3.8,
-    "price_vs_ema200_pct": -5.4,
+    "rsi_14": 44.4,
+    "price_vs_ema50_pct": -5.1,
+    "price_vs_ema200_pct": -7.5,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f310.8 \u2013 \u09f311.1",
-      "chase_cutoff_price": 11.3,
-      "when_to_wait": "If price opens or rises above \u09f311.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f310.8.",
-      "weekly_target_short": 11.4,
-      "monthly_target_swing": 12.6,
-      "long_term_target_asset": 14.3,
+      "optimal_entry_corridor": "\u09f310.5 \u2013 \u09f310.8",
+      "chase_cutoff_price": 11.0,
+      "when_to_wait": "If price opens or rises above \u09f311.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f310.5.",
+      "weekly_target_short": 11.1,
+      "monthly_target_swing": 12.3,
+      "long_term_target_asset": 13.9,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -28,31 +28,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 0.92,
-        "high": 11.5,
-        "low": 10.8,
-        "range_volatility_pct": 6.48
+        "return_pct": -2.73,
+        "high": 11.3,
+        "low": 10.0,
+        "range_volatility_pct": 13.0
       },
       "monthly_21d": {
-        "return_pct": -1.79,
+        "return_pct": -0.93,
         "high": 11.7,
-        "low": 10.6,
-        "range_volatility_pct": 10.38
+        "low": 10.0,
+        "range_volatility_pct": 17.0
       },
       "quarterly_63d": {
-        "return_pct": -12.7,
+        "return_pct": -13.01,
         "high": 14.2,
-        "low": 10.2,
-        "range_volatility_pct": 39.22
+        "low": 10.0,
+        "range_volatility_pct": 42.0
       },
       "half_yearly_126d": {
-        "return_pct": -9.84,
+        "return_pct": -6.14,
         "high": 15.0,
         "low": 10.0,
         "range_volatility_pct": 50.0
       },
       "yearly_252d": {
-        "return_pct": -5.17,
+        "return_pct": -0.93,
         "high": 15.0,
         "low": 7.6,
         "range_volatility_pct": 97.37
@@ -64,7 +64,7 @@
       "avg_wave_duration_bars": 25.0
     },
     "current_wave_phase": "MARKUP_RALLY_MID",
-    "phase_guidance": "Midway through rally wave (+7.8% from base, historical target ~+33.6%).",
+    "phase_guidance": "Midway through rally wave (+4.9% from base, historical target ~+33.6%).",
     "top_seasonal_months": [
       {
         "month": "Feb",
