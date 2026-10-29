@@ -1,24 +1,24 @@
 {
   "ticker": "MEGHNACEM",
-  "audited_at": "2026-10-22 15:45:55",
+  "audited_at": "2026-10-29 15:18:41",
   "worth_vs_greed": {
-    "current_price": 28.5,
-    "intrinsic_worth": 14.25,
+    "current_price": 27.2,
+    "intrinsic_worth": 13.6,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 30.0,
-    "greed_index": 30.0,
-    "rsi_14": 50.0,
-    "price_vs_ema50_pct": -3.1,
-    "price_vs_ema200_pct": -11.8,
+    "extension_froth_score": 40.0,
+    "greed_index": 40.0,
+    "rsi_14": 40.7,
+    "price_vs_ema50_pct": -6.6,
+    "price_vs_ema200_pct": -15.1,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f327.9 \u2013 \u09f328.8",
-      "chase_cutoff_price": 29.2,
-      "when_to_wait": "If price opens or rises above \u09f329.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f327.9.",
-      "weekly_target_short": 29.5,
-      "monthly_target_swing": 32.8,
-      "long_term_target_asset": 37.1,
+      "optimal_entry_corridor": "\u09f326.7 \u2013 \u09f327.5",
+      "chase_cutoff_price": 27.9,
+      "when_to_wait": "If price opens or rises above \u09f327.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f326.7.",
+      "weekly_target_short": 28.2,
+      "monthly_target_swing": 31.3,
+      "long_term_target_asset": 35.4,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -28,34 +28,34 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 2.89,
-        "high": 30.0,
-        "low": 27.5,
-        "range_volatility_pct": 9.09
+        "return_pct": -4.56,
+        "high": 30.3,
+        "low": 25.6,
+        "range_volatility_pct": 18.36
       },
       "monthly_21d": {
-        "return_pct": -1.38,
+        "return_pct": -4.56,
         "high": 30.3,
-        "low": 27.5,
-        "range_volatility_pct": 10.18
+        "low": 25.6,
+        "range_volatility_pct": 18.36
       },
       "quarterly_63d": {
-        "return_pct": -12.58,
-        "high": 35.6,
-        "low": 27.1,
-        "range_volatility_pct": 31.37
+        "return_pct": -15.26,
+        "high": 33.0,
+        "low": 25.6,
+        "range_volatility_pct": 28.91
       },
       "half_yearly_126d": {
-        "return_pct": -14.93,
+        "return_pct": -18.56,
         "high": 35.8,
-        "low": 27.0,
-        "range_volatility_pct": 32.59
+        "low": 25.6,
+        "range_volatility_pct": 39.84
       },
       "yearly_252d": {
-        "return_pct": -43.79,
-        "high": 50.6,
-        "low": 26.1,
-        "range_volatility_pct": 93.87
+        "return_pct": -42.0,
+        "high": 48.5,
+        "low": 25.6,
+        "range_volatility_pct": 89.45
       }
     },
     "wave_metrics": {
@@ -63,8 +63,8 @@
       "median_correction_drop_pct": -17.0,
       "avg_wave_duration_bars": 26.0
     },
-    "current_wave_phase": "MARKUP_RALLY_MID",
-    "phase_guidance": "Midway through rally wave (+5.2% from base, historical target ~+10.3%).",
+    "current_wave_phase": "ACCUMULATION_TROUGH",
+    "phase_guidance": "Near local cyclical trough base. Maximum reward/risk entry point.",
     "top_seasonal_months": [
       {
         "month": "Sep",

@@ -1,58 +1,58 @@
 {
   "ticker": "BANKASIA",
-  "audited_at": "2026-10-22 15:45:54",
+  "audited_at": "2026-10-29 15:18:41",
   "worth_vs_greed": {
-    "current_price": 16.8,
+    "current_price": 17.0,
     "intrinsic_worth": 6.88,
-    "margin_of_safety_pct": -59.0,
-    "extension_froth_score": 10.0,
-    "greed_index": 10.0,
-    "rsi_14": 58.8,
-    "price_vs_ema50_pct": -1.1,
-    "price_vs_ema200_pct": -7.5,
+    "margin_of_safety_pct": -59.5,
+    "extension_froth_score": 30.0,
+    "greed_index": 30.0,
+    "rsi_14": 68.0,
+    "price_vs_ema50_pct": 0.3,
+    "price_vs_ema200_pct": -5.9,
     "merit_status": "EARNINGS_BACKED_MERIT",
     "merit_reason": "Price supported by solid earnings (EPS: \u09f30.86, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f316.5 \u2013 \u09f317.0",
-      "chase_cutoff_price": 17.2,
-      "when_to_wait": "If price opens or rises above \u09f317.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f316.5.",
-      "weekly_target_short": 17.4,
-      "monthly_target_swing": 19.3,
-      "long_term_target_asset": 21.8,
+      "optimal_entry_corridor": "\u09f316.7 \u2013 \u09f317.2",
+      "chase_cutoff_price": 17.4,
+      "when_to_wait": "If price opens or rises above \u09f317.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f316.7.",
+      "weekly_target_short": 17.6,
+      "monthly_target_swing": 19.5,
+      "long_term_target_asset": 22.1,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -59.0%)."
+    "reason": "Fundamental value severely lags stock price (MoS: -59.5%)."
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 1.2,
-        "high": 16.9,
+        "return_pct": 1.19,
+        "high": 17.5,
         "low": 16.5,
-        "range_volatility_pct": 2.42
+        "range_volatility_pct": 6.06
       },
       "monthly_21d": {
-        "return_pct": 0.0,
-        "high": 17.1,
+        "return_pct": 3.03,
+        "high": 17.5,
         "low": 15.9,
-        "range_volatility_pct": 7.55
+        "range_volatility_pct": 10.06
       },
       "quarterly_63d": {
-        "return_pct": -8.2,
-        "high": 18.7,
+        "return_pct": -6.08,
+        "high": 18.2,
         "low": 15.9,
-        "range_volatility_pct": 17.61
+        "range_volatility_pct": 14.47
       },
       "half_yearly_126d": {
-        "return_pct": -23.64,
+        "return_pct": -19.43,
         "high": 22.1,
         "low": 15.9,
         "range_volatility_pct": 38.99
       },
       "yearly_252d": {
-        "return_pct": -6.67,
+        "return_pct": -2.3,
         "high": 23.9,
         "low": 15.9,
         "range_volatility_pct": 50.31
@@ -63,8 +63,8 @@
       "median_correction_drop_pct": -11.8,
       "avg_wave_duration_bars": 19.0
     },
-    "current_wave_phase": "BOTTOMING_SUPPORT",
-    "phase_guidance": "Drop (-10.2%) matches historical correction depth (-11.8%). Prepare to accumulate.",
+    "current_wave_phase": "MARKDOWN_PULLBACK",
+    "phase_guidance": "Ongoing pullback from peak (-9.1%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Aug",

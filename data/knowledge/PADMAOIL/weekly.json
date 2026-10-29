@@ -2,43 +2,52 @@
   "ticker": "PADMAOIL",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-10-22T09:45:56.214438",
-  "signal": "BUY",
-  "confidence": 70.41,
+  "analyzed_at": "2026-10-29T09:18:42.177023",
+  "asof_price_date": "2026-10-29",
+  "served_model": {
+    "model_id": "frozen_epoch2_pit_v2",
+    "score": 39.715,
+    "is_eligible": true,
+    "rsi_14": 61.0088,
+    "pe_ratio": 3.19,
+    "debt_equity": 0.007
+  },
+  "signal": "STRONG_BUY",
+  "confidence": 77.21,
   "trajectory": {
-    "direction": "RISE_PREDICTED",
-    "direction_icon": "\ud83d\udfe2",
-    "rise_probability_pct": 64.2,
-    "momentum_status": "Bullish Reversal / Upward Accumulation",
+    "direction": "CONSOLIDATION_RANGE",
+    "direction_icon": "\ud83d\udfe1",
+    "rise_probability_pct": 51.2,
+    "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+3.0%",
-      "downside_risk_pct": "-2.0%",
-      "target_price": 201.0,
-      "support_price": 191.2,
-      "risk_reward_ratio": "1.5x"
+      "upside_potential_pct": "+1.4%",
+      "downside_risk_pct": "-0.9%",
+      "target_price": 200.2,
+      "support_price": 195.7,
+      "risk_reward_ratio": "1.6x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
       "upside_potential_pct": "+15.0%",
       "downside_risk_pct": "-5.0%",
-      "target_price": 224.4,
-      "trailing_stop": 185.3,
+      "target_price": 227.1,
+      "trailing_stop": 187.6,
       "risk_reward_ratio": "3.0x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.0%",
       "downside_risk_pct": "-9.0%",
-      "target_price": 253.6,
+      "target_price": 256.8,
       "dividend_cagr": "strong (8.75%)",
       "risk_reward_ratio": "3.3x"
     }
   },
   "trade_levels": {
-    "entry": 195.1,
-    "stop_loss": 189.25,
-    "target": 206.8
+    "entry": 197.5,
+    "stop_loss": 194.81,
+    "target": 202.88
   },
   "precision": {
     "ticker": "PADMAOIL",
@@ -61,14 +70,14 @@
       "signal": "Dividend is 500% cash-covered by real operations (NOCFPS: Tk 11.44 vs DPS: Tk 0.0)"
     },
     "liquidity": {
-      "avg_daily_volume": 14320,
+      "avg_daily_volume": 14509,
       "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 716,
-      "max_daily_accumulation_shares": 2148,
-      "max_order_bdt": 716.0,
-      "directive": "Max single order: 716 shares (Tk 716) to prevent >1% execution slippage"
+      "max_single_order_shares": 725,
+      "max_daily_accumulation_shares": 2176,
+      "max_order_bdt": 725.0,
+      "directive": "Max single order: 725 shares (Tk 725) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -80,71 +89,71 @@
   },
   "pattern_dna": {
     "ticker": "PADMAOIL",
-    "audited_at": "2026-10-22 15:45:56",
+    "audited_at": "2026-10-29 15:18:42",
     "worth_vs_greed": {
-      "current_price": 195.1,
+      "current_price": 197.5,
       "intrinsic_worth": 107.68,
-      "margin_of_safety_pct": -44.8,
-      "extension_froth_score": 20.0,
-      "greed_index": 20.0,
-      "rsi_14": 52.4,
-      "price_vs_ema50_pct": 0.2,
-      "price_vs_ema200_pct": 3.0,
+      "margin_of_safety_pct": -45.5,
+      "extension_froth_score": 30.0,
+      "greed_index": 30.0,
+      "rsi_14": 58.8,
+      "price_vs_ema50_pct": 1.3,
+      "price_vs_ema200_pct": 4.0,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f313.46, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f3191.2 \u2013 \u09f3197.1",
-        "chase_cutoff_price": 200.0,
-        "when_to_wait": "If price opens or rises above \u09f3200.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3191.2.",
-        "weekly_target_short": 201.9,
-        "monthly_target_swing": 224.4,
-        "long_term_target_asset": 253.6,
+        "optimal_entry_corridor": "\u09f3193.5 \u2013 \u09f3199.5",
+        "chase_cutoff_price": 202.4,
+        "when_to_wait": "If price opens or rises above \u09f3202.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3193.5.",
+        "weekly_target_short": 204.4,
+        "monthly_target_swing": 227.1,
+        "long_term_target_asset": 256.8,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
       "worth_decision": "AVOID",
-      "reason": "Fundamental value severely lags stock price (MoS: -44.8%)."
+      "reason": "Fundamental value severely lags stock price (MoS: -45.5%)."
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 0.31,
-          "high": 195.4,
-          "low": 192.5,
-          "range_volatility_pct": 1.51
+          "return_pct": 1.23,
+          "high": 198.0,
+          "low": 194.0,
+          "range_volatility_pct": 2.06
         },
         "monthly_21d": {
-          "return_pct": 0.05,
+          "return_pct": 1.59,
           "high": 198.5,
-          "low": 191.3,
-          "range_volatility_pct": 3.76
+          "low": 192.0,
+          "range_volatility_pct": 3.39
         },
         "quarterly_63d": {
-          "return_pct": -4.17,
-          "high": 204.8,
+          "return_pct": -2.03,
+          "high": 202.3,
           "low": 191.3,
-          "range_volatility_pct": 7.06
+          "range_volatility_pct": 5.75
         },
         "half_yearly_126d": {
-          "return_pct": 10.79,
+          "return_pct": 12.47,
           "high": 205.5,
-          "low": 172.7,
-          "range_volatility_pct": 18.99
+          "low": 173.0,
+          "range_volatility_pct": 18.79
         },
         "yearly_252d": {
-          "return_pct": -1.71,
+          "return_pct": 1.49,
           "high": 205.5,
           "low": 163.8,
           "range_volatility_pct": 25.46
         }
       },
       "wave_metrics": {
-        "median_rally_gain_pct": 15.1,
+        "median_rally_gain_pct": 15.0,
         "median_correction_drop_pct": -8.8,
         "avg_wave_duration_bars": 30.0
       },
-      "current_wave_phase": "ACCUMULATION_TROUGH",
-      "phase_guidance": "Near local cyclical trough base. Maximum reward/risk entry point.",
+      "current_wave_phase": "MARKDOWN_PULLBACK",
+      "phase_guidance": "Ongoing pullback from peak (-0.5%). Wait for stabilizing base.",
       "top_seasonal_months": [
         {
           "month": "Jul",
@@ -165,8 +174,8 @@
       "weak_seasonal_months": [
         {
           "month": "Oct",
-          "avg_return": -2.0,
-          "win_rate": 38.0
+          "avg_return": -1.9,
+          "win_rate": 36.0
         },
         {
           "month": "Dec",
@@ -242,14 +251,44 @@
     ]
   },
   "technical": {
-    "score": null,
+    "score": 62.5,
     "signals": {
-      "error": "insufficient_data_lt_30_bars"
+      "rsi": "neutral",
+      "macd": "bullish_crossover",
+      "sma_trend": "bullish",
+      "bb": "at_upper_band_bearish",
+      "atr": 1.79,
+      "rsi_value": 61.15,
+      "last_close": 197.5,
+      "sma20": 195.18,
+      "sma50": 194.67,
+      "sma200": 184.93,
+      "support_resistance": {
+        "supports": [
+          164.1,
+          173.1,
+          191.6
+        ],
+        "resistances": [
+          183.9,
+          204.9
+        ]
+      }
     },
-    "sr": {}
+    "sr": {
+      "supports": [
+        164.1,
+        173.1,
+        191.6
+      ],
+      "resistances": [
+        183.9,
+        204.9
+      ]
+    }
   },
   "fundamental": {
-    "score": 85.0,
+    "score": 80.0,
     "signals": {
       "latest_interim_eps": "FY2026Q3 (13.46)",
       "eps": "positive (57.3)",
@@ -264,9 +303,13 @@
       "loan_trap_risk": "none",
       "dividend_track_record_years": 5,
       "dividend_consistency": "proven_compounder (5 yrs cash divs)",
+      "cfo_cr": 63.8,
+      "net_profit_cr": 562.9,
+      "accrual_ratio": 0.185,
+      "earnings_quality": "moderate_accrual_drag",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 5.1,
+        "drawdown_pct": 3.9,
         "high_52w": 205.5,
         "low_52w": 163.8
       }
@@ -309,15 +352,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 28250,
-        "avg_volume": 16014.0,
+        "last_volume": 21431,
+        "avg_volume": 16741.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.83,
-        "avg_volume": 15395.0,
-        "today_volume": 28250,
+        "spike_ratio": 1.3,
+        "avg_volume": 16462.0,
+        "today_volume": 21431,
         "detail": "ok"
       },
       "serial_trading": {
@@ -336,21 +379,21 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": 0.0,
+        "price_change_3d": 1.28,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 70.41,
+    "composite_score": 77.21,
     "governance_score": 90,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.386,
-      "technical": 0.285,
-      "governance": 0.172,
-      "sentiment": 0.157
+      "fundamental": 0.61,
+      "technical": 0.243,
+      "governance": 0.147,
+      "sentiment": 0.0
     }
   }
 }

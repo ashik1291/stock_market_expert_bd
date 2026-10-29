@@ -1,58 +1,58 @@
 {
   "ticker": "BXPHARMA",
-  "audited_at": "2026-10-22 15:45:55",
+  "audited_at": "2026-10-29 15:18:41",
   "worth_vs_greed": {
-    "current_price": 145.7,
-    "intrinsic_worth": 141.17,
-    "margin_of_safety_pct": -3.1,
-    "extension_froth_score": 30.0,
-    "greed_index": 30.0,
-    "rsi_14": 44.4,
-    "price_vs_ema50_pct": 0.1,
-    "price_vs_ema200_pct": 9.5,
+    "current_price": 143.7,
+    "intrinsic_worth": 39.84,
+    "margin_of_safety_pct": -72.3,
+    "extension_froth_score": 10.0,
+    "greed_index": 10.0,
+    "rsi_14": 54.1,
+    "price_vs_ema50_pct": -1.1,
+    "price_vs_ema200_pct": 7.4,
     "merit_status": "EARNINGS_BACKED_MERIT",
-    "merit_reason": "Price supported by solid earnings (EPS: \u09f313.07, P/E: 10.9). Growth is fundamentally justified.",
+    "merit_reason": "Price supported by solid earnings (EPS: \u09f34.98, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f3142.8 \u2013 \u09f3147.2",
-      "chase_cutoff_price": 149.3,
-      "when_to_wait": "If price opens or rises above \u09f3149.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3142.8.",
-      "weekly_target_short": 150.8,
-      "monthly_target_swing": 167.6,
-      "long_term_target_asset": 189.4,
+      "optimal_entry_corridor": "\u09f3140.8 \u2013 \u09f3145.1",
+      "chase_cutoff_price": 147.3,
+      "when_to_wait": "If price opens or rises above \u09f3147.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3140.8.",
+      "weekly_target_short": 148.7,
+      "monthly_target_swing": 165.3,
+      "long_term_target_asset": 186.8,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
-    "status": "NEUTRAL",
-    "worth_decision": "HOLD",
-    "reason": "Trading in neutral fair-value corridor."
+    "status": "CHRONIC_OVERVALUATION",
+    "worth_decision": "AVOID",
+    "reason": "Fundamental value severely lags stock price (MoS: -72.3%)."
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 2.25,
-        "high": 146.4,
-        "low": 143.0,
-        "range_volatility_pct": 2.38
+        "return_pct": -1.37,
+        "high": 147.4,
+        "low": 142.0,
+        "range_volatility_pct": 3.8
       },
       "monthly_21d": {
-        "return_pct": -1.02,
-        "high": 151.1,
+        "return_pct": -2.97,
+        "high": 150.2,
         "low": 138.5,
-        "range_volatility_pct": 9.1
+        "range_volatility_pct": 8.45
       },
       "quarterly_63d": {
-        "return_pct": -4.4,
+        "return_pct": -3.36,
         "high": 154.5,
         "low": 138.5,
         "range_volatility_pct": 11.55
       },
       "half_yearly_126d": {
-        "return_pct": 26.7,
+        "return_pct": 22.3,
         "high": 158.5,
         "low": 110.0,
         "range_volatility_pct": 44.09
       },
       "yearly_252d": {
-        "return_pct": 22.44,
+        "return_pct": 29.23,
         "high": 158.5,
         "low": 99.5,
         "range_volatility_pct": 59.3
@@ -63,8 +63,8 @@
       "median_correction_drop_pct": -14.5,
       "avg_wave_duration_bars": 27.0
     },
-    "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-5.7%). Wait for stabilizing base.",
+    "current_wave_phase": "ACCUMULATION_TROUGH",
+    "phase_guidance": "Near local cyclical trough base. Maximum reward/risk entry point.",
     "top_seasonal_months": [
       {
         "month": "Sep",

@@ -1,24 +1,24 @@
 {
   "ticker": "HEIDELBCEM",
-  "audited_at": "2026-10-22 15:45:55",
+  "audited_at": "2026-10-29 15:18:41",
   "worth_vs_greed": {
-    "current_price": 204.5,
-    "intrinsic_worth": 102.25,
+    "current_price": 197.1,
+    "intrinsic_worth": 98.55,
     "margin_of_safety_pct": -50.0,
     "extension_froth_score": 10.0,
     "greed_index": 10.0,
-    "rsi_14": 40.7,
-    "price_vs_ema50_pct": -3.1,
-    "price_vs_ema200_pct": -7.4,
+    "rsi_14": 24.9,
+    "price_vs_ema50_pct": -5.4,
+    "price_vs_ema200_pct": -10.2,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f3200.4 \u2013 \u09f3206.5",
-      "chase_cutoff_price": 209.6,
-      "when_to_wait": "If price opens or rises above \u09f3209.6, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3200.4.",
-      "weekly_target_short": 211.7,
-      "monthly_target_swing": 235.2,
-      "long_term_target_asset": 265.9,
+      "optimal_entry_corridor": "\u09f3193.2 \u2013 \u09f3199.1",
+      "chase_cutoff_price": 202.0,
+      "when_to_wait": "If price opens or rises above \u09f3202.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3193.2.",
+      "weekly_target_short": 204.0,
+      "monthly_target_swing": 226.7,
+      "long_term_target_asset": 256.2,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -28,34 +28,34 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 0.15,
-        "high": 208.0,
-        "low": 203.5,
-        "range_volatility_pct": 2.21
+        "return_pct": -3.62,
+        "high": 204.7,
+        "low": 196.0,
+        "range_volatility_pct": 4.44
       },
       "monthly_21d": {
-        "return_pct": -2.57,
+        "return_pct": -5.19,
         "high": 215.0,
-        "low": 203.0,
-        "range_volatility_pct": 5.91
+        "low": 196.0,
+        "range_volatility_pct": 9.69
       },
       "quarterly_63d": {
-        "return_pct": -14.36,
-        "high": 242.4,
-        "low": 201.5,
-        "range_volatility_pct": 20.3
+        "return_pct": -12.98,
+        "high": 229.0,
+        "low": 196.0,
+        "range_volatility_pct": 16.84
       },
       "half_yearly_126d": {
-        "return_pct": -10.5,
+        "return_pct": -12.36,
         "high": 272.7,
-        "low": 197.0,
-        "range_volatility_pct": 38.43
+        "low": 196.0,
+        "range_volatility_pct": 39.13
       },
       "yearly_252d": {
-        "return_pct": -15.95,
+        "return_pct": -16.94,
         "high": 272.7,
-        "low": 197.0,
-        "range_volatility_pct": 38.43
+        "low": 196.0,
+        "range_volatility_pct": 39.13
       }
     },
     "wave_metrics": {
@@ -85,8 +85,8 @@
     "weak_seasonal_months": [
       {
         "month": "Oct",
-        "avg_return": -3.9,
-        "win_rate": 23.0
+        "avg_return": -4.0,
+        "win_rate": 21.0
       },
       {
         "month": "Nov",

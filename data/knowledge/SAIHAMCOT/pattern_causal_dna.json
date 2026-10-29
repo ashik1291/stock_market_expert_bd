@@ -1,58 +1,58 @@
 {
   "ticker": "SAIHAMCOT",
-  "audited_at": "2026-10-22 15:45:57",
+  "audited_at": "2026-10-29 15:18:43",
   "worth_vs_greed": {
-    "current_price": 20.8,
-    "intrinsic_worth": 18.56,
-    "margin_of_safety_pct": -10.8,
-    "extension_froth_score": 30.0,
-    "greed_index": 30.0,
-    "rsi_14": 41.2,
-    "price_vs_ema50_pct": -6.1,
-    "price_vs_ema200_pct": 1.2,
-    "merit_status": "NEUTRAL_MERIT",
-    "merit_reason": "Valuation is within normal historical ranges.",
+    "current_price": 21.3,
+    "intrinsic_worth": 2.48,
+    "margin_of_safety_pct": -88.4,
+    "extension_froth_score": 20.0,
+    "greed_index": 20.0,
+    "rsi_14": 33.3,
+    "price_vs_ema50_pct": -2.3,
+    "price_vs_ema200_pct": 3.6,
+    "merit_status": "EARNINGS_BACKED_MERIT",
+    "merit_reason": "Price supported by solid earnings (EPS: \u09f30.31, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f320.4 \u2013 \u09f321.0",
-      "chase_cutoff_price": 21.3,
-      "when_to_wait": "If price opens or rises above \u09f321.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f320.4.",
-      "weekly_target_short": 21.5,
-      "monthly_target_swing": 23.9,
-      "long_term_target_asset": 27.0,
+      "optimal_entry_corridor": "\u09f320.9 \u2013 \u09f321.5",
+      "chase_cutoff_price": 21.8,
+      "when_to_wait": "If price opens or rises above \u09f321.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f320.9.",
+      "weekly_target_short": 22.0,
+      "monthly_target_swing": 24.5,
+      "long_term_target_asset": 27.7,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
-    "status": "NEUTRAL",
-    "worth_decision": "HOLD",
-    "reason": "Trading in neutral fair-value corridor."
+    "status": "CHRONIC_OVERVALUATION",
+    "worth_decision": "AVOID",
+    "reason": "Fundamental value severely lags stock price (MoS: -88.4%)."
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -3.26,
-        "high": 21.7,
-        "low": 20.6,
-        "range_volatility_pct": 5.34
+        "return_pct": 2.4,
+        "high": 21.6,
+        "low": 19.7,
+        "range_volatility_pct": 9.64
       },
       "monthly_21d": {
-        "return_pct": -8.77,
+        "return_pct": -4.48,
         "high": 24.4,
-        "low": 20.6,
-        "range_volatility_pct": 18.45
+        "low": 19.7,
+        "range_volatility_pct": 23.86
       },
       "quarterly_63d": {
-        "return_pct": 1.96,
+        "return_pct": -8.97,
         "high": 26.8,
-        "low": 20.1,
-        "range_volatility_pct": 33.33
+        "low": 19.7,
+        "range_volatility_pct": 36.04
       },
       "half_yearly_126d": {
-        "return_pct": 7.22,
+        "return_pct": -2.29,
         "high": 26.8,
         "low": 18.6,
         "range_volatility_pct": 44.09
       },
       "yearly_252d": {
-        "return_pct": 13.66,
+        "return_pct": 27.54,
         "high": 26.8,
         "low": 15.2,
         "range_volatility_pct": 76.32
@@ -63,8 +63,8 @@
       "median_correction_drop_pct": -21.6,
       "avg_wave_duration_bars": 20.0
     },
-    "current_wave_phase": "BOTTOMING_SUPPORT",
-    "phase_guidance": "Drop (-22.4%) matches historical correction depth (-21.6%). Prepare to accumulate.",
+    "current_wave_phase": "MARKDOWN_PULLBACK",
+    "phase_guidance": "Ongoing pullback from peak (-12.7%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Aug",
@@ -91,7 +91,7 @@
       {
         "month": "Oct",
         "avg_return": -8.9,
-        "win_rate": 8.0
+        "win_rate": 7.0
       }
     ]
   },

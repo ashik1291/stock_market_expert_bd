@@ -2,43 +2,52 @@
   "ticker": "APEXFOODS",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-10-22T09:45:56.623580",
-  "signal": "HOLD",
-  "confidence": 54.31,
+  "analyzed_at": "2026-10-29T09:18:42.527744",
+  "asof_price_date": "2026-10-29",
+  "served_model": {
+    "model_id": "frozen_epoch2_pit_v2",
+    "score": -999.0,
+    "is_eligible": false,
+    "rsi_14": 52.1846,
+    "pe_ratio": 30.32,
+    "debt_equity": 0.0
+  },
+  "signal": "BUY",
+  "confidence": 69.3,
   "trajectory": {
     "direction": "FALL_RISK",
     "direction_icon": "\ud83d\udd34",
-    "rise_probability_pct": 31.7,
+    "rise_probability_pct": 15.4,
     "momentum_status": "Bearish Breakdown / Selling Pressure",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+3.0%",
-      "downside_risk_pct": "-2.0%",
-      "target_price": 307.0,
-      "support_price": 292.1,
+      "upside_potential_pct": "+6.5%",
+      "downside_risk_pct": "-4.3%",
+      "target_price": 314.0,
+      "support_price": 282.2,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
       "upside_potential_pct": "+15.0%",
       "downside_risk_pct": "-5.0%",
-      "target_price": 342.8,
-      "trailing_stop": 283.2,
+      "target_price": 339.1,
+      "trailing_stop": 280.2,
       "risk_reward_ratio": "3.0x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.0%",
       "downside_risk_pct": "-9.0%",
-      "target_price": 387.5,
-      "dividend_cagr": "5%\u20138%",
+      "target_price": 383.4,
+      "dividend_cagr": "moderate (1.03%)",
       "risk_reward_ratio": "3.3x"
     }
   },
   "trade_levels": {
-    "entry": 298.1,
-    "stop_loss": 289.16,
-    "target": 315.98
+    "entry": 294.9,
+    "stop_loss": 275.82,
+    "target": 333.06
   },
   "precision": {
     "ticker": "APEXFOODS",
@@ -51,24 +60,24 @@
       "signal": "No monthly delta available"
     },
     "cash_flow": {
-      "nocfps": 0.0,
+      "nocfps": 1.1,
       "is_estimated": true,
       "dividend_per_share": 0.0,
-      "dividend_coverage_x": 0.0,
-      "fcf_yield_pct": 0.0,
-      "cash_quality_status": "TIGHT_CASH_COVERAGE",
-      "conviction_bonus": -10.0,
-      "signal": "Cash flow covers only 0% of dividend payout"
+      "dividend_coverage_x": 5.0,
+      "fcf_yield_pct": 110.0,
+      "cash_quality_status": "PRISTINE_REAL_CASH_COVERAGE",
+      "conviction_bonus": 15.0,
+      "signal": "Dividend is 500% cash-covered by real operations (NOCFPS: Tk 1.1 vs DPS: Tk 0.0)"
     },
     "liquidity": {
-      "avg_daily_volume": 123926,
+      "avg_daily_volume": 140241,
       "daily_turnover_bdt_cr": 0.01,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 6196,
-      "max_daily_accumulation_shares": 18588,
-      "max_order_bdt": 6196.0,
-      "directive": "Max single order: 6,196 shares (Tk 6,196) to prevent >1% execution slippage"
+      "max_single_order_shares": 7012,
+      "max_daily_accumulation_shares": 21036,
+      "max_order_bdt": 7012.0,
+      "directive": "Max single order: 7,012 shares (Tk 7,012) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -76,63 +85,63 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": -10.0
+    "total_precision_bonus": 15.0
   },
   "pattern_dna": {
     "ticker": "APEXFOODS",
-    "audited_at": "2026-10-22 15:45:56",
+    "audited_at": "2026-10-29 15:18:42",
     "worth_vs_greed": {
-      "current_price": 298.1,
-      "intrinsic_worth": 149.05,
-      "margin_of_safety_pct": -50.0,
-      "extension_froth_score": 80.0,
-      "greed_index": 80.0,
-      "rsi_14": 61.9,
-      "price_vs_ema50_pct": 4.8,
-      "price_vs_ema200_pct": 12.5,
-      "merit_status": "NEUTRAL_MERIT",
-      "merit_reason": "Valuation is within normal historical ranges.",
+      "current_price": 294.9,
+      "intrinsic_worth": 10.4,
+      "margin_of_safety_pct": -96.5,
+      "extension_froth_score": 60.0,
+      "greed_index": 60.0,
+      "rsi_14": 25.5,
+      "price_vs_ema50_pct": 3.0,
+      "price_vs_ema200_pct": 10.5,
+      "merit_status": "EARNINGS_BACKED_MERIT",
+      "merit_reason": "Price supported by solid earnings (EPS: \u09f31.30, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f3292.1 \u2013 \u09f3301.1",
-        "chase_cutoff_price": 305.6,
-        "when_to_wait": "If price opens or rises above \u09f3305.6, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3292.1.",
-        "weekly_target_short": 308.5,
-        "monthly_target_swing": 342.8,
-        "long_term_target_asset": 387.5,
+        "optimal_entry_corridor": "\u09f3289.0 \u2013 \u09f3297.8",
+        "chase_cutoff_price": 302.3,
+        "when_to_wait": "If price opens or rises above \u09f3302.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3289.0.",
+        "weekly_target_short": 305.2,
+        "monthly_target_swing": 339.1,
+        "long_term_target_asset": 383.4,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
-      "status": "OVERVALUED_EUPHORIA",
-      "worth_decision": "SELL_TAKE_PROFIT",
-      "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (80.0/100). Danger of sharp mean reversion."
+      "status": "CHRONIC_OVERVALUATION",
+      "worth_decision": "AVOID",
+      "reason": "Fundamental value severely lags stock price (MoS: -96.5%)."
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -3.84,
-          "high": 329.0,
-          "low": 295.1,
-          "range_volatility_pct": 11.49
+          "return_pct": -1.07,
+          "high": 302.7,
+          "low": 283.1,
+          "range_volatility_pct": 6.92
         },
         "monthly_21d": {
-          "return_pct": 10.53,
+          "return_pct": 13.21,
           "high": 347.0,
           "low": 255.8,
           "range_volatility_pct": 35.65
         },
         "quarterly_63d": {
-          "return_pct": 3.15,
+          "return_pct": 4.24,
           "high": 347.0,
           "low": 241.0,
           "range_volatility_pct": 43.98
         },
         "half_yearly_126d": {
-          "return_pct": 23.03,
+          "return_pct": 3.36,
           "high": 347.0,
-          "low": 232.0,
-          "range_volatility_pct": 49.57
+          "low": 241.0,
+          "range_volatility_pct": 43.98
         },
         "yearly_252d": {
-          "return_pct": 17.36,
+          "return_pct": 32.24,
           "high": 347.0,
           "low": 195.0,
           "range_volatility_pct": 77.95
@@ -144,7 +153,7 @@
         "avg_wave_duration_bars": 20.0
       },
       "current_wave_phase": "LATE_MARKUP",
-      "phase_guidance": "Approaching historical rally limit (+23.7% vs median +14.0%). Tighten stop.",
+      "phase_guidance": "Approaching historical rally limit (+22.4% vs median +14.0%). Tighten stop.",
       "top_seasonal_months": [
         {
           "month": "Aug",
@@ -242,21 +251,72 @@
     ]
   },
   "technical": {
-    "score": null,
+    "score": 58.75,
     "signals": {
-      "error": "insufficient_data_lt_30_bars"
+      "rsi": "neutral",
+      "macd": "neutral",
+      "sma_trend": "bullish",
+      "bb": "inside_bands",
+      "atr": 12.72,
+      "rsi_value": 52.07,
+      "last_close": 294.9,
+      "sma20": 299.15,
+      "sma50": 280.04,
+      "sma200": 264.09,
+      "support_resistance": {
+        "supports": [
+          213.4,
+          244.1,
+          265.3
+        ],
+        "resistances": [
+          249.5,
+          300.7,
+          302.4,
+          306.7
+        ]
+      }
     },
-    "sr": {}
+    "sr": {
+      "supports": [
+        213.4,
+        244.1,
+        265.3
+      ],
+      "resistances": [
+        249.5,
+        300.7,
+        302.4,
+        306.7
+      ]
+    }
   },
   "fundamental": {
-    "score": null,
+    "score": 72.14,
     "signals": {
-      "error": "no_fundamental_data",
+      "latest_interim_eps": "FY2026Q3 (1.3)",
+      "eps": "positive (6.41)",
+      "eps_yoy_growth_pct": 13.3,
+      "eps_growth_comparison": "FY2025 vs FY2024",
+      "pe": "expensive (30.32)",
+      "nav": 126.05,
+      "dividend_yield": "moderate (1.03%)",
+      "debt_equity_val": 0.0,
+      "long_term_debt_equity_val": 0.0,
+      "debt_equity": "pristine_low (0.0)",
+      "loan_trap_risk": "none",
+      "dividend_track_record_years": 5,
+      "dividend_consistency": "proven_compounder (5 yrs cash divs)",
+      "cfo_cr": 64.9,
+      "net_profit_cr": 3.6,
+      "accrual_ratio": -0.852,
+      "earnings_quality": "superior_cash_backed",
       "downturn_resilience": {
-        "status": "normal",
-        "drawdown_pct": 14.1,
+        "status": "growth_at_discount",
+        "drawdown_pct": 15.0,
         "high_52w": 347.0,
-        "low_52w": 195.0
+        "low_52w": 195.0,
+        "note": "Share price down 15.0% from 52w peak, yet earnings positive/steady (Conviction discount)"
       }
     }
   },
@@ -297,15 +357,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 83704,
-        "avg_volume": 89358.0,
+        "last_volume": 79315,
+        "avg_volume": 99895.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.96,
-        "avg_volume": 87220.0,
-        "today_volume": 83704,
+        "spike_ratio": 0.81,
+        "avg_volume": 97750.0,
+        "today_volume": 79315,
         "detail": "ok"
       },
       "serial_trading": {
@@ -320,25 +380,25 @@
       },
       "sponsor_exit": {
         "flag": false,
-        "detail": "insufficient_fundamental_history"
+        "detail": "sponsor_holding_not_available"
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": 0.0,
+        "price_change_3d": 2.57,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 54.31,
+    "composite_score": 69.3,
     "governance_score": 75,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.386,
-      "technical": 0.285,
-      "governance": 0.172,
-      "sentiment": 0.157
+      "fundamental": 0.61,
+      "technical": 0.243,
+      "governance": 0.147,
+      "sentiment": 0.0
     }
   }
 }

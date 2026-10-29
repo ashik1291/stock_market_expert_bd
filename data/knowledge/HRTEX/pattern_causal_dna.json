@@ -1,24 +1,24 @@
 {
   "ticker": "HRTEX",
-  "audited_at": "2026-10-22 15:45:57",
+  "audited_at": "2026-10-29 15:18:43",
   "worth_vs_greed": {
-    "current_price": 16.1,
-    "intrinsic_worth": 8.05,
+    "current_price": 15.2,
+    "intrinsic_worth": 7.6,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 30.0,
-    "greed_index": 30.0,
-    "rsi_14": 46.8,
-    "price_vs_ema50_pct": -8.9,
-    "price_vs_ema200_pct": -18.5,
+    "extension_froth_score": 40.0,
+    "greed_index": 40.0,
+    "rsi_14": 40.9,
+    "price_vs_ema50_pct": -11.2,
+    "price_vs_ema200_pct": -21.9,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f315.8 \u2013 \u09f316.3",
-      "chase_cutoff_price": 16.5,
-      "when_to_wait": "If price opens or rises above \u09f316.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f315.8.",
-      "weekly_target_short": 16.7,
-      "monthly_target_swing": 18.5,
-      "long_term_target_asset": 20.9,
+      "optimal_entry_corridor": "\u09f314.9 \u2013 \u09f315.4",
+      "chase_cutoff_price": 15.6,
+      "when_to_wait": "If price opens or rises above \u09f315.6, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f314.9.",
+      "weekly_target_short": 15.7,
+      "monthly_target_swing": 17.5,
+      "long_term_target_asset": 19.8,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -28,34 +28,34 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -5.85,
-        "high": 17.0,
-        "low": 16.0,
-        "range_volatility_pct": 6.25
+        "return_pct": -5.59,
+        "high": 16.2,
+        "low": 15.0,
+        "range_volatility_pct": 8.0
       },
       "monthly_21d": {
-        "return_pct": -3.59,
-        "high": 18.0,
-        "low": 15.8,
-        "range_volatility_pct": 13.92
+        "return_pct": -7.32,
+        "high": 17.8,
+        "low": 15.0,
+        "range_volatility_pct": 18.67
       },
       "quarterly_63d": {
-        "return_pct": -25.46,
-        "high": 22.0,
-        "low": 15.8,
-        "range_volatility_pct": 39.24
+        "return_pct": -29.3,
+        "high": 21.8,
+        "low": 15.0,
+        "range_volatility_pct": 45.33
       },
       "half_yearly_126d": {
-        "return_pct": -13.44,
+        "return_pct": -18.72,
         "high": 23.0,
-        "low": 15.8,
-        "range_volatility_pct": 45.57
+        "low": 15.0,
+        "range_volatility_pct": 53.33
       },
       "yearly_252d": {
-        "return_pct": -32.64,
-        "high": 24.3,
+        "return_pct": -27.62,
+        "high": 23.0,
         "low": 12.4,
-        "range_volatility_pct": 95.97
+        "range_volatility_pct": 85.48
       }
     },
     "wave_metrics": {
@@ -90,7 +90,7 @@
       },
       {
         "month": "Oct",
-        "avg_return": -11.9,
+        "avg_return": -12.0,
         "win_rate": 8.0
       }
     ]

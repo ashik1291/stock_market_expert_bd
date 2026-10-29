@@ -1,58 +1,58 @@
 {
   "ticker": "HWAWELLTEX",
-  "audited_at": "2026-10-22 15:45:57",
+  "audited_at": "2026-10-29 15:18:43",
   "worth_vs_greed": {
-    "current_price": 45.5,
-    "intrinsic_worth": 22.75,
-    "margin_of_safety_pct": -50.0,
+    "current_price": 45.7,
+    "intrinsic_worth": 6.64,
+    "margin_of_safety_pct": -85.5,
     "extension_froth_score": 20.0,
     "greed_index": 20.0,
-    "rsi_14": 49.5,
-    "price_vs_ema50_pct": -1.9,
-    "price_vs_ema200_pct": 1.1,
-    "merit_status": "NEUTRAL_MERIT",
-    "merit_reason": "Valuation is within normal historical ranges.",
+    "rsi_14": 42.3,
+    "price_vs_ema50_pct": -0.9,
+    "price_vs_ema200_pct": 1.5,
+    "merit_status": "EARNINGS_BACKED_MERIT",
+    "merit_reason": "Price supported by solid earnings (EPS: \u09f30.83, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f344.6 \u2013 \u09f346.0",
-      "chase_cutoff_price": 46.6,
-      "when_to_wait": "If price opens or rises above \u09f346.6, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f344.6.",
-      "weekly_target_short": 47.1,
-      "monthly_target_swing": 52.3,
-      "long_term_target_asset": 59.1,
+      "optimal_entry_corridor": "\u09f344.8 \u2013 \u09f346.2",
+      "chase_cutoff_price": 46.8,
+      "when_to_wait": "If price opens or rises above \u09f346.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f344.8.",
+      "weekly_target_short": 47.3,
+      "monthly_target_swing": 52.6,
+      "long_term_target_asset": 59.4,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -50.0%)."
+    "reason": "Fundamental value severely lags stock price (MoS: -85.5%)."
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 0.22,
-        "high": 46.0,
-        "low": 44.2,
-        "range_volatility_pct": 4.07
+        "return_pct": 0.44,
+        "high": 46.4,
+        "low": 43.7,
+        "range_volatility_pct": 6.18
       },
       "monthly_21d": {
-        "return_pct": -2.78,
+        "return_pct": 0.22,
         "high": 49.5,
-        "low": 44.2,
-        "range_volatility_pct": 11.99
+        "low": 43.7,
+        "range_volatility_pct": 13.27
       },
       "quarterly_63d": {
-        "return_pct": -4.01,
+        "return_pct": -4.99,
         "high": 52.5,
-        "low": 44.2,
-        "range_volatility_pct": 18.78
+        "low": 43.7,
+        "range_volatility_pct": 20.14
       },
       "half_yearly_126d": {
-        "return_pct": 12.35,
+        "return_pct": 11.19,
         "high": 52.5,
         "low": 40.3,
         "range_volatility_pct": 30.27
       },
       "yearly_252d": {
-        "return_pct": -5.21,
+        "return_pct": -1.51,
         "high": 52.5,
         "low": 35.6,
         "range_volatility_pct": 47.47

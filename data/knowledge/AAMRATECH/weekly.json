@@ -2,9 +2,18 @@
   "ticker": "AAMRATECH",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-10-22T09:45:55.576484",
+  "analyzed_at": "2026-10-29T09:18:41.635236",
+  "asof_price_date": "2026-10-29",
+  "served_model": {
+    "model_id": "frozen_epoch2_pit_v2",
+    "score": -999.0,
+    "is_eligible": false,
+    "rsi_14": 42.3443,
+    "pe_ratio": 0.0,
+    "debt_equity": 0.412
+  },
   "signal": "HOLD",
-  "confidence": 55.08,
+  "confidence": 57.63,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -12,33 +21,33 @@
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+3.2%",
-      "downside_risk_pct": "-1.9%",
-      "target_price": 16.1,
-      "support_price": 15.3,
-      "risk_reward_ratio": "1.7x"
+      "upside_potential_pct": "+6.4%",
+      "downside_risk_pct": "-4.5%",
+      "target_price": 16.7,
+      "support_price": 15.0,
+      "risk_reward_ratio": "1.4x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+14.7%",
+      "upside_potential_pct": "+15.3%",
       "downside_risk_pct": "-5.1%",
-      "target_price": 17.9,
-      "trailing_stop": 14.8,
-      "risk_reward_ratio": "2.9x"
+      "target_price": 18.1,
+      "trailing_stop": 14.9,
+      "risk_reward_ratio": "3.0x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-      "upside_potential_pct": "+30.1%",
+      "upside_potential_pct": "+29.9%",
       "downside_risk_pct": "-9.2%",
-      "target_price": 20.3,
+      "target_price": 20.4,
       "dividend_cagr": "moderate (0.47%)",
-      "risk_reward_ratio": "3.3x"
+      "risk_reward_ratio": "3.2x"
     }
   },
   "trade_levels": {
-    "entry": 15.6,
-    "stop_loss": 15.13,
-    "target": 16.54
+    "entry": 15.7,
+    "stop_loss": 14.71,
+    "target": 17.68
   },
   "precision": {
     "ticker": "AAMRATECH",
@@ -61,14 +70,14 @@
       "signal": "Cash flow covers only 0% of dividend payout"
     },
     "liquidity": {
-      "avg_daily_volume": 38115,
+      "avg_daily_volume": 33060,
       "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 1905,
-      "max_daily_accumulation_shares": 5717,
-      "max_order_bdt": 1905.0,
-      "directive": "Max single order: 1,905 shares (Tk 1,905) to prevent >1% execution slippage"
+      "max_single_order_shares": 1653,
+      "max_daily_accumulation_shares": 4959,
+      "max_order_bdt": 1653.0,
+      "directive": "Max single order: 1,653 shares (Tk 1,653) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -80,25 +89,25 @@
   },
   "pattern_dna": {
     "ticker": "AAMRATECH",
-    "audited_at": "2026-10-22 15:45:55",
+    "audited_at": "2026-10-29 15:18:41",
     "worth_vs_greed": {
-      "current_price": 15.6,
-      "intrinsic_worth": 7.8,
+      "current_price": 15.7,
+      "intrinsic_worth": 7.85,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 30.0,
       "greed_index": 30.0,
-      "rsi_14": 36.7,
-      "price_vs_ema50_pct": -7.5,
-      "price_vs_ema200_pct": -0.1,
+      "rsi_14": 41.9,
+      "price_vs_ema50_pct": -5.3,
+      "price_vs_ema200_pct": 0.5,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f315.3 \u2013 \u09f315.8",
-        "chase_cutoff_price": 16.0,
-        "when_to_wait": "If price opens or rises above \u09f316.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f315.3.",
-        "weekly_target_short": 16.1,
-        "monthly_target_swing": 17.9,
-        "long_term_target_asset": 20.3,
+        "optimal_entry_corridor": "\u09f315.4 \u2013 \u09f315.9",
+        "chase_cutoff_price": 16.1,
+        "when_to_wait": "If price opens or rises above \u09f316.1, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f315.4.",
+        "weekly_target_short": 16.2,
+        "monthly_target_swing": 18.1,
+        "long_term_target_asset": 20.4,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
@@ -108,31 +117,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -0.64,
-          "high": 17.4,
-          "low": 15.5,
-          "range_volatility_pct": 12.26
+          "return_pct": 0.64,
+          "high": 16.2,
+          "low": 15.4,
+          "range_volatility_pct": 5.19
         },
         "monthly_21d": {
-          "return_pct": -3.7,
+          "return_pct": -4.27,
           "high": 17.4,
           "low": 14.6,
           "range_volatility_pct": 19.18
         },
         "quarterly_63d": {
-          "return_pct": -8.24,
+          "return_pct": -19.9,
           "high": 24.1,
           "low": 14.6,
           "range_volatility_pct": 65.07
         },
         "half_yearly_126d": {
-          "return_pct": 20.93,
+          "return_pct": 16.3,
           "high": 24.1,
           "low": 11.7,
           "range_volatility_pct": 105.98
         },
         "yearly_252d": {
-          "return_pct": 13.04,
+          "return_pct": 22.66,
           "high": 24.1,
           "low": 9.5,
           "range_volatility_pct": 153.68
@@ -242,11 +251,43 @@
     ]
   },
   "technical": {
-    "score": null,
+    "score": 61.25,
     "signals": {
-      "error": "insufficient_data_lt_30_bars"
+      "rsi": "neutral",
+      "macd": "bullish_crossover",
+      "sma_trend": "bullish",
+      "bb": "inside_bands",
+      "atr": 0.66,
+      "rsi_value": 42.95,
+      "last_close": 15.7,
+      "sma20": 15.95,
+      "sma50": 16.71,
+      "sma200": 14.86,
+      "support_resistance": {
+        "supports": [
+          11.1,
+          11.8,
+          15.5
+        ],
+        "resistances": [
+          12.2,
+          15.1,
+          23.1
+        ]
+      }
     },
-    "sr": {}
+    "sr": {
+      "supports": [
+        11.1,
+        11.8,
+        15.5
+      ],
+      "resistances": [
+        12.2,
+        15.1,
+        23.1
+      ]
+    }
   },
   "fundamental": {
     "score": 52.0,
@@ -265,7 +306,7 @@
       "dividend_consistency": "proven_compounder (5 yrs cash divs)",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 35.3,
+        "drawdown_pct": 34.9,
         "high_52w": 24.1,
         "low_52w": 9.5
       }
@@ -308,15 +349,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 42807,
-        "avg_volume": 52086.0,
+        "last_volume": 9899,
+        "avg_volume": 37364.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.73,
-        "avg_volume": 58894.0,
-        "today_volume": 42807,
+        "spike_ratio": 0.26,
+        "avg_volume": 38030.0,
+        "today_volume": 9899,
         "detail": "ok"
       },
       "serial_trading": {
@@ -335,21 +376,21 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": 0.0,
+        "price_change_3d": -1.88,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 55.08,
+    "composite_score": 57.63,
     "governance_score": 75,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.386,
-      "technical": 0.285,
-      "governance": 0.172,
-      "sentiment": 0.157
+      "fundamental": 0.61,
+      "technical": 0.243,
+      "governance": 0.147,
+      "sentiment": 0.0
     }
   }
 }
