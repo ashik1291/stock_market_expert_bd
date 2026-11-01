@@ -136,21 +136,57 @@ def scan_daily_rise_and_fall(timeframe: str = "weekly") -> dict:
             mt_info = traj.get("mid_term") or {}
             lt_info = traj.get("long_term") or {}
             _cov = cash_flow.get("dividend_coverage_x")
-            rise_list.append({
-                "ticker":               ticker,
-                "price":                price,
-                "served_score":         served_score,
-                "pe":                   fund.get("pe"),
-                "debt_equity":          de_val,
-                "short_term_upside":    st_info.get("upside_potential_pct"),
-                "mid_term_target":      mt_info.get("target_price") or price,
-                "long_term_target":     lt_info.get("target_price") or price,
-                "smart_money_flow":     smart_money.get("classification") or "unknown",
-                "cash_flow_cov":        _cov,
-                "max_order_shares":     liquidity.get("max_single_order_shares"),
-                "primary_catalyst":     f"{mgmt.get('key_moat') or 'unknown'} | {cash_flow.get('cash_quality_status') or 'unknown'}",
-                "directive":            "SCREENING_CANDIDATE_TIER_PENDING"
-            })
+            
+            # ─────────────────────────────────────────────────────────────────
+            # INSTITUTIONAL MATHEMATICAL EXPECTANCY & R:R ASYMMETRY GATE
+            # ─────────────────────────────────────────────────────────────────
+            mt_target = float(mt_info.get("target_price") or price)
+            st_levels = data.get("trade_levels", {})
+            stop_loss = float(st_levels.get("stop_loss") or (price * 0.95))
+            
+            upside_pct = max(((mt_target - price) / price) * 100.0, 0.0) if price > 0 else 0.0
+            downside_risk_pct = max(((price - stop_loss) / price) * 100.0, 1.0) if price > 0 else 5.0
+            
+            # Calibrated probability & Round-trip friction (0.833% CDBL + Broker fee)
+            p_win = (float(rise_prob) / 100.0) if rise_prob else 0.55
+            p_loss = 1.0 - p_win
+            round_trip_cost = 0.833
+            
+            # Net Mathematical Expected Value (EV %)
+            net_expected_value_pct = round((p_win * upside_pct) - (p_loss * downside_risk_pct) - round_trip_cost, 2)
+            rr_ratio = round(upside_pct / downside_risk_pct, 2) if downside_risk_pct > 0 else 0.0
+            
+            # Strict Gate: R:R must be >= 2.5:1 and EV must be positive
+            is_asymmetric_merit = (rr_ratio >= 2.5 and net_expected_value_pct > 0.0)
+            
+            if is_asymmetric_merit:
+                rise_list.append({
+                    "ticker":               ticker,
+                    "price":                price,
+                    "served_score":         served_score,
+                    "pe":                   fund.get("pe"),
+                    "debt_equity":          de_val,
+                    "short_term_upside":    st_info.get("upside_potential_pct"),
+                    "mid_term_target":      mt_target,
+                    "long_term_target":     lt_info.get("target_price") or price,
+                    "rr_ratio":             rr_ratio,
+                    "expected_value_pct":   net_expected_value_pct,
+                    "smart_money_flow":     smart_money.get("classification") or "unknown",
+                    "cash_flow_cov":        _cov,
+                    "max_order_shares":     liquidity.get("max_single_order_shares"),
+                    "primary_catalyst":     f"{mgmt.get('key_moat') or 'unknown'} | R:R {rr_ratio}x (EV +{net_expected_value_pct}%)",
+                    "directive":            "TIER_ASYMMETRIC_MERIT_CANDIDATE"
+                })
+            else:
+                range_list.append({
+                    "ticker":    ticker,
+                    "price":     price,
+                    "rise_prob": rise_prob,
+                    "served_score": served_score,
+                    "rr_ratio":  rr_ratio,
+                    "ev_pct":    net_expected_value_pct,
+                    "status":    f"Consolidation / Unfavorable Asymmetry (R:R {rr_ratio}x < 2.5x or EV {net_expected_value_pct}% <= 0)"
+                })
         else:
             range_list.append({
                 "ticker":    ticker,
