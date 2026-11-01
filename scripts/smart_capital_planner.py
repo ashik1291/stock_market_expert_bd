@@ -430,11 +430,22 @@ def generate_smart_plan(amount: float, override_regime: str = None) -> dict:
                 "rationale": rationale
             })
 
+    # Institutional Macro Cash Management (Eliminating 0% BO Account Drag)
+    # During high inflation (9-10%), never leave 100% of defensive cash idle at 0% in a retail BO account.
+    # Split defensive cash:
+    #   - 75% into High-Yield Liquid Defensive Anchor (e.g. Shanta Fixed Income / Amana Cash Fund / 91d T-Bill) earning ~9.5%-11.0% annualized
+    #   - 25% kept as BO Trading Cash for intraday limit order fulfillment
+    bo_trading_buffer = round(wait_cash * 0.25, 2)
+    liquid_yield_anchor = round(wait_cash * 0.75, 2)
+
     return {
         "regime_info": regime_info,
         "invested_capital_input": amount,
         "suggested_cash_reserve": wait_cash,
         "cash_reserve_pct": cash_reserve_pct,
+        "bo_trading_cash_bdt": bo_trading_buffer,
+        "liquid_yield_anchor_bdt": liquid_yield_anchor,
+        "liquid_anchor_instrument": "Shanta Fixed Income / Amana Cash Fund / 91-Day T-Bills (9.5% - 11.5% Yield)",
         "immediate_tranche_budget": invest_now,
         "allocations": allocations
     }
@@ -456,8 +467,10 @@ def print_plan_report(plan: dict):
     print(f"🏦 Bangladesh Bank T-Bill: {r['t_bill_rate']}% | Minimum Equity Hurdle: {r['macro_hurdle']}%")
     print(f"📝 Quantitative Stance: {r['desc_bn']}")
     print("-"*85)
-    print(f"🛡️ Dynamic Volatility Cash Target (Hold in Brokerage): ৳{cash:,.2f} ({c_pct}%)")
-    print(f"🎯 Actionable Risk-Parity Tranche Allocation:         ৳{tranche:,.2f} ({round(100.0 - c_pct, 1)}%)")
+    print(f"🛡️ Dynamic Defensive Cash Allocation:                ৳{cash:,.2f} ({c_pct}%)")
+    print(f"   ├─ 75% High-Yield Liquid Anchor (9.5%-11.0% Yield): ৳{plan.get('liquid_yield_anchor_bdt', cash*0.75):,.2f} [Shanta Liquid / T-Bills]")
+    print(f"   └─ 25% Active Brokerage BO Cash (Limit Buffer):    ৳{plan.get('bo_trading_cash_bdt', cash*0.25):,.2f}")
+    print(f"🎯 Actionable Risk-Parity Equity Tranche:            ৳{tranche:,.2f} ({round(100.0 - c_pct, 1)}%)")
     print("-"*85)
     print(f"{'Ticker':<12} {'Sector':<14} {'Live Px':<10} {'Limit Target':<14} {'Vol':<7} {'Shares':<8} {'Outlay (BDT)':<13}")
     print("-"*85)

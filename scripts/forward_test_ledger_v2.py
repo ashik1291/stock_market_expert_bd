@@ -171,6 +171,20 @@ def _mark_to_market(conn: sqlite3.Connection, positions: list, cash: float, asof
         px = float(row[0]) if row and row[0] is not None else p.get("last_mark_price") or p["execution_price"]
         mtm = round(px * p["shares"], 2)
         np = dict(p)
+        
+        # Credit cash dividends distributed between last mark date and today (idempotent)
+        start_d = p.get("last_mark_date") or p.get("entry_date") or asof
+        div_rows = conn.execute("""
+            SELECT record_date, cash_amount FROM corporate_actions
+            WHERE ticker = ? AND action_type = 'cash_dividend'
+              AND record_date > ? AND record_date <= ?
+              AND cash_amount IS NOT NULL AND cash_amount > 0
+        """, (p["ticker"], start_d, asof)).fetchall()
+        for rec_d, c_amt in div_rows:
+            net_div = round(p["shares"] * float(c_amt) * 0.90, 2)  # 10% AIT tax deduction
+            cash = round(cash + net_div, 2)
+            np["total_dividends_credited"] = round(np.get("total_dividends_credited", 0.0) + net_div, 2)
+
         np["last_mark_price"] = px
         np["last_mark_date"] = asof
         np["mark_equity"] = mtm
@@ -255,7 +269,13 @@ def _daily_ic(conn: sqlite3.Connection, asof: str, scored: list[dict]) -> dict |
         ).fetchone()
         if px0 and px1 and px1[0] and float(px0) > 0:
             scores.append(float(r["score"]))
-            rets.append(float(px1[0]) / float(px0) - 1.0)
+            div_row = conn.execute("""
+                SELECT cash_amount FROM corporate_actions
+                WHERE ticker=? AND action_type='cash_dividend' AND record_date=?
+            """, (t, d1)).fetchone()
+            div_val = float(div_row[0]) if (div_row and div_row[0]) else 0.0
+            adj_px1 = float(px1[0]) + div_val
+            rets.append(adj_px1 / float(px0) - 1.0)
     if len(scores) < 15:
         return None
     ic = spearman_rank_correlation(scores, rets)

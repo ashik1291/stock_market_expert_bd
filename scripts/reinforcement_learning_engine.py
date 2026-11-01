@@ -244,7 +244,16 @@ def evaluate_pending_predictions(eval_window_days: int | None = None) -> dict:
         if end_close is None:
             continue
 
-        stock_ret_pct = ((end_close / entry) - 1.0) * 100.0
+        # Adjust for cash dividends received during the prediction horizon
+        div_row = conn.execute("""
+            SELECT SUM(cash_amount) FROM corporate_actions
+            WHERE ticker = ? AND action_type = 'cash_dividend'
+              AND record_date > ? AND record_date <= ?
+              AND cash_amount IS NOT NULL AND cash_amount > 0
+        """, (ticker, pred_date, end_date)).fetchone()
+        cash_div_total = float(div_row[0]) if (div_row and div_row[0] is not None) else 0.0
+        effective_end_val = end_close + (cash_div_total * 0.90)  # Net of 10% AIT tax
+        stock_ret_pct = ((effective_end_val / entry) - 1.0) * 100.0
         eqw = equal_weight_category_a_nav(pred_date, end_date)
         eqw_ret = eqw.get("return_pct") if eqw.get("ok") else 0.0
         if eqw_ret is None:

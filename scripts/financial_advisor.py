@@ -112,8 +112,10 @@ def generate_advisor_dossier(budget_amount: float = 3000.0) -> dict:
     bn_lines.extend([
         "\n---",
         f"## 💰 ৪. নতুন ৳{budget_amount:,.2f} মূলধনের স্মার্ট রিস্ক-প্যারিটি বণ্টন (Capital Allocation)",
-        f"- **প্রস্তাবিত ক্যাশ সংরক্ষণ (Hold in Brokerage)**: **৳{plan['suggested_cash_reserve']:,.2f} ({plan['cash_reserve_pct']}%)**",
-        f"- **সক্রিয় প্রথম কিস্তি ক্রয় বাজেট (Limit Orders)**: **৳{plan['immediate_tranche_budget']:,.2f}**\n",
+        f"- **প্রস্তাবিত মোট ডিফেন্সিভ রিজার্ভ**: **৳{plan['suggested_cash_reserve']:,.2f} ({plan['cash_reserve_pct']}%)**",
+        f"  * 🛡️ ৭৫% হাই-ইল্ড লিকুইড ডিফেন্সিভ অ্যাঙ্কর (শান্তা ফিক্সড ইনকাম ফান্ড / ৯১-দিনের টি-বিল @ ৯.৫%–১১.০% ইল্ড): **৳{plan.get('liquid_yield_anchor_bdt', plan['suggested_cash_reserve']*0.75):,.2f}**",
+        f"  * 💼 ২৫% সক্রিয় ব্রোকারেজ বিও ক্যাশ (ডিপ লিমিট অর্ডার পূরণের জন্য): **৳{plan.get('bo_trading_cash_bdt', plan['suggested_cash_reserve']*0.25):,.2f}**",
+        f"- **সক্রিয় প্রথম কিস্তি ইকুইটি বাজেট (Strict Limit Orders)**: **৳{plan['immediate_tranche_budget']:,.2f}**\n",
         "| কোম্পানি | খাত | বর্তমান দর | লিমিট বাই টার্গেট | শেয়ার সংখ্যা | বরাদ্দকৃত অর্থ | গাণিতিক নির্বাচনের ভিত্তি |",
         "|---|---|---|---|---|---|---|"
     ])
@@ -180,8 +182,10 @@ def print_advisor_cli(dossier: dict):
         print(f"   * {c['ticker']:<11} Div: ৳{c['cash_dividend_bdt']:<6.2f} (Yield: {c['dividend_yield_pct']:>5.2f}%) | Record: {c['record_date']} ({c['days_to_record']}d) -> {c['strategy_mode']}")
     print("-" * 85)
     print(f"💰 FRESH CAPITAL ALLOCATION (Budget: ৳{p['invested_capital_input']:,.2f}):")
-    print(f"   * Reserve Cash in Brokerage: ৳{p['suggested_cash_reserve']:,.2f} ({p['cash_reserve_pct']}%)")
-    print(f"   * Active Tranche Allocation: ৳{p['immediate_tranche_budget']:,.2f}")
+    print(f"   * Defensive Cash Reserve: ৳{p['suggested_cash_reserve']:,.2f} ({p['cash_reserve_pct']}%)")
+    print(f"     ├─ 75% High-Yield Liquid Anchor (9.5%-11.0%): ৳{p.get('liquid_yield_anchor_bdt', 0):,.2f} [Shanta Liquid / T-Bills]")
+    print(f"     └─ 25% Brokerage BO Cash (Limit Buffer):     ৳{p.get('bo_trading_cash_bdt', 0):,.2f}")
+    print(f"   * Active Equity Tranche Allocation: ৳{p['immediate_tranche_budget']:,.2f}")
     for a in p["allocations"]:
         print(f"     -> {a['ticker']:<11} Limit Target: ৳{a['target_limit_price']:<6.1f} | Shares: {a['exact_shares']:<4} | Outlay: ৳{a['estimated_outlay']:<7.1f} | {a['sector']}")
     print("-" * 85)
