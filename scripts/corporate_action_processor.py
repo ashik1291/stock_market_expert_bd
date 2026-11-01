@@ -161,6 +161,8 @@ def sync_corporate_actions_from_fundamentals(conn: Optional[sqlite3.Connection] 
 
             # 2. Secondary fallback for older historical years missing explicit notices
             div_hist = raw.get("dividend_history", [])
+            # Exclude current and future years from synthetic fallback
+            div_hist = [item for item in div_hist if int(float(str(item.get("year", 9999)).strip())) < datetime.date.today().year]
             for item in div_hist:
                 d_year = item.get("year")
                 if not d_year:
