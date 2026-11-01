@@ -99,7 +99,12 @@ def audit_portfolio_sentinel(asof_date: str | None = None) -> dict:
             avg_t = sum((float(r["close"] or 0) * float(r["volume"] or 0)) for r in vol_rows) / len(vol_rows)
             avg_turnover_cr = round(avg_t / 10000000.0, 2)
 
-        # Action Directive Determination
+        # Technical Trend & 20-DMA Slope Verification
+        closes_20 = [float(r["close"] or 0) for r in reversed(vol_rows) if r["close"]]
+        dma_20 = sum(closes_20) / len(closes_20) if closes_20 else live_p
+        dma_slope_down = len(closes_20) >= 10 and (sum(closes_20[-5:]) / 5.0) < (sum(closes_20[:5]) / 5.0)
+
+        # Action Directive Determination (Martingale Falling-Knife Guard)
         is_b, bl_msg = is_ticker_blacklisted(t)
         if is_b:
             action = "EMERGENCY_FORENSIC_EXIT"
@@ -110,9 +115,16 @@ def audit_portfolio_sentinel(asof_date: str | None = None) -> dict:
         elif live_p <= stop_p:
             action = "HARD_STOP_CUT"
             action_desc = f"🛑 স্টপ-লস স্পর্শ করেছে! মূলধন রক্ষায় কঠোর প্রস্থান নির্দেশ (সার্কিট ফাঁদ সতর্কবার্তা)।"
-        elif live_p < be_price and pnl_pct < -4.0:
-            action = "ACCUMULATE_DIP"
-            action_desc = f"সাপোর্ট জোন টেস্ট করছে (P&L: {pnl_pct}%) — ফান্ডামেন্টাল অটুট থাকলে ডিপ বাই।"
+        elif pnl_pct <= -7.0:
+            action = "PRE_STOP_WARNING"
+            action_desc = f"⚠️ স্টপ-লস সতর্কতা (P&L: {pnl_pct}%) — নতুন ক্রয় সম্পূর্ণ নিষিদ্ধ; বাউন্সে এক্সিট প্রস্তুতি (স্টপ: ৳{stop_p})।"
+        elif live_p < be_price and pnl_pct < -3.0:
+            if dma_slope_down and live_p < dma_20:
+                action = "WEAK_TREND_HOLD"
+                action_desc = f"ডাউনট্রেন্ড চলমান (২০-দিনের গড়ের নিচে) — নতুন ডিপ বাই এড়িয়ে চলুন; সাপোর্ট স্থির হওয়া পর্যন্ত অপেক্ষা করুন।"
+            else:
+                action = "ACCUMULATE_DIP"
+                action_desc = f"সাপোর্ট জোন টেস্ট করছে (P&L: {pnl_pct}%) — ব্লু-চিপ ফান্ডামেন্টাল অটুট থাকলে নিয়ন্ত্রিত ডিপ বাই।"
         else:
             action = "STRONG_HOLD"
             action_desc = "মৌলভিত্তি ও ট্রেন্ড নিরাপদ। দৃঢ়ভাবে হোল্ড করুন।"

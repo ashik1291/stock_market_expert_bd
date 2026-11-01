@@ -82,6 +82,19 @@ def _resolve_sector(ticker: str, pit_row: Any, policy: dict) -> str:
                 return str(v)
         except Exception:
             pass
+    # Fallback: Query companies table in dse.db
+    try:
+        import sqlite3
+        base_dir = Path(__file__).resolve().parent.parent
+        db_path = base_dir / "data" / "processed" / "dse.db"
+        if db_path.exists():
+            conn = sqlite3.connect(db_path)
+            row = conn.execute("SELECT sector FROM companies WHERE ticker = ?", (t,)).fetchone()
+            conn.close()
+            if row and row[0]:
+                return str(row[0])
+    except Exception:
+        pass
     return "Unknown"
 
 

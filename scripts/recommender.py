@@ -174,10 +174,14 @@ def classify_horizons(records: list[dict]) -> dict:
             leadership_summary = f"{md_ceo} (exp unknown, {rating})"
 
         # 1. Long-Term Asset Checklist:
-        # P/E <= 16, low manipulation risk, debt/equity <= 0.8, veteran leadership, proven dividend, confident score
+        # P/E <= 16, low manipulation risk, verified D/E <= 0.8 (non-bank), veteran leadership, proven dividend, confident score
+        sec_name = (r.get("sector") or "").lower()
+        is_bank_or_fin = any(s in sec_name for s in ["bank", "finan", "insur"])
+        debt_verified_ok = True if is_bank_or_fin else (de_val is not None and de_val <= 0.80)
+
         is_asset = (
             pe_val is not None and pe_val <= 16.0 and
-            (de_val is None or de_val <= 0.8) and
+            debt_verified_ok and
             loan_risk in ("none", "low") and
             gov_risk in ("Low", "Medium") and
             r.get("manipulation_risk") == "low" and
@@ -230,10 +234,12 @@ def classify_horizons(records: list[dict]) -> dict:
                 f"Target exit at ৳{target_long} ({long_rec['lt_upside']}) or if P/E expands > 22.0. "
                 f"Stop/Exit if annual cash dividend is suspended or EPS drops YoY for 2 consecutive quarters."
             )
-            long_rec["debt_health"] = (
-                f"Pristine (D/E: {de_val})" if de_val is not None and de_val <= 0.5 
-                else (f"Manageable (D/E: {de_val})" if de_val is not None else "Audited Clean")
-            )
+            if de_val is not None:
+                long_rec["debt_health"] = f"Pristine (D/E: {de_val})" if de_val <= 0.5 else f"Manageable (D/E: {de_val})"
+            elif is_bank_or_fin:
+                long_rec["debt_health"] = "Banking/Financial Structure"
+            else:
+                long_rec["debt_health"] = "Debt Data Unverified" 
             long_rec["growth_resilience"] = (
                 f"Down {drawdown_info.get('drawdown_pct', 0)}% from 52w peak, yet EPS steady (Conviction discount)"
                 if is_discount else "Stable fundamental growth"
@@ -961,6 +967,8 @@ def run_recommender(timeframe: str = "weekly", tickers: list[str] = None):
             cur = conn.cursor()
             inserted_count = 0
             for h_key, h_list in recs.get("horizons", {}).items():
+                if h_key not in ("long_term", "mid_term", "short_term"):
+                    continue
                 for item in h_list:
                     if not isinstance(item, dict):
                         continue
