@@ -1,18 +1,18 @@
 # 🚨 DSE Market Surveillance & Forensic Anti-Manipulation Report
-**Market Date**: `2026-11-01` | **Generated**: `2026-11-01 19:24:42`
+**Market Date**: `2026-11-01` | **Generated**: `2026-11-01 19:52:11`
 **Surveillance Scope**: Full 395 Tickers | Volume Anomaly, Syndicate Corners, Speculative Pumps
 
 ### 🛡️ Executive Summary
-- **Critical Risk Alerts (Instant Blacklist)**: **2 Companies**
-- **High Forensic Alerts (Strict Retail Caution)**: **14 Companies**
+- **Critical Risk Alerts (Instant Blacklist)**: **0 Companies**
+- **High Forensic Alerts (Strict Retail Caution)**: **16 Companies**
 - **Medium Surveillance Flags**: **9 Companies**
 
 ---
 ## ⛔ 1. Critical Blacklist (DO NOT BUY — Capital Destruction Risk)
 | Ticker | Risk Score | Alert Type | Volume Spike | Price Move | Forensic Evidence |
 |---|---|---|---|---|---|
-| **UNIONCAP** | `75/100` | **SPECULATIVE_JUNK_PUMP** | **1.5x** | +8.9% | Price up +8.89% on untracked / high-risk security without verified earnings | Consecutive upper circuit limit locks (+9.8%, +8.9%) |
-| **PF1STMF** | `75/100` | **SPECULATIVE_JUNK_PUMP** | **0.4x** | +9.4% | Price up +9.4% on untracked / high-risk security without verified earnings | Consecutive upper circuit limit locks (+9.3%, +9.4%) |
+> No tickers triggered critical blacklist thresholds today.
+
 
 ---
 ## ⚠️ 2. High Forensic Alerts (Suspected Syndicate Activity)
@@ -27,6 +27,7 @@
 | **NFML** | `35/100` | **SPECULATIVE_JUNK_PUMP** | **2.1x** | +7.8% | Price up +7.75% on untracked / high-risk security without verified earnings |
 | **PHPMF1** | `35/100` | **SPECULATIVE_JUNK_PUMP** | **1.7x** | +6.1% | Price up +6.06% on untracked / high-risk security without verified earnings |
 | **GBBPOWER** | `35/100` | **SPECULATIVE_JUNK_PUMP** | **1.6x** | +5.5% | Price up +5.47% with poor fundamentals (Z-Category Junk) |
+| **UNIONCAP** | `35/100` | **SPECULATIVE_JUNK_PUMP** | **1.5x** | +8.9% | Price up +8.89% on untracked / high-risk security without verified earnings |
 | **EXIM1STMF** | `35/100` | **SPECULATIVE_JUNK_PUMP** | **1.4x** | +7.3% | Price up +7.27% on untracked / high-risk security without verified earnings |
 | **1JANATAMF** | `35/100` | **SPECULATIVE_JUNK_PUMP** | **1.3x** | +6.1% | Price up +6.06% on untracked / high-risk security without verified earnings |
 | **POPULAR1MF** | `35/100` | **SPECULATIVE_JUNK_PUMP** | **1.1x** | +6.2% | Price up +6.25% on untracked / high-risk security without verified earnings |

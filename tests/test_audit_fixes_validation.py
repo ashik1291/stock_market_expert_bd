@@ -72,5 +72,40 @@ class TestAuditFixesValidation(unittest.TestCase):
         self.assertIn("Tiered by Baseline Liquidity", code, "Missing liquidity tier logic")
 
 
+    def test_dse_circuit_breaker_tiers(self):
+        from dse_circuit_breaker import get_dse_circuit_limit_pct, get_lower_circuit_floor, is_price_circuit_locked
+        self.assertEqual(get_dse_circuit_limit_pct(50.0), 10.0)
+        self.assertEqual(get_dse_circuit_limit_pct(150.0), 8.75)
+        self.assertEqual(get_dse_circuit_limit_pct(219.6), 7.50)
+        self.assertEqual(get_dse_circuit_limit_pct(700.0), 6.25)
+        self.assertEqual(get_dse_circuit_limit_pct(1500.0), 5.00)
+
+        # Verify floor for SQURPHARMA (219.6)
+        floor = get_lower_circuit_floor(219.6)
+        self.assertEqual(floor, 203.1)
+
+        # Verify circuit lock detection
+        lock_res = is_price_circuit_locked(203.1, 219.6)
+        self.assertTrue(lock_res["locked"])
+        self.assertEqual(lock_res["side"], "LOWER")
+
+    def test_statutory_ait_in_breakeven(self):
+        from portfolio_manager import calculate_round_trip_break_even, TOTAL_BUY_FEE_PCT, TOTAL_SELL_FEE_PCT
+        self.assertEqual(TOTAL_BUY_FEE_PCT, 0.00415)
+        self.assertEqual(TOTAL_SELL_FEE_PCT, 0.00465)  # includes 0.05% Section 53BBB AIT
+        price = 100.0
+        be = calculate_round_trip_break_even(price)
+        # Factor is (1 + 0.00415) / (1 - 0.00465) = 1.00884
+        self.assertEqual(be, 100.88)
+
+    def test_mutual_fund_tracker_nav_sync(self):
+        from mutual_fund_tracker import sync_portfolio_mutual_fund_nav, get_latest_nav_from_db
+        res = sync_portfolio_mutual_fund_nav(latest_redemption_px=10.631, asof_date="2026-11-01")
+        self.assertEqual(res["status"], "success")
+        db_nav = get_latest_nav_from_db("Shanta Amana Shariah Fund")
+        self.assertIsNotNone(db_nav)
+        self.assertEqual(db_nav["nav_redemption"], 10.631)
+
+
 if __name__ == "__main__":
     unittest.main()

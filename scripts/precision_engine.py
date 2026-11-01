@@ -198,9 +198,12 @@ def compute_liquidity_depth_guard(prices: list[dict], price: float) -> dict:
 
     # Institutional standard: A single market order should NOT exceed 5% of daily volume
     # Total daily accumulation should NOT exceed 15% of daily volume
-    max_single_order = max(int(avg_vol * 0.05), 100)
-    max_daily_accum  = max(int(avg_vol * 0.15), 300)
-    max_order_bdt    = round(max_single_order * price, 0)
+    # Eliminate artificial 100/300 share floors that force excessive participation on thin counters
+    safe_order_shares = max(1, int(avg_vol * 0.05))
+    safe_daily_shares = max(1, int(avg_vol * 0.15))
+    max_single_order  = min(safe_order_shares, 50000)
+    max_daily_accum   = min(safe_daily_shares, 150000)
+    max_order_bdt     = round(max_single_order * price, 0)
 
     if daily_turnover_bdt >= 50000000:  # > 5 Crore BDT daily
         rating = "DEEP_INSTITUTIONAL_LIQUIDITY"

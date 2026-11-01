@@ -149,16 +149,16 @@ def simulate_trades(df: pd.DataFrame, ticker: str, strategy: str = "scalp",
                         highest_px = f_high
                         stop_px = highest_px * (1 - stop_pct)
 
-                # Lower Circuit Lock Check: If stock hit lower circuit limit (-9.5% or lower) with illiquidity,
-                # exit is blocked (cannot exit on lower circuit lock day)
+                # DSE Tiered Circuit Lock Check (BSEC Rules)
+                from dse_circuit_breaker import get_lower_circuit_floor
                 prev_bar_close = float(df.iloc[j - 1]["close"])
-                lower_circuit_floor = prev_bar_close * 0.905
-                is_circuit_locked = (f_low <= lower_circuit_floor) and (f_close <= lower_circuit_floor)
+                lower_circuit_floor = get_lower_circuit_floor(prev_bar_close)
+                is_circuit_locked = (f_low <= lower_circuit_floor * 1.002) and (f_close <= lower_circuit_floor * 1.002)
 
                 # Conservative fill check: Stop-Loss evaluated BEFORE Target Hit
                 if f_low <= stop_px:
                     if is_circuit_locked:
-                        # Cannot exit today due to circuit lock; carry over into next bar
+                        # Cannot exit today due to zero bids on lower circuit lock; carry over into next bar
                         continue
                     exit_price  = stop_px * 0.9990 # 0.10% exit slippage
                     exit_reason = "stop_hit"

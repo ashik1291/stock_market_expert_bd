@@ -216,6 +216,11 @@ def compute_dynamic_stock_metrics(ticker: str, conn: sqlite3.Connection) -> dict
         graham_val = round(math.sqrt(22.5 * eps * nav), 1)
         mos_pct = round(((graham_val - current_px) / graham_val) * 100.0, 1)
 
+    # 20-day Average Daily Volume and Turnover (BDT)
+    past_20 = rows[:20]
+    avg_vol_20 = sum(float(r[3] or 0) for r in past_20) / max(len(past_20), 1)
+    adv_turnover_bdt = round(avg_vol_20 * current_px, 2)
+
     # Dynamic target dip:
     # Anchor to 3% below current, 2% below 20-DMA, bounded above 60-day lowest support
     target_dip = round(min(current_px * 0.97, dma_20 * 0.98), 1)
@@ -228,6 +233,7 @@ def compute_dynamic_stock_metrics(ticker: str, conn: sqlite3.Connection) -> dict
         "current_price": current_px,
         "dma_20": round(dma_20, 1),
         "min_low_60d": round(min_low_60d, 1),
+        "adv_turnover_bdt": adv_turnover_bdt,
         "volatility_pct": stock_vol_pct,
         "eps": eps,
         "nav": nav,
@@ -306,7 +312,9 @@ def generate_smart_plan(amount: float, override_regime: str = None) -> dict:
                 continue
         metrics = compute_dynamic_stock_metrics(t, conn)
         if metrics and metrics.get("current_price", 0) > 0:
-            verified_candidates.append(metrics)
+            # Liquidity gate: Must have at least ৳15 Lakh ADV turnover or low volatility (<22%)
+            if metrics.get("adv_turnover_bdt", 0) >= 1500000.0 or metrics.get("volatility_pct", 0) <= 22.0:
+                verified_candidates.append(metrics)
 
     conn.close()
 
