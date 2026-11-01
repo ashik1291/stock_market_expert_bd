@@ -248,7 +248,8 @@ def load_candidate_pool() -> list[str]:
         try:
             with open(FIVE_FACTOR_PATH, "r", encoding="utf-8") as f:
                 data = json.load(f)
-                candidates = [item["ticker"] for item in data.get("screened_universe", [])]
+                cands = data.get("candidates", []) or data.get("screened_universe", [])
+                candidates = [item["ticker"] for item in cands if isinstance(item, dict) and "ticker" in item]
         except Exception:
             candidates = []
 
@@ -316,13 +317,16 @@ def generate_smart_plan(amount: float, override_regime: str = None) -> dict:
     for cand in verified_candidates:
         vol = max(cand.get("volatility_pct") or 15.0, 5.0)
         dy = cand.get("dividend_yield") or 0.0
-        mos = max(cand.get("mos_pct") or 0.0, 5.0)
+        mos = cand.get("mos_pct") or 0.0
         de = max(cand.get("debt_equity") or 0.0, 0.0)
         pe = cand.get("pe") or 15.0
         
-        # Risk Parity Score: Higher MoS & Yield + Lower Volatility & Debt
+        # Risk Parity Score: Must have positive Margin of Safety in Bearish/Consolidation
         # Weight = (Margin_of_Safety * Yield) / (Volatility * (1 + D/E))
-        score = (mos * max(dy, 2.0)) / (vol * (1.0 + de))
+        if mos <= 0:
+            score = 0.001
+        else:
+            score = (mos * max(dy, 2.0)) / (vol * (1.0 + de))
         cand["risk_parity_score"] = round(score, 3)
 
     # Sort by risk parity score
