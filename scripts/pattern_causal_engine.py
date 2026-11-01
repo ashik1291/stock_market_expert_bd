@@ -606,6 +606,16 @@ def run_pattern_causal_audit(ticker: str) -> dict:
         }
 
     worth_greed   = evaluate_worth_vs_greed(ticker, series, fund)
+    try:
+        from anti_manipulation_engine import is_ticker_blacklisted
+        is_blocked, bl_msg = is_ticker_blacklisted(ticker)
+        worth_greed["is_blacklisted"] = is_blocked
+        worth_greed["blacklist_reason"] = bl_msg if is_blocked else None
+        if is_blocked:
+            worth_greed["disparity_label"] = f"CRITICAL_MANIPULATION_RISK: {bl_msg}"
+    except Exception as e:
+        log.warning(f"Could not check blacklist for {ticker}: {e}")
+
     wave_patterns = extract_multi_interval_patterns(series)
     causal_why    = analyze_causal_attributions(ticker, series)
 

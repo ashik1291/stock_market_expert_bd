@@ -252,11 +252,22 @@ def calculate_round_trip_break_even(entry_price: float) -> float:
 
 
 def record_buy(ticker: str, shares: int, price: float, horizon: str = "long_term"):
+    # Guard against blacklisted / manipulated stocks
+    try:
+        from anti_manipulation_engine import is_ticker_blacklisted
+        is_blocked, bl_msg = is_ticker_blacklisted(ticker.upper())
+        if is_blocked:
+            print(f"⛔ REJECTED: Cannot record BUY for {ticker.upper()} — {bl_msg}")
+            return False
+    except Exception as e:
+        print(f"⚠️ Blacklist verification warning for {ticker.upper()}: {e}")
+
     p = load_portfolio()
     gross_cost = shares * price
     comm = round(gross_cost * TOTAL_ONE_WAY_FEE, 2)
     net_cost = round(gross_cost + comm, 2)
     round_trip_be = calculate_round_trip_break_even(price)
+    effective_entry = round(net_cost / shares, 2) if shares > 0 else price
 
     min_cash_buffer = p.get("total_capital_bdt", 0) * 0.10
     remaining_cash = p["cash_balance_bdt"] - net_cost
@@ -274,6 +285,7 @@ def record_buy(ticker: str, shares: int, price: float, horizon: str = "long_term
         "commission_bdt":  comm,
         "cost_basis":      net_cost,
         "effective_entry": effective_entry,
+        "break_even_price": round_trip_be,
         "horizon":         horizon,
         "bought_at":       datetime.date.today().isoformat()
     })

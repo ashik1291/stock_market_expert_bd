@@ -512,8 +512,18 @@ def run_full_buffett_screener() -> dict:
     log.info(f"Loaded {len(tickers_rows)} Category A tickers from database.")
 
     evaluated = []
+    try:
+        from anti_manipulation_engine import is_ticker_blacklisted
+    except ImportError:
+        is_ticker_blacklisted = None
+
     for r in tickers_rows:
         ticker = r[0]
+        if is_ticker_blacklisted:
+            is_b, _ = is_ticker_blacklisted(ticker)
+            if is_b:
+                log.info(f"Skipping {ticker} — flagged by forensic surveillance blacklist.")
+                continue
         res = evaluate_ticker_12factors(ticker, conn, reg, lead)
         if res:
             evaluated.append(res)

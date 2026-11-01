@@ -107,11 +107,12 @@ def evaluate_moat_valuations(tickers: list[str] | None = None) -> list[dict]:
         price = float(px_row["close"]) if px_row and px_row["close"] else None
 
         c_row = conn.execute(
-            "SELECT sponsor_holding_pct, govt_holding_pct FROM companies WHERE ticker = ?",
+            "SELECT sponsor_holding_pct, govt_holding_pct, sector FROM companies WHERE ticker = ?",
             (ticker,)
         ).fetchone()
         sponsor = float(c_row["sponsor_holding_pct"] or 0.0) if c_row else 0.0
         govt = float(c_row["govt_holding_pct"] or 0.0) if c_row else 0.0
+        sec = str(c_row["sector"] or "Unknown") if c_row else "Unknown"
         promoter_pct = sponsor + govt
 
         pit_row = conn.execute(
@@ -186,6 +187,7 @@ def evaluate_moat_valuations(tickers: list[str] | None = None) -> list[dict]:
 
         results.append({
             "ticker": ticker,
+            "sector": sec,
             "price": price,
             "eps": eps,
             "nav": nav,
@@ -211,9 +213,35 @@ def evaluate_moat_valuations(tickers: list[str] | None = None) -> list[dict]:
     return results
 
 
+def get_portfolio_sector_weights() -> dict[str, float]:
+    """Calculates current sector weight percentage in the portfolio."""
+    try:
+        if not PORTFOLIO_PATH.exists():
+            return {}
+        with open(PORTFOLIO_PATH, "r", encoding="utf-8") as f:
+            p = json.load(f)
+        total_eq = 0.0
+        sec_eq = {}
+        conn = sqlite3.connect(DB_PATH)
+        for h in p.get("holdings", []):
+            t = h["ticker"]
+            val = float(h.get("gross_cost", 0.0))
+            row = conn.execute("SELECT sector FROM companies WHERE ticker = ?", (t,)).fetchone()
+            s = row[0] if row and row[0] else "Unknown"
+            sec_eq[s] = sec_eq.get(s, 0.0) + val
+            total_eq += val
+        conn.close()
+        if total_eq > 0:
+            return {s: round((v / total_eq) * 100.0, 1) for s, v in sec_eq.items()}
+    except Exception:
+        pass
+    return {}
+
+
 def calculate_opportunistic_deployment(budget_bdt: float = 2000.0) -> dict:
-    """Deploy available cash into the highest-conviction undervalued stock."""
+    """Deploy available cash with sector concentration guards (max 35% per sector)."""
     valuations = evaluate_moat_valuations()
+    sec_weights = get_portfolio_sector_weights()
     # Deploy only in undervalued stocks that beat risk-free T-bills (ERP >= 0.0%) and have verified CFO
     undervalued = [
         v for v in valuations 
@@ -234,8 +262,15 @@ def calculate_opportunistic_deployment(budget_bdt: float = 2000.0) -> dict:
             "valuations": valuations,
         }
 
-    # Best value stock = deepest margin of safety + positive yield
-    best = undervalued[0]
+    # Sector Concentration Filter: Avoid allocating to sectors already > 35% of stock equity
+    best = None
+    for cand in undervalued:
+        c_sec = cand.get("sector", "Unknown")
+        if sec_weights.get(c_sec, 0.0) < 35.0 or len(undervalued) == 1:
+            best = cand
+            break
+    if not best:
+        best = undervalued[0]
     px = best["price"]
     cost_per_sh = px * (1.0 + COMMISSION_RATE)
 

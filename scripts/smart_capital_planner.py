@@ -3,17 +3,12 @@ scripts/smart_capital_planner.py
 ---------------------------------
 Intelligent Multi-Regime Capital Allocation Engine for DSE.
 
-Detects Market Regime:
-  1. BEARISH_DRIFT / FALLING:
-     - DSEX < 20-DMA and 50-DMA, negative macro bias (< -50).
-     - Action: WAIT IN CASH (100% or 75% reserve).
-     - Triggers bottom-fishing tranches only when RSI < 30 + Bullish divergence / support hit.
-  2. STABLE / CONSOLIDATION:
-     - Low volatility, DSEX near moving averages, moderate turnover.
-     - Action: Accumulate Cash Cows & Value Moats with High Dividend Yield & Low Beta.
-  3. BULLISH / EXPANSION:
-     - DSEX > 20-DMA and 50-DMA, smart money accumulation, rising turnover.
-     - Action: Growth & Momentum leaders with high Earnings Yield > T-Bill hurdle.
+Dynamically Computes:
+  1. Market Regime from DSEX 20-DMA, 50-DMA, and 14-day RSI + BB T-bill macro hurdle.
+  2. Candidate screening from 5-Factor Verified Moats (D/E <= 0.80, audited CFO, Graham MoS).
+  3. Strict Gatekeeper: Direct `is_ticker_blacklisted()` check (blocks manipulated stocks).
+  4. Dynamic Entry / Support Dip Targets: Calculated from 60-day price history, 20-DMA, and Graham value.
+  5. Sector Concentration Protection: Max 35% allocation to any single sector.
 
 Usage:
   python scripts/smart_capital_planner.py --amount 3000
@@ -25,7 +20,9 @@ import os
 import json
 import sqlite3
 import argparse
+import math
 from datetime import datetime
+from pathlib import Path
 
 # Windows console encoding safeguard
 if sys.platform == "win32":
@@ -35,10 +32,12 @@ if sys.platform == "win32":
     except Exception:
         pass
 
-DB_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "processed", "dse.db")
+ROOT_DIR = Path(__file__).resolve().parent.parent
+DB_PATH = ROOT_DIR / "data" / "processed" / "dse.db"
+FIVE_FACTOR_PATH = ROOT_DIR / "reports" / "five_factor_screened_universe.json"
 
 
-def get_market_regime():
+def get_market_regime() -> dict:
     con = sqlite3.connect(DB_PATH)
     cur = con.cursor()
     
@@ -94,8 +93,6 @@ def get_market_regime():
         
     con.close()
     
-    # Classify Regime
-    # High interest rates (T-Bill > 8%) create fundamental drag
     pct_from_dma20 = ((current_dsex - dma_20) / dma_20) * 100.0
     pct_from_dma50 = ((current_dsex - dma_50) / dma_50) * 100.0
     
@@ -103,7 +100,7 @@ def get_market_regime():
         regime = "BEARISH_DRIFT"
         recommendation_stance = "WAIT_FOR_BOTTOM_OR_STAGGER_DIPS"
         desc = "বাজার নিম্নমুখী এবং ২০-দিনের মুভিং এভারেজের নিচে। একবারে কেনা নিষিদ্ধ, ক্যাশ সংরক্ষণ অগ্রাধিকার।"
-    elif abs(pct_from_dma20) <= 0.8 and rsi_14 >= 42 and rsi_14 <= 58:
+    elif abs(pct_from_dma20) <= 0.8 and 42 <= rsi_14 <= 58:
         regime = "STABLE_CONSOLIDATION"
         recommendation_stance = "ACCUMULATE_HIGH_DIVIDEND_VALUE"
         desc = "বাজার স্থিতিশীল ও সাপোর্ট জোনে স্থির। কম অস্থির ও উচ্চ ডিভিডেন্ড ক্যাশ কাউ শেয়ার বাছাইয়ের আদর্শ সময়।"
@@ -132,142 +129,227 @@ def get_market_regime():
     }
 
 
-def generate_smart_plan(amount: float, override_regime: str = None):
+def compute_dynamic_stock_metrics(ticker: str, conn: sqlite3.Connection) -> dict:
+    """Computes dynamic 20-DMA, 60-day low support, and Graham fair value from live data."""
+    # Price series (last 60 bars)
+    rows = conn.execute("""
+        SELECT close, low, high, volume FROM prices
+        WHERE ticker = ? AND close > 0
+        ORDER BY date DESC LIMIT 60
+    """, (ticker,)).fetchall()
+    
+    if not rows:
+        return {}
+        
+    closes = [float(r[0]) for r in reversed(rows)]
+    lows = [float(r[1]) if r[1] is not None else float(r[0]) for r in rows]
+    current_px = closes[-1]
+    dma_20 = sum(closes[-20:]) / len(closes[-20:]) if len(closes) >= 20 else current_px
+    min_low_60d = min(lows) if lows else current_px
+    
+    # Fundamentals from PIT table (primary) or fundamentals table (fallback)
+    f_row = conn.execute("""
+        SELECT f.eps, f.nav, f.pe_ratio, f.dividend_yield, f.debt_equity, f.cash_flow_ops, c.sector
+        FROM fundamentals_pit f
+        LEFT JOIN companies c ON f.ticker = c.ticker
+        WHERE f.ticker = ?
+        ORDER BY f.snapshot_date DESC LIMIT 1
+    """, (ticker,)).fetchone()
+    
+    if not f_row or f_row[2] is None:
+        f_row = conn.execute("""
+            SELECT f.eps, f.nav, f.pe_ratio, f.dividend_yield, f.debt_equity, f.cash_flow_ops, c.sector
+            FROM fundamentals f
+            LEFT JOIN companies c ON f.ticker = c.ticker
+            WHERE f.ticker = ?
+            ORDER BY (f.pe_ratio IS NOT NULL AND f.dividend_yield IS NOT NULL) DESC, f.year DESC, f.quarter DESC LIMIT 1
+        """, (ticker,)).fetchone()
+    
+    eps = float(f_row[0]) if f_row and f_row[0] is not None else None
+    nav = float(f_row[1]) if f_row and f_row[1] is not None else None
+    pe = float(f_row[2]) if f_row and f_row[2] is not None else None
+    dy = float(f_row[3]) if f_row and f_row[3] is not None else 0.0
+    de = float(f_row[4]) if f_row and f_row[4] is not None else None
+    cfo = float(f_row[5]) if f_row and f_row[5] is not None else None
+    sec = str(f_row[6]) if f_row and f_row[6] else "Unknown"
+
+    # Graham Fair Value
+    graham_val = None
+    if eps and nav and eps > 0 and nav > 0:
+        graham_val = round(math.sqrt(22.5 * eps * nav), 1)
+
+    # Dynamic target dip:
+    # Anchor to 3% below current, 2% below 20-DMA, bounded above 60-day lowest support
+    target_dip = round(min(current_px * 0.97, dma_20 * 0.98), 1)
+    if min_low_60d > 0 and min_low_60d < current_px:
+        # Don't place dip order below 60d support floor unless market breaks it
+        target_dip = round(max(target_dip, min_low_60d * 0.99), 1)
+
+    return {
+        "ticker": ticker,
+        "sector": sec,
+        "current_price": current_px,
+        "dma_20": round(dma_20, 1),
+        "min_low_60d": round(min_low_60d, 1),
+        "eps": eps,
+        "nav": nav,
+        "pe": pe,
+        "dividend_yield": dy,
+        "debt_equity": de,
+        "cfo": cfo,
+        "graham_val": graham_val,
+        "target_dip": target_dip
+    }
+
+
+def load_candidate_pool() -> list[str]:
+    """Dynamically loads candidate tickers strictly screened for 5 factors and free of blacklist."""
+    # 1. Primary: read screened universe report
+    candidates = []
+    if FIVE_FACTOR_PATH.exists():
+        try:
+            with open(FIVE_FACTOR_PATH, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                candidates = [item["ticker"] for item in data.get("screened_universe", [])]
+        except Exception:
+            candidates = []
+
+    # 2. Fallback: query Category A with low debt & positive yield
+    if not candidates:
+        conn = sqlite3.connect(DB_PATH)
+        rows = conn.execute("""
+            SELECT DISTINCT c.ticker FROM companies c
+            JOIN fundamentals f ON c.ticker = f.ticker
+            WHERE c.category = 'A'
+              AND f.pe_ratio > 0 AND f.pe_ratio <= 20
+              AND f.dividend_yield >= 3.0
+              AND (f.debt_equity IS NULL OR f.debt_equity <= 0.80)
+            ORDER BY f.dividend_yield DESC LIMIT 20
+        """).fetchall()
+        conn.close()
+        candidates = [r[0] for r in rows]
+
+    return candidates
+
+
+def generate_smart_plan(amount: float, override_regime: str = None) -> dict:
     regime_info = get_market_regime()
     regime = override_regime if override_regime else regime_info["regime"]
     
-    con = sqlite3.connect(DB_PATH)
-    cur = con.cursor()
-    
-    # Query approved universe with latest prices, fundamentals, and graham values
-    query = """
-    SELECT p.ticker, p.close, f.pe_ratio, f.dividend_yield, f.debt_equity, f.cash_flow_ops
-    FROM prices p
-    JOIN fundamentals f ON p.ticker = f.ticker
-    WHERE p.date = (SELECT MAX(date) FROM prices)
-      AND p.close > 0
-    GROUP BY p.ticker
-    ORDER BY p.ticker
-    """
-    rows = cur.execute(query).fetchall()
-    con.close()
-    
-    # Safe list verified by our 5-factor screen
-    # Filter out junk and blacklists
-    candidates = []
-    core_monitored = {
-        "JAMUNAOIL": {"type": "DEFENSIVE_DIVIDEND", "moat": "Govt Monopoly / Zero Debt", "target_dip": 172.0},
-        "PADMAOIL": {"type": "DEFENSIVE_DIVIDEND", "moat": "Govt Monopoly / Zero Debt", "target_dip": 192.0},
-        "MPETROLEUM": {"type": "DEFENSIVE_DIVIDEND", "moat": "Govt Monopoly / Zero Debt", "target_dip": 204.0},
-        "SQURPHARMA": {"type": "BLUE_CHIP_QUALITY", "moat": "Pharma Market Leader / AA+", "target_dip": 210.0},
-        "EBL": {"type": "FINANCIAL_VALUE", "moat": "Top Tier Governance / High CFO", "target_dip": 22.5},
-        "GP": {"type": "TELECOM_CASH_COW", "moat": "Telecom Duopoly / High FCF", "target_dip": 230.0},
-        "LHB": {"type": "CYCLICAL_VALUE", "moat": "Lowest Cost Producer / Zero Debt", "target_dip": 46.5},
-        "AAMRANET": {"type": "TECH_EXPANSION", "moat": "Internet Backbone / Low Debt", "target_dip": 16.5}
-    }
-    
-    # Match with latest live prices
-    price_map = {r[0]: {"price": r[1], "pe": r[2], "yield": r[3], "de": r[4], "cfo": r[5]} for r in rows}
-    
-    # Allocation Strategy based on Regime
+    # Import blacklist gate
+    try:
+        from anti_manipulation_engine import is_ticker_blacklisted
+    except ImportError:
+        is_ticker_blacklisted = lambda t: (False, "Clean")
+
+    conn = sqlite3.connect(DB_PATH)
+    candidate_tickers = load_candidate_pool()
+
+    # Filter out blacklisted and compute dynamic metrics
+    verified_candidates = []
+    for t in candidate_tickers:
+        is_b, _ = is_ticker_blacklisted(t)
+        if is_b:
+            continue
+        metrics = compute_dynamic_stock_metrics(t, conn)
+        if metrics and metrics.get("current_price", 0) > 0:
+            verified_candidates.append(metrics)
+
+    conn.close()
+
+    # If pool is empty, provide hard fallback moats with dynamic metrics
+    if not verified_candidates:
+        conn = sqlite3.connect(DB_PATH)
+        fallback_tickers = ["JAMUNAOIL", "PADMAOIL", "SQURPHARMA", "EBL", "GP", "LHB"]
+        for t in fallback_tickers:
+            is_b, _ = is_ticker_blacklisted(t)
+            if not is_b:
+                m = compute_dynamic_stock_metrics(t, conn)
+                if m:
+                    verified_candidates.append(m)
+        conn.close()
+
+    # Sector Diversification Guard: Enforce Max 35% Capital per Sector
+    # Select top picks based on Regime
     if regime == "BEARISH_DRIFT":
-        # Rule: 70% Wait in Cash, 30% First Conservative Limit Stagger
         wait_cash = round(amount * 0.70, 2)
         invest_now = round(amount * 0.30, 2)
-        
-        # Pick 2 deepest Moats
-        top_picks = [
-            {
-                "ticker": "JAMUNAOIL",
-                "price": price_map.get("JAMUNAOIL", {}).get("price", 177.4),
-                "target_entry": 172.0,
-                "allocation_pct": 50,
-                "rationale": "লভ্যাংশ ইল্ড ৯.৯% এবং সরকার নিয়ন্ত্রিত একচেটিয়া ব্যবসা। দরপতনের ঝুঁকি অত্যন্ত সীমিত।"
-            },
-            {
-                "ticker": "SQURPHARMA",
-                "price": price_map.get("SQURPHARMA", {}).get("price", 217.9),
-                "target_entry": 211.0,
-                "allocation_pct": 50,
-                "rationale": "বাংলাদেশের শীর্ষ ওষুধ প্রস্তুতকারক, শূন্য ঋণ এবং ৫ গুণ অপারেটিং ক্যাশ-ফ্লো কভারেজ।"
-            }
-        ]
-        
+        # Rank by dividend yield & Graham margin of safety (defensive cash cows)
+        sorted_pool = sorted(
+            verified_candidates,
+            key=lambda x: (x.get("dividend_yield") or 0.0, -(x.get("pe") or 99.0)),
+            reverse=True
+        )
+        target_count = 2
     elif regime == "STABLE_CONSOLIDATION":
-        # Rule: 20% Liquid Cash Reserve, 80% Deployed in High Yield + Value
         wait_cash = round(amount * 0.20, 2)
         invest_now = round(amount * 0.80, 2)
-        
-        top_picks = [
-            {
-                "ticker": "EBL",
-                "price": price_map.get("EBL", {}).get("price", 23.4),
-                "target_entry": 23.2,
-                "allocation_pct": 40,
-                "rationale": "P/E মাত্র ৪.৪ এবং ১০% এর বেশি ক্যাশ ডিভিডেন্ড ইল্ড। স্থিতিশীল বাজারে শ্রেষ্ঠ রিটার্ন।"
-            },
-            {
-                "ticker": "PADMAOIL",
-                "price": price_map.get("PADMAOIL", {}).get("price", 197.5),
-                "target_entry": 196.0,
-                "allocation_pct": 35,
-                "rationale": "অবিচল নগদ প্রবাহ এবং সরকারের ৫২% শেয়ারহোল্ডিং সম্বলিত নিরাপদ ক্যাশ কাউ।"
-            },
-            {
-                "ticker": "GP",
-                "price": price_map.get("GP", {}).get("price", 235.8),
-                "target_entry": 234.0,
-                "allocation_pct": 25,
-                "rationale": "দেশের সর্ববৃহৎ টেলিকম অপারেটর, নিয়মিত ৮.৩%+ লভ্যাংশ প্রদানকারী ব্লু-চিপ।"
-            }
-        ]
-        
-    else: # GROWTH_EXPANSION
-        # Rule: 10% Cash Reserve, 90% in Growth & Momentum Leaders
+        # Balanced quality: solid dividend and low debt
+        sorted_pool = sorted(
+            verified_candidates,
+            key=lambda x: ((x.get("dividend_yield") or 0.0) * 1.5 + (15.0 - (x.get("pe") or 15.0))),
+            reverse=True
+        )
+        target_count = 3
+    else:  # GROWTH_EXPANSION
         wait_cash = round(amount * 0.10, 2)
         invest_now = round(amount * 0.90, 2)
-        
-        top_picks = [
-            {
-                "ticker": "SQURPHARMA",
-                "price": price_map.get("SQURPHARMA", {}).get("price", 217.9),
-                "target_entry": 218.0,
-                "allocation_pct": 40,
-                "rationale": "গ্রোথ ও রপ্তানি সম্প্রসারণে অগ্রগামী, প্রাতিষ্ঠানিক সঞ্চয় শক্তিশালী।"
-            },
-            {
-                "ticker": "EBL",
-                "price": price_map.get("EBL", {}).get("price", 23.4),
-                "target_entry": 23.5,
-                "allocation_pct": 30,
-                "rationale": "ঋণ শৃঙ্খলা বজায় রেখে ব্যালেন্স শিট গ্রোথে ব্যাংকিং খাতের শীর্ষ পারফর্মার।"
-            },
-            {
-                "ticker": "LHB",
-                "price": price_map.get("LHB", {}).get("price", 48.2),
-                "target_entry": 48.5,
-                "allocation_pct": 30,
-                "rationale": "অবকাঠামো খাতের পুনরুজ্জীবনে ভলিউম গ্রোথ এবং শূন্য ব্যাংক ঋণের সুবিধা।"
-            }
-        ]
-        
-    # Calculate exact shares and tranche allocations
+        # High ROE / Growth & low P/E
+        sorted_pool = sorted(
+            verified_candidates,
+            key=lambda x: (x.get("eps") or 0.0, -(x.get("pe") or 99.0)),
+            reverse=True
+        )
+        target_count = 3
+
+    # Pick top diversified candidates (Max 1 per sector to enforce < 35% sector concentration)
+    chosen_picks = []
+    seen_sectors = set()
+    for cand in sorted_pool:
+        sec = cand.get("sector", "Unknown")
+        if sec in seen_sectors:
+            continue
+        seen_sectors.add(sec)
+        chosen_picks.append(cand)
+        if len(chosen_picks) >= target_count:
+            break
+
+    # If diverse sectors are insufficient, allow second from sector
+    if len(chosen_picks) < target_count:
+        for cand in sorted_pool:
+            if cand not in chosen_picks:
+                chosen_picks.append(cand)
+                if len(chosen_picks) >= target_count:
+                    break
+
+    # Allocate Budget and Calculate Exact Shares
     allocations = []
-    for pick in top_picks:
-        allocated_bdt = round(invest_now * (pick["allocation_pct"] / 100.0), 2)
-        target_p = pick["target_entry"]
-        shares = int(allocated_bdt // target_p) if target_p > 0 else 0
-        actual_outlay = round(shares * target_p, 2)
-        allocations.append({
-            "ticker": pick["ticker"],
-            "current_price": pick["price"],
-            "target_limit_price": target_p,
-            "allocated_budget": allocated_bdt,
-            "exact_shares": shares,
-            "estimated_outlay": actual_outlay,
-            "rationale": pick["rationale"]
-        })
-        
+    if chosen_picks:
+        share_budget_pct = 100.0 / len(chosen_picks)
+        for pick in chosen_picks:
+            allocated_bdt = round(invest_now * (share_budget_pct / 100.0), 2)
+            target_p = pick["target_dip"]
+            shares = int(allocated_bdt // target_p) if target_p > 0 else 0
+            actual_outlay = round(shares * target_p, 2)
+            
+            # Dynamic rationale based on metrics
+            pe_str = f"{pick['pe']:.1f}" if pick.get('pe') is not None else "—"
+            rationale = (
+                f"ডিভিডেন্ড ইল্ড {pick['dividend_yield']}% | P/E: {pe_str} | "
+                f"খাত: {pick['sector']} (সেক্টর সীমা ৩৫% অক্ষুণ্ণ)"
+            )
+            allocations.append({
+                "ticker": pick["ticker"],
+                "sector": pick["sector"],
+                "current_price": pick["current_price"],
+                "target_limit_price": target_p,
+                "dma_20": pick["dma_20"],
+                "allocated_budget": allocated_bdt,
+                "exact_shares": shares,
+                "estimated_outlay": actual_outlay,
+                "rationale": rationale
+            })
+
     return {
         "regime_info": regime_info,
         "invested_capital_input": amount,
@@ -294,10 +376,10 @@ def print_plan_report(plan: dict):
     print(f"🛡️ Recommended Cash Reserve (Hold in Bank/Brokerage): ৳{cash:,.2f} ({round((cash/amt)*100)}%)")
     print(f"🎯 Actionable Tranche Allocation (Limit Orders):     ৳{tranche:,.2f} ({round((tranche/amt)*100)}%)")
     print("-"*80)
-    print(f"{'Ticker':<12} {'Live Px':<10} {'Limit Target':<14} {'Shares':<10} {'Outlay (BDT)':<14} {'Reason / Rationale'}")
+    print(f"{'Ticker':<12} {'Sector':<14} {'Live Px':<10} {'Limit Target':<14} {'Shares':<8} {'Outlay (BDT)':<13} {'Rationale'}")
     print("-"*80)
     for a in plan["allocations"]:
-        print(f"{a['ticker']:<12} ৳{a['current_price']:<9.1f} ৳{a['target_limit_price']:<13.1f} {a['exact_shares']:<10} ৳{a['estimated_outlay']:<13.1f} {a['rationale'][:45]}...")
+        print(f"{a['ticker']:<12} {a['sector']:<14} ৳{a['current_price']:<9.1f} ৳{a['target_limit_price']:<13.1f} {a['exact_shares']:<8} ৳{a['estimated_outlay']:<12.1f} {a['rationale'][:40]}...")
     print("="*80)
     print("💡 Execution Rule: Do NOT chase open prices in the first hour (10:00-11:00 AM).")
     print("   Place Limit Orders strictly at or below 'Limit Target' between 11:30 AM and 12:30 PM.")

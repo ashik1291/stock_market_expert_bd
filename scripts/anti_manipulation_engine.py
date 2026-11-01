@@ -132,11 +132,25 @@ def run_surveillance_scan(asof_date: str | None = None) -> list[dict]:
         flags = []
         score = 0
 
-        # 1. Volume Spike Anomaly
-        if spike_ratio >= 5.0 and volume > 10000:
-            flags.append(("EXTREME_VOLUME_SPIKE", f"Volume is {spike_ratio:.1f}x 20-day average ({int(volume):,} vs {int(avg_vol_20):,})", 30))
-        elif spike_ratio >= 3.0 and volume > 10000:
-            flags.append(("ABNORMAL_VOLUME_SURGE", f"Volume is {spike_ratio:.1f}x 20-day average ({int(volume):,} vs {int(avg_vol_20):,})", 20))
+        # 1. Adaptive Volume Spike Anomaly (Tiered by Baseline Liquidity)
+        # Large liquidity (avg > 500k): 2.5x is abnormal, 4.0x is extreme
+        # Mid liquidity (50k - 500k):   3.0x is abnormal, 5.0x is extreme
+        # Illiquid (< 50k):             requires absolute volume > 25,000 to prevent false micro-lot triggers
+        if avg_vol_20 >= 500000:
+            if spike_ratio >= 4.0:
+                flags.append(("EXTREME_VOLUME_SPIKE", f"Large-cap volume is {spike_ratio:.1f}x 20-day average ({int(volume):,} vs {int(avg_vol_20):,})", 30))
+            elif spike_ratio >= 2.5:
+                flags.append(("ABNORMAL_VOLUME_SURGE", f"Large-cap volume is {spike_ratio:.1f}x 20-day average ({int(volume):,} vs {int(avg_vol_20):,})", 20))
+        elif avg_vol_20 >= 50000:
+            if spike_ratio >= 5.0:
+                flags.append(("EXTREME_VOLUME_SPIKE", f"Mid-tier volume is {spike_ratio:.1f}x 20-day average ({int(volume):,} vs {int(avg_vol_20):,})", 30))
+            elif spike_ratio >= 3.0:
+                flags.append(("ABNORMAL_VOLUME_SURGE", f"Mid-tier volume is {spike_ratio:.1f}x 20-day average ({int(volume):,} vs {int(avg_vol_20):,})", 20))
+        else:
+            if spike_ratio >= 6.0 and volume >= 25000:
+                flags.append(("EXTREME_VOLUME_SPIKE", f"Low-float spike is {spike_ratio:.1f}x 20-day average ({int(volume):,} vs {int(avg_vol_20):,})", 30))
+            elif spike_ratio >= 4.0 and volume >= 20000:
+                flags.append(("ABNORMAL_VOLUME_SURGE", f"Low-float surge is {spike_ratio:.1f}x 20-day average ({int(volume):,} vs {int(avg_vol_20):,})", 20))
 
         # 2. Speculative Junk Pump without Earnings
         if price_change_pct >= 4.0 and (eps <= 0 or pe > 50 or category == "Z"):
@@ -201,8 +215,8 @@ def run_surveillance_scan(asof_date: str | None = None) -> list[dict]:
                 ticker, asof_date, risk_level, primary_alert, total_score,
                 spike_ratio, price_change_pct, desc, alert_item["details_json"]
             ))
-        except Exception:
-            pass
+        except Exception as e:
+            print(f"⚠️ Failed to insert alert for {ticker}: {e}")
 
     conn.commit()
     conn.close()
