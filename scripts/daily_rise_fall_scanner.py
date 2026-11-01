@@ -99,8 +99,8 @@ def scan_daily_rise_and_fall(timeframe: str = "weekly") -> dict:
             is_blocked, bl_msg = is_ticker_blacklisted(ticker)
             if is_blocked:
                 fall_reasons.append(f"Forensic Surveillance Blacklist: {bl_msg}")
-        except Exception:
-            pass
+        except Exception as e:
+            log.warning(f"Blacklist check warning for {ticker}: {e}")
         if (data.get("signal") == "HOLD_LOAN_TRAP_RISK" or (de_val is not None and de_val > 1.2)) and not is_safe_bank:
             fall_reasons.append(f"Excessive Loan Burden (D/E: {de_val}) in 12-14% interest rate regime")
         if bank_npl is not None and bank_npl >= 6.0:

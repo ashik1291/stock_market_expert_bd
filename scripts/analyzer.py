@@ -956,8 +956,18 @@ def analyze_ticker(ticker: str, timeframe: Timeframe, ticker_data: dict) -> dict
                            gov_score=g_score, rl_weights=rl_w)
     score = comp["composite_score"]
 
+    # Check forensic surveillance blacklist
+    is_blacklisted = False
+    try:
+        from anti_manipulation_engine import is_ticker_blacklisted
+        is_blocked, bl_reason = is_ticker_blacklisted(ticker)
+        if is_blocked:
+            is_blacklisted = True
+    except Exception as e:
+        log.warning(f"Blacklist check error for {ticker}: {e}")
+
     # Downgrades signal if manipulation, loan trap, or governance/legal probe triggered
-    if manip_risk == "high":
+    if is_blacklisted or manip_risk == "high":
         signal = "HOLD_MANIPULATION_RISK"
     elif loan_risk == "high":
         signal = "HOLD_LOAN_TRAP_RISK"

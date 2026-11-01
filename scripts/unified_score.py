@@ -84,6 +84,7 @@ def score_features(
     sector: str | None = None,
     close: float | None = None,
     factor_weights: dict | None = None,
+    ticker: str | None = None,
 ) -> dict:
     """Return score, eligibility, and component breakdown under frozen model or explicit weights."""
     sec = (sector or "Unknown")
@@ -108,6 +109,16 @@ def score_features(
     if pe_v is not None and (pe_v <= 0 or pe_v > 25):
         eligible = False
         reasons.append("pe_gate")
+
+    if ticker:
+        try:
+            from anti_manipulation_engine import is_ticker_blacklisted
+            is_b, _ = is_ticker_blacklisted(ticker)
+            if is_b:
+                eligible = False
+                reasons.append("manipulation_blacklist")
+        except Exception:
+            pass
 
     if not eligible:
         return {

@@ -688,10 +688,14 @@ def run_full_scrape(tickers: list[str] = None, historical_years: int = 5):
 
 
 def run_price_only_scrape():
-    """Daily price & macro news refresh."""
+    """Daily price & macro news refresh with minimum data gate."""
     date_str = today_str()
     save_raw("market_summary", scrape_market_summary(), date_str)
-    save_raw("all_prices", scrape_all_prices(), date_str)
+    prices = scrape_all_prices()
+    if not prices or len(prices) < 50:
+        log.error(f"SCRAPE DATA GATE FAILED: Only {len(prices) if prices else 0} prices fetched. Minimum 50 required.")
+        raise RuntimeError(f"Scraped prices count ({len(prices) if prices else 0}) below minimum data gate (50).")
+    save_raw("all_prices", prices, date_str)
     try:
         # Scrape global macro news headlines daily
         news_articles = scrape_news(ticker=None)
