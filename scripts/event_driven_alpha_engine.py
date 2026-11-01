@@ -55,6 +55,12 @@ def scan_dividend_catalysts(asof_date: str | None = None) -> list[dict]:
     except ImportError:
         is_ticker_blacklisted = lambda t: (False, "Clean")
 
+    try:
+        from halal_guard import HalalGuard
+        halal_checker = HalalGuard()
+    except Exception:
+        halal_checker = None
+
     # Fetch cash dividends with record dates within the next 60 days or upcoming seasonality
     query = """
     SELECT ca.ticker, ca.record_date, ca.cash_amount, ca.notes, c.name, c.sector, c.category
@@ -80,10 +86,14 @@ def scan_dividend_catalysts(asof_date: str | None = None) -> list[dict]:
             continue
         seen.add(key)
         
-        # 1. Forensic Blacklist Gate
+        # 1. Forensic Blacklist Gate & Shariah Halal Gate
         is_b, bl_reason = is_ticker_blacklisted(t)
         if is_b:
             continue
+        if halal_checker:
+            h_res = halal_checker.is_eligible(t, tier="flexible")
+            if not h_res.get("eligible", True):
+                continue
             
         # 2. Get latest price
         p_row = conn.execute(

@@ -279,21 +279,31 @@ def generate_smart_plan(amount: float, override_regime: str = None) -> dict:
     wait_cash = round(amount * (cash_reserve_pct / 100.0), 2)
     invest_now = round(amount - wait_cash, 2)
     
-    # Import blacklist gate
+    # Import blacklist gate and HalalGuard
     try:
         from anti_manipulation_engine import is_ticker_blacklisted
     except ImportError:
         is_ticker_blacklisted = lambda t: (False, "Clean")
 
+    try:
+        from halal_guard import HalalGuard
+        halal_checker = HalalGuard()
+    except Exception:
+        halal_checker = None
+
     conn = sqlite3.connect(DB_PATH)
     candidate_tickers = load_candidate_pool()
 
-    # Filter out blacklisted and compute dynamic metrics
+    # Filter out blacklisted and non-halal stocks, compute dynamic metrics
     verified_candidates = []
     for t in candidate_tickers:
         is_b, _ = is_ticker_blacklisted(t)
         if is_b:
             continue
+        if halal_checker:
+            h_res = halal_checker.is_eligible(t, tier="flexible")
+            if not h_res.get("eligible", True):
+                continue
         metrics = compute_dynamic_stock_metrics(t, conn)
         if metrics and metrics.get("current_price", 0) > 0:
             verified_candidates.append(metrics)
@@ -302,10 +312,15 @@ def generate_smart_plan(amount: float, override_regime: str = None) -> dict:
 
     if not verified_candidates:
         conn = sqlite3.connect(DB_PATH)
-        fallback_tickers = ["JAMUNAOIL", "PADMAOIL", "SQURPHARMA", "EBL", "GP", "LHB"]
+        # Pristine Halal Moats (No conventional interest-bearing financial institutions)
+        fallback_tickers = ["JAMUNAOIL", "PADMAOIL", "SQURPHARMA", "BXPHARMA", "GP", "OLYMPIC"]
         for t in fallback_tickers:
             is_b, _ = is_ticker_blacklisted(t)
             if not is_b:
+                if halal_checker:
+                    h_res = halal_checker.is_eligible(t, tier="flexible")
+                    if not h_res.get("eligible", True):
+                        continue
                 m = compute_dynamic_stock_metrics(t, conn)
                 if m:
                     verified_candidates.append(m)

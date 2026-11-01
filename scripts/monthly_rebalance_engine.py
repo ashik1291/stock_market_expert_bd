@@ -159,7 +159,7 @@ def evaluate_moat_valuations(tickers: list[str] | None = None) -> list[dict]:
         div_y = float(pit_row["dividend_yield"]) if pit_row and pit_row["dividend_yield"] else 0.0
         de = float(pit_row["debt_equity"]) if pit_row and pit_row["debt_equity"] else 0.0
 
-        nocfps = float(f_row["cash_flow_ops"]) if f_row and f_row["cash_flow_ops"] is not None else None
+        # Preserve the hierarchical fallback (f_row -> raw_data -> fundamentals_pit) computed above
         cfo_ratio = round(nocfps / eps, 2) if (nocfps is not None and eps and eps > 0) else None
 
         if not price or not eps or not nav or eps <= 0 or nav <= 0:
