@@ -336,12 +336,22 @@ def generate_smart_plan(amount: float, override_regime: str = None) -> dict:
         de = max(cand.get("debt_equity") or 0.0, 0.0)
         pe = cand.get("pe") or 15.0
         
+        # Sector FX Devaluation Resilience Multiplier (Bangladesh Macro Dynamic)
+        # Sectors with dollar export revenue or state-guaranteed cost-plus margins (Fuel & Power, Pharma)
+        # are resilient to BDT depreciation. Import-dependent cyclicals (Engineering, Ceramics) face margin squeeze.
+        sec_name = (cand.get("sector") or "").strip().lower()
+        fx_resilience = 1.0
+        if any(s in sec_name for s in ["fuel", "power", "pharmaceutical"]):
+            fx_resilience = 1.25  # 25% institutional resilience premium
+        elif any(s in sec_name for s in ["engineering", "ceramic", "tannery"]):
+            fx_resilience = 0.80  # 20% import-cost margin drag penalty
+
         # Risk Parity Score: Must have positive Margin of Safety in Bearish/Consolidation
-        # Weight = (Margin_of_Safety * Yield) / (Volatility * (1 + D/E))
+        # Weight = (Margin_of_Safety * Yield * FX_Resilience) / (Volatility * (1 + D/E))
         if mos <= 0:
             score = 0.001
         else:
-            score = (mos * max(dy, 2.0)) / (vol * (1.0 + de))
+            score = (mos * max(dy, 2.0) * fx_resilience) / (vol * (1.0 + de))
         cand["risk_parity_score"] = round(score, 3)
 
     # Sort by risk parity score
