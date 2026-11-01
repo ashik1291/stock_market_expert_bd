@@ -81,14 +81,24 @@ def run_surveillance_scan(asof_date: str | None = None) -> list[dict]:
     for c in conn.execute("SELECT ticker, name, sector, category, sponsor_holding_pct, market_cap_cr FROM companies"):
         comp_map[c["ticker"]] = dict(c)
 
-    # Fetch fundamental snapshots
+    # Fetch latest fundamental snapshot for each ticker across all PIT historical dates
     fund_map: dict[str, dict] = {}
-    for f in conn.execute("""
-        SELECT ticker, eps, pe_ratio, nav 
-        FROM fundamentals_pit 
-        WHERE snapshot_date = (SELECT MAX(snapshot_date) FROM fundamentals_pit)
-    """):
+    query_pit = """
+        SELECT f.ticker, f.eps, f.pe_ratio, f.nav 
+        FROM fundamentals_pit f
+        JOIN (
+            SELECT ticker, MAX(snapshot_date) AS max_date
+            FROM fundamentals_pit
+            GROUP BY ticker
+        ) latest ON f.ticker = latest.ticker AND f.snapshot_date = latest.max_date
+    """
+    for f in conn.execute(query_pit):
         fund_map[f["ticker"]] = dict(f)
+
+    # Fallback for tickers in base fundamentals table
+    for f in conn.execute("SELECT ticker, eps, pe_ratio, nav FROM fundamentals"):
+        if f["ticker"] not in fund_map:
+            fund_map[f["ticker"]] = dict(f)
 
     # Fetch prices for active date
     active_prices = conn.execute(
@@ -152,10 +162,17 @@ def run_surveillance_scan(asof_date: str | None = None) -> list[dict]:
             elif spike_ratio >= 4.0 and volume >= 20000:
                 flags.append(("ABNORMAL_VOLUME_SURGE", f"Low-float surge is {spike_ratio:.1f}x 20-day average ({int(volume):,} vs {int(avg_vol_20):,})", 20))
 
-        # 2. Speculative Junk Pump without Earnings
-        if price_change_pct >= 4.0 and (eps <= 0 or pe > 50 or category == "Z"):
-            junk_reason = "Negative EPS" if eps <= 0 else (f"Extreme P/E ({pe:.1f}x)" if pe > 50 else "Z-Category Junk")
-            flags.append(("SPECULATIVE_JUNK_PUMP", f"Price up +{price_change_pct}% with poor fundamentals ({junk_reason})", 35))
+        # 2. Speculative Junk Pump without Earnings (Distinguish tracked Negative EPS from Untracked)
+        has_fund_record = ticker in fund_map
+        if price_change_pct >= 4.0:
+            if has_fund_record:
+                if eps <= 0 or pe > 50 or category == "Z":
+                    junk_reason = "Negative EPS" if eps <= 0 else (f"Extreme P/E ({pe:.1f}x)" if pe > 50 else "Z-Category Junk")
+                    flags.append(("SPECULATIVE_JUNK_PUMP", f"Price up +{price_change_pct}% with poor fundamentals ({junk_reason})", 35))
+            else:
+                # Untracked instrument surging without fundamental disclosures
+                if category == "Z" or price_change_pct >= 6.0:
+                    flags.append(("SPECULATIVE_JUNK_PUMP", f"Price up +{price_change_pct}% on untracked / high-risk security without verified earnings", 35))
 
         # 3. Syndicate Low-Float Corner
         if sponsor_pct > 0 and sponsor_pct < 30.0 and price_change_pct >= 3.5 and spike_ratio >= 2.0:
