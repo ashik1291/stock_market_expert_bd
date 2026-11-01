@@ -2,18 +2,18 @@
   "ticker": "ORIONPHARM",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-10-29T09:18:41.402587",
-  "asof_price_date": "2026-10-29",
+  "analyzed_at": "2026-11-01T07:53:32.245602",
+  "asof_price_date": "2026-11-01",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 52.9793,
+    "rsi_14": 48.5726,
     "pe_ratio": 0.0,
     "debt_equity": 1.272
   },
   "signal": "HOLD",
-  "confidence": 55.39,
+  "confidence": 52.05,
   "trajectory": {
     "direction": "FALL_RISK",
     "direction_icon": "\ud83d\udd34",
@@ -21,33 +21,33 @@
     "momentum_status": "Bearish Breakdown / Selling Pressure",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+8.1%",
-      "downside_risk_pct": "-5.7%",
-      "target_price": 30.6,
-      "support_price": 26.7,
-      "risk_reward_ratio": "1.4x"
+      "upside_potential_pct": "+8.7%",
+      "downside_risk_pct": "-5.8%",
+      "target_price": 29.9,
+      "support_price": 25.9,
+      "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+14.8%",
-      "downside_risk_pct": "-4.9%",
-      "target_price": 32.5,
-      "trailing_stop": 26.9,
-      "risk_reward_ratio": "3.0x"
+      "upside_potential_pct": "+14.9%",
+      "downside_risk_pct": "-5.1%",
+      "target_price": 31.6,
+      "trailing_stop": 26.1,
+      "risk_reward_ratio": "2.9x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-      "upside_potential_pct": "+30.0%",
-      "downside_risk_pct": "-8.8%",
-      "target_price": 36.8,
+      "upside_potential_pct": "+30.2%",
+      "downside_risk_pct": "-9.2%",
+      "target_price": 35.8,
       "dividend_cagr": "no_dividend",
-      "risk_reward_ratio": "3.4x"
+      "risk_reward_ratio": "3.3x"
     }
   },
   "trade_levels": {
-    "entry": 28.3,
-    "stop_loss": 25.96,
-    "target": 32.98
+    "entry": 27.5,
+    "stop_loss": 25.14,
+    "target": 32.22
   },
   "precision": {
     "ticker": "ORIONPHARM",
@@ -70,14 +70,14 @@
       "signal": "Cash flow covers only 0% of dividend payout"
     },
     "liquidity": {
-      "avg_daily_volume": 855716,
+      "avg_daily_volume": 860683,
       "daily_turnover_bdt_cr": 0.09,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 42785,
-      "max_daily_accumulation_shares": 128357,
-      "max_order_bdt": 42785.0,
-      "directive": "Max single order: 42,785 shares (Tk 42,785) to prevent >1% execution slippage"
+      "max_single_order_shares": 43034,
+      "max_daily_accumulation_shares": 129102,
+      "max_order_bdt": 43034.0,
+      "directive": "Max single order: 43,034 shares (Tk 43,034) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -89,59 +89,59 @@
   },
   "pattern_dna": {
     "ticker": "ORIONPHARM",
-    "audited_at": "2026-10-29 15:18:41",
+    "audited_at": "2026-11-01 13:53:32",
     "worth_vs_greed": {
-      "current_price": 28.3,
-      "intrinsic_worth": 14.15,
+      "current_price": 27.5,
+      "intrinsic_worth": 13.75,
       "margin_of_safety_pct": -50.0,
-      "extension_froth_score": 80.0,
-      "greed_index": 80.0,
-      "rsi_14": 60.2,
-      "price_vs_ema50_pct": 2.7,
-      "price_vs_ema200_pct": -0.5,
+      "extension_froth_score": 70.0,
+      "greed_index": 70.0,
+      "rsi_14": 59.6,
+      "price_vs_ema50_pct": -0.2,
+      "price_vs_ema200_pct": -3.3,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f327.7 \u2013 \u09f328.6",
-        "chase_cutoff_price": 29.0,
-        "when_to_wait": "If price opens or rises above \u09f329.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f327.7.",
-        "weekly_target_short": 29.3,
-        "monthly_target_swing": 32.5,
-        "long_term_target_asset": 36.8,
+        "optimal_entry_corridor": "\u09f326.9 \u2013 \u09f327.8",
+        "chase_cutoff_price": 28.2,
+        "when_to_wait": "If price opens or rises above \u09f328.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f326.9.",
+        "weekly_target_short": 28.5,
+        "monthly_target_swing": 31.6,
+        "long_term_target_asset": 35.8,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "OVERVALUED_EUPHORIA",
       "worth_decision": "SELL_TAKE_PROFIT",
-      "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (80.0/100). Danger of sharp mean reversion."
+      "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (70.0/100). Danger of sharp mean reversion."
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -2.08,
-          "high": 30.3,
+          "return_pct": -2.48,
+          "high": 29.5,
           "low": 27.2,
-          "range_volatility_pct": 11.4
+          "range_volatility_pct": 8.46
         },
         "monthly_21d": {
-          "return_pct": -4.71,
+          "return_pct": -7.41,
           "high": 30.3,
           "low": 25.4,
           "range_volatility_pct": 19.29
         },
         "quarterly_63d": {
-          "return_pct": -3.74,
+          "return_pct": -4.51,
           "high": 33.2,
           "low": 23.5,
           "range_volatility_pct": 41.28
         },
         "half_yearly_126d": {
-          "return_pct": 4.43,
+          "return_pct": 1.48,
           "high": 33.2,
           "low": 23.5,
           "range_volatility_pct": 41.28
         },
         "yearly_252d": {
-          "return_pct": -13.72,
+          "return_pct": -15.64,
           "high": 35.0,
           "low": 22.9,
           "range_volatility_pct": 52.84
@@ -153,7 +153,7 @@
         "avg_wave_duration_bars": 21.0
       },
       "current_wave_phase": "BOTTOMING_SUPPORT",
-      "phase_guidance": "Drop (-14.8%) matches historical correction depth (-15.8%). Prepare to accumulate.",
+      "phase_guidance": "Drop (-17.2%) matches historical correction depth (-15.8%). Prepare to accumulate.",
       "top_seasonal_months": [
         {
           "month": "Aug",
@@ -251,17 +251,17 @@
     ]
   },
   "technical": {
-    "score": 61.25,
+    "score": 47.5,
     "signals": {
       "rsi": "neutral",
-      "macd": "neutral",
+      "macd": "bearish_crossover",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 1.56,
-      "rsi_value": 53.02,
-      "last_close": 28.3,
-      "sma20": 27.79,
-      "sma50": 26.93,
+      "atr": 1.57,
+      "rsi_value": 48.64,
+      "last_close": 27.5,
+      "sma20": 27.73,
+      "sma50": 26.92,
       "sma200": 27.85,
       "support_resistance": {
         "supports": [
@@ -310,8 +310,8 @@
       "earnings_quality": "superior_cash_backed",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 24.9,
-        "high_52w": 37.7,
+        "drawdown_pct": 26.5,
+        "high_52w": 37.4,
         "low_52w": 22.9
       }
     }
@@ -353,15 +353,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 951661,
-        "avg_volume": 835435.0,
+        "last_volume": 377808,
+        "avg_volume": 845665.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.18,
-        "avg_volume": 806157.0,
-        "today_volume": 951661,
+        "spike_ratio": 0.45,
+        "avg_volume": 835435.0,
+        "today_volume": 377808,
         "detail": "ok"
       },
       "serial_trading": {
@@ -380,19 +380,19 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": -2.75,
+        "price_change_3d": -2.83,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 55.39,
+    "composite_score": 52.05,
     "governance_score": 75,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.61,
-      "technical": 0.243,
+      "fundamental": 0.609,
+      "technical": 0.244,
       "governance": 0.147,
       "sentiment": 0.0
     }

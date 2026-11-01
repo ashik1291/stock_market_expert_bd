@@ -2,13 +2,13 @@
   "ticker": "DOREENPWR",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-10-29T09:18:42.373276",
-  "asof_price_date": "2026-10-29",
+  "analyzed_at": "2026-11-01T07:53:33.228226",
+  "asof_price_date": "2026-11-01",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 54.6857,
+    "rsi_14": 54.9989,
     "pe_ratio": 7.29,
     "debt_equity": 1.483
   },
@@ -21,33 +21,33 @@
     "momentum_status": "Bearish Breakdown / Selling Pressure",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+4.7%",
-      "downside_risk_pct": "-3.1%",
+      "upside_potential_pct": "+4.4%",
+      "downside_risk_pct": "-2.8%",
       "target_price": 33.5,
-      "support_price": 31.0,
-      "risk_reward_ratio": "1.5x"
+      "support_price": 31.2,
+      "risk_reward_ratio": "1.6x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
       "upside_potential_pct": "+15.0%",
       "downside_risk_pct": "-5.0%",
-      "target_price": 36.8,
-      "trailing_stop": 30.4,
+      "target_price": 36.9,
+      "trailing_stop": 30.5,
       "risk_reward_ratio": "3.0x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-      "upside_potential_pct": "+30.0%",
+      "upside_potential_pct": "+29.9%",
       "downside_risk_pct": "-9.0%",
-      "target_price": 41.6,
+      "target_price": 41.7,
       "dividend_cagr": "moderate (4.29%)",
       "risk_reward_ratio": "3.3x"
     }
   },
   "trade_levels": {
-    "entry": 32.0,
-    "stop_loss": 30.55,
-    "target": 34.9
+    "entry": 32.1,
+    "stop_loss": 30.71,
+    "target": 34.88
   },
   "precision": {
     "ticker": "DOREENPWR",
@@ -70,14 +70,14 @@
       "signal": "Dividend is 500% cash-covered by real operations (NOCFPS: Tk 0.94 vs DPS: Tk 0.0)"
     },
     "liquidity": {
-      "avg_daily_volume": 632325,
+      "avg_daily_volume": 625786,
       "daily_turnover_bdt_cr": 0.06,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 31616,
-      "max_daily_accumulation_shares": 94848,
-      "max_order_bdt": 31616.0,
-      "directive": "Max single order: 31,616 shares (Tk 31,616) to prevent >1% execution slippage"
+      "max_single_order_shares": 31289,
+      "max_daily_accumulation_shares": 93868,
+      "max_order_bdt": 31289.0,
+      "directive": "Max single order: 31,289 shares (Tk 31,289) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -89,59 +89,59 @@
   },
   "pattern_dna": {
     "ticker": "DOREENPWR",
-    "audited_at": "2026-10-29 15:18:42",
+    "audited_at": "2026-11-01 13:53:33",
     "worth_vs_greed": {
-      "current_price": 32.0,
+      "current_price": 32.1,
       "intrinsic_worth": 8.88,
-      "margin_of_safety_pct": -72.2,
+      "margin_of_safety_pct": -72.3,
       "extension_froth_score": 40.0,
       "greed_index": 40.0,
-      "rsi_14": 57.8,
-      "price_vs_ema50_pct": 1.7,
-      "price_vs_ema200_pct": 5.6,
+      "rsi_14": 54.8,
+      "price_vs_ema50_pct": 2.0,
+      "price_vs_ema200_pct": 5.9,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f31.11, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f331.4 \u2013 \u09f332.3",
-        "chase_cutoff_price": 32.8,
-        "when_to_wait": "If price opens or rises above \u09f332.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f331.4.",
-        "weekly_target_short": 33.1,
-        "monthly_target_swing": 36.8,
-        "long_term_target_asset": 41.6,
+        "optimal_entry_corridor": "\u09f331.5 \u2013 \u09f332.4",
+        "chase_cutoff_price": 32.9,
+        "when_to_wait": "If price opens or rises above \u09f332.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f331.5.",
+        "weekly_target_short": 33.2,
+        "monthly_target_swing": 36.9,
+        "long_term_target_asset": 41.7,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
       "worth_decision": "AVOID",
-      "reason": "Fundamental value severely lags stock price (MoS: -72.2%)."
+      "reason": "Fundamental value severely lags stock price (MoS: -72.3%)."
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 0.63,
+          "return_pct": 3.88,
           "high": 32.6,
           "low": 30.2,
           "range_volatility_pct": 7.95
         },
         "monthly_21d": {
-          "return_pct": 3.23,
+          "return_pct": 4.22,
           "high": 33.1,
           "low": 30.0,
           "range_volatility_pct": 10.33
         },
         "quarterly_63d": {
-          "return_pct": 1.27,
+          "return_pct": 2.88,
           "high": 36.5,
           "low": 27.8,
           "range_volatility_pct": 31.29
         },
         "half_yearly_126d": {
-          "return_pct": 12.68,
+          "return_pct": 12.63,
           "high": 36.5,
           "low": 27.8,
           "range_volatility_pct": 31.29
         },
         "yearly_252d": {
-          "return_pct": 16.36,
+          "return_pct": 16.3,
           "high": 36.5,
           "low": 24.5,
           "range_volatility_pct": 48.98
@@ -153,7 +153,7 @@
         "avg_wave_duration_bars": 30.0
       },
       "current_wave_phase": "MARKUP_RALLY_MID",
-      "phase_guidance": "Midway through rally wave (+15.1% from base, historical target ~+22.8%).",
+      "phase_guidance": "Midway through rally wave (+15.5% from base, historical target ~+22.8%).",
       "top_seasonal_months": [
         {
           "month": "Dec",
@@ -257,12 +257,12 @@
       "macd": "bullish_crossover",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 0.97,
-      "rsi_value": 54.64,
-      "last_close": 32.0,
-      "sma20": 31.5,
-      "sma50": 31.37,
-      "sma200": 29.93,
+      "atr": 0.93,
+      "rsi_value": 55.41,
+      "last_close": 32.1,
+      "sma20": 31.54,
+      "sma50": 31.35,
+      "sma200": 29.96,
       "support_resistance": {
         "supports": [
           24.9,
@@ -311,7 +311,7 @@
       "earnings_quality": "moderate_accrual_drag",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 12.3,
+        "drawdown_pct": 12.1,
         "high_52w": 36.5,
         "low_52w": 24.5
       }
@@ -354,15 +354,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 921814,
-        "avg_volume": 578637.0,
+        "last_volume": 223755,
+        "avg_volume": 573143.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.65,
-        "avg_volume": 559030.0,
-        "today_volume": 921814,
+        "spike_ratio": 0.39,
+        "avg_volume": 578637.0,
+        "today_volume": 223755,
         "detail": "ok"
       },
       "serial_trading": {
@@ -381,7 +381,7 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": 4.58,
+        "price_change_3d": 0.31,
         "news_count_3d": 0,
         "detail": "ok"
       }
@@ -392,8 +392,8 @@
     "governance_score": 75,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.61,
-      "technical": 0.243,
+      "fundamental": 0.609,
+      "technical": 0.244,
       "governance": 0.147,
       "sentiment": 0.0
     }

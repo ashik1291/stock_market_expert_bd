@@ -2,18 +2,18 @@
   "ticker": "TITASGAS",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-10-29T09:18:42.098872",
-  "asof_price_date": "2026-10-29",
+  "analyzed_at": "2026-11-01T07:53:32.956644",
+  "asof_price_date": "2026-11-01",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": 0.0,
     "is_eligible": true,
-    "rsi_14": 39.5365,
+    "rsi_14": 39.4212,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "STRONG_BUY",
-  "confidence": 71.96,
+  "confidence": 73.78,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -21,11 +21,11 @@
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+4.2%",
+      "upside_potential_pct": "+3.6%",
       "downside_risk_pct": "-2.4%",
-      "target_price": 17.3,
+      "target_price": 17.2,
       "support_price": 16.2,
-      "risk_reward_ratio": "1.8x"
+      "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
@@ -46,8 +46,8 @@
   },
   "trade_levels": {
     "entry": 16.6,
-    "stop_loss": 15.94,
-    "target": 17.92
+    "stop_loss": 15.96,
+    "target": 17.88
   },
   "precision": {
     "ticker": "TITASGAS",
@@ -75,14 +75,14 @@
       "signal": "Cash flow covers only 0% of dividend payout"
     },
     "liquidity": {
-      "avg_daily_volume": 78225,
+      "avg_daily_volume": 77799,
       "daily_turnover_bdt_cr": 0.13,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 3911,
-      "max_daily_accumulation_shares": 11733,
-      "max_order_bdt": 67269.0,
-      "directive": "Max single order: 3,911 shares (Tk 67,269) to prevent >1% execution slippage"
+      "max_single_order_shares": 3889,
+      "max_daily_accumulation_shares": 11669,
+      "max_order_bdt": 66891.0,
+      "directive": "Max single order: 3,889 shares (Tk 66,891) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -94,16 +94,16 @@
   },
   "pattern_dna": {
     "ticker": "TITASGAS",
-    "audited_at": "2026-10-29 15:18:42",
+    "audited_at": "2026-11-01 13:53:32",
     "worth_vs_greed": {
       "current_price": 16.6,
       "intrinsic_worth": 72.1,
       "margin_of_safety_pct": 334.3,
       "extension_froth_score": 20.0,
       "greed_index": 20.0,
-      "rsi_14": 43.5,
-      "price_vs_ema50_pct": -4.9,
-      "price_vs_ema200_pct": -7.5,
+      "rsi_14": 45.5,
+      "price_vs_ema50_pct": -4.7,
+      "price_vs_ema200_pct": -7.4,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -122,19 +122,19 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -1.78,
+          "return_pct": -0.6,
           "high": 17.0,
           "low": 16.4,
           "range_volatility_pct": 3.66
         },
         "monthly_21d": {
-          "return_pct": -6.21,
-          "high": 18.2,
+          "return_pct": -6.74,
+          "high": 18.1,
           "low": 16.4,
-          "range_volatility_pct": 10.98
+          "range_volatility_pct": 10.37
         },
         "quarterly_63d": {
-          "return_pct": -20.19,
+          "return_pct": -19.02,
           "high": 20.9,
           "low": 16.4,
           "range_volatility_pct": 27.44
@@ -146,7 +146,7 @@
           "range_volatility_pct": 39.62
         },
         "yearly_252d": {
-          "return_pct": -12.17,
+          "return_pct": -11.7,
           "high": 22.2,
           "low": 14.5,
           "range_volatility_pct": 53.1
@@ -256,17 +256,17 @@
     ]
   },
   "technical": {
-    "score": 50.0,
+    "score": 57.5,
     "signals": {
       "rsi": "neutral",
-      "macd": "neutral",
+      "macd": "bullish_crossover",
       "sma_trend": "neutral",
       "bb": "inside_bands",
-      "atr": 0.44,
+      "atr": 0.43,
       "rsi_value": 40.28,
       "last_close": 16.6,
-      "sma20": 16.91,
-      "sma50": 17.4,
+      "sma20": 16.86,
+      "sma50": 17.35,
       "sma200": 17.48,
       "support_resistance": {
         "supports": [
@@ -348,15 +348,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 23466,
-        "avg_volume": 132185.0,
+        "last_volume": 59932,
+        "avg_volume": 128842.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.17,
-        "avg_volume": 137187.0,
-        "today_volume": 23466,
+        "spike_ratio": 0.45,
+        "avg_volume": 132185.0,
+        "today_volume": 59932,
         "detail": "ok"
       },
       "serial_trading": {
@@ -382,12 +382,12 @@
     }
   },
   "composite": {
-    "composite_score": 71.96,
+    "composite_score": 73.78,
     "governance_score": 75,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.61,
-      "technical": 0.243,
+      "fundamental": 0.609,
+      "technical": 0.244,
       "governance": 0.147,
       "sentiment": 0.0
     }

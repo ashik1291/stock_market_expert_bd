@@ -2,18 +2,18 @@
   "ticker": "ROBI",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-10-29T09:18:41.582115",
-  "asof_price_date": "2026-10-29",
+  "analyzed_at": "2026-11-01T07:53:32.445159",
+  "asof_price_date": "2026-11-01",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": 15.78,
     "is_eligible": true,
-    "rsi_14": 43.6272,
+    "rsi_14": 41.2041,
     "pe_ratio": 15.76,
     "debt_equity": 0.0
   },
   "signal": "BUY",
-  "confidence": 68.48,
+  "confidence": 68.47,
   "trajectory": {
     "direction": "FALL_RISK",
     "direction_icon": "\ud83d\udd34",
@@ -22,32 +22,32 @@
     "short_term": {
       "predicted_path": "Upward momentum swing",
       "upside_potential_pct": "+2.0%",
-      "downside_risk_pct": "-1.3%",
-      "target_price": 30.3,
-      "support_price": 29.3,
-      "risk_reward_ratio": "1.5x"
+      "downside_risk_pct": "-1.4%",
+      "target_price": 30.2,
+      "support_price": 29.2,
+      "risk_reward_ratio": "1.4x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+15.2%",
+      "upside_potential_pct": "+14.9%",
       "downside_risk_pct": "-5.1%",
-      "target_price": 34.2,
-      "trailing_stop": 28.2,
-      "risk_reward_ratio": "3.0x"
+      "target_price": 34.0,
+      "trailing_stop": 28.1,
+      "risk_reward_ratio": "2.9x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-      "upside_potential_pct": "+30.0%",
+      "upside_potential_pct": "+30.1%",
       "downside_risk_pct": "-9.2%",
-      "target_price": 38.6,
+      "target_price": 38.5,
       "dividend_cagr": "strong (6.21%)",
       "risk_reward_ratio": "3.3x"
     }
   },
   "trade_levels": {
-    "entry": 29.7,
-    "stop_loss": 29.1,
-    "target": 30.9
+    "entry": 29.6,
+    "stop_loss": 29.02,
+    "target": 30.76
   },
   "precision": {
     "ticker": "ROBI",
@@ -70,14 +70,14 @@
       "signal": "Dividend is 500% cash-covered by real operations (NOCFPS: Tk 0.42 vs DPS: Tk 0.0)"
     },
     "liquidity": {
-      "avg_daily_volume": 624590,
+      "avg_daily_volume": 619253,
       "daily_turnover_bdt_cr": 0.06,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 31229,
-      "max_daily_accumulation_shares": 93688,
-      "max_order_bdt": 31229.0,
-      "directive": "Max single order: 31,229 shares (Tk 31,229) to prevent >1% execution slippage"
+      "max_single_order_shares": 30962,
+      "max_daily_accumulation_shares": 92888,
+      "max_order_bdt": 30962.0,
+      "directive": "Max single order: 30,962 shares (Tk 30,962) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -89,25 +89,25 @@
   },
   "pattern_dna": {
     "ticker": "ROBI",
-    "audited_at": "2026-10-29 15:18:41",
+    "audited_at": "2026-11-01 13:53:32",
     "worth_vs_greed": {
-      "current_price": 29.7,
+      "current_price": 29.6,
       "intrinsic_worth": 4.0,
       "margin_of_safety_pct": -86.5,
       "extension_froth_score": 10.0,
       "greed_index": 10.0,
       "rsi_14": 43.7,
-      "price_vs_ema50_pct": -1.6,
-      "price_vs_ema200_pct": -1.5,
+      "price_vs_ema50_pct": -1.9,
+      "price_vs_ema200_pct": -1.8,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f30.50, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f329.1 \u2013 \u09f330.0",
-        "chase_cutoff_price": 30.4,
-        "when_to_wait": "If price opens or rises above \u09f330.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f329.1.",
-        "weekly_target_short": 30.7,
-        "monthly_target_swing": 34.2,
-        "long_term_target_asset": 38.6,
+        "optimal_entry_corridor": "\u09f329.0 \u2013 \u09f329.9",
+        "chase_cutoff_price": 30.3,
+        "when_to_wait": "If price opens or rises above \u09f330.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f329.0.",
+        "weekly_target_short": 30.6,
+        "monthly_target_swing": 34.0,
+        "long_term_target_asset": 38.5,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
@@ -117,31 +117,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 0.0,
+          "return_pct": -1.33,
           "high": 30.1,
-          "low": 29.6,
-          "range_volatility_pct": 1.69
+          "low": 29.5,
+          "range_volatility_pct": 2.03
         },
         "monthly_21d": {
-          "return_pct": -1.33,
+          "return_pct": -1.0,
           "high": 30.3,
           "low": 29.5,
           "range_volatility_pct": 2.71
         },
         "quarterly_63d": {
-          "return_pct": -8.9,
+          "return_pct": -7.79,
           "high": 33.2,
           "low": 29.2,
           "range_volatility_pct": 13.7
         },
         "half_yearly_126d": {
-          "return_pct": 3.12,
+          "return_pct": 2.78,
           "high": 33.9,
           "low": 28.3,
           "range_volatility_pct": 19.79
         },
         "yearly_252d": {
-          "return_pct": 1.71,
+          "return_pct": -1.0,
           "high": 33.9,
           "low": 26.7,
           "range_volatility_pct": 26.97
@@ -153,7 +153,7 @@
         "avg_wave_duration_bars": 18.0
       },
       "current_wave_phase": "MARKDOWN_PULLBACK",
-      "phase_guidance": "Ongoing pullback from peak (-10.5%). Wait for stabilizing base.",
+      "phase_guidance": "Ongoing pullback from peak (-10.8%). Wait for stabilizing base.",
       "top_seasonal_months": [
         {
           "month": "Jan",
@@ -257,12 +257,12 @@
       "macd": "neutral",
       "sma_trend": "neutral",
       "bb": "inside_bands",
-      "atr": 0.4,
-      "rsi_value": 43.69,
-      "last_close": 29.7,
-      "sma20": 29.82,
-      "sma50": 30.09,
-      "sma200": 30.43,
+      "atr": 0.39,
+      "rsi_value": 41.24,
+      "last_close": 29.6,
+      "sma20": 29.81,
+      "sma50": 30.05,
+      "sma200": 30.44,
       "support_resistance": {
         "supports": [
           28.2,
@@ -307,7 +307,7 @@
       "earnings_quality": "moderate_accrual_drag",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 12.4,
+        "drawdown_pct": 12.7,
         "high_52w": 33.9,
         "low_52w": 26.7
       }
@@ -350,15 +350,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 775130,
-        "avg_volume": 637267.0,
+        "last_volume": 411819,
+        "avg_volume": 622393.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.24,
-        "avg_volume": 626289.0,
-        "today_volume": 775130,
+        "spike_ratio": 0.65,
+        "avg_volume": 637267.0,
+        "today_volume": 411819,
         "detail": "ok"
       },
       "serial_trading": {
@@ -384,12 +384,12 @@
     }
   },
   "composite": {
-    "composite_score": 68.48,
+    "composite_score": 68.47,
     "governance_score": 75,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.61,
-      "technical": 0.243,
+      "fundamental": 0.609,
+      "technical": 0.244,
       "governance": 0.147,
       "sentiment": 0.0
     }

@@ -2,18 +2,18 @@
   "ticker": "PADMAOIL",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-10-29T09:18:42.177023",
-  "asof_price_date": "2026-10-29",
+  "analyzed_at": "2026-11-01T07:53:33.020705",
+  "asof_price_date": "2026-11-01",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": 39.715,
     "is_eligible": true,
-    "rsi_14": 61.0088,
+    "rsi_14": 60.9151,
     "pe_ratio": 3.19,
     "debt_equity": 0.007
   },
   "signal": "STRONG_BUY",
-  "confidence": 77.21,
+  "confidence": 77.2,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -46,8 +46,8 @@
   },
   "trade_levels": {
     "entry": 197.5,
-    "stop_loss": 194.81,
-    "target": 202.88
+    "stop_loss": 194.84,
+    "target": 202.82
   },
   "precision": {
     "ticker": "PADMAOIL",
@@ -70,14 +70,14 @@
       "signal": "Dividend is 500% cash-covered by real operations (NOCFPS: Tk 11.44 vs DPS: Tk 0.0)"
     },
     "liquidity": {
-      "avg_daily_volume": 14509,
+      "avg_daily_volume": 14123,
       "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 725,
-      "max_daily_accumulation_shares": 2176,
-      "max_order_bdt": 725.0,
-      "directive": "Max single order: 725 shares (Tk 725) to prevent >1% execution slippage"
+      "max_single_order_shares": 706,
+      "max_daily_accumulation_shares": 2118,
+      "max_order_bdt": 706.0,
+      "directive": "Max single order: 706 shares (Tk 706) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -89,14 +89,14 @@
   },
   "pattern_dna": {
     "ticker": "PADMAOIL",
-    "audited_at": "2026-10-29 15:18:42",
+    "audited_at": "2026-11-01 13:53:33",
     "worth_vs_greed": {
       "current_price": 197.5,
       "intrinsic_worth": 107.68,
       "margin_of_safety_pct": -45.5,
       "extension_froth_score": 30.0,
       "greed_index": 30.0,
-      "rsi_14": 58.8,
+      "rsi_14": 64.4,
       "price_vs_ema50_pct": 1.3,
       "price_vs_ema200_pct": 4.0,
       "merit_status": "EARNINGS_BACKED_MERIT",
@@ -117,31 +117,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 1.23,
-          "high": 198.0,
-          "low": 194.0,
-          "range_volatility_pct": 2.06
+          "return_pct": 1.54,
+          "high": 198.9,
+          "low": 194.4,
+          "range_volatility_pct": 2.31
         },
         "monthly_21d": {
-          "return_pct": 1.59,
-          "high": 198.5,
+          "return_pct": 0.46,
+          "high": 198.9,
           "low": 192.0,
-          "range_volatility_pct": 3.39
+          "range_volatility_pct": 3.59
         },
         "quarterly_63d": {
-          "return_pct": -2.03,
-          "high": 202.3,
+          "return_pct": -2.13,
+          "high": 202.1,
           "low": 191.3,
-          "range_volatility_pct": 5.75
+          "range_volatility_pct": 5.65
         },
         "half_yearly_126d": {
-          "return_pct": 12.47,
+          "return_pct": 11.96,
           "high": 205.5,
           "low": 173.0,
           "range_volatility_pct": 18.79
         },
         "yearly_252d": {
-          "return_pct": 1.49,
+          "return_pct": 1.65,
           "high": 205.5,
           "low": 163.8,
           "range_volatility_pct": 25.46
@@ -257,32 +257,32 @@
       "macd": "bullish_crossover",
       "sma_trend": "bullish",
       "bb": "at_upper_band_bearish",
-      "atr": 1.79,
+      "atr": 1.77,
       "rsi_value": 61.15,
       "last_close": 197.5,
-      "sma20": 195.18,
-      "sma50": 194.67,
-      "sma200": 184.93,
+      "sma20": 195.16,
+      "sma50": 194.65,
+      "sma200": 185.1,
       "support_resistance": {
         "supports": [
-          164.1,
           173.1,
           191.6
         ],
         "resistances": [
           183.9,
+          198.0,
           204.9
         ]
       }
     },
     "sr": {
       "supports": [
-        164.1,
         173.1,
         191.6
       ],
       "resistances": [
         183.9,
+        198.0,
         204.9
       ]
     }
@@ -352,15 +352,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 21431,
-        "avg_volume": 16741.0,
+        "last_volume": 13885,
+        "avg_volume": 16884.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.3,
-        "avg_volume": 16462.0,
-        "today_volume": 21431,
+        "spike_ratio": 0.83,
+        "avg_volume": 16741.0,
+        "today_volume": 13885,
         "detail": "ok"
       },
       "serial_trading": {
@@ -379,19 +379,19 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": 1.28,
+        "price_change_3d": 0.0,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 77.21,
+    "composite_score": 77.2,
     "governance_score": 90,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.61,
-      "technical": 0.243,
+      "fundamental": 0.609,
+      "technical": 0.244,
       "governance": 0.147,
       "sentiment": 0.0
     }

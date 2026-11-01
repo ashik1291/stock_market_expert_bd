@@ -2,18 +2,18 @@
   "ticker": "SAIHAMTEX",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-10-29T09:18:43.208926",
-  "asof_price_date": "2026-10-29",
+  "analyzed_at": "2026-11-01T07:53:34.133823",
+  "asof_price_date": "2026-11-01",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": 9.02,
     "is_eligible": true,
-    "rsi_14": 54.3372,
+    "rsi_14": 59.6882,
     "pe_ratio": 22.52,
     "debt_equity": 0.421
   },
   "signal": "BUY",
-  "confidence": 70.09,
+  "confidence": 72.52,
   "trajectory": {
     "direction": "FALL_RISK",
     "direction_icon": "\ud83d\udd34",
@@ -21,33 +21,33 @@
     "momentum_status": "Bearish Breakdown / Selling Pressure",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+8.5%",
+      "upside_potential_pct": "+8.3%",
       "downside_risk_pct": "-5.6%",
-      "target_price": 48.3,
-      "support_price": 42.0,
+      "target_price": 50.7,
+      "support_price": 44.2,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+15.1%",
+      "upside_potential_pct": "+15.0%",
       "downside_risk_pct": "-4.9%",
-      "target_price": 51.2,
-      "trailing_stop": 42.3,
+      "target_price": 53.8,
+      "trailing_stop": 44.5,
       "risk_reward_ratio": "3.1x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-      "upside_potential_pct": "+30.1%",
+      "upside_potential_pct": "+29.9%",
       "downside_risk_pct": "-8.8%",
-      "target_price": 57.9,
+      "target_price": 60.8,
       "dividend_cagr": "moderate (4.51%)",
       "risk_reward_ratio": "3.4x"
     }
   },
   "trade_levels": {
-    "entry": 44.5,
-    "stop_loss": 40.69,
-    "target": 52.12
+    "entry": 46.8,
+    "stop_loss": 42.93,
+    "target": 54.54
   },
   "precision": {
     "ticker": "SAIHAMTEX",
@@ -70,14 +70,14 @@
       "signal": "Dividend is 500% cash-covered by real operations (NOCFPS: Tk 0.19 vs DPS: Tk 0.0)"
     },
     "liquidity": {
-      "avg_daily_volume": 3340088,
-      "daily_turnover_bdt_cr": 0.33,
+      "avg_daily_volume": 3229311,
+      "daily_turnover_bdt_cr": 0.32,
       "liquidity_rating": "MODERATE_LIQUIDITY",
       "slippage_risk": "MEDIUM",
-      "max_single_order_shares": 167004,
-      "max_daily_accumulation_shares": 501013,
-      "max_order_bdt": 167004.0,
-      "directive": "Max single order: 167,004 shares (Tk 167,004) to prevent >1% execution slippage"
+      "max_single_order_shares": 161465,
+      "max_daily_accumulation_shares": 484396,
+      "max_order_bdt": 161465.0,
+      "directive": "Max single order: 161,465 shares (Tk 161,465) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -89,59 +89,59 @@
   },
   "pattern_dna": {
     "ticker": "SAIHAMTEX",
-    "audited_at": "2026-10-29 15:18:43",
+    "audited_at": "2026-11-01 13:53:34",
     "worth_vs_greed": {
-      "current_price": 44.5,
+      "current_price": 46.8,
       "intrinsic_worth": 1.76,
-      "margin_of_safety_pct": -96.0,
+      "margin_of_safety_pct": -96.2,
       "extension_froth_score": 60.0,
       "greed_index": 60.0,
-      "rsi_14": 45.6,
-      "price_vs_ema50_pct": 14.2,
-      "price_vs_ema200_pct": 64.3,
+      "rsi_14": 53.4,
+      "price_vs_ema50_pct": 19.2,
+      "price_vs_ema200_pct": 71.5,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f30.22, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f343.6 \u2013 \u09f344.9",
-        "chase_cutoff_price": 45.6,
-        "when_to_wait": "If price opens or rises above \u09f345.6, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f343.6.",
-        "weekly_target_short": 46.1,
-        "monthly_target_swing": 51.2,
-        "long_term_target_asset": 57.9,
+        "optimal_entry_corridor": "\u09f345.9 \u2013 \u09f347.3",
+        "chase_cutoff_price": 48.0,
+        "when_to_wait": "If price opens or rises above \u09f348.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f345.9.",
+        "weekly_target_short": 48.4,
+        "monthly_target_swing": 53.8,
+        "long_term_target_asset": 60.8,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
       "worth_decision": "AVOID",
-      "reason": "Fundamental value severely lags stock price (MoS: -96.0%)."
+      "reason": "Fundamental value severely lags stock price (MoS: -96.2%)."
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -6.51,
+          "return_pct": 4.93,
           "high": 47.5,
           "low": 42.5,
           "range_volatility_pct": 11.76
         },
         "monthly_21d": {
-          "return_pct": 16.19,
+          "return_pct": 15.56,
           "high": 48.3,
-          "low": 38.0,
-          "range_volatility_pct": 27.11
+          "low": 39.4,
+          "range_volatility_pct": 22.59
         },
         "quarterly_63d": {
-          "return_pct": 110.9,
+          "return_pct": 102.6,
           "high": 48.3,
-          "low": 21.7,
-          "range_volatility_pct": 122.58
+          "low": 22.8,
+          "range_volatility_pct": 111.84
         },
         "half_yearly_126d": {
-          "return_pct": 140.54,
+          "return_pct": 155.74,
           "high": 48.3,
           "low": 16.6,
           "range_volatility_pct": 190.96
         },
         "yearly_252d": {
-          "return_pct": 187.1,
+          "return_pct": 196.2,
           "high": 48.3,
           "low": 13.7,
           "range_volatility_pct": 252.55
@@ -153,7 +153,7 @@
         "avg_wave_duration_bars": 18.0
       },
       "current_wave_phase": "LATE_MARKUP",
-      "phase_guidance": "Approaching historical rally limit (+58.9% vs median +14.7%). Tighten stop.",
+      "phase_guidance": "Approaching historical rally limit (+67.1% vs median +14.7%). Tighten stop.",
       "top_seasonal_months": [
         {
           "month": "Aug",
@@ -251,18 +251,18 @@
     ]
   },
   "technical": {
-    "score": 51.25,
+    "score": 61.25,
     "signals": {
       "rsi": "neutral",
-      "macd": "bearish_crossover",
+      "macd": "neutral",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 2.54,
-      "rsi_value": 54.32,
-      "last_close": 44.5,
-      "sma20": 45.21,
-      "sma50": 38.56,
-      "sma200": 24.64,
+      "atr": 2.58,
+      "rsi_value": 59.63,
+      "last_close": 46.8,
+      "sma20": 45.52,
+      "sma50": 38.86,
+      "sma200": 24.79,
       "support_resistance": {
         "supports": [
           16.7,
@@ -307,7 +307,7 @@
       "earnings_quality": "superior_cash_backed",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 7.9,
+        "drawdown_pct": 3.1,
         "high_52w": 48.3,
         "low_52w": 13.7
       }
@@ -346,21 +346,21 @@
     "manipulation_risk": "low",
     "block_buy": false,
     "flags": [
-      "price_surge_no_news: price_-5.5pct_zero_news"
+      "price_surge_no_news: price_5.2pct_zero_news"
     ],
     "checks": {
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 2180701,
-        "avg_volume": 4111726.0,
+        "last_volume": 3000744,
+        "avg_volume": 4074224.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.53,
-        "avg_volume": 4151082.0,
-        "today_volume": 2180701,
+        "spike_ratio": 0.73,
+        "avg_volume": 4111726.0,
+        "today_volume": 3000744,
         "detail": "ok"
       },
       "serial_trading": {
@@ -379,19 +379,19 @@
       },
       "price_surge_no_news": {
         "flag": true,
-        "price_change_3d": -5.52,
+        "price_change_3d": 5.17,
         "news_count_3d": 0,
-        "detail": "price_-5.5pct_zero_news"
+        "detail": "price_5.2pct_zero_news"
       }
     }
   },
   "composite": {
-    "composite_score": 70.09,
+    "composite_score": 72.52,
     "governance_score": 75,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.61,
-      "technical": 0.243,
+      "fundamental": 0.609,
+      "technical": 0.244,
       "governance": 0.147,
       "sentiment": 0.0
     }

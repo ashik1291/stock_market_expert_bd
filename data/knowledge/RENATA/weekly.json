@@ -2,18 +2,18 @@
   "ticker": "RENATA",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-10-29T09:18:41.197752",
-  "asof_price_date": "2026-10-29",
+  "analyzed_at": "2026-11-01T07:53:32.028400",
+  "asof_price_date": "2026-11-01",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 22.4649,
+    "rsi_14": 22.9358,
     "pe_ratio": 25.22,
     "debt_equity": 0.539
   },
   "signal": "BUY",
-  "confidence": 61.48,
+  "confidence": 61.49,
   "trajectory": {
     "direction": "FALL_RISK",
     "direction_icon": "\ud83d\udd34",
@@ -21,33 +21,33 @@
     "momentum_status": "Bearish Breakdown / Selling Pressure",
     "short_term": {
       "predicted_path": "Oversold bounce to 20-DMA",
-      "upside_potential_pct": "+2.2%",
-      "downside_risk_pct": "-1.5%",
-      "target_price": 435.2,
-      "support_price": 419.7,
+      "upside_potential_pct": "+2.1%",
+      "downside_risk_pct": "-1.4%",
+      "target_price": 435.1,
+      "support_price": 420.3,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
       "upside_potential_pct": "+15.0%",
       "downside_risk_pct": "-5.0%",
-      "target_price": 489.8,
-      "trailing_stop": 404.6,
+      "target_price": 490.1,
+      "trailing_stop": 404.9,
       "risk_reward_ratio": "3.0x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.0%",
       "downside_risk_pct": "-9.0%",
-      "target_price": 553.7,
+      "target_price": 554.1,
       "dividend_cagr": "moderate (1.13%)",
       "risk_reward_ratio": "3.3x"
     }
   },
   "trade_levels": {
-    "entry": 425.9,
-    "stop_loss": 416.6,
-    "target": 444.5
+    "entry": 426.2,
+    "stop_loss": 417.31,
+    "target": 443.98
   },
   "precision": {
     "ticker": "RENATA",
@@ -70,14 +70,14 @@
       "signal": "Dividend is 500% cash-covered by real operations (NOCFPS: Tk 5.79 vs DPS: Tk 0.0)"
     },
     "liquidity": {
-      "avg_daily_volume": 16150,
+      "avg_daily_volume": 15040,
       "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 807,
-      "max_daily_accumulation_shares": 2422,
-      "max_order_bdt": 807.0,
-      "directive": "Max single order: 807 shares (Tk 807) to prevent >1% execution slippage"
+      "max_single_order_shares": 752,
+      "max_daily_accumulation_shares": 2256,
+      "max_order_bdt": 752.0,
+      "directive": "Max single order: 752 shares (Tk 752) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -89,25 +89,25 @@
   },
   "pattern_dna": {
     "ticker": "RENATA",
-    "audited_at": "2026-10-29 15:18:41",
+    "audited_at": "2026-11-01 13:53:32",
     "worth_vs_greed": {
-      "current_price": 425.9,
+      "current_price": 426.2,
       "intrinsic_worth": 54.48,
       "margin_of_safety_pct": -87.2,
       "extension_froth_score": 10.0,
       "greed_index": 10.0,
-      "rsi_14": 24.9,
-      "price_vs_ema50_pct": -5.2,
-      "price_vs_ema200_pct": -5.7,
+      "rsi_14": 15.6,
+      "price_vs_ema50_pct": -5.0,
+      "price_vs_ema200_pct": -5.5,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f36.81, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f3417.4 \u2013 \u09f3430.2",
-        "chase_cutoff_price": 436.5,
-        "when_to_wait": "If price opens or rises above \u09f3436.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3417.4.",
-        "weekly_target_short": 440.8,
-        "monthly_target_swing": 489.8,
-        "long_term_target_asset": 553.7,
+        "optimal_entry_corridor": "\u09f3417.7 \u2013 \u09f3430.5",
+        "chase_cutoff_price": 436.9,
+        "when_to_wait": "If price opens or rises above \u09f3436.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3417.7.",
+        "weekly_target_short": 441.1,
+        "monthly_target_swing": 490.1,
+        "long_term_target_asset": 554.1,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
@@ -117,31 +117,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -4.68,
-          "high": 447.6,
+          "return_pct": -4.5,
+          "high": 446.3,
           "low": 424.5,
-          "range_volatility_pct": 5.44
+          "range_volatility_pct": 5.14
         },
         "monthly_21d": {
-          "return_pct": -5.1,
+          "return_pct": -4.76,
           "high": 458.0,
           "low": 424.5,
           "range_volatility_pct": 7.89
         },
         "quarterly_63d": {
-          "return_pct": -11.1,
-          "high": 483.2,
+          "return_pct": -10.48,
+          "high": 477.0,
           "low": 424.5,
-          "range_volatility_pct": 13.83
+          "range_volatility_pct": 12.37
         },
         "half_yearly_126d": {
-          "return_pct": 1.77,
+          "return_pct": 1.91,
           "high": 483.2,
           "low": 405.0,
           "range_volatility_pct": 19.31
         },
         "yearly_252d": {
-          "return_pct": -8.94,
+          "return_pct": -9.11,
           "high": 488.0,
           "low": 372.0,
           "range_volatility_pct": 31.18
@@ -153,7 +153,7 @@
         "avg_wave_duration_bars": 26.0
       },
       "current_wave_phase": "BOTTOMING_SUPPORT",
-      "phase_guidance": "Drop (-7.0%) matches historical correction depth (-8.1%). Prepare to accumulate.",
+      "phase_guidance": "Drop (-6.9%) matches historical correction depth (-8.1%). Prepare to accumulate.",
       "top_seasonal_months": [
         {
           "month": "Aug",
@@ -257,12 +257,12 @@
       "macd": "bearish_crossover",
       "sma_trend": "neutral",
       "bb": "at_lower_band_bullish",
-      "atr": 6.2,
-      "rsi_value": 22.64,
-      "last_close": 425.9,
-      "sma20": 444.56,
-      "sma50": 452.45,
-      "sma200": 438.31,
+      "atr": 5.93,
+      "rsi_value": 23.28,
+      "last_close": 426.2,
+      "sma20": 443.2,
+      "sma50": 451.59,
+      "sma200": 438.49,
       "support_resistance": {
         "supports": [
           383.2,
@@ -352,15 +352,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 28878,
-        "avg_volume": 20240.0,
+        "last_volume": 6334,
+        "avg_volume": 20261.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.47,
-        "avg_volume": 19618.0,
-        "today_volume": 28878,
+        "spike_ratio": 0.31,
+        "avg_volume": 20240.0,
+        "today_volume": 6334,
         "detail": "ok"
       },
       "serial_trading": {
@@ -379,19 +379,19 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": -4.03,
+        "price_change_3d": 0.07,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 61.48,
+    "composite_score": 61.49,
     "governance_score": 100,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.61,
-      "technical": 0.243,
+      "fundamental": 0.609,
+      "technical": 0.244,
       "governance": 0.147,
       "sentiment": 0.0
     }
