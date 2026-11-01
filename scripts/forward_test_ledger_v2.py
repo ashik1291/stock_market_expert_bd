@@ -130,11 +130,29 @@ def _fill_price(conn: sqlite3.Connection, ticker: str, signal_date: str, close_p
             return {"price": None, "fill_date": signal_date, "fill_source": "FLOOR_LOCKED_SKIP", "floor_locked": True}
     except Exception:
         pass
+    # Adaptive Liquidity-Tier Slippage Model
+    try:
+        row = conn.execute(
+            "SELECT AVG(close * volume) FROM prices WHERE ticker=? AND date<=? ORDER BY date DESC LIMIT 20",
+            (ticker, signal_date)
+        ).fetchone()
+        avg_turnover = float(row[0]) if (row and row[0] is not None) else 5000000.0
+        if avg_turnover >= 50000000.0:
+            effective_slip = 0.0020  # 0.2% for high liquidity (>= 5 Cr)
+        elif avg_turnover >= 10000000.0:
+            effective_slip = 0.0040  # 0.4% for mid-tier (>= 1 Cr)
+        elif avg_turnover >= 2000000.0:
+            effective_slip = 0.0080  # 0.8% for retail float (>= 20 Lakh)
+        else:
+            effective_slip = 0.0150  # 1.5% for illiquid / thin book
+    except Exception:
+        effective_slip = SLIPPAGE_PCT
+
     od, op = _next_open(conn, ticker, signal_date)
     if op is not None:
-        px = round(op * (1.0 + SLIPPAGE_PCT if side == "buy" else 1.0 - SLIPPAGE_PCT), 2)
+        px = round(op * (1.0 + effective_slip if side == "buy" else 1.0 - effective_slip), 2)
         return {"price": px, "fill_date": od, "fill_source": "NEXT_OPEN"}
-    slip = 1.0 + SLIPPAGE_PCT if side == "buy" else 1.0 - SLIPPAGE_PCT
+    slip = 1.0 + effective_slip if side == "buy" else 1.0 - effective_slip
     return {
         "price": round(close_px * slip, 2),
         "fill_date": signal_date,

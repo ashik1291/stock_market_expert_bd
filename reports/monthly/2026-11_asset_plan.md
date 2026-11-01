@@ -31,7 +31,7 @@ Do NOT deploy 100% capital in a single day. Spread monthly allocation across 4 s
 | **SQURPHARMA** | ৳213.5–৳220.1 | 🟢 (64.2%) | +30.0% / -9.0% | 7.7 | D/E: 0.006 | Tapan Chowdhury (45y exp, AAA) | 20% per tranche | ৳283.3 |
 | **LHB** | ৳47.2–৳48.7 | 🟢 (65.2%) | +30.1% / -9.0% | 10.6 | D/E: 0.0 | Mohammad Iqbal Chowdhury (25y exp, AAA) | 20% per tranche | ৳62.7 |
 | **MPETROLEUM** | ৳208.7–৳215.1 | 🔴 (40.3%) | +30.0% / -9.0% | 3.3 | D/E: 0.006 | Engr. Md. Rehanul Islam (30y exp, AA+) | 20% per tranche | ৳276.9 |
-| **JAMUNAOIL** | ৳173.9–৳179.2 | 🟢 (64.2%) | +30.0% / -9.0% | 3.1 | D/E: 0.0 | Md. Gias Uddin Ansary (32y exp, AA+) | 20% per tranche | ৳230.6 |
+| **JAMUNAOIL** | ৳173.9–৳179.2 | 🟢 (64.2%) | +30.0% / -3.4% | 3.1 | D/E: 0.0 | Md. Gias Uddin Ansary (32y exp, AA+) | 20% per tranche | ৳230.6 |
 
 ## 🚀 4. Top Mid-Term Cycle Swings (1–6 Months)
 
@@ -41,7 +41,7 @@ Do NOT deploy 100% capital in a single day. Spread monthly allocation across 4 s
 | **SQURPHARMA** | ৳217.9 | 🟢 64.2% | **৳250.6** | ৳207.0 | 3.0x | 7.7 |
 | **LHB** | ৳48.2 | 🟢 65.2% | **৳55.4** | ৳45.8 | 3.0x | 10.6 |
 | **MPETROLEUM** | ৳213.0 | 🔴 40.3% | **৳244.9** | ৳202.3 | 3.0x | 3.3 |
-| **JAMUNAOIL** | ৳177.4 | 🟢 64.2% | **৳204.0** | ৳168.5 | 3.0x | 3.1 |
+| **TITASGAS** | ৳16.6 | 🟡 47.9% | **৳19.1** | ৳15.8 | 3.1x | — |
 
 ## 🛡️ 5. Monthly Risk Filter & Governance Directive
 

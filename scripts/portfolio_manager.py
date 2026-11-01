@@ -238,7 +238,7 @@ BROKERAGE_FEE_PCT = 0.0040
 CDBL_FEE_PCT      = 0.00015
 TOTAL_ONE_WAY_FEE = BROKERAGE_FEE_PCT + CDBL_FEE_PCT  # 0.415%
 
-def calculate_round_trip_break_even(entry_price: float) -> float:
+def calculate_round_trip_break_even(entry_price: float, shares: int = 1, min_fee: float = 0.0) -> float:
     """
     Computes exact selling price where net proceeds after sell fees
     exactly equal the gross purchase outlay plus buy fees:
@@ -248,10 +248,14 @@ def calculate_round_trip_break_even(entry_price: float) -> float:
     if entry_price <= 0:
         return 0.0
     factor = (1.0 + TOTAL_ONE_WAY_FEE) / (1.0 - TOTAL_ONE_WAY_FEE)
+    if min_fee > 0 and shares > 0:
+        fee_per_share = min_fee / shares
+        effective_buy_p = entry_price + fee_per_share
+        return round((effective_buy_p * (1.0 + TOTAL_ONE_WAY_FEE) + fee_per_share) / (1.0 - TOTAL_ONE_WAY_FEE), 2)
     return round(entry_price * factor, 2)
 
 
-def record_buy(ticker: str, shares: int, price: float, horizon: str = "long_term"):
+def record_buy(ticker: str, shares: int, price: float, horizon: str = "long_term", min_ticket_fee: float = 5.0):
     # Guard against blacklisted / manipulated stocks
     try:
         from anti_manipulation_engine import is_ticker_blacklisted
@@ -264,9 +268,11 @@ def record_buy(ticker: str, shares: int, price: float, horizon: str = "long_term
 
     p = load_portfolio()
     gross_cost = shares * price
-    comm = round(gross_cost * TOTAL_ONE_WAY_FEE, 2)
+    pct_comm = round(gross_cost * TOTAL_ONE_WAY_FEE, 2)
+    # Enforce realistic retail minimum contract note fee
+    comm = max(pct_comm, min_ticket_fee if gross_cost > 0 else 0.0)
     net_cost = round(gross_cost + comm, 2)
-    round_trip_be = calculate_round_trip_break_even(price)
+    round_trip_be = calculate_round_trip_break_even(price, shares=shares, min_fee=min_ticket_fee)
     effective_entry = round(net_cost / shares, 2) if shares > 0 else price
 
     min_cash_buffer = p.get("total_capital_bdt", 0) * 0.10
