@@ -172,8 +172,21 @@ def audit_portfolio_sentinel(asof_date: str | None = None) -> dict:
     target_10pct_cash = round(total_net_worth * 0.10, 2)
     cash_deficit = max(0.0, round(target_10pct_cash - cash_bal, 2))
 
+    # Nano-Diversification & Ticket Drag Audit
+    nano_holdings = [h for h in holdings_audit if h["current_value"] < 500.0 or h["shares"] <= 2]
+    consolidation_advice = []
+    if len(nano_holdings) >= 3:
+        consolidation_advice.append(
+            "⚠️ ন্যানো-ডাইভারসিফিকেশন সতর্কতা: আপনার ৬টি স্টকের প্রতিটিতে গড়ে মাত্র ৳৩০০ করে বিনিয়োগ রয়েছে। "
+            "১টি শেয়ারে ২০% লাভ হলেও মোট পুঁজিতে লাভ মাত্র ৳৬০-৭০, কিন্তু ব্রোকার ন্যূনতম ফি (৳৫-১০) আপনার ১.৫%-৩% লাভ খেয়ে নিচ্ছে। "
+            "পরামর্শ: এই ছোট লটগুলো বিক্রি করে সর্বোচ্চ ২টি শীর্ষ কনভিকশন মোটে (যেমন JAMUNAOIL বা SQURPHARMA) "
+            "ন্যূনতম ১০-২০ শেয়ারের স্ট্যান্ডার্ড ব্লকে কনসলিডেট (একত্রিত) করুন।"
+        )
+
     return {
         "as_of_date": asof_date,
+        "nano_holdings_count": len(nano_holdings),
+        "consolidation_advice": consolidation_advice,
         "total_net_worth": total_net_worth,
         "total_invested_equities": round(total_invested_equities, 2),
         "current_value_equities": round(current_value_equities, 2),
@@ -228,6 +241,16 @@ def generate_sentinel_reports(asof_date: str | None = None) -> tuple[Path, Path]
         bn_lines.append(f"| **{d['ticker']}** | {d['shares']} টি | `{d['record_date']}` | **৳{d['net_amount_bdt']:.2f}** |")
     if not audit["upcoming_dividends"]:
         bn_lines.append("> আগামী ৩০ দিনে কোনো শেয়ারের ডিভিডেন্ড রেকর্ড ডেট নেই।")
+
+    if audit.get("consolidation_advice"):
+        bn_lines.extend([
+            "\n---",
+            "## 💡 পোর্টফোলিও কনসলিডেশন ও ন্যানো-ডাইভারসিফিকেশন অডিট (Lot Sizing Strategy)",
+            "> " + audit["consolidation_advice"][0],
+            "\n**বাস্তবায়ন কৌশল**:",
+            "- ১ বা ২ শেয়ারের ক্ষুদ্র অবস্থান বিক্রি করে একক লেনদেনের কমিশন সাশ্রয় করুন।",
+            "- সংগৃহীত অর্থ দিয়ে শুধুমাত্র ১টি বা ২টি সুনির্দিষ্ট ব্লু-চিপে (যথা: JAMUNAOIL / SQURPHARMA) পূর্ণাঙ্গ ১০–২০ শেয়ারের ব্লক তৈরি করুন।"
+        ])
 
     with open(bn_path, "w", encoding="utf-8") as f:
         f.write("\n".join(bn_lines))

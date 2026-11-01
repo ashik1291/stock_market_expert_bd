@@ -178,6 +178,13 @@ def run_surveillance_scan(asof_date: str | None = None) -> list[dict]:
         if sponsor_pct > 0 and sponsor_pct < 30.0 and price_change_pct >= 3.5 and spike_ratio >= 2.0:
             flags.append(("LOW_SPONSOR_SYNDICATE_CORNER", f"Promoters hold only {sponsor_pct:.1f}% (< 30% legal threshold) during price run-up", 25))
 
+        # 3b. Extreme Low Free-Float Corner Trap (Public float < 10%)
+        govt_pct = float(comp.get("govt_holding_pct") or 0.0)
+        promoter_lock = sponsor_pct + govt_pct
+        if promoter_lock >= 90.0 and price_change_pct >= 4.0 and spike_ratio >= 2.0:
+            free_float = round(100.0 - promoter_lock, 1)
+            flags.append(("EXTREME_LOW_FLOAT_CORNER", f"Public free float is only {free_float}% (< 10%) during abnormal price run-up", 25))
+
         # 4. Upper Circuit Breaker Clamping
         if price_change_pct >= 8.5:
             # Check if previous day also had high gain

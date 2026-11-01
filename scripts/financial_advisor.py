@@ -136,6 +136,25 @@ def generate_advisor_dossier(budget_amount: float = 3000.0) -> dict:
     if not critical_blacklist:
         bn_lines.append("> আজ কোনো স্টকে সংকটজনক ব্ল্যাকলিস্ট নেই।")
 
+    # 6. Broker Execution Playbook & Nano-Diversification Action
+    bn_lines.extend([
+        "\n---",
+        "## ⏱️ ৬. ব্রোকারেজ অ্যাপে অর্ডার প্লেসমেন্টের সুনির্দিষ্ট নির্দেশিকা (Broker Execution Playbook)",
+        "ডিএসই (DSE) বাজারে রিটেল ট্রেডারদের সবচেয়ে বড় ক্ষতি হয় ভুল সময়ে ভুল অর্ডারের কারণে। নিচের ৪টি প্রাতিষ্ঠানিক নিয়ম কঠোরভাবে মেনে চলুন:",
+        "",
+        "1. **আদর্শ অর্ডার এন্ট্রি উইন্ডো (১১:৩০ AM – ১:০০ PM)**: সকাল ১০:০০–১১:০০ টার উদ্বোধনী অস্থিরতা এবং কৃত্রিম স্প্রেড চলাকালীন কখনো কিনবেন না। দুপুর ১১:৩০ এর পর যখন অর্ডার ডেপথ স্থিতিশীল হয়, তখনই অর্ডার দিন।",
+        "2. **শুধুমাত্র লিমিট অর্ডার (Strict Limit Order)**: প্রস্তাবিত `লিমিট বাই টার্গেট` মূল্যে বা তার নিচে লিমিট অর্ডার দিন। ডিএসইতে কখনোই মার্কেট অর্ডার (Market Order) দেবেন না—এতে স্লিপেজ বেড়ে লোকসান হয়।",
+        "3. **অর্ডার এক্সপায়ারি ও ক্যানসেল রুল (২:১৫ PM)**: দুপুর ২:১৫ এর মধ্যে আপনার কাঙ্ক্ষিত মূল্যে শেয়ার না পাওয়া গেলে পেন্ডিং অর্ডার বাতিল (Cancel) করুন। ক্লোজিং সেশনে দাম বাড়লে কখনই ফোমো (FOMO) তে পড়ে বেশি দামে কিনবেন না।",
+        "4. **লট সাইজিং ও কমিশন সুরক্ষা**: ১-২ শেয়ারের ক্ষুদ্র লট পরিহার করুন। প্রতি অর্ডারে ন্যূনতম ৳১,০০০ বা ১০-২০ শেয়ারের ব্লক তৈরি করুন, যাতে ব্রোকারের ন্যূনতম টিকিট ফি (৳৫-১০) আপনার ১%-৩% রিটার্ন খেয়ে না ফেলে।"
+    ])
+
+    if sentinel.get("consolidation_advice"):
+        bn_lines.extend([
+            "\n---",
+            "## 💡 ৭. পোর্টফোলিও ন্যানো-ডাইভারসিফিকেশন কনসলিডেশন নির্দেশনা",
+            "> " + sentinel["consolidation_advice"][0]
+        ])
+
     with open(bn_path, "w", encoding="utf-8") as f:
         f.write("\n".join(bn_lines))
 
@@ -167,6 +186,10 @@ def print_advisor_cli(dossier: dict):
         print(f"     -> {a['ticker']:<11} Limit Target: ৳{a['target_limit_price']:<6.1f} | Shares: {a['exact_shares']:<4} | Outlay: ৳{a['estimated_outlay']:<7.1f} | {a['sector']}")
     print("-" * 85)
     print(f"🚨 CRITICAL SURVEILLANCE BLACKLIST: {len(dossier['critical_blacklist'])} stocks blocked (Do not touch!)")
+    print("-" * 85)
+    print("⏱️ BROKER EXECUTION PLAYBOOK:")
+    print("   * Window: 11:30 AM - 1:00 PM (Spread stabilized) | Order Type: STRICT LIMIT ONLY")
+    print("   * Cancel Rule: Expire unfilled orders by 2:15 PM | No closing price chasing")
     print("="*85 + "\n")
 
 
