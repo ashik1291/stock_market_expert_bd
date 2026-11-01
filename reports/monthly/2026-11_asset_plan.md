@@ -27,21 +27,21 @@ Do NOT deploy 100% capital in a single day. Spread monthly allocation across 4 s
 
 | Ticker | Entry Zone | Direction & Prob | Upside / Risk | P/E | Debt/Equity | Leadership & Experience | Tranche Pacing | Target Exit |
 |---|---|---|---|---|---|---|---|---|
-| **EBL** | ৳22.9–৳23.6 | 🔴 (34.9%) | +29.9% / -9.2% | 4.4 | D/E: None | Ali Reza Iftekhar (37y exp, AA+) | 20% per tranche | ৳30.4 |
 | **PADMAOIL** | ৳193.5–৳199.5 | 🟡 (51.2%) | +30.0% / -9.0% | 3.2 | D/E: 0.007 | Md. Masudur Rahman (30y exp, AA+) | 20% per tranche | ৳256.8 |
 | **SQURPHARMA** | ৳213.5–৳220.1 | 🟢 (64.2%) | +30.0% / -9.0% | 7.7 | D/E: 0.006 | Tapan Chowdhury (45y exp, AAA) | 20% per tranche | ৳283.3 |
-| **RELIANCINS** | ৳90.7–৳93.5 | 🟡 (56.6%) | +30.0% / -9.0% | 12.0 | D/E: 0.0 | Md. Khaled Mamun (38y exp, AAA) | 20% per tranche | ৳120.4 |
 | **LHB** | ৳47.2–৳48.7 | 🟢 (65.2%) | +30.1% / -9.0% | 10.6 | D/E: 0.0 | Mohammad Iqbal Chowdhury (25y exp, AAA) | 20% per tranche | ৳62.7 |
+| **MPETROLEUM** | ৳208.7–৳215.1 | 🔴 (40.3%) | +30.0% / -9.0% | 3.3 | D/E: 0.006 | Engr. Md. Rehanul Islam (30y exp, AA+) | 20% per tranche | ৳276.9 |
+| **JAMUNAOIL** | ৳173.9–৳179.2 | 🟢 (64.2%) | +30.0% / -9.0% | 3.1 | D/E: 0.0 | Md. Gias Uddin Ansary (32y exp, AA+) | 20% per tranche | ৳230.6 |
 
 ## 🚀 4. Top Mid-Term Cycle Swings (1–6 Months)
 
 | Ticker | Entry Price | Direction & Prob | Target (+15%) | Trailing Stop (-5%) | Risk/Reward | P/E |
 |---|---|---|---|---|---|---|
-| **EBL** | ৳23.4 | 🔴 34.9% | **৳26.9** | ৳22.2 | 2.9x | 4.4 |
 | **PADMAOIL** | ৳197.5 | 🟡 51.2% | **৳227.1** | ৳187.6 | 3.0x | 3.2 |
 | **SQURPHARMA** | ৳217.9 | 🟢 64.2% | **৳250.6** | ৳207.0 | 3.0x | 7.7 |
-| **RELIANCINS** | ৳92.6 | 🟡 56.6% | **৳106.5** | ৳88.0 | 3.0x | 12.0 |
 | **LHB** | ৳48.2 | 🟢 65.2% | **৳55.4** | ৳45.8 | 3.0x | 10.6 |
+| **MPETROLEUM** | ৳213.0 | 🔴 40.3% | **৳244.9** | ৳202.3 | 3.0x | 3.3 |
+| **JAMUNAOIL** | ৳177.4 | 🟢 64.2% | **৳204.0** | ৳168.5 | 3.0x | 3.1 |
 
 ## 🛡️ 5. Monthly Risk Filter & Governance Directive
 

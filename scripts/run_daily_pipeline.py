@@ -108,9 +108,12 @@ def main():
         ("Running Anti-Manipulation Surveillance Engine (395 Tickers)", ["scripts/anti_manipulation_engine.py"], False),
         ("Running 5-Factor Fundamental Screener", ["scripts/five_factor_fundamental_screener.py"], False),
         ("Generating Daily Directional Rise/Fall Predictions (Bilingual)", ["scripts/daily_rise_fall_scanner.py", "weekly"], False),
+        ("Scanning Corporate Action & Dividend Catalysts (Bilingual)", ["scripts/event_driven_alpha_engine.py"], False),
         ("Generating Tri-Horizon Recommendations & Visual Charts (Bilingual)", ["scripts/recommender.py", "weekly"], False),
         ("Calculating Monthly Rebalancing & 10% Cash Reserve Plan", ["scripts/monthly_rebalance_engine.py", "2000"], False),
         ("Auditing Real Portfolio Positions & Break-even Levels", ["scripts/portfolio_manager.py", "status"], False),
+        ("Executing Real-Time Portfolio Sentinel Valuation & Guards", ["scripts/portfolio_sentinel.py"], False),
+        ("Publishing Chief Financial Advisor Executive Dossier", ["scripts/financial_advisor.py"], False),
         ("Executing Integrity Harness & Leakage Verification", ["scripts/integrity_harness.py"], False),
     ])
 
@@ -129,8 +132,11 @@ def main():
     print(f"[DONE] PIPELINE COMPLETED SUCCESSFULLY: {passed_count}/{total_steps} stages executed.")
     print("All daily prediction and recommendation reports updated in English & Bengali:")
     print("  - reports/daily/*_rise_fall_predictions_bn.md")
+    print("  - reports/catalysts/*_dividend_catalysts_bn.md")
     print("  - reports/weekly/*_bn.md")
     print("  - reports/monthly/*_opportunistic_plan_bn.md")
+    print("  - reports/portfolio/*_portfolio_sentinel_bn.md")
+    print("  - reports/advisory/*_financial_advisory_bn.md")
     print("  - data/portfolio/current_position_plan_bn.md")
     print("=" * 80)
 
