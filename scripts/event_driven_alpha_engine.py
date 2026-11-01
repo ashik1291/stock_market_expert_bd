@@ -64,6 +64,7 @@ def scan_dividend_catalysts(asof_date: str | None = None) -> list[dict]:
       AND ca.record_date >= ?
       AND ca.cash_amount IS NOT NULL
       AND ca.cash_amount > 0
+      AND (ca.notes LIKE '%Real DSE Record Date%' OR ca.notes LIKE '%Official%')
     ORDER BY ca.record_date ASC
     """
     rows = conn.execute(query, (asof_date,)).fetchall()
@@ -119,15 +120,18 @@ def scan_dividend_catalysts(asof_date: str | None = None) -> list[dict]:
             days_to_record = 15
             
         # Determine strategy mode & targets
-        if yield_pct >= 7.0:
-            mode = "DIVIDEND_CAPTURE_HOLD"
-            mode_desc = f"উচ্চ নগদ লভ্যাংশ ({yield_pct}%) — রেকর্ড ডেট পর্যন্ত ধরে রেখে ক্যাশ ডিভিডেন্ড নেওয়া লাভজনক।"
-            target_price = round(price * 1.05, 1)
-            stop_loss = round(price * 0.94, 1)
+        # Note on DSE Microstructure: On ex-dividend date, DSE automatically reduces opening price
+        # by the full gross dividend, and 10-15% AIT tax is lost at source.
+        # PRE_RECORD_RUNUP_SWING (exiting 1-2 days before record date) avoids ex-date drop and tax loss.
+        if yield_pct >= 7.0 and sec.lower() in ("pharmaceuticals", "telecom", "fuel_power", "food_beverage"):
+            mode = "LONG_TERM_DIVIDEND_HOLD"
+            mode_desc = f"ডিফেন্সিভ ক্যাশ কাউ ({yield_pct}%) — দীর্ঘমেয়াদি কম্পাউন্ডিং। (সতর্কতা: এক্স-ডেটে দর ৳{cash_div} কমবে ও ১৫% কর কর্তন হবে)।"
+            target_price = round(price * 1.06, 1)
+            stop_loss = round(price * 0.92, 1)
         else:
             mode = "PRE_RECORD_RUNUP_SWING"
-            mode_desc = f"রান-আপ সুইং ({yield_pct}% ডিভিডেন্ড) — রেকর্ড ডেটের ১ দিন আগে ক্যাপিটাল গেইনে প্রস্থান শ্রেয়।"
-            target_price = round(price * 1.08, 1)
+            mode_desc = f"রান-আপ সুইং ({yield_pct}% ডিভিডেন্ড) — রেকর্ড ডেটের ১ দিন আগে ক্যাপিটাল গেইনে প্রস্থান শ্রেয় (এক্স-ডেট দরপতন ও কর এড়াতে)।"
+            target_price = round(price * 1.06, 1)
             stop_loss = round(price * 0.95, 1)
             
         upside = round(((target_price - price) / price) * 100.0, 1)

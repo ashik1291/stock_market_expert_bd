@@ -2,7 +2,7 @@
   "ticker": "JAMUNAOIL",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-01T09:40:10.925765",
+  "analyzed_at": "2026-11-01T12:25:43.036739",
   "asof_price_date": "2026-11-01",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": 0.0
   },
   "signal": "BUY",
-  "confidence": 73.85,
+  "confidence": 73.78,
   "trajectory": {
     "direction": "RISE_PREDICTED",
     "direction_icon": "\ud83d\udfe2",
@@ -29,19 +29,19 @@
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+15.0%",
-      "downside_risk_pct": "-5.0%",
-      "target_price": 204.0,
-      "trailing_stop": 168.5,
-      "risk_reward_ratio": "3.0x"
+      "upside_potential_pct": "+3.6%",
+      "downside_risk_pct": "-1.9%",
+      "target_price": 183.8,
+      "trailing_stop": 174.0,
+      "risk_reward_ratio": "1.9x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.0%",
-      "downside_risk_pct": "-9.0%",
+      "downside_risk_pct": "-3.4%",
       "target_price": 230.6,
       "dividend_cagr": "strong (9.87%)",
-      "risk_reward_ratio": "3.3x"
+      "risk_reward_ratio": "8.8x"
     }
   },
   "trade_levels": {
@@ -89,7 +89,7 @@
   },
   "pattern_dna": {
     "ticker": "JAMUNAOIL",
-    "audited_at": "2026-11-01 15:40:10",
+    "audited_at": "2026-11-01 18:25:43",
     "worth_vs_greed": {
       "current_price": 177.4,
       "intrinsic_worth": 55.52,
@@ -112,7 +112,9 @@
       },
       "status": "CHRONIC_OVERVALUATION",
       "worth_decision": "AVOID",
-      "reason": "Fundamental value severely lags stock price (MoS: -68.7%)."
+      "reason": "Fundamental value severely lags stock price (MoS: -68.7%).",
+      "is_blacklisted": false,
+      "blacklist_reason": null
     },
     "multi_interval_wave": {
       "intervals": {
@@ -388,13 +390,13 @@
     }
   },
   "composite": {
-    "composite_score": 73.85,
+    "composite_score": 73.78,
     "governance_score": 90,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.609,
-      "technical": 0.244,
-      "governance": 0.147,
+      "fundamental": 0.605,
+      "technical": 0.247,
+      "governance": 0.149,
       "sentiment": 0.0
     }
   }

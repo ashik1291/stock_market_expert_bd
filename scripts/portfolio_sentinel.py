@@ -89,6 +89,16 @@ def audit_portfolio_sentinel(asof_date: str | None = None) -> dict:
         target_p = round(entry_p * 1.30, 1)  # +30% long-term target
         stop_p = round(entry_p * 0.90, 1)    # -10% hard stop
         
+        # Liquidity Check (20-day average daily turnover)
+        vol_rows = conn.execute(
+            "SELECT close, volume FROM prices WHERE ticker = ? AND date <= ? ORDER BY date DESC LIMIT 20",
+            (t, asof_date)
+        ).fetchall()
+        avg_turnover_cr = 0.0
+        if vol_rows:
+            avg_t = sum((float(r["close"] or 0) * float(r["volume"] or 0)) for r in vol_rows) / len(vol_rows)
+            avg_turnover_cr = round(avg_t / 10000000.0, 2)
+
         # Action Directive Determination
         is_b, bl_msg = is_ticker_blacklisted(t)
         if is_b:
@@ -99,13 +109,17 @@ def audit_portfolio_sentinel(asof_date: str | None = None) -> dict:
             action_desc = f"🎯 টার্গেট অর্জিত (+30%)! মূলধনের ৫০% প্রফিট বুক করুন।"
         elif live_p <= stop_p:
             action = "HARD_STOP_CUT"
-            action_desc = f"🛑 স্টপ-লস স্পর্শ করেছে! মূলধন রক্ষায় কঠোর প্রস্থান নির্দেশ।"
+            action_desc = f"🛑 স্টপ-লস স্পর্শ করেছে! মূলধন রক্ষায় কঠোর প্রস্থান নির্দেশ (সার্কিট ফাঁদ সতর্কবার্তা)।"
         elif live_p < be_price and pnl_pct < -4.0:
             action = "ACCUMULATE_DIP"
             action_desc = f"সাপোর্ট জোন টেস্ট করছে (P&L: {pnl_pct}%) — ফান্ডামেন্টাল অটুট থাকলে ডিপ বাই।"
         else:
             action = "STRONG_HOLD"
             action_desc = "মৌলভিত্তি ও ট্রেন্ড নিরাপদ। দৃঢ়ভাবে হোল্ড করুন।"
+
+        if avg_turnover_cr < 0.20 and action in ("HARD_STOP_CUT", "ACCUMULATE_DIP"):
+            action_desc += f" [⚠️ থিন লিকুইডিটি: টার্নওভার ৳{avg_turnover_cr} কোটি]"
+
 
         # Check upcoming dividend receivables for this holding
         div_row = conn.execute("""

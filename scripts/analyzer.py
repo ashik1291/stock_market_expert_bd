@@ -728,9 +728,21 @@ def compute_price_trajectory_and_potential(closes: list[float], tech_signals: di
     st_upside   = round(((st_target - last_close) / last_close) * 100, 1)
     st_downside = round(((last_close - st_support) / last_close) * 100, 1)
 
-    # Mid-Term (1-6 months): Target based on 15% mean reversion
-    mt_target   = round(last_close * 1.15, 1)
-    mt_stop     = round(last_close * 0.95, 1)
+    # Mid-Term (1-6 months): Derived dynamically from 60-day Donchian channel & ATR volatility
+    window_60 = closes[-60:] if len(closes) >= 60 else closes
+    res_60 = max(window_60) if window_60 else last_close * 1.10
+    sup_60 = min(window_60) if window_60 else last_close * 0.95
+
+    # Target: 60-day resistance (at least 2.5x ATR above entry, capped at +25% realistic cycle ceiling)
+    min_target = last_close + (atr_val * 2.5)
+    max_target = last_close * 1.25
+    mt_target = round(min(max(res_60, min_target), max_target), 1)
+
+    # Stop: 60-day swing low (at least 1.5x ATR below entry, max stop loss capped at -10%)
+    max_stop = last_close - (atr_val * 1.5)
+    min_stop = last_close * 0.90
+    mt_stop = round(max(min(sup_60, max_stop), min_stop), 1)
+
     mt_upside   = round(((mt_target - last_close) / last_close) * 100, 1)
     mt_downside = round(((last_close - mt_stop) / last_close) * 100, 1)
 

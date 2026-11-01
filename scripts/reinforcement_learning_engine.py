@@ -250,25 +250,41 @@ def evaluate_pending_predictions(eval_window_days: int | None = None) -> dict:
         if eqw_ret is None:
             eqw_ret = 0.0
 
-        # Directional net excess after friction
+        # Directional net excess and absolute cash return
+        net_cash_return = stock_ret_pct - ROUND_TRIP_COST_PCT
         if direction == "RISE":
-            # Long: pay round-trip; win if beat EQW after cost
+            # Long: Must make positive absolute cash return to be marked a profitable win!
             net_excess = stock_ret_pct - eqw_ret - ROUND_TRIP_COST_PCT
-            win = net_excess > 0
+            is_cash_win = net_cash_return > 0
+            is_relative_win = net_excess > 0
+            if is_cash_win:
+                outcome = "CORRECT_PROFIT"
+                reward = 1.0
+                win = True
+            elif is_relative_win:
+                outcome = "RELATIVE_ALPHA_CASH_LOSS"
+                reward = -0.5  # Penalize losing cash even if beat falling benchmark
+                win = False
+            else:
+                outcome = "INCORRECT"
+                reward = -1.0
+                win = False
         elif direction == "FALL":
-            # Bear call: win if stock underperforms EQW (no short cost model — use raw relative)
-            net_excess = eqw_ret - stock_ret_pct  # positive if stock lagged universe
+            # Bear call: DSE retail has no shorting; this is capital preservation / risk avoidance
+            net_excess = eqw_ret - stock_ret_pct
             win = net_excess > 0
+            outcome = "AVOIDANCE_SUCCESS" if win else "AVOIDANCE_FAIL"
+            reward = 0.5 if win else -0.5
         else:
             net_excess = stock_ret_pct - eqw_ret - ROUND_TRIP_COST_PCT
-            win = abs(net_excess) < 1.0  # range: near flat excess
+            win = abs(net_excess) < 1.0
+            outcome = "CORRECT" if win else "INCORRECT"
+            reward = 1.0 if win else -1.0
 
-        outcome = "CORRECT" if win else "INCORRECT"
-        reward = 1.0 if win else -1.0
         mistake = None
         if not win:
             mistake = (
-                f"net_excess={net_excess:+.2f}% stock={stock_ret_pct:+.2f}% "
+                f"outcome={outcome} net_cash={net_cash_return:+.2f}% stock={stock_ret_pct:+.2f}% "
                 f"eqw={eqw_ret:+.2f}% cost={ROUND_TRIP_COST_PCT}% H={n_bars}"
             )
 
@@ -392,9 +408,16 @@ def generate_learning_report():
         i for i in ledger
         if i.get("status") == "EVALUATED" and i.get("timeframe") != "historical_bootstrap"
     ]
-    wins = [i for i in evaluated if i.get("actual_outcome") == "CORRECT"]
-    losses = [i for i in evaluated if i.get("actual_outcome") == "INCORRECT"]
-    win_rate = round(len(wins) / len(evaluated) * 100, 1) if evaluated else 0.0
+    long_calls = [i for i in evaluated if i.get("predicted_direction") == "RISE"]
+    cash_wins = [i for i in long_calls if i.get("actual_outcome") in ("CORRECT", "CORRECT_PROFIT") and (i.get("realized_return_pct", 0) - ROUND_TRIP_COST_PCT > 0)]
+    rel_losses = [i for i in long_calls if i.get("actual_outcome") == "RELATIVE_ALPHA_CASH_LOSS"]
+    inc_losses = [i for i in long_calls if i.get("actual_outcome") == "INCORRECT"]
+    
+    cash_win_rate = round(len(cash_wins) / len(long_calls) * 100, 1) if long_calls else 0.0
+    benchmark_beat_rate = round(len([i for i in evaluated if i.get("net_excess_pct", 0) > 0]) / len(evaluated) * 100, 1) if evaluated else 0.0
+    wins = cash_wins
+    losses = rel_losses + inc_losses
+    win_rate = cash_win_rate
 
     lines = [
         "# DSE Phase-2 Learning Audit (Net Excess vs EQW)",

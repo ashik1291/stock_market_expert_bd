@@ -331,12 +331,29 @@ def generate_smart_plan(amount: float, override_regime: str = None) -> dict:
 
     # Sort by risk parity score
     sorted_pool = sorted(verified_candidates, key=lambda x: x["risk_parity_score"], reverse=True)
-    target_count = 2 if amount < 5000 else 3
 
-    # Pick top diversified candidates (Max 1 per sector to enforce < 35% sector concentration)
+    # Minimum Ticket Size & Tranche Concentration Gate:
+    # On DSE, retail brokers charge a minimum ticket fee (Tk 5-10 flat per trade note).
+    # Splitting small budgets (< Tk 2,500) into tiny micro-lots (e.g. Tk 195) causes a 5%-10% commission drag.
+    # Therefore:
+    #   * If invest_now < Tk 2,500: Concentrate into 1 high-conviction position.
+    #   * If invest_now Tk 2,500 - Tk 6,000: Max 2 positions.
+    #   * If invest_now > Tk 6,000: Max 3 positions.
+    if invest_now < 2500:
+        target_count = 1
+    elif invest_now < 6000:
+        target_count = 2
+    else:
+        target_count = 3
+
+    # Pick top diversified candidates that are actually affordable (price <= allocated tranche)
+    min_alloc_per_pick = invest_now / target_count
     chosen_picks = []
     seen_sectors = set()
     for cand in sorted_pool:
+        # Affordability check: At least 1 share can be bought with target_dip
+        if cand.get("target_dip", 999999) > min_alloc_per_pick:
+            continue
         sec = cand.get("sector", "Unknown")
         if sec in seen_sectors:
             continue
@@ -348,9 +365,10 @@ def generate_smart_plan(amount: float, override_regime: str = None) -> dict:
     if len(chosen_picks) < target_count:
         for cand in sorted_pool:
             if cand not in chosen_picks:
-                chosen_picks.append(cand)
-                if len(chosen_picks) >= target_count:
-                    break
+                if cand.get("target_dip", 999999) <= min_alloc_per_pick:
+                    chosen_picks.append(cand)
+                    if len(chosen_picks) >= target_count:
+                        break
 
     # ─────────────────────────────────────────────────────────────────────────
     # 3. INVERSE-VOLATILITY POSITION SIZING ACROSS PICKS
