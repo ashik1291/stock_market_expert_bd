@@ -85,7 +85,8 @@ def audit_portfolio_sentinel(asof_date: str | None = None) -> dict:
         total_invested_equities += cost
         current_value_equities += cur_val
         
-        # Targets & Stops
+        # Targets & Stops (DSE Tiered Circuit Breaker Aware)
+        from dse_circuit_breaker import get_dse_circuit_limit_pct, get_lower_circuit_floor, is_price_circuit_locked
         target_p = round(entry_p * 1.30, 1)  # +30% long-term target
         stop_p = round(entry_p * 0.90, 1)    # -10% hard stop
         
@@ -104,18 +105,23 @@ def audit_portfolio_sentinel(asof_date: str | None = None) -> dict:
         dma_20 = sum(closes_20) / len(closes_20) if closes_20 else live_p
         dma_slope_down = len(closes_20) >= 10 and (sum(closes_20[-5:]) / 5.0) < (sum(closes_20[:5]) / 5.0)
 
-        # Action Directive Determination (Martingale Falling-Knife Guard)
+        # Action Directive Determination (Martingale Falling-Knife Guard & Circuit Lock Awareness)
+        prev_close_ref = closes_20[-2] if len(closes_20) >= 2 else entry_p
+        cb_info = is_price_circuit_locked(live_p, prev_close_ref)
+        cb_limit = cb_info["limit_pct"]
+        lower_floor = cb_info["floor_price"]
+
         is_b, bl_msg = is_ticker_blacklisted(t)
         if is_b:
             action = "EMERGENCY_FORENSIC_EXIT"
             action_desc = f"🚨 ফরেনসিক সতর্কতা: {bl_msg} — বাউন্সে প্রস্থান করুন।"
-        elif live_p >= target_p:
-            action = "TAKE_PROFIT_50%"
-            action_desc = f"🎯 টার্গেট অর্জিত (+30%)! মূলধনের ৫০% প্রফিট বুক করুন।"
+        elif cb_info["locked"] and cb_info["side"] == "LOWER":
+            action = "CIRCUIT_LOCKED_TRAP"
+            action_desc = f"🛑 লোয়ার সার্কিট লক (-{cb_limit}%, ফ্লোর ৳{lower_floor:.1f})! বাজারে বিড শূন্য — পরবর্তী সেশনের প্রি-ওপেনিংয়ে সেল অর্ডার দিন।"
         elif live_p <= stop_p:
             action = "HARD_STOP_CUT"
             action_desc = f"🛑 স্টপ-লস স্পর্শ করেছে! মূলধন রক্ষায় কঠোর প্রস্থান নির্দেশ (সার্কিট ফাঁদ সতর্কবার্তা)।"
-        elif pnl_pct <= -7.0:
+        elif pnl_pct <= -7.0 or (cb_limit <= 7.5 and pnl_pct <= -5.5):
             action = "PRE_STOP_WARNING"
             action_desc = f"⚠️ স্টপ-লস সতর্কতা (P&L: {pnl_pct}%) — নতুন ক্রয় সম্পূর্ণ নিষিদ্ধ; বাউন্সে এক্সিট প্রস্তুতি (স্টপ: ৳{stop_p})।"
         elif live_p < be_price and pnl_pct < -3.0:

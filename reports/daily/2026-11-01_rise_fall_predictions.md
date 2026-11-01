@@ -1,7 +1,7 @@
 # 📊 Daily DSE Directional Predictions: Rise vs Fall Matrix — 2026-11-01
 
-**Generated**: 2026-11-01 19:24:45 | **Total Instruments Audited**: 80 Category A Companies  
-**Engine Version**: `baseline-v1.0` (`e44bcf8`) | **Data Snapshot ID**: `DB-2026-11-01-PIT`  
+**Generated**: 2026-11-01 19:51:05 | **Total Instruments Audited**: 80 Category A Companies  
+**Engine Version**: `baseline-v1.0` (`b8383db`) | **Data Snapshot ID**: `DB-2026-11-01-PIT`  
 **Empirical Status**: *Validated as Risk/Junk Filter (0.0% data corruption). Unvalidated as Profit-Generating Predictor (Permutation p = 0.608 vs Random Null).*
 
 **Macro Bias**: `High Macro/Crisis Caution` (Score: -76.5/100)
@@ -16,7 +16,8 @@
 
 | Ticker | Price | Tier | Served Score | Mid Target | Smart Money | Max Order | Action |
 |---|---|---|---|---|---|---|---|
-| **LHB** | ৳48.2 | **HIGH** | 28.2 | ৳55.4 | `NEUTRAL_HOLDING` | 14,395 sh | **TIER_HIGH_CANDIDATE** |
+| **JAMUNAOIL** | ৳177.4 | **HIGH** | 42.1 | ৳183.8 | `NEUTRAL_HOLDING` | 397 sh | **TIER_HIGH_CANDIDATE** |
+| **LHB** | ৳48.2 | **MED** | 28.2 | ৳55.4 | `NEUTRAL_HOLDING` | 14,395 sh | **TIER_MED_CANDIDATE** |
 | **SQURPHARMA** | ৳217.9 | **MED** | 26.9 | ৳250.6 | `NEUTRAL_HOLDING` | 10,145 sh | **TIER_MED_CANDIDATE** |
 | **GP** | ৳235.8 | **LOW** | 26.0 | ৳271.2 | `NEUTRAL_HOLDING` | 2,626 sh | **TIER_LOW_CANDIDATE** |
 

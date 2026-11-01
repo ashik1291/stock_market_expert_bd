@@ -233,25 +233,30 @@ def generate_exact_position_plan(capital_bdt: float = None):
     print(f"[Saved to {bn_out_file}]")
 
 
-# DSE Fee Schedule: 0.40% Brokerage fee + 0.015% CDBL settlement fee each way
-BROKERAGE_FEE_PCT = 0.0040
-CDBL_FEE_PCT      = 0.00015
-TOTAL_ONE_WAY_FEE = BROKERAGE_FEE_PCT + CDBL_FEE_PCT  # 0.415%
+# DSE Fee Schedule: 0.40% Brokerage fee + 0.015% CDBL settlement fee + 0.05% Govt AIT on Sell
+BROKERAGE_FEE_PCT   = 0.0040   # 0.40% broker commission
+CDBL_FEE_PCT        = 0.00015  # 0.015% CDBL settlement fee
+GOVT_AIT_SELL_PCT   = 0.00050  # 0.050% Statutory Advance Income Tax (Section 53BBB / Sec 124 ITA 2023)
+
+TOTAL_BUY_FEE_PCT   = BROKERAGE_FEE_PCT + CDBL_FEE_PCT                    # 0.415%
+TOTAL_SELL_FEE_PCT  = BROKERAGE_FEE_PCT + CDBL_FEE_PCT + GOVT_AIT_SELL_PCT  # 0.465%
+TOTAL_ONE_WAY_FEE   = TOTAL_BUY_FEE_PCT  # alias for buy fee
+ROUND_TRIP_TOTAL_PCT = TOTAL_BUY_FEE_PCT + TOTAL_SELL_FEE_PCT              # 0.880%
 
 def calculate_round_trip_break_even(entry_price: float, shares: int = 1, min_fee: float = 0.0) -> float:
     """
     Computes exact selling price where net proceeds after sell fees
-    exactly equal the gross purchase outlay plus buy fees:
-      P_sell * (1 - fee_sell) = P_buy * (1 + fee_buy)
-      P_sell = P_buy * (1 + fee_buy) / (1 - fee_sell)
+    (including 0.05% statutory AIT) exactly equal the gross purchase outlay plus buy fees:
+      P_sell * (1 - TOTAL_SELL_FEE_PCT) = P_buy * (1 + TOTAL_BUY_FEE_PCT)
+      P_sell = P_buy * (1 + TOTAL_BUY_FEE_PCT) / (1 - TOTAL_SELL_FEE_PCT)
     """
     if entry_price <= 0:
         return 0.0
-    factor = (1.0 + TOTAL_ONE_WAY_FEE) / (1.0 - TOTAL_ONE_WAY_FEE)
+    factor = (1.0 + TOTAL_BUY_FEE_PCT) / (1.0 - TOTAL_SELL_FEE_PCT)
     if min_fee > 0 and shares > 0:
         fee_per_share = min_fee / shares
         effective_buy_p = entry_price + fee_per_share
-        return round((effective_buy_p * (1.0 + TOTAL_ONE_WAY_FEE) + fee_per_share) / (1.0 - TOTAL_ONE_WAY_FEE), 2)
+        return round((effective_buy_p * (1.0 + TOTAL_BUY_FEE_PCT) + fee_per_share) / (1.0 - TOTAL_SELL_FEE_PCT), 2)
     return round(entry_price * factor, 2)
 
 
@@ -387,7 +392,11 @@ def show_status():
     if conn:
         conn.close()
 
-    total_live_val = live_stock_value + mf_invested
+    mf_live_val = sum(float(m.get("market_value_bdt") or m.get("total_cost_bdt") or 0.0) for m in mfs)
+    mf_pnl_bdt = round(mf_live_val - mf_invested, 2)
+    mf_pnl_pct = round((mf_pnl_bdt / mf_invested) * 100.0, 2) if mf_invested > 0 else 0.0
+
+    total_live_val = live_stock_value + mf_live_val
     total_unrealized_bdt = round(total_live_val - total_invested, 2)
     total_unrealized_pct = round((total_unrealized_bdt / total_invested) * 100.0, 2) if total_invested > 0 else 0.0
     cash_bal = p.get("cash_balance_bdt", 0)
@@ -405,11 +414,16 @@ def show_status():
     print(f"Total Account Net Worth: ৳{total_net_worth:,.2f} (Target 10% Liquid Reserve: ৳{min_buffer:,.2f})")
     
     if mfs:
-        print(f"\n--- MUTUAL FUNDS ({len(mfs)}) --- (0.0% Brokerage)")
-        print(f"{'Fund Name':<30} {'Units':<8} {'Total Cost':<12} {'Unit Cost':<10} {'Status':<10}")
-        print("-" * 72)
+        print(f"\n--- MUTUAL FUNDS ({len(mfs)}) --- (Mark-to-Market Valuation & 0.0% Brokerage)")
+        print(f"{'Fund Name':<28} {'Units':<7} {'Cost (Tk)':<11} {'Unit Cost':<10} {'Live NAV':<9} {'Market Val':<11} {'P&L (Tk)':<10} {'P&L %':<7} {'Status':<10}")
+        print("-" * 110)
         for m in mfs:
-            print(f"{m['fund_name']:<30} {m['units']:<8} ৳{m.get('total_cost_bdt', 0):<10,.2f} ৳{m.get('unit_cost_bdt', 0):<8.2f} {'CORE_HOLD':<10}")
+            m_cost = float(m.get('total_cost_bdt', 0))
+            m_val = float(m.get('market_value_bdt', m_cost))
+            m_pnl = round(m_val - m_cost, 2)
+            m_pnl_pct = round((m_pnl / m_cost) * 100.0, 2) if m_cost > 0 else 0.0
+            nav_px = float(m.get('redemption_price_bdt') or m.get('unit_cost_bdt', 0))
+            print(f"{m['fund_name']:<28} {m['units']:<7} ৳{m_cost:<10,.2f} ৳{m.get('unit_cost_bdt', 0):<8.2f} ৳{nav_px:<7.3f} ৳{m_val:<10,.2f} {m_pnl:+,.2f} {m_pnl_pct:+.2f}% {'CORE_HOLD':<10}")
 
     if holding_details:
         print(f"\n--- DIRECT EQUITIES ({len(holding_details)}) --- (0.4% Brokerage Fee Included)")

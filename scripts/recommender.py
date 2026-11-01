@@ -139,6 +139,12 @@ def classify_horizons(records: list[dict]) -> dict:
             dist_traps.append(r)
             continue
 
+        # Liquidity Gate: Flag illiquid stocks (< ৳15 Lakh daily turnover)
+        liq_rating = liquidity.get("liquidity_rating", "MODERATE_LIQUIDITY")
+        daily_turnover_cr = liquidity.get("daily_turnover_bdt_cr")
+        is_thin = (liq_rating == "ILLIQUID") or (daily_turnover_cr is not None and daily_turnover_cr < 0.15 and liq_rating == "THIN_RETAIL_LIQUIDITY")
+        r["thin_liquidity_flag"] = is_thin
+
         # Market Greed & Euphoria Trap (Protect user from buying local peak / hype)
         if r.get("signal") == "HOLD_MARKET_GREED_EXTREME" or worth_greed.get("status") in ("SPECULATIVE_GREED", "OVERVALUED_EUPHORIA"):
             r["greed_reason"] = worth_greed.get("reason", "Market greed index high; price exceeds intrinsic worth")
@@ -291,8 +297,8 @@ def classify_horizons(records: list[dict]) -> dict:
             mid_rec["debt_health"] = f"D/E: {de_val}" if de_val is not None else "Checked"
             mid_term.append(mid_rec)
 
-        # 3. Short-Term Daily/Weekly Scalp Checklist
-        if conf >= 58.0 and r.get("manipulation_risk") == "low":
+        # 3. Short-Term Daily/Weekly Scalp Checklist (Illiquid stocks strictly prohibited from scalping)
+        if conf >= 58.0 and r.get("manipulation_risk") == "low" and not r.get("thin_liquidity_flag"):
             short_rec = dict(r)
             quick_tgt  = st_info.get("target_price") or round(entry * 1.035, 2)
             tight_stop = st_info.get("support_price") or round(entry * 0.98, 2)

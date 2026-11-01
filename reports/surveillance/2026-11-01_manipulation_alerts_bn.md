@@ -1,18 +1,18 @@
 # 🚨 DSE মার্কেট সার্ভেইল্যান্স ও অ্যান্টি-ম্যানিপুলেশন সতর্কবার্তা রিপোর্ট
-**বাজার তারিখ**: `2026-11-01` | **তৈরির সময়**: `2026-11-01 19:24:42`
+**বাজার তারিখ**: `2026-11-01` | **তৈরির সময়**: `2026-11-01 19:52:11`
 **নজরদারির আওতা**: ৩৯৫টি পূর্ণ স্টক ইউনিভার্স | ভলিউম স্পাইক অ্যানোমালি, সিন্ডিকেট কর্নার ও পাম্প-অ্যান্ড-ডাম্প নজরদারি
 
 ### 🛡️ নজরদারি সারসংক্ষেপ
-- **সংকটজনক ঝুঁকি (তাত্ক্ষণিক ব্ল্যাকলিস্ট - ভুলেও কিনবেন না)**: **2টি কোম্পানি**
-- **উচ্চ ফরেনসিক সতর্কতা (সিন্ডিকেট তৎপরতা সন্দেহ)**: **14টি কোম্পানি**
+- **সংকটজনক ঝুঁকি (তাত্ক্ষণিক ব্ল্যাকলিস্ট - ভুলেও কিনবেন না)**: **0টি কোম্পানি**
+- **উচ্চ ফরেনসিক সতর্কতা (সিন্ডিকেট তৎপরতা সন্দেহ)**: **16টি কোম্পানি**
 - **মাঝারি নজরদারি ফ্ল্যাগ**: **9টি কোম্পানি**
 
 ---
 ## ⛔ ১. সংকটজনক ব্ল্যাকলিস্ট (DO NOT BUY — মূলধন ক্ষয়ের সর্বোচ্চ ঝুঁকি)
 | Ticker | ঝুঁকি স্কোর | সতর্কতার ধরন | ভলিউম স্পাইক | দর পরিবর্তন | ফরেনসিক প্রমাণাদি |
 |---|---|---|---|---|---|
-| **UNIONCAP** | `75/১০০` | **SPECULATIVE_JUNK_PUMP** | **1.5x** | +8.9% | Price up +8.89% on untracked / high-risk security without verified earnings | Consecutive upper circuit limit locks (+9.8%, +8.9%) |
-| **PF1STMF** | `75/১০০` | **SPECULATIVE_JUNK_PUMP** | **0.4x** | +9.4% | Price up +9.4% on untracked / high-risk security without verified earnings | Consecutive upper circuit limit locks (+9.3%, +9.4%) |
+> আজ কোনো স্টকে সংকটজনক ব্ল্যাকলিস্টের শর্ত প্রযোজ্য হয়নি।
+
 
 ---
 ## ⚠️ ২. উচ্চ ফরেনসিক সতর্কতা (সিন্ডিকেট কৃত্রিম পাম্প সন্দেহ)
@@ -27,6 +27,7 @@
 | **NFML** | `35/১০০` | **SPECULATIVE_JUNK_PUMP** | **2.1x** | +7.8% | Price up +7.75% on untracked / high-risk security without verified earnings |
 | **PHPMF1** | `35/১০০` | **SPECULATIVE_JUNK_PUMP** | **1.7x** | +6.1% | Price up +6.06% on untracked / high-risk security without verified earnings |
 | **GBBPOWER** | `35/১০০` | **SPECULATIVE_JUNK_PUMP** | **1.6x** | +5.5% | Price up +5.47% with poor fundamentals (Z-Category Junk) |
+| **UNIONCAP** | `35/১০০` | **SPECULATIVE_JUNK_PUMP** | **1.5x** | +8.9% | Price up +8.89% on untracked / high-risk security without verified earnings |
 | **EXIM1STMF** | `35/১০০` | **SPECULATIVE_JUNK_PUMP** | **1.4x** | +7.3% | Price up +7.27% on untracked / high-risk security without verified earnings |
 | **1JANATAMF** | `35/১০০` | **SPECULATIVE_JUNK_PUMP** | **1.3x** | +6.1% | Price up +6.06% on untracked / high-risk security without verified earnings |
 | **POPULAR1MF** | `35/১০০` | **SPECULATIVE_JUNK_PUMP** | **1.1x** | +6.2% | Price up +6.25% on untracked / high-risk security without verified earnings |

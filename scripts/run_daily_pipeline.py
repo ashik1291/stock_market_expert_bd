@@ -112,6 +112,7 @@ def main():
         ("Generating Tri-Horizon Recommendations & Visual Charts (Bilingual)", ["scripts/recommender.py", "weekly"], False),
         ("Calculating Monthly Rebalancing & 10% Cash Reserve Plan", ["scripts/monthly_rebalance_engine.py", "2000"], False),
         ("Processing Corporate Actions & Disbursing Cash Dividends", ["scripts/corporate_action_processor.py"], False),
+        ("Syncing Open-End Mutual Fund NAV & Valuation", ["scripts/mutual_fund_tracker.py"], True),
         ("Auditing Real Portfolio Positions & Break-even Levels", ["scripts/portfolio_manager.py", "status"], False),
         ("Executing Real-Time Portfolio Sentinel Valuation & Guards", ["scripts/portfolio_sentinel.py"], False),
         ("Publishing Chief Financial Advisor Executive Dossier", ["scripts/financial_advisor.py"], False),

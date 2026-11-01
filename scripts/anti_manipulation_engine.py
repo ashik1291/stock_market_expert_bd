@@ -185,12 +185,15 @@ def run_surveillance_scan(asof_date: str | None = None) -> list[dict]:
             free_float = round(100.0 - promoter_lock, 1)
             flags.append(("EXTREME_LOW_FLOAT_CORNER", f"Public free float is only {free_float}% (< 10%) during abnormal price run-up", 25))
 
-        # 4. Upper Circuit Breaker Clamping
-        if price_change_pct >= 8.5:
+        # 4. Upper Circuit Breaker Clamping (Tiered BSEC limits)
+        from dse_circuit_breaker import get_dse_circuit_limit_pct
+        circuit_limit = get_dse_circuit_limit_pct(prev_close)
+        if price_change_pct >= (circuit_limit - 0.4):
             # Check if previous day also had high gain
             prev_prev = float(hist_rows[1]["close"] or prev_close) if len(hist_rows) > 1 else prev_close
+            prev_tier = get_dse_circuit_limit_pct(prev_prev)
             prev_chg = ((prev_close - prev_prev) / prev_prev) * 100.0 if prev_prev > 0 else 0.0
-            if prev_chg >= 8.0:
+            if prev_chg >= (prev_tier - 0.5):
                 flags.append(("CIRCUIT_BREAKER_CLAMP", f"Consecutive upper circuit limit locks (+{prev_chg:.1f}%, +{price_change_pct:.1f}%)", 40))
 
         # 5. Regulatory Probe & Disclosures
