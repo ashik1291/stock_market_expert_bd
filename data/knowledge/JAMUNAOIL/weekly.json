@@ -2,18 +2,18 @@
   "ticker": "JAMUNAOIL",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-10-29T09:18:42.129635",
-  "asof_price_date": "2026-10-29",
+  "analyzed_at": "2026-11-01T07:53:32.986564",
+  "asof_price_date": "2026-11-01",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": 42.075,
     "is_eligible": true,
-    "rsi_14": 48.9377,
+    "rsi_14": 44.1577,
     "pe_ratio": 3.11,
     "debt_equity": 0.0
   },
-  "signal": "STRONG_BUY",
-  "confidence": 76.3,
+  "signal": "BUY",
+  "confidence": 73.85,
   "trajectory": {
     "direction": "RISE_PREDICTED",
     "direction_icon": "\ud83d\udfe2",
@@ -21,33 +21,33 @@
     "momentum_status": "Bullish Reversal / Upward Accumulation",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+2.0%",
+      "upside_potential_pct": "+1.9%",
       "downside_risk_pct": "-1.3%",
-      "target_price": 181.7,
-      "support_price": 175.9,
+      "target_price": 180.8,
+      "support_price": 175.1,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
       "upside_potential_pct": "+15.0%",
       "downside_risk_pct": "-5.0%",
-      "target_price": 204.9,
-      "trailing_stop": 169.3,
+      "target_price": 204.0,
+      "trailing_stop": 168.5,
       "risk_reward_ratio": "3.0x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.0%",
       "downside_risk_pct": "-9.0%",
-      "target_price": 231.7,
+      "target_price": 230.6,
       "dividend_cagr": "strong (9.87%)",
       "risk_reward_ratio": "3.3x"
     }
   },
   "trade_levels": {
-    "entry": 178.2,
-    "stop_loss": 174.72,
-    "target": 185.16
+    "entry": 177.4,
+    "stop_loss": 173.95,
+    "target": 184.3
   },
   "precision": {
     "ticker": "JAMUNAOIL",
@@ -70,14 +70,14 @@
       "signal": "Dividend is 500% cash-covered by real operations (NOCFPS: Tk 5.9 vs DPS: Tk 0.0)"
     },
     "liquidity": {
-      "avg_daily_volume": 7932,
+      "avg_daily_volume": 7956,
       "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 396,
-      "max_daily_accumulation_shares": 1189,
-      "max_order_bdt": 396.0,
-      "directive": "Max single order: 396 shares (Tk 396) to prevent >1% execution slippage"
+      "max_single_order_shares": 397,
+      "max_daily_accumulation_shares": 1193,
+      "max_order_bdt": 397.0,
+      "directive": "Max single order: 397 shares (Tk 397) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -89,59 +89,59 @@
   },
   "pattern_dna": {
     "ticker": "JAMUNAOIL",
-    "audited_at": "2026-10-29 15:18:42",
+    "audited_at": "2026-11-01 13:53:32",
     "worth_vs_greed": {
-      "current_price": 178.2,
+      "current_price": 177.4,
       "intrinsic_worth": 55.52,
-      "margin_of_safety_pct": -68.8,
+      "margin_of_safety_pct": -68.7,
       "extension_froth_score": 10.0,
       "greed_index": 10.0,
-      "rsi_14": 55.0,
-      "price_vs_ema50_pct": -0.0,
-      "price_vs_ema200_pct": 0.3,
+      "rsi_14": 37.1,
+      "price_vs_ema50_pct": -0.5,
+      "price_vs_ema200_pct": -0.1,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f36.94, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f3174.6 \u2013 \u09f3180.0",
-        "chase_cutoff_price": 182.7,
-        "when_to_wait": "If price opens or rises above \u09f3182.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3174.6.",
-        "weekly_target_short": 184.4,
-        "monthly_target_swing": 204.9,
-        "long_term_target_asset": 231.7,
+        "optimal_entry_corridor": "\u09f3173.9 \u2013 \u09f3179.2",
+        "chase_cutoff_price": 181.8,
+        "when_to_wait": "If price opens or rises above \u09f3181.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3173.9.",
+        "weekly_target_short": 183.6,
+        "monthly_target_swing": 204.0,
+        "long_term_target_asset": 230.6,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
       "worth_decision": "AVOID",
-      "reason": "Fundamental value severely lags stock price (MoS: -68.8%)."
+      "reason": "Fundamental value severely lags stock price (MoS: -68.7%)."
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -0.67,
-          "high": 180.1,
+          "return_pct": -0.73,
+          "high": 179.9,
           "low": 176.2,
-          "range_volatility_pct": 2.21
+          "range_volatility_pct": 2.1
         },
         "monthly_21d": {
-          "return_pct": 0.45,
+          "return_pct": -0.06,
           "high": 181.3,
           "low": 170.0,
           "range_volatility_pct": 6.65
         },
         "quarterly_63d": {
-          "return_pct": -2.14,
-          "high": 185.0,
+          "return_pct": -3.06,
+          "high": 184.7,
           "low": 170.0,
-          "range_volatility_pct": 8.82
+          "range_volatility_pct": 8.65
         },
         "half_yearly_126d": {
-          "return_pct": 4.33,
+          "return_pct": 3.56,
           "high": 188.0,
           "low": 165.7,
           "range_volatility_pct": 13.46
         },
         "yearly_252d": {
-          "return_pct": -2.99,
+          "return_pct": -3.53,
           "high": 195.0,
           "low": 164.9,
           "range_volatility_pct": 18.25
@@ -153,7 +153,7 @@
         "avg_wave_duration_bars": 23.0
       },
       "current_wave_phase": "MARKDOWN_PULLBACK",
-      "phase_guidance": "Ongoing pullback from peak (-1.7%). Wait for stabilizing base.",
+      "phase_guidance": "Ongoing pullback from peak (-2.2%). Wait for stabilizing base.",
       "top_seasonal_months": [
         {
           "month": "Jul",
@@ -251,22 +251,21 @@
     ]
   },
   "technical": {
-    "score": 58.75,
+    "score": 48.75,
     "signals": {
       "rsi": "neutral",
-      "macd": "neutral",
+      "macd": "bearish_crossover",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 2.32,
-      "rsi_value": 49.32,
-      "last_close": 178.2,
+      "atr": 2.3,
+      "rsi_value": 44.75,
+      "last_close": 177.4,
       "sma20": 178.42,
-      "sma50": 177.6,
-      "sma200": 174.97,
+      "sma50": 177.56,
+      "sma200": 175.02,
       "support_resistance": {
         "supports": [
           166.2,
-          166.3,
           168.6,
           174.7
         ],
@@ -280,7 +279,6 @@
     "sr": {
       "supports": [
         166.2,
-        166.3,
         168.6,
         174.7
       ],
@@ -313,7 +311,7 @@
       "earnings_quality": "moderate_accrual_drag",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 8.6,
+        "drawdown_pct": 9.0,
         "high_52w": 195.0,
         "low_52w": 164.9
       }
@@ -356,15 +354,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 9742,
-        "avg_volume": 9101.0,
+        "last_volume": 13385,
+        "avg_volume": 9353.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.09,
-        "avg_volume": 8912.0,
-        "today_volume": 9742,
+        "spike_ratio": 1.47,
+        "avg_volume": 9101.0,
+        "today_volume": 13385,
         "detail": "ok"
       },
       "serial_trading": {
@@ -383,19 +381,19 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": 0.51,
+        "price_change_3d": -0.45,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 76.3,
+    "composite_score": 73.85,
     "governance_score": 90,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.61,
-      "technical": 0.243,
+      "fundamental": 0.609,
+      "technical": 0.244,
       "governance": 0.147,
       "sentiment": 0.0
     }

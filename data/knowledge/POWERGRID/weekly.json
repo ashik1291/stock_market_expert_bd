@@ -2,18 +2,18 @@
   "ticker": "POWERGRID",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-10-29T09:18:42.053764",
-  "asof_price_date": "2026-10-29",
+  "analyzed_at": "2026-11-01T07:53:32.919147",
+  "asof_price_date": "2026-11-01",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 52.8832,
+    "rsi_14": 54.8515,
     "pe_ratio": 0.0,
     "debt_equity": 4.808
   },
   "signal": "HOLD_LOAN_TRAP_RISK",
-  "confidence": 59.63,
+  "confidence": 61.47,
   "trajectory": {
     "direction": "FALL_RISK",
     "direction_icon": "\ud83d\udd34",
@@ -22,32 +22,32 @@
     "short_term": {
       "predicted_path": "Upward momentum swing",
       "upside_potential_pct": "+4.1%",
-      "downside_risk_pct": "-2.8%",
-      "target_price": 40.2,
-      "support_price": 37.5,
-      "risk_reward_ratio": "1.5x"
+      "downside_risk_pct": "-2.6%",
+      "target_price": 40.4,
+      "support_price": 37.8,
+      "risk_reward_ratio": "1.6x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+15.0%",
+      "upside_potential_pct": "+14.9%",
       "downside_risk_pct": "-4.9%",
-      "target_price": 44.4,
-      "trailing_stop": 36.7,
-      "risk_reward_ratio": "3.1x"
+      "target_price": 44.6,
+      "trailing_stop": 36.9,
+      "risk_reward_ratio": "3.0x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-      "upside_potential_pct": "+30.1%",
+      "upside_potential_pct": "+29.9%",
       "downside_risk_pct": "-8.8%",
-      "target_price": 50.2,
+      "target_price": 50.4,
       "dividend_cagr": "no_dividend",
       "risk_reward_ratio": "3.4x"
     }
   },
   "trade_levels": {
-    "entry": 38.6,
-    "stop_loss": 36.97,
-    "target": 41.86
+    "entry": 38.8,
+    "stop_loss": 37.22,
+    "target": 41.96
   },
   "precision": {
     "ticker": "POWERGRID",
@@ -70,14 +70,14 @@
       "signal": "Dividend is 500% cash-covered by real operations (NOCFPS: Tk 0.88 vs DPS: Tk 0.0)"
     },
     "liquidity": {
-      "avg_daily_volume": 95328,
+      "avg_daily_volume": 97945,
       "daily_turnover_bdt_cr": 0.01,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 4766,
-      "max_daily_accumulation_shares": 14299,
-      "max_order_bdt": 4766.0,
-      "directive": "Max single order: 4,766 shares (Tk 4,766) to prevent >1% execution slippage"
+      "max_single_order_shares": 4897,
+      "max_daily_accumulation_shares": 14691,
+      "max_order_bdt": 4897.0,
+      "directive": "Max single order: 4,897 shares (Tk 4,897) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -89,59 +89,59 @@
   },
   "pattern_dna": {
     "ticker": "POWERGRID",
-    "audited_at": "2026-10-29 15:18:42",
+    "audited_at": "2026-11-01 13:53:32",
     "worth_vs_greed": {
-      "current_price": 38.6,
+      "current_price": 38.8,
       "intrinsic_worth": 8.24,
-      "margin_of_safety_pct": -78.7,
-      "extension_froth_score": 40.0,
-      "greed_index": 40.0,
-      "rsi_14": 60.7,
-      "price_vs_ema50_pct": 1.0,
-      "price_vs_ema200_pct": 7.5,
+      "margin_of_safety_pct": -78.8,
+      "extension_froth_score": 30.0,
+      "greed_index": 30.0,
+      "rsi_14": 38.5,
+      "price_vs_ema50_pct": 1.4,
+      "price_vs_ema200_pct": 7.9,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f31.03, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f337.8 \u2013 \u09f339.0",
-        "chase_cutoff_price": 39.6,
-        "when_to_wait": "If price opens or rises above \u09f339.6, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f337.8.",
-        "weekly_target_short": 40.0,
-        "monthly_target_swing": 44.4,
-        "long_term_target_asset": 50.2,
+        "optimal_entry_corridor": "\u09f338.0 \u2013 \u09f339.2",
+        "chase_cutoff_price": 39.8,
+        "when_to_wait": "If price opens or rises above \u09f339.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f338.0.",
+        "weekly_target_short": 40.2,
+        "monthly_target_swing": 44.6,
+        "long_term_target_asset": 50.4,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
       "worth_decision": "AVOID",
-      "reason": "Fundamental value severely lags stock price (MoS: -78.7%)."
+      "reason": "Fundamental value severely lags stock price (MoS: -78.8%)."
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -0.77,
-          "high": 39.3,
-          "low": 38.1,
-          "range_volatility_pct": 3.15
+          "return_pct": 1.04,
+          "high": 39.1,
+          "low": 38.2,
+          "range_volatility_pct": 2.36
         },
         "monthly_21d": {
-          "return_pct": 2.66,
+          "return_pct": 2.37,
           "high": 40.5,
           "low": 35.2,
           "range_volatility_pct": 15.06
         },
         "quarterly_63d": {
-          "return_pct": -6.31,
+          "return_pct": -4.9,
           "high": 42.0,
           "low": 35.2,
           "range_volatility_pct": 19.32
         },
         "half_yearly_126d": {
-          "return_pct": 17.33,
+          "return_pct": 19.75,
           "high": 42.8,
           "low": 31.1,
           "range_volatility_pct": 37.62
         },
         "yearly_252d": {
-          "return_pct": 25.73,
+          "return_pct": 28.9,
           "high": 42.8,
           "low": 25.6,
           "range_volatility_pct": 67.19
@@ -153,7 +153,7 @@
         "avg_wave_duration_bars": 21.0
       },
       "current_wave_phase": "MARKUP_RALLY_MID",
-      "phase_guidance": "Midway through rally wave (+9.7% from base, historical target ~+17.7%).",
+      "phase_guidance": "Midway through rally wave (+10.2% from base, historical target ~+17.7%).",
       "top_seasonal_months": [
         {
           "month": "Jul",
@@ -251,21 +251,20 @@
     ]
   },
   "technical": {
-    "score": 61.25,
+    "score": 68.75,
     "signals": {
       "rsi": "neutral",
-      "macd": "neutral",
+      "macd": "bullish_crossover",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 1.09,
-      "rsi_value": 53.42,
-      "last_close": 38.6,
-      "sma20": 38.21,
+      "atr": 1.05,
+      "rsi_value": 55.48,
+      "last_close": 38.8,
+      "sma20": 38.26,
       "sma50": 38.07,
-      "sma200": 34.6,
+      "sma200": 34.66,
       "support_resistance": {
         "supports": [
-          26.4,
           28.4,
           37.1
         ],
@@ -277,7 +276,6 @@
     },
     "sr": {
       "supports": [
-        26.4,
         28.4,
         37.1
       ],
@@ -308,7 +306,7 @@
       "earnings_quality": "superior_cash_backed",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 9.8,
+        "drawdown_pct": 9.3,
         "high_52w": 42.8,
         "low_52w": 25.6
       }
@@ -351,15 +349,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 123113,
-        "avg_volume": 80858.0,
+        "last_volume": 73412,
+        "avg_volume": 82218.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.56,
-        "avg_volume": 78758.0,
-        "today_volume": 123113,
+        "spike_ratio": 0.91,
+        "avg_volume": 80858.0,
+        "today_volume": 73412,
         "detail": "ok"
       },
       "serial_trading": {
@@ -385,12 +383,12 @@
     }
   },
   "composite": {
-    "composite_score": 59.63,
+    "composite_score": 61.47,
     "governance_score": 90,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.61,
-      "technical": 0.243,
+      "fundamental": 0.609,
+      "technical": 0.244,
       "governance": 0.147,
       "sentiment": 0.0
     }
