@@ -687,8 +687,22 @@ def run_full_scrape(tickers: list[str] = None, historical_years: int = 5):
     return date_str
 
 
+def is_dse_trading_day(target_date: datetime.date | None = None) -> tuple[bool, str]:
+    if target_date is None:
+        target_date = datetime.date.today()
+    wd = target_date.weekday()
+    if wd == 4:
+        return False, "Friday (Weekend) — DSE closed"
+    if wd == 5:
+        return False, "Saturday (Weekend) — DSE closed"
+    return True, "Active Trading Day"
+
+
 def run_price_only_scrape():
     """Daily price & macro news refresh with minimum data gate."""
+    is_open, cal_msg = is_dse_trading_day()
+    if not is_open:
+        log.info(f"ℹ️ DSE CALENDAR NOTICE: {cal_msg}. Fetching latest closing / weekend snapshot.")
     date_str = today_str()
     save_raw("market_summary", scrape_market_summary(), date_str)
     prices = scrape_all_prices()
