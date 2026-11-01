@@ -1,7 +1,7 @@
 # 📊 Daily DSE Directional Predictions: Rise vs Fall Matrix — 2026-11-01
 
-**Generated**: 2026-11-01 16:31:05 | **Total Instruments Audited**: 80 Category A Companies  
-**Engine Version**: `baseline-v1.0` (`7f2ba4f`) | **Data Snapshot ID**: `DB-2026-11-01-PIT`  
+**Generated**: 2026-11-01 18:06:29 | **Total Instruments Audited**: 80 Category A Companies  
+**Engine Version**: `baseline-v1.0` (`944e378`) | **Data Snapshot ID**: `DB-2026-11-01-PIT`  
 **Empirical Status**: *Validated as Risk/Junk Filter (0.0% data corruption). Unvalidated as Profit-Generating Predictor (Permutation p = 0.608 vs Random Null).*
 
 **Macro Bias**: `High Macro/Crisis Caution` (Score: -76.5/100)

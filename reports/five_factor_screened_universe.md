@@ -1,5 +1,5 @@
 # DSE 5-Filter Quantitative Fundamental & Value Screening Report
-**As of Market Date**: `2026-11-01` | **Generated**: `2026-11-01 15:40:20`
+**As of Market Date**: `2026-11-01` | **Generated**: `2026-11-01 18:06:28`
 
 ## Core 5-Filter Mandate (Strict Capital Preservation)
 1. **Operating Cash Flow Quality** ($CFO / \text{Net Profit} \ge 0.80$): Rejects paper profit fraud traps.
@@ -22,7 +22,7 @@
 | **HWAWELLTEX** | Textile | `HALAL` | ৳45.20 | ৳57.35 | **+21.2%** | 13.2 | **5.01%** | **8.1%** | **-0.8%** (UNCOMPETITIVE) | 0.00 | 50.8% | 0.97x (AUDITED) |
 | **BXPHARMA** | Pharmaceuticals | `HALAL` | ৳144.20 | ৳177.78 | **+18.9%** | 10.9 | **3.39%** | **9.1%** | **+0.2%** (COMPETITIVE) | 0.13 | 30.1% | 0.85x (AUDITED) |
 | **SUMITPOWER** | Fuel_Power | `HALAL` | ৳15.60 | ৳18.62 | **+16.2%** | 39.7 | **7.45%** | **2.4%** | **-6.4%** (UNCOMPETITIVE) | 0.60 | 63.2% | 25.74x (AUDITED) |
-| **KPCL** | Unknown | `HALAL` | ৳11.00 | ৳11.14 | **+1.3%** | 34.1 | **5.32%** | **2.6%** | **-6.2%** (UNCOMPETITIVE) | 0.00 | 70.0% | 5.34x (AUDITED) |
+| **KPCL** | Fuel_Power | `HALAL` | ৳11.00 | ৳11.14 | **+1.3%** | 34.1 | **5.32%** | **2.6%** | **-6.2%** (UNCOMPETITIVE) | 0.00 | 70.0% | 5.34x (AUDITED) |
 
 ## 2. Premium Quality Moats: Overvalued on Strict Graham Ceiling (5 Stocks)
 > **Action Rule**: DO NOT sell existing shares (avoid 0.833% friction). Collect cash dividends. Do NOT buy new shares until price corrects to Graham ceiling.
