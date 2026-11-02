@@ -19,10 +19,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SCRIPTS_DIR = BASE_DIR / "scripts"
 DB_PATH = BASE_DIR / "data" / "processed" / "dse.db"
 
-def run_script_silent(script_name: str, args: list = None) -> bool:
+def run_script_silent(script_name: str, args: list = None, async_proc: bool = False) -> bool:
     cmd = [sys.executable, str(SCRIPTS_DIR / script_name)] + (args or [])
-    res = subprocess.run(cmd, cwd=str(BASE_DIR), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    return res.returncode == 0
+    if async_proc:
+        try:
+            subprocess.Popen(cmd, cwd=str(BASE_DIR), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            return True
+        except Exception:
+            return False
+    try:
+        res = subprocess.run(cmd, cwd=str(BASE_DIR), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=45.0)
+        return res.returncode == 0
+    except Exception:
+        return False
 
 def auto_sync_if_needed():
     now = datetime.datetime.now()
@@ -86,7 +95,7 @@ def auto_sync_if_needed():
         needs_fund_harvest = True
 
     if needs_fund_harvest:
-        run_script_silent("update_all_fundamentals.py")
+        run_script_silent("update_all_fundamentals.py", async_proc=True)
 
     # 3. Check if month-end rebalance plan needs generation (runs between 28th and last day of month)
     today = datetime.date.today()
