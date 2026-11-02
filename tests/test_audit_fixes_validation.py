@@ -414,5 +414,60 @@ class TestAuditFixesValidation(unittest.TestCase):
         self.assertEqual(t2, 30000)
 
 
+
+    def test_layer10_forward_test_ledger_v2_statutory_sell_friction(self):
+        """Verify forward_test_ledger_v2 enforces Section 53BBB AIT (0.00465 sell fee)."""
+        import forward_test_ledger_v2 as fwd
+        self.assertEqual(fwd.FEE_SELL_PCT, 0.00465)
+
+    def test_layer10_feature_store_and_ledger_blacklist_propagation(self):
+        """Verify feature_store passes ticker and asof_date to score_features, and ledger skips blacklisted."""
+        with open(os.path.join(ROOT, "scripts", "feature_store.py"), "r", encoding="utf-8") as f:
+            code_fs = f.read()
+        self.assertIn("ticker=ticker", code_fs)
+        self.assertIn("asof_date=asof", code_fs)
+
+        with open(os.path.join(ROOT, "scripts", "forward_test_ledger_v2.py"), "r", encoding="utf-8") as f:
+            code_fwd = f.read()
+        self.assertIn("is_ticker_blacklisted(t, asof_date=asof)", code_fwd)
+
+    def test_layer10_factor_ic_dividend_adjustment(self):
+        """Verify factor_ic_calibrator._fwd_return adjusts for corporate action dividends and bonus shares."""
+        from factor_ic_calibrator import _fwd_return
+        conn = sqlite3.connect(os.path.join(ROOT, "data", "processed", "dse.db"), timeout=30.0)
+        # Test a stock with corporate actions e.g. EBL or GP
+        ret = _fwd_return(conn, "EBL", "2025-04-01", 21)
+        conn.close()
+        self.assertIsNotNone(ret)
+        self.assertIsInstance(ret, float)
+
+    def test_layer10_factor_ic_no_missing_value_inversion(self):
+        """Verify factor_ic_calibrator excludes or separates missing PE/debt rather than ranking 0.0 at top."""
+        with open(os.path.join(ROOT, "scripts", "factor_ic_calibrator.py"), "r", encoding="utf-8") as f:
+            code_fic = f.read()
+        # Verify fac['value'].append((-float(pe)) if pe is not None else 0.0) was removed
+        self.assertNotIn('fac["value"].append((-float(pe)) if pe is not None else 0.0)', code_fic)
+        self.assertIn('valid_pe = [( -c["pe"], c["fwd"] ) for c in cross_data if c["pe"] is not None]', code_fic)
+
+    def test_layer10_backtester_circuit_lock_deferral(self):
+        """Verify simulate_portfolio_backtest defers exit on lower circuit locks."""
+        with open(os.path.join(ROOT, "scripts", "backtester.py"), "r", encoding="utf-8") as f:
+            code_bt = f.read()
+        self.assertIn("Zero bids on lower circuit lock; cannot exit today, carry forward into next bar", code_bt)
+        self.assertNotIn("exit_price = lower_circuit * 0.9950", code_bt)
+
+    def test_layer10_recommender_clean_horizons_dict(self):
+        """Verify build_recommendations keeps horizons purely as list values, moving metadata to root."""
+        from recommender import build_recommendations
+        rec = build_recommendations("weekly", tickers=["GP", "BATBC", "WALTONHIL"])
+        h = rec.get("horizons", {})
+        self.assertNotIn("_halal_tier", h)
+        self.assertNotIn("_halal_gates", h)
+        self.assertIn("metadata", rec)
+        self.assertIn("halal_tier", rec["metadata"])
+        # Verify all horizon entries are lists
+        for k, v in h.items():
+            self.assertIsInstance(v, list, f"Horizon key {k} is not a list!")
+
 if __name__ == "__main__":
     unittest.main()

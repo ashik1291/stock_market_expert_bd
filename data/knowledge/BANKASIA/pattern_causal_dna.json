@@ -1,52 +1,54 @@
 {
   "ticker": "BANKASIA",
-  "audited_at": "2026-11-01 15:40:09",
+  "audited_at": "2026-11-02 15:04:02",
   "worth_vs_greed": {
-    "current_price": 17.1,
+    "current_price": 17.0,
     "intrinsic_worth": 6.88,
-    "margin_of_safety_pct": -59.8,
+    "margin_of_safety_pct": -59.5,
     "extension_froth_score": 30.0,
     "greed_index": 30.0,
-    "rsi_14": 61.9,
-    "price_vs_ema50_pct": 0.9,
-    "price_vs_ema200_pct": -5.3,
+    "rsi_14": 59.1,
+    "price_vs_ema50_pct": 0.3,
+    "price_vs_ema200_pct": -5.8,
     "merit_status": "EARNINGS_BACKED_MERIT",
     "merit_reason": "Price supported by solid earnings (EPS: \u09f30.86, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f316.8 \u2013 \u09f317.3",
-      "chase_cutoff_price": 17.5,
-      "when_to_wait": "If price opens or rises above \u09f317.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f316.8.",
-      "weekly_target_short": 17.7,
-      "monthly_target_swing": 19.7,
-      "long_term_target_asset": 22.2,
+      "optimal_entry_corridor": "\u09f316.7 \u2013 \u09f317.2",
+      "chase_cutoff_price": 17.4,
+      "when_to_wait": "If price opens or rises above \u09f317.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f316.7.",
+      "weekly_target_short": 17.6,
+      "monthly_target_swing": 19.5,
+      "long_term_target_asset": 22.1,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -59.8%)."
+    "reason": "Fundamental value severely lags stock price (MoS: -59.5%).",
+    "is_blacklisted": false,
+    "blacklist_reason": null
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 0.0,
+        "return_pct": 0.59,
         "high": 17.3,
         "low": 16.5,
         "range_volatility_pct": 4.85
       },
       "monthly_21d": {
-        "return_pct": 4.91,
+        "return_pct": 4.94,
         "high": 17.5,
         "low": 15.9,
         "range_volatility_pct": 10.06
       },
       "quarterly_63d": {
-        "return_pct": -5.52,
+        "return_pct": -5.56,
         "high": 18.2,
         "low": 15.9,
         "range_volatility_pct": 14.47
       },
       "half_yearly_126d": {
-        "return_pct": -20.47,
+        "return_pct": -20.56,
         "high": 22.1,
         "low": 15.9,
         "range_volatility_pct": 38.99
@@ -64,7 +66,7 @@
       "avg_wave_duration_bars": 19.0
     },
     "current_wave_phase": "MARKUP_RALLY_MID",
-    "phase_guidance": "Midway through rally wave (+7.5% from base, historical target ~+14.4%).",
+    "phase_guidance": "Midway through rally wave (+6.9% from base, historical target ~+14.4%).",
     "top_seasonal_months": [
       {
         "month": "Aug",

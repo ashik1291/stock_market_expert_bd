@@ -1,58 +1,60 @@
 {
   "ticker": "PREMIERCEM",
-  "audited_at": "2026-11-01 15:40:10",
+  "audited_at": "2026-11-02 15:04:03",
   "worth_vs_greed": {
-    "current_price": 37.6,
+    "current_price": 37.7,
     "intrinsic_worth": 14.4,
-    "margin_of_safety_pct": -61.7,
+    "margin_of_safety_pct": -61.8,
     "extension_froth_score": 20.0,
     "greed_index": 20.0,
-    "rsi_14": 32.4,
-    "price_vs_ema50_pct": -10.9,
-    "price_vs_ema200_pct": -14.3,
+    "rsi_14": 34.3,
+    "price_vs_ema50_pct": -10.3,
+    "price_vs_ema200_pct": -14.0,
     "merit_status": "EARNINGS_BACKED_MERIT",
     "merit_reason": "Price supported by solid earnings (EPS: \u09f31.80, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f336.8 \u2013 \u09f338.0",
-      "chase_cutoff_price": 38.5,
-      "when_to_wait": "If price opens or rises above \u09f338.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f336.8.",
-      "weekly_target_short": 38.9,
-      "monthly_target_swing": 43.2,
-      "long_term_target_asset": 48.9,
+      "optimal_entry_corridor": "\u09f336.9 \u2013 \u09f338.1",
+      "chase_cutoff_price": 38.6,
+      "when_to_wait": "If price opens or rises above \u09f338.6, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f336.9.",
+      "weekly_target_short": 39.0,
+      "monthly_target_swing": 43.4,
+      "long_term_target_asset": 49.0,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -61.7%)."
+    "reason": "Fundamental value severely lags stock price (MoS: -61.8%).",
+    "is_blacklisted": false,
+    "blacklist_reason": null
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -5.05,
-        "high": 40.4,
+        "return_pct": -4.31,
+        "high": 40.0,
         "low": 37.5,
-        "range_volatility_pct": 7.73
+        "range_volatility_pct": 6.67
       },
       "monthly_21d": {
-        "return_pct": -12.56,
-        "high": 43.0,
+        "return_pct": -11.08,
+        "high": 42.7,
         "low": 37.5,
-        "range_volatility_pct": 14.67
+        "range_volatility_pct": 13.87
       },
       "quarterly_63d": {
-        "return_pct": -23.27,
+        "return_pct": -23.84,
         "high": 53.5,
         "low": 37.5,
         "range_volatility_pct": 42.67
       },
       "half_yearly_126d": {
-        "return_pct": -1.05,
+        "return_pct": 1.89,
         "high": 56.0,
         "low": 34.9,
         "range_volatility_pct": 60.46
       },
       "yearly_252d": {
-        "return_pct": -16.44,
+        "return_pct": -16.96,
         "high": 56.0,
         "low": 34.9,
         "range_volatility_pct": 60.46

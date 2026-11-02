@@ -2,52 +2,52 @@
   "ticker": "BSRMSTEEL",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-01T09:40:11.695664",
-  "asof_price_date": "2026-11-01",
+  "analyzed_at": "2026-11-02T09:04:05.075211",
+  "asof_price_date": "2026-11-02",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 58.0384,
-    "pe_ratio": 4.05,
+    "rsi_14": 58.2273,
+    "pe_ratio": 6.027596223674656,
     "debt_equity": 1.331
   },
   "signal": "BUY",
-  "confidence": 68.0,
+  "confidence": 67.25,
   "trajectory": {
-    "direction": "FALL_RISK",
-    "direction_icon": "\ud83d\udd34",
-    "rise_probability_pct": 15.0,
-    "momentum_status": "Bearish Breakdown / Selling Pressure",
+    "direction": "CONSOLIDATION_RANGE",
+    "direction_icon": "\ud83d\udfe1",
+    "rise_probability_pct": 46.5,
+    "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+3.4%",
-      "downside_risk_pct": "-2.2%",
-      "target_price": 93.8,
-      "support_price": 88.7,
+      "upside_potential_pct": "+3.2%",
+      "downside_risk_pct": "-2.1%",
+      "target_price": 93.6,
+      "support_price": 88.8,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+15.0%",
-      "downside_risk_pct": "-5.0%",
-      "target_price": 104.3,
-      "trailing_stop": 86.2,
-      "risk_reward_ratio": "3.0x"
+      "upside_potential_pct": "+6.6%",
+      "downside_risk_pct": "-9.7%",
+      "target_price": 96.7,
+      "trailing_stop": 81.9,
+      "risk_reward_ratio": "0.7x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.0%",
-      "downside_risk_pct": "-9.0%",
+      "downside_risk_pct": "-12.0%",
       "target_price": 117.9,
       "dividend_cagr": "strong (8.96%)",
-      "risk_reward_ratio": "3.3x"
+      "risk_reward_ratio": "2.5x"
     }
   },
   "trade_levels": {
     "entry": 90.7,
-    "stop_loss": 87.64,
-    "target": 96.82
+    "stop_loss": 87.79,
+    "target": 96.52
   },
   "precision": {
     "ticker": "BSRMSTEEL",
@@ -70,14 +70,14 @@
       "signal": "Dividend is 500% cash-covered by real operations (NOCFPS: Tk 5.4 vs DPS: Tk 0.0)"
     },
     "liquidity": {
-      "avg_daily_volume": 367909,
+      "avg_daily_volume": 360581,
       "daily_turnover_bdt_cr": 0.04,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 18395,
-      "max_daily_accumulation_shares": 55186,
-      "max_order_bdt": 18395.0,
-      "directive": "Max single order: 18,395 shares (Tk 18,395) to prevent >1% execution slippage"
+      "max_single_order_shares": 18029,
+      "max_daily_accumulation_shares": 54087,
+      "max_order_bdt": 18029.0,
+      "directive": "Max single order: 18,029 shares (Tk 18,029) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -89,16 +89,16 @@
   },
   "pattern_dna": {
     "ticker": "BSRMSTEEL",
-    "audited_at": "2026-11-01 15:40:11",
+    "audited_at": "2026-11-02 15:04:05",
     "worth_vs_greed": {
       "current_price": 90.7,
       "intrinsic_worth": 50.8,
       "margin_of_safety_pct": -44.0,
       "extension_froth_score": 30.0,
       "greed_index": 30.0,
-      "rsi_14": 59.6,
-      "price_vs_ema50_pct": 2.5,
-      "price_vs_ema200_pct": 11.9,
+      "rsi_14": 63.1,
+      "price_vs_ema50_pct": 2.4,
+      "price_vs_ema200_pct": 11.8,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f36.35, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
@@ -112,36 +112,38 @@
       },
       "status": "CHRONIC_OVERVALUATION",
       "worth_decision": "AVOID",
-      "reason": "Fundamental value severely lags stock price (MoS: -44.0%)."
+      "reason": "Fundamental value severely lags stock price (MoS: -44.0%).",
+      "is_blacklisted": false,
+      "blacklist_reason": null
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 0.44,
+          "return_pct": -0.11,
           "high": 92.0,
           "low": 89.8,
           "range_volatility_pct": 2.45
         },
         "monthly_21d": {
-          "return_pct": 8.62,
+          "return_pct": 9.01,
           "high": 94.0,
           "low": 82.0,
           "range_volatility_pct": 14.63
         },
         "quarterly_63d": {
-          "return_pct": -6.78,
+          "return_pct": -8.57,
           "high": 101.7,
           "low": 81.5,
           "range_volatility_pct": 24.79
         },
         "half_yearly_126d": {
-          "return_pct": 29.2,
+          "return_pct": 31.07,
           "high": 102.0,
           "low": 68.0,
           "range_volatility_pct": 50.0
         },
         "yearly_252d": {
-          "return_pct": 38.26,
+          "return_pct": 39.54,
           "high": 102.0,
           "low": 55.0,
           "range_volatility_pct": 85.45
@@ -257,12 +259,12 @@
       "macd": "neutral",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 2.04,
+      "atr": 1.94,
       "rsi_value": 58.56,
       "last_close": 90.7,
-      "sma20": 88.43,
-      "sma50": 88.1,
-      "sma200": 79.62,
+      "sma20": 88.82,
+      "sma50": 88.05,
+      "sma200": 79.75,
       "support_resistance": {
         "supports": [
           67.2,
@@ -350,15 +352,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 157396,
-        "avg_volume": 289417.0,
+        "last_volume": 5539,
+        "avg_volume": 285204.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.55,
-        "avg_volume": 287040.0,
-        "today_volume": 157396,
+        "spike_ratio": 0.02,
+        "avg_volume": 289417.0,
+        "today_volume": 5539,
         "detail": "ok"
       },
       "serial_trading": {
@@ -377,20 +379,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": 0.11,
+        "price_change_3d": 0.0,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 68.0,
+    "composite_score": 67.25,
     "governance_score": 65,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.609,
-      "technical": 0.244,
-      "governance": 0.147,
+      "fundamental": 0.524,
+      "technical": 0.297,
+      "governance": 0.179,
       "sentiment": 0.0
     }
   }

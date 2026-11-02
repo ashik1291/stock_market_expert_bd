@@ -1,61 +1,64 @@
 {
   "ticker": "MATINSPINN",
-  "audited_at": "2026-11-01 15:40:12",
+  "audited_at": "2026-11-02 15:04:05",
   "worth_vs_greed": {
-    "current_price": 91.7,
+    "current_price": 92.5,
     "intrinsic_worth": 9.92,
-    "margin_of_safety_pct": -89.2,
+    "margin_of_safety_pct": -89.3,
     "extension_froth_score": 90.0,
     "greed_index": 90.0,
-    "rsi_14": 92.9,
-    "price_vs_ema50_pct": 29.7,
-    "price_vs_ema200_pct": 55.9,
+    "rsi_14": 95.5,
+    "price_vs_ema50_pct": 29.2,
+    "price_vs_ema200_pct": 56.3,
     "merit_status": "EARNINGS_BACKED_MERIT",
     "merit_reason": "Price supported by solid earnings (EPS: \u09f31.24, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f389.9 \u2013 \u09f392.6",
-      "chase_cutoff_price": 94.0,
-      "when_to_wait": "If price opens or rises above \u09f394.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f389.9.",
-      "weekly_target_short": 94.9,
-      "monthly_target_swing": 105.5,
-      "long_term_target_asset": 119.2,
+      "optimal_entry_corridor": "\u09f390.6 \u2013 \u09f393.4",
+      "chase_cutoff_price": 94.8,
+      "when_to_wait": "If price opens or rises above \u09f394.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f390.6.",
+      "weekly_target_short": 95.7,
+      "monthly_target_swing": 106.4,
+      "long_term_target_asset": 120.2,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "OVERVALUED_EUPHORIA",
     "worth_decision": "SELL_TAKE_PROFIT",
-    "reason": "Price is 89.2% above intrinsic worth while market greed is euphoric (90.0/100). Danger of sharp mean reversion."
+    "reason": "Price is 89.3% above intrinsic worth while market greed is euphoric (90.0/100). Danger of sharp mean reversion.",
+    "is_blacklisted": true,
+    "blacklist_reason": "Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-11-01 \u2014 Price up +9.95% with poor fundamentals (Negative EPS)]",
+    "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-11-01 \u2014 Price up +9.95% with poor fundamentals (Negative EPS)]"
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 13.07,
-        "high": 91.7,
+        "return_pct": 13.08,
+        "high": 95.0,
         "low": 79.0,
-        "range_volatility_pct": 16.08
+        "range_volatility_pct": 20.25
       },
       "monthly_21d": {
-        "return_pct": 34.46,
-        "high": 91.7,
+        "return_pct": 38.47,
+        "high": 95.0,
         "low": 62.0,
-        "range_volatility_pct": 47.9
+        "range_volatility_pct": 53.23
       },
       "quarterly_63d": {
-        "return_pct": 51.82,
-        "high": 91.7,
+        "return_pct": 49.68,
+        "high": 95.0,
         "low": 57.5,
-        "range_volatility_pct": 59.48
+        "range_volatility_pct": 65.22
       },
       "half_yearly_126d": {
-        "return_pct": 97.2,
-        "high": 91.7,
+        "return_pct": 100.65,
+        "high": 95.0,
         "low": 45.4,
-        "range_volatility_pct": 101.98
+        "range_volatility_pct": 109.25
       },
       "yearly_252d": {
-        "return_pct": 68.26,
-        "high": 91.7,
+        "return_pct": 67.57,
+        "high": 95.0,
         "low": 43.8,
-        "range_volatility_pct": 109.36
+        "range_volatility_pct": 116.89
       }
     },
     "wave_metrics": {
@@ -64,7 +67,7 @@
       "avg_wave_duration_bars": 21.0
     },
     "current_wave_phase": "LATE_MARKUP",
-    "phase_guidance": "Approaching historical rally limit (+59.5% vs median +14.9%). Tighten stop.",
+    "phase_guidance": "Approaching historical rally limit (+60.9% vs median +14.9%). Tighten stop.",
     "top_seasonal_months": [
       {
         "month": "Aug",

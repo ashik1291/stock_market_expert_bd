@@ -1,58 +1,60 @@
 {
   "ticker": "HEIDELBCEM",
-  "audited_at": "2026-11-01 15:40:10",
+  "audited_at": "2026-11-02 15:04:03",
   "worth_vs_greed": {
-    "current_price": 189.2,
-    "intrinsic_worth": 94.6,
+    "current_price": 189.0,
+    "intrinsic_worth": 94.5,
     "margin_of_safety_pct": -50.0,
     "extension_froth_score": 10.0,
     "greed_index": 10.0,
-    "rsi_14": 18.1,
-    "price_vs_ema50_pct": -8.9,
+    "rsi_14": 19.4,
+    "price_vs_ema50_pct": -8.7,
     "price_vs_ema200_pct": -13.7,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f3185.4 \u2013 \u09f3191.1",
-      "chase_cutoff_price": 193.9,
-      "when_to_wait": "If price opens or rises above \u09f3193.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3185.4.",
-      "weekly_target_short": 195.8,
-      "monthly_target_swing": 217.6,
-      "long_term_target_asset": 246.0,
+      "optimal_entry_corridor": "\u09f3185.2 \u2013 \u09f3190.9",
+      "chase_cutoff_price": 193.7,
+      "when_to_wait": "If price opens or rises above \u09f3193.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3185.2.",
+      "weekly_target_short": 195.6,
+      "monthly_target_swing": 217.3,
+      "long_term_target_asset": 245.7,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -50.0%)."
+    "reason": "Fundamental value severely lags stock price (MoS: -50.0%).",
+    "is_blacklisted": false,
+    "blacklist_reason": null
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -6.1,
-        "high": 203.9,
+        "return_pct": -5.74,
+        "high": 201.0,
         "low": 188.0,
-        "range_volatility_pct": 8.46
+        "range_volatility_pct": 6.91
       },
       "monthly_21d": {
-        "return_pct": -8.6,
-        "high": 212.0,
+        "return_pct": -8.87,
+        "high": 210.9,
         "low": 188.0,
-        "range_volatility_pct": 12.77
+        "range_volatility_pct": 12.18
       },
       "quarterly_63d": {
-        "return_pct": -15.38,
+        "return_pct": -15.78,
         "high": 229.0,
         "low": 188.0,
         "range_volatility_pct": 21.81
       },
       "half_yearly_126d": {
-        "return_pct": -10.42,
+        "return_pct": -10.47,
         "high": 272.7,
         "low": 188.0,
         "range_volatility_pct": 45.05
       },
       "yearly_252d": {
-        "return_pct": -19.46,
+        "return_pct": -19.33,
         "high": 272.7,
         "low": 188.0,
         "range_volatility_pct": 45.05

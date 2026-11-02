@@ -1,58 +1,60 @@
 {
   "ticker": "CENTRALINS",
-  "audited_at": "2026-11-01 15:40:13",
+  "audited_at": "2026-11-02 15:04:06",
   "worth_vs_greed": {
-    "current_price": 44.5,
+    "current_price": 44.1,
     "intrinsic_worth": 6.08,
-    "margin_of_safety_pct": -86.3,
+    "margin_of_safety_pct": -86.2,
     "extension_froth_score": 30.0,
     "greed_index": 30.0,
-    "rsi_14": 65.4,
-    "price_vs_ema50_pct": 3.5,
-    "price_vs_ema200_pct": 5.6,
+    "rsi_14": 67.9,
+    "price_vs_ema50_pct": 2.5,
+    "price_vs_ema200_pct": 4.6,
     "merit_status": "EARNINGS_BACKED_MERIT",
     "merit_reason": "Price supported by solid earnings (EPS: \u09f30.76, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f343.6 \u2013 \u09f344.9",
-      "chase_cutoff_price": 45.6,
-      "when_to_wait": "If price opens or rises above \u09f345.6, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f343.6.",
-      "weekly_target_short": 46.1,
-      "monthly_target_swing": 51.2,
-      "long_term_target_asset": 57.9,
+      "optimal_entry_corridor": "\u09f343.2 \u2013 \u09f344.5",
+      "chase_cutoff_price": 45.2,
+      "when_to_wait": "If price opens or rises above \u09f345.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f343.2.",
+      "weekly_target_short": 45.6,
+      "monthly_target_swing": 50.7,
+      "long_term_target_asset": 57.3,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -86.3%)."
+    "reason": "Fundamental value severely lags stock price (MoS: -86.2%).",
+    "is_blacklisted": false,
+    "blacklist_reason": null
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 5.7,
+        "return_pct": 5.76,
         "high": 45.2,
         "low": 41.1,
         "range_volatility_pct": 9.98
       },
       "monthly_21d": {
-        "return_pct": 0.91,
+        "return_pct": 0.23,
         "high": 45.2,
         "low": 40.6,
         "range_volatility_pct": 11.33
       },
       "quarterly_63d": {
-        "return_pct": 4.22,
+        "return_pct": 2.8,
         "high": 51.8,
         "low": 40.5,
         "range_volatility_pct": 27.9
       },
       "half_yearly_126d": {
-        "return_pct": 8.27,
+        "return_pct": 4.5,
         "high": 51.8,
         "low": 39.5,
         "range_volatility_pct": 31.14
       },
       "yearly_252d": {
-        "return_pct": 9.34,
+        "return_pct": 8.35,
         "high": 51.8,
         "low": 30.7,
         "range_volatility_pct": 68.73
@@ -64,7 +66,7 @@
       "avg_wave_duration_bars": 22.0
     },
     "current_wave_phase": "MARKUP_RALLY_MID",
-    "phase_guidance": "Midway through rally wave (+9.9% from base, historical target ~+17.3%).",
+    "phase_guidance": "Midway through rally wave (+8.9% from base, historical target ~+17.3%).",
     "top_seasonal_months": [
       {
         "month": "Jun",

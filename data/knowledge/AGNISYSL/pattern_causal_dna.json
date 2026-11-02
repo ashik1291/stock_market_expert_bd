@@ -1,58 +1,60 @@
 {
   "ticker": "AGNISYSL",
-  "audited_at": "2026-11-01 15:40:10",
+  "audited_at": "2026-11-02 15:04:03",
   "worth_vs_greed": {
-    "current_price": 26.7,
+    "current_price": 26.9,
     "intrinsic_worth": 2.0,
-    "margin_of_safety_pct": -92.5,
+    "margin_of_safety_pct": -92.6,
     "extension_froth_score": 20.0,
     "greed_index": 20.0,
-    "rsi_14": 57.4,
-    "price_vs_ema50_pct": -3.2,
-    "price_vs_ema200_pct": -1.9,
+    "rsi_14": 61.1,
+    "price_vs_ema50_pct": -2.4,
+    "price_vs_ema200_pct": -1.1,
     "merit_status": "EARNINGS_BACKED_MERIT",
     "merit_reason": "Price supported by solid earnings (EPS: \u09f30.25, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f326.2 \u2013 \u09f327.0",
-      "chase_cutoff_price": 27.4,
-      "when_to_wait": "If price opens or rises above \u09f327.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f326.2.",
-      "weekly_target_short": 27.6,
-      "monthly_target_swing": 30.7,
-      "long_term_target_asset": 34.7,
+      "optimal_entry_corridor": "\u09f326.4 \u2013 \u09f327.2",
+      "chase_cutoff_price": 27.6,
+      "when_to_wait": "If price opens or rises above \u09f327.6, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f326.4.",
+      "weekly_target_short": 27.8,
+      "monthly_target_swing": 30.9,
+      "long_term_target_asset": 35.0,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -92.5%)."
+    "reason": "Fundamental value severely lags stock price (MoS: -92.6%).",
+    "is_blacklisted": false,
+    "blacklist_reason": null
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 5.95,
+        "return_pct": 6.75,
         "high": 27.0,
         "low": 25.0,
         "range_volatility_pct": 8.0
       },
       "monthly_21d": {
-        "return_pct": -4.98,
-        "high": 28.5,
+        "return_pct": -3.58,
+        "high": 28.3,
         "low": 25.0,
-        "range_volatility_pct": 14.0
+        "range_volatility_pct": 13.2
       },
       "quarterly_63d": {
-        "return_pct": -18.1,
-        "high": 34.9,
+        "return_pct": -17.23,
+        "high": 34.2,
         "low": 25.0,
-        "range_volatility_pct": 39.6
+        "range_volatility_pct": 36.8
       },
       "half_yearly_126d": {
-        "return_pct": 5.53,
+        "return_pct": 5.08,
         "high": 35.9,
         "low": 23.9,
         "range_volatility_pct": 50.21
       },
       "yearly_252d": {
-        "return_pct": 6.8,
+        "return_pct": 9.35,
         "high": 35.9,
         "low": 18.1,
         "range_volatility_pct": 98.34
@@ -64,7 +66,7 @@
       "avg_wave_duration_bars": 24.0
     },
     "current_wave_phase": "BOTTOMING_SUPPORT",
-    "phase_guidance": "Drop (-25.6%) matches historical correction depth (-17.9%). Prepare to accumulate.",
+    "phase_guidance": "Drop (-25.1%) matches historical correction depth (-17.9%). Prepare to accumulate.",
     "top_seasonal_months": [
       {
         "month": "Sep",

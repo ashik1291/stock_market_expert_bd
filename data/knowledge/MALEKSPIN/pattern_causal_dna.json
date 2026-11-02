@@ -1,58 +1,61 @@
 {
   "ticker": "MALEKSPIN",
-  "audited_at": "2026-11-01 15:40:12",
+  "audited_at": "2026-11-02 15:04:05",
   "worth_vs_greed": {
-    "current_price": 43.9,
+    "current_price": 44.2,
     "intrinsic_worth": 4.0,
-    "margin_of_safety_pct": -90.9,
+    "margin_of_safety_pct": -91.0,
     "extension_froth_score": 40.0,
     "greed_index": 40.0,
-    "rsi_14": 36.2,
-    "price_vs_ema50_pct": -4.3,
-    "price_vs_ema200_pct": 13.6,
+    "rsi_14": 39.1,
+    "price_vs_ema50_pct": -3.5,
+    "price_vs_ema200_pct": 14.3,
     "merit_status": "EARNINGS_BACKED_MERIT",
     "merit_reason": "Price supported by solid earnings (EPS: \u09f30.50, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f343.0 \u2013 \u09f344.3",
-      "chase_cutoff_price": 45.0,
-      "when_to_wait": "If price opens or rises above \u09f345.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f343.0.",
-      "weekly_target_short": 45.4,
-      "monthly_target_swing": 50.5,
-      "long_term_target_asset": 57.1,
+      "optimal_entry_corridor": "\u09f343.3 \u2013 \u09f344.6",
+      "chase_cutoff_price": 45.3,
+      "when_to_wait": "If price opens or rises above \u09f345.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f343.3.",
+      "weekly_target_short": 45.7,
+      "monthly_target_swing": 50.8,
+      "long_term_target_asset": 57.5,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -90.9%)."
+    "reason": "Fundamental value severely lags stock price (MoS: -91.0%).",
+    "is_blacklisted": true,
+    "blacklist_reason": "Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-27 \u2014 Price up +6.28% with poor fundamentals (Negative EPS)]",
+    "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-27 \u2014 Price up +6.28% with poor fundamentals (Negative EPS)]"
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -3.52,
+        "return_pct": 2.79,
         "high": 46.5,
         "low": 40.0,
         "range_volatility_pct": 16.25
       },
       "monthly_21d": {
-        "return_pct": -8.54,
+        "return_pct": -9.61,
         "high": 51.6,
         "low": 40.0,
         "range_volatility_pct": 29.0
       },
       "quarterly_63d": {
-        "return_pct": 0.69,
+        "return_pct": 0.0,
         "high": 54.2,
         "low": 40.0,
         "range_volatility_pct": 35.5
       },
       "half_yearly_126d": {
-        "return_pct": 61.4,
+        "return_pct": 63.7,
         "high": 54.2,
         "low": 25.7,
         "range_volatility_pct": 110.89
       },
       "yearly_252d": {
-        "return_pct": 49.83,
+        "return_pct": 53.47,
         "high": 54.2,
         "low": 23.5,
         "range_volatility_pct": 130.64
@@ -64,7 +67,7 @@
       "avg_wave_duration_bars": 19.0
     },
     "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-14.9%). Wait for stabilizing base.",
+    "phase_guidance": "Ongoing pullback from peak (-14.3%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Feb",

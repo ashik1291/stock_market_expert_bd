@@ -1,58 +1,61 @@
 {
   "ticker": "SAIHAMTEX",
-  "audited_at": "2026-11-01 15:40:12",
+  "audited_at": "2026-11-02 15:04:05",
   "worth_vs_greed": {
-    "current_price": 46.8,
+    "current_price": 45.8,
     "intrinsic_worth": 1.76,
     "margin_of_safety_pct": -96.2,
     "extension_froth_score": 60.0,
     "greed_index": 60.0,
-    "rsi_14": 53.4,
-    "price_vs_ema50_pct": 19.2,
-    "price_vs_ema200_pct": 71.5,
+    "rsi_14": 58.4,
+    "price_vs_ema50_pct": 15.9,
+    "price_vs_ema200_pct": 66.7,
     "merit_status": "EARNINGS_BACKED_MERIT",
     "merit_reason": "Price supported by solid earnings (EPS: \u09f30.22, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f345.9 \u2013 \u09f347.3",
-      "chase_cutoff_price": 48.0,
-      "when_to_wait": "If price opens or rises above \u09f348.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f345.9.",
-      "weekly_target_short": 48.4,
-      "monthly_target_swing": 53.8,
-      "long_term_target_asset": 60.8,
+      "optimal_entry_corridor": "\u09f344.9 \u2013 \u09f346.3",
+      "chase_cutoff_price": 46.9,
+      "when_to_wait": "If price opens or rises above \u09f346.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f344.9.",
+      "weekly_target_short": 47.4,
+      "monthly_target_swing": 52.7,
+      "long_term_target_asset": 59.5,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -96.2%)."
+    "reason": "Fundamental value severely lags stock price (MoS: -96.2%).",
+    "is_blacklisted": true,
+    "blacklist_reason": "Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-11-01 \u2014 Price up +5.17% with poor fundamentals (Extreme P/E (73.1x))]",
+    "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-11-01 \u2014 Price up +5.17% with poor fundamentals (Extreme P/E (73.1x))]"
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 4.93,
+        "return_pct": -2.76,
         "high": 47.5,
         "low": 42.5,
         "range_volatility_pct": 11.76
       },
       "monthly_21d": {
-        "return_pct": 15.56,
+        "return_pct": 13.09,
         "high": 48.3,
-        "low": 39.4,
-        "range_volatility_pct": 22.59
+        "low": 40.4,
+        "range_volatility_pct": 19.55
       },
       "quarterly_63d": {
-        "return_pct": 102.6,
+        "return_pct": 86.18,
         "high": 48.3,
-        "low": 22.8,
-        "range_volatility_pct": 111.84
+        "low": 24.7,
+        "range_volatility_pct": 95.55
       },
       "half_yearly_126d": {
-        "return_pct": 155.74,
+        "return_pct": 153.04,
         "high": 48.3,
         "low": 16.6,
         "range_volatility_pct": 190.96
       },
       "yearly_252d": {
-        "return_pct": 196.2,
+        "return_pct": 191.72,
         "high": 48.3,
         "low": 13.7,
         "range_volatility_pct": 252.55
@@ -64,7 +67,7 @@
       "avg_wave_duration_bars": 18.0
     },
     "current_wave_phase": "LATE_MARKUP",
-    "phase_guidance": "Approaching historical rally limit (+67.1% vs median +14.7%). Tighten stop.",
+    "phase_guidance": "Approaching historical rally limit (+63.6% vs median +14.7%). Tighten stop.",
     "top_seasonal_months": [
       {
         "month": "Aug",

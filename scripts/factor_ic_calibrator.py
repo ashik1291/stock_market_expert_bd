@@ -73,7 +73,7 @@ def _trading_dates(conn: sqlite3.Connection, n: int) -> list[str]:
 def _fwd_return(conn: sqlite3.Connection, ticker: str, d0: str, horizon: int) -> float | None:
     rows = conn.execute(
         """
-        SELECT close FROM prices
+        SELECT date, close FROM prices
         WHERE ticker=? AND date>=? AND close IS NOT NULL
         ORDER BY date ASC LIMIT ?
         """,
@@ -81,12 +81,44 @@ def _fwd_return(conn: sqlite3.Connection, ticker: str, d0: str, horizon: int) ->
     ).fetchall()
     if len(rows) < horizon + 1:
         return None
-    c0 = float(rows[0][0])
-    c1 = float(rows[horizon][0])
+    d_start = rows[0][0]
+    c0 = float(rows[0][1])
+    d_end = rows[horizon][0]
+    c1 = float(rows[horizon][1])
     if c0 <= 0:
         return None
-    # Net of one-way-ish friction on entry+exit (~round trip)
-    gross = (c1 / c0) - 1.0
+
+    # Total return: adjust for corporate actions (dividends and bonus shares) between d_start and d_end
+    try:
+        ca_rows = conn.execute(
+            """
+            SELECT action_type, ratio, cash_amount, adjustment_factor
+            FROM corporate_actions
+            WHERE ticker=? AND record_date > ? AND record_date <= ?
+            """,
+            (ticker, d_start, d_end),
+        ).fetchall()
+        bonus_multiplier = 1.0
+        cash_div_total = 0.0
+        for ca in ca_rows:
+            act = str(ca[0]).lower()
+            ratio = float(ca[1] or 0.0)
+            cash_amt = float(ca[2] or 0.0)
+            adj = float(ca[3] or 1.0)
+            if "bonus" in act or "split" in act:
+                if ratio > 0:
+                    bonus_multiplier *= (1.0 + ratio)
+                elif 0 < adj < 1.0:
+                    bonus_multiplier *= (1.0 / adj)
+            if "cash" in act or cash_amt > 0:
+                net_cash = cash_amt * 0.90 if cash_amt > 0 else (c0 * ratio * 0.90 if ratio > 0 else 0.0)
+                cash_div_total += net_cash
+
+        end_val = (c1 * bonus_multiplier) + cash_div_total
+        gross = (end_val / c0) - 1.0
+    except Exception:
+        gross = (c1 / c0) - 1.0
+
     return gross - (ROUND_TRIP_COST_PCT / 100.0)
 
 
@@ -140,32 +172,58 @@ def calibrate_factor_ic(
         if len(rows) < MIN_CROSS_SECTION:
             continue
 
-        fac = {"div": [], "value": [], "rsi": [], "debt": []}
-        rets = []
+        cross_data = []
         for r in rows:
             fwd = _fwd_return(conn, r["ticker"], dt, horizon)
             if fwd is None:
                 continue
-            pe = r["pe_ratio"]
-            de = r["debt_equity"]
+            pe = float(r["pe_ratio"]) if r["pe_ratio"] is not None and float(r["pe_ratio"]) > 0 else None
+            de = float(r["debt_equity"]) if r["debt_equity"] is not None and float(r["debt_equity"]) >= 0 else None
             div = float(r["dividend_yield"] or 0.0)
-            rsi = r["rsi_14"]
-            fac["div"].append(div)
-            # Continuous signals (need cross-sectional variance among eligible)
-            fac["value"].append((-float(pe)) if pe is not None else 0.0)  # lower PE better
-            fac["rsi"].append((100.0 - float(rsi)) if rsi is not None else 50.0)
-            fac["debt"].append((-float(de)) if de is not None else 0.0)  # lower D/E better
-            rets.append(fwd)
+            rsi = float(r["rsi_14"]) if r["rsi_14"] is not None else None
+            cross_data.append({
+                "ticker": r["ticker"],
+                "fwd": fwd,
+                "div": div,
+                "pe": pe,
+                "de": de,
+                "rsi": rsi,
+            })
 
-        if len(rets) < MIN_CROSS_SECTION:
+        if len(cross_data) < MIN_CROSS_SECTION:
             continue
 
+        rets_all = [c["fwd"] for c in cross_data]
         day_ics = {}
-        for name in fac:
-            ic = spearman_rank_correlation(fac[name], rets)
-            ic_series[name].append(ic)
-            day_ics[name] = round(ic, 4)
-        ic_by_date.append({"date": dt, "n": len(rets), "ics": day_ics})
+
+        # 1. Dividend Factor (div_yield)
+        div_vals = [c["div"] for c in cross_data]
+        day_ics["div"] = round(spearman_rank_correlation(div_vals, rets_all), 4)
+
+        # 2. Value Factor (-pe for valid PE > 0, avoiding 0.0 top rank inversion)
+        valid_pe = [( -c["pe"], c["fwd"] ) for c in cross_data if c["pe"] is not None]
+        if len(valid_pe) >= MIN_CROSS_SECTION:
+            day_ics["value"] = round(spearman_rank_correlation([v[0] for v in valid_pe], [v[1] for v in valid_pe]), 4)
+        else:
+            day_ics["value"] = 0.0
+
+        # 3. RSI Momentum/Reversion (100 - RSI)
+        valid_rsi = [( (100.0 - c["rsi"]), c["fwd"] ) for c in cross_data if c["rsi"] is not None]
+        if len(valid_rsi) >= MIN_CROSS_SECTION:
+            day_ics["rsi"] = round(spearman_rank_correlation([v[0] for v in valid_rsi], [v[1] for v in valid_rsi]), 4)
+        else:
+            day_ics["rsi"] = 0.0
+
+        # 4. Debt Factor (-debt_equity for valid non-financials, avoiding bank 0.0 inversion)
+        valid_debt = [( -c["de"], c["fwd"] ) for c in cross_data if c["de"] is not None]
+        if len(valid_debt) >= MIN_CROSS_SECTION:
+            day_ics["debt"] = round(spearman_rank_correlation([v[0] for v in valid_debt], [v[1] for v in valid_debt]), 4)
+        else:
+            day_ics["debt"] = 0.0
+
+        for name in ic_series:
+            ic_series[name].append(day_ics[name])
+        ic_by_date.append({"date": dt, "n": len(cross_data), "ics": day_ics})
 
     nw_lags = max(1, int(math.ceil(horizon / stride)))
     stats = {}

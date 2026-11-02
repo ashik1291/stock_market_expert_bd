@@ -2,51 +2,51 @@
   "ticker": "NAVANACNG",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-01T09:40:12.228760",
-  "asof_price_date": "2026-11-01",
+  "analyzed_at": "2026-11-02T09:04:05.543597",
+  "asof_price_date": "2026-11-02",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 24.8244,
-    "pe_ratio": 204.82,
+    "rsi_14": 26.9191,
+    "pe_ratio": 193.0,
     "debt_equity": 5.376
   },
   "signal": "HOLD_LOAN_TRAP_RISK",
-  "confidence": 57.81,
+  "confidence": 56.73,
   "trajectory": {
     "direction": "FALL_RISK",
     "direction_icon": "\ud83d\udd34",
-    "rise_probability_pct": 15.0,
+    "rise_probability_pct": 43.0,
     "momentum_status": "Bearish Breakdown / Selling Pressure",
     "short_term": {
       "predicted_path": "Oversold bounce to 20-DMA",
       "upside_potential_pct": "+5.3%",
       "downside_risk_pct": "-3.5%",
-      "target_price": 17.9,
-      "support_price": 16.4,
+      "target_price": 18.0,
+      "support_price": 16.5,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+14.7%",
+      "upside_potential_pct": "+25.1%",
       "downside_risk_pct": "-5.3%",
-      "target_price": 19.5,
-      "trailing_stop": 16.1,
-      "risk_reward_ratio": "2.8x"
+      "target_price": 21.4,
+      "trailing_stop": 16.2,
+      "risk_reward_ratio": "4.7x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-      "upside_potential_pct": "+30.0%",
+      "upside_potential_pct": "+29.8%",
       "downside_risk_pct": "-9.5%",
-      "target_price": 22.1,
+      "target_price": 22.2,
       "dividend_cagr": "moderate (0.51%)",
-      "risk_reward_ratio": "3.2x"
+      "risk_reward_ratio": "3.1x"
     }
   },
   "trade_levels": {
-    "entry": 17.0,
-    "stop_loss": 16.1,
+    "entry": 17.1,
+    "stop_loss": 16.25,
     "target": 18.8
   },
   "precision": {
@@ -70,14 +70,14 @@
       "signal": "Cash flow covers only 0% of dividend payout"
     },
     "liquidity": {
-      "avg_daily_volume": 20196,
+      "avg_daily_volume": 19972,
       "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 1009,
-      "max_daily_accumulation_shares": 3029,
-      "max_order_bdt": 1009.0,
-      "directive": "Max single order: 1,009 shares (Tk 1,009) to prevent >1% execution slippage"
+      "max_single_order_shares": 998,
+      "max_daily_accumulation_shares": 2995,
+      "max_order_bdt": 998.0,
+      "directive": "Max single order: 998 shares (Tk 998) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -89,59 +89,61 @@
   },
   "pattern_dna": {
     "ticker": "NAVANACNG",
-    "audited_at": "2026-11-01 15:40:12",
+    "audited_at": "2026-11-02 15:04:05",
     "worth_vs_greed": {
-      "current_price": 17.0,
-      "intrinsic_worth": 8.5,
+      "current_price": 17.1,
+      "intrinsic_worth": 8.55,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 30.0,
       "greed_index": 30.0,
-      "rsi_14": 21.6,
-      "price_vs_ema50_pct": -12.7,
-      "price_vs_ema200_pct": -18.0,
+      "rsi_14": 23.7,
+      "price_vs_ema50_pct": -11.8,
+      "price_vs_ema200_pct": -17.4,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f316.7 \u2013 \u09f317.2",
-        "chase_cutoff_price": 17.4,
-        "when_to_wait": "If price opens or rises above \u09f317.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f316.7.",
-        "weekly_target_short": 17.6,
-        "monthly_target_swing": 19.5,
-        "long_term_target_asset": 22.1,
+        "optimal_entry_corridor": "\u09f316.8 \u2013 \u09f317.3",
+        "chase_cutoff_price": 17.5,
+        "when_to_wait": "If price opens or rises above \u09f317.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f316.8.",
+        "weekly_target_short": 17.7,
+        "monthly_target_swing": 19.7,
+        "long_term_target_asset": 22.2,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
       "worth_decision": "AVOID",
-      "reason": "Fundamental value severely lags stock price (MoS: -50.0%)."
+      "reason": "Fundamental value severely lags stock price (MoS: -50.0%).",
+      "is_blacklisted": false,
+      "blacklist_reason": null
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -6.08,
+          "return_pct": -5.0,
           "high": 18.5,
           "low": 17.0,
           "range_volatility_pct": 8.82
         },
         "monthly_21d": {
-          "return_pct": -15.0,
-          "high": 20.2,
+          "return_pct": -12.31,
+          "high": 20.0,
           "low": 17.0,
-          "range_volatility_pct": 18.82
+          "range_volatility_pct": 17.65
         },
         "quarterly_63d": {
-          "return_pct": -25.76,
+          "return_pct": -25.33,
           "high": 23.8,
           "low": 17.0,
           "range_volatility_pct": 40.0
         },
         "half_yearly_126d": {
-          "return_pct": -17.48,
+          "return_pct": -16.99,
           "high": 23.8,
           "low": 17.0,
           "range_volatility_pct": 40.0
         },
         "yearly_252d": {
-          "return_pct": -25.11,
+          "return_pct": -24.0,
           "high": 23.8,
           "low": 17.0,
           "range_volatility_pct": 40.0
@@ -251,18 +253,18 @@
     ]
   },
   "technical": {
-    "score": 56.25,
+    "score": 50.0,
     "signals": {
       "rsi": "oversold_bullish",
       "macd": "bearish_crossover",
       "sma_trend": "neutral",
-      "bb": "at_lower_band_bullish",
-      "atr": 0.6,
-      "rsi_value": 25.38,
-      "last_close": 17.0,
-      "sma20": 18.6,
-      "sma50": 19.6,
-      "sma200": 20.8,
+      "bb": "inside_bands",
+      "atr": 0.57,
+      "rsi_value": 27.41,
+      "last_close": 17.1,
+      "sma20": 18.47,
+      "sma50": 19.51,
+      "sma200": 20.78,
       "support_resistance": {
         "supports": [
           19.4,
@@ -309,10 +311,10 @@
       "earnings_quality": "moderate_accrual_drag",
       "downturn_resilience": {
         "status": "growth_at_discount",
-        "drawdown_pct": 39.7,
+        "drawdown_pct": 39.4,
         "high_52w": 28.2,
         "low_52w": 17.0,
-        "note": "Share price down 39.7% from 52w peak, yet earnings positive/steady (Conviction discount)"
+        "note": "Share price down 39.4% from 52w peak, yet earnings positive/steady (Conviction discount)"
       }
     }
   },
@@ -353,15 +355,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 40885,
-        "avg_volume": 22384.0,
+        "last_volume": 1635,
+        "avg_volume": 21413.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.93,
-        "avg_volume": 21140.0,
-        "today_volume": 40885,
+        "spike_ratio": 0.07,
+        "avg_volume": 22384.0,
+        "today_volume": 1635,
         "detail": "ok"
       },
       "serial_trading": {
@@ -380,20 +382,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": -2.3,
+        "price_change_3d": 0.59,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 57.81,
+    "composite_score": 56.73,
     "governance_score": 75,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.609,
-      "technical": 0.244,
-      "governance": 0.147,
+      "fundamental": 0.524,
+      "technical": 0.297,
+      "governance": 0.179,
       "sentiment": 0.0
     }
   }

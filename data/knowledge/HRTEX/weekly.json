@@ -2,52 +2,52 @@
   "ticker": "HRTEX",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-01T09:40:13.124434",
-  "asof_price_date": "2026-11-01",
+  "analyzed_at": "2026-11-02T09:04:06.057135",
+  "asof_price_date": "2026-11-02",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 32.7146,
+    "rsi_14": 36.3846,
     "pe_ratio": 0.0,
     "debt_equity": 5.58
   },
   "signal": "HOLD_LOAN_TRAP_RISK",
-  "confidence": 50.13,
+  "confidence": 51.43,
   "trajectory": {
-    "direction": "FALL_RISK",
-    "direction_icon": "\ud83d\udd34",
-    "rise_probability_pct": 18.7,
-    "momentum_status": "Bearish Breakdown / Selling Pressure",
+    "direction": "CONSOLIDATION_RANGE",
+    "direction_icon": "\ud83d\udfe1",
+    "rise_probability_pct": 50.0,
+    "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Oversold bounce to 20-DMA",
-      "upside_potential_pct": "+6.7%",
-      "downside_risk_pct": "-4.7%",
-      "target_price": 16.0,
-      "support_price": 14.3,
-      "risk_reward_ratio": "1.4x"
+      "upside_potential_pct": "+5.9%",
+      "downside_risk_pct": "-3.9%",
+      "target_price": 16.1,
+      "support_price": 14.6,
+      "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+14.7%",
-      "downside_risk_pct": "-5.3%",
-      "target_price": 17.2,
-      "trailing_stop": 14.2,
-      "risk_reward_ratio": "2.8x"
+      "upside_potential_pct": "+25.0%",
+      "downside_risk_pct": "-5.9%",
+      "target_price": 19.0,
+      "trailing_stop": 14.3,
+      "risk_reward_ratio": "4.2x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-      "upside_potential_pct": "+30.0%",
-      "downside_risk_pct": "-9.5%",
-      "target_price": 19.5,
+      "upside_potential_pct": "+30.3%",
+      "downside_risk_pct": "-10.6%",
+      "target_price": 19.8,
       "dividend_cagr": "no_dividend",
-      "risk_reward_ratio": "3.2x"
+      "risk_reward_ratio": "2.9x"
     }
   },
   "trade_levels": {
-    "entry": 15.0,
-    "stop_loss": 13.99,
-    "target": 17.02
+    "entry": 15.2,
+    "stop_loss": 14.25,
+    "target": 17.1
   },
   "precision": {
     "ticker": "HRTEX",
@@ -70,14 +70,14 @@
       "signal": "Cash flow covers only 0% of dividend payout"
     },
     "liquidity": {
-      "avg_daily_volume": 26071,
+      "avg_daily_volume": 25435,
       "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 1303,
-      "max_daily_accumulation_shares": 3910,
-      "max_order_bdt": 1303.0,
-      "directive": "Max single order: 1,303 shares (Tk 1,303) to prevent >1% execution slippage"
+      "max_single_order_shares": 1271,
+      "max_daily_accumulation_shares": 3815,
+      "max_order_bdt": 1271.0,
+      "directive": "Max single order: 1,271 shares (Tk 1,271) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -89,59 +89,61 @@
   },
   "pattern_dna": {
     "ticker": "HRTEX",
-    "audited_at": "2026-11-01 15:40:13",
+    "audited_at": "2026-11-02 15:04:06",
     "worth_vs_greed": {
-      "current_price": 15.0,
-      "intrinsic_worth": 7.5,
+      "current_price": 15.2,
+      "intrinsic_worth": 7.6,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 40.0,
       "greed_index": 40.0,
-      "rsi_14": 15.2,
-      "price_vs_ema50_pct": -12.0,
-      "price_vs_ema200_pct": -22.8,
+      "rsi_14": 21.2,
+      "price_vs_ema50_pct": -10.4,
+      "price_vs_ema200_pct": -21.6,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f314.7 \u2013 \u09f315.2",
-        "chase_cutoff_price": 15.4,
-        "when_to_wait": "If price opens or rises above \u09f315.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f314.7.",
-        "weekly_target_short": 15.5,
-        "monthly_target_swing": 17.2,
-        "long_term_target_asset": 19.5,
+        "optimal_entry_corridor": "\u09f314.9 \u2013 \u09f315.4",
+        "chase_cutoff_price": 15.6,
+        "when_to_wait": "If price opens or rises above \u09f315.6, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f314.9.",
+        "weekly_target_short": 15.7,
+        "monthly_target_swing": 17.5,
+        "long_term_target_asset": 19.8,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
       "worth_decision": "AVOID",
-      "reason": "Fundamental value severely lags stock price (MoS: -50.0%)."
+      "reason": "Fundamental value severely lags stock price (MoS: -50.0%).",
+      "is_blacklisted": false,
+      "blacklist_reason": null
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -2.6,
+          "return_pct": -0.65,
           "high": 15.9,
           "low": 15.0,
           "range_volatility_pct": 6.0
         },
         "monthly_21d": {
-          "return_pct": -10.18,
+          "return_pct": -10.59,
           "high": 17.8,
           "low": 15.0,
           "range_volatility_pct": 18.67
         },
         "quarterly_63d": {
-          "return_pct": -29.25,
+          "return_pct": -27.62,
           "high": 21.6,
           "low": 15.0,
           "range_volatility_pct": 44.0
         },
         "half_yearly_126d": {
-          "return_pct": -18.48,
+          "return_pct": -17.39,
           "high": 23.0,
           "low": 15.0,
           "range_volatility_pct": 53.33
         },
         "yearly_252d": {
-          "return_pct": -26.11,
+          "return_pct": -25.49,
           "high": 23.0,
           "low": 12.4,
           "range_volatility_pct": 85.48
@@ -257,12 +259,12 @@
       "macd": "neutral",
       "sma_trend": "neutral",
       "bb": "inside_bands",
-      "atr": 0.67,
-      "rsi_value": 32.76,
-      "last_close": 15.0,
-      "sma20": 16.02,
-      "sma50": 17.09,
-      "sma200": 18.72,
+      "atr": 0.63,
+      "rsi_value": 36.38,
+      "last_close": 15.2,
+      "sma20": 15.94,
+      "sma50": 16.98,
+      "sma200": 18.7,
       "support_resistance": {
         "supports": [
           15.3,
@@ -312,7 +314,7 @@
       "earnings_quality": "superior_cash_backed",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 38.3,
+        "drawdown_pct": 37.4,
         "high_52w": 24.3,
         "low_52w": 12.4
       }
@@ -355,15 +357,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 10331,
-        "avg_volume": 26912.0,
+        "last_volume": 10,
+        "avg_volume": 25806.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.37,
-        "avg_volume": 28300.0,
-        "today_volume": 10331,
+        "spike_ratio": 0.0,
+        "avg_volume": 26912.0,
+        "today_volume": 10,
         "detail": "ok"
       },
       "serial_trading": {
@@ -382,20 +384,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": -1.32,
+        "price_change_3d": 1.33,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 50.13,
+    "composite_score": 51.43,
     "governance_score": 75,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.609,
-      "technical": 0.244,
-      "governance": 0.147,
+      "fundamental": 0.524,
+      "technical": 0.297,
+      "governance": 0.179,
       "sentiment": 0.0
     }
   }

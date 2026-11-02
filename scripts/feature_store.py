@@ -197,6 +197,8 @@ def build_features_for_date(asof: str | None = None, category: str = "A") -> dic
             rsi_14=rsi,
             sector=sector,
             close=float(px["close"]),
+            ticker=ticker,
+            asof_date=asof,
         )
         if scored["is_eligible"]:
             eligible += 1

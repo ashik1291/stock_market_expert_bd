@@ -1,58 +1,60 @@
 {
   "ticker": "NAVANACNG",
-  "audited_at": "2026-11-01 15:40:12",
+  "audited_at": "2026-11-02 15:04:05",
   "worth_vs_greed": {
-    "current_price": 17.0,
-    "intrinsic_worth": 8.5,
+    "current_price": 17.1,
+    "intrinsic_worth": 8.55,
     "margin_of_safety_pct": -50.0,
     "extension_froth_score": 30.0,
     "greed_index": 30.0,
-    "rsi_14": 21.6,
-    "price_vs_ema50_pct": -12.7,
-    "price_vs_ema200_pct": -18.0,
+    "rsi_14": 23.7,
+    "price_vs_ema50_pct": -11.8,
+    "price_vs_ema200_pct": -17.4,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f316.7 \u2013 \u09f317.2",
-      "chase_cutoff_price": 17.4,
-      "when_to_wait": "If price opens or rises above \u09f317.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f316.7.",
-      "weekly_target_short": 17.6,
-      "monthly_target_swing": 19.5,
-      "long_term_target_asset": 22.1,
+      "optimal_entry_corridor": "\u09f316.8 \u2013 \u09f317.3",
+      "chase_cutoff_price": 17.5,
+      "when_to_wait": "If price opens or rises above \u09f317.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f316.8.",
+      "weekly_target_short": 17.7,
+      "monthly_target_swing": 19.7,
+      "long_term_target_asset": 22.2,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -50.0%)."
+    "reason": "Fundamental value severely lags stock price (MoS: -50.0%).",
+    "is_blacklisted": false,
+    "blacklist_reason": null
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -6.08,
+        "return_pct": -5.0,
         "high": 18.5,
         "low": 17.0,
         "range_volatility_pct": 8.82
       },
       "monthly_21d": {
-        "return_pct": -15.0,
-        "high": 20.2,
+        "return_pct": -12.31,
+        "high": 20.0,
         "low": 17.0,
-        "range_volatility_pct": 18.82
+        "range_volatility_pct": 17.65
       },
       "quarterly_63d": {
-        "return_pct": -25.76,
+        "return_pct": -25.33,
         "high": 23.8,
         "low": 17.0,
         "range_volatility_pct": 40.0
       },
       "half_yearly_126d": {
-        "return_pct": -17.48,
+        "return_pct": -16.99,
         "high": 23.8,
         "low": 17.0,
         "range_volatility_pct": 40.0
       },
       "yearly_252d": {
-        "return_pct": -25.11,
+        "return_pct": -24.0,
         "high": 23.8,
         "low": 17.0,
         "range_volatility_pct": 40.0
