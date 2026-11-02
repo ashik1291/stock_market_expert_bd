@@ -1,30 +1,66 @@
-# Python bytecode and cache
+# ==============================================================================
+# stock_market_expert_bd — Official .gitignore
+# Optimized for minimal GitHub repository size and instant zero-friction setup.
+# ==============================================================================
+
+# 1. Uncompressed SQLite Databases (Auto-restored by bootstrap.py from dse.db.gz)
+data/processed/dse.db
+data/processed/*.bak
+data/processed/*.db
+data/processed/*.db-wal
+data/processed/*.db-shm
+data/processed/*.sqlite
+data/processed/*.sqlite3
+
+# Explicitly keep the compressed master point-in-time database archive:
+!data/processed/dse.db.gz
+
+# 2. Raw Datasets & Bulky Archives (Full 1.09M bars already indexed in dse.db.gz)
+data/raw/**/*.zip
+data/raw/*.zip
+data/raw/**/historical_prices.json
+data/raw/**/fundamentals.json
+*.zip
+*.tar.gz
+*.rar
+
+# 3. Python Bytecode, Caches & Virtual Environments
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .pytest_cache/
-
-# Virtual environments
+.coverage
+htmlcov/
+.tox/
 .venv/
 venv/
 env/
 ENV/
 
-# Temporary / scratch scripts
-scratch_*.py
-*page_dump.txt
-
-# OS artifacts
-.DS_Store
-Thumbs.db
-desktop.ini
-
-# IDE & Editor artifacts
+# 4. Developer Environments & IDE Artifacts
 .vscode/
 .idea/
 *.sublime-project
 *.sublime-workspace
-
-scratch/
 .codegraph/
+*.swp
+*.swo
+*~
+
+# 5. OS Generated Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# 6. Temporary & Scratch Files
+scratch/
+scratch_*.py
+*page_dump.txt
+*.log
+*.tmp
