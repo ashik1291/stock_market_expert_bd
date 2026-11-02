@@ -1,5 +1,5 @@
 """
-DSE Automated Quantitative System — Portable Bootstrap & Self-Healing Engine.
+stock_market_expert_bd — Portable Bootstrap & Self-Healing Engine.
 Executed when user triggers 'ready' on any machine.
 Checks dependencies, database integrity, Git LFS pointers, and runs self-healing recovery.
 """
@@ -125,7 +125,7 @@ def verify_configs():
 
 def run_bootstrap():
     print("=" * 80)
-    print("🚀 DSE QUANTITATIVE SYSTEM — PORTABLE MACHINE BOOTSTRAP ('READY')")
+    print("🚀 stock_market_expert_bd — PORTABLE MACHINE BOOTSTRAP ('READY')")
     print("=" * 80)
 
     # 1. Check Python dependencies

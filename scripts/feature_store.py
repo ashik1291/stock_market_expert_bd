@@ -115,6 +115,15 @@ def build_features_for_date(asof: str | None = None, category: str = "A") -> dic
         )
     ]
 
+    if category:
+        conn.execute(
+            """
+            DELETE FROM features_daily
+            WHERE date = ? AND ticker NOT IN (SELECT ticker FROM companies WHERE category = ?)
+            """,
+            (asof, category),
+        )
+
     upserted = 0
     eligible = 0
     for ticker in tickers:

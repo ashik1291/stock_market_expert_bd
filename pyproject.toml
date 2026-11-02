@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "stock_market_expert_bd"
+version = "1.0.0"
+description = "Autonomous DSE Quantitative Engine, Anti-Manipulation Surveillance & Institutional Portfolio Management System for Bangladesh Capital Markets"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [
+    {name = "stock_market_expert_bd Team"}
+]
+keywords = [
+    "quantitative-finance",
+    "dhaka-stock-exchange",
+    "dse",
+    "algorithmic-trading",
+    "portfolio-management",
+    "risk-parity",
+    "point-in-time",
+    "bangladesh-bank"
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Financial and Insurance Industry",
+    "Topic :: Office/Business :: Financial :: Investment",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12"
+]
+dependencies = [
+    "requests>=2.31.0",
+    "beautifulsoup4>=4.12.0",
+    "lxml>=4.9.0",
+    "matplotlib>=3.8.0",
+    "pandas>=2.1.0",
+    "bdshare>=1.2.0",
+    "pdfplumber>=0.10.0"
+]
+
+[project.scripts]
+stock_market_expert_bd = "main:main"
+
+[tool.setuptools]
+py-modules = ["main"]

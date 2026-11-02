@@ -1,4 +1,4 @@
-# 🌐 Multi-Device Portability & Instant Setup Guide
+# 🌐 stock_market_expert_bd: Multi-Device Portability & Instant Setup Guide
 
 This guide explains how to push this repository from your current machine and set it up instantly on any other device (Windows, Linux, or macOS) with zero hassle.
 
@@ -40,7 +40,7 @@ On the new device:
 ```bash
 # Clone the repository
 git clone <YOUR_GITHUB_OR_GITLAB_URL>
-cd stock_market
+cd stock_market_expert_bd
 ```
 
 *(If you already have the repository on that device, just pull the latest changes)*:
