@@ -307,7 +307,8 @@ class TestAuditFixesValidation(unittest.TestCase):
         from portfolio_sentinel import audit_portfolio_sentinel
         # Mock portfolio with profit holdings
         p_path = os.path.join(ROOT, "data", "portfolio", "portfolio.json")
-        orig_p = json.load(open(p_path, encoding="utf-8"))
+        with open(p_path, encoding="utf-8") as f:
+            orig_p = json.load(f)
         try:
             mock_p = dict(orig_p)
             mock_p["holdings"] = [
