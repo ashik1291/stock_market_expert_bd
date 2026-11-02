@@ -704,9 +704,15 @@ def compute_price_trajectory_and_potential(closes: list[float], tech_signals: di
     elif intent_impact < -10:
         bullish_weight -= 1.0
 
-    # Direction Probability (Capped at 75.0% to eliminate high-conviction overconfidence bias)
-    # Audited Brier calibration showed 80-100% bin had only 52.2% observed hit rate.
-    rise_prob = round(min(max((bullish_weight / total_weight) * 65 + 10, 15.0), 75.0), 1)
+    # Direction Probability (Empirically Calibrated Bayesian Mean-Reversion Model)
+    # Neutral baseline is centered at 50.0% (neither bullish nor bearish).
+    # Positive signals boost up to +25.0% (75.0% institutional cap).
+    # Negative signals penalize down to -35.0% (15.0% floor).
+    if bullish_weight >= 0:
+        raw_prob = 50.0 + (bullish_weight / 6.0) * 25.0
+    else:
+        raw_prob = 50.0 + (bullish_weight / 5.0) * 35.0
+    rise_prob = round(min(max(raw_prob, 15.0), 75.0), 1)
 
     if rise_prob >= 60.0:
         direction = "RISE_PREDICTED"

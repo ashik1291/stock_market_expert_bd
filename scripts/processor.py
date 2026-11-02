@@ -279,6 +279,7 @@ def get_db() -> sqlite3.Connection:
             conn.commit()
         # Legacy tradable == snapshot rows that should have lag but publication_source already set to estimated
         # with pub==snapshot (first backfill was naive). Fix those too.
+        # CRITICAL FIX: Live scrapes (where snap is not a fiscal quarter end) are already public on snap date!
         naive = conn.execute(
             "SELECT id, snapshot_date, publication_date, tradable_date, fiscal_quarter "
             "FROM fundamentals_pit WHERE publication_source='estimated' "
@@ -290,16 +291,27 @@ def get_db() -> sqlite3.Connection:
                 base = datetime.date.fromisoformat(str(snap)[:10])
             except Exception:
                 continue
-            lag = 75 if (fq == 4 or fq is None) else 45
-            pub_raw = (base + datetime.timedelta(days=lag)).isoformat()
-            pub = _next_trading_day_for_migration(conn, pub_raw)
-            trad = _next_trading_day_for_migration(
-                conn, (datetime.date.fromisoformat(pub) + datetime.timedelta(days=1)).isoformat()
-            )
-            conn.execute(
-                "UPDATE fundamentals_pit SET publication_date=?, tradable_date=? WHERE id=?",
-                (pub, trad, rid),
-            )
+            is_quarter_end = any(str(snap).strip().endswith(qe) for qe in ("-03-31", "-06-30", "-09-30", "-12-31"))
+            if not is_quarter_end:
+                pub = base.isoformat()
+                trad = _next_trading_day_for_migration(
+                    conn, (base + datetime.timedelta(days=1)).isoformat()
+                )
+                conn.execute(
+                    "UPDATE fundamentals_pit SET publication_date=?, tradable_date=?, publication_source='live_scrape', publication_is_estimated=0 WHERE id=?",
+                    (pub, trad, rid),
+                )
+            else:
+                lag = 75 if (fq == 4 or fq is None) else 45
+                pub_raw = (base + datetime.timedelta(days=lag)).isoformat()
+                pub = _next_trading_day_for_migration(conn, pub_raw)
+                trad = _next_trading_day_for_migration(
+                    conn, (datetime.date.fromisoformat(pub) + datetime.timedelta(days=1)).isoformat()
+                )
+                conn.execute(
+                    "UPDATE fundamentals_pit SET publication_date=?, tradable_date=? WHERE id=?",
+                    (pub, trad, rid),
+                )
         if naive:
             conn.commit()
     except Exception:

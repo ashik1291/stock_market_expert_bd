@@ -702,7 +702,8 @@ def run_price_only_scrape():
     """Daily price & macro news refresh with minimum data gate."""
     is_open, cal_msg = is_dse_trading_day()
     if not is_open:
-        log.info(f"ℹ️ DSE CALENDAR NOTICE: {cal_msg}. Fetching latest closing / weekend snapshot.")
+        log.warning(f"🛑 DSE CALENDAR GATE: {cal_msg}. Scraper halted to prevent weekend/holiday phantom bar insertion.")
+        return None
     date_str = today_str()
     save_raw("market_summary", scrape_market_summary(), date_str)
     prices = scrape_all_prices()

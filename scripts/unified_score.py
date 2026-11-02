@@ -85,6 +85,7 @@ def score_features(
     close: float | None = None,
     factor_weights: dict | None = None,
     ticker: str | None = None,
+    asof_date: str | None = None,
 ) -> dict:
     """Return score, eligibility, and component breakdown under frozen model or explicit weights."""
     sec = (sector or "Unknown")
@@ -102,18 +103,25 @@ def score_features(
         eligible = False
         reasons.append("bad_price")
 
-    if not is_bank and de_v is not None and de_v > 1.0:
-        eligible = False
-        reasons.append("debt_gate")
+    if not is_bank:
+        if de_v is None:
+            eligible = False
+            reasons.append("missing_debt_equity")
+        elif de_v > 1.0:
+            eligible = False
+            reasons.append("debt_gate")
 
-    if pe_v is not None and (pe_v <= 0 or pe_v > 25):
+    if pe_v is None:
+        eligible = False
+        reasons.append("missing_pe_ratio")
+    elif pe_v <= 0 or pe_v > 25:
         eligible = False
         reasons.append("pe_gate")
 
     if ticker:
         try:
             from anti_manipulation_engine import is_ticker_blacklisted
-            is_b, _ = is_ticker_blacklisted(ticker)
+            is_b, _ = is_ticker_blacklisted(ticker, asof_date=asof_date)
             if is_b:
                 eligible = False
                 reasons.append("manipulation_blacklist")
