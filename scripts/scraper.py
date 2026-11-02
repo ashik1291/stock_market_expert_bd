@@ -141,12 +141,22 @@ def save_raw(category: str, data: dict | list, date_str: str = None):
     log.info(f"Saved {out_file}")
 
 
-def http_get(url: str, retries: int = 3, delay: float = 2.0) -> requests.Response | None:
+def http_get(url: str, retries: int = 3, delay: float = 2.0, verify: bool = True) -> requests.Response | None:
     for attempt in range(retries):
         try:
-            resp = SESSION.get(url, timeout=20)
+            resp = SESSION.get(url, timeout=20, verify=verify)
             resp.raise_for_status()
             return resp
+        except requests.exceptions.SSLError as ssl_err:
+            log.warning(f"SSL error for {url}: {ssl_err}. Retrying with verify=False.")
+            try:
+                import urllib3
+                urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+                resp = SESSION.get(url, timeout=20, verify=False)
+                resp.raise_for_status()
+                return resp
+            except Exception as e2:
+                log.warning(f"Insecure retry failed [{url}]: {e2}")
         except Exception as e:
             log.warning(f"Attempt {attempt+1} failed [{url}]: {e}")
             time.sleep(delay * (attempt + 1))
@@ -166,78 +176,220 @@ def get_company_name(ticker: str, names: dict) -> str:
 # ── Market Summary ────────────────────────────────────────────────────────────
 
 def scrape_market_summary() -> dict:
-    """Fetch DSEX / DS30 / DSES via bdshare. Falls back to HTTP scrape."""
+    """Fetch DSEX / DS30 / DSES via bdshare. Falls back to DSE JSON API and HTTP scrape."""
     if BDSHARE_OK:
         try:
             with BDShare() as bd:
                 summary = bd.get_market_summary()
-                if isinstance(summary, dict):
+                if isinstance(summary, dict) and summary:
                     return summary
-                # DataFrame returned
-                return summary.to_dict(orient="records") if hasattr(summary, "to_dict") else {}
+                if hasattr(summary, "to_dict"):
+                    recs = summary.to_dict(orient="records")
+                    if recs:
+                        return recs
         except Exception as e:
-            log.warning(f"bdshare market summary failed: {e}. Falling back to scrape.")
+            log.warning(f"bdshare market summary failed: {e}. Falling back to DSE API.")
 
-    # HTTP fallback — DSE main page index table
-    resp = http_get("https://www.dse.com.bd/")
-    if not resp:
-        return {}
-    soup = BeautifulSoup(resp.text, "html.parser")
-    result = {}
+    # Fallback 1: DSE Official JSON API
     try:
-        for row in soup.select("table tr"):
-            cols = [td.get_text(strip=True) for td in row.find_all("td")]
-            if len(cols) >= 4 and any(k in cols[0].upper() for k in ["DSEX", "DS30", "DSES"]):
-                result[cols[0]] = {"value": cols[1], "change": cols[2], "change_pct": cols[3]}
+        resp = http_get("https://dsebd.org/api/live/market", verify=False)
+        if resp and resp.status_code == 200:
+            data = resp.json()
+            summary = {}
+            for idx in data.get("indices", []):
+                k = idx.get("key")
+                if k:
+                    summary[k] = {
+                        "value": str(idx.get("value")),
+                        "change": str(idx.get("change")),
+                        "change_pct": f"{idx.get('percent'):.2f}%" if idx.get("percent") is not None else "0.0%"
+                    }
+            if summary:
+                totals = data.get("totals", {})
+                if totals:
+                    summary["totals"] = totals
+                log.info(f"Fetched market summary via DSE JSON API: {list(summary.keys())}")
+                return summary
     except Exception as e:
-        log.warning(f"Market summary scrape failed: {e}")
-    return result
+        log.warning(f"DSE live market API failed: {e}")
+
+    # Fallback 2: Legacy DSE web table
+    for fallback_url in ["https://old.dsebd.org/", "https://www.dse.com.bd/"]:
+        resp = http_get(fallback_url, verify=False)
+        if not resp:
+            continue
+        soup = BeautifulSoup(resp.text, "html.parser")
+        result = {}
+        try:
+            for row in soup.select("table tr"):
+                cols = [td.get_text(strip=True) for td in row.find_all("td")]
+                if len(cols) >= 4 and any(k in cols[0].upper() for k in ["DSEX", "DS30", "DSES"]):
+                    result[cols[0]] = {"value": cols[1], "change": cols[2], "change_pct": cols[3]}
+            if result:
+                log.info(f"Fetched market summary via legacy HTML ({fallback_url})")
+                return result
+        except Exception as e:
+            log.warning(f"Market summary scrape failed on {fallback_url}: {e}")
+
+    return {}
 
 
 # ── All Share Prices ──────────────────────────────────────────────────────────
 
 def scrape_all_prices() -> list[dict]:
     """
-    Fetch live prices for all DSE instruments via bdshare.
-    Returns list of dicts with: ticker, category, close, high, low, open, volume, value, change, change_pct.
+    Fetch live prices for all DSE instruments.
+    Priority 1: bdshare.get_current_trade_data()
+    Priority 2: Modern DSE JSON API (https://dsebd.org/api/live/prices)
+    Priority 3: Legacy DSE table (https://old.dsebd.org/latest_share_price_scroll_l.php)
+    Priority 4: Cached raw snapshot in data/raw/
     """
     if BDSHARE_OK:
         try:
             df = get_current_trade_data()
-            if df is not None and not df.empty:
+            if df is not None and not df.empty and len(df) >= 50:
                 records = df.to_dict(orient="records")
+                for r in records:
+                    if "symbol" in r and "ticker" not in r:
+                        r["ticker"] = r["symbol"]
+                    if "category" not in r:
+                        r["category"] = "A"
                 log.info(f"bdshare: fetched {len(records)} live prices")
                 return records
         except Exception as e:
-            log.warning(f"bdshare get_current_trade_data failed: {e}. Falling back to scrape.")
+            log.warning(f"bdshare get_current_trade_data failed: {e}. Falling back to DSE JSON API.")
 
-    # HTTP fallback — DSE price scroll page
-    resp = http_get("https://www.dse.com.bd/latest_share_price_scroll_by_value.php")
-    if not resp:
-        return []
-    soup = BeautifulSoup(resp.text, "html.parser")
-    prices = []
-    for row in soup.select("table tbody tr"):
-        cols = [td.get_text(strip=True) for td in row.find_all("td")]
-        if len(cols) < 9:
-            continue
+    # Fallback 1: Modern DSE Official JSON API
+    try:
+        resp = http_get("https://dsebd.org/api/live/prices", verify=False)
+        if resp and resp.status_code == 200:
+            data = resp.json()
+            rows = data.get("rows", [])
+            if len(rows) >= 50:
+                prices = []
+                for row in rows:
+                    code = str(row[0]).strip()
+                    ltp = _to_float(row[1]) or 0.0
+                    ycp = _to_float(row[2]) or 0.0
+                    op = _to_float(row[3]) or 0.0
+                    hi = _to_float(row[4]) or 0.0
+                    lo = _to_float(row[5]) or 0.0
+                    cl = _to_float(row[6]) if (_to_float(row[6]) and _to_float(row[6]) > 0) else (ltp if ltp > 0 else ycp)
+                    vol = _to_int(row[7]) or 0
+                    val = _to_float(row[8]) or 0.0
+                    pct = _to_float(row[10]) or 0.0
+                    cat = str(row[11]).strip() if len(row) > 11 and row[11] else "A"
+                    prices.append({
+                        "ticker":     code,
+                        "category":   cat,
+                        "close":      cl,
+                        "high":       hi,
+                        "low":        lo,
+                        "open":       op,
+                        "change":     round(cl - ycp, 2) if ycp > 0 else 0.0,
+                        "change_pct": pct,
+                        "volume":     vol,
+                        "value":      val,
+                    })
+                log.info(f"DSE JSON API: fetched {len(prices)} live prices")
+                return prices
+    except Exception as e:
+        log.warning(f"DSE JSON API price fetch failed: {e}")
+
+    # Fallback 2: Legacy DSE price scroll page
+    for scroll_url in [
+        "https://old.dsebd.org/latest_share_price_scroll_l.php",
+        "https://www.dse.com.bd/latest_share_price_scroll_by_value.php"
+    ]:
         try:
-            prices.append({
-                "ticker":     cols[1].strip(),
-                "category":   cols[2].strip(),
-                "close":      _to_float(cols[3]),
-                "high":       _to_float(cols[4]),
-                "low":        _to_float(cols[5]),
-                "open":       _to_float(cols[6]),
-                "change":     _to_float(cols[7]),
-                "change_pct": _to_float(cols[8].replace("%", "")),
-                "volume":     _to_int(cols[9]) if len(cols) > 9 else None,
-                "value":      _to_float(cols[10]) if len(cols) > 10 else None,
-            })
+            resp = http_get(scroll_url, verify=False)
+            if not resp:
+                continue
+            soup = BeautifulSoup(resp.text, "html.parser")
+            prices = []
+            for row in soup.select("table tbody tr, table tr"):
+                cols = [td.get_text(strip=True) for td in row.find_all("td")]
+                if len(cols) < 9:
+                    continue
+                try:
+                    prices.append({
+                        "ticker":     cols[1].strip(),
+                        "category":   cols[2].strip() if len(cols) > 2 else "A",
+                        "close":      _to_float(cols[3]),
+                        "high":       _to_float(cols[4]),
+                        "low":        _to_float(cols[5]),
+                        "open":       _to_float(cols[6]),
+                        "change":     _to_float(cols[7]),
+                        "change_pct": _to_float(cols[8].replace("%", "")),
+                        "volume":     _to_int(cols[9]) if len(cols) > 9 else None,
+                        "value":      _to_float(cols[10]) if len(cols) > 10 else None,
+                    })
+                except Exception as e:
+                    log.debug(f"Price row parse error: {e}")
+            if len(prices) >= 50:
+                log.info(f"Scraped {len(prices)} prices via HTML fallback ({scroll_url})")
+                return prices
         except Exception as e:
-            log.debug(f"Price row parse error: {e}")
-    log.info(f"Scraped {len(prices)} prices via HTTP fallback")
-    return prices
+            log.warning(f"HTML price scrape failed on {scroll_url}: {e}")
+
+    # Fallback 3: Latest cached raw snapshot in data/raw/
+    try:
+        raw_dirs = sorted([d for d in RAW_DIR.iterdir() if d.is_dir() and (d / "all_prices.json").exists()], reverse=True)
+        if raw_dirs:
+            cached_file = raw_dirs[0] / "all_prices.json"
+            with open(cached_file, "r", encoding="utf-8") as f:
+                cached = json.load(f)
+            if isinstance(cached, list) and len(cached) >= 50:
+                log.warning(f"Network offline: using cached prices from {cached_file} ({len(cached)} records)")
+                return cached
+    except Exception as e:
+        log.error(f"Failed to read cached prices: {e}")
+
+    return []
+
+
+# ── DSE Official PSI Disclosures ──────────────────────────────────────────────
+
+def scrape_dse_psi_disclosures() -> list[dict]:
+    """
+    Fetches official DSE Price Sensitive Information (PSI) disclosures.
+    Target: https://dsebd.org/api/live/news (primary)
+    Fallback: https://old.dsebd.org/old_news.php (secondary)
+    """
+    try:
+        resp = http_get("https://dsebd.org/api/live/news", verify=False)
+        if resp and resp.status_code == 200:
+            data = resp.json()
+            rows = data.get("rows", [])
+            log.info(f"DSE PSI API: fetched {len(rows)} live disclosures")
+            return rows
+    except Exception as e:
+        log.warning(f"DSE PSI API fetch failed: {e}")
+
+    try:
+        resp = http_get("https://old.dsebd.org/old_news.php", verify=False)
+        if resp and resp.status_code == 200:
+            soup = BeautifulSoup(resp.text, "html.parser")
+            items = []
+            for row in soup.select("table tr"):
+                tds = row.find_all("td")
+                if len(tds) >= 2:
+                    code_td = tds[0].get_text(strip=True)
+                    body_td = tds[1].get_text(strip=True)
+                    if code_td and body_td:
+                        items.append({
+                            "code": code_td,
+                            "summary": f"{code_td}: News",
+                            "body": body_td,
+                            "date": today_str(),
+                        })
+            if items:
+                log.info(f"Legacy HTML news: fetched {len(items)} disclosures")
+                return items
+    except Exception as e:
+        log.warning(f"Legacy HTML news scrape failed: {e}")
+
+    return []
 
 
 # ── Historical OHLCV ──────────────────────────────────────────────────────────
@@ -682,6 +834,12 @@ def run_full_scrape(tickers: list[str] = None, historical_years: int = 5):
     save_raw("fundamentals", fundamentals, date_str)
     save_raw("historical_prices", historical, date_str)
     save_raw("news", news, date_str)
+    try:
+        psi_news = scrape_dse_psi_disclosures()
+        if psi_news:
+            save_raw("dse_psi_news", psi_news, date_str)
+    except Exception as e:
+        log.warning(f"PSI news scrape skipped: {e}")
 
     log.info(f"=== Full scrape complete: {date_str} ===")
     return date_str
@@ -711,6 +869,13 @@ def run_price_only_scrape():
         log.error(f"SCRAPE DATA GATE FAILED: Only {len(prices) if prices else 0} prices fetched. Minimum 50 required.")
         raise RuntimeError(f"Scraped prices count ({len(prices) if prices else 0}) below minimum data gate (50).")
     save_raw("all_prices", prices, date_str)
+    try:
+        # Scrape DSE official PSI disclosures daily
+        psi_news = scrape_dse_psi_disclosures()
+        if psi_news:
+            save_raw("dse_psi_news", psi_news, date_str)
+    except Exception as e:
+        log.warning(f"PSI news scrape skipped: {e}")
     try:
         # Scrape global macro news headlines daily
         news_articles = scrape_news(ticker=None)

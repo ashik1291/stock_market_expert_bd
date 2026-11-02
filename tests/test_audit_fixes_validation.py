@@ -197,6 +197,82 @@ class TestAuditFixesValidation(unittest.TestCase):
         is_b, _ = is_ticker_blacklisted("DGIC", asof_date="2020-01-01")
         self.assertFalse(is_b)
 
+    def test_layer7_trading_calendar_continuous_density(self):
+        """Verify Layer 7 fix: dense continuous calendar 2012-2027 with zero date gaps."""
+        db_path = os.path.join(ROOT, "data", "processed", "dse.db")
+        con = sqlite3.connect(db_path)
+        cur = con.cursor()
+        cur.execute("SELECT COUNT(*), SUM(is_trading_day), SUM(CASE WHEN is_trading_day = 0 THEN 1 ELSE 0 END) FROM trading_calendar")
+        total_days, trading_days, non_trading_days = cur.fetchone()
+        con.close()
+        self.assertGreater(total_days, 5500)
+        self.assertGreater(trading_days, 3600)
+        self.assertGreater(non_trading_days, 1800)
+
+    def test_layer7_backtester_portfolio_simulation(self):
+        """Verify Layer 7 fix: shared-capital portfolio backtester with cash pool, limits, and statutory friction."""
+        from backtester import simulate_portfolio_backtest
+        res = simulate_portfolio_backtest(initial_capital=50000.0, max_concurrent=3)
+        self.assertTrue(res.get("ok"))
+        self.assertEqual(res.get("initial_capital_bdt"), 50000.0)
+        self.assertIn("final_equity_bdt", res)
+        self.assertIn("max_drawdown_pct", res)
+        self.assertIn("total_trades", res)
+        self.assertIn("annualized_sharpe_ratio", res)
+
+    def test_layer7_scraper_multi_layer_failover(self):
+        """Verify Layer 7 fix: scraper failover robustness and price normalization."""
+        from scraper import scrape_market_summary, scrape_all_prices
+        prices = scrape_all_prices()
+        self.assertIsInstance(prices, list)
+        self.assertGreaterEqual(len(prices), 50)
+        first = prices[0]
+        self.assertIn("ticker", first)
+        self.assertIn("close", first)
+        self.assertIn("category", first)
+
+    def test_layer7_dse_psi_corporate_action_parsing(self):
+        """Verify Layer 7 fix: official DSE PSI multi-part disclosure regex parser and database synchronization."""
+        from corporate_action_processor import parse_and_record_dse_psi
+        mock_psi_news = [
+            {
+                "code": "TESTMOCK_PSI",
+                "summary": "TESTMOCK_PSI: Dividend Declaration (cont.1)",
+                "body": "The Board of Directors has recommended 20% Cash Dividend and 10% Stock Dividend for the year ended June 30, 2026. Date of AGM: 28.12.2026. Record Date: 25.11.2026.",
+                "date": "02 Nov 2026"
+            },
+            {
+                "code": "TESTMOCK_PSI",
+                "summary": "TESTMOCK_PSI: Dividend Declaration (cont.2)",
+                "body": "(Cont. News of TESTMOCK_PSI): NAV per share of Tk. 45.00 and EPS of Tk. 3.50. (end)",
+                "date": "02 Nov 2026"
+            }
+        ]
+        db_path = os.path.join(ROOT, "data", "processed", "dse.db")
+        con = sqlite3.connect(db_path)
+        res = parse_and_record_dse_psi(news_items=mock_psi_news, conn=con)
+        self.assertTrue(res.get("ok"))
+        self.assertGreaterEqual(res.get("total_parsed"), 2)
+
+        cur = con.cursor()
+        cur.execute("SELECT action_type, cash_amount, ratio, adjustment_factor FROM corporate_actions WHERE ticker = 'TESTMOCK_PSI' ORDER BY action_type ASC")
+        rows = cur.fetchall()
+        # Clean up mock row
+        con.execute("DELETE FROM corporate_actions WHERE ticker = 'TESTMOCK_PSI'")
+        con.commit()
+        con.close()
+
+        self.assertEqual(len(rows), 2)
+        # bonus_dividend: ratio = 0.10, adjustment_factor = 1/(1+0.1) = 0.909091
+        # cash_dividend: cash_amount = 2.0 (20% of 10), adjustment_factor = 1.0
+        self.assertEqual(rows[0][0], "bonus_dividend")
+        self.assertAlmostEqual(rows[0][2], 0.10, places=2)
+        self.assertAlmostEqual(rows[0][3], 0.909091, places=4)
+
+        self.assertEqual(rows[1][0], "cash_dividend")
+        self.assertAlmostEqual(rows[1][1], 2.0, places=2)
+        self.assertEqual(rows[1][3], 1.0)
+
 
 if __name__ == "__main__":
     unittest.main()

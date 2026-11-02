@@ -420,6 +420,271 @@ def run_full_backtest(tickers: list[str] = None) -> dict:
     return report
 
 
+from dse_circuit_breaker import get_lower_circuit_floor
+
+def simulate_portfolio_backtest(
+    tickers: list[str] = None,
+    initial_capital: float = 100000.0,
+    max_positions: int = 5,
+    max_position_pct: float = 0.20,
+    strategy: str = "swing",
+    rsi_buy: float = 35.0,
+    min_ticket_fee: float = 5.0,
+    buy_fee_pct: float = 0.00415,
+    sell_fee_pct: float = 0.00465,
+    max_concurrent: int = None
+) -> dict:
+    if max_concurrent is not None:
+        max_positions = max_concurrent
+    """
+    Simulates institutional shared-capital portfolio execution:
+    - Enforces realistic cash pool constraint (initial_capital).
+    - Hard limit of max_positions concurrent holdings.
+    - Each position budgeted at min(cash, current_equity * max_position_pct).
+    - Enforces exact statutory trading friction (0.415% buy, 0.465% sell incl Sec 53BBB AIT).
+    - Generates continuous mark-to-market daily equity curve and drawdown metrics.
+    """
+    if tickers is None:
+        conn = get_db()
+        rows = conn.execute("SELECT ticker FROM companies WHERE category='A' ORDER BY market_cap_cr DESC LIMIT 20").fetchall()
+        tickers = [r[0] for r in rows] if rows else ["SQURPHARMA", "GP", "BATBC", "PUBALIBANK", "BRACBANK"]
+
+    # 1. Load price data & precompute indicator signals
+    price_dfs = {}
+    for t in tickers:
+        df = load_price_data(t)
+        if not df.empty and len(df) >= 70:
+            df["date_str"] = df["date"].dt.strftime("%Y-%m-%d")
+            price_dfs[t] = df
+
+    if not price_dfs:
+        return {"error": "No price data available"}
+
+    # 2. Get sorted unique trading dates across all tickers
+    all_dates = set()
+    for df in price_dfs.values():
+        all_dates.update(df["date_str"].tolist())
+    sorted_dates = sorted(all_dates)
+
+    # Pre-index bars by (ticker, date_str)
+    date_ticker_bar = {}
+    ticker_date_idx = {}
+    for t, df in price_dfs.items():
+        for idx, row in df.iterrows():
+            d_str = row["date_str"]
+            date_ticker_bar[(t, d_str)] = row
+            ticker_date_idx[(t, d_str)] = idx
+
+    # Strategy targets
+    target_pct = 0.035 if strategy == "scalp" else 0.150
+    stop_pct   = 0.020 if strategy == "scalp" else 0.050
+    max_hold   = 10 if strategy == "scalp" else 60
+
+    # Portfolio state
+    cash_balance = float(initial_capital)
+    active_positions = {}  # ticker -> dict of pos info
+    completed_trades = []
+    equity_curve = []
+
+    for d_str in sorted_dates:
+        # A. Evaluate open positions for exit
+        to_close = []
+        for t, pos in list(active_positions.items()):
+            bar = date_ticker_bar.get((t, d_str))
+            if bar is None:
+                continue
+
+            f_open = float(bar["open"])
+            f_high = float(bar["high"])
+            f_low  = float(bar["low"])
+            f_close = float(bar["close"])
+
+            pos["hold_bars"] += 1
+            if strategy == "swing":
+                if f_high > pos["highest_price"]:
+                    pos["highest_price"] = f_high
+                    pos["stop_px"] = pos["highest_price"] * (1 - stop_pct)
+
+            # Check circuit breaker
+            prev_close = pos.get("prev_close", f_close)
+            lower_circuit = get_lower_circuit_floor(prev_close)
+            is_locked = (f_low <= lower_circuit * 1.002) and (f_close <= lower_circuit * 1.002)
+            pos["prev_close"] = f_close
+
+            exit_triggered = False
+            exit_price = f_close
+            exit_reason = "max_hold"
+
+            if f_low <= pos["stop_px"]:
+                exit_triggered = True
+                exit_reason = "stop_loss"
+                if is_locked:
+                    exit_price = lower_circuit * 0.9950  # gap down fill
+                else:
+                    exit_price = min(pos["stop_px"], f_open)
+            elif f_high >= pos["target_px"]:
+                exit_triggered = True
+                exit_reason = "target_hit"
+                exit_price = pos["target_px"]
+            elif pos["hold_bars"] >= max_hold:
+                exit_triggered = True
+                exit_reason = "max_hold"
+                exit_price = f_close
+
+            if exit_triggered:
+                gross_proceeds = round(pos["shares"] * exit_price, 2)
+                sell_fee = max(gross_proceeds * sell_fee_pct, min_ticket_fee)
+                net_proceeds = round(gross_proceeds - sell_fee, 2)
+                pnl_bdt = round(net_proceeds - pos["total_cost"], 2)
+                pnl_pct = round((pnl_bdt / pos["total_cost"]) * 100.0, 2) if pos["total_cost"] > 0 else 0.0
+
+                cash_balance += net_proceeds
+                completed_trades.append({
+                    "ticker": t,
+                    "entry_date": pos["entry_date"],
+                    "exit_date": d_str,
+                    "shares": pos["shares"],
+                    "entry_price": pos["entry_price"],
+                    "exit_price": exit_price,
+                    "hold_bars": pos["hold_bars"],
+                    "total_cost": pos["total_cost"],
+                    "net_proceeds": net_proceeds,
+                    "pnl_bdt": pnl_bdt,
+                    "pnl_pct": pnl_pct,
+                    "is_win": (pnl_bdt > 0),
+                    "exit_reason": exit_reason
+                })
+                to_close.append(t)
+
+        for t in to_close:
+            del active_positions[t]
+
+        # B. Calculate current equity
+        open_val = 0.0
+        for t, pos in active_positions.items():
+            b = date_ticker_bar.get((t, d_str))
+            c_px = float(b["close"]) if b is not None else pos["entry_price"]
+            open_val += pos["shares"] * c_px
+
+        current_equity = cash_balance + open_val
+        equity_curve.append({
+            "date": d_str,
+            "equity": round(current_equity, 2),
+            "cash": round(cash_balance, 2),
+            "invested": round(open_val, 2),
+            "positions_count": len(active_positions)
+        })
+
+        # C. Scan for new entries if slots available
+        available_slots = max_positions - len(active_positions)
+        if available_slots > 0 and cash_balance >= 2000.0:
+            signals_today = []
+            for t in tickers:
+                if t in active_positions:
+                    continue
+                bar = date_ticker_bar.get((t, d_str))
+                if bar is None:
+                    continue
+                idx = ticker_date_idx.get((t, d_str))
+                if idx is None or idx < 50:
+                    continue
+
+                df_t = price_dfs[t]
+                prev_bar = df_t.iloc[idx - 1]
+
+                rsi_val = bar["RSI"]
+                sma50 = bar["SMA50"]
+                macd_val = bar["MACD"]
+                if pd.isna(rsi_val) or pd.isna(sma50) or pd.isna(macd_val):
+                    continue
+
+                rsi_signal = (rsi_val <= rsi_buy) and (rsi_val > prev_bar["RSI"])
+                macd_signal = (macd_val > prev_bar["MACD"])
+
+                if rsi_signal and macd_signal:
+                    signals_today.append((t, idx, float(bar["close"])))
+
+            # Enter signals
+            for t, idx, c_px in signals_today[:available_slots]:
+                df_t = price_dfs[t]
+                if idx + 1 >= len(df_t):
+                    continue
+                next_b = df_t.iloc[idx + 1]
+                entry_px = float(next_b["open"]) * 1.0010  # 0.10% slippage
+                pos_budget = min(cash_balance, current_equity * max_position_pct)
+                if pos_budget < 1500.0 or entry_px <= 0:
+                    continue
+
+                shares = int(pos_budget // entry_px)
+                if shares <= 0:
+                    continue
+
+                gross_cost = round(shares * entry_px, 2)
+                buy_fee = max(gross_cost * buy_fee_pct, min_ticket_fee)
+                total_cost = round(gross_cost + buy_fee, 2)
+
+                if cash_balance >= total_cost:
+                    cash_balance -= total_cost
+                    tgt_px = entry_px * (1 + target_pct)
+                    stp_px = entry_px * (1 - stop_pct)
+                    active_positions[t] = {
+                        "entry_date": next_b["date_str"],
+                        "entry_price": entry_px,
+                        "shares": shares,
+                        "total_cost": total_cost,
+                        "highest_price": entry_px,
+                        "target_px": tgt_px,
+                        "stop_px": stp_px,
+                        "prev_close": entry_px,
+                        "hold_bars": 0
+                    }
+
+    # 3. Compute Portfolio Metrics
+    final_equity = equity_curve[-1]["equity"] if equity_curve else initial_capital
+    net_pnl_bdt = round(final_equity - initial_capital, 2)
+    net_return_pct = round((net_pnl_bdt / initial_capital) * 100.0, 2)
+
+    # Drawdown
+    peaks = pd.Series([e["equity"] for e in equity_curve]).cummax()
+    drawdowns = (pd.Series([e["equity"] for e in equity_curve]) - peaks) / peaks
+    max_drawdown_pct = round(abs(float(drawdowns.min())) * 100.0, 2) if not drawdowns.empty else 0.0
+
+    # Sharpe ratio
+    daily_returns = pd.Series([e["equity"] for e in equity_curve]).pct_change().dropna()
+    rf_daily = (0.0884 / 250.0)  # 8.84% Bangladesh T-Bill rate
+    excess_returns = daily_returns - rf_daily
+    sharpe = float((excess_returns.mean() / excess_returns.std()) * np.sqrt(250)) if excess_returns.std() > 0 else 0.0
+
+    wins = [tr for tr in completed_trades if tr["is_win"]]
+    losses = [tr for tr in completed_trades if not tr["is_win"]]
+    win_rate = round((len(wins) / len(completed_trades)) * 100.0, 1) if completed_trades else 0.0
+    tot_win_pnl = sum(tr["pnl_bdt"] for tr in wins)
+    tot_loss_pnl = abs(sum(tr["pnl_bdt"] for tr in losses))
+    profit_factor = round(tot_win_pnl / tot_loss_pnl, 2) if tot_loss_pnl > 0 else (tot_win_pnl if tot_win_pnl > 0 else 1.0)
+
+    summary = {
+        "ok": True,
+        "strategy": strategy,
+        "initial_capital_bdt": initial_capital,
+        "final_equity_bdt": final_equity,
+        "net_pnl_bdt": net_pnl_bdt,
+        "net_return_pct": net_return_pct,
+        "max_drawdown_pct": max_drawdown_pct,
+        "annualized_sharpe_ratio": round(sharpe, 2),
+        "total_trades": len(completed_trades),
+        "wins": len(wins),
+        "losses": len(losses),
+        "win_rate_pct": win_rate,
+        "profit_factor": profit_factor,
+        "active_positions_at_end": len(active_positions)
+    }
+
+    print("=== PORTFOLIO BACKTEST SUMMARY ===")
+    for k, v in summary.items():
+        print(f"  {k}: {v}")
+    return summary
+
+
 if __name__ == "__main__":
     report = run_full_backtest()
     print("=== BACKTEST RUN COMPLETE ===")

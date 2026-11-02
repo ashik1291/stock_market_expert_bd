@@ -1000,6 +1000,16 @@ def process_date(date_str: str = None):
         conn.commit()
         log.info("Market news inserted")
 
+    # Official DSE PSI Disclosures & Corporate Actions
+    psi_news = load_raw("dse_psi_news", date_str)
+    if psi_news:
+        try:
+            import corporate_action_processor
+            res = corporate_action_processor.parse_and_record_dse_psi(psi_news, conn=conn)
+            log.info(f"DSE PSI Disclosures parsed: {res.get('total_parsed', 0)} corporate actions updated")
+        except Exception as e:
+            log.warning(f"Failed to parse DSE PSI disclosures in processor: {e}")
+
     conn.close()
     log.info(f"=== Processing complete: {date_str} ===")
 
