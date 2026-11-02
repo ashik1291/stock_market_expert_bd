@@ -21,7 +21,7 @@ The entire system is packaged with a single-word self-healing bootstrap engine. 
 
 ### 1. Clone the Repository (Ultra-Fast ~35 MB)
 ```bash
-git clone https://github.com/<your-username>/stock_market_expert_bd.git
+git clone https://github.com/ashik1291/stock_market_expert_bd.git
 cd stock_market_expert_bd
 ```
 
@@ -67,7 +67,7 @@ To push this codebase to your own GitHub account:
 # Do NOT initialize with README, license, or .gitignore (they are already included).
 
 # 2. Add your GitHub remote repository URL:
-git remote add origin https://github.com/<your-username>/stock_market_expert_bd.git
+git remote add origin https://github.com/ashik1291/stock_market_expert_bd.git
 
 # 3. Rename branch to master (or main if preferred):
 git branch -M master
