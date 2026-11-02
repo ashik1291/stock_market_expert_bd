@@ -1,7 +1,7 @@
 # 📊 Daily DSE Directional Predictions: Rise vs Fall Matrix — 2026-11-02
 
-**Generated**: 2026-11-02 13:21:12 | **Total Instruments Audited**: 80 Category A Companies  
-**Engine Version**: `baseline-v1.0` (`5025d72`) | **Data Snapshot ID**: `DB-2026-11-02-PIT`  
+**Generated**: 2026-11-02 15:04:16 | **Total Instruments Audited**: 80 Category A Companies  
+**Engine Version**: `baseline-v1.0` (`432231c`) | **Data Snapshot ID**: `DB-2026-11-02-PIT`  
 **Empirical Status**: *Validated as Risk/Junk Filter (0.0% data corruption). Unvalidated as Profit-Generating Predictor (Permutation p = 0.608 vs Random Null).*
 
 **Macro Bias**: `High Macro/Crisis Caution` (Score: -76.5/100)
@@ -16,10 +16,18 @@
 
 | Ticker | Price | Tier | Served Score | Mid Target | Smart Money | Max Order | Action |
 |---|---|---|---|---|---|---|---|
-| **JAMUNAOIL** | ৳177.4 | **HIGH** | 42.1 | ৳183.8 | `NEUTRAL_HOLDING` | 397 sh | **TIER_HIGH_CANDIDATE** |
-| **LHB** | ৳48.2 | **MED** | 28.2 | ৳55.4 | `NEUTRAL_HOLDING` | 14,395 sh | **TIER_MED_CANDIDATE** |
-| **SQURPHARMA** | ৳217.9 | **MED** | 26.9 | ৳250.6 | `NEUTRAL_HOLDING` | 10,145 sh | **TIER_MED_CANDIDATE** |
-| **GP** | ৳235.8 | **LOW** | 26.0 | ৳271.2 | `NEUTRAL_HOLDING` | 2,626 sh | **TIER_LOW_CANDIDATE** |
+| **JAMUNAOIL** | ৳177.1 | **HIGH** | 42.1 | ৳183.7 | `NEUTRAL_HOLDING` | 383 sh | **TIER_HIGH_CANDIDATE** |
+| **DHAKABANK** | ৳11.0 | **HIGH** | 38.4 | ৳12.5 | `STABLE_HOLDINGS` | 50,000 sh | **TIER_HIGH_CANDIDATE** |
+| **CITYBANK** | ৳29.3 | **HIGH** | 34.2 | ৳31.5 | `NEUTRAL_HOLDING` | 50,000 sh | **TIER_HIGH_CANDIDATE** |
+| **BSRMLTD** | ৳94.9 | **HIGH** | 33.1 | ৳101.5 | `NEUTRAL_HOLDING` | 3,971 sh | **TIER_HIGH_CANDIDATE** |
+| **GP** | ৳235.4 | **MED** | 27.4 | ৳258.7 | `NEUTRAL_HOLDING` | 2,489 sh | **TIER_MED_CANDIDATE** |
+| **LHB** | ৳48.0 | **MED** | 26.4 | ৳58.1 | `NEUTRAL_HOLDING` | 13,604 sh | **TIER_MED_CANDIDATE** |
+| **CONFIDCEM** | ৳56.0 | **MED** | 23.2 | ৳68.0 | `STABLE_HOLDINGS` | 2,875 sh | **TIER_MED_CANDIDATE** |
+| **AAMRANET** | ৳18.2 | **MED** | 22.4 | ৳21.6 | `NEUTRAL_HOLDING` | 4,457 sh | **TIER_MED_CANDIDATE** |
+| **WALTONHIL** | ৳326.5 | **MED** | 21.2 | ৳399.1 | `STABLE_HOLDINGS` | 771 sh | **TIER_MED_CANDIDATE** |
+| **MTB** | ৳12.8 | **LOW** | 20.6 | ৳13.7 | `NEUTRAL_HOLDING` | 27,365 sh | **TIER_LOW_CANDIDATE** |
+| **RELIANCINS** | ৳93.2 | **LOW** | 18.2 | ৳116.3 | `INSTITUTIONAL_ACCUMULATION` | 16,470 sh | **TIER_LOW_CANDIDATE** |
+| **BXPHARMA** | ৳144.3 | **LOW** | 17.4 | ৳153.2 | `NEUTRAL_HOLDING` | 15,919 sh | **TIER_LOW_CANDIDATE** |
 
 ## 🔴 2. Stocks Predicted to FALL / CRASH (Severe Capital Erosion Risk)
 
@@ -27,18 +35,18 @@
 
 | Ticker | Price | Primary Fall Trigger / Trap | Action |
 |---|---|---|---|
-| **UCB** | ৳8.8 | Forensic Surveillance Blacklist: Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-10-28 — Volume is 10.7x 20-day average (2,949,703 vs 274,794) | Price up +9.52% with poor fundamentals (Negative EPS) | Promoters hold only 10.3% (< 30% legal threshold) during price run-up] | **DO NOT BUY / EXIT ON BOUNCE** |
-| **RUNNERAUTO** | ৳44.9 | Forensic Surveillance Blacklist: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-27 — Price up +4.86% with poor fundamentals (Negative EPS)] | **DO NOT BUY / EXIT ON BOUNCE** |
-| **ISLAMIBANK** | ৳20.6 | Excessive Loan Burden (D/E: None) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
-| **MEGHNACEM** | ৳27.2 | Forensic Surveillance Blacklist: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-11-02 — Price up +4.41% with poor fundamentals (Negative EPS)] | **DO NOT BUY / EXIT ON BOUNCE** |
-| **ARAMITCEM** | ৳10.7 | Forensic Surveillance Blacklist: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-26 — Price up +7.69% with poor fundamentals (Negative EPS)] | **DO NOT BUY / EXIT ON BOUNCE** |
-| **SAIFPOWER** | ৳6.4 | Forensic Surveillance Blacklist: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-29 — Price up +4.84% with poor fundamentals (Negative EPS)] | **DO NOT BUY / EXIT ON BOUNCE** |
+| **RUNNERAUTO** | ৳44.6 | Forensic Surveillance Blacklist: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-27 — Price up +4.86% with poor fundamentals (Negative EPS)] | **DO NOT BUY / EXIT ON BOUNCE** |
+| **UCB** | ৳8.6 | Forensic Surveillance Blacklist: Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-10-28 — Volume is 10.7x 20-day average (2,949,703 vs 274,794) | Price up +9.52% with poor fundamentals (Negative EPS) | Promoters hold only 10.3% (< 30% legal threshold) during price run-up] | **DO NOT BUY / EXIT ON BOUNCE** |
+| **ISLAMIBANK** | ৳19.7 | Excessive Loan Burden (D/E: None) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
+| **MEGHNACEM** | ৳28.4 | Forensic Surveillance Blacklist: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-11-02 — Price up +4.41% with poor fundamentals (Negative EPS)] | **DO NOT BUY / EXIT ON BOUNCE** |
+| **ARAMITCEM** | ৳11.0 | Forensic Surveillance Blacklist: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-26 — Price up +7.69% with poor fundamentals (Negative EPS)] | **DO NOT BUY / EXIT ON BOUNCE** |
+| **SAIFPOWER** | ৳6.6 | Forensic Surveillance Blacklist: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-29 — Price up +4.84% with poor fundamentals (Negative EPS)] | **DO NOT BUY / EXIT ON BOUNCE** |
 | **ARGONDENIM** | ৳19.5 | Forensic Surveillance Blacklist: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-28 — Price up +4.79% with poor fundamentals (Negative EPS)] | **DO NOT BUY / EXIT ON BOUNCE** |
-| **ORIONPHARM** | ৳27.5 | Excessive Loan Burden (D/E: 1.272) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
-| **BEACONPHAR** | ৳92.0 | Excessive Loan Burden (D/E: 1.512) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
-| **SILCOPHL** | ৳14.5 | Forensic Surveillance Blacklist: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-28 — Price up +5.67% with poor fundamentals (Negative EPS)] | **DO NOT BUY / EXIT ON BOUNCE** |
-| **ACIFORMULA** | ৳135.1 | Forensic Surveillance Blacklist: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-28 — Price up +4.01% with poor fundamentals (Negative EPS)] | **DO NOT BUY / EXIT ON BOUNCE** |
-| **GENEXIL** | ৳28.4 | Excessive Loan Burden (D/E: 1.312) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
+| **ORIONPHARM** | ৳27.4 | Excessive Loan Burden (D/E: 1.272) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
+| **BEACONPHAR** | ৳91.5 | Excessive Loan Burden (D/E: 1.512) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
+| **SILCOPHL** | ৳14.6 | Forensic Surveillance Blacklist: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-28 — Price up +5.67% with poor fundamentals (Negative EPS)] | **DO NOT BUY / EXIT ON BOUNCE** |
+| **ACIFORMULA** | ৳136.9 | Forensic Surveillance Blacklist: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-28 — Price up +4.01% with poor fundamentals (Negative EPS)] | **DO NOT BUY / EXIT ON BOUNCE** |
+| **GENEXIL** | ৳28.5 | Excessive Loan Burden (D/E: 1.312) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
 
 ## 🛡️ Daily Execution Rules for Capital Protection
 

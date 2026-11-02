@@ -1,58 +1,60 @@
 {
   "ticker": "CITYGENINS",
-  "audited_at": "2026-11-01 15:40:13",
+  "audited_at": "2026-11-02 15:04:06",
   "worth_vs_greed": {
-    "current_price": 130.5,
+    "current_price": 130.0,
     "intrinsic_worth": 34.68,
-    "margin_of_safety_pct": -73.4,
+    "margin_of_safety_pct": -73.3,
     "extension_froth_score": 20.0,
     "greed_index": 20.0,
-    "rsi_14": 50.0,
-    "price_vs_ema50_pct": 2.4,
-    "price_vs_ema200_pct": 20.6,
+    "rsi_14": 57.6,
+    "price_vs_ema50_pct": 1.9,
+    "price_vs_ema200_pct": 19.9,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f3127.9 \u2013 \u09f3131.8",
-      "chase_cutoff_price": 133.8,
-      "when_to_wait": "If price opens or rises above \u09f3133.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3127.9.",
-      "weekly_target_short": 135.1,
-      "monthly_target_swing": 150.1,
-      "long_term_target_asset": 169.7,
+      "optimal_entry_corridor": "\u09f3127.4 \u2013 \u09f3131.3",
+      "chase_cutoff_price": 133.2,
+      "when_to_wait": "If price opens or rises above \u09f3133.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3127.4.",
+      "weekly_target_short": 134.5,
+      "monthly_target_swing": 149.5,
+      "long_term_target_asset": 169.0,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -73.4%)."
+    "reason": "Fundamental value severely lags stock price (MoS: -73.3%).",
+    "is_blacklisted": false,
+    "blacklist_reason": null
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -0.15,
+        "return_pct": -0.54,
         "high": 132.5,
-        "low": 130.5,
-        "range_volatility_pct": 1.53
+        "low": 130.0,
+        "range_volatility_pct": 1.92
       },
       "monthly_21d": {
-        "return_pct": 0.0,
+        "return_pct": -0.54,
         "high": 135.0,
-        "low": 128.9,
-        "range_volatility_pct": 4.73
+        "low": 129.3,
+        "range_volatility_pct": 4.41
       },
       "quarterly_63d": {
-        "return_pct": 16.62,
+        "return_pct": 15.15,
         "high": 135.0,
-        "low": 110.4,
-        "range_volatility_pct": 22.28
+        "low": 111.9,
+        "range_volatility_pct": 20.64
       },
       "half_yearly_126d": {
-        "return_pct": 28.32,
+        "return_pct": 28.33,
         "high": 135.0,
-        "low": 100.1,
-        "range_volatility_pct": 34.87
+        "low": 100.5,
+        "range_volatility_pct": 34.33
       },
       "yearly_252d": {
-        "return_pct": 83.29,
+        "return_pct": 82.84,
         "high": 135.0,
         "low": 70.2,
         "range_volatility_pct": 92.31
@@ -64,7 +66,7 @@
       "avg_wave_duration_bars": 26.0
     },
     "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-3.3%). Wait for stabilizing base.",
+    "phase_guidance": "Ongoing pullback from peak (-3.7%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Sep",
@@ -85,8 +87,8 @@
     "weak_seasonal_months": [
       {
         "month": "Nov",
-        "avg_return": -1.8,
-        "win_rate": 29.0
+        "avg_return": -1.7,
+        "win_rate": 27.0
       },
       {
         "month": "Mar",

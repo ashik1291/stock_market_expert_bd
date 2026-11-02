@@ -501,8 +501,6 @@ def build_recommendations(timeframe: str, tickers: list[str] = None, date_str: s
 
     horizons = classify_horizons(_eligible_records, asof_date=date_str)
     horizons["halal_blocked"] = _halal_blocked
-    horizons["_halal_tier"] = _halal_tier
-    horizons["_halal_gates"] = _halal_gates
 
     # Run macro sentiment engine
     try:
@@ -512,11 +510,17 @@ def build_recommendations(timeframe: str, tickers: list[str] = None, date_str: s
         log.warning(f"Macro sentiment engine failed: {e}")
         macro_report = {"systemic_market_bias": 0, "bias_label": "Neutral", "macro_alerts": []}
 
+    metadata = {
+        "halal_tier": _halal_tier,
+        "halal_gates": _halal_gates,
+    }
+
     return {
         "timeframe":      timeframe,
         "generated_at":   datetime.datetime.utcnow().isoformat(),
         "macro":          macro_report,
         "horizons":       horizons,
+        "metadata":       metadata,
         "total_analyzed": len(records),
     }
 
@@ -690,8 +694,9 @@ def generate_markdown_report(recs: dict) -> str:
         lines.append("")
 
     # 9. Halal Filter — view-only advisory (tier-aware, invariant ranking)
-    _tier_label = h.get("_halal_tier", "flexible")
-    _gates = h.get("_halal_gates", {}) or {}
+    _meta = recs.get("metadata", {}) or {}
+    _tier_label = _meta.get("halal_tier") or h.get("_halal_tier", "flexible")
+    _gates = _meta.get("halal_gates") or h.get("_halal_gates", {}) or {}
     _hb = h.get("halal_blocked", []) or []
     lines.append(f"## ☪️ Halal Screen — Tier: `{_tier_label}` (view-only, ranking halal-blind)")
     if _gates:

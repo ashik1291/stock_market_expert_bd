@@ -1,58 +1,60 @@
 {
   "ticker": "FINEFOODS",
-  "audited_at": "2026-11-01 15:40:11",
+  "audited_at": "2026-11-02 15:04:04",
   "worth_vs_greed": {
-    "current_price": 442.9,
+    "current_price": 440.2,
     "intrinsic_worth": 20.96,
-    "margin_of_safety_pct": -95.3,
+    "margin_of_safety_pct": -95.2,
     "extension_froth_score": 10.0,
     "greed_index": 10.0,
-    "rsi_14": 31.7,
-    "price_vs_ema50_pct": -2.1,
-    "price_vs_ema200_pct": -0.9,
+    "rsi_14": 39.9,
+    "price_vs_ema50_pct": -2.6,
+    "price_vs_ema200_pct": -1.5,
     "merit_status": "EARNINGS_BACKED_MERIT",
     "merit_reason": "Price supported by solid earnings (EPS: \u09f32.62, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f3434.0 \u2013 \u09f3447.3",
-      "chase_cutoff_price": 454.0,
-      "when_to_wait": "If price opens or rises above \u09f3454.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3434.0.",
-      "weekly_target_short": 458.4,
-      "monthly_target_swing": 509.3,
-      "long_term_target_asset": 575.8,
+      "optimal_entry_corridor": "\u09f3431.4 \u2013 \u09f3444.6",
+      "chase_cutoff_price": 451.2,
+      "when_to_wait": "If price opens or rises above \u09f3451.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3431.4.",
+      "weekly_target_short": 455.6,
+      "monthly_target_swing": 506.2,
+      "long_term_target_asset": 572.3,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -95.3%)."
+    "reason": "Fundamental value severely lags stock price (MoS: -95.2%).",
+    "is_blacklisted": false,
+    "blacklist_reason": null
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 1.26,
+        "return_pct": 0.3,
         "high": 448.0,
-        "low": 432.0,
-        "range_volatility_pct": 3.7
+        "low": 433.1,
+        "range_volatility_pct": 3.44
       },
       "monthly_21d": {
-        "return_pct": -1.64,
+        "return_pct": -2.24,
         "high": 478.5,
         "low": 432.0,
         "range_volatility_pct": 10.76
       },
       "quarterly_63d": {
-        "return_pct": -7.11,
+        "return_pct": -8.71,
         "high": 486.8,
         "low": 395.7,
         "range_volatility_pct": 23.02
       },
       "half_yearly_126d": {
-        "return_pct": -9.76,
+        "return_pct": -10.4,
         "high": 595.9,
         "low": 395.7,
         "range_volatility_pct": 50.59
       },
       "yearly_252d": {
-        "return_pct": 42.78,
+        "return_pct": 43.81,
         "high": 595.9,
         "low": 270.0,
         "range_volatility_pct": 120.7
@@ -64,7 +66,7 @@
       "avg_wave_duration_bars": 29.0
     },
     "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-7.4%). Wait for stabilizing base.",
+    "phase_guidance": "Ongoing pullback from peak (-8.0%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Dec",
@@ -90,8 +92,8 @@
       },
       {
         "month": "Nov",
-        "avg_return": -0.7,
-        "win_rate": 43.0
+        "avg_return": -0.8,
+        "win_rate": 40.0
       }
     ]
   },

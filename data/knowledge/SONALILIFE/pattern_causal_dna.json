@@ -1,58 +1,61 @@
 {
   "ticker": "SONALILIFE",
-  "audited_at": "2026-11-01 15:40:13",
+  "audited_at": "2026-11-02 15:04:06",
   "worth_vs_greed": {
-    "current_price": 97.4,
+    "current_price": 98.6,
     "intrinsic_worth": 23.6,
-    "margin_of_safety_pct": -75.8,
+    "margin_of_safety_pct": -76.1,
     "extension_froth_score": 50.0,
     "greed_index": 50.0,
-    "rsi_14": 48.6,
-    "price_vs_ema50_pct": 3.3,
-    "price_vs_ema200_pct": 20.9,
+    "rsi_14": 52.3,
+    "price_vs_ema50_pct": 4.4,
+    "price_vs_ema200_pct": 22.1,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f395.5 \u2013 \u09f398.4",
-      "chase_cutoff_price": 99.8,
-      "when_to_wait": "If price opens or rises above \u09f399.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f395.5.",
-      "weekly_target_short": 100.8,
-      "monthly_target_swing": 112.0,
-      "long_term_target_asset": 126.6,
+      "optimal_entry_corridor": "\u09f396.6 \u2013 \u09f399.6",
+      "chase_cutoff_price": 101.1,
+      "when_to_wait": "If price opens or rises above \u09f3101.1, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f396.6.",
+      "weekly_target_short": 102.1,
+      "monthly_target_swing": 113.4,
+      "long_term_target_asset": 128.2,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -75.8%)."
+    "reason": "Fundamental value severely lags stock price (MoS: -76.1%).",
+    "is_blacklisted": true,
+    "blacklist_reason": "Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-28 \u2014 Price up +4.93% with poor fundamentals (Negative EPS)]",
+    "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-28 \u2014 Price up +4.93% with poor fundamentals (Negative EPS)]"
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -9.06,
-        "high": 108.0,
+        "return_pct": -4.92,
+        "high": 103.9,
         "low": 95.4,
-        "range_volatility_pct": 13.21
+        "range_volatility_pct": 8.91
       },
       "monthly_21d": {
-        "return_pct": 13.12,
+        "return_pct": 7.29,
         "high": 109.5,
-        "low": 86.0,
-        "range_volatility_pct": 27.33
+        "low": 90.2,
+        "range_volatility_pct": 21.4
       },
       "quarterly_63d": {
-        "return_pct": 15.54,
+        "return_pct": 16.41,
         "high": 109.5,
         "low": 78.6,
         "range_volatility_pct": 39.31
       },
       "half_yearly_126d": {
-        "return_pct": 60.99,
+        "return_pct": 64.33,
         "high": 109.5,
         "low": 57.0,
         "range_volatility_pct": 92.11
       },
       "yearly_252d": {
-        "return_pct": 19.07,
+        "return_pct": 26.41,
         "high": 109.5,
         "low": 57.0,
         "range_volatility_pct": 92.11
@@ -64,7 +67,7 @@
       "avg_wave_duration_bars": 23.0
     },
     "current_wave_phase": "LATE_MARKUP",
-    "phase_guidance": "Approaching historical rally limit (+23.9% vs median +24.8%). Tighten stop.",
+    "phase_guidance": "Approaching historical rally limit (+25.4% vs median +24.8%). Tighten stop.",
     "top_seasonal_months": [
       {
         "month": "Aug",

@@ -1,6 +1,6 @@
 {
   "ticker": "DESCO",
-  "audited_at": "2026-11-01 15:40:11",
+  "audited_at": "2026-11-02 15:04:04",
   "worth_vs_greed": {
     "current_price": 22.6,
     "intrinsic_worth": 11.3,
@@ -8,7 +8,7 @@
     "extension_froth_score": 30.0,
     "greed_index": 30.0,
     "rsi_14": 21.4,
-    "price_vs_ema50_pct": -2.7,
+    "price_vs_ema50_pct": -2.6,
     "price_vs_ema200_pct": -3.2,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
@@ -23,15 +23,17 @@
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -50.0%)."
+    "reason": "Fundamental value severely lags stock price (MoS: -50.0%).",
+    "is_blacklisted": false,
+    "blacklist_reason": null
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -0.44,
-        "high": 23.2,
+        "return_pct": 1.35,
+        "high": 22.9,
         "low": 21.8,
-        "range_volatility_pct": 6.42
+        "range_volatility_pct": 5.05
       },
       "monthly_21d": {
         "return_pct": -0.44,
@@ -46,25 +48,25 @@
         "range_volatility_pct": 24.3
       },
       "half_yearly_126d": {
-        "return_pct": -5.44,
+        "return_pct": -5.83,
         "high": 27.8,
         "low": 21.1,
         "range_volatility_pct": 31.75
       },
       "yearly_252d": {
-        "return_pct": 14.72,
+        "return_pct": 13.0,
         "high": 27.8,
         "low": 18.1,
         "range_volatility_pct": 53.59
       }
     },
     "wave_metrics": {
-      "median_rally_gain_pct": 20.5,
+      "median_rally_gain_pct": 20.8,
       "median_correction_drop_pct": -17.2,
       "avg_wave_duration_bars": 28.0
     },
-    "current_wave_phase": "MARKUP_RALLY_MID",
-    "phase_guidance": "Midway through rally wave (+5.6% from base, historical target ~+20.5%).",
+    "current_wave_phase": "MARKDOWN_PULLBACK",
+    "phase_guidance": "Ongoing pullback from peak (-12.7%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Jul",

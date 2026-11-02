@@ -1,58 +1,60 @@
 {
   "ticker": "INTECH",
-  "audited_at": "2026-11-01 15:40:10",
+  "audited_at": "2026-11-02 15:04:03",
   "worth_vs_greed": {
-    "current_price": 19.9,
-    "intrinsic_worth": 9.95,
+    "current_price": 20.0,
+    "intrinsic_worth": 10.0,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 40.0,
-    "greed_index": 40.0,
-    "rsi_14": 17.3,
-    "price_vs_ema50_pct": -14.5,
-    "price_vs_ema200_pct": -28.3,
+    "extension_froth_score": 30.0,
+    "greed_index": 30.0,
+    "rsi_14": 18.9,
+    "price_vs_ema50_pct": -13.6,
+    "price_vs_ema200_pct": -27.7,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f319.5 \u2013 \u09f320.1",
-      "chase_cutoff_price": 20.4,
-      "when_to_wait": "If price opens or rises above \u09f320.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f319.5.",
-      "weekly_target_short": 20.6,
-      "monthly_target_swing": 22.9,
-      "long_term_target_asset": 25.9,
+      "optimal_entry_corridor": "\u09f319.6 \u2013 \u09f320.2",
+      "chase_cutoff_price": 20.5,
+      "when_to_wait": "If price opens or rises above \u09f320.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f319.6.",
+      "weekly_target_short": 20.7,
+      "monthly_target_swing": 23.0,
+      "long_term_target_asset": 26.0,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -50.0%)."
+    "reason": "Fundamental value severely lags stock price (MoS: -50.0%).",
+    "is_blacklisted": false,
+    "blacklist_reason": null
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -0.5,
+        "return_pct": 4.17,
         "high": 20.4,
         "low": 18.7,
         "range_volatility_pct": 9.09
       },
       "monthly_21d": {
-        "return_pct": -17.77,
-        "high": 24.5,
+        "return_pct": -16.67,
+        "high": 24.2,
         "low": 18.7,
-        "range_volatility_pct": 31.02
+        "range_volatility_pct": 29.41
       },
       "quarterly_63d": {
-        "return_pct": -24.62,
+        "return_pct": -24.24,
         "high": 27.4,
         "low": 18.7,
         "range_volatility_pct": 46.52
       },
       "half_yearly_126d": {
-        "return_pct": -45.92,
+        "return_pct": -44.44,
         "high": 39.5,
         "low": 18.7,
         "range_volatility_pct": 111.23
       },
       "yearly_252d": {
-        "return_pct": -36.22,
+        "return_pct": -31.03,
         "high": 44.1,
         "low": 18.0,
         "range_volatility_pct": 145.0

@@ -1,58 +1,60 @@
 {
   "ticker": "MTB",
-  "audited_at": "2026-11-01 15:40:09",
+  "audited_at": "2026-11-02 15:04:02",
   "worth_vs_greed": {
-    "current_price": 12.7,
+    "current_price": 12.8,
     "intrinsic_worth": 1.36,
-    "margin_of_safety_pct": -89.3,
+    "margin_of_safety_pct": -89.4,
     "extension_froth_score": 30.0,
     "greed_index": 30.0,
-    "rsi_14": 33.3,
-    "price_vs_ema50_pct": -3.2,
-    "price_vs_ema200_pct": -2.5,
+    "rsi_14": 37.5,
+    "price_vs_ema50_pct": -2.4,
+    "price_vs_ema200_pct": -1.7,
     "merit_status": "EARNINGS_BACKED_MERIT",
     "merit_reason": "Price supported by solid earnings (EPS: \u09f30.17, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f312.4 \u2013 \u09f312.8",
-      "chase_cutoff_price": 13.0,
-      "when_to_wait": "If price opens or rises above \u09f313.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f312.4.",
-      "weekly_target_short": 13.1,
-      "monthly_target_swing": 14.6,
-      "long_term_target_asset": 16.5,
+      "optimal_entry_corridor": "\u09f312.5 \u2013 \u09f312.9",
+      "chase_cutoff_price": 13.1,
+      "when_to_wait": "If price opens or rises above \u09f313.1, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f312.5.",
+      "weekly_target_short": 13.2,
+      "monthly_target_swing": 14.7,
+      "long_term_target_asset": 16.6,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -89.3%)."
+    "reason": "Fundamental value severely lags stock price (MoS: -89.4%).",
+    "is_blacklisted": false,
+    "blacklist_reason": null
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -2.31,
-        "high": 13.0,
+        "return_pct": -0.78,
+        "high": 12.9,
         "low": 12.6,
-        "range_volatility_pct": 3.17
+        "range_volatility_pct": 2.38
       },
       "monthly_21d": {
-        "return_pct": -5.93,
+        "return_pct": -5.19,
         "high": 13.6,
         "low": 12.6,
         "range_volatility_pct": 7.94
       },
       "quarterly_63d": {
-        "return_pct": -6.62,
+        "return_pct": -4.48,
         "high": 14.5,
         "low": 12.3,
         "range_volatility_pct": 17.89
       },
       "half_yearly_126d": {
-        "return_pct": -1.55,
+        "return_pct": -0.78,
         "high": 14.7,
         "low": 11.3,
         "range_volatility_pct": 30.09
       },
       "yearly_252d": {
-        "return_pct": 4.1,
+        "return_pct": 4.07,
         "high": 14.7,
         "low": 10.9,
         "range_volatility_pct": 34.86
@@ -64,7 +66,7 @@
       "avg_wave_duration_bars": 20.0
     },
     "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-8.6%). Wait for stabilizing base.",
+    "phase_guidance": "Ongoing pullback from peak (-7.9%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Oct",

@@ -1,58 +1,60 @@
 {
   "ticker": "BSRMLTD",
-  "audited_at": "2026-11-01 15:40:11",
+  "audited_at": "2026-11-02 15:04:05",
   "worth_vs_greed": {
-    "current_price": 94.4,
+    "current_price": 94.9,
     "intrinsic_worth": 70.0,
-    "margin_of_safety_pct": -25.8,
+    "margin_of_safety_pct": -26.2,
     "extension_froth_score": 10.0,
     "greed_index": 10.0,
-    "rsi_14": 33.1,
-    "price_vs_ema50_pct": -2.4,
-    "price_vs_ema200_pct": 2.1,
+    "rsi_14": 37.4,
+    "price_vs_ema50_pct": -1.8,
+    "price_vs_ema200_pct": 2.6,
     "merit_status": "EARNINGS_BACKED_MERIT",
     "merit_reason": "Price supported by solid earnings (EPS: \u09f38.75, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f392.5 \u2013 \u09f395.3",
-      "chase_cutoff_price": 96.8,
-      "when_to_wait": "If price opens or rises above \u09f396.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f392.5.",
-      "weekly_target_short": 97.7,
-      "monthly_target_swing": 108.6,
-      "long_term_target_asset": 122.7,
+      "optimal_entry_corridor": "\u09f393.0 \u2013 \u09f395.8",
+      "chase_cutoff_price": 97.3,
+      "when_to_wait": "If price opens or rises above \u09f397.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f393.0.",
+      "weekly_target_short": 98.2,
+      "monthly_target_swing": 109.1,
+      "long_term_target_asset": 123.4,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "NEUTRAL",
     "worth_decision": "HOLD",
-    "reason": "Trading in neutral fair-value corridor."
+    "reason": "Trading in neutral fair-value corridor.",
+    "is_blacklisted": false,
+    "blacklist_reason": null
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 0.11,
+        "return_pct": -1.04,
         "high": 97.1,
-        "low": 94.2,
-        "range_volatility_pct": 3.08
+        "low": 94.1,
+        "range_volatility_pct": 3.19
       },
       "monthly_21d": {
-        "return_pct": -0.32,
+        "return_pct": 0.32,
         "high": 105.0,
         "low": 92.3,
         "range_volatility_pct": 13.76
       },
       "quarterly_63d": {
-        "return_pct": -9.14,
+        "return_pct": -9.53,
         "high": 111.5,
         "low": 92.3,
         "range_volatility_pct": 20.8
       },
       "half_yearly_126d": {
-        "return_pct": 13.46,
+        "return_pct": 10.74,
         "high": 115.0,
-        "low": 83.5,
-        "range_volatility_pct": 37.72
+        "low": 84.0,
+        "range_volatility_pct": 36.9
       },
       "yearly_252d": {
-        "return_pct": 9.64,
+        "return_pct": 11.25,
         "high": 115.0,
         "low": 71.5,
         "range_volatility_pct": 60.84

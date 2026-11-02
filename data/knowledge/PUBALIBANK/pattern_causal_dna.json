@@ -1,58 +1,60 @@
 {
   "ticker": "PUBALIBANK",
-  "audited_at": "2026-11-01 15:40:09",
+  "audited_at": "2026-11-02 15:04:02",
   "worth_vs_greed": {
-    "current_price": 42.4,
+    "current_price": 42.3,
     "intrinsic_worth": 23.6,
-    "margin_of_safety_pct": -44.3,
+    "margin_of_safety_pct": -44.2,
     "extension_froth_score": 50.0,
     "greed_index": 50.0,
-    "rsi_14": 66.7,
-    "price_vs_ema50_pct": 7.4,
-    "price_vs_ema200_pct": 15.0,
+    "rsi_14": 70.8,
+    "price_vs_ema50_pct": 6.8,
+    "price_vs_ema200_pct": 14.5,
     "merit_status": "EARNINGS_BACKED_MERIT",
     "merit_reason": "Price supported by solid earnings (EPS: \u09f32.95, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f341.6 \u2013 \u09f342.8",
-      "chase_cutoff_price": 43.5,
-      "when_to_wait": "If price opens or rises above \u09f343.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f341.6.",
-      "weekly_target_short": 43.9,
-      "monthly_target_swing": 48.8,
-      "long_term_target_asset": 55.1,
+      "optimal_entry_corridor": "\u09f341.5 \u2013 \u09f342.7",
+      "chase_cutoff_price": 43.4,
+      "when_to_wait": "If price opens or rises above \u09f343.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f341.5.",
+      "weekly_target_short": 43.8,
+      "monthly_target_swing": 48.6,
+      "long_term_target_asset": 55.0,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -44.3%)."
+    "reason": "Fundamental value severely lags stock price (MoS: -44.2%).",
+    "is_blacklisted": false,
+    "blacklist_reason": null
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 5.21,
+        "return_pct": 4.96,
         "high": 43.7,
         "low": 39.3,
         "range_volatility_pct": 11.2
       },
       "monthly_21d": {
-        "return_pct": 11.29,
+        "return_pct": 10.16,
         "high": 43.7,
         "low": 37.7,
         "range_volatility_pct": 15.92
       },
       "quarterly_63d": {
-        "return_pct": 9.28,
+        "return_pct": 8.46,
         "high": 43.7,
         "low": 37.1,
         "range_volatility_pct": 17.79
       },
       "half_yearly_126d": {
-        "return_pct": 19.1,
+        "return_pct": 18.82,
         "high": 43.7,
         "low": 31.8,
         "range_volatility_pct": 37.42
       },
       "yearly_252d": {
-        "return_pct": 52.52,
+        "return_pct": 53.26,
         "high": 44.0,
         "low": 25.5,
         "range_volatility_pct": 72.55
@@ -64,7 +66,7 @@
       "avg_wave_duration_bars": 33.0
     },
     "current_wave_phase": "LATE_MARKUP",
-    "phase_guidance": "Approaching historical rally limit (+14.3% vs median +11.1%). Tighten stop.",
+    "phase_guidance": "Approaching historical rally limit (+14.0% vs median +11.1%). Tighten stop.",
     "top_seasonal_months": [
       {
         "month": "Aug",

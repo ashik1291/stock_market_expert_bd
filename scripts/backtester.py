@@ -582,17 +582,20 @@ def simulate_portfolio_backtest(
             eff_max_hold = pos.get("effective_max_hold", max_hold)
 
             if f_low <= pos["stop_px"]:
+                if is_locked:
+                    # Zero bids on lower circuit lock; cannot exit today, carry forward into next bar
+                    continue
                 exit_triggered = True
                 exit_reason = "stop_loss"
-                if is_locked:
-                    exit_price = lower_circuit * 0.9950  # gap down fill
-                else:
-                    exit_price = min(pos["stop_px"], f_open)
+                exit_price = min(pos["stop_px"], f_open)
             elif f_high >= pos["target_px"]:
                 exit_triggered = True
                 exit_reason = "target_hit"
                 exit_price = pos["target_px"]
             elif pos["hold_bars"] >= eff_max_hold:
+                if is_locked:
+                    # Zero bids on lower circuit lock; defer max_hold exit until circuit opens
+                    continue
                 exit_triggered = True
                 exit_reason = "max_hold"
                 exit_price = f_close

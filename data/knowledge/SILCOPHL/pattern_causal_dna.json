@@ -1,58 +1,61 @@
 {
   "ticker": "SILCOPHL",
-  "audited_at": "2026-11-01 15:40:10",
+  "audited_at": "2026-11-02 15:04:03",
   "worth_vs_greed": {
-    "current_price": 14.5,
+    "current_price": 14.6,
     "intrinsic_worth": 0.4,
-    "margin_of_safety_pct": -97.2,
+    "margin_of_safety_pct": -97.3,
     "extension_froth_score": 20.0,
     "greed_index": 20.0,
-    "rsi_14": 46.7,
-    "price_vs_ema50_pct": -11.1,
-    "price_vs_ema200_pct": -14.2,
+    "rsi_14": 51.2,
+    "price_vs_ema50_pct": -10.1,
+    "price_vs_ema200_pct": -13.5,
     "merit_status": "EARNINGS_BACKED_MERIT",
     "merit_reason": "Price supported by solid earnings (EPS: \u09f30.05, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f314.2 \u2013 \u09f314.6",
-      "chase_cutoff_price": 14.9,
-      "when_to_wait": "If price opens or rises above \u09f314.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f314.2.",
-      "weekly_target_short": 15.0,
-      "monthly_target_swing": 16.7,
-      "long_term_target_asset": 18.9,
+      "optimal_entry_corridor": "\u09f314.3 \u2013 \u09f314.7",
+      "chase_cutoff_price": 15.0,
+      "when_to_wait": "If price opens or rises above \u09f315.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f314.3.",
+      "weekly_target_short": 15.1,
+      "monthly_target_swing": 16.8,
+      "long_term_target_asset": 19.0,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -97.2%)."
+    "reason": "Fundamental value severely lags stock price (MoS: -97.3%).",
+    "is_blacklisted": true,
+    "blacklist_reason": "Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-28 \u2014 Price up +5.67% with poor fundamentals (Negative EPS)]",
+    "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-28 \u2014 Price up +5.67% with poor fundamentals (Negative EPS)]"
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 0.0,
+        "return_pct": 2.82,
         "high": 15.1,
         "low": 14.0,
         "range_volatility_pct": 7.86
       },
       "monthly_21d": {
-        "return_pct": -14.71,
-        "high": 17.5,
+        "return_pct": -15.12,
+        "high": 17.4,
         "low": 14.0,
-        "range_volatility_pct": 25.0
+        "range_volatility_pct": 24.29
       },
       "quarterly_63d": {
-        "return_pct": -31.92,
+        "return_pct": -31.46,
         "high": 21.8,
         "low": 14.0,
         "range_volatility_pct": 55.71
       },
       "half_yearly_126d": {
-        "return_pct": 0.69,
+        "return_pct": 2.82,
         "high": 23.3,
         "low": 13.9,
         "range_volatility_pct": 67.63
       },
       "yearly_252d": {
-        "return_pct": -5.23,
+        "return_pct": -2.67,
         "high": 23.3,
         "low": 11.1,
         "range_volatility_pct": 109.91
@@ -64,7 +67,7 @@
       "avg_wave_duration_bars": 22.0
     },
     "current_wave_phase": "BOTTOMING_SUPPORT",
-    "phase_guidance": "Drop (-21.2%) matches historical correction depth (-16.1%). Prepare to accumulate.",
+    "phase_guidance": "Drop (-20.7%) matches historical correction depth (-16.1%). Prepare to accumulate.",
     "top_seasonal_months": [
       {
         "month": "Jul",
@@ -84,9 +87,9 @@
     ],
     "weak_seasonal_months": [
       {
-        "month": "Apr",
-        "avg_return": -3.6,
-        "win_rate": 40.0
+        "month": "Nov",
+        "avg_return": -4.0,
+        "win_rate": 38.0
       },
       {
         "month": "Oct",

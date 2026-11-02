@@ -39,7 +39,7 @@ from benchmark_index import equal_weight_category_a_nav
 from rank_ic_newey_west import spearman_rank_correlation
 
 FEE_BUY_PCT = 0.00415
-FEE_SELL_PCT = 0.00415
+FEE_SELL_PCT = 0.00465  # 0.415% broker fee + 0.05% Section 53BBB AIT
 SLIPPAGE_PCT = 0.0010
 INITIAL_CAPITAL = 1000000.0
 TARGET_POSITIONS = 10
@@ -348,6 +348,14 @@ def _rebalance(
         t = cand["ticker"]
         if t in held:
             continue
+        try:
+            from anti_manipulation_engine import is_ticker_blacklisted
+            is_b, b_reason = is_ticker_blacklisted(t, asof_date=asof)
+            if is_b:
+                trades.append({"action": "SKIP_REBALANCE", "ticker": t, "reason": f"BLACKLISTED_{b_reason}"})
+                continue
+        except Exception:
+            pass
         sec = cand.get("sector") or "Unknown"
         if sector_counts.get(sec, 0) >= SECTOR_MAX:
             continue

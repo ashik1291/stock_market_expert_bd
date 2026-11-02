@@ -1,29 +1,31 @@
 {
   "ticker": "GP",
-  "audited_at": "2026-11-01 15:40:10",
+  "audited_at": "2026-11-02 15:04:03",
   "worth_vs_greed": {
-    "current_price": 235.8,
+    "current_price": 235.4,
     "intrinsic_worth": 44.96,
     "margin_of_safety_pct": -80.9,
     "extension_froth_score": 10.0,
     "greed_index": 10.0,
-    "rsi_14": 18.3,
+    "rsi_14": 17.7,
     "price_vs_ema50_pct": -2.6,
     "price_vs_ema200_pct": -7.0,
     "merit_status": "EARNINGS_BACKED_MERIT",
     "merit_reason": "Price supported by solid earnings (EPS: \u09f35.62, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f3231.1 \u2013 \u09f3238.2",
-      "chase_cutoff_price": 241.7,
-      "when_to_wait": "If price opens or rises above \u09f3241.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3231.1.",
-      "weekly_target_short": 244.1,
-      "monthly_target_swing": 271.2,
-      "long_term_target_asset": 306.5,
+      "optimal_entry_corridor": "\u09f3230.7 \u2013 \u09f3237.8",
+      "chase_cutoff_price": 241.3,
+      "when_to_wait": "If price opens or rises above \u09f3241.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3230.7.",
+      "weekly_target_short": 243.6,
+      "monthly_target_swing": 270.7,
+      "long_term_target_asset": 306.0,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -80.9%)."
+    "reason": "Fundamental value severely lags stock price (MoS: -80.9%).",
+    "is_blacklisted": false,
+    "blacklist_reason": null
   },
   "multi_interval_wave": {
     "intervals": {
@@ -34,28 +36,28 @@
         "range_volatility_pct": 1.49
       },
       "monthly_21d": {
-        "return_pct": -2.48,
+        "return_pct": -2.57,
         "high": 243.0,
         "low": 235.4,
         "range_volatility_pct": 3.23
       },
       "quarterly_63d": {
-        "return_pct": -9.06,
+        "return_pct": -9.39,
         "high": 260.0,
         "low": 235.4,
         "range_volatility_pct": 10.45
       },
       "half_yearly_126d": {
-        "return_pct": -4.42,
+        "return_pct": -3.8,
         "high": 261.5,
         "low": 235.4,
         "range_volatility_pct": 11.09
       },
       "yearly_252d": {
-        "return_pct": -19.8,
-        "high": 294.9,
+        "return_pct": -19.49,
+        "high": 292.4,
         "low": 235.4,
-        "range_volatility_pct": 25.28
+        "range_volatility_pct": 24.21
       }
     },
     "wave_metrics": {

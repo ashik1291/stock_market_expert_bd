@@ -1,58 +1,60 @@
 {
   "ticker": "BXPHARMA",
-  "audited_at": "2026-11-01 15:40:09",
+  "audited_at": "2026-11-02 15:04:02",
   "worth_vs_greed": {
-    "current_price": 144.2,
+    "current_price": 144.3,
     "intrinsic_worth": 39.84,
     "margin_of_safety_pct": -72.4,
     "extension_froth_score": 10.0,
     "greed_index": 10.0,
-    "rsi_14": 53.7,
-    "price_vs_ema50_pct": -0.7,
+    "rsi_14": 57.0,
+    "price_vs_ema50_pct": -0.6,
     "price_vs_ema200_pct": 7.7,
     "merit_status": "EARNINGS_BACKED_MERIT",
     "merit_reason": "Price supported by solid earnings (EPS: \u09f34.98, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f3141.3 \u2013 \u09f3145.6",
-      "chase_cutoff_price": 147.8,
-      "when_to_wait": "If price opens or rises above \u09f3147.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3141.3.",
-      "weekly_target_short": 149.2,
-      "monthly_target_swing": 165.8,
-      "long_term_target_asset": 187.5,
+      "optimal_entry_corridor": "\u09f3141.4 \u2013 \u09f3145.7",
+      "chase_cutoff_price": 147.9,
+      "when_to_wait": "If price opens or rises above \u09f3147.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3141.4.",
+      "weekly_target_short": 149.4,
+      "monthly_target_swing": 165.9,
+      "long_term_target_asset": 187.6,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -72.4%)."
+    "reason": "Fundamental value severely lags stock price (MoS: -72.4%).",
+    "is_blacklisted": false,
+    "blacklist_reason": null
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -1.23,
-        "high": 147.0,
+        "return_pct": -0.21,
+        "high": 145.8,
         "low": 142.0,
-        "range_volatility_pct": 3.52
+        "range_volatility_pct": 2.68
       },
       "monthly_21d": {
-        "return_pct": -2.04,
-        "high": 150.2,
+        "return_pct": -2.24,
+        "high": 148.7,
         "low": 138.5,
-        "range_volatility_pct": 8.45
+        "range_volatility_pct": 7.36
       },
       "quarterly_63d": {
-        "return_pct": -1.97,
+        "return_pct": -4.37,
         "high": 154.5,
         "low": 138.5,
         "range_volatility_pct": 11.55
       },
       "half_yearly_126d": {
-        "return_pct": 23.46,
+        "return_pct": 24.4,
         "high": 158.5,
         "low": 110.0,
         "range_volatility_pct": 44.09
       },
       "yearly_252d": {
-        "return_pct": 26.82,
+        "return_pct": 27.47,
         "high": 158.5,
         "low": 99.5,
         "range_volatility_pct": 59.3
@@ -64,7 +66,7 @@
       "avg_wave_duration_bars": 27.0
     },
     "current_wave_phase": "MARKUP_RALLY_MID",
-    "phase_guidance": "Midway through rally wave (+4.1% from base, historical target ~+11.9%).",
+    "phase_guidance": "Midway through rally wave (+4.2% from base, historical target ~+11.9%).",
     "top_seasonal_months": [
       {
         "month": "Sep",

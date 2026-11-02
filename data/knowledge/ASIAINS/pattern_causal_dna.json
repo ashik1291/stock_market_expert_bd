@@ -1,58 +1,60 @@
 {
   "ticker": "ASIAINS",
-  "audited_at": "2026-11-01 15:40:13",
+  "audited_at": "2026-11-02 15:04:06",
   "worth_vs_greed": {
-    "current_price": 40.7,
+    "current_price": 40.4,
     "intrinsic_worth": 2.64,
     "margin_of_safety_pct": -93.5,
     "extension_froth_score": 30.0,
     "greed_index": 30.0,
-    "rsi_14": 65.9,
-    "price_vs_ema50_pct": 0.9,
-    "price_vs_ema200_pct": 4.5,
+    "rsi_14": 71.1,
+    "price_vs_ema50_pct": 0.1,
+    "price_vs_ema200_pct": 3.7,
     "merit_status": "EARNINGS_BACKED_MERIT",
     "merit_reason": "Price supported by solid earnings (EPS: \u09f30.33, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f339.9 \u2013 \u09f341.1",
-      "chase_cutoff_price": 41.7,
-      "when_to_wait": "If price opens or rises above \u09f341.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f339.9.",
-      "weekly_target_short": 42.1,
-      "monthly_target_swing": 46.8,
-      "long_term_target_asset": 52.9,
+      "optimal_entry_corridor": "\u09f339.6 \u2013 \u09f340.8",
+      "chase_cutoff_price": 41.4,
+      "when_to_wait": "If price opens or rises above \u09f341.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f339.6.",
+      "weekly_target_short": 41.8,
+      "monthly_target_swing": 46.5,
+      "long_term_target_asset": 52.5,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -93.5%)."
+    "reason": "Fundamental value severely lags stock price (MoS: -93.5%).",
+    "is_blacklisted": false,
+    "blacklist_reason": null
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 4.9,
+        "return_pct": 6.88,
         "high": 40.9,
         "low": 37.2,
         "range_volatility_pct": 9.95
       },
       "monthly_21d": {
-        "return_pct": -3.55,
-        "high": 42.5,
+        "return_pct": -3.35,
+        "high": 42.3,
         "low": 36.7,
-        "range_volatility_pct": 15.8
+        "range_volatility_pct": 15.26
       },
       "quarterly_63d": {
-        "return_pct": -5.79,
+        "return_pct": -6.26,
         "high": 48.4,
         "low": 36.7,
         "range_volatility_pct": 31.88
       },
       "half_yearly_126d": {
-        "return_pct": 0.74,
+        "return_pct": -0.74,
         "high": 48.4,
         "low": 36.7,
         "range_volatility_pct": 31.88
       },
       "yearly_252d": {
-        "return_pct": 48.0,
+        "return_pct": 46.91,
         "high": 48.4,
         "low": 24.4,
         "range_volatility_pct": 98.36
@@ -64,7 +66,7 @@
       "avg_wave_duration_bars": 24.0
     },
     "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-6.4%). Wait for stabilizing base.",
+    "phase_guidance": "Ongoing pullback from peak (-7.1%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Nov",

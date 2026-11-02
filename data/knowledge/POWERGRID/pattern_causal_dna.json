@@ -1,70 +1,72 @@
 {
   "ticker": "POWERGRID",
-  "audited_at": "2026-11-01 15:40:10",
+  "audited_at": "2026-11-02 15:04:04",
   "worth_vs_greed": {
-    "current_price": 38.8,
+    "current_price": 38.7,
     "intrinsic_worth": 8.24,
-    "margin_of_safety_pct": -78.8,
+    "margin_of_safety_pct": -78.7,
     "extension_froth_score": 30.0,
     "greed_index": 30.0,
     "rsi_14": 38.5,
-    "price_vs_ema50_pct": 1.4,
-    "price_vs_ema200_pct": 7.9,
+    "price_vs_ema50_pct": 1.1,
+    "price_vs_ema200_pct": 7.6,
     "merit_status": "EARNINGS_BACKED_MERIT",
     "merit_reason": "Price supported by solid earnings (EPS: \u09f31.03, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f338.0 \u2013 \u09f339.2",
-      "chase_cutoff_price": 39.8,
-      "when_to_wait": "If price opens or rises above \u09f339.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f338.0.",
-      "weekly_target_short": 40.2,
-      "monthly_target_swing": 44.6,
-      "long_term_target_asset": 50.4,
+      "optimal_entry_corridor": "\u09f337.9 \u2013 \u09f339.1",
+      "chase_cutoff_price": 39.7,
+      "when_to_wait": "If price opens or rises above \u09f339.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f337.9.",
+      "weekly_target_short": 40.1,
+      "monthly_target_swing": 44.5,
+      "long_term_target_asset": 50.3,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -78.8%)."
+    "reason": "Fundamental value severely lags stock price (MoS: -78.7%).",
+    "is_blacklisted": false,
+    "blacklist_reason": null
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 1.04,
+        "return_pct": 0.78,
         "high": 39.1,
         "low": 38.2,
         "range_volatility_pct": 2.36
       },
       "monthly_21d": {
-        "return_pct": 2.37,
+        "return_pct": 2.11,
         "high": 40.5,
         "low": 35.2,
         "range_volatility_pct": 15.06
       },
       "quarterly_63d": {
-        "return_pct": -4.9,
+        "return_pct": -4.91,
         "high": 42.0,
         "low": 35.2,
         "range_volatility_pct": 19.32
       },
       "half_yearly_126d": {
-        "return_pct": 19.75,
+        "return_pct": 18.71,
         "high": 42.8,
         "low": 31.1,
         "range_volatility_pct": 37.62
       },
       "yearly_252d": {
-        "return_pct": 28.9,
+        "return_pct": 30.74,
         "high": 42.8,
         "low": 25.6,
         "range_volatility_pct": 67.19
       }
     },
     "wave_metrics": {
-      "median_rally_gain_pct": 17.7,
+      "median_rally_gain_pct": 17.1,
       "median_correction_drop_pct": -16.9,
       "avg_wave_duration_bars": 21.0
     },
-    "current_wave_phase": "MARKUP_RALLY_MID",
-    "phase_guidance": "Midway through rally wave (+10.2% from base, historical target ~+17.7%).",
+    "current_wave_phase": "MARKDOWN_PULLBACK",
+    "phase_guidance": "Ongoing pullback from peak (-4.4%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Jul",

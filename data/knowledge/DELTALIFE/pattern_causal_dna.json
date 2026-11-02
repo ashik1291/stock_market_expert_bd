@@ -1,15 +1,15 @@
 {
   "ticker": "DELTALIFE",
-  "audited_at": "2026-11-01 15:40:13",
+  "audited_at": "2026-11-02 15:04:06",
   "worth_vs_greed": {
     "current_price": 67.4,
     "intrinsic_worth": 33.7,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 20.0,
-    "greed_index": 20.0,
-    "rsi_14": 43.5,
-    "price_vs_ema50_pct": -5.6,
-    "price_vs_ema200_pct": -9.5,
+    "extension_froth_score": 10.0,
+    "greed_index": 10.0,
+    "rsi_14": 52.6,
+    "price_vs_ema50_pct": -5.4,
+    "price_vs_ema200_pct": -9.4,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
@@ -23,36 +23,38 @@
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -50.0%)."
+    "reason": "Fundamental value severely lags stock price (MoS: -50.0%).",
+    "is_blacklisted": false,
+    "blacklist_reason": null
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -0.44,
+        "return_pct": -0.59,
         "high": 70.0,
-        "low": 67.0,
-        "range_volatility_pct": 4.48
+        "low": 67.4,
+        "range_volatility_pct": 3.86
       },
       "monthly_21d": {
-        "return_pct": -5.73,
-        "high": 72.5,
+        "return_pct": -5.47,
+        "high": 72.2,
         "low": 67.0,
-        "range_volatility_pct": 8.21
+        "range_volatility_pct": 7.76
       },
       "quarterly_63d": {
-        "return_pct": -17.1,
+        "return_pct": -15.96,
         "high": 85.1,
         "low": 67.0,
         "range_volatility_pct": 27.01
       },
       "half_yearly_126d": {
-        "return_pct": -10.01,
+        "return_pct": -9.77,
         "high": 89.9,
         "low": 67.0,
         "range_volatility_pct": 34.18
       },
       "yearly_252d": {
-        "return_pct": -14.36,
+        "return_pct": -13.48,
         "high": 89.9,
         "low": 60.8,
         "range_volatility_pct": 47.86
