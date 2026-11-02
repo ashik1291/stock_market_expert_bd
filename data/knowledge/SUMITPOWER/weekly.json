@@ -2,22 +2,22 @@
   "ticker": "SUMITPOWER",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-01T09:40:11.160714",
+  "analyzed_at": "2026-11-02T03:48:53.760571",
   "asof_price_date": "2026-11-01",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
     "rsi_14": 53.9252,
-    "pe_ratio": 36.89,
+    "pe_ratio": 39.73684210526316,
     "debt_equity": 0.602
   },
   "signal": "BUY",
-  "confidence": 60.6,
+  "confidence": 60.79,
   "trajectory": {
     "direction": "FALL_RISK",
     "direction_icon": "\ud83d\udd34",
-    "rise_probability_pct": 15.0,
+    "rise_probability_pct": 43.0,
     "momentum_status": "Bearish Breakdown / Selling Pressure",
     "short_term": {
       "predicted_path": "Upward momentum swing",
@@ -29,19 +29,19 @@
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+14.7%",
-      "downside_risk_pct": "-5.1%",
-      "target_price": 17.9,
-      "trailing_stop": 14.8,
-      "risk_reward_ratio": "2.9x"
+      "upside_potential_pct": "+9.6%",
+      "downside_risk_pct": "-3.8%",
+      "target_price": 17.1,
+      "trailing_stop": 15.0,
+      "risk_reward_ratio": "2.5x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.1%",
-      "downside_risk_pct": "-9.2%",
+      "downside_risk_pct": "-6.8%",
       "target_price": 20.3,
       "dividend_cagr": "strong (7.45%)",
-      "risk_reward_ratio": "3.3x"
+      "risk_reward_ratio": "4.4x"
     }
   },
   "trade_levels": {
@@ -89,7 +89,7 @@
   },
   "pattern_dna": {
     "ticker": "SUMITPOWER",
-    "audited_at": "2026-11-01 15:40:11",
+    "audited_at": "2026-11-02 09:48:53",
     "worth_vs_greed": {
       "current_price": 15.6,
       "intrinsic_worth": 4.08,
@@ -112,7 +112,9 @@
       },
       "status": "CHRONIC_OVERVALUATION",
       "worth_decision": "AVOID",
-      "reason": "Fundamental value severely lags stock price (MoS: -73.8%)."
+      "reason": "Fundamental value severely lags stock price (MoS: -73.8%).",
+      "is_blacklisted": false,
+      "blacklist_reason": null
     },
     "multi_interval_wave": {
       "intervals": {
@@ -377,20 +379,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": -0.64,
+        "price_change_3d": 0.0,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 60.6,
+    "composite_score": 60.79,
     "governance_score": 75,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.609,
-      "technical": 0.244,
-      "governance": 0.147,
+      "fundamental": 0.582,
+      "technical": 0.261,
+      "governance": 0.157,
       "sentiment": 0.0
     }
   }
