@@ -1,10 +1,10 @@
 # 📊 Daily DSE Directional Predictions: Rise vs Fall Matrix — 2026-11-02
 
-**Generated**: 2026-11-02 10:33:26 | **Total Instruments Audited**: 80 Category A Companies  
-**Engine Version**: `baseline-v1.0` (`6b13e2c`) | **Data Snapshot ID**: `DB-2026-11-02-PIT`  
+**Generated**: 2026-11-02 12:11:20 | **Total Instruments Audited**: 80 Category A Companies  
+**Engine Version**: `baseline-v1.0` (`ee3c5fb`) | **Data Snapshot ID**: `DB-2026-11-02-PIT`  
 **Empirical Status**: *Validated as Risk/Junk Filter (0.0% data corruption). Unvalidated as Profit-Generating Predictor (Permutation p = 0.608 vs Random Null).*
 
-**Macro Bias**: `High Macro/Crisis Caution` (Score: -57.0/100)
+**Macro Bias**: `High Macro/Crisis Caution` (Score: -76.5/100)
 
 ---
 
@@ -30,6 +30,7 @@
 | **UCB** | ৳8.8 | Forensic Surveillance Blacklist: Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-10-28 — Volume is 10.7x 20-day average (2,949,703 vs 274,794) | Price up +9.52% with poor fundamentals (Negative EPS) | Promoters hold only 10.3% (< 30% legal threshold) during price run-up] | **DO NOT BUY / EXIT ON BOUNCE** |
 | **RUNNERAUTO** | ৳44.9 | Forensic Surveillance Blacklist: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-27 — Price up +4.86% with poor fundamentals (Negative EPS)] | **DO NOT BUY / EXIT ON BOUNCE** |
 | **ISLAMIBANK** | ৳20.6 | Excessive Loan Burden (D/E: None) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
+| **MEGHNACEM** | ৳27.2 | Forensic Surveillance Blacklist: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-11-02 — Price up +4.41% with poor fundamentals (Negative EPS)] | **DO NOT BUY / EXIT ON BOUNCE** |
 | **ARAMITCEM** | ৳10.7 | Forensic Surveillance Blacklist: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-26 — Price up +7.69% with poor fundamentals (Negative EPS)] | **DO NOT BUY / EXIT ON BOUNCE** |
 | **SAIFPOWER** | ৳6.4 | Forensic Surveillance Blacklist: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-29 — Price up +4.84% with poor fundamentals (Negative EPS)] | **DO NOT BUY / EXIT ON BOUNCE** |
 | **ARGONDENIM** | ৳19.5 | Forensic Surveillance Blacklist: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-28 — Price up +4.79% with poor fundamentals (Negative EPS)] | **DO NOT BUY / EXIT ON BOUNCE** |
@@ -38,7 +39,6 @@
 | **SILCOPHL** | ৳14.5 | Forensic Surveillance Blacklist: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-28 — Price up +5.67% with poor fundamentals (Negative EPS)] | **DO NOT BUY / EXIT ON BOUNCE** |
 | **ACIFORMULA** | ৳135.1 | Forensic Surveillance Blacklist: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-28 — Price up +4.01% with poor fundamentals (Negative EPS)] | **DO NOT BUY / EXIT ON BOUNCE** |
 | **GENEXIL** | ৳28.4 | Excessive Loan Burden (D/E: 1.312) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
-| **CROWNCEMNT** | ৳58.1 | Excessive Loan Burden (D/E: 1.6) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
 
 ## 🛡️ Daily Execution Rules for Capital Protection
 

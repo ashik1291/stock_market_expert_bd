@@ -111,7 +111,7 @@ def audit_portfolio_sentinel(asof_date: str | None = None) -> dict:
         cb_limit = cb_info["limit_pct"]
         lower_floor = cb_info["floor_price"]
 
-        is_b, bl_msg = is_ticker_blacklisted(t)
+        is_b, bl_msg = is_ticker_blacklisted(t, asof_date=asof_date)
         if is_b:
             action = "EMERGENCY_FORENSIC_EXIT"
             action_desc = f"🚨 ফরেনসিক সতর্কতা: {bl_msg} — বাউন্সে প্রস্থান করুন।"
@@ -131,6 +131,12 @@ def audit_portfolio_sentinel(asof_date: str | None = None) -> dict:
             else:
                 action = "ACCUMULATE_DIP"
                 action_desc = f"সাপোর্ট জোন টেস্ট করছে (P&L: {pnl_pct}%) — ব্লু-চিপ ফান্ডামেন্টাল অটুট থাকলে নিয়ন্ত্রিত ডিপ বাই।"
+        elif live_p >= target_p or pnl_pct >= 30.0:
+            action = "TAKE_PROFIT_ALL"
+            action_desc = f"🎯 টার্গেট স্পর্শ করেছে (P&L: +{pnl_pct:.1f}%)! শতভাগ প্রফিট বুক করুন এবং মূলধন নিরাপদ করুন।"
+        elif pnl_pct >= 15.0:
+            action = "TAKE_PROFIT_HALF"
+            action_desc = f"💰 অর্ধ-মুনাফা বুকিং (P&L: +{pnl_pct:.1f}%) — ৫০% প্রফিট টেক করুন, বাকি ৫০% ব্রেক-ইভেনে (৳{be_price:.1f}) ট্রেইল করুন।"
         else:
             action = "STRONG_HOLD"
             action_desc = "মৌলভিত্তি ও ট্রেন্ড নিরাপদ। দৃঢ়ভাবে হোল্ড করুন।"

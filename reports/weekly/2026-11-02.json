@@ -1,11 +1,12 @@
 {
   "timeframe": "weekly",
-  "generated_at": "2026-11-02T04:33:41.944595",
+  "generated_at": "2026-11-02T06:11:24.038780",
   "macro": {
-    "systemic_market_bias": -57.0,
+    "systemic_market_bias": -76.5,
     "bias_label": "High Macro/Crisis Caution",
-    "total_news_analyzed": 168,
+    "total_news_analyzed": 172,
     "macro_alerts": [
+      "REGULATORY SURVEILLANCE: 'Tesla, Samsung oppose new US tariffs on Vietnam as probe deadline nears' (Daily_Star)",
       "FUEL_POWER CRISIS: 'Gas crisis slows machinery imports'",
       "REGULATORY SURVEILLANCE: 'BSEC launches probe into alleged mutual fund manipulation, paid investment tips' (TBS_News)",
       "REGULATORY SURVEILLANCE: 'BSEC dissatisfied with DSE inquiries, urges result-oriented and purposeful probes' (TBS_News)",
@@ -24,13 +25,13 @@
     "global_macro_indicators": {
       "brent_crude_usd": {
         "symbol": "BZ=F",
-        "price": 109.75,
-        "prev_close": 113.88,
+        "price": 109.82,
+        "prev_close": 115.32,
         "currency": "USD"
       },
       "usd_bdt": {
         "symbol": "BDT=X",
-        "price": 124.3542,
+        "price": 124.3717,
         "prev_close": 120.0691,
         "currency": "BDT"
       }
@@ -319,6 +320,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Fuel_Power",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "_halal": {
           "eligible": true,
@@ -664,6 +666,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Pharmaceuticals",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "_halal": {
           "eligible": true,
@@ -1010,6 +1013,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Cement",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "_halal": {
           "eligible": true,
@@ -1355,6 +1359,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Fuel_Power",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "_halal": {
           "eligible": true,
@@ -1417,353 +1422,6 @@
         "when_not_to_buy": "Do NOT buy if price extends >5% above 20-DMA (>৳217.3), if Debt/Equity rises above 0.8, or during unverified volume surges.",
         "when_to_sell": "Target exit at ৳276.9 (+30.0%) or if P/E expands > 22.0. Stop/Exit if annual cash dividend is suspended or EPS drops YoY for 2 consecutive quarters.",
         "debt_health": "Pristine (D/E: 0.006)",
-        "growth_resilience": "Stable fundamental growth"
-      },
-      {
-        "ticker": "JAMUNAOIL",
-        "signal": "BUY",
-        "confidence": 73.78,
-        "entry": 177.4,
-        "target": 184.3,
-        "stop_loss": 173.95,
-        "rsi": 44.75,
-        "sma20": 178.42,
-        "sma200": 175.02,
-        "pe": "3.11",
-        "eps": "58.7",
-        "dividend": "strong (9.87%)",
-        "dividend_consistency": "proven_compounder (5 yrs cash divs)",
-        "dividend_track_record_years": 5,
-        "debt_equity_val": 0.0,
-        "long_term_debt_equity_val": 0.0,
-        "loan_trap_risk": "none",
-        "downturn_resilience": {
-          "status": "normal",
-          "drawdown_pct": 9.0,
-          "high_52w": 195.0,
-          "low_52w": 164.9
-        },
-        "earnings_quality": "moderate_accrual_drag",
-        "management": {
-          "ticker": "JAMUNAOIL",
-          "company_name": "Jamuna Oil Company Limited",
-          "chairman": "Md. Nurul Alam (Secretary, Energy Division)",
-          "managing_director_ceo": "Md. Gias Uddin Ansary",
-          "leadership_type": "State Petroleum Board + Civil Service Veteran",
-          "industry_experience_years": 32,
-          "governance_rating": "AA+",
-          "audit_credibility": "High (Government Commercial Audit + Chartered Accountants)",
-          "key_moat": "State-backed fuel distribution monopoly, zero long-term debt, massive cash reserves",
-          "management_risk": "Low",
-          "governance_score": 90
-        },
-        "news_intent": {
-          "ticker": "JAMUNAOIL",
-          "intent_score": 0.0,
-          "dominant_intent": "NO_RECENT_NEWS",
-          "articles_analyzed": 0,
-          "red_flags": [],
-          "catalysts": []
-        },
-        "trajectory": {
-          "direction": "RISE_PREDICTED",
-          "direction_icon": "🟢",
-          "rise_probability_pct": 64.2,
-          "momentum_status": "Bullish Reversal / Upward Accumulation",
-          "short_term": {
-            "predicted_path": "Upward momentum swing",
-            "upside_potential_pct": "+1.9%",
-            "downside_risk_pct": "-1.3%",
-            "target_price": 180.8,
-            "support_price": 175.1,
-            "risk_reward_ratio": "1.5x"
-          },
-          "mid_term": {
-            "predicted_path": "Cycle valuation recovery to historical median",
-            "upside_potential_pct": "+3.6%",
-            "downside_risk_pct": "-1.9%",
-            "target_price": 183.8,
-            "trailing_stop": 174.0,
-            "risk_reward_ratio": "1.9x"
-          },
-          "long_term": {
-            "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-            "upside_potential_pct": "+30.0%",
-            "downside_risk_pct": "-3.4%",
-            "target_price": 230.6,
-            "dividend_cagr": "strong (9.87%)",
-            "risk_reward_ratio": "8.8x"
-          }
-        },
-        "precision": {
-          "ticker": "JAMUNAOIL",
-          "smart_money": {
-            "status": "INSUFFICIENT_HISTORY",
-            "smart_money_delta_pct": 0.0,
-            "public_delta_pct": 0.0,
-            "classification": "NEUTRAL_HOLDING",
-            "conviction_bonus": 0.0,
-            "signal": "No monthly delta available"
-          },
-          "cash_flow": {
-            "nocfps": 5.9,
-            "is_estimated": true,
-            "dividend_per_share": 0.0,
-            "dividend_coverage_x": 5.0,
-            "fcf_yield_pct": 590.0,
-            "cash_quality_status": "PRISTINE_REAL_CASH_COVERAGE",
-            "conviction_bonus": 15.0,
-            "signal": "Dividend is 500% cash-covered by real operations (NOCFPS: Tk 5.9 vs DPS: Tk 0.0)"
-          },
-          "liquidity": {
-            "avg_daily_volume": 7956,
-            "daily_turnover_bdt_cr": 0.0,
-            "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
-            "slippage_risk": "HIGH",
-            "max_single_order_shares": 397,
-            "max_daily_accumulation_shares": 1193,
-            "max_order_bdt": 397.0,
-            "directive": "Max single order: 397 shares (Tk 397) to prevent >1% execution slippage"
-          },
-          "earnings_acceleration": {
-            "status": "INSUFFICIENT_QUARTERLY_DATA",
-            "acceleration_status": "NORMAL_STABLE",
-            "bonus": 0.0,
-            "signal": "Standard annual EPS trajectory"
-          },
-          "total_precision_bonus": 15.0
-        },
-        "pattern_dna": {
-          "ticker": "JAMUNAOIL",
-          "audited_at": "2026-11-01 18:25:43",
-          "worth_vs_greed": {
-            "current_price": 177.4,
-            "intrinsic_worth": 55.52,
-            "margin_of_safety_pct": -68.7,
-            "extension_froth_score": 10.0,
-            "greed_index": 10.0,
-            "rsi_14": 37.1,
-            "price_vs_ema50_pct": -0.5,
-            "price_vs_ema200_pct": -0.1,
-            "merit_status": "EARNINGS_BACKED_MERIT",
-            "merit_reason": "Price supported by solid earnings (EPS: ৳6.94, P/E: 0.0). Growth is fundamentally justified.",
-            "timing_directives": {
-              "optimal_entry_corridor": "৳173.9 – ৳179.2",
-              "chase_cutoff_price": 181.8,
-              "when_to_wait": "If price opens or rises above ৳181.8, DO NOT HOP IN. Wait 2–5 trading sessions for dip back to ৳173.9.",
-              "weekly_target_short": 183.6,
-              "monthly_target_swing": 204.0,
-              "long_term_target_asset": 230.6,
-              "capital_pacing_rule": "Deploy maximum 25%–30% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2–4 weeks."
-            },
-            "status": "CHRONIC_OVERVALUATION",
-            "worth_decision": "AVOID",
-            "reason": "Fundamental value severely lags stock price (MoS: -68.7%).",
-            "is_blacklisted": false,
-            "blacklist_reason": null
-          },
-          "multi_interval_wave": {
-            "intervals": {
-              "weekly_5d": {
-                "return_pct": -0.73,
-                "high": 179.9,
-                "low": 176.2,
-                "range_volatility_pct": 2.1
-              },
-              "monthly_21d": {
-                "return_pct": -0.06,
-                "high": 181.3,
-                "low": 170.0,
-                "range_volatility_pct": 6.65
-              },
-              "quarterly_63d": {
-                "return_pct": -3.06,
-                "high": 184.7,
-                "low": 170.0,
-                "range_volatility_pct": 8.65
-              },
-              "half_yearly_126d": {
-                "return_pct": 3.56,
-                "high": 188.0,
-                "low": 165.7,
-                "range_volatility_pct": 13.46
-              },
-              "yearly_252d": {
-                "return_pct": -3.53,
-                "high": 195.0,
-                "low": 164.9,
-                "range_volatility_pct": 18.25
-              }
-            },
-            "wave_metrics": {
-              "median_rally_gain_pct": 9.9,
-              "median_correction_drop_pct": -9.5,
-              "avg_wave_duration_bars": 23.0
-            },
-            "current_wave_phase": "MARKDOWN_PULLBACK",
-            "phase_guidance": "Ongoing pullback from peak (-2.2%). Wait for stabilizing base.",
-            "top_seasonal_months": [
-              {
-                "month": "Jul",
-                "avg_return": 3.8,
-                "win_rate": 69.0
-              },
-              {
-                "month": "Nov",
-                "avg_return": 2.2,
-                "win_rate": 57.0
-              },
-              {
-                "month": "Aug",
-                "avg_return": 2.0,
-                "win_rate": 58.0
-              }
-            ],
-            "weak_seasonal_months": [
-              {
-                "month": "Jan",
-                "avg_return": -2.2,
-                "win_rate": 29.0
-              },
-              {
-                "month": "Dec",
-                "avg_return": -4.1,
-                "win_rate": 15.0
-              }
-            ]
-          },
-          "causal_attributions": [
-            {
-              "event_name": "BSEC Floor Price Regime",
-              "category": "REGULATORY_LAW_AND_ORDER",
-              "period": "2022-07-28 to 2024-01-18",
-              "stock_move_pct": 3.6,
-              "behavior": "DEFENSIVE_STABILITY",
-              "root_cause_why": "Floor prices imposed on all stocks to stop free-fall. Artificially froze liquidity, trapped institutional capital, volume dried up to historic lows.",
-              "market_impact": "LIQUIDITY_FREEZE"
-            },
-            {
-              "event_name": "Phased Floor Price Removal & Price Discovery",
-              "category": "REGULATORY_LAW_AND_ORDER",
-              "period": "2024-01-18 to 2024-03-31",
-              "stock_move_pct": 0.46,
-              "behavior": "DEFENSIVE_STABILITY",
-              "root_cause_why": "BSEC lifted floor prices in waves. Triggered sharp 1,000+ point DSEX correction as artificial valuations collapsed to fair market levels.",
-              "market_impact": "SHARP_DELEVERAGING"
-            },
-            {
-              "event_name": "SMART Interest Rate & Lending Cap Removal",
-              "category": "ECONOMIC_MONETARY",
-              "period": "2023-07-02 to 2024-05-08",
-              "stock_move_pct": -2.8,
-              "behavior": "MODERATE_CYCLICAL_DROP",
-              "root_cause_why": "Bangladesh Bank replaced fixed 9% lending cap with SMART rate, later moving to pure market-based repo tightening (repo hiked to 8.5%-10.0%). Corporate borrowing cost surged from 9% to 14-16%.",
-              "market_impact": "DEBT_BURDEN_SHOCK"
-            },
-            {
-              "event_name": "Political Turmoil & National Student Revolution",
-              "category": "POLITICAL_COUNTRY_CONDITION",
-              "period": "2024-06-02 to 2024-08-04",
-              "stock_move_pct": 2.59,
-              "behavior": "DEFENSIVE_STABILITY",
-              "root_cause_why": "Mass protests, nationwide curfews, internet blackouts, supply chain shutdowns leading to resignation of government on Aug 5.",
-              "market_impact": "SYSTEMIC_DISRUPTION"
-            },
-            {
-              "event_name": "Interim Government Formation & Anti-Corruption Drive",
-              "category": "POLITICAL_REGULATORY",
-              "period": "2024-08-06 to 2024-09-15",
-              "stock_move_pct": -1.65,
-              "behavior": "MODERATE_CYCLICAL_DROP",
-              "root_cause_why": "Interim government established under Dr. Yunus. BSEC leadership replaced, investigation task force formed against financial market manipulators and money laundering.",
-              "market_impact": "POST_CRISIS_HOPE_RALLY"
-            },
-            {
-              "event_name": "Banking NPL Revelations & Aggressive Monetary Tightening",
-              "category": "ECONOMIC_MONETARY_BANKING",
-              "period": "2024-09-17 to 2025-06-30",
-              "stock_move_pct": -0.87,
-              "behavior": "MODERATE_CYCLICAL_DROP",
-              "root_cause_why": "True extent of banking non-performing loans exposed by Bangladesh Bank. Liquidity squeeze in weak banks, high 12-14% treasury bill yields drew liquidity away from stock market.",
-              "market_impact": "TIGHT_LIQUIDITY_AND_FLIGHT_TO_SAFETY"
-            },
-            {
-              "event_name": "Economic Normalization & Moat Flight",
-              "category": "SECTOR_MACRO_RECOVERY",
-              "period": "2025-07-02 to 2026-10-06",
-              "stock_move_pct": -1.93,
-              "behavior": "MODERATE_CYCLICAL_DROP",
-              "root_cause_why": "FX reserves stabilized with IMF/World Bank assistance. Remittance surge. Selective institutional accumulation into debt-free cash cows with high dividend yields (Square, GP, Olympic, Padma Oil).",
-              "market_impact": "SELECTIVE_FUNDAMENTAL_ACCUMULATION"
-            }
-          ]
-        },
-        "manipulation_risk": "low",
-        "manipulation_flags": [],
-        "timeframe": "weekly",
-        "sector": "Fuel_Power",
-        "dses_asof": "2026-11-02",
-        "_halal": {
-          "eligible": true,
-          "reasons": [],
-          "purification_rate": 0.0,
-          "data_gaps": []
-        },
-        "purification_rate": 0.0,
-        "halal_reasons": [],
-        "data_gaps": [],
-        "halal_tier": "flexible",
-        "halal_eligible": true,
-        "thin_liquidity_flag": true,
-        "target_long": 230.6,
-        "dir_icon": "🟢",
-        "direction": "RISE_PREDICTED",
-        "rise_prob": 64.2,
-        "st_info": {
-          "predicted_path": "Upward momentum swing",
-          "upside_potential_pct": "+1.9%",
-          "downside_risk_pct": "-1.3%",
-          "target_price": 180.8,
-          "support_price": 175.1,
-          "risk_reward_ratio": "1.5x"
-        },
-        "mt_info": {
-          "predicted_path": "Cycle valuation recovery to historical median",
-          "upside_potential_pct": "+3.6%",
-          "downside_risk_pct": "-1.9%",
-          "target_price": 183.8,
-          "trailing_stop": 174.0,
-          "risk_reward_ratio": "1.9x"
-        },
-        "lt_info": {
-          "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-          "upside_potential_pct": "+30.0%",
-          "downside_risk_pct": "-3.4%",
-          "target_price": 230.6,
-          "dividend_cagr": "strong (9.87%)",
-          "risk_reward_ratio": "8.8x"
-        },
-        "lt_upside": "+30.0%",
-        "lt_downside": "-3.4%",
-        "leadership_summary": "Md. Gias Uddin Ansary (32y exp, AA+)",
-        "chairman": "Md. Nurul Alam (Secretary, Energy Division)",
-        "md_ceo": "Md. Gias Uddin Ansary",
-        "exp_yrs": 32,
-        "governance_rating": "AA+",
-        "key_moat": "State-backed fuel distribution monopoly, zero long-term debt, massive cash reserves",
-        "audit_credibility": "High (Government Commercial Audit + Chartered Accountants)",
-        "dominant_intent": "NO_RECENT_NEWS",
-        "smart_money_sig": "No monthly delta available",
-        "smart_money_class": "NEUTRAL_HOLDING",
-        "cash_flow_cov": "5.0x real cash covered",
-        "fcf_yield": "590.0%",
-        "liquidity_directive": "Max single order: 397 shares (Tk 397) to prevent >1% execution slippage",
-        "max_single_order": 397,
-        "earnings_acc_sig": "Standard annual EPS trajectory",
-        "when_to_buy": "Buy on support dips between ৳173.9–৳179.2; verify RSI turning up (>35); accumulate in 15%–20% tranches.",
-        "when_not_to_buy": "Do NOT buy if price extends >5% above 20-DMA (>৳187.3), if Debt/Equity rises above 0.8, or during unverified volume surges.",
-        "when_to_sell": "Target exit at ৳230.6 (+30.0%) or if P/E expands > 22.0. Stop/Exit if annual cash dividend is suspended or EPS drops YoY for 2 consecutive quarters.",
-        "debt_health": "Pristine (D/E: 0.0)",
         "growth_resilience": "Stable fundamental growth"
       },
       {
@@ -2048,6 +1706,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Textile",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "_halal": {
           "eligible": true,
@@ -2393,6 +2052,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Textile",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "_halal": {
           "eligible": true,
@@ -2739,6 +2399,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Engineering",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "_halal": {
           "eligible": true,
@@ -3090,6 +2751,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Cement",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "_halal": {
           "eligible": true,
@@ -3435,6 +3097,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Telecom",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "_halal": {
           "eligible": true,
@@ -3781,6 +3444,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Food_Beverage",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "_halal": {
           "eligible": true,
@@ -4126,6 +3790,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "IT",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "_halal": {
           "eligible": true,
@@ -4472,6 +4137,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Telecom",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "_halal": {
           "eligible": true,
@@ -4823,6 +4489,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Engineering",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "_halal": {
           "eligible": true,
@@ -5169,6 +4836,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Pharmaceuticals",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "_halal": {
           "eligible": true,
@@ -5232,6 +4900,354 @@
         "when_to_sell": "Target exit at ৳386.0 (+30.0%) or if P/E expands > 22.0. Stop/Exit if annual cash dividend is suspended or EPS drops YoY for 2 consecutive quarters.",
         "debt_health": "Manageable (D/E: 0.521)",
         "growth_resilience": "Down 20.0% from 52w peak, yet EPS steady (Conviction discount)"
+      },
+      {
+        "ticker": "JAMUNAOIL",
+        "signal": "BUY",
+        "confidence": 73.78,
+        "entry": 177.4,
+        "target": 184.3,
+        "stop_loss": 173.95,
+        "rsi": 44.75,
+        "sma20": 178.42,
+        "sma200": 175.02,
+        "pe": "3.11",
+        "eps": "58.7",
+        "dividend": "strong (9.87%)",
+        "dividend_consistency": "proven_compounder (5 yrs cash divs)",
+        "dividend_track_record_years": 5,
+        "debt_equity_val": 0.0,
+        "long_term_debt_equity_val": 0.0,
+        "loan_trap_risk": "none",
+        "downturn_resilience": {
+          "status": "normal",
+          "drawdown_pct": 9.0,
+          "high_52w": 195.0,
+          "low_52w": 164.9
+        },
+        "earnings_quality": "moderate_accrual_drag",
+        "management": {
+          "ticker": "JAMUNAOIL",
+          "company_name": "Jamuna Oil Company Limited",
+          "chairman": "Md. Nurul Alam (Secretary, Energy Division)",
+          "managing_director_ceo": "Md. Gias Uddin Ansary",
+          "leadership_type": "State Petroleum Board + Civil Service Veteran",
+          "industry_experience_years": 32,
+          "governance_rating": "AA+",
+          "audit_credibility": "High (Government Commercial Audit + Chartered Accountants)",
+          "key_moat": "State-backed fuel distribution monopoly, zero long-term debt, massive cash reserves",
+          "management_risk": "Low",
+          "governance_score": 90
+        },
+        "news_intent": {
+          "ticker": "JAMUNAOIL",
+          "intent_score": 0.0,
+          "dominant_intent": "NO_RECENT_NEWS",
+          "articles_analyzed": 0,
+          "red_flags": [],
+          "catalysts": []
+        },
+        "trajectory": {
+          "direction": "RISE_PREDICTED",
+          "direction_icon": "🟢",
+          "rise_probability_pct": 64.2,
+          "momentum_status": "Bullish Reversal / Upward Accumulation",
+          "short_term": {
+            "predicted_path": "Upward momentum swing",
+            "upside_potential_pct": "+1.9%",
+            "downside_risk_pct": "-1.3%",
+            "target_price": 180.8,
+            "support_price": 175.1,
+            "risk_reward_ratio": "1.5x"
+          },
+          "mid_term": {
+            "predicted_path": "Cycle valuation recovery to historical median",
+            "upside_potential_pct": "+3.6%",
+            "downside_risk_pct": "-1.9%",
+            "target_price": 183.8,
+            "trailing_stop": 174.0,
+            "risk_reward_ratio": "1.9x"
+          },
+          "long_term": {
+            "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
+            "upside_potential_pct": "+30.0%",
+            "downside_risk_pct": "-3.4%",
+            "target_price": 230.6,
+            "dividend_cagr": "strong (9.87%)",
+            "risk_reward_ratio": "8.8x"
+          }
+        },
+        "precision": {
+          "ticker": "JAMUNAOIL",
+          "smart_money": {
+            "status": "INSUFFICIENT_HISTORY",
+            "smart_money_delta_pct": 0.0,
+            "public_delta_pct": 0.0,
+            "classification": "NEUTRAL_HOLDING",
+            "conviction_bonus": 0.0,
+            "signal": "No monthly delta available"
+          },
+          "cash_flow": {
+            "nocfps": 5.9,
+            "is_estimated": true,
+            "dividend_per_share": 0.0,
+            "dividend_coverage_x": 5.0,
+            "fcf_yield_pct": 590.0,
+            "cash_quality_status": "PRISTINE_REAL_CASH_COVERAGE",
+            "conviction_bonus": 15.0,
+            "signal": "Dividend is 500% cash-covered by real operations (NOCFPS: Tk 5.9 vs DPS: Tk 0.0)"
+          },
+          "liquidity": {
+            "avg_daily_volume": 7956,
+            "daily_turnover_bdt_cr": 0.0,
+            "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
+            "slippage_risk": "HIGH",
+            "max_single_order_shares": 397,
+            "max_daily_accumulation_shares": 1193,
+            "max_order_bdt": 397.0,
+            "directive": "Max single order: 397 shares (Tk 397) to prevent >1% execution slippage"
+          },
+          "earnings_acceleration": {
+            "status": "INSUFFICIENT_QUARTERLY_DATA",
+            "acceleration_status": "NORMAL_STABLE",
+            "bonus": 0.0,
+            "signal": "Standard annual EPS trajectory"
+          },
+          "total_precision_bonus": 15.0
+        },
+        "pattern_dna": {
+          "ticker": "JAMUNAOIL",
+          "audited_at": "2026-11-01 18:25:43",
+          "worth_vs_greed": {
+            "current_price": 177.4,
+            "intrinsic_worth": 55.52,
+            "margin_of_safety_pct": -68.7,
+            "extension_froth_score": 10.0,
+            "greed_index": 10.0,
+            "rsi_14": 37.1,
+            "price_vs_ema50_pct": -0.5,
+            "price_vs_ema200_pct": -0.1,
+            "merit_status": "EARNINGS_BACKED_MERIT",
+            "merit_reason": "Price supported by solid earnings (EPS: ৳6.94, P/E: 0.0). Growth is fundamentally justified.",
+            "timing_directives": {
+              "optimal_entry_corridor": "৳173.9 – ৳179.2",
+              "chase_cutoff_price": 181.8,
+              "when_to_wait": "If price opens or rises above ৳181.8, DO NOT HOP IN. Wait 2–5 trading sessions for dip back to ৳173.9.",
+              "weekly_target_short": 183.6,
+              "monthly_target_swing": 204.0,
+              "long_term_target_asset": 230.6,
+              "capital_pacing_rule": "Deploy maximum 25%–30% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2–4 weeks."
+            },
+            "status": "CHRONIC_OVERVALUATION",
+            "worth_decision": "AVOID",
+            "reason": "Fundamental value severely lags stock price (MoS: -68.7%).",
+            "is_blacklisted": false,
+            "blacklist_reason": null
+          },
+          "multi_interval_wave": {
+            "intervals": {
+              "weekly_5d": {
+                "return_pct": -0.73,
+                "high": 179.9,
+                "low": 176.2,
+                "range_volatility_pct": 2.1
+              },
+              "monthly_21d": {
+                "return_pct": -0.06,
+                "high": 181.3,
+                "low": 170.0,
+                "range_volatility_pct": 6.65
+              },
+              "quarterly_63d": {
+                "return_pct": -3.06,
+                "high": 184.7,
+                "low": 170.0,
+                "range_volatility_pct": 8.65
+              },
+              "half_yearly_126d": {
+                "return_pct": 3.56,
+                "high": 188.0,
+                "low": 165.7,
+                "range_volatility_pct": 13.46
+              },
+              "yearly_252d": {
+                "return_pct": -3.53,
+                "high": 195.0,
+                "low": 164.9,
+                "range_volatility_pct": 18.25
+              }
+            },
+            "wave_metrics": {
+              "median_rally_gain_pct": 9.9,
+              "median_correction_drop_pct": -9.5,
+              "avg_wave_duration_bars": 23.0
+            },
+            "current_wave_phase": "MARKDOWN_PULLBACK",
+            "phase_guidance": "Ongoing pullback from peak (-2.2%). Wait for stabilizing base.",
+            "top_seasonal_months": [
+              {
+                "month": "Jul",
+                "avg_return": 3.8,
+                "win_rate": 69.0
+              },
+              {
+                "month": "Nov",
+                "avg_return": 2.2,
+                "win_rate": 57.0
+              },
+              {
+                "month": "Aug",
+                "avg_return": 2.0,
+                "win_rate": 58.0
+              }
+            ],
+            "weak_seasonal_months": [
+              {
+                "month": "Jan",
+                "avg_return": -2.2,
+                "win_rate": 29.0
+              },
+              {
+                "month": "Dec",
+                "avg_return": -4.1,
+                "win_rate": 15.0
+              }
+            ]
+          },
+          "causal_attributions": [
+            {
+              "event_name": "BSEC Floor Price Regime",
+              "category": "REGULATORY_LAW_AND_ORDER",
+              "period": "2022-07-28 to 2024-01-18",
+              "stock_move_pct": 3.6,
+              "behavior": "DEFENSIVE_STABILITY",
+              "root_cause_why": "Floor prices imposed on all stocks to stop free-fall. Artificially froze liquidity, trapped institutional capital, volume dried up to historic lows.",
+              "market_impact": "LIQUIDITY_FREEZE"
+            },
+            {
+              "event_name": "Phased Floor Price Removal & Price Discovery",
+              "category": "REGULATORY_LAW_AND_ORDER",
+              "period": "2024-01-18 to 2024-03-31",
+              "stock_move_pct": 0.46,
+              "behavior": "DEFENSIVE_STABILITY",
+              "root_cause_why": "BSEC lifted floor prices in waves. Triggered sharp 1,000+ point DSEX correction as artificial valuations collapsed to fair market levels.",
+              "market_impact": "SHARP_DELEVERAGING"
+            },
+            {
+              "event_name": "SMART Interest Rate & Lending Cap Removal",
+              "category": "ECONOMIC_MONETARY",
+              "period": "2023-07-02 to 2024-05-08",
+              "stock_move_pct": -2.8,
+              "behavior": "MODERATE_CYCLICAL_DROP",
+              "root_cause_why": "Bangladesh Bank replaced fixed 9% lending cap with SMART rate, later moving to pure market-based repo tightening (repo hiked to 8.5%-10.0%). Corporate borrowing cost surged from 9% to 14-16%.",
+              "market_impact": "DEBT_BURDEN_SHOCK"
+            },
+            {
+              "event_name": "Political Turmoil & National Student Revolution",
+              "category": "POLITICAL_COUNTRY_CONDITION",
+              "period": "2024-06-02 to 2024-08-04",
+              "stock_move_pct": 2.59,
+              "behavior": "DEFENSIVE_STABILITY",
+              "root_cause_why": "Mass protests, nationwide curfews, internet blackouts, supply chain shutdowns leading to resignation of government on Aug 5.",
+              "market_impact": "SYSTEMIC_DISRUPTION"
+            },
+            {
+              "event_name": "Interim Government Formation & Anti-Corruption Drive",
+              "category": "POLITICAL_REGULATORY",
+              "period": "2024-08-06 to 2024-09-15",
+              "stock_move_pct": -1.65,
+              "behavior": "MODERATE_CYCLICAL_DROP",
+              "root_cause_why": "Interim government established under Dr. Yunus. BSEC leadership replaced, investigation task force formed against financial market manipulators and money laundering.",
+              "market_impact": "POST_CRISIS_HOPE_RALLY"
+            },
+            {
+              "event_name": "Banking NPL Revelations & Aggressive Monetary Tightening",
+              "category": "ECONOMIC_MONETARY_BANKING",
+              "period": "2024-09-17 to 2025-06-30",
+              "stock_move_pct": -0.87,
+              "behavior": "MODERATE_CYCLICAL_DROP",
+              "root_cause_why": "True extent of banking non-performing loans exposed by Bangladesh Bank. Liquidity squeeze in weak banks, high 12-14% treasury bill yields drew liquidity away from stock market.",
+              "market_impact": "TIGHT_LIQUIDITY_AND_FLIGHT_TO_SAFETY"
+            },
+            {
+              "event_name": "Economic Normalization & Moat Flight",
+              "category": "SECTOR_MACRO_RECOVERY",
+              "period": "2025-07-02 to 2026-10-06",
+              "stock_move_pct": -1.93,
+              "behavior": "MODERATE_CYCLICAL_DROP",
+              "root_cause_why": "FX reserves stabilized with IMF/World Bank assistance. Remittance surge. Selective institutional accumulation into debt-free cash cows with high dividend yields (Square, GP, Olympic, Padma Oil).",
+              "market_impact": "SELECTIVE_FUNDAMENTAL_ACCUMULATION"
+            }
+          ]
+        },
+        "manipulation_risk": "low",
+        "manipulation_flags": [],
+        "timeframe": "weekly",
+        "sector": "Fuel_Power",
+        "asof_date": null,
+        "dses_asof": "2026-11-02",
+        "_halal": {
+          "eligible": true,
+          "reasons": [],
+          "purification_rate": 0.0,
+          "data_gaps": []
+        },
+        "purification_rate": 0.0,
+        "halal_reasons": [],
+        "data_gaps": [],
+        "halal_tier": "flexible",
+        "halal_eligible": true,
+        "thin_liquidity_flag": true,
+        "target_long": 230.6,
+        "dir_icon": "🟢",
+        "direction": "RISE_PREDICTED",
+        "rise_prob": 64.2,
+        "st_info": {
+          "predicted_path": "Upward momentum swing",
+          "upside_potential_pct": "+1.9%",
+          "downside_risk_pct": "-1.3%",
+          "target_price": 180.8,
+          "support_price": 175.1,
+          "risk_reward_ratio": "1.5x"
+        },
+        "mt_info": {
+          "predicted_path": "Cycle valuation recovery to historical median",
+          "upside_potential_pct": "+3.6%",
+          "downside_risk_pct": "-1.9%",
+          "target_price": 183.8,
+          "trailing_stop": 174.0,
+          "risk_reward_ratio": "1.9x"
+        },
+        "lt_info": {
+          "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
+          "upside_potential_pct": "+30.0%",
+          "downside_risk_pct": "-3.4%",
+          "target_price": 230.6,
+          "dividend_cagr": "strong (9.87%)",
+          "risk_reward_ratio": "8.8x"
+        },
+        "lt_upside": "+30.0%",
+        "lt_downside": "-3.4%",
+        "leadership_summary": "Md. Gias Uddin Ansary (32y exp, AA+)",
+        "chairman": "Md. Nurul Alam (Secretary, Energy Division)",
+        "md_ceo": "Md. Gias Uddin Ansary",
+        "exp_yrs": 32,
+        "governance_rating": "AA+",
+        "key_moat": "State-backed fuel distribution monopoly, zero long-term debt, massive cash reserves",
+        "audit_credibility": "High (Government Commercial Audit + Chartered Accountants)",
+        "dominant_intent": "NO_RECENT_NEWS",
+        "smart_money_sig": "No monthly delta available",
+        "smart_money_class": "NEUTRAL_HOLDING",
+        "cash_flow_cov": "5.0x real cash covered",
+        "fcf_yield": "590.0%",
+        "liquidity_directive": "Max single order: 397 shares (Tk 397) to prevent >1% execution slippage",
+        "max_single_order": 397,
+        "earnings_acc_sig": "Standard annual EPS trajectory",
+        "when_to_buy": "Buy on support dips between ৳173.9–৳179.2; verify RSI turning up (>35); accumulate in 15%–20% tranches.",
+        "when_not_to_buy": "Do NOT buy if price extends >5% above 20-DMA (>৳187.3), if Debt/Equity rises above 0.8, or during unverified volume surges.",
+        "when_to_sell": "Target exit at ৳230.6 (+30.0%) or if P/E expands > 22.0. Stop/Exit if annual cash dividend is suspended or EPS drops YoY for 2 consecutive quarters.",
+        "debt_health": "Pristine (D/E: 0.0)",
+        "growth_resilience": "Stable fundamental growth"
       }
     ],
     "mid_term": [
@@ -5516,6 +5532,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Fuel_Power",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "_halal": {
           "eligible": true,
@@ -5852,6 +5869,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Pharmaceuticals",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "_halal": {
           "eligible": true,
@@ -6189,6 +6207,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Cement",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "_halal": {
           "eligible": true,
@@ -6525,6 +6544,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Fuel_Power",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "_halal": {
           "eligible": true,
@@ -6579,685 +6599,6 @@
         "when_not_to_buy": "Do NOT buy if RSI > 62, if volume drops below 20-DMA during rally, or if market bias is Strongly Bearish.",
         "when_to_sell": "Take profit at ৳244.9 (+15.0%); strictly exit on 5% trailing stop (৳202.3) or MACD bearish death cross.",
         "debt_health": "D/E: 0.006"
-      },
-      {
-        "ticker": "TITASGAS",
-        "signal": "STRONG_BUY",
-        "confidence": 73.78,
-        "entry": 16.6,
-        "target": 17.88,
-        "stop_loss": 15.96,
-        "rsi": 40.28,
-        "sma20": 16.86,
-        "sma200": 17.48,
-        "pe": null,
-        "eps": null,
-        "dividend": "moderate (1.04%)",
-        "dividend_consistency": "proven_compounder (5 yrs cash divs)",
-        "dividend_track_record_years": 5,
-        "debt_equity_val": 0.054,
-        "long_term_debt_equity_val": 0.051,
-        "loan_trap_risk": "none",
-        "downturn_resilience": {
-          "status": "normal",
-          "drawdown_pct": 25.2,
-          "high_52w": 22.2,
-          "low_52w": 14.5
-        },
-        "earnings_quality": null,
-        "management": {
-          "ticker": "TITASGAS",
-          "company_name": "TITASGAS",
-          "chairman": "Board Appointed Chairman",
-          "managing_director_ceo": "Managing Director / CEO",
-          "leadership_type": "Public Listed Corporate Board",
-          "industry_experience_years": 20,
-          "governance_rating": "A",
-          "audit_credibility": "Standard Category A Audit",
-          "key_moat": "DSE Listed Franchise",
-          "management_risk": "Low",
-          "governance_score": 75
-        },
-        "news_intent": {
-          "ticker": "TITASGAS",
-          "intent_score": 0.0,
-          "dominant_intent": "NO_RECENT_NEWS",
-          "articles_analyzed": 0,
-          "red_flags": [],
-          "catalysts": []
-        },
-        "trajectory": {
-          "direction": "CONSOLIDATION_RANGE",
-          "direction_icon": "🟡",
-          "rise_probability_pct": 47.9,
-          "momentum_status": "Neutral Range Consolidation",
-          "short_term": {
-            "predicted_path": "Upward momentum swing",
-            "upside_potential_pct": "+3.6%",
-            "downside_risk_pct": "-2.4%",
-            "target_price": 17.2,
-            "support_price": 16.2,
-            "risk_reward_ratio": "1.5x"
-          },
-          "mid_term": {
-            "predicted_path": "Cycle valuation recovery to historical median",
-            "upside_potential_pct": "+15.1%",
-            "downside_risk_pct": "-4.8%",
-            "target_price": 19.1,
-            "trailing_stop": 15.8,
-            "risk_reward_ratio": "3.1x"
-          },
-          "long_term": {
-            "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-            "upside_potential_pct": "+30.1%",
-            "downside_risk_pct": "-8.6%",
-            "target_price": 21.6,
-            "dividend_cagr": "moderate (1.04%)",
-            "risk_reward_ratio": "3.5x"
-          }
-        },
-        "precision": {
-          "ticker": "TITASGAS",
-          "smart_money": {
-            "status": "ACTIVE",
-            "latest_date": "Aug 31, 2026",
-            "smart_money_delta_pct": -0.01,
-            "institutional_pct": 15.16,
-            "foreign_pct": 0.03,
-            "sponsor_pct": 0.0,
-            "public_pct": 9.81,
-            "public_delta_pct": 0.01,
-            "classification": "STABLE_HOLDINGS",
-            "conviction_bonus": 0.0,
-            "signal": "Holding shift: Smart money -0.01%, Retail +0.01%"
-          },
-          "cash_flow": {
-            "nocfps": 0.0,
-            "is_estimated": true,
-            "dividend_per_share": 0.2,
-            "dividend_coverage_x": 0.0,
-            "fcf_yield_pct": 0.0,
-            "cash_quality_status": "TIGHT_CASH_COVERAGE",
-            "conviction_bonus": -10.0,
-            "signal": "Cash flow covers only 0% of dividend payout"
-          },
-          "liquidity": {
-            "avg_daily_volume": 77799,
-            "daily_turnover_bdt_cr": 0.13,
-            "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
-            "slippage_risk": "HIGH",
-            "max_single_order_shares": 3889,
-            "max_daily_accumulation_shares": 11669,
-            "max_order_bdt": 66891.0,
-            "directive": "Max single order: 3,889 shares (Tk 66,891) to prevent >1% execution slippage"
-          },
-          "earnings_acceleration": {
-            "status": "INSUFFICIENT_QUARTERLY_DATA",
-            "acceleration_status": "NORMAL_STABLE",
-            "bonus": 0.0,
-            "signal": "Standard annual EPS trajectory"
-          },
-          "total_precision_bonus": -10.0
-        },
-        "pattern_dna": {
-          "ticker": "TITASGAS",
-          "audited_at": "2026-11-01 15:40:10",
-          "worth_vs_greed": {
-            "current_price": 16.6,
-            "intrinsic_worth": 72.1,
-            "margin_of_safety_pct": 334.3,
-            "extension_froth_score": 20.0,
-            "greed_index": 20.0,
-            "rsi_14": 45.5,
-            "price_vs_ema50_pct": -4.7,
-            "price_vs_ema200_pct": -7.4,
-            "merit_status": "NEUTRAL_MERIT",
-            "merit_reason": "Valuation is within normal historical ranges.",
-            "timing_directives": {
-              "optimal_entry_corridor": "৳16.3 – ৳16.8",
-              "chase_cutoff_price": 17.0,
-              "when_to_wait": "If price opens or rises above ৳17.0, DO NOT HOP IN. Wait 2–5 trading sessions for dip back to ৳16.3.",
-              "weekly_target_short": 17.2,
-              "monthly_target_swing": 19.1,
-              "long_term_target_asset": 21.6,
-              "capital_pacing_rule": "Deploy maximum 25%–30% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2–4 weeks."
-            },
-            "status": "UNDERVALUED_FEAR",
-            "worth_decision": "HIGH_CONVICTION_BUY",
-            "reason": "High Margin of Safety (+334.3%) with depressed market greed (20.0/100) and NEUTRAL_MERIT. Ideal entry."
-          },
-          "multi_interval_wave": {
-            "intervals": {
-              "weekly_5d": {
-                "return_pct": -0.6,
-                "high": 17.0,
-                "low": 16.4,
-                "range_volatility_pct": 3.66
-              },
-              "monthly_21d": {
-                "return_pct": -6.74,
-                "high": 18.1,
-                "low": 16.4,
-                "range_volatility_pct": 10.37
-              },
-              "quarterly_63d": {
-                "return_pct": -19.02,
-                "high": 20.9,
-                "low": 16.4,
-                "range_volatility_pct": 27.44
-              },
-              "half_yearly_126d": {
-                "return_pct": -1.19,
-                "high": 22.2,
-                "low": 15.9,
-                "range_volatility_pct": 39.62
-              },
-              "yearly_252d": {
-                "return_pct": -11.7,
-                "high": 22.2,
-                "low": 14.5,
-                "range_volatility_pct": 53.1
-              }
-            },
-            "wave_metrics": {
-              "median_rally_gain_pct": 13.3,
-              "median_correction_drop_pct": -16.1,
-              "avg_wave_duration_bars": 19.0
-            },
-            "current_wave_phase": "MARKDOWN_PULLBACK",
-            "phase_guidance": "Ongoing pullback from peak (-11.2%). Wait for stabilizing base.",
-            "top_seasonal_months": [
-              {
-                "month": "Jul",
-                "avg_return": 6.1,
-                "win_rate": 77.0
-              },
-              {
-                "month": "Sep",
-                "avg_return": 2.8,
-                "win_rate": 47.0
-              },
-              {
-                "month": "Feb",
-                "avg_return": 1.9,
-                "win_rate": 62.0
-              }
-            ],
-            "weak_seasonal_months": [
-              {
-                "month": "Nov",
-                "avg_return": -4.5,
-                "win_rate": 21.0
-              },
-              {
-                "month": "Dec",
-                "avg_return": -6.4,
-                "win_rate": 8.0
-              }
-            ]
-          },
-          "causal_attributions": [
-            {
-              "event_name": "BSEC Floor Price Regime",
-              "category": "REGULATORY_LAW_AND_ORDER",
-              "period": "2022-07-28 to 2024-01-18",
-              "stock_move_pct": 3.28,
-              "behavior": "DEFENSIVE_STABILITY",
-              "root_cause_why": "Floor prices imposed on all stocks to stop free-fall. Artificially froze liquidity, trapped institutional capital, volume dried up to historic lows.",
-              "market_impact": "LIQUIDITY_FREEZE"
-            },
-            {
-              "event_name": "Phased Floor Price Removal & Price Discovery",
-              "category": "REGULATORY_LAW_AND_ORDER",
-              "period": "2024-01-18 to 2024-03-31",
-              "stock_move_pct": -36.19,
-              "behavior": "SEVERE_VULNERABILITY",
-              "root_cause_why": "BSEC lifted floor prices in waves. Triggered sharp 1,000+ point DSEX correction as artificial valuations collapsed to fair market levels.",
-              "market_impact": "SHARP_DELEVERAGING"
-            },
-            {
-              "event_name": "SMART Interest Rate & Lending Cap Removal",
-              "category": "ECONOMIC_MONETARY",
-              "period": "2023-07-03 to 2024-05-08",
-              "stock_move_pct": -42.79,
-              "behavior": "SEVERE_VULNERABILITY",
-              "root_cause_why": "Bangladesh Bank replaced fixed 9% lending cap with SMART rate, later moving to pure market-based repo tightening (repo hiked to 8.5%-10.0%). Corporate borrowing cost surged from 9% to 14-16%.",
-              "market_impact": "DEBT_BURDEN_SHOCK"
-            },
-            {
-              "event_name": "Political Turmoil & National Student Revolution",
-              "category": "POLITICAL_COUNTRY_CONDITION",
-              "period": "2024-06-02 to 2024-08-04",
-              "stock_move_pct": 0.48,
-              "behavior": "DEFENSIVE_STABILITY",
-              "root_cause_why": "Mass protests, nationwide curfews, internet blackouts, supply chain shutdowns leading to resignation of government on Aug 5.",
-              "market_impact": "SYSTEMIC_DISRUPTION"
-            },
-            {
-              "event_name": "Interim Government Formation & Anti-Corruption Drive",
-              "category": "POLITICAL_REGULATORY",
-              "period": "2024-08-06 to 2024-09-15",
-              "stock_move_pct": 10.53,
-              "behavior": "DEFENSIVE_STABILITY",
-              "root_cause_why": "Interim government established under Dr. Yunus. BSEC leadership replaced, investigation task force formed against financial market manipulators and money laundering.",
-              "market_impact": "POST_CRISIS_HOPE_RALLY"
-            },
-            {
-              "event_name": "Banking NPL Revelations & Aggressive Monetary Tightening",
-              "category": "ECONOMIC_MONETARY_BANKING",
-              "period": "2024-09-17 to 2025-06-30",
-              "stock_move_pct": -24.41,
-              "behavior": "SEVERE_VULNERABILITY",
-              "root_cause_why": "True extent of banking non-performing loans exposed by Bangladesh Bank. Liquidity squeeze in weak banks, high 12-14% treasury bill yields drew liquidity away from stock market.",
-              "market_impact": "TIGHT_LIQUIDITY_AND_FLIGHT_TO_SAFETY"
-            },
-            {
-              "event_name": "Economic Normalization & Moat Flight",
-              "category": "SECTOR_MACRO_RECOVERY",
-              "period": "2025-07-02 to 2026-10-06",
-              "stock_move_pct": -12.44,
-              "behavior": "MODERATE_CYCLICAL_DROP",
-              "root_cause_why": "FX reserves stabilized with IMF/World Bank assistance. Remittance surge. Selective institutional accumulation into debt-free cash cows with high dividend yields (Square, GP, Olympic, Padma Oil).",
-              "market_impact": "SELECTIVE_FUNDAMENTAL_ACCUMULATION"
-            }
-          ]
-        },
-        "manipulation_risk": "low",
-        "manipulation_flags": [],
-        "timeframe": "weekly",
-        "sector": "Fuel_Power",
-        "dses_asof": "2026-11-02",
-        "_halal": {
-          "eligible": true,
-          "reasons": [],
-          "purification_rate": 0.0,
-          "data_gaps": []
-        },
-        "purification_rate": 0.0,
-        "halal_reasons": [],
-        "data_gaps": [],
-        "halal_tier": "flexible",
-        "halal_eligible": true,
-        "thin_liquidity_flag": true,
-        "target_mid": 19.1,
-        "trailing_stop": 15.8,
-        "dir_icon": "🟡",
-        "direction": "CONSOLIDATION_RANGE",
-        "rise_prob": 47.9,
-        "mt_upside": "+15.1%",
-        "mt_downside": "-4.8%",
-        "mt_rr": "3.1x",
-        "leadership_summary": "Managing Director / CEO (20y exp, A)",
-        "dominant_intent": "NO_RECENT_NEWS",
-        "st_info": {
-          "predicted_path": "Upward momentum swing",
-          "upside_potential_pct": "+3.6%",
-          "downside_risk_pct": "-2.4%",
-          "target_price": 17.2,
-          "support_price": 16.2,
-          "risk_reward_ratio": "1.5x"
-        },
-        "mt_info": {
-          "predicted_path": "Cycle valuation recovery to historical median",
-          "upside_potential_pct": "+15.1%",
-          "downside_risk_pct": "-4.8%",
-          "target_price": 19.1,
-          "trailing_stop": 15.8,
-          "risk_reward_ratio": "3.1x"
-        },
-        "lt_info": {
-          "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-          "upside_potential_pct": "+30.1%",
-          "downside_risk_pct": "-8.6%",
-          "target_price": 21.6,
-          "dividend_cagr": "moderate (1.04%)",
-          "risk_reward_ratio": "3.5x"
-        },
-        "smart_money_sig": "Holding shift: Smart money -0.01%, Retail +0.01%",
-        "liquidity_directive": "Max single order: 3,889 shares (Tk 66,891) to prevent >1% execution slippage",
-        "max_single_order": 3889,
-        "when_to_buy": "Enter on support confirmation (৳16.4–৳16.8) with MACD histogram turning positive and RSI between 35–55.",
-        "when_not_to_buy": "Do NOT buy if RSI > 62, if volume drops below 20-DMA during rally, or if market bias is Strongly Bearish.",
-        "when_to_sell": "Take profit at ৳19.1 (+15.1%); strictly exit on 5% trailing stop (৳15.8) or MACD bearish death cross.",
-        "debt_health": "D/E: 0.054"
-      },
-      {
-        "ticker": "JAMUNAOIL",
-        "signal": "BUY",
-        "confidence": 73.78,
-        "entry": 177.4,
-        "target": 184.3,
-        "stop_loss": 173.95,
-        "rsi": 44.75,
-        "sma20": 178.42,
-        "sma200": 175.02,
-        "pe": "3.11",
-        "eps": "58.7",
-        "dividend": "strong (9.87%)",
-        "dividend_consistency": "proven_compounder (5 yrs cash divs)",
-        "dividend_track_record_years": 5,
-        "debt_equity_val": 0.0,
-        "long_term_debt_equity_val": 0.0,
-        "loan_trap_risk": "none",
-        "downturn_resilience": {
-          "status": "normal",
-          "drawdown_pct": 9.0,
-          "high_52w": 195.0,
-          "low_52w": 164.9
-        },
-        "earnings_quality": "moderate_accrual_drag",
-        "management": {
-          "ticker": "JAMUNAOIL",
-          "company_name": "Jamuna Oil Company Limited",
-          "chairman": "Md. Nurul Alam (Secretary, Energy Division)",
-          "managing_director_ceo": "Md. Gias Uddin Ansary",
-          "leadership_type": "State Petroleum Board + Civil Service Veteran",
-          "industry_experience_years": 32,
-          "governance_rating": "AA+",
-          "audit_credibility": "High (Government Commercial Audit + Chartered Accountants)",
-          "key_moat": "State-backed fuel distribution monopoly, zero long-term debt, massive cash reserves",
-          "management_risk": "Low",
-          "governance_score": 90
-        },
-        "news_intent": {
-          "ticker": "JAMUNAOIL",
-          "intent_score": 0.0,
-          "dominant_intent": "NO_RECENT_NEWS",
-          "articles_analyzed": 0,
-          "red_flags": [],
-          "catalysts": []
-        },
-        "trajectory": {
-          "direction": "RISE_PREDICTED",
-          "direction_icon": "🟢",
-          "rise_probability_pct": 64.2,
-          "momentum_status": "Bullish Reversal / Upward Accumulation",
-          "short_term": {
-            "predicted_path": "Upward momentum swing",
-            "upside_potential_pct": "+1.9%",
-            "downside_risk_pct": "-1.3%",
-            "target_price": 180.8,
-            "support_price": 175.1,
-            "risk_reward_ratio": "1.5x"
-          },
-          "mid_term": {
-            "predicted_path": "Cycle valuation recovery to historical median",
-            "upside_potential_pct": "+3.6%",
-            "downside_risk_pct": "-1.9%",
-            "target_price": 183.8,
-            "trailing_stop": 174.0,
-            "risk_reward_ratio": "1.9x"
-          },
-          "long_term": {
-            "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-            "upside_potential_pct": "+30.0%",
-            "downside_risk_pct": "-3.4%",
-            "target_price": 230.6,
-            "dividend_cagr": "strong (9.87%)",
-            "risk_reward_ratio": "8.8x"
-          }
-        },
-        "precision": {
-          "ticker": "JAMUNAOIL",
-          "smart_money": {
-            "status": "INSUFFICIENT_HISTORY",
-            "smart_money_delta_pct": 0.0,
-            "public_delta_pct": 0.0,
-            "classification": "NEUTRAL_HOLDING",
-            "conviction_bonus": 0.0,
-            "signal": "No monthly delta available"
-          },
-          "cash_flow": {
-            "nocfps": 5.9,
-            "is_estimated": true,
-            "dividend_per_share": 0.0,
-            "dividend_coverage_x": 5.0,
-            "fcf_yield_pct": 590.0,
-            "cash_quality_status": "PRISTINE_REAL_CASH_COVERAGE",
-            "conviction_bonus": 15.0,
-            "signal": "Dividend is 500% cash-covered by real operations (NOCFPS: Tk 5.9 vs DPS: Tk 0.0)"
-          },
-          "liquidity": {
-            "avg_daily_volume": 7956,
-            "daily_turnover_bdt_cr": 0.0,
-            "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
-            "slippage_risk": "HIGH",
-            "max_single_order_shares": 397,
-            "max_daily_accumulation_shares": 1193,
-            "max_order_bdt": 397.0,
-            "directive": "Max single order: 397 shares (Tk 397) to prevent >1% execution slippage"
-          },
-          "earnings_acceleration": {
-            "status": "INSUFFICIENT_QUARTERLY_DATA",
-            "acceleration_status": "NORMAL_STABLE",
-            "bonus": 0.0,
-            "signal": "Standard annual EPS trajectory"
-          },
-          "total_precision_bonus": 15.0
-        },
-        "pattern_dna": {
-          "ticker": "JAMUNAOIL",
-          "audited_at": "2026-11-01 18:25:43",
-          "worth_vs_greed": {
-            "current_price": 177.4,
-            "intrinsic_worth": 55.52,
-            "margin_of_safety_pct": -68.7,
-            "extension_froth_score": 10.0,
-            "greed_index": 10.0,
-            "rsi_14": 37.1,
-            "price_vs_ema50_pct": -0.5,
-            "price_vs_ema200_pct": -0.1,
-            "merit_status": "EARNINGS_BACKED_MERIT",
-            "merit_reason": "Price supported by solid earnings (EPS: ৳6.94, P/E: 0.0). Growth is fundamentally justified.",
-            "timing_directives": {
-              "optimal_entry_corridor": "৳173.9 – ৳179.2",
-              "chase_cutoff_price": 181.8,
-              "when_to_wait": "If price opens or rises above ৳181.8, DO NOT HOP IN. Wait 2–5 trading sessions for dip back to ৳173.9.",
-              "weekly_target_short": 183.6,
-              "monthly_target_swing": 204.0,
-              "long_term_target_asset": 230.6,
-              "capital_pacing_rule": "Deploy maximum 25%–30% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2–4 weeks."
-            },
-            "status": "CHRONIC_OVERVALUATION",
-            "worth_decision": "AVOID",
-            "reason": "Fundamental value severely lags stock price (MoS: -68.7%).",
-            "is_blacklisted": false,
-            "blacklist_reason": null
-          },
-          "multi_interval_wave": {
-            "intervals": {
-              "weekly_5d": {
-                "return_pct": -0.73,
-                "high": 179.9,
-                "low": 176.2,
-                "range_volatility_pct": 2.1
-              },
-              "monthly_21d": {
-                "return_pct": -0.06,
-                "high": 181.3,
-                "low": 170.0,
-                "range_volatility_pct": 6.65
-              },
-              "quarterly_63d": {
-                "return_pct": -3.06,
-                "high": 184.7,
-                "low": 170.0,
-                "range_volatility_pct": 8.65
-              },
-              "half_yearly_126d": {
-                "return_pct": 3.56,
-                "high": 188.0,
-                "low": 165.7,
-                "range_volatility_pct": 13.46
-              },
-              "yearly_252d": {
-                "return_pct": -3.53,
-                "high": 195.0,
-                "low": 164.9,
-                "range_volatility_pct": 18.25
-              }
-            },
-            "wave_metrics": {
-              "median_rally_gain_pct": 9.9,
-              "median_correction_drop_pct": -9.5,
-              "avg_wave_duration_bars": 23.0
-            },
-            "current_wave_phase": "MARKDOWN_PULLBACK",
-            "phase_guidance": "Ongoing pullback from peak (-2.2%). Wait for stabilizing base.",
-            "top_seasonal_months": [
-              {
-                "month": "Jul",
-                "avg_return": 3.8,
-                "win_rate": 69.0
-              },
-              {
-                "month": "Nov",
-                "avg_return": 2.2,
-                "win_rate": 57.0
-              },
-              {
-                "month": "Aug",
-                "avg_return": 2.0,
-                "win_rate": 58.0
-              }
-            ],
-            "weak_seasonal_months": [
-              {
-                "month": "Jan",
-                "avg_return": -2.2,
-                "win_rate": 29.0
-              },
-              {
-                "month": "Dec",
-                "avg_return": -4.1,
-                "win_rate": 15.0
-              }
-            ]
-          },
-          "causal_attributions": [
-            {
-              "event_name": "BSEC Floor Price Regime",
-              "category": "REGULATORY_LAW_AND_ORDER",
-              "period": "2022-07-28 to 2024-01-18",
-              "stock_move_pct": 3.6,
-              "behavior": "DEFENSIVE_STABILITY",
-              "root_cause_why": "Floor prices imposed on all stocks to stop free-fall. Artificially froze liquidity, trapped institutional capital, volume dried up to historic lows.",
-              "market_impact": "LIQUIDITY_FREEZE"
-            },
-            {
-              "event_name": "Phased Floor Price Removal & Price Discovery",
-              "category": "REGULATORY_LAW_AND_ORDER",
-              "period": "2024-01-18 to 2024-03-31",
-              "stock_move_pct": 0.46,
-              "behavior": "DEFENSIVE_STABILITY",
-              "root_cause_why": "BSEC lifted floor prices in waves. Triggered sharp 1,000+ point DSEX correction as artificial valuations collapsed to fair market levels.",
-              "market_impact": "SHARP_DELEVERAGING"
-            },
-            {
-              "event_name": "SMART Interest Rate & Lending Cap Removal",
-              "category": "ECONOMIC_MONETARY",
-              "period": "2023-07-02 to 2024-05-08",
-              "stock_move_pct": -2.8,
-              "behavior": "MODERATE_CYCLICAL_DROP",
-              "root_cause_why": "Bangladesh Bank replaced fixed 9% lending cap with SMART rate, later moving to pure market-based repo tightening (repo hiked to 8.5%-10.0%). Corporate borrowing cost surged from 9% to 14-16%.",
-              "market_impact": "DEBT_BURDEN_SHOCK"
-            },
-            {
-              "event_name": "Political Turmoil & National Student Revolution",
-              "category": "POLITICAL_COUNTRY_CONDITION",
-              "period": "2024-06-02 to 2024-08-04",
-              "stock_move_pct": 2.59,
-              "behavior": "DEFENSIVE_STABILITY",
-              "root_cause_why": "Mass protests, nationwide curfews, internet blackouts, supply chain shutdowns leading to resignation of government on Aug 5.",
-              "market_impact": "SYSTEMIC_DISRUPTION"
-            },
-            {
-              "event_name": "Interim Government Formation & Anti-Corruption Drive",
-              "category": "POLITICAL_REGULATORY",
-              "period": "2024-08-06 to 2024-09-15",
-              "stock_move_pct": -1.65,
-              "behavior": "MODERATE_CYCLICAL_DROP",
-              "root_cause_why": "Interim government established under Dr. Yunus. BSEC leadership replaced, investigation task force formed against financial market manipulators and money laundering.",
-              "market_impact": "POST_CRISIS_HOPE_RALLY"
-            },
-            {
-              "event_name": "Banking NPL Revelations & Aggressive Monetary Tightening",
-              "category": "ECONOMIC_MONETARY_BANKING",
-              "period": "2024-09-17 to 2025-06-30",
-              "stock_move_pct": -0.87,
-              "behavior": "MODERATE_CYCLICAL_DROP",
-              "root_cause_why": "True extent of banking non-performing loans exposed by Bangladesh Bank. Liquidity squeeze in weak banks, high 12-14% treasury bill yields drew liquidity away from stock market.",
-              "market_impact": "TIGHT_LIQUIDITY_AND_FLIGHT_TO_SAFETY"
-            },
-            {
-              "event_name": "Economic Normalization & Moat Flight",
-              "category": "SECTOR_MACRO_RECOVERY",
-              "period": "2025-07-02 to 2026-10-06",
-              "stock_move_pct": -1.93,
-              "behavior": "MODERATE_CYCLICAL_DROP",
-              "root_cause_why": "FX reserves stabilized with IMF/World Bank assistance. Remittance surge. Selective institutional accumulation into debt-free cash cows with high dividend yields (Square, GP, Olympic, Padma Oil).",
-              "market_impact": "SELECTIVE_FUNDAMENTAL_ACCUMULATION"
-            }
-          ]
-        },
-        "manipulation_risk": "low",
-        "manipulation_flags": [],
-        "timeframe": "weekly",
-        "sector": "Fuel_Power",
-        "dses_asof": "2026-11-02",
-        "_halal": {
-          "eligible": true,
-          "reasons": [],
-          "purification_rate": 0.0,
-          "data_gaps": []
-        },
-        "purification_rate": 0.0,
-        "halal_reasons": [],
-        "data_gaps": [],
-        "halal_tier": "flexible",
-        "halal_eligible": true,
-        "thin_liquidity_flag": true,
-        "target_mid": 183.8,
-        "trailing_stop": 174.0,
-        "dir_icon": "🟢",
-        "direction": "RISE_PREDICTED",
-        "rise_prob": 64.2,
-        "mt_upside": "+3.6%",
-        "mt_downside": "-1.9%",
-        "mt_rr": "1.9x",
-        "leadership_summary": "Md. Gias Uddin Ansary (32y exp, AA+)",
-        "dominant_intent": "NO_RECENT_NEWS",
-        "st_info": {
-          "predicted_path": "Upward momentum swing",
-          "upside_potential_pct": "+1.9%",
-          "downside_risk_pct": "-1.3%",
-          "target_price": 180.8,
-          "support_price": 175.1,
-          "risk_reward_ratio": "1.5x"
-        },
-        "mt_info": {
-          "predicted_path": "Cycle valuation recovery to historical median",
-          "upside_potential_pct": "+3.6%",
-          "downside_risk_pct": "-1.9%",
-          "target_price": 183.8,
-          "trailing_stop": 174.0,
-          "risk_reward_ratio": "1.9x"
-        },
-        "lt_info": {
-          "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-          "upside_potential_pct": "+30.0%",
-          "downside_risk_pct": "-3.4%",
-          "target_price": 230.6,
-          "dividend_cagr": "strong (9.87%)",
-          "risk_reward_ratio": "8.8x"
-        },
-        "smart_money_sig": "No monthly delta available",
-        "liquidity_directive": "Max single order: 397 shares (Tk 397) to prevent >1% execution slippage",
-        "max_single_order": 397,
-        "when_to_buy": "Enter on support confirmation (৳175.6–৳179.2) with MACD histogram turning positive and RSI between 35–55.",
-        "when_not_to_buy": "Do NOT buy if RSI > 62, if volume drops below 20-DMA during rally, or if market bias is Strongly Bearish.",
-        "when_to_sell": "Take profit at ৳183.8 (+3.6%); strictly exit on 5% trailing stop (৳174.0) or MACD bearish death cross.",
-        "debt_health": "D/E: 0.0"
       },
       {
         "ticker": "SAIHAMCOT",
@@ -7541,6 +6882,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Textile",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "_halal": {
           "eligible": true,
@@ -7877,6 +7219,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Textile",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "_halal": {
           "eligible": true,
@@ -8214,6 +7557,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Engineering",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "_halal": {
           "eligible": true,
@@ -8556,6 +7900,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Cement",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "_halal": {
           "eligible": true,
@@ -8892,6 +8237,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Telecom",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "_halal": {
           "eligible": true,
@@ -9229,6 +8575,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Food_Beverage",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "_halal": {
           "eligible": true,
@@ -9566,6 +8913,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Food_Beverage",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "_halal": {
           "eligible": true,
@@ -9902,6 +9250,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "IT",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "_halal": {
           "eligible": true,
@@ -10239,6 +9588,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Telecom",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "_halal": {
           "eligible": true,
@@ -10581,6 +9931,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Engineering",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "_halal": {
           "eligible": true,
@@ -10635,6 +9986,1362 @@
         "when_not_to_buy": "Do NOT buy if RSI > 62, if volume drops below 20-DMA during rally, or if market bias is Strongly Bearish.",
         "when_to_sell": "Take profit at ৳341.1 (+15.0%); strictly exit on 5% trailing stop (৳281.8) or MACD bearish death cross.",
         "debt_health": "D/E: 0.137"
+      },
+      {
+        "ticker": "AGNISYSL",
+        "signal": "BUY",
+        "confidence": 61.82,
+        "entry": 26.7,
+        "target": 29.52,
+        "stop_loss": 25.29,
+        "rsi": 50.55,
+        "sma20": 25.87,
+        "sma200": 26.18,
+        "pe": "33.62",
+        "eps": "0.81",
+        "dividend": "moderate (0.92%)",
+        "dividend_consistency": "proven_compounder (5 yrs cash divs)",
+        "dividend_track_record_years": 5,
+        "debt_equity_val": 0.017,
+        "long_term_debt_equity_val": 0.004,
+        "loan_trap_risk": "none",
+        "downturn_resilience": {
+          "status": "growth_at_discount",
+          "drawdown_pct": 25.6,
+          "high_52w": 35.9,
+          "low_52w": 18.1,
+          "note": "Share price down 25.6% from 52w peak, yet earnings positive/steady (Conviction discount)"
+        },
+        "earnings_quality": "moderate_accrual_drag",
+        "management": {
+          "ticker": "AGNISYSL",
+          "company_name": "Agni Systems Limited",
+          "chairman": "Abdus Salam",
+          "managing_director_ceo": "Mohammed Abdus Salam",
+          "leadership_type": "Telecom & Network Engineering Founders",
+          "industry_experience_years": 31,
+          "governance_rating": "A",
+          "audit_credibility": "Standard Cat A Audit",
+          "key_moat": "One of earliest ISPs in Bangladesh (est 1995), clean balance sheet, zero long-term debt",
+          "management_risk": "Low",
+          "governance_score": 75
+        },
+        "news_intent": {
+          "ticker": "AGNISYSL",
+          "intent_score": 0.0,
+          "dominant_intent": "NO_RECENT_NEWS",
+          "articles_analyzed": 0,
+          "red_flags": [],
+          "catalysts": []
+        },
+        "trajectory": {
+          "direction": "FALL_RISK",
+          "direction_icon": "🔴",
+          "rise_probability_pct": 15.4,
+          "momentum_status": "Bearish Breakdown / Selling Pressure",
+          "short_term": {
+            "predicted_path": "Upward momentum swing",
+            "upside_potential_pct": "+5.2%",
+            "downside_risk_pct": "-3.4%",
+            "target_price": 28.1,
+            "support_price": 25.8,
+            "risk_reward_ratio": "1.5x"
+          },
+          "mid_term": {
+            "predicted_path": "Cycle valuation recovery to historical median",
+            "upside_potential_pct": "+15.0%",
+            "downside_risk_pct": "-4.9%",
+            "target_price": 30.7,
+            "trailing_stop": 25.4,
+            "risk_reward_ratio": "3.1x"
+          },
+          "long_term": {
+            "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
+            "upside_potential_pct": "+30.0%",
+            "downside_risk_pct": "-8.8%",
+            "target_price": 34.7,
+            "dividend_cagr": "moderate (0.92%)",
+            "risk_reward_ratio": "3.4x"
+          }
+        },
+        "precision": {
+          "ticker": "AGNISYSL",
+          "smart_money": {
+            "status": "INSUFFICIENT_HISTORY",
+            "smart_money_delta_pct": 0.0,
+            "public_delta_pct": 0.0,
+            "classification": "NEUTRAL_HOLDING",
+            "conviction_bonus": 0.0,
+            "signal": "No monthly delta available"
+          },
+          "cash_flow": {
+            "nocfps": 0.21,
+            "is_estimated": true,
+            "dividend_per_share": 0.0,
+            "dividend_coverage_x": 5.0,
+            "fcf_yield_pct": 21.0,
+            "cash_quality_status": "PRISTINE_REAL_CASH_COVERAGE",
+            "conviction_bonus": 15.0,
+            "signal": "Dividend is 500% cash-covered by real operations (NOCFPS: Tk 0.21 vs DPS: Tk 0.0)"
+          },
+          "liquidity": {
+            "avg_daily_volume": 273435,
+            "daily_turnover_bdt_cr": 0.03,
+            "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
+            "slippage_risk": "HIGH",
+            "max_single_order_shares": 13671,
+            "max_daily_accumulation_shares": 41015,
+            "max_order_bdt": 13671.0,
+            "directive": "Max single order: 13,671 shares (Tk 13,671) to prevent >1% execution slippage"
+          },
+          "earnings_acceleration": {
+            "status": "INSUFFICIENT_QUARTERLY_DATA",
+            "acceleration_status": "NORMAL_STABLE",
+            "bonus": 0.0,
+            "signal": "Standard annual EPS trajectory"
+          },
+          "total_precision_bonus": 15.0
+        },
+        "pattern_dna": {
+          "ticker": "AGNISYSL",
+          "audited_at": "2026-11-01 15:40:10",
+          "worth_vs_greed": {
+            "current_price": 26.7,
+            "intrinsic_worth": 2.0,
+            "margin_of_safety_pct": -92.5,
+            "extension_froth_score": 20.0,
+            "greed_index": 20.0,
+            "rsi_14": 57.4,
+            "price_vs_ema50_pct": -3.2,
+            "price_vs_ema200_pct": -1.9,
+            "merit_status": "EARNINGS_BACKED_MERIT",
+            "merit_reason": "Price supported by solid earnings (EPS: ৳0.25, P/E: 0.0). Growth is fundamentally justified.",
+            "timing_directives": {
+              "optimal_entry_corridor": "৳26.2 – ৳27.0",
+              "chase_cutoff_price": 27.4,
+              "when_to_wait": "If price opens or rises above ৳27.4, DO NOT HOP IN. Wait 2–5 trading sessions for dip back to ৳26.2.",
+              "weekly_target_short": 27.6,
+              "monthly_target_swing": 30.7,
+              "long_term_target_asset": 34.7,
+              "capital_pacing_rule": "Deploy maximum 25%–30% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2–4 weeks."
+            },
+            "status": "CHRONIC_OVERVALUATION",
+            "worth_decision": "AVOID",
+            "reason": "Fundamental value severely lags stock price (MoS: -92.5%)."
+          },
+          "multi_interval_wave": {
+            "intervals": {
+              "weekly_5d": {
+                "return_pct": 5.95,
+                "high": 27.0,
+                "low": 25.0,
+                "range_volatility_pct": 8.0
+              },
+              "monthly_21d": {
+                "return_pct": -4.98,
+                "high": 28.5,
+                "low": 25.0,
+                "range_volatility_pct": 14.0
+              },
+              "quarterly_63d": {
+                "return_pct": -18.1,
+                "high": 34.9,
+                "low": 25.0,
+                "range_volatility_pct": 39.6
+              },
+              "half_yearly_126d": {
+                "return_pct": 5.53,
+                "high": 35.9,
+                "low": 23.9,
+                "range_volatility_pct": 50.21
+              },
+              "yearly_252d": {
+                "return_pct": 6.8,
+                "high": 35.9,
+                "low": 18.1,
+                "range_volatility_pct": 98.34
+              }
+            },
+            "wave_metrics": {
+              "median_rally_gain_pct": 21.0,
+              "median_correction_drop_pct": -17.9,
+              "avg_wave_duration_bars": 24.0
+            },
+            "current_wave_phase": "BOTTOMING_SUPPORT",
+            "phase_guidance": "Drop (-25.6%) matches historical correction depth (-17.9%). Prepare to accumulate.",
+            "top_seasonal_months": [
+              {
+                "month": "Sep",
+                "avg_return": 6.7,
+                "win_rate": 50.0
+              },
+              {
+                "month": "Aug",
+                "avg_return": 6.0,
+                "win_rate": 62.0
+              },
+              {
+                "month": "May",
+                "avg_return": 4.3,
+                "win_rate": 62.0
+              }
+            ],
+            "weak_seasonal_months": [
+              {
+                "month": "Nov",
+                "avg_return": -6.7,
+                "win_rate": 27.0
+              },
+              {
+                "month": "Oct",
+                "avg_return": -8.3,
+                "win_rate": 15.0
+              }
+            ]
+          },
+          "causal_attributions": [
+            {
+              "event_name": "BSEC Floor Price Regime",
+              "category": "REGULATORY_LAW_AND_ORDER",
+              "period": "2022-07-28 to 2024-01-18",
+              "stock_move_pct": 15.42,
+              "behavior": "STRONG_RESILIENCE_OR_BENEFICIARY",
+              "root_cause_why": "Floor prices imposed on all stocks to stop free-fall. Artificially froze liquidity, trapped institutional capital, volume dried up to historic lows.",
+              "market_impact": "LIQUIDITY_FREEZE"
+            },
+            {
+              "event_name": "Phased Floor Price Removal & Price Discovery",
+              "category": "REGULATORY_LAW_AND_ORDER",
+              "period": "2024-01-18 to 2024-03-31",
+              "stock_move_pct": 12.55,
+              "behavior": "DEFENSIVE_STABILITY",
+              "root_cause_why": "BSEC lifted floor prices in waves. Triggered sharp 1,000+ point DSEX correction as artificial valuations collapsed to fair market levels.",
+              "market_impact": "SHARP_DELEVERAGING"
+            },
+            {
+              "event_name": "SMART Interest Rate & Lending Cap Removal",
+              "category": "ECONOMIC_MONETARY",
+              "period": "2023-07-02 to 2024-05-08",
+              "stock_move_pct": -4.12,
+              "behavior": "MODERATE_CYCLICAL_DROP",
+              "root_cause_why": "Bangladesh Bank replaced fixed 9% lending cap with SMART rate, later moving to pure market-based repo tightening (repo hiked to 8.5%-10.0%). Corporate borrowing cost surged from 9% to 14-16%.",
+              "market_impact": "DEBT_BURDEN_SHOCK"
+            },
+            {
+              "event_name": "Political Turmoil & National Student Revolution",
+              "category": "POLITICAL_COUNTRY_CONDITION",
+              "period": "2024-06-02 to 2024-08-04",
+              "stock_move_pct": 25.66,
+              "behavior": "STRONG_RESILIENCE_OR_BENEFICIARY",
+              "root_cause_why": "Mass protests, nationwide curfews, internet blackouts, supply chain shutdowns leading to resignation of government on Aug 5.",
+              "market_impact": "SYSTEMIC_DISRUPTION"
+            },
+            {
+              "event_name": "Interim Government Formation & Anti-Corruption Drive",
+              "category": "POLITICAL_REGULATORY",
+              "period": "2024-08-06 to 2024-09-15",
+              "stock_move_pct": 8.87,
+              "behavior": "DEFENSIVE_STABILITY",
+              "root_cause_why": "Interim government established under Dr. Yunus. BSEC leadership replaced, investigation task force formed against financial market manipulators and money laundering.",
+              "market_impact": "POST_CRISIS_HOPE_RALLY"
+            },
+            {
+              "event_name": "Banking NPL Revelations & Aggressive Monetary Tightening",
+              "category": "ECONOMIC_MONETARY_BANKING",
+              "period": "2024-09-17 to 2025-06-30",
+              "stock_move_pct": -19.58,
+              "behavior": "SEVERE_VULNERABILITY",
+              "root_cause_why": "True extent of banking non-performing loans exposed by Bangladesh Bank. Liquidity squeeze in weak banks, high 12-14% treasury bill yields drew liquidity away from stock market.",
+              "market_impact": "TIGHT_LIQUIDITY_AND_FLIGHT_TO_SAFETY"
+            },
+            {
+              "event_name": "Economic Normalization & Moat Flight",
+              "category": "SECTOR_MACRO_RECOVERY",
+              "period": "2025-07-02 to 2026-10-06",
+              "stock_move_pct": -5.47,
+              "behavior": "MODERATE_CYCLICAL_DROP",
+              "root_cause_why": "FX reserves stabilized with IMF/World Bank assistance. Remittance surge. Selective institutional accumulation into debt-free cash cows with high dividend yields (Square, GP, Olympic, Padma Oil).",
+              "market_impact": "SELECTIVE_FUNDAMENTAL_ACCUMULATION"
+            }
+          ]
+        },
+        "manipulation_risk": "low",
+        "manipulation_flags": [],
+        "timeframe": "weekly",
+        "sector": "IT",
+        "asof_date": null,
+        "dses_asof": "2026-11-02",
+        "_halal": {
+          "eligible": true,
+          "reasons": [],
+          "purification_rate": 0.0,
+          "data_gaps": []
+        },
+        "purification_rate": 0.0,
+        "halal_reasons": [],
+        "data_gaps": [],
+        "halal_tier": "flexible",
+        "halal_eligible": true,
+        "thin_liquidity_flag": true,
+        "target_mid": 30.7,
+        "trailing_stop": 25.4,
+        "dir_icon": "🔴",
+        "direction": "FALL_RISK",
+        "rise_prob": 15.4,
+        "mt_upside": "+15.0%",
+        "mt_downside": "-4.9%",
+        "mt_rr": "3.1x",
+        "leadership_summary": "Mohammed Abdus Salam (31y exp, A)",
+        "dominant_intent": "NO_RECENT_NEWS",
+        "st_info": {
+          "predicted_path": "Upward momentum swing",
+          "upside_potential_pct": "+5.2%",
+          "downside_risk_pct": "-3.4%",
+          "target_price": 28.1,
+          "support_price": 25.8,
+          "risk_reward_ratio": "1.5x"
+        },
+        "mt_info": {
+          "predicted_path": "Cycle valuation recovery to historical median",
+          "upside_potential_pct": "+15.0%",
+          "downside_risk_pct": "-4.9%",
+          "target_price": 30.7,
+          "trailing_stop": 25.4,
+          "risk_reward_ratio": "3.1x"
+        },
+        "lt_info": {
+          "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
+          "upside_potential_pct": "+30.0%",
+          "downside_risk_pct": "-8.8%",
+          "target_price": 34.7,
+          "dividend_cagr": "moderate (0.92%)",
+          "risk_reward_ratio": "3.4x"
+        },
+        "smart_money_sig": "No monthly delta available",
+        "liquidity_directive": "Max single order: 13,671 shares (Tk 13,671) to prevent >1% execution slippage",
+        "max_single_order": 13671,
+        "when_to_buy": "Enter on support confirmation (৳26.4–৳27.0) with MACD histogram turning positive and RSI between 35–55.",
+        "when_not_to_buy": "Do NOT buy if RSI > 62, if volume drops below 20-DMA during rally, or if market bias is Strongly Bearish.",
+        "when_to_sell": "Take profit at ৳30.7 (+15.0%); strictly exit on 5% trailing stop (৳25.4) or MACD bearish death cross.",
+        "debt_health": "D/E: 0.017"
+      },
+      {
+        "ticker": "RENATA",
+        "signal": "BUY",
+        "confidence": 61.49,
+        "entry": 426.2,
+        "target": 443.98,
+        "stop_loss": 417.31,
+        "rsi": 23.28,
+        "sma20": 443.2,
+        "sma200": 438.49,
+        "pe": "25.22",
+        "eps": "19.36",
+        "dividend": "moderate (1.13%)",
+        "dividend_consistency": "proven_compounder (5 yrs cash divs)",
+        "dividend_track_record_years": 5,
+        "debt_equity_val": 0.539,
+        "long_term_debt_equity_val": 0.268,
+        "loan_trap_risk": "low",
+        "downturn_resilience": {
+          "status": "normal",
+          "drawdown_pct": 12.7,
+          "high_52w": 488.0,
+          "low_52w": 372.0
+        },
+        "earnings_quality": "moderate_accrual_drag",
+        "management": {
+          "ticker": "RENATA",
+          "company_name": "Renata PLC",
+          "chairman": "Dr. Sarwar Ali",
+          "managing_director_ceo": "Syed S. Kaiser Kabir",
+          "leadership_type": "Former Pfizer BD + Institutional Professional Trust Board",
+          "industry_experience_years": 40,
+          "governance_rating": "AAA",
+          "audit_credibility": "Pristine (A. Qasem & Co.)",
+          "key_moat": "Market leader in animal health & contract manufacturing, zero political exposure",
+          "management_risk": "Low",
+          "governance_score": 100
+        },
+        "news_intent": {
+          "ticker": "RENATA",
+          "intent_score": 0.0,
+          "dominant_intent": "NO_RECENT_NEWS",
+          "articles_analyzed": 0,
+          "red_flags": [],
+          "catalysts": []
+        },
+        "trajectory": {
+          "direction": "FALL_RISK",
+          "direction_icon": "🔴",
+          "rise_probability_pct": 29.5,
+          "momentum_status": "Bearish Breakdown / Selling Pressure",
+          "short_term": {
+            "predicted_path": "Oversold bounce to 20-DMA",
+            "upside_potential_pct": "+2.1%",
+            "downside_risk_pct": "-1.4%",
+            "target_price": 435.1,
+            "support_price": 420.3,
+            "risk_reward_ratio": "1.5x"
+          },
+          "mid_term": {
+            "predicted_path": "Cycle valuation recovery to historical median",
+            "upside_potential_pct": "+15.0%",
+            "downside_risk_pct": "-5.0%",
+            "target_price": 490.1,
+            "trailing_stop": 404.9,
+            "risk_reward_ratio": "3.0x"
+          },
+          "long_term": {
+            "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
+            "upside_potential_pct": "+30.0%",
+            "downside_risk_pct": "-9.0%",
+            "target_price": 554.1,
+            "dividend_cagr": "moderate (1.13%)",
+            "risk_reward_ratio": "3.3x"
+          }
+        },
+        "precision": {
+          "ticker": "RENATA",
+          "smart_money": {
+            "status": "INSUFFICIENT_HISTORY",
+            "smart_money_delta_pct": 0.0,
+            "public_delta_pct": 0.0,
+            "classification": "NEUTRAL_HOLDING",
+            "conviction_bonus": 0.0,
+            "signal": "No monthly delta available"
+          },
+          "cash_flow": {
+            "nocfps": 5.79,
+            "is_estimated": true,
+            "dividend_per_share": 0.0,
+            "dividend_coverage_x": 5.0,
+            "fcf_yield_pct": 579.0,
+            "cash_quality_status": "PRISTINE_REAL_CASH_COVERAGE",
+            "conviction_bonus": 15.0,
+            "signal": "Dividend is 500% cash-covered by real operations (NOCFPS: Tk 5.79 vs DPS: Tk 0.0)"
+          },
+          "liquidity": {
+            "avg_daily_volume": 15040,
+            "daily_turnover_bdt_cr": 0.0,
+            "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
+            "slippage_risk": "HIGH",
+            "max_single_order_shares": 752,
+            "max_daily_accumulation_shares": 2256,
+            "max_order_bdt": 752.0,
+            "directive": "Max single order: 752 shares (Tk 752) to prevent >1% execution slippage"
+          },
+          "earnings_acceleration": {
+            "status": "INSUFFICIENT_QUARTERLY_DATA",
+            "acceleration_status": "NORMAL_STABLE",
+            "bonus": 0.0,
+            "signal": "Standard annual EPS trajectory"
+          },
+          "total_precision_bonus": 15.0
+        },
+        "pattern_dna": {
+          "ticker": "RENATA",
+          "audited_at": "2026-11-01 15:40:09",
+          "worth_vs_greed": {
+            "current_price": 426.2,
+            "intrinsic_worth": 54.48,
+            "margin_of_safety_pct": -87.2,
+            "extension_froth_score": 10.0,
+            "greed_index": 10.0,
+            "rsi_14": 15.6,
+            "price_vs_ema50_pct": -5.0,
+            "price_vs_ema200_pct": -5.5,
+            "merit_status": "EARNINGS_BACKED_MERIT",
+            "merit_reason": "Price supported by solid earnings (EPS: ৳6.81, P/E: 0.0). Growth is fundamentally justified.",
+            "timing_directives": {
+              "optimal_entry_corridor": "৳417.7 – ৳430.5",
+              "chase_cutoff_price": 436.9,
+              "when_to_wait": "If price opens or rises above ৳436.9, DO NOT HOP IN. Wait 2–5 trading sessions for dip back to ৳417.7.",
+              "weekly_target_short": 441.1,
+              "monthly_target_swing": 490.1,
+              "long_term_target_asset": 554.1,
+              "capital_pacing_rule": "Deploy maximum 25%–30% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2–4 weeks."
+            },
+            "status": "CHRONIC_OVERVALUATION",
+            "worth_decision": "AVOID",
+            "reason": "Fundamental value severely lags stock price (MoS: -87.2%)."
+          },
+          "multi_interval_wave": {
+            "intervals": {
+              "weekly_5d": {
+                "return_pct": -4.5,
+                "high": 446.3,
+                "low": 424.5,
+                "range_volatility_pct": 5.14
+              },
+              "monthly_21d": {
+                "return_pct": -4.76,
+                "high": 458.0,
+                "low": 424.5,
+                "range_volatility_pct": 7.89
+              },
+              "quarterly_63d": {
+                "return_pct": -10.48,
+                "high": 477.0,
+                "low": 424.5,
+                "range_volatility_pct": 12.37
+              },
+              "half_yearly_126d": {
+                "return_pct": 1.91,
+                "high": 483.2,
+                "low": 405.0,
+                "range_volatility_pct": 19.31
+              },
+              "yearly_252d": {
+                "return_pct": -9.11,
+                "high": 488.0,
+                "low": 372.0,
+                "range_volatility_pct": 31.18
+              }
+            },
+            "wave_metrics": {
+              "median_rally_gain_pct": 14.8,
+              "median_correction_drop_pct": -8.1,
+              "avg_wave_duration_bars": 26.0
+            },
+            "current_wave_phase": "BOTTOMING_SUPPORT",
+            "phase_guidance": "Drop (-6.9%) matches historical correction depth (-8.1%). Prepare to accumulate.",
+            "top_seasonal_months": [
+              {
+                "month": "Aug",
+                "avg_return": 4.0,
+                "win_rate": 50.0
+              },
+              {
+                "month": "Jul",
+                "avg_return": 3.2,
+                "win_rate": 69.0
+              },
+              {
+                "month": "Feb",
+                "avg_return": 1.8,
+                "win_rate": 57.0
+              }
+            ],
+            "weak_seasonal_months": [
+              {
+                "month": "Oct",
+                "avg_return": -1.3,
+                "win_rate": 50.0
+              },
+              {
+                "month": "Apr",
+                "avg_return": -2.9,
+                "win_rate": 31.0
+              }
+            ]
+          },
+          "causal_attributions": [
+            {
+              "event_name": "BSEC Floor Price Regime",
+              "category": "REGULATORY_LAW_AND_ORDER",
+              "period": "2022-07-28 to 2024-01-15",
+              "stock_move_pct": 0.65,
+              "behavior": "DEFENSIVE_STABILITY",
+              "root_cause_why": "Floor prices imposed on all stocks to stop free-fall. Artificially froze liquidity, trapped institutional capital, volume dried up to historic lows.",
+              "market_impact": "LIQUIDITY_FREEZE"
+            },
+            {
+              "event_name": "Phased Floor Price Removal & Price Discovery",
+              "category": "REGULATORY_LAW_AND_ORDER",
+              "period": "2024-01-21 to 2024-03-31",
+              "stock_move_pct": -36.28,
+              "behavior": "SEVERE_VULNERABILITY",
+              "root_cause_why": "BSEC lifted floor prices in waves. Triggered sharp 1,000+ point DSEX correction as artificial valuations collapsed to fair market levels.",
+              "market_impact": "SHARP_DELEVERAGING"
+            },
+            {
+              "event_name": "SMART Interest Rate & Lending Cap Removal",
+              "category": "ECONOMIC_MONETARY",
+              "period": "2023-07-02 to 2024-05-08",
+              "stock_move_pct": -38.01,
+              "behavior": "SEVERE_VULNERABILITY",
+              "root_cause_why": "Bangladesh Bank replaced fixed 9% lending cap with SMART rate, later moving to pure market-based repo tightening (repo hiked to 8.5%-10.0%). Corporate borrowing cost surged from 9% to 14-16%.",
+              "market_impact": "DEBT_BURDEN_SHOCK"
+            },
+            {
+              "event_name": "Political Turmoil & National Student Revolution",
+              "category": "POLITICAL_COUNTRY_CONDITION",
+              "period": "2024-06-02 to 2024-08-04",
+              "stock_move_pct": 7.86,
+              "behavior": "DEFENSIVE_STABILITY",
+              "root_cause_why": "Mass protests, nationwide curfews, internet blackouts, supply chain shutdowns leading to resignation of government on Aug 5.",
+              "market_impact": "SYSTEMIC_DISRUPTION"
+            },
+            {
+              "event_name": "Interim Government Formation & Anti-Corruption Drive",
+              "category": "POLITICAL_REGULATORY",
+              "period": "2024-08-06 to 2024-09-15",
+              "stock_move_pct": 6.26,
+              "behavior": "DEFENSIVE_STABILITY",
+              "root_cause_why": "Interim government established under Dr. Yunus. BSEC leadership replaced, investigation task force formed against financial market manipulators and money laundering.",
+              "market_impact": "POST_CRISIS_HOPE_RALLY"
+            },
+            {
+              "event_name": "Banking NPL Revelations & Aggressive Monetary Tightening",
+              "category": "ECONOMIC_MONETARY_BANKING",
+              "period": "2024-09-17 to 2025-06-30",
+              "stock_move_pct": -35.98,
+              "behavior": "SEVERE_VULNERABILITY",
+              "root_cause_why": "True extent of banking non-performing loans exposed by Bangladesh Bank. Liquidity squeeze in weak banks, high 12-14% treasury bill yields drew liquidity away from stock market.",
+              "market_impact": "TIGHT_LIQUIDITY_AND_FLIGHT_TO_SAFETY"
+            },
+            {
+              "event_name": "Economic Normalization & Moat Flight",
+              "category": "SECTOR_MACRO_RECOVERY",
+              "period": "2025-07-02 to 2026-10-06",
+              "stock_move_pct": -9.05,
+              "behavior": "MODERATE_CYCLICAL_DROP",
+              "root_cause_why": "FX reserves stabilized with IMF/World Bank assistance. Remittance surge. Selective institutional accumulation into debt-free cash cows with high dividend yields (Square, GP, Olympic, Padma Oil).",
+              "market_impact": "SELECTIVE_FUNDAMENTAL_ACCUMULATION"
+            }
+          ]
+        },
+        "manipulation_risk": "low",
+        "manipulation_flags": [],
+        "timeframe": "weekly",
+        "sector": "Pharmaceuticals",
+        "asof_date": null,
+        "dses_asof": "2026-11-02",
+        "_halal": {
+          "eligible": true,
+          "reasons": [],
+          "purification_rate": 0.0337,
+          "data_gaps": []
+        },
+        "purification_rate": 0.0337,
+        "halal_reasons": [],
+        "data_gaps": [],
+        "halal_tier": "flexible",
+        "halal_eligible": true,
+        "thin_liquidity_flag": true,
+        "target_mid": 490.1,
+        "trailing_stop": 404.9,
+        "dir_icon": "🔴",
+        "direction": "FALL_RISK",
+        "rise_prob": 29.5,
+        "mt_upside": "+15.0%",
+        "mt_downside": "-5.0%",
+        "mt_rr": "3.0x",
+        "leadership_summary": "Syed S. Kaiser Kabir (40y exp, AAA)",
+        "dominant_intent": "NO_RECENT_NEWS",
+        "st_info": {
+          "predicted_path": "Oversold bounce to 20-DMA",
+          "upside_potential_pct": "+2.1%",
+          "downside_risk_pct": "-1.4%",
+          "target_price": 435.1,
+          "support_price": 420.3,
+          "risk_reward_ratio": "1.5x"
+        },
+        "mt_info": {
+          "predicted_path": "Cycle valuation recovery to historical median",
+          "upside_potential_pct": "+15.0%",
+          "downside_risk_pct": "-5.0%",
+          "target_price": 490.1,
+          "trailing_stop": 404.9,
+          "risk_reward_ratio": "3.0x"
+        },
+        "lt_info": {
+          "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
+          "upside_potential_pct": "+30.0%",
+          "downside_risk_pct": "-9.0%",
+          "target_price": 554.1,
+          "dividend_cagr": "moderate (1.13%)",
+          "risk_reward_ratio": "3.3x"
+        },
+        "smart_money_sig": "No monthly delta available",
+        "liquidity_directive": "Max single order: 752 shares (Tk 752) to prevent >1% execution slippage",
+        "max_single_order": 752,
+        "when_to_buy": "Enter on support confirmation (৳421.9–৳430.5) with MACD histogram turning positive and RSI between 35–55.",
+        "when_not_to_buy": "Do NOT buy if RSI > 62, if volume drops below 20-DMA during rally, or if market bias is Strongly Bearish.",
+        "when_to_sell": "Take profit at ৳490.1 (+15.0%); strictly exit on 5% trailing stop (৳404.9) or MACD bearish death cross.",
+        "debt_health": "D/E: 0.539"
+      },
+      {
+        "ticker": "TITASGAS",
+        "signal": "STRONG_BUY",
+        "confidence": 73.78,
+        "entry": 16.6,
+        "target": 17.88,
+        "stop_loss": 15.96,
+        "rsi": 40.28,
+        "sma20": 16.86,
+        "sma200": 17.48,
+        "pe": null,
+        "eps": null,
+        "dividend": "moderate (1.04%)",
+        "dividend_consistency": "proven_compounder (5 yrs cash divs)",
+        "dividend_track_record_years": 5,
+        "debt_equity_val": 0.054,
+        "long_term_debt_equity_val": 0.051,
+        "loan_trap_risk": "none",
+        "downturn_resilience": {
+          "status": "normal",
+          "drawdown_pct": 25.2,
+          "high_52w": 22.2,
+          "low_52w": 14.5
+        },
+        "earnings_quality": null,
+        "management": {
+          "ticker": "TITASGAS",
+          "company_name": "TITASGAS",
+          "chairman": "Board Appointed Chairman",
+          "managing_director_ceo": "Managing Director / CEO",
+          "leadership_type": "Public Listed Corporate Board",
+          "industry_experience_years": 20,
+          "governance_rating": "A",
+          "audit_credibility": "Standard Category A Audit",
+          "key_moat": "DSE Listed Franchise",
+          "management_risk": "Low",
+          "governance_score": 75
+        },
+        "news_intent": {
+          "ticker": "TITASGAS",
+          "intent_score": 0.0,
+          "dominant_intent": "NO_RECENT_NEWS",
+          "articles_analyzed": 0,
+          "red_flags": [],
+          "catalysts": []
+        },
+        "trajectory": {
+          "direction": "CONSOLIDATION_RANGE",
+          "direction_icon": "🟡",
+          "rise_probability_pct": 47.9,
+          "momentum_status": "Neutral Range Consolidation",
+          "short_term": {
+            "predicted_path": "Upward momentum swing",
+            "upside_potential_pct": "+3.6%",
+            "downside_risk_pct": "-2.4%",
+            "target_price": 17.2,
+            "support_price": 16.2,
+            "risk_reward_ratio": "1.5x"
+          },
+          "mid_term": {
+            "predicted_path": "Cycle valuation recovery to historical median",
+            "upside_potential_pct": "+15.1%",
+            "downside_risk_pct": "-4.8%",
+            "target_price": 19.1,
+            "trailing_stop": 15.8,
+            "risk_reward_ratio": "3.1x"
+          },
+          "long_term": {
+            "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
+            "upside_potential_pct": "+30.1%",
+            "downside_risk_pct": "-8.6%",
+            "target_price": 21.6,
+            "dividend_cagr": "moderate (1.04%)",
+            "risk_reward_ratio": "3.5x"
+          }
+        },
+        "precision": {
+          "ticker": "TITASGAS",
+          "smart_money": {
+            "status": "ACTIVE",
+            "latest_date": "Aug 31, 2026",
+            "smart_money_delta_pct": -0.01,
+            "institutional_pct": 15.16,
+            "foreign_pct": 0.03,
+            "sponsor_pct": 0.0,
+            "public_pct": 9.81,
+            "public_delta_pct": 0.01,
+            "classification": "STABLE_HOLDINGS",
+            "conviction_bonus": 0.0,
+            "signal": "Holding shift: Smart money -0.01%, Retail +0.01%"
+          },
+          "cash_flow": {
+            "nocfps": 0.0,
+            "is_estimated": true,
+            "dividend_per_share": 0.2,
+            "dividend_coverage_x": 0.0,
+            "fcf_yield_pct": 0.0,
+            "cash_quality_status": "TIGHT_CASH_COVERAGE",
+            "conviction_bonus": -10.0,
+            "signal": "Cash flow covers only 0% of dividend payout"
+          },
+          "liquidity": {
+            "avg_daily_volume": 77799,
+            "daily_turnover_bdt_cr": 0.13,
+            "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
+            "slippage_risk": "HIGH",
+            "max_single_order_shares": 3889,
+            "max_daily_accumulation_shares": 11669,
+            "max_order_bdt": 66891.0,
+            "directive": "Max single order: 3,889 shares (Tk 66,891) to prevent >1% execution slippage"
+          },
+          "earnings_acceleration": {
+            "status": "INSUFFICIENT_QUARTERLY_DATA",
+            "acceleration_status": "NORMAL_STABLE",
+            "bonus": 0.0,
+            "signal": "Standard annual EPS trajectory"
+          },
+          "total_precision_bonus": -10.0
+        },
+        "pattern_dna": {
+          "ticker": "TITASGAS",
+          "audited_at": "2026-11-01 15:40:10",
+          "worth_vs_greed": {
+            "current_price": 16.6,
+            "intrinsic_worth": 72.1,
+            "margin_of_safety_pct": 334.3,
+            "extension_froth_score": 20.0,
+            "greed_index": 20.0,
+            "rsi_14": 45.5,
+            "price_vs_ema50_pct": -4.7,
+            "price_vs_ema200_pct": -7.4,
+            "merit_status": "NEUTRAL_MERIT",
+            "merit_reason": "Valuation is within normal historical ranges.",
+            "timing_directives": {
+              "optimal_entry_corridor": "৳16.3 – ৳16.8",
+              "chase_cutoff_price": 17.0,
+              "when_to_wait": "If price opens or rises above ৳17.0, DO NOT HOP IN. Wait 2–5 trading sessions for dip back to ৳16.3.",
+              "weekly_target_short": 17.2,
+              "monthly_target_swing": 19.1,
+              "long_term_target_asset": 21.6,
+              "capital_pacing_rule": "Deploy maximum 25%–30% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2–4 weeks."
+            },
+            "status": "UNDERVALUED_FEAR",
+            "worth_decision": "HIGH_CONVICTION_BUY",
+            "reason": "High Margin of Safety (+334.3%) with depressed market greed (20.0/100) and NEUTRAL_MERIT. Ideal entry."
+          },
+          "multi_interval_wave": {
+            "intervals": {
+              "weekly_5d": {
+                "return_pct": -0.6,
+                "high": 17.0,
+                "low": 16.4,
+                "range_volatility_pct": 3.66
+              },
+              "monthly_21d": {
+                "return_pct": -6.74,
+                "high": 18.1,
+                "low": 16.4,
+                "range_volatility_pct": 10.37
+              },
+              "quarterly_63d": {
+                "return_pct": -19.02,
+                "high": 20.9,
+                "low": 16.4,
+                "range_volatility_pct": 27.44
+              },
+              "half_yearly_126d": {
+                "return_pct": -1.19,
+                "high": 22.2,
+                "low": 15.9,
+                "range_volatility_pct": 39.62
+              },
+              "yearly_252d": {
+                "return_pct": -11.7,
+                "high": 22.2,
+                "low": 14.5,
+                "range_volatility_pct": 53.1
+              }
+            },
+            "wave_metrics": {
+              "median_rally_gain_pct": 13.3,
+              "median_correction_drop_pct": -16.1,
+              "avg_wave_duration_bars": 19.0
+            },
+            "current_wave_phase": "MARKDOWN_PULLBACK",
+            "phase_guidance": "Ongoing pullback from peak (-11.2%). Wait for stabilizing base.",
+            "top_seasonal_months": [
+              {
+                "month": "Jul",
+                "avg_return": 6.1,
+                "win_rate": 77.0
+              },
+              {
+                "month": "Sep",
+                "avg_return": 2.8,
+                "win_rate": 47.0
+              },
+              {
+                "month": "Feb",
+                "avg_return": 1.9,
+                "win_rate": 62.0
+              }
+            ],
+            "weak_seasonal_months": [
+              {
+                "month": "Nov",
+                "avg_return": -4.5,
+                "win_rate": 21.0
+              },
+              {
+                "month": "Dec",
+                "avg_return": -6.4,
+                "win_rate": 8.0
+              }
+            ]
+          },
+          "causal_attributions": [
+            {
+              "event_name": "BSEC Floor Price Regime",
+              "category": "REGULATORY_LAW_AND_ORDER",
+              "period": "2022-07-28 to 2024-01-18",
+              "stock_move_pct": 3.28,
+              "behavior": "DEFENSIVE_STABILITY",
+              "root_cause_why": "Floor prices imposed on all stocks to stop free-fall. Artificially froze liquidity, trapped institutional capital, volume dried up to historic lows.",
+              "market_impact": "LIQUIDITY_FREEZE"
+            },
+            {
+              "event_name": "Phased Floor Price Removal & Price Discovery",
+              "category": "REGULATORY_LAW_AND_ORDER",
+              "period": "2024-01-18 to 2024-03-31",
+              "stock_move_pct": -36.19,
+              "behavior": "SEVERE_VULNERABILITY",
+              "root_cause_why": "BSEC lifted floor prices in waves. Triggered sharp 1,000+ point DSEX correction as artificial valuations collapsed to fair market levels.",
+              "market_impact": "SHARP_DELEVERAGING"
+            },
+            {
+              "event_name": "SMART Interest Rate & Lending Cap Removal",
+              "category": "ECONOMIC_MONETARY",
+              "period": "2023-07-03 to 2024-05-08",
+              "stock_move_pct": -42.79,
+              "behavior": "SEVERE_VULNERABILITY",
+              "root_cause_why": "Bangladesh Bank replaced fixed 9% lending cap with SMART rate, later moving to pure market-based repo tightening (repo hiked to 8.5%-10.0%). Corporate borrowing cost surged from 9% to 14-16%.",
+              "market_impact": "DEBT_BURDEN_SHOCK"
+            },
+            {
+              "event_name": "Political Turmoil & National Student Revolution",
+              "category": "POLITICAL_COUNTRY_CONDITION",
+              "period": "2024-06-02 to 2024-08-04",
+              "stock_move_pct": 0.48,
+              "behavior": "DEFENSIVE_STABILITY",
+              "root_cause_why": "Mass protests, nationwide curfews, internet blackouts, supply chain shutdowns leading to resignation of government on Aug 5.",
+              "market_impact": "SYSTEMIC_DISRUPTION"
+            },
+            {
+              "event_name": "Interim Government Formation & Anti-Corruption Drive",
+              "category": "POLITICAL_REGULATORY",
+              "period": "2024-08-06 to 2024-09-15",
+              "stock_move_pct": 10.53,
+              "behavior": "DEFENSIVE_STABILITY",
+              "root_cause_why": "Interim government established under Dr. Yunus. BSEC leadership replaced, investigation task force formed against financial market manipulators and money laundering.",
+              "market_impact": "POST_CRISIS_HOPE_RALLY"
+            },
+            {
+              "event_name": "Banking NPL Revelations & Aggressive Monetary Tightening",
+              "category": "ECONOMIC_MONETARY_BANKING",
+              "period": "2024-09-17 to 2025-06-30",
+              "stock_move_pct": -24.41,
+              "behavior": "SEVERE_VULNERABILITY",
+              "root_cause_why": "True extent of banking non-performing loans exposed by Bangladesh Bank. Liquidity squeeze in weak banks, high 12-14% treasury bill yields drew liquidity away from stock market.",
+              "market_impact": "TIGHT_LIQUIDITY_AND_FLIGHT_TO_SAFETY"
+            },
+            {
+              "event_name": "Economic Normalization & Moat Flight",
+              "category": "SECTOR_MACRO_RECOVERY",
+              "period": "2025-07-02 to 2026-10-06",
+              "stock_move_pct": -12.44,
+              "behavior": "MODERATE_CYCLICAL_DROP",
+              "root_cause_why": "FX reserves stabilized with IMF/World Bank assistance. Remittance surge. Selective institutional accumulation into debt-free cash cows with high dividend yields (Square, GP, Olympic, Padma Oil).",
+              "market_impact": "SELECTIVE_FUNDAMENTAL_ACCUMULATION"
+            }
+          ]
+        },
+        "manipulation_risk": "low",
+        "manipulation_flags": [],
+        "timeframe": "weekly",
+        "sector": "Fuel_Power",
+        "asof_date": null,
+        "dses_asof": "2026-11-02",
+        "_halal": {
+          "eligible": true,
+          "reasons": [],
+          "purification_rate": 0.0,
+          "data_gaps": []
+        },
+        "purification_rate": 0.0,
+        "halal_reasons": [],
+        "data_gaps": [],
+        "halal_tier": "flexible",
+        "halal_eligible": true,
+        "thin_liquidity_flag": true,
+        "target_mid": 19.1,
+        "trailing_stop": 15.8,
+        "dir_icon": "🟡",
+        "direction": "CONSOLIDATION_RANGE",
+        "rise_prob": 47.9,
+        "mt_upside": "+15.1%",
+        "mt_downside": "-4.8%",
+        "mt_rr": "3.1x",
+        "leadership_summary": "Managing Director / CEO (20y exp, A)",
+        "dominant_intent": "NO_RECENT_NEWS",
+        "st_info": {
+          "predicted_path": "Upward momentum swing",
+          "upside_potential_pct": "+3.6%",
+          "downside_risk_pct": "-2.4%",
+          "target_price": 17.2,
+          "support_price": 16.2,
+          "risk_reward_ratio": "1.5x"
+        },
+        "mt_info": {
+          "predicted_path": "Cycle valuation recovery to historical median",
+          "upside_potential_pct": "+15.1%",
+          "downside_risk_pct": "-4.8%",
+          "target_price": 19.1,
+          "trailing_stop": 15.8,
+          "risk_reward_ratio": "3.1x"
+        },
+        "lt_info": {
+          "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
+          "upside_potential_pct": "+30.1%",
+          "downside_risk_pct": "-8.6%",
+          "target_price": 21.6,
+          "dividend_cagr": "moderate (1.04%)",
+          "risk_reward_ratio": "3.5x"
+        },
+        "smart_money_sig": "Holding shift: Smart money -0.01%, Retail +0.01%",
+        "liquidity_directive": "Max single order: 3,889 shares (Tk 66,891) to prevent >1% execution slippage",
+        "max_single_order": 3889,
+        "when_to_buy": "Enter on support confirmation (৳16.4–৳16.8) with MACD histogram turning positive and RSI between 35–55.",
+        "when_not_to_buy": "Do NOT buy if RSI > 62, if volume drops below 20-DMA during rally, or if market bias is Strongly Bearish.",
+        "when_to_sell": "Take profit at ৳19.1 (+15.1%); strictly exit on 5% trailing stop (৳15.8) or MACD bearish death cross.",
+        "debt_health": "D/E: 0.054"
+      },
+      {
+        "ticker": "JAMUNAOIL",
+        "signal": "BUY",
+        "confidence": 73.78,
+        "entry": 177.4,
+        "target": 184.3,
+        "stop_loss": 173.95,
+        "rsi": 44.75,
+        "sma20": 178.42,
+        "sma200": 175.02,
+        "pe": "3.11",
+        "eps": "58.7",
+        "dividend": "strong (9.87%)",
+        "dividend_consistency": "proven_compounder (5 yrs cash divs)",
+        "dividend_track_record_years": 5,
+        "debt_equity_val": 0.0,
+        "long_term_debt_equity_val": 0.0,
+        "loan_trap_risk": "none",
+        "downturn_resilience": {
+          "status": "normal",
+          "drawdown_pct": 9.0,
+          "high_52w": 195.0,
+          "low_52w": 164.9
+        },
+        "earnings_quality": "moderate_accrual_drag",
+        "management": {
+          "ticker": "JAMUNAOIL",
+          "company_name": "Jamuna Oil Company Limited",
+          "chairman": "Md. Nurul Alam (Secretary, Energy Division)",
+          "managing_director_ceo": "Md. Gias Uddin Ansary",
+          "leadership_type": "State Petroleum Board + Civil Service Veteran",
+          "industry_experience_years": 32,
+          "governance_rating": "AA+",
+          "audit_credibility": "High (Government Commercial Audit + Chartered Accountants)",
+          "key_moat": "State-backed fuel distribution monopoly, zero long-term debt, massive cash reserves",
+          "management_risk": "Low",
+          "governance_score": 90
+        },
+        "news_intent": {
+          "ticker": "JAMUNAOIL",
+          "intent_score": 0.0,
+          "dominant_intent": "NO_RECENT_NEWS",
+          "articles_analyzed": 0,
+          "red_flags": [],
+          "catalysts": []
+        },
+        "trajectory": {
+          "direction": "RISE_PREDICTED",
+          "direction_icon": "🟢",
+          "rise_probability_pct": 64.2,
+          "momentum_status": "Bullish Reversal / Upward Accumulation",
+          "short_term": {
+            "predicted_path": "Upward momentum swing",
+            "upside_potential_pct": "+1.9%",
+            "downside_risk_pct": "-1.3%",
+            "target_price": 180.8,
+            "support_price": 175.1,
+            "risk_reward_ratio": "1.5x"
+          },
+          "mid_term": {
+            "predicted_path": "Cycle valuation recovery to historical median",
+            "upside_potential_pct": "+3.6%",
+            "downside_risk_pct": "-1.9%",
+            "target_price": 183.8,
+            "trailing_stop": 174.0,
+            "risk_reward_ratio": "1.9x"
+          },
+          "long_term": {
+            "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
+            "upside_potential_pct": "+30.0%",
+            "downside_risk_pct": "-3.4%",
+            "target_price": 230.6,
+            "dividend_cagr": "strong (9.87%)",
+            "risk_reward_ratio": "8.8x"
+          }
+        },
+        "precision": {
+          "ticker": "JAMUNAOIL",
+          "smart_money": {
+            "status": "INSUFFICIENT_HISTORY",
+            "smart_money_delta_pct": 0.0,
+            "public_delta_pct": 0.0,
+            "classification": "NEUTRAL_HOLDING",
+            "conviction_bonus": 0.0,
+            "signal": "No monthly delta available"
+          },
+          "cash_flow": {
+            "nocfps": 5.9,
+            "is_estimated": true,
+            "dividend_per_share": 0.0,
+            "dividend_coverage_x": 5.0,
+            "fcf_yield_pct": 590.0,
+            "cash_quality_status": "PRISTINE_REAL_CASH_COVERAGE",
+            "conviction_bonus": 15.0,
+            "signal": "Dividend is 500% cash-covered by real operations (NOCFPS: Tk 5.9 vs DPS: Tk 0.0)"
+          },
+          "liquidity": {
+            "avg_daily_volume": 7956,
+            "daily_turnover_bdt_cr": 0.0,
+            "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
+            "slippage_risk": "HIGH",
+            "max_single_order_shares": 397,
+            "max_daily_accumulation_shares": 1193,
+            "max_order_bdt": 397.0,
+            "directive": "Max single order: 397 shares (Tk 397) to prevent >1% execution slippage"
+          },
+          "earnings_acceleration": {
+            "status": "INSUFFICIENT_QUARTERLY_DATA",
+            "acceleration_status": "NORMAL_STABLE",
+            "bonus": 0.0,
+            "signal": "Standard annual EPS trajectory"
+          },
+          "total_precision_bonus": 15.0
+        },
+        "pattern_dna": {
+          "ticker": "JAMUNAOIL",
+          "audited_at": "2026-11-01 18:25:43",
+          "worth_vs_greed": {
+            "current_price": 177.4,
+            "intrinsic_worth": 55.52,
+            "margin_of_safety_pct": -68.7,
+            "extension_froth_score": 10.0,
+            "greed_index": 10.0,
+            "rsi_14": 37.1,
+            "price_vs_ema50_pct": -0.5,
+            "price_vs_ema200_pct": -0.1,
+            "merit_status": "EARNINGS_BACKED_MERIT",
+            "merit_reason": "Price supported by solid earnings (EPS: ৳6.94, P/E: 0.0). Growth is fundamentally justified.",
+            "timing_directives": {
+              "optimal_entry_corridor": "৳173.9 – ৳179.2",
+              "chase_cutoff_price": 181.8,
+              "when_to_wait": "If price opens or rises above ৳181.8, DO NOT HOP IN. Wait 2–5 trading sessions for dip back to ৳173.9.",
+              "weekly_target_short": 183.6,
+              "monthly_target_swing": 204.0,
+              "long_term_target_asset": 230.6,
+              "capital_pacing_rule": "Deploy maximum 25%–30% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2–4 weeks."
+            },
+            "status": "CHRONIC_OVERVALUATION",
+            "worth_decision": "AVOID",
+            "reason": "Fundamental value severely lags stock price (MoS: -68.7%).",
+            "is_blacklisted": false,
+            "blacklist_reason": null
+          },
+          "multi_interval_wave": {
+            "intervals": {
+              "weekly_5d": {
+                "return_pct": -0.73,
+                "high": 179.9,
+                "low": 176.2,
+                "range_volatility_pct": 2.1
+              },
+              "monthly_21d": {
+                "return_pct": -0.06,
+                "high": 181.3,
+                "low": 170.0,
+                "range_volatility_pct": 6.65
+              },
+              "quarterly_63d": {
+                "return_pct": -3.06,
+                "high": 184.7,
+                "low": 170.0,
+                "range_volatility_pct": 8.65
+              },
+              "half_yearly_126d": {
+                "return_pct": 3.56,
+                "high": 188.0,
+                "low": 165.7,
+                "range_volatility_pct": 13.46
+              },
+              "yearly_252d": {
+                "return_pct": -3.53,
+                "high": 195.0,
+                "low": 164.9,
+                "range_volatility_pct": 18.25
+              }
+            },
+            "wave_metrics": {
+              "median_rally_gain_pct": 9.9,
+              "median_correction_drop_pct": -9.5,
+              "avg_wave_duration_bars": 23.0
+            },
+            "current_wave_phase": "MARKDOWN_PULLBACK",
+            "phase_guidance": "Ongoing pullback from peak (-2.2%). Wait for stabilizing base.",
+            "top_seasonal_months": [
+              {
+                "month": "Jul",
+                "avg_return": 3.8,
+                "win_rate": 69.0
+              },
+              {
+                "month": "Nov",
+                "avg_return": 2.2,
+                "win_rate": 57.0
+              },
+              {
+                "month": "Aug",
+                "avg_return": 2.0,
+                "win_rate": 58.0
+              }
+            ],
+            "weak_seasonal_months": [
+              {
+                "month": "Jan",
+                "avg_return": -2.2,
+                "win_rate": 29.0
+              },
+              {
+                "month": "Dec",
+                "avg_return": -4.1,
+                "win_rate": 15.0
+              }
+            ]
+          },
+          "causal_attributions": [
+            {
+              "event_name": "BSEC Floor Price Regime",
+              "category": "REGULATORY_LAW_AND_ORDER",
+              "period": "2022-07-28 to 2024-01-18",
+              "stock_move_pct": 3.6,
+              "behavior": "DEFENSIVE_STABILITY",
+              "root_cause_why": "Floor prices imposed on all stocks to stop free-fall. Artificially froze liquidity, trapped institutional capital, volume dried up to historic lows.",
+              "market_impact": "LIQUIDITY_FREEZE"
+            },
+            {
+              "event_name": "Phased Floor Price Removal & Price Discovery",
+              "category": "REGULATORY_LAW_AND_ORDER",
+              "period": "2024-01-18 to 2024-03-31",
+              "stock_move_pct": 0.46,
+              "behavior": "DEFENSIVE_STABILITY",
+              "root_cause_why": "BSEC lifted floor prices in waves. Triggered sharp 1,000+ point DSEX correction as artificial valuations collapsed to fair market levels.",
+              "market_impact": "SHARP_DELEVERAGING"
+            },
+            {
+              "event_name": "SMART Interest Rate & Lending Cap Removal",
+              "category": "ECONOMIC_MONETARY",
+              "period": "2023-07-02 to 2024-05-08",
+              "stock_move_pct": -2.8,
+              "behavior": "MODERATE_CYCLICAL_DROP",
+              "root_cause_why": "Bangladesh Bank replaced fixed 9% lending cap with SMART rate, later moving to pure market-based repo tightening (repo hiked to 8.5%-10.0%). Corporate borrowing cost surged from 9% to 14-16%.",
+              "market_impact": "DEBT_BURDEN_SHOCK"
+            },
+            {
+              "event_name": "Political Turmoil & National Student Revolution",
+              "category": "POLITICAL_COUNTRY_CONDITION",
+              "period": "2024-06-02 to 2024-08-04",
+              "stock_move_pct": 2.59,
+              "behavior": "DEFENSIVE_STABILITY",
+              "root_cause_why": "Mass protests, nationwide curfews, internet blackouts, supply chain shutdowns leading to resignation of government on Aug 5.",
+              "market_impact": "SYSTEMIC_DISRUPTION"
+            },
+            {
+              "event_name": "Interim Government Formation & Anti-Corruption Drive",
+              "category": "POLITICAL_REGULATORY",
+              "period": "2024-08-06 to 2024-09-15",
+              "stock_move_pct": -1.65,
+              "behavior": "MODERATE_CYCLICAL_DROP",
+              "root_cause_why": "Interim government established under Dr. Yunus. BSEC leadership replaced, investigation task force formed against financial market manipulators and money laundering.",
+              "market_impact": "POST_CRISIS_HOPE_RALLY"
+            },
+            {
+              "event_name": "Banking NPL Revelations & Aggressive Monetary Tightening",
+              "category": "ECONOMIC_MONETARY_BANKING",
+              "period": "2024-09-17 to 2025-06-30",
+              "stock_move_pct": -0.87,
+              "behavior": "MODERATE_CYCLICAL_DROP",
+              "root_cause_why": "True extent of banking non-performing loans exposed by Bangladesh Bank. Liquidity squeeze in weak banks, high 12-14% treasury bill yields drew liquidity away from stock market.",
+              "market_impact": "TIGHT_LIQUIDITY_AND_FLIGHT_TO_SAFETY"
+            },
+            {
+              "event_name": "Economic Normalization & Moat Flight",
+              "category": "SECTOR_MACRO_RECOVERY",
+              "period": "2025-07-02 to 2026-10-06",
+              "stock_move_pct": -1.93,
+              "behavior": "MODERATE_CYCLICAL_DROP",
+              "root_cause_why": "FX reserves stabilized with IMF/World Bank assistance. Remittance surge. Selective institutional accumulation into debt-free cash cows with high dividend yields (Square, GP, Olympic, Padma Oil).",
+              "market_impact": "SELECTIVE_FUNDAMENTAL_ACCUMULATION"
+            }
+          ]
+        },
+        "manipulation_risk": "low",
+        "manipulation_flags": [],
+        "timeframe": "weekly",
+        "sector": "Fuel_Power",
+        "asof_date": null,
+        "dses_asof": "2026-11-02",
+        "_halal": {
+          "eligible": true,
+          "reasons": [],
+          "purification_rate": 0.0,
+          "data_gaps": []
+        },
+        "purification_rate": 0.0,
+        "halal_reasons": [],
+        "data_gaps": [],
+        "halal_tier": "flexible",
+        "halal_eligible": true,
+        "thin_liquidity_flag": true,
+        "target_mid": 183.8,
+        "trailing_stop": 174.0,
+        "dir_icon": "🟢",
+        "direction": "RISE_PREDICTED",
+        "rise_prob": 64.2,
+        "mt_upside": "+3.6%",
+        "mt_downside": "-1.9%",
+        "mt_rr": "1.9x",
+        "leadership_summary": "Md. Gias Uddin Ansary (32y exp, AA+)",
+        "dominant_intent": "NO_RECENT_NEWS",
+        "st_info": {
+          "predicted_path": "Upward momentum swing",
+          "upside_potential_pct": "+1.9%",
+          "downside_risk_pct": "-1.3%",
+          "target_price": 180.8,
+          "support_price": 175.1,
+          "risk_reward_ratio": "1.5x"
+        },
+        "mt_info": {
+          "predicted_path": "Cycle valuation recovery to historical median",
+          "upside_potential_pct": "+3.6%",
+          "downside_risk_pct": "-1.9%",
+          "target_price": 183.8,
+          "trailing_stop": 174.0,
+          "risk_reward_ratio": "1.9x"
+        },
+        "lt_info": {
+          "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
+          "upside_potential_pct": "+30.0%",
+          "downside_risk_pct": "-3.4%",
+          "target_price": 230.6,
+          "dividend_cagr": "strong (9.87%)",
+          "risk_reward_ratio": "8.8x"
+        },
+        "smart_money_sig": "No monthly delta available",
+        "liquidity_directive": "Max single order: 397 shares (Tk 397) to prevent >1% execution slippage",
+        "max_single_order": 397,
+        "when_to_buy": "Enter on support confirmation (৳175.6–৳179.2) with MACD histogram turning positive and RSI between 35–55.",
+        "when_not_to_buy": "Do NOT buy if RSI > 62, if volume drops below 20-DMA during rally, or if market bias is Strongly Bearish.",
+        "when_to_sell": "Take profit at ৳183.8 (+3.6%); strictly exit on 5% trailing stop (৳174.0) or MACD bearish death cross.",
+        "debt_health": "D/E: 0.0"
       },
       {
         "ticker": "FINEFOODS",
@@ -10920,6 +11627,7 @@
         ],
         "timeframe": "weekly",
         "sector": "Food_Beverage",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "_halal": {
           "eligible": true,
@@ -10974,343 +11682,6 @@
         "when_not_to_buy": "Do NOT buy if RSI > 62, if volume drops below 20-DMA during rally, or if market bias is Strongly Bearish.",
         "when_to_sell": "Take profit at ৳509.3 (+15.0%); strictly exit on 5% trailing stop (৳420.8) or MACD bearish death cross.",
         "debt_health": "D/E: 0.0"
-      },
-      {
-        "ticker": "AGNISYSL",
-        "signal": "BUY",
-        "confidence": 61.82,
-        "entry": 26.7,
-        "target": 29.52,
-        "stop_loss": 25.29,
-        "rsi": 50.55,
-        "sma20": 25.87,
-        "sma200": 26.18,
-        "pe": "33.62",
-        "eps": "0.81",
-        "dividend": "moderate (0.92%)",
-        "dividend_consistency": "proven_compounder (5 yrs cash divs)",
-        "dividend_track_record_years": 5,
-        "debt_equity_val": 0.017,
-        "long_term_debt_equity_val": 0.004,
-        "loan_trap_risk": "none",
-        "downturn_resilience": {
-          "status": "growth_at_discount",
-          "drawdown_pct": 25.6,
-          "high_52w": 35.9,
-          "low_52w": 18.1,
-          "note": "Share price down 25.6% from 52w peak, yet earnings positive/steady (Conviction discount)"
-        },
-        "earnings_quality": "moderate_accrual_drag",
-        "management": {
-          "ticker": "AGNISYSL",
-          "company_name": "Agni Systems Limited",
-          "chairman": "Abdus Salam",
-          "managing_director_ceo": "Mohammed Abdus Salam",
-          "leadership_type": "Telecom & Network Engineering Founders",
-          "industry_experience_years": 31,
-          "governance_rating": "A",
-          "audit_credibility": "Standard Cat A Audit",
-          "key_moat": "One of earliest ISPs in Bangladesh (est 1995), clean balance sheet, zero long-term debt",
-          "management_risk": "Low",
-          "governance_score": 75
-        },
-        "news_intent": {
-          "ticker": "AGNISYSL",
-          "intent_score": 0.0,
-          "dominant_intent": "NO_RECENT_NEWS",
-          "articles_analyzed": 0,
-          "red_flags": [],
-          "catalysts": []
-        },
-        "trajectory": {
-          "direction": "FALL_RISK",
-          "direction_icon": "🔴",
-          "rise_probability_pct": 15.4,
-          "momentum_status": "Bearish Breakdown / Selling Pressure",
-          "short_term": {
-            "predicted_path": "Upward momentum swing",
-            "upside_potential_pct": "+5.2%",
-            "downside_risk_pct": "-3.4%",
-            "target_price": 28.1,
-            "support_price": 25.8,
-            "risk_reward_ratio": "1.5x"
-          },
-          "mid_term": {
-            "predicted_path": "Cycle valuation recovery to historical median",
-            "upside_potential_pct": "+15.0%",
-            "downside_risk_pct": "-4.9%",
-            "target_price": 30.7,
-            "trailing_stop": 25.4,
-            "risk_reward_ratio": "3.1x"
-          },
-          "long_term": {
-            "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-            "upside_potential_pct": "+30.0%",
-            "downside_risk_pct": "-8.8%",
-            "target_price": 34.7,
-            "dividend_cagr": "moderate (0.92%)",
-            "risk_reward_ratio": "3.4x"
-          }
-        },
-        "precision": {
-          "ticker": "AGNISYSL",
-          "smart_money": {
-            "status": "INSUFFICIENT_HISTORY",
-            "smart_money_delta_pct": 0.0,
-            "public_delta_pct": 0.0,
-            "classification": "NEUTRAL_HOLDING",
-            "conviction_bonus": 0.0,
-            "signal": "No monthly delta available"
-          },
-          "cash_flow": {
-            "nocfps": 0.21,
-            "is_estimated": true,
-            "dividend_per_share": 0.0,
-            "dividend_coverage_x": 5.0,
-            "fcf_yield_pct": 21.0,
-            "cash_quality_status": "PRISTINE_REAL_CASH_COVERAGE",
-            "conviction_bonus": 15.0,
-            "signal": "Dividend is 500% cash-covered by real operations (NOCFPS: Tk 0.21 vs DPS: Tk 0.0)"
-          },
-          "liquidity": {
-            "avg_daily_volume": 273435,
-            "daily_turnover_bdt_cr": 0.03,
-            "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
-            "slippage_risk": "HIGH",
-            "max_single_order_shares": 13671,
-            "max_daily_accumulation_shares": 41015,
-            "max_order_bdt": 13671.0,
-            "directive": "Max single order: 13,671 shares (Tk 13,671) to prevent >1% execution slippage"
-          },
-          "earnings_acceleration": {
-            "status": "INSUFFICIENT_QUARTERLY_DATA",
-            "acceleration_status": "NORMAL_STABLE",
-            "bonus": 0.0,
-            "signal": "Standard annual EPS trajectory"
-          },
-          "total_precision_bonus": 15.0
-        },
-        "pattern_dna": {
-          "ticker": "AGNISYSL",
-          "audited_at": "2026-11-01 15:40:10",
-          "worth_vs_greed": {
-            "current_price": 26.7,
-            "intrinsic_worth": 2.0,
-            "margin_of_safety_pct": -92.5,
-            "extension_froth_score": 20.0,
-            "greed_index": 20.0,
-            "rsi_14": 57.4,
-            "price_vs_ema50_pct": -3.2,
-            "price_vs_ema200_pct": -1.9,
-            "merit_status": "EARNINGS_BACKED_MERIT",
-            "merit_reason": "Price supported by solid earnings (EPS: ৳0.25, P/E: 0.0). Growth is fundamentally justified.",
-            "timing_directives": {
-              "optimal_entry_corridor": "৳26.2 – ৳27.0",
-              "chase_cutoff_price": 27.4,
-              "when_to_wait": "If price opens or rises above ৳27.4, DO NOT HOP IN. Wait 2–5 trading sessions for dip back to ৳26.2.",
-              "weekly_target_short": 27.6,
-              "monthly_target_swing": 30.7,
-              "long_term_target_asset": 34.7,
-              "capital_pacing_rule": "Deploy maximum 25%–30% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2–4 weeks."
-            },
-            "status": "CHRONIC_OVERVALUATION",
-            "worth_decision": "AVOID",
-            "reason": "Fundamental value severely lags stock price (MoS: -92.5%)."
-          },
-          "multi_interval_wave": {
-            "intervals": {
-              "weekly_5d": {
-                "return_pct": 5.95,
-                "high": 27.0,
-                "low": 25.0,
-                "range_volatility_pct": 8.0
-              },
-              "monthly_21d": {
-                "return_pct": -4.98,
-                "high": 28.5,
-                "low": 25.0,
-                "range_volatility_pct": 14.0
-              },
-              "quarterly_63d": {
-                "return_pct": -18.1,
-                "high": 34.9,
-                "low": 25.0,
-                "range_volatility_pct": 39.6
-              },
-              "half_yearly_126d": {
-                "return_pct": 5.53,
-                "high": 35.9,
-                "low": 23.9,
-                "range_volatility_pct": 50.21
-              },
-              "yearly_252d": {
-                "return_pct": 6.8,
-                "high": 35.9,
-                "low": 18.1,
-                "range_volatility_pct": 98.34
-              }
-            },
-            "wave_metrics": {
-              "median_rally_gain_pct": 21.0,
-              "median_correction_drop_pct": -17.9,
-              "avg_wave_duration_bars": 24.0
-            },
-            "current_wave_phase": "BOTTOMING_SUPPORT",
-            "phase_guidance": "Drop (-25.6%) matches historical correction depth (-17.9%). Prepare to accumulate.",
-            "top_seasonal_months": [
-              {
-                "month": "Sep",
-                "avg_return": 6.7,
-                "win_rate": 50.0
-              },
-              {
-                "month": "Aug",
-                "avg_return": 6.0,
-                "win_rate": 62.0
-              },
-              {
-                "month": "May",
-                "avg_return": 4.3,
-                "win_rate": 62.0
-              }
-            ],
-            "weak_seasonal_months": [
-              {
-                "month": "Nov",
-                "avg_return": -6.7,
-                "win_rate": 27.0
-              },
-              {
-                "month": "Oct",
-                "avg_return": -8.3,
-                "win_rate": 15.0
-              }
-            ]
-          },
-          "causal_attributions": [
-            {
-              "event_name": "BSEC Floor Price Regime",
-              "category": "REGULATORY_LAW_AND_ORDER",
-              "period": "2022-07-28 to 2024-01-18",
-              "stock_move_pct": 15.42,
-              "behavior": "STRONG_RESILIENCE_OR_BENEFICIARY",
-              "root_cause_why": "Floor prices imposed on all stocks to stop free-fall. Artificially froze liquidity, trapped institutional capital, volume dried up to historic lows.",
-              "market_impact": "LIQUIDITY_FREEZE"
-            },
-            {
-              "event_name": "Phased Floor Price Removal & Price Discovery",
-              "category": "REGULATORY_LAW_AND_ORDER",
-              "period": "2024-01-18 to 2024-03-31",
-              "stock_move_pct": 12.55,
-              "behavior": "DEFENSIVE_STABILITY",
-              "root_cause_why": "BSEC lifted floor prices in waves. Triggered sharp 1,000+ point DSEX correction as artificial valuations collapsed to fair market levels.",
-              "market_impact": "SHARP_DELEVERAGING"
-            },
-            {
-              "event_name": "SMART Interest Rate & Lending Cap Removal",
-              "category": "ECONOMIC_MONETARY",
-              "period": "2023-07-02 to 2024-05-08",
-              "stock_move_pct": -4.12,
-              "behavior": "MODERATE_CYCLICAL_DROP",
-              "root_cause_why": "Bangladesh Bank replaced fixed 9% lending cap with SMART rate, later moving to pure market-based repo tightening (repo hiked to 8.5%-10.0%). Corporate borrowing cost surged from 9% to 14-16%.",
-              "market_impact": "DEBT_BURDEN_SHOCK"
-            },
-            {
-              "event_name": "Political Turmoil & National Student Revolution",
-              "category": "POLITICAL_COUNTRY_CONDITION",
-              "period": "2024-06-02 to 2024-08-04",
-              "stock_move_pct": 25.66,
-              "behavior": "STRONG_RESILIENCE_OR_BENEFICIARY",
-              "root_cause_why": "Mass protests, nationwide curfews, internet blackouts, supply chain shutdowns leading to resignation of government on Aug 5.",
-              "market_impact": "SYSTEMIC_DISRUPTION"
-            },
-            {
-              "event_name": "Interim Government Formation & Anti-Corruption Drive",
-              "category": "POLITICAL_REGULATORY",
-              "period": "2024-08-06 to 2024-09-15",
-              "stock_move_pct": 8.87,
-              "behavior": "DEFENSIVE_STABILITY",
-              "root_cause_why": "Interim government established under Dr. Yunus. BSEC leadership replaced, investigation task force formed against financial market manipulators and money laundering.",
-              "market_impact": "POST_CRISIS_HOPE_RALLY"
-            },
-            {
-              "event_name": "Banking NPL Revelations & Aggressive Monetary Tightening",
-              "category": "ECONOMIC_MONETARY_BANKING",
-              "period": "2024-09-17 to 2025-06-30",
-              "stock_move_pct": -19.58,
-              "behavior": "SEVERE_VULNERABILITY",
-              "root_cause_why": "True extent of banking non-performing loans exposed by Bangladesh Bank. Liquidity squeeze in weak banks, high 12-14% treasury bill yields drew liquidity away from stock market.",
-              "market_impact": "TIGHT_LIQUIDITY_AND_FLIGHT_TO_SAFETY"
-            },
-            {
-              "event_name": "Economic Normalization & Moat Flight",
-              "category": "SECTOR_MACRO_RECOVERY",
-              "period": "2025-07-02 to 2026-10-06",
-              "stock_move_pct": -5.47,
-              "behavior": "MODERATE_CYCLICAL_DROP",
-              "root_cause_why": "FX reserves stabilized with IMF/World Bank assistance. Remittance surge. Selective institutional accumulation into debt-free cash cows with high dividend yields (Square, GP, Olympic, Padma Oil).",
-              "market_impact": "SELECTIVE_FUNDAMENTAL_ACCUMULATION"
-            }
-          ]
-        },
-        "manipulation_risk": "low",
-        "manipulation_flags": [],
-        "timeframe": "weekly",
-        "sector": "IT",
-        "dses_asof": "2026-11-02",
-        "_halal": {
-          "eligible": true,
-          "reasons": [],
-          "purification_rate": 0.0,
-          "data_gaps": []
-        },
-        "purification_rate": 0.0,
-        "halal_reasons": [],
-        "data_gaps": [],
-        "halal_tier": "flexible",
-        "halal_eligible": true,
-        "thin_liquidity_flag": true,
-        "target_mid": 30.7,
-        "trailing_stop": 25.4,
-        "dir_icon": "🔴",
-        "direction": "FALL_RISK",
-        "rise_prob": 15.4,
-        "mt_upside": "+15.0%",
-        "mt_downside": "-4.9%",
-        "mt_rr": "3.1x",
-        "leadership_summary": "Mohammed Abdus Salam (31y exp, A)",
-        "dominant_intent": "NO_RECENT_NEWS",
-        "st_info": {
-          "predicted_path": "Upward momentum swing",
-          "upside_potential_pct": "+5.2%",
-          "downside_risk_pct": "-3.4%",
-          "target_price": 28.1,
-          "support_price": 25.8,
-          "risk_reward_ratio": "1.5x"
-        },
-        "mt_info": {
-          "predicted_path": "Cycle valuation recovery to historical median",
-          "upside_potential_pct": "+15.0%",
-          "downside_risk_pct": "-4.9%",
-          "target_price": 30.7,
-          "trailing_stop": 25.4,
-          "risk_reward_ratio": "3.1x"
-        },
-        "lt_info": {
-          "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-          "upside_potential_pct": "+30.0%",
-          "downside_risk_pct": "-8.8%",
-          "target_price": 34.7,
-          "dividend_cagr": "moderate (0.92%)",
-          "risk_reward_ratio": "3.4x"
-        },
-        "smart_money_sig": "No monthly delta available",
-        "liquidity_directive": "Max single order: 13,671 shares (Tk 13,671) to prevent >1% execution slippage",
-        "max_single_order": 13671,
-        "when_to_buy": "Enter on support confirmation (৳26.4–৳27.0) with MACD histogram turning positive and RSI between 35–55.",
-        "when_not_to_buy": "Do NOT buy if RSI > 62, if volume drops below 20-DMA during rally, or if market bias is Strongly Bearish.",
-        "when_to_sell": "Take profit at ৳30.7 (+15.0%); strictly exit on 5% trailing stop (৳25.4) or MACD bearish death cross.",
-        "debt_health": "D/E: 0.017"
       },
       {
         "ticker": "BDCOM",
@@ -11594,6 +11965,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "IT",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "_halal": {
           "eligible": true,
@@ -11648,342 +12020,6 @@
         "when_not_to_buy": "Do NOT buy if RSI > 62, if volume drops below 20-DMA during rally, or if market bias is Strongly Bearish.",
         "when_to_sell": "Take profit at ৳31.9 (+15.2%); strictly exit on 5% trailing stop (৳26.3) or MACD bearish death cross.",
         "debt_health": "D/E: 0.109"
-      },
-      {
-        "ticker": "RENATA",
-        "signal": "BUY",
-        "confidence": 61.49,
-        "entry": 426.2,
-        "target": 443.98,
-        "stop_loss": 417.31,
-        "rsi": 23.28,
-        "sma20": 443.2,
-        "sma200": 438.49,
-        "pe": "25.22",
-        "eps": "19.36",
-        "dividend": "moderate (1.13%)",
-        "dividend_consistency": "proven_compounder (5 yrs cash divs)",
-        "dividend_track_record_years": 5,
-        "debt_equity_val": 0.539,
-        "long_term_debt_equity_val": 0.268,
-        "loan_trap_risk": "low",
-        "downturn_resilience": {
-          "status": "normal",
-          "drawdown_pct": 12.7,
-          "high_52w": 488.0,
-          "low_52w": 372.0
-        },
-        "earnings_quality": "moderate_accrual_drag",
-        "management": {
-          "ticker": "RENATA",
-          "company_name": "Renata PLC",
-          "chairman": "Dr. Sarwar Ali",
-          "managing_director_ceo": "Syed S. Kaiser Kabir",
-          "leadership_type": "Former Pfizer BD + Institutional Professional Trust Board",
-          "industry_experience_years": 40,
-          "governance_rating": "AAA",
-          "audit_credibility": "Pristine (A. Qasem & Co.)",
-          "key_moat": "Market leader in animal health & contract manufacturing, zero political exposure",
-          "management_risk": "Low",
-          "governance_score": 100
-        },
-        "news_intent": {
-          "ticker": "RENATA",
-          "intent_score": 0.0,
-          "dominant_intent": "NO_RECENT_NEWS",
-          "articles_analyzed": 0,
-          "red_flags": [],
-          "catalysts": []
-        },
-        "trajectory": {
-          "direction": "FALL_RISK",
-          "direction_icon": "🔴",
-          "rise_probability_pct": 29.5,
-          "momentum_status": "Bearish Breakdown / Selling Pressure",
-          "short_term": {
-            "predicted_path": "Oversold bounce to 20-DMA",
-            "upside_potential_pct": "+2.1%",
-            "downside_risk_pct": "-1.4%",
-            "target_price": 435.1,
-            "support_price": 420.3,
-            "risk_reward_ratio": "1.5x"
-          },
-          "mid_term": {
-            "predicted_path": "Cycle valuation recovery to historical median",
-            "upside_potential_pct": "+15.0%",
-            "downside_risk_pct": "-5.0%",
-            "target_price": 490.1,
-            "trailing_stop": 404.9,
-            "risk_reward_ratio": "3.0x"
-          },
-          "long_term": {
-            "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-            "upside_potential_pct": "+30.0%",
-            "downside_risk_pct": "-9.0%",
-            "target_price": 554.1,
-            "dividend_cagr": "moderate (1.13%)",
-            "risk_reward_ratio": "3.3x"
-          }
-        },
-        "precision": {
-          "ticker": "RENATA",
-          "smart_money": {
-            "status": "INSUFFICIENT_HISTORY",
-            "smart_money_delta_pct": 0.0,
-            "public_delta_pct": 0.0,
-            "classification": "NEUTRAL_HOLDING",
-            "conviction_bonus": 0.0,
-            "signal": "No monthly delta available"
-          },
-          "cash_flow": {
-            "nocfps": 5.79,
-            "is_estimated": true,
-            "dividend_per_share": 0.0,
-            "dividend_coverage_x": 5.0,
-            "fcf_yield_pct": 579.0,
-            "cash_quality_status": "PRISTINE_REAL_CASH_COVERAGE",
-            "conviction_bonus": 15.0,
-            "signal": "Dividend is 500% cash-covered by real operations (NOCFPS: Tk 5.79 vs DPS: Tk 0.0)"
-          },
-          "liquidity": {
-            "avg_daily_volume": 15040,
-            "daily_turnover_bdt_cr": 0.0,
-            "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
-            "slippage_risk": "HIGH",
-            "max_single_order_shares": 752,
-            "max_daily_accumulation_shares": 2256,
-            "max_order_bdt": 752.0,
-            "directive": "Max single order: 752 shares (Tk 752) to prevent >1% execution slippage"
-          },
-          "earnings_acceleration": {
-            "status": "INSUFFICIENT_QUARTERLY_DATA",
-            "acceleration_status": "NORMAL_STABLE",
-            "bonus": 0.0,
-            "signal": "Standard annual EPS trajectory"
-          },
-          "total_precision_bonus": 15.0
-        },
-        "pattern_dna": {
-          "ticker": "RENATA",
-          "audited_at": "2026-11-01 15:40:09",
-          "worth_vs_greed": {
-            "current_price": 426.2,
-            "intrinsic_worth": 54.48,
-            "margin_of_safety_pct": -87.2,
-            "extension_froth_score": 10.0,
-            "greed_index": 10.0,
-            "rsi_14": 15.6,
-            "price_vs_ema50_pct": -5.0,
-            "price_vs_ema200_pct": -5.5,
-            "merit_status": "EARNINGS_BACKED_MERIT",
-            "merit_reason": "Price supported by solid earnings (EPS: ৳6.81, P/E: 0.0). Growth is fundamentally justified.",
-            "timing_directives": {
-              "optimal_entry_corridor": "৳417.7 – ৳430.5",
-              "chase_cutoff_price": 436.9,
-              "when_to_wait": "If price opens or rises above ৳436.9, DO NOT HOP IN. Wait 2–5 trading sessions for dip back to ৳417.7.",
-              "weekly_target_short": 441.1,
-              "monthly_target_swing": 490.1,
-              "long_term_target_asset": 554.1,
-              "capital_pacing_rule": "Deploy maximum 25%–30% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2–4 weeks."
-            },
-            "status": "CHRONIC_OVERVALUATION",
-            "worth_decision": "AVOID",
-            "reason": "Fundamental value severely lags stock price (MoS: -87.2%)."
-          },
-          "multi_interval_wave": {
-            "intervals": {
-              "weekly_5d": {
-                "return_pct": -4.5,
-                "high": 446.3,
-                "low": 424.5,
-                "range_volatility_pct": 5.14
-              },
-              "monthly_21d": {
-                "return_pct": -4.76,
-                "high": 458.0,
-                "low": 424.5,
-                "range_volatility_pct": 7.89
-              },
-              "quarterly_63d": {
-                "return_pct": -10.48,
-                "high": 477.0,
-                "low": 424.5,
-                "range_volatility_pct": 12.37
-              },
-              "half_yearly_126d": {
-                "return_pct": 1.91,
-                "high": 483.2,
-                "low": 405.0,
-                "range_volatility_pct": 19.31
-              },
-              "yearly_252d": {
-                "return_pct": -9.11,
-                "high": 488.0,
-                "low": 372.0,
-                "range_volatility_pct": 31.18
-              }
-            },
-            "wave_metrics": {
-              "median_rally_gain_pct": 14.8,
-              "median_correction_drop_pct": -8.1,
-              "avg_wave_duration_bars": 26.0
-            },
-            "current_wave_phase": "BOTTOMING_SUPPORT",
-            "phase_guidance": "Drop (-6.9%) matches historical correction depth (-8.1%). Prepare to accumulate.",
-            "top_seasonal_months": [
-              {
-                "month": "Aug",
-                "avg_return": 4.0,
-                "win_rate": 50.0
-              },
-              {
-                "month": "Jul",
-                "avg_return": 3.2,
-                "win_rate": 69.0
-              },
-              {
-                "month": "Feb",
-                "avg_return": 1.8,
-                "win_rate": 57.0
-              }
-            ],
-            "weak_seasonal_months": [
-              {
-                "month": "Oct",
-                "avg_return": -1.3,
-                "win_rate": 50.0
-              },
-              {
-                "month": "Apr",
-                "avg_return": -2.9,
-                "win_rate": 31.0
-              }
-            ]
-          },
-          "causal_attributions": [
-            {
-              "event_name": "BSEC Floor Price Regime",
-              "category": "REGULATORY_LAW_AND_ORDER",
-              "period": "2022-07-28 to 2024-01-15",
-              "stock_move_pct": 0.65,
-              "behavior": "DEFENSIVE_STABILITY",
-              "root_cause_why": "Floor prices imposed on all stocks to stop free-fall. Artificially froze liquidity, trapped institutional capital, volume dried up to historic lows.",
-              "market_impact": "LIQUIDITY_FREEZE"
-            },
-            {
-              "event_name": "Phased Floor Price Removal & Price Discovery",
-              "category": "REGULATORY_LAW_AND_ORDER",
-              "period": "2024-01-21 to 2024-03-31",
-              "stock_move_pct": -36.28,
-              "behavior": "SEVERE_VULNERABILITY",
-              "root_cause_why": "BSEC lifted floor prices in waves. Triggered sharp 1,000+ point DSEX correction as artificial valuations collapsed to fair market levels.",
-              "market_impact": "SHARP_DELEVERAGING"
-            },
-            {
-              "event_name": "SMART Interest Rate & Lending Cap Removal",
-              "category": "ECONOMIC_MONETARY",
-              "period": "2023-07-02 to 2024-05-08",
-              "stock_move_pct": -38.01,
-              "behavior": "SEVERE_VULNERABILITY",
-              "root_cause_why": "Bangladesh Bank replaced fixed 9% lending cap with SMART rate, later moving to pure market-based repo tightening (repo hiked to 8.5%-10.0%). Corporate borrowing cost surged from 9% to 14-16%.",
-              "market_impact": "DEBT_BURDEN_SHOCK"
-            },
-            {
-              "event_name": "Political Turmoil & National Student Revolution",
-              "category": "POLITICAL_COUNTRY_CONDITION",
-              "period": "2024-06-02 to 2024-08-04",
-              "stock_move_pct": 7.86,
-              "behavior": "DEFENSIVE_STABILITY",
-              "root_cause_why": "Mass protests, nationwide curfews, internet blackouts, supply chain shutdowns leading to resignation of government on Aug 5.",
-              "market_impact": "SYSTEMIC_DISRUPTION"
-            },
-            {
-              "event_name": "Interim Government Formation & Anti-Corruption Drive",
-              "category": "POLITICAL_REGULATORY",
-              "period": "2024-08-06 to 2024-09-15",
-              "stock_move_pct": 6.26,
-              "behavior": "DEFENSIVE_STABILITY",
-              "root_cause_why": "Interim government established under Dr. Yunus. BSEC leadership replaced, investigation task force formed against financial market manipulators and money laundering.",
-              "market_impact": "POST_CRISIS_HOPE_RALLY"
-            },
-            {
-              "event_name": "Banking NPL Revelations & Aggressive Monetary Tightening",
-              "category": "ECONOMIC_MONETARY_BANKING",
-              "period": "2024-09-17 to 2025-06-30",
-              "stock_move_pct": -35.98,
-              "behavior": "SEVERE_VULNERABILITY",
-              "root_cause_why": "True extent of banking non-performing loans exposed by Bangladesh Bank. Liquidity squeeze in weak banks, high 12-14% treasury bill yields drew liquidity away from stock market.",
-              "market_impact": "TIGHT_LIQUIDITY_AND_FLIGHT_TO_SAFETY"
-            },
-            {
-              "event_name": "Economic Normalization & Moat Flight",
-              "category": "SECTOR_MACRO_RECOVERY",
-              "period": "2025-07-02 to 2026-10-06",
-              "stock_move_pct": -9.05,
-              "behavior": "MODERATE_CYCLICAL_DROP",
-              "root_cause_why": "FX reserves stabilized with IMF/World Bank assistance. Remittance surge. Selective institutional accumulation into debt-free cash cows with high dividend yields (Square, GP, Olympic, Padma Oil).",
-              "market_impact": "SELECTIVE_FUNDAMENTAL_ACCUMULATION"
-            }
-          ]
-        },
-        "manipulation_risk": "low",
-        "manipulation_flags": [],
-        "timeframe": "weekly",
-        "sector": "Pharmaceuticals",
-        "dses_asof": "2026-11-02",
-        "_halal": {
-          "eligible": true,
-          "reasons": [],
-          "purification_rate": 0.0337,
-          "data_gaps": []
-        },
-        "purification_rate": 0.0337,
-        "halal_reasons": [],
-        "data_gaps": [],
-        "halal_tier": "flexible",
-        "halal_eligible": true,
-        "thin_liquidity_flag": true,
-        "target_mid": 490.1,
-        "trailing_stop": 404.9,
-        "dir_icon": "🔴",
-        "direction": "FALL_RISK",
-        "rise_prob": 29.5,
-        "mt_upside": "+15.0%",
-        "mt_downside": "-5.0%",
-        "mt_rr": "3.0x",
-        "leadership_summary": "Syed S. Kaiser Kabir (40y exp, AAA)",
-        "dominant_intent": "NO_RECENT_NEWS",
-        "st_info": {
-          "predicted_path": "Oversold bounce to 20-DMA",
-          "upside_potential_pct": "+2.1%",
-          "downside_risk_pct": "-1.4%",
-          "target_price": 435.1,
-          "support_price": 420.3,
-          "risk_reward_ratio": "1.5x"
-        },
-        "mt_info": {
-          "predicted_path": "Cycle valuation recovery to historical median",
-          "upside_potential_pct": "+15.0%",
-          "downside_risk_pct": "-5.0%",
-          "target_price": 490.1,
-          "trailing_stop": 404.9,
-          "risk_reward_ratio": "3.0x"
-        },
-        "lt_info": {
-          "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-          "upside_potential_pct": "+30.0%",
-          "downside_risk_pct": "-9.0%",
-          "target_price": 554.1,
-          "dividend_cagr": "moderate (1.13%)",
-          "risk_reward_ratio": "3.3x"
-        },
-        "smart_money_sig": "No monthly delta available",
-        "liquidity_directive": "Max single order: 752 shares (Tk 752) to prevent >1% execution slippage",
-        "max_single_order": 752,
-        "when_to_buy": "Enter on support confirmation (৳421.9–৳430.5) with MACD histogram turning positive and RSI between 35–55.",
-        "when_not_to_buy": "Do NOT buy if RSI > 62, if volume drops below 20-DMA during rally, or if market bias is Strongly Bearish.",
-        "when_to_sell": "Take profit at ৳490.1 (+15.0%); strictly exit on 5% trailing stop (৳404.9) or MACD bearish death cross.",
-        "debt_health": "D/E: 0.539"
       },
       {
         "ticker": "HEIDELBCEM",
@@ -12268,6 +12304,7 @@
         ],
         "timeframe": "weekly",
         "sector": "Cement",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "_halal": {
           "eligible": true,
@@ -12606,6 +12643,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Fuel_Power",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "_halal": {
           "eligible": true,
@@ -12943,6 +12981,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Pharmaceuticals",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "_halal": {
           "eligible": true,
@@ -13282,6 +13321,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Textile",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "_halal": {
           "eligible": true,
@@ -13594,6 +13634,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Cement",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "_halal": {
           "eligible": true,
@@ -13906,6 +13947,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Engineering",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "_halal": {
           "eligible": true,
@@ -14220,6 +14262,7 @@
         ],
         "timeframe": "weekly",
         "sector": "Textile",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "_halal": {
           "eligible": true,
@@ -14517,6 +14560,7 @@
         ],
         "timeframe": "weekly",
         "sector": "Pharmaceuticals",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "_halal": {
           "eligible": true,
@@ -14815,6 +14859,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Banking",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.0,
         "halal_reasons": [
@@ -15107,6 +15152,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Banking",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.0,
         "halal_reasons": [
@@ -15399,6 +15445,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Banking",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.0,
         "halal_reasons": [
@@ -15697,6 +15744,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Banking",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.0,
         "halal_reasons": [
@@ -15989,6 +16037,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Banking",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.0,
         "halal_reasons": [
@@ -16281,6 +16330,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Banking",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.0,
         "halal_reasons": [
@@ -16579,6 +16629,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Banking",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.0,
         "halal_reasons": [
@@ -16872,6 +16923,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Banking",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.0,
         "halal_reasons": [
@@ -17168,6 +17220,7 @@
         ],
         "timeframe": "weekly",
         "sector": "Banking",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.0,
         "halal_reasons": [
@@ -17466,6 +17519,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Banking",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.0,
         "halal_reasons": [
@@ -17758,6 +17812,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Pharmaceuticals",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.05,
         "halal_reasons": [
@@ -18048,6 +18103,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Pharmaceuticals",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.05,
         "halal_reasons": [
@@ -18339,6 +18395,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Pharmaceuticals",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.05,
         "halal_reasons": [
@@ -18630,6 +18687,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Pharmaceuticals",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.05,
         "halal_reasons": [
@@ -18921,6 +18979,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "IT",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.05,
         "halal_reasons": [
@@ -19212,6 +19271,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Cement",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.05,
         "halal_reasons": [
@@ -19503,6 +19563,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Cement",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.05,
         "halal_reasons": [
@@ -19793,6 +19854,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Cement",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.05,
         "halal_reasons": [
@@ -20084,6 +20146,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Cement",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.05,
         "halal_reasons": [
@@ -20374,6 +20437,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Fuel_Power",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.05,
         "halal_reasons": [
@@ -20665,6 +20729,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Fuel_Power",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.05,
         "halal_reasons": [
@@ -20955,6 +21020,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Fuel_Power",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.05,
         "halal_reasons": [
@@ -21251,6 +21317,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Fuel_Power",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.05,
         "halal_reasons": [
@@ -21542,6 +21609,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Food_Beverage",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.0,
         "halal_reasons": [
@@ -21838,6 +21906,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Food_Beverage",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.05,
         "halal_reasons": [
@@ -22128,6 +22197,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Engineering",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.05,
         "halal_reasons": [
@@ -22418,6 +22488,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Engineering",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.05,
         "halal_reasons": [
@@ -22709,6 +22780,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Engineering",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.05,
         "halal_reasons": [
@@ -23000,6 +23072,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Engineering",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.05,
         "halal_reasons": [
@@ -23290,6 +23363,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Engineering",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.05,
         "halal_reasons": [
@@ -23586,6 +23660,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Engineering",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.05,
         "halal_reasons": [
@@ -23877,6 +23952,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Engineering",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.05,
         "halal_reasons": [
@@ -24167,6 +24243,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Textile",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.05,
         "halal_reasons": [
@@ -24463,6 +24540,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Textile",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.05,
         "halal_reasons": [
@@ -24755,6 +24833,7 @@
         ],
         "timeframe": "weekly",
         "sector": "Textile",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.05,
         "halal_reasons": [
@@ -25046,6 +25125,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Textile",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.05,
         "halal_reasons": [
@@ -25336,6 +25416,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Textile",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.05,
         "halal_reasons": [
@@ -25626,6 +25707,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Textile",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.05,
         "halal_reasons": [
@@ -25916,6 +25998,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Textile",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.05,
         "halal_reasons": [
@@ -26212,6 +26295,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Insurance",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.0,
         "halal_reasons": [
@@ -26507,6 +26591,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Insurance",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.0,
         "halal_reasons": [
@@ -26804,6 +26889,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Insurance",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.0,
         "halal_reasons": [
@@ -26902,6 +26988,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Insurance",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.0,
         "halal_reasons": [
@@ -27195,6 +27282,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Insurance",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.0,
         "halal_reasons": [
@@ -27485,6 +27573,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Insurance",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.0,
         "halal_reasons": [
@@ -27780,6 +27869,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Insurance",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.0,
         "halal_reasons": [
@@ -28071,6 +28161,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Insurance",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.0,
         "halal_reasons": [
@@ -28362,6 +28453,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Insurance",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.0,
         "halal_reasons": [
@@ -28653,6 +28745,7 @@
         "manipulation_flags": [],
         "timeframe": "weekly",
         "sector": "Insurance",
+        "asof_date": null,
         "dses_asof": "2026-11-02",
         "purification_rate": 0.0,
         "halal_reasons": [

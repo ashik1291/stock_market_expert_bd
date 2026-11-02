@@ -1,10 +1,10 @@
 # 📊 দৈনিক ডিএসই দিকনির্দেশক পূর্বাভাস: উত্থান বনাম পতন ম্যাট্রিক্স — 2026-11-02
 
-**প্রস্তুতির সময়**: 2026-11-02 10:33:26 | **মোট নিরীক্ষিত কোম্পানি**: 80 টি কোম্পানি  
-**ইঞ্জিন সংস্করণ**: `baseline-v1.0` (`6b13e2c`) | **ডেটা স্ন্যাপশট আইডি**: `DB-2026-11-02-PIT`  
+**প্রস্তুতির সময়**: 2026-11-02 12:11:20 | **মোট নিরীক্ষিত কোম্পানি**: 80 টি কোম্পানি  
+**ইঞ্জিন সংস্করণ**: `baseline-v1.0` (`ee3c5fb`) | **ডেটা স্ন্যাপশট আইডি**: `DB-2026-11-02-PIT`  
 **যাচাইকরণ স্থিতি**: *ঝুঁকি ও জাঙ্ক ফিল্টার হিসেবে শতভাগ কার্যকর (০.০% ডেটা বিকৃতি)। লাভজনক ভবিষ্যদ্বাণী হিসেবে এখনও ফরওয়ার্ড ট্রায়ালে চলমান (Permutation p = 0.608 vs Random Null)।*
 
-**সার্বিক ম্যাক্রো পূর্বাভাস**: `নিরপেক্ষ (Neutral)` (স্কোর: -57.0/১০০)
+**সার্বিক ম্যাক্রো পূর্বাভাস**: `নিরপেক্ষ (Neutral)` (স্কোর: -76.5/১০০)
 
 ---
 
@@ -30,6 +30,7 @@
 | **UCB** | ৳8.8 | Forensic Surveillance Blacklist: Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-10-28 — Volume is 10.7x 20-day average (2,949,703 vs 274,794) | Price up +9.52% with poor fundamentals (Negative EPS) | Promoters hold only 10.3% (< 30% legal threshold) during price run-up] | **DO NOT BUY / EXIT ON BOUNCE** |
 | **RUNNERAUTO** | ৳44.9 | Forensic Surveillance Blacklist: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-27 — Price up +4.86% with poor fundamentals (Negative EPS)] | **DO NOT BUY / EXIT ON BOUNCE** |
 | **ISLAMIBANK** | ৳20.6 | Excessive Loan Burden (D/E: None) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
+| **MEGHNACEM** | ৳27.2 | Forensic Surveillance Blacklist: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-11-02 — Price up +4.41% with poor fundamentals (Negative EPS)] | **DO NOT BUY / EXIT ON BOUNCE** |
 | **ARAMITCEM** | ৳10.7 | Forensic Surveillance Blacklist: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-26 — Price up +7.69% with poor fundamentals (Negative EPS)] | **DO NOT BUY / EXIT ON BOUNCE** |
 | **SAIFPOWER** | ৳6.4 | Forensic Surveillance Blacklist: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-29 — Price up +4.84% with poor fundamentals (Negative EPS)] | **DO NOT BUY / EXIT ON BOUNCE** |
 | **ARGONDENIM** | ৳19.5 | Forensic Surveillance Blacklist: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-28 — Price up +4.79% with poor fundamentals (Negative EPS)] | **DO NOT BUY / EXIT ON BOUNCE** |
@@ -38,7 +39,6 @@
 | **SILCOPHL** | ৳14.5 | Forensic Surveillance Blacklist: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-28 — Price up +5.67% with poor fundamentals (Negative EPS)] | **DO NOT BUY / EXIT ON BOUNCE** |
 | **ACIFORMULA** | ৳135.1 | Forensic Surveillance Blacklist: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-28 — Price up +4.01% with poor fundamentals (Negative EPS)] | **DO NOT BUY / EXIT ON BOUNCE** |
 | **GENEXIL** | ৳28.4 | Excessive Loan Burden (D/E: 1.312) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
-| **CROWNCEMNT** | ৳58.1 | Excessive Loan Burden (D/E: 1.6) in 12-14% interest rate regime | **DO NOT BUY / EXIT ON BOUNCE** |
 
 ## 🛡️ মূলধন সুরক্ষার দৈনিক ট্রেডিং ও বিনিয়োগ নীতি
 

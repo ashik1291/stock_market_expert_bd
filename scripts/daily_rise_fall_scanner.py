@@ -96,7 +96,8 @@ def scan_daily_rise_and_fall(timeframe: str = "weekly") -> dict:
         fall_reasons = []
         try:
             from anti_manipulation_engine import is_ticker_blacklisted
-            is_blocked, bl_msg = is_ticker_blacklisted(ticker)
+            scanner_asof = data.get("asof_date") or data.get("date")
+            is_blocked, bl_msg = is_ticker_blacklisted(ticker, asof_date=scanner_asof)
             if is_blocked:
                 fall_reasons.append(f"Forensic Surveillance Blacklist: {bl_msg}")
         except Exception as e:

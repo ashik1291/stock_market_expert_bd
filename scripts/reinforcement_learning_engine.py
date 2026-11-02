@@ -323,7 +323,7 @@ def evaluate_pending_predictions(eval_window_days: int | None = None) -> dict:
         if i.get("status") == "EVALUATED" and i.get("timeframe") != "historical_bootstrap"
     ]
     if total_evaluated:
-        wins = [i for i in total_evaluated if i["actual_outcome"] == "CORRECT"]
+        wins = [i for i in total_evaluated if i.get("actual_outcome") in ("CORRECT", "CORRECT_PROFIT")]
         n_total = len(total_evaluated)
         k_wins = len(wins)
         raw_win_rate = (k_wins / n_total) * 100.0
@@ -357,7 +357,7 @@ def evaluate_pending_predictions(eval_window_days: int | None = None) -> dict:
                 if i.get("active_signals", {}).get(sig_key)
             ]
             n_f = len(factor_preds)
-            k_f = sum(1 for i in factor_preds if i["actual_outcome"] == "CORRECT")
+            k_f = sum(1 for i in factor_preds if i.get("actual_outcome") in ("CORRECT", "CORRECT_PROFIT"))
             if n_f >= 15:
                 shrunk_p = (k_f + prior_a) / (n_f + prior_a + prior_b)
                 target_w = max(0.0, min(1.40, shrunk_p / prior_mean))
@@ -370,7 +370,7 @@ def evaluate_pending_predictions(eval_window_days: int | None = None) -> dict:
         brier_sum = 0.0
         for item in total_evaluated:
             prob = float(item.get("confidence_prob_pct", 50.0)) / 100.0
-            actual = 1.0 if item.get("actual_outcome") == "CORRECT" else 0.0
+            actual = 1.0 if item.get("actual_outcome") in ("CORRECT", "CORRECT_PROFIT") else 0.0
             brier_sum += (prob - actual) ** 2
         brier_score = round(brier_sum / n_total, 4)
 

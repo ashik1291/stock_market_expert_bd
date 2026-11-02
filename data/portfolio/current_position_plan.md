@@ -1,6 +1,6 @@
 # 🎯 Exact Portfolio Position Plan (Capital: ৳11,015)
 
-**Generated**: 2026-11-02 10:33:42  
+**Generated**: 2026-11-02 12:11:24  
 **Allocation**: 60% Core Moats (৳6,609) | 30% Swings (৳3,304) | 10% Cash (৳1,101)
 
 ---

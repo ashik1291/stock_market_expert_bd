@@ -120,7 +120,11 @@ def analyze_ticker_liquidity(
 
     # Compute ADV and Turnover
     vols = [float(r["volume"] or 0.0) for r in rows[:window_days]]
-    vals = [float(r["value"] or 0.0) * 1e6 for r in rows[:window_days]]  # values stored in millions
+    vals = [
+        float(r["value"]) * 1e6 if (r["value"] is not None and float(r["value"]) > 0.0)
+        else float(r["volume"] or 0.0) * float(r["close"] or 0.0)
+        for r in rows[:window_days]
+    ]  # values stored in millions or derived from volume * close
     adv_shares = round(sum(vols) / max(len(vols), 1), 0)
     adv_turnover = round(sum(vals) / max(len(vals), 1), 2)
 

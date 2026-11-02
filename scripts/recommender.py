@@ -68,7 +68,23 @@ def _fmt_pe(val) -> str:
     return f"{flt:.1f}" if flt is not None else "—"
 
 
-def classify_horizons(records: list[dict]) -> dict:
+def apply_sector_concentration_cap(items: list[dict], max_per_sector: int = 2) -> list[dict]:
+    """Ensures no single sector dominates top picks (max 2 per sector, e.g. 20% cap for top 10)."""
+    selected = []
+    overflow = []
+    sector_counts: dict[str, int] = {}
+    for item in items:
+        sec = item.get("sector") or "Unknown"
+        count = sector_counts.get(sec, 0)
+        if count < max_per_sector:
+            sector_counts[sec] = count + 1
+            selected.append(item)
+        else:
+            overflow.append(item)
+    return selected + overflow
+
+
+def classify_horizons(records: list[dict], asof_date: str = None) -> dict:
     """
     Separates evaluated tickers into distinct strategy lists with explicit buy/sell timing:
       - long_term: Assets, low P/E (<=16), low debt (D/E<=0.8), veteran leadership, proven dividend history
@@ -116,7 +132,8 @@ def classify_horizons(records: list[dict]) -> dict:
         is_blocked = False
         try:
             from anti_manipulation_engine import is_ticker_blacklisted
-            is_blocked, bl_reason = is_ticker_blacklisted(ticker)
+            r_asof = r.get("asof_date") or asof_date
+            is_blocked, bl_reason = is_ticker_blacklisted(ticker, asof_date=r_asof)
         except Exception:
             pass
 
@@ -318,6 +335,9 @@ def classify_horizons(records: list[dict]) -> dict:
     for lst in [long_term, mid_term, short_term, sells, manip_risk, debt_traps, gov_traps, dist_traps, greed_traps]:
         lst.sort(key=lambda x: x.get("confidence", 0), reverse=True)
 
+    long_term = apply_sector_concentration_cap(long_term, max_per_sector=2)
+    mid_term = apply_sector_concentration_cap(mid_term, max_per_sector=2)
+
     return {
         "long_term":            long_term,
         "mid_term":             mid_term,
@@ -331,13 +351,35 @@ def classify_horizons(records: list[dict]) -> dict:
     }
 
 
-def build_recommendations(timeframe: str, tickers: list[str] = None) -> dict:
+def build_recommendations(timeframe: str, tickers: list[str] = None, date_str: str = None) -> dict:
+    if date_str is None:
+        try:
+            import sqlite3 as _sql
+            _db_path = BASE_DIR / "data" / "processed" / "dse.db"
+            if _db_path.exists():
+                with _sql.connect(str(_db_path)) as _cn:
+                    _drow = _cn.execute("SELECT MAX(date) FROM prices").fetchone()
+                    if _drow and _drow[0]:
+                        date_str = _drow[0]
+        except Exception:
+            pass
     if tickers is None:
         sectors = load_config("sectors")
         tickers = []
         for sd in sectors["sectors"].values():
             tickers.extend(sd["top_tickers"])
         tickers = list(dict.fromkeys(tickers))
+
+    _sec_lookup: dict[str, str] = {}
+    try:
+        import sqlite3 as _sql
+        _db_path = BASE_DIR / "data" / "processed" / "dse.db"
+        if _db_path.exists():
+            with _sql.connect(str(_db_path)) as _cn:
+                for _crow in _cn.execute("SELECT ticker, sector FROM companies"):
+                    _sec_lookup[_crow[0]] = _crow[1]
+    except Exception:
+        pass
 
     records = []
     for ticker in tickers:
@@ -388,6 +430,8 @@ def build_recommendations(timeframe: str, tickers: list[str] = None) -> dict:
             "manipulation_risk":           manip.get("manipulation_risk", "low"),
             "manipulation_flags":          manip.get("flags", []),
             "timeframe":                   timeframe,
+            "sector":                      _sec_lookup.get(ticker, "Unknown"),
+            "asof_date":                   analysis.get("asof_date") or analysis.get("date"),
         })
 
     # --- Halal guard (view-only, S6 advisory): invariant ranking halal-blind, filter before horizon buckets ---
@@ -455,7 +499,7 @@ def build_recommendations(timeframe: str, tickers: list[str] = None) -> dict:
         log.warning(f"Halal guard unavailable, passthrough: {_e}")
         _eligible_records = records
 
-    horizons = classify_horizons(_eligible_records)
+    horizons = classify_horizons(_eligible_records, asof_date=date_str)
     horizons["halal_blocked"] = _halal_blocked
     horizons["_halal_tier"] = _halal_tier
     horizons["_halal_gates"] = _halal_gates

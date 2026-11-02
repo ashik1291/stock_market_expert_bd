@@ -63,7 +63,7 @@ def candidate_universe(asof: str | None = None, tier: str | None = None, top_k: 
             from anti_manipulation_engine import is_ticker_blacklisted
             clean_list = []
             for s in screened:
-                is_b, _ = is_ticker_blacklisted(s["ticker"])
+                is_b, _ = is_ticker_blacklisted(s["ticker"], asof_date=asof)
                 if not is_b:
                     clean_list.append(s["ticker"])
             return clean_list[: int(_k)]

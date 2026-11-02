@@ -1,12 +1,12 @@
 # DSE Phase-2 Learning Audit (Net Excess vs EQW)
-**Audit Timestamp:** 2026-11-02 10:33:27
+**Audit Timestamp:** 2026-11-02 12:11:21
 **Model:** `frozen_epoch2_pit_v2`
 **Label:** `net_excess_vs_eqw_h21_minus_0.833pct`
 
 ---
 ## 1. Performance
 - Evaluated closed calls: **146**
-- Hit rate (net excess sign): **13.7%** CI [0.0% – 2.6%]
+- Hit rate (net excess sign): **13.7%** CI [3.8% – 12.1%]
 - Mean net excess: **0.0%**
 - Round-trip cost charged: **0.833%**
 - Horizon: **21** trading bars
@@ -15,10 +15,10 @@
 ## 2. Factor Weights (Beta[2,2] prior @ 50%, floor 0)
 | Factor | Weight |
 |---|---|
-| debt_npl_weight | 0.679 |
-| valuation_mos_weight | 0.679 |
+| debt_npl_weight | 0.637 |
+| valuation_mos_weight | 0.637 |
 | rsi_momentum_weight | 1.094 |
-| smart_money_weight | 0.679 |
+| smart_money_weight | 0.637 |
 
 ## 3. Recent Mistakes
 
