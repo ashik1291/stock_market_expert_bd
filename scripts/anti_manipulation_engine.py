@@ -55,7 +55,7 @@ def init_db(conn: sqlite3.Connection):
 
 def run_surveillance_scan(asof_date: str | None = None) -> list[dict]:
     """Scans all tickers for volume anomalies, syndicate corners, and speculative pumps."""
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=30.0)
     conn.row_factory = sqlite3.Row
     init_db(conn)
 
@@ -263,7 +263,7 @@ def is_ticker_blacklisted(
     Point-in-Time Aware: Takes optional asof_date to eliminate lookahead bias in historical evaluations.
     Decay Window: Flags decay after lookback_days (default 45 days) unless refreshed by surveillance.
     """
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=30.0)
     conn.row_factory = sqlite3.Row
 
     if not asof_date:

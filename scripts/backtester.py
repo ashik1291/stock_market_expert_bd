@@ -17,11 +17,15 @@ import sqlite3
 import datetime
 import logging
 import json
+import sys
 from pathlib import Path
 import pandas as pd
 import numpy as np
 
 BASE_DIR   = Path(__file__).resolve().parent.parent
+SCRIPTS_DIR = Path(__file__).resolve().parent
+if str(SCRIPTS_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS_DIR))
 PROC_DIR   = BASE_DIR / "data" / "processed"
 CONFIG_DIR = BASE_DIR / "config"
 REPORT_DIR = BASE_DIR / "reports"
@@ -32,7 +36,9 @@ log = logging.getLogger("dse_backtester")
 
 
 def get_db():
-    return sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=30.0)
+    conn.execute("PRAGMA busy_timeout = 30000;")
+    return conn
 
 
 def load_price_data(ticker: str) -> pd.DataFrame:
@@ -71,12 +77,20 @@ def load_price_data(ticker: str) -> pd.DataFrame:
     df["MACD"] = ema12 - ema26
     df["MACD_Signal"] = df["MACD"].ewm(span=9, adjust=False).mean()
 
+    # 14-period True Range & ATR
+    tr1 = df["high"] - df["low"]
+    tr2 = (df["high"] - df["close"].shift(1)).abs()
+    tr3 = (df["low"] - df["close"].shift(1)).abs()
+    tr = pd.concat([tr1, tr2, tr3], axis=1).max(axis=1)
+    df["ATR14"] = tr.rolling(14).mean()
+
     df["Vol_MA30"] = df["volume"].rolling(30).mean()
     return df
 
 
 def simulate_trades(df: pd.DataFrame, ticker: str, strategy: str = "scalp",
-                    rsi_buy: float = 35.0, require_vol_spike: bool = False) -> list[dict]:
+                    rsi_buy: float = 35.0, require_vol_spike: bool = False,
+                    adaptive_hold: bool = False) -> list[dict]:
     """
     Simulates signals on historical bars:
       Entry Condition: RSI <= rsi_buy AND Close > SMA50 (trend confirmation)
@@ -128,13 +142,20 @@ def simulate_trades(df: pd.DataFrame, ticker: str, strategy: str = "scalp",
             stop_px     = entry_price * (1 - stop_pct)
 
             # Hold and scan future bars
+            effective_max_hold = max_hold
+            if adaptive_hold:
+                stock_atr = row["ATR14"] if "ATR14" in row and not pd.isna(row["ATR14"]) else (entry_price * 0.02)
+                stock_atr_pct = (stock_atr / entry_price) * 100.0 if entry_price > 0 else 2.0
+                adaptive_ratio = 2.0 / max(stock_atr_pct, 0.5)
+                effective_max_hold = max(5, min(max_hold * 2, int(round(max_hold * adaptive_ratio))))
+
             exit_reason = "max_hold"
             exit_price  = entry_price
             exit_date   = entry_date
             highest_px  = entry_price
             hold_bars   = 0
 
-            for j in range(i + 2, min(i + 2 + max_hold, len(df))):
+            for j in range(i + 2, min(i + 2 + effective_max_hold, len(df))):
                 f_row  = df.iloc[j]
                 f_open = float(f_row["open"])
                 f_high = float(f_row["high"])
@@ -432,7 +453,8 @@ def simulate_portfolio_backtest(
     min_ticket_fee: float = 5.0,
     buy_fee_pct: float = 0.00415,
     sell_fee_pct: float = 0.00465,
-    max_concurrent: int = None
+    max_concurrent: int = None,
+    adaptive_hold: bool = False
 ) -> dict:
     if max_concurrent is not None:
         max_positions = max_concurrent
@@ -480,13 +502,56 @@ def simulate_portfolio_backtest(
     stop_pct   = 0.020 if strategy == "scalp" else 0.050
     max_hold   = 10 if strategy == "scalp" else 60
 
+    # Load corporate actions for dividend & bonus adjustment during backtest
+    conn = get_db()
+    ca_rows = conn.execute("""
+        SELECT ticker, record_date, action_type, ratio, cash_amount, adjustment_factor
+        FROM corporate_actions
+    """).fetchall()
+    conn.close()
+
+    ca_lookup = {}
+    for r in ca_rows:
+        key = (r[0], r[1])
+        if key not in ca_lookup:
+            ca_lookup[key] = []
+        ca_lookup[key].append({
+            "action_type": r[2],
+            "ratio": float(r[3] or 0.0),
+            "cash_amount": float(r[4] or 0.0),
+            "adjustment_factor": float(r[5] or 1.0)
+        })
+
     # Portfolio state
     cash_balance = float(initial_capital)
+    total_dividends_received = 0.0
     active_positions = {}  # ticker -> dict of pos info
     completed_trades = []
     equity_curve = []
 
     for d_str in sorted_dates:
+        # Check corporate actions (cash dividends & bonus shares) on record date for active positions
+        for t, pos in active_positions.items():
+            cas = ca_lookup.get((t, d_str), [])
+            for ca in cas:
+                act_type = str(ca["action_type"]).lower()
+                # Cash dividend: credit cash balance
+                if "cash" in act_type and ca["cash_amount"] > 0:
+                    div_amount = round(pos["shares"] * ca["cash_amount"], 2)
+                    cash_balance += div_amount
+                    pos["dividends_received"] = pos.get("dividends_received", 0.0) + div_amount
+                    total_dividends_received += div_amount
+                # Bonus dividend: adjust shares and price targets
+                elif ("bonus" in act_type or "split" in act_type) and ca["ratio"] > 0:
+                    bonus_shares = int(pos["shares"] * ca["ratio"])
+                    pos["shares"] += bonus_shares
+                    factor = ca["adjustment_factor"]
+                    if 0 < factor < 1.0:
+                        pos["target_px"] = round(pos["target_px"] * factor, 2)
+                        pos["stop_px"] = round(pos["stop_px"] * factor, 2)
+                        pos["highest_price"] = round(pos["highest_price"] * factor, 2)
+                        pos["entry_price"] = round(pos["total_cost"] / pos["shares"], 2)
+
         # A. Evaluate open positions for exit
         to_close = []
         for t, pos in list(active_positions.items()):
@@ -514,6 +579,7 @@ def simulate_portfolio_backtest(
             exit_triggered = False
             exit_price = f_close
             exit_reason = "max_hold"
+            eff_max_hold = pos.get("effective_max_hold", max_hold)
 
             if f_low <= pos["stop_px"]:
                 exit_triggered = True
@@ -526,7 +592,7 @@ def simulate_portfolio_backtest(
                 exit_triggered = True
                 exit_reason = "target_hit"
                 exit_price = pos["target_px"]
-            elif pos["hold_bars"] >= max_hold:
+            elif pos["hold_bars"] >= eff_max_hold:
                 exit_triggered = True
                 exit_reason = "max_hold"
                 exit_price = f_close
@@ -535,7 +601,8 @@ def simulate_portfolio_backtest(
                 gross_proceeds = round(pos["shares"] * exit_price, 2)
                 sell_fee = max(gross_proceeds * sell_fee_pct, min_ticket_fee)
                 net_proceeds = round(gross_proceeds - sell_fee, 2)
-                pnl_bdt = round(net_proceeds - pos["total_cost"], 2)
+                trade_divs = pos.get("dividends_received", 0.0)
+                pnl_bdt = round(net_proceeds + trade_divs - pos["total_cost"], 2)
                 pnl_pct = round((pnl_bdt / pos["total_cost"]) * 100.0, 2) if pos["total_cost"] > 0 else 0.0
 
                 cash_balance += net_proceeds
@@ -549,6 +616,7 @@ def simulate_portfolio_backtest(
                     "hold_bars": pos["hold_bars"],
                     "total_cost": pos["total_cost"],
                     "net_proceeds": net_proceeds,
+                    "dividends_received_bdt": trade_divs,
                     "pnl_bdt": pnl_bdt,
                     "pnl_pct": pnl_pct,
                     "is_win": (pnl_bdt > 0),
@@ -627,6 +695,14 @@ def simulate_portfolio_backtest(
                     cash_balance -= total_cost
                     tgt_px = entry_px * (1 + target_pct)
                     stp_px = entry_px * (1 - stop_pct)
+                    pos_atr = next_b["ATR14"] if "ATR14" in next_b and not pd.isna(next_b["ATR14"]) else (entry_px * 0.02)
+                    pos_atr_pct = (pos_atr / entry_px) * 100.0 if entry_px > 0 else 2.0
+                    if adaptive_hold:
+                        adaptive_ratio = 2.0 / max(pos_atr_pct, 0.5)
+                        eff_hold = max(5, min(max_hold * 2, int(round(max_hold * adaptive_ratio))))
+                    else:
+                        eff_hold = max_hold
+
                     active_positions[t] = {
                         "entry_date": next_b["date_str"],
                         "entry_price": entry_px,
@@ -636,7 +712,9 @@ def simulate_portfolio_backtest(
                         "target_px": tgt_px,
                         "stop_px": stp_px,
                         "prev_close": entry_px,
-                        "hold_bars": 0
+                        "hold_bars": 0,
+                        "effective_max_hold": eff_hold,
+                        "dividends_received": 0.0
                     }
 
     # 3. Compute Portfolio Metrics
@@ -649,9 +727,9 @@ def simulate_portfolio_backtest(
     drawdowns = (pd.Series([e["equity"] for e in equity_curve]) - peaks) / peaks
     max_drawdown_pct = round(abs(float(drawdowns.min())) * 100.0, 2) if not drawdowns.empty else 0.0
 
-    # Sharpe ratio
+    # Sharpe ratio (Using 11.60% Bangladesh 91-day T-Bill rate)
     daily_returns = pd.Series([e["equity"] for e in equity_curve]).pct_change().dropna()
-    rf_daily = (0.0884 / 250.0)  # 8.84% Bangladesh T-Bill rate
+    rf_daily = (0.1160 / 250.0)
     excess_returns = daily_returns - rf_daily
     sharpe = float((excess_returns.mean() / excess_returns.std()) * np.sqrt(250)) if excess_returns.std() > 0 else 0.0
 
@@ -665,7 +743,13 @@ def simulate_portfolio_backtest(
     summary = {
         "ok": True,
         "strategy": strategy,
+        "adaptive_hold": adaptive_hold,
         "initial_capital_bdt": initial_capital,
+        "final_equity_bdt": final_equity,
+        "net_pnl_bdt": net_pnl_bdt,
+        "net_return_pct": net_return_pct,
+        "total_dividends_bdt": round(total_dividends_received, 2),
+        "max_drawdown_pct": max_drawdown_pct,
         "final_equity_bdt": final_equity,
         "net_pnl_bdt": net_pnl_bdt,
         "net_return_pct": net_return_pct,

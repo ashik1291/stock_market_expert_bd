@@ -169,7 +169,7 @@ def sync_macro_indicators(
     Ingests and synchronizes the latest central bank macro series.
     Tries live automated scraper first; falls back smoothly to verified benchmarks.
     """
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=30.0)
     init_macro_schema(conn)
 
     if not asof_date:
@@ -230,7 +230,7 @@ def update_macro_indicator(
     """
     Allows exact manual or webhook update of a single macro indicator (e.g. after weekly auction).
     """
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=30.0)
     init_macro_schema(conn)
 
     if not asof_date:
@@ -260,7 +260,7 @@ def get_latest_macro_rates(conn: Optional[sqlite3.Connection] = None) -> dict:
     """
     should_close = False
     if conn is None:
-        conn = sqlite3.connect(DB_PATH)
+        conn = sqlite3.connect(DB_PATH, timeout=30.0)
         should_close = True
 
     init_macro_schema(conn)

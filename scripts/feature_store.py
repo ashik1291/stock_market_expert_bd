@@ -98,7 +98,7 @@ def latest_price_date(conn: sqlite3.Connection) -> str | None:
 
 def build_features_for_date(asof: str | None = None, category: str = "A") -> dict:
     """Materialize features_daily for one session. Returns summary stats."""
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=30.0)
     conn.row_factory = sqlite3.Row
     ensure_schema(conn)
 
@@ -260,7 +260,7 @@ def build_features_for_date(asof: str | None = None, category: str = "A") -> dic
 
 def load_scored_universe(asof: str | None = None) -> list[dict]:
     """Read features_daily for date, sorted by score DESC. Builds if missing."""
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=30.0)
     conn.row_factory = sqlite3.Row
     ensure_schema(conn)
     asof = asof or latest_price_date(conn)
@@ -271,7 +271,7 @@ def load_scored_universe(asof: str | None = None) -> list[dict]:
     if cnt == 0:
         build_features_for_date(asof)
 
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=30.0)
     conn.row_factory = sqlite3.Row
     rows = conn.execute(
         """
@@ -285,7 +285,7 @@ def load_scored_universe(asof: str | None = None) -> list[dict]:
 
 
 def get_feature_row(ticker: str, asof: str | None = None) -> dict | None:
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=30.0)
     conn.row_factory = sqlite3.Row
     ensure_schema(conn)
     asof = asof or latest_price_date(conn)

@@ -208,7 +208,8 @@ def _next_trading_day_for_migration(conn: sqlite3.Connection, iso_date: str) -> 
 
 def get_db() -> sqlite3.Connection:
     PROC_DIR.mkdir(parents=True, exist_ok=True)
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=30.0)
+    conn.execute("PRAGMA busy_timeout = 30000;")
     conn.row_factory = sqlite3.Row
     # Ensure new PIT columns exist before creating indexes that reference them
     try:
@@ -816,38 +817,36 @@ def insert_prices(conn: sqlite3.Connection, ticker: str, records: list[dict],
             log.warning(f"Data error {ticker} {date_val}: high({high_val}) < low({low_val}). Skipping.")
             continue
 
-        # Corporate action adjustment — single unified path, apply once, factor < 1 only.
+        # Corporate action adjustment — compounding path across all subsequent corporate actions.
         # Factor = 1/(1+ratio) < 1 for splits/bonus (e.g. 0.869 for 15% bonus).
         # Only adjust historical bars (date < record_date). Guard factor < 1.
-        ca_row = conn.execute("""
+        ca_rows = conn.execute("""
             SELECT adjustment_factor, ratio, action_type FROM corporate_actions
             WHERE ticker = ? AND record_date > ? AND adjustment_factor IS NOT NULL
-            ORDER BY record_date ASC LIMIT 1
-        """, (ticker, date_val)).fetchone()
-        if ca_row and ca_row[0] is not None:
+            ORDER BY record_date ASC
+        """, (ticker, date_val)).fetchall()
+        
+        compound_factor = 1.0
+        for ca_row in ca_rows:
             try:
                 factor = float(ca_row[0])
             except Exception:
-                factor = 1.0
-            # factor < 1 and > 0: bonus/split shrink. Factor > 1 entries (resumptions) do not adjust price history.
+                continue
             is_bonus_split = ("bonus" in str(ca_row[2]).lower() or "split" in str(ca_row[2]).lower() or str(ca_row[2]).lower() == "rights_split")
             if 0 < factor < 1.0:
-                # Recompute and verify against ratio to avoid double-adjust bookkeeping
                 try:
                     ratio = float(ca_row[1]) if ca_row[1] is not None else None
                 except Exception:
                     ratio = None
                 expected = 1.0 / (1.0 + ratio) if ratio is not None and ratio >= 0 else None
-                # Trust stored factor if no ratio or close to expected; skip if wildly off
                 if expected is None or abs(factor - expected) < 1e-6 or not is_bonus_split:
-                    open_val = round(open_val * factor, 2)
-                    high_val = round(high_val * factor, 2)
-                    low_val = round(low_val * factor, 2)
-                    close_val = round(close_val * factor, 2)
-            elif factor > 1.0 and not is_bonus_split:
-                # resumption/div-resumption entries have factor > 1 — not a price divisor, skip
-                pass
-            # factor == 1.0 → no-op
+                    compound_factor *= factor
+
+        if 0 < compound_factor < 1.0:
+            open_val = round(open_val * compound_factor, 2)
+            high_val = round(high_val * compound_factor, 2)
+            low_val = round(low_val * compound_factor, 2)
+            close_val = round(close_val * compound_factor, 2)
 
         conn.execute("""
             INSERT OR IGNORE INTO prices

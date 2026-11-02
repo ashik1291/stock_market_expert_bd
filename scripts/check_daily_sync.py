@@ -37,7 +37,7 @@ def auto_sync_if_needed():
     is_calendar_holiday = False
     if DB_PATH.exists():
         try:
-            conn = sqlite3.connect(DB_PATH)
+            conn = sqlite3.connect(DB_PATH, timeout=30.0)
             cur = conn.cursor()
             row = cur.execute("SELECT MAX(date) FROM prices").fetchone()
             if row and row[0]:
@@ -65,7 +65,7 @@ def auto_sync_if_needed():
     latest_fund_date = None
     if DB_PATH.exists():
         try:
-            conn = sqlite3.connect(DB_PATH)
+            conn = sqlite3.connect(DB_PATH, timeout=30.0)
             cur = conn.cursor()
             row = cur.execute("SELECT MAX(snapshot_date) FROM fundamentals_pit").fetchone()
             if row and row[0]:

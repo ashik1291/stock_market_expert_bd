@@ -88,7 +88,7 @@ def _resolve_sector(ticker: str, pit_row: Any, policy: dict) -> str:
         base_dir = Path(__file__).resolve().parent.parent
         db_path = base_dir / "data" / "processed" / "dse.db"
         if db_path.exists():
-            conn = sqlite3.connect(db_path)
+            conn = sqlite3.connect(db_path, timeout=30.0)
             row = conn.execute("SELECT sector FROM companies WHERE ticker = ?", (t,)).fetchone()
             conn.close()
             if row and row[0]:

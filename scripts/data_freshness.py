@@ -24,7 +24,7 @@ MAX_STALE_TRADING_DAYS = 1
 def _connect():
     if not DB_PATH.exists():
         return None
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=30.0)
     conn.row_factory = sqlite3.Row
     return conn
 

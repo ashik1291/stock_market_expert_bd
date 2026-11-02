@@ -29,7 +29,7 @@ DB_PATH = BASE_DIR / "data" / "processed" / "dse.db"
 
 
 def run_portfolio_simulation(rebalance_stride: int = 21, top_n: int = 10):
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=30.0)
     conn.row_factory = sqlite3.Row
     c = conn.cursor()
 

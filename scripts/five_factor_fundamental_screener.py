@@ -61,7 +61,7 @@ def load_json(p: Path) -> dict:
 
 def run_5_factor_screener(halal_tier: str = "flexible") -> list[dict]:
     """Evaluates all Category A listed stocks against the 5 strict filters."""
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=30.0)
     conn.row_factory = sqlite3.Row
 
     # 1. Latest price date

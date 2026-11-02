@@ -69,7 +69,7 @@ def verify_and_restore_database():
     if not needs_restore:
         # Check SQLite readability
         try:
-            conn = sqlite3.connect(DB_PATH)
+            conn = sqlite3.connect(DB_PATH, timeout=30.0)
             cur = conn.cursor()
             p_count = cur.execute("SELECT COUNT(*) FROM prices").fetchone()[0]
             f_count = cur.execute("SELECT COUNT(*) FROM fundamentals").fetchone()[0]

@@ -1,5 +1,5 @@
 # DSE 5-Filter Quantitative Fundamental & Value Screening Report
-**As of Market Date**: `2026-11-02` | **Generated**: `2026-11-02 12:11:12`
+**As of Market Date**: `2026-11-02` | **Generated**: `2026-11-02 13:21:03`
 
 ## Core 5-Filter Mandate (Strict Capital Preservation)
 1. **Operating Cash Flow Quality** ($CFO / \text{Net Profit} \ge 0.80$): Rejects paper profit fraud traps.
@@ -24,7 +24,7 @@
 | **SUMITPOWER** | Fuel_Power | `HALAL` | ৳15.50 | ৳18.62 | **+16.8%** | 39.7 | **7.45%** | **2.5%** | **-9.2%** (UNCOMPETITIVE) | 0.60 | 63.2% | 25.74x (AUDITED) |
 | **KPCL** | Fuel_Power | `HALAL` | ৳11.00 | ৳11.14 | **+1.3%** | 34.1 | **5.32%** | **2.6%** | **-9.0%** (UNCOMPETITIVE) | 0.00 | 70.0% | 5.34x (AUDITED) |
 
-## 2. Premium Quality Moats: Overvalued on Strict Graham Ceiling (5 Stocks)
+## 2. Premium Quality Moats: Overvalued on Strict Graham Ceiling (6 Stocks)
 > **Action Rule**: DO NOT sell existing shares (avoid 0.833% friction). Collect cash dividends. Do NOT buy new shares until price corrects to Graham ceiling.
 
 | Ticker | Sector | Price (৳) | Graham Ceiling (৳) | Margin of Safety (%) | P/E | Div Yield (%) | D/E | Primary Moat |
@@ -34,3 +34,4 @@
 | **ROBI** | Telecom | ৳29.60 | ৳23.18 | **-27.7%** | 16.6 | 6.21% | 0.00 | Axiata Group backing, second largest mobile operator (3 |
 | **GP** | Telecom | ৳235.40 | ৳142.98 | **-64.6%** | 10.9 | 8.34% | 0.12 | Telenor backing, 45%+ market share, ROE > 50%, high cas |
 | **APEXFOODS** | Food_Beverage | ৳286.60 | ৳134.83 | **-112.6%** | 48.6 | 1.03% | 0.00 | Established export processing infrastructure |
+| **AMBEEPHA** | PharmaChem | ৳721.50 | ৳25.88 | **-2687.9%** | 332.3 | 0.12% | 0.00 | Established Category A PharmaChem franchise |

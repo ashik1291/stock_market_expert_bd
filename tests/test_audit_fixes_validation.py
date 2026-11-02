@@ -363,5 +363,56 @@ class TestAuditFixesValidation(unittest.TestCase):
         self.assertNotEqual(res["liquidity_tier"], "ILLIQUID")
 
 
+
+    def test_layer9_backtester_dividends_and_adaptive_hold(self):
+        """Verify backtester credits cash dividends and supports adaptive holding horizons."""
+        from backtester import simulate_portfolio_backtest
+        res = simulate_portfolio_backtest(
+            ["GP", "SQURPHARMA", "BATBC"],
+            initial_capital=50000.0,
+            strategy="swing",
+            adaptive_hold=True
+        )
+        self.assertTrue(res["ok"])
+        self.assertIn("total_dividends_bdt", res)
+        self.assertGreaterEqual(res["total_dividends_bdt"], 0.0)
+        self.assertTrue(res["adaptive_hold"])
+
+    def test_layer9_processor_compounding_corporate_actions(self):
+        """Verify processor compounds multiple sequential dilution factors backwards."""
+        with open(os.path.join(ROOT, "scripts", "processor.py"), "r", encoding="utf-8") as f:
+            code = f.read()
+        self.assertIn("compound_factor = 1.0", code)
+        self.assertIn("compound_factor *= factor", code)
+        idx = code.find("SELECT adjustment_factor, ratio, action_type FROM corporate_actions")
+        self.assertNotIn("LIMIT 1", code[idx:idx + 250])
+
+    def test_layer9_temporal_price_discontinuity_detection(self):
+        """Verify smart_capital_planner flags unannounced gaps > 25 calendar days (e.g. MARICO 256d gap)."""
+        import sqlite3
+        from smart_capital_planner import compute_dynamic_stock_metrics
+        conn = sqlite3.connect(os.path.join(ROOT, "data", "processed", "dse.db"), timeout=30.0)
+        m_marico = compute_dynamic_stock_metrics("MARICO", conn)
+        m_gp = compute_dynamic_stock_metrics("GP", conn)
+        conn.close()
+        self.assertTrue(m_marico.get("has_data_gap"))
+        self.assertGreater(m_marico.get("max_gap_days", 0), 25)
+        self.assertFalse(m_gp.get("has_data_gap"))
+
+    def test_layer9_sqlite_concurrency_busy_timeout(self):
+        """Verify database helper connections set busy_timeout = 30000."""
+        from backtester import get_db as get_bt_db
+        from processor import get_db as get_proc_db
+        conn1 = get_bt_db()
+        t1 = conn1.execute("PRAGMA busy_timeout;").fetchone()[0]
+        conn1.close()
+        self.assertEqual(t1, 30000)
+
+        conn2 = get_proc_db()
+        t2 = conn2.execute("PRAGMA busy_timeout;").fetchone()[0]
+        conn2.close()
+        self.assertEqual(t2, 30000)
+
+
 if __name__ == "__main__":
     unittest.main()

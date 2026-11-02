@@ -45,7 +45,7 @@ CORE_5_SECTORS = {
 
 
 def get_db():
-    return sqlite3.connect(DB_PATH)
+    return sqlite3.connect(DB_PATH, timeout=30.0)
 
 
 def load_knowledge(ticker: str, timeframe: str = "weekly") -> dict:

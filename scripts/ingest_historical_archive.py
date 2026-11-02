@@ -31,7 +31,7 @@ def ingest_14y_historical_archive():
     print(f"[ARCHIVE INGESTION] Opening {ZIP_PATH.name} ({ZIP_PATH.stat().st_size / (1024*1024):.1f} MB)...")
     z = zipfile.ZipFile(ZIP_PATH)
 
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=30.0)
     conn.row_factory = sqlite3.Row
     c = conn.cursor()
 

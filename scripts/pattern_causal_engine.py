@@ -101,8 +101,9 @@ CAUSAL_HISTORICAL_EVENTS = [
 
 
 def load_stock_series(ticker: str) -> list[dict]:
-    """Loads complete chronological price series for a ticker from SQLite."""
-    conn = sqlite3.connect(DB_PATH)
+    """Loads complete chronological price series for a ticker from SQLite with gap tracking."""
+    conn = sqlite3.connect(DB_PATH, timeout=30.0)
+    conn.execute("PRAGMA busy_timeout = 30000;")
     rows = conn.execute("""
         SELECT date, open, high, low, close, volume
         FROM prices
@@ -112,14 +113,25 @@ def load_stock_series(ticker: str) -> list[dict]:
     conn.close()
 
     series = []
+    prev_date = None
     for r in rows:
+        d_str = r[0]
+        gap_days = 0
+        if prev_date:
+            try:
+                gap_days = (datetime.fromisoformat(d_str) - datetime.fromisoformat(prev_date)).days
+            except Exception:
+                gap_days = 0
+        prev_date = d_str
         series.append({
-            "date":   r[0],
+            "date":   d_str,
             "open":   float(r[1]) if r[1] is not None else float(r[4] or 0),
             "high":   float(r[2]) if r[2] is not None else float(r[4] or 0),
             "low":    float(r[3]) if r[3] is not None else float(r[4] or 0),
             "close":  float(r[4]) if r[4] is not None else 0.0,
-            "volume": float(r[5]) if r[5] is not None else 0.0
+            "volume": float(r[5]) if r[5] is not None else 0.0,
+            "gap_days": gap_days,
+            "is_gap_jump": (gap_days > 25)
         })
     return series
 
@@ -587,7 +599,7 @@ def run_pattern_causal_audit(ticker: str) -> dict:
         return {"error": f"No price series found for {ticker}"}
 
     # Load fundamentals
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=30.0)
     f_row = conn.execute("""
         SELECT pe_ratio, eps, nav, dividend_yield, debt_equity
         FROM fundamentals WHERE ticker = ?

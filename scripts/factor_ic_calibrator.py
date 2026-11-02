@@ -97,7 +97,7 @@ def calibrate_factor_ic(
     backfill: bool = True,
 ) -> dict:
     LEARN_DIR.mkdir(parents=True, exist_ok=True)
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=30.0)
     conn.row_factory = sqlite3.Row
     ensure_schema(conn)
 
@@ -127,7 +127,7 @@ def calibrate_factor_ic(
         if cnt == 0 and backfill:
             conn.close()
             build_features_for_date(dt)
-            conn = sqlite3.connect(DB_PATH)
+            conn = sqlite3.connect(DB_PATH, timeout=30.0)
             conn.row_factory = sqlite3.Row
 
         rows = conn.execute(
