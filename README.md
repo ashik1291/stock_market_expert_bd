@@ -2,7 +2,7 @@
 ### Autonomous DSE Quantitative Engine, Anti-Manipulation Surveillance & AI Financial Intelligence System
 
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
-[![Test Suite](https://img.shields.io/badge/tests-77%2F77%20passing-brightgreen.svg)]()
+[![Test Suite](https://img.shields.io/badge/tests-79%2F79%20passing-brightgreen.svg)]()
 [![Spec Guard](https://img.shields.io/badge/spec%20guard-8%2F8%20invariants%20pass-brightgreen.svg)]()
 [![Integrity Harness](https://img.shields.io/badge/integrity-9%2F9%20fails%3D0-brightgreen.svg)]()
 [![Institutional Audit](https://img.shields.io/badge/audit%20score-95.2%20%2F%20100%20(Grade%20A%2B)-gold.svg)]()
@@ -105,7 +105,10 @@ python main.py scan
 # 3. 12-Factor Graham/Buffett Screener (Top 2 Stocks per Sector)
 python main.py best2
 
-# 4. Generate Exact Capital Deployment Plan (e.g. BDT 50,000)
+# 4. Run Investor Proxy Simulation (Max Profit Probability, When to Buy & When to Sell)
+python main.py proxy 50000
+
+# 5. Generate Exact Capital Deployment Plan (e.g. BDT 50,000)
 python main.py plan 50000
 
 # 5. Audit Real Portfolio Holdings, Mark-to-Market & P&L
@@ -133,10 +136,11 @@ To prevent architectural drift and ensure institutional invariants are never com
 flowchart TD
     Spec["📜 SPEC.md<br/>(Master Single Source of Truth & Invariants)"] --> Guard["🛡️ scripts/spec_guard.py<br/>(Automated Conformance Check)"]
     
-    Spec --> Dev["👨‍💻 dse-developer<br/>(Code & Feature Builder)"]
+    Spec --> Plan["📐 dse-planner<br/>(Spec Analysis & Task Blueprint)"]
+    Plan --> Dev["👨‍💻 dse-developer<br/>(Code & Feature Builder)"]
     Dev --> Test["🧪 dse-tester<br/>(Unit Tests & Edge Simulations)"]
     Test --> Audit["🔍 dse-auditor<br/>(Institutional Third-Eye Audit)"]
-    Audit --> User["👤 dse-user-proxy<br/>(Retail & HNWI Acceptance Check)"]
+    Audit --> User["👤 dse-user-proxy<br/>(Max Profit Probability & Buy/Sell Gates)"]
     User --> Commit["🚀 Production Release / GitHub Push"]
     
     Guard -. Enforces .-> Dev & Test & Audit & User
@@ -144,10 +148,11 @@ flowchart TD
 
 | Agent Role | Skill Location | Primary Mandate |
 | :--- | :--- | :--- |
+| **Planner** | `.agents/skills/dse-planner/` | Mandatory first step: spec review, task list & invariant impact assessment |
 | **Developer** | `.agents/skills/dse-developer/` | Feature implementation, PEP8, universal SQLite WAL timeouts, PIT assertions |
-| **Tester** | `.agents/skills/dse-tester/` | Regression gatekeeper, 77/77 unit tests, 9/9 integrity checks, edge simulations |
+| **Tester** | `.agents/skills/dse-tester/` | Regression gatekeeper, 79/79 unit tests, 9/9 integrity checks, edge simulations |
 | **Auditor** | `.agents/skills/dse-auditor/` | Institutional third-eye audit, bias detection, 100-pt scoring (Score >= 95.0) |
-| **User Proxy**| `.agents/skills/dse-user-proxy/`| Real investor simulation (৳1,000 retail, ৳50k swing, ৳1M HNWI), Bengali clarity |
+| **User Proxy**| `.agents/skills/dse-user-proxy/`| Real investor test: max profit probability, exact WHEN TO BUY & WHEN TO SELL rules |
 
 ### Automated Invariant Verification
 Run the spec conformance guard at any time:

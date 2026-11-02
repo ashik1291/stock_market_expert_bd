@@ -93,10 +93,11 @@ Development, testing, auditing, and acceptance are segregated into specialized a
 
 | Agent Role | Skill Identifier | Primary Mission & Mandate |
 | :--- | :--- | :--- |
-| **Developer Agent** | `dse-developer` | Implements algorithms, refactors code, ensures PEP8, SQLite WAL timeouts, and strict backwards compatibility. |
-| **Tester Agent** | `dse-tester` | Executes test harness (68/68 unit tests, 9/9 integrity checks), verifies zero-leakage, runs boundary and edge condition tests. |
+| **Planner Agent** | `dse-planner` | Mandatory first step: reviews SPEC.md, assesses invariant impact, formulates step-by-step blueprint & dependency task list before code modification. |
+| **Developer Agent** | `dse-developer` | Implements algorithms, refactors code, ensures PEP8, universal SQLite WAL timeouts, and strict backwards compatibility. |
+| **Tester Agent** | `dse-tester` | Executes test harness (79+ unit tests, 9/9 integrity checks), verifies zero-leakage, runs boundary and edge condition tests. |
 | **Auditor Agent** | `dse-auditor` | Brutal third-eye institutional review. Detects lookahead bias, corporate action dilution, statistical p-hacking, and regulatory misalignment. Target score: $\ge 95.0$. |
-| **User Proxy Agent** | `dse-user-proxy` | Acts as real-world market participant (৳1,000 retail trader, ৳50k swing trader, ৳1M HNWI). Validates usability, execution clarity, and bilingual Bengali reports. |
+| **User Proxy Agent** | `dse-user-proxy` | Acts as real investor: runs simulation (`main.py proxy`), discovers maximum profit probability stocks, and defines exact WHEN TO BUY and WHEN TO SELL execution rules. |
 
 ---
 
