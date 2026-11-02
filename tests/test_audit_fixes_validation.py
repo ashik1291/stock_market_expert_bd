@@ -106,6 +106,97 @@ class TestAuditFixesValidation(unittest.TestCase):
         self.assertIsNotNone(db_nav)
         self.assertEqual(db_nav["nav_redemption"], 10.631)
 
+    def test_layer7_pit_live_scrape_not_lagged(self):
+        """Verify Layer 7 fix: live scrape fundamentals are not lagged 75 days into future."""
+        db_path = os.path.join(ROOT, "data", "processed", "dse.db")
+        con = sqlite3.connect(db_path)
+        cur = con.cursor()
+        cur.execute("""
+            SELECT ticker, snapshot_date, publication_date, tradable_date 
+            FROM fundamentals_pit 
+            WHERE snapshot_date >= '2026-10-01' AND snapshot_date NOT LIKE '%-03-31'
+              AND snapshot_date NOT LIKE '%-06-30' AND snapshot_date NOT LIKE '%-09-30'
+              AND snapshot_date NOT LIKE '%-12-31'
+            LIMIT 5
+        """)
+        rows = cur.fetchall()
+        con.close()
+        self.assertTrue(len(rows) > 0)
+        for sym, snap, pub, trad in rows:
+            self.assertEqual(snap, pub)
+            self.assertTrue(trad >= snap)
+            self.assertTrue(trad <= '2026-11-01')
+
+    def test_layer7_strict_missing_data_gate(self):
+        """Verify Layer 7 fix: missing PE or Debt marks is_eligible = False."""
+        from unified_score import score_features
+        # 1. Missing PE
+        res1 = score_features(pe=None, debt_equity=0.2, dividend_yield=5.0, rsi_14=40.0, sector="Textile", close=20.0)
+        self.assertFalse(res1["is_eligible"])
+        self.assertIn("missing_pe_ratio", res1["gate_reasons"])
+
+        # 2. Missing Debt for Non-Bank
+        res2 = score_features(pe=12.0, debt_equity=None, dividend_yield=5.0, rsi_14=40.0, sector="Textile", close=20.0)
+        self.assertFalse(res2["is_eligible"])
+        self.assertIn("missing_debt_equity", res2["gate_reasons"])
+
+        # 3. Missing Debt for Bank is allowed
+        res3 = score_features(pe=6.0, debt_equity=None, dividend_yield=7.0, rsi_14=40.0, sector="Banking", close=20.0)
+        self.assertTrue(res3["is_eligible"])
+
+    def test_layer7_portfolio_record_sell(self):
+        """Verify Layer 7 fix: record_sell properly executes, deducts commission, and credits net proceeds."""
+        import tempfile
+        import shutil
+        from portfolio_manager import record_sell, load_portfolio, save_portfolio
+
+        # Setup test portfolio in temp location or with test_uid
+        test_uid = "test_sell_user"
+        test_port = {
+            "user_id": test_uid,
+            "cash_balance_bdt": 100.0,
+            "holdings": [
+                {
+                    "ticker": "TESTMOCK",
+                    "shares": 10,
+                    "entry_price": 50.0,
+                    "gross_cost": 500.0,
+                    "commission_bdt": 5.0,
+                    "cost_basis": 505.0,
+                    "effective_entry": 50.5,
+                    "break_even_price": 50.95
+                }
+            ],
+            "history": []
+        }
+        save_portfolio(test_port, user_id=test_uid)
+
+        # Execute sell of 4 shares @ 60.0
+        # Gross = 240.0, Commission = max(240 * 0.00465, 5.0) = 5.0
+        # Net proceeds = 235.0
+        # Sold cost basis = (505 / 10) * 4 = 202.0
+        # Realized P&L = 235.0 - 202.0 = +33.0
+        entry = record_sell("TESTMOCK", 4, 60.0, user_id=test_uid, min_ticket_fee=5.0)
+        self.assertEqual(entry["net_proceeds"], 235.0)
+        self.assertEqual(entry["realized_pnl_bdt"], 33.0)
+
+        updated_port = load_portfolio(user_id=test_uid)
+        self.assertEqual(updated_port["cash_balance_bdt"], 335.0)  # 100 + 235
+        self.assertEqual(len(updated_port["holdings"]), 1)
+        self.assertEqual(updated_port["holdings"][0]["shares"], 6)
+
+        # Cleanup test portfolio file
+        port_file = os.path.join(ROOT, "data", "users", test_uid, "portfolio.json")
+        if os.path.exists(port_file):
+            os.remove(port_file)
+
+    def test_layer7_anti_manipulation_asof_date(self):
+        """Verify Layer 7 fix: is_ticker_blacklisted respects asof_date without lookahead."""
+        from anti_manipulation_engine import is_ticker_blacklisted
+        # Asof date in the far past (before any alerts existed)
+        is_b, _ = is_ticker_blacklisted("DGIC", asof_date="2020-01-01")
+        self.assertFalse(is_b)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -313,6 +313,86 @@ def record_buy(ticker: str, shares: int, price: float, horizon: str = "long_term
     print(f"Recorded BUY: {shares} shares of {ticker.upper()} @ ৳{price:.1f} + ৳{comm:.2f} comm (Total: ৳{net_cost:,.2f}). Remaining Cash: ৳{p['cash_balance_bdt']:,.2f}")
 
 
+def record_sell(
+    ticker: str,
+    shares: int,
+    price: float,
+    date: str | None = None,
+    min_ticket_fee: float = 5.0,
+    user_id: str = "default_user",
+    reason: str = "manual_exit"
+) -> dict:
+    """
+    Executes and records a SELL order:
+    1. Validates holding exists and has sufficient shares.
+    2. Computes Gross Proceeds = shares * price.
+    3. Computes Sell Friction = max(shares * price * TOTAL_SELL_FEE_PCT, min_ticket_fee)
+       where TOTAL_SELL_FEE_PCT = 0.465% (0.40% broker + 0.015% DSE + 0.05% Sec 53BBB AIT).
+    4. Computes Net Proceeds = Gross Proceeds - Sell Friction.
+    5. Computes Realized P&L = Net Proceeds - Proportionate Cost Basis of sold shares.
+    6. Credits Net Proceeds directly to cash_balance_bdt.
+    7. Updates or removes holding.
+    8. Records transaction in history.
+    """
+    p = load_portfolio(user_id=user_id)
+    sym = ticker.upper()
+    matching_idx = None
+    for idx, h in enumerate(p.get("holdings", [])):
+        if h.get("ticker", "").upper() == sym:
+            matching_idx = idx
+            break
+
+    if matching_idx is None:
+        raise ValueError(f"Position not found: You do not own any shares of {sym}.")
+
+    holding = p["holdings"][matching_idx]
+    current_shares = int(holding.get("shares", 0))
+    if shares > current_shares:
+        raise ValueError(f"Insufficient shares: You own {current_shares} shares of {sym}, cannot sell {shares}.")
+
+    cost_basis_per_share = float(holding.get("cost_basis", 0.0)) / current_shares if current_shares > 0 else float(holding.get("entry_price", 0.0))
+    sold_cost_basis = round(cost_basis_per_share * shares, 2)
+
+    gross_proceeds = round(shares * price, 2)
+    pct_comm = round(gross_proceeds * TOTAL_SELL_FEE_PCT, 2)
+    comm = max(pct_comm, min_ticket_fee if gross_proceeds > 0 else 0.0)
+    net_proceeds = round(gross_proceeds - comm, 2)
+
+    realized_pnl_bdt = round(net_proceeds - sold_cost_basis, 2)
+    realized_pnl_pct = round((realized_pnl_bdt / sold_cost_basis) * 100.0, 2) if sold_cost_basis > 0 else 0.0
+
+    p["cash_balance_bdt"] = round(p.get("cash_balance_bdt", 0.0) + net_proceeds, 2)
+
+    if shares == current_shares:
+        p["holdings"].pop(matching_idx)
+    else:
+        holding["shares"] = current_shares - shares
+        holding["gross_cost"] = round(holding.get("entry_price", 0.0) * holding["shares"], 2)
+        holding["cost_basis"] = round(cost_basis_per_share * holding["shares"], 2)
+        holding["commission_bdt"] = round(holding.get("commission_bdt", 0.0) * (holding["shares"] / current_shares), 2)
+
+    trade_date = date or datetime.date.today().isoformat()
+    history_entry = {
+        "action": "SELL",
+        "ticker": sym,
+        "shares": shares,
+        "price": price,
+        "gross_proceeds": gross_proceeds,
+        "commission": comm,
+        "net_proceeds": net_proceeds,
+        "cost_basis": sold_cost_basis,
+        "realized_pnl_bdt": realized_pnl_bdt,
+        "realized_pnl_pct": realized_pnl_pct,
+        "reason": reason,
+        "date": trade_date
+    }
+    p["history"].append(history_entry)
+    save_portfolio(p, user_id=user_id)
+
+    print(f"Recorded SELL: {shares} shares of {sym} @ ৳{price:.1f} - ৳{comm:.2f} fee (Net Proceeds: ৳{net_proceeds:,.2f} | Realized P&L: ৳{realized_pnl_bdt:+,.2f} / {realized_pnl_pct:+.2f}%). Cash Balance: ৳{p['cash_balance_bdt']:,.2f}")
+    return history_entry
+
+
 DB_PATH = BASE_DIR / "data" / "processed" / "dse.db"
 
 
@@ -323,6 +403,18 @@ def show_status():
     holdings = p.get("holdings", [])
     
     conn = sqlite3.connect(DB_PATH) if DB_PATH.exists() else None
+
+    # Check and credit any due cash dividends from corporate actions
+    if conn:
+        try:
+            from corporate_action_processor import process_portfolio_dividends
+            div_res = process_portfolio_dividends(user_id=p.get("user_id", "default_user"), conn=conn)
+            if div_res.get("credited_count", 0) > 0:
+                p = load_portfolio()
+                mfs = p.get("mutual_funds", [])
+                holdings = p.get("holdings", [])
+        except Exception:
+            pass
 
     stock_invested = sum(h.get("cost_basis", 0) for h in holdings)
     total_comm = sum(h.get("commission_bdt", 0) for h in holdings)
@@ -460,6 +552,12 @@ if __name__ == "__main__":
         pr = float(sys.argv[4])
         hor = sys.argv[5] if len(sys.argv) > 5 else "long_term"
         record_buy(t, s, pr, hor)
+    elif sys.argv[1] == "sell" and len(sys.argv) >= 5:
+        t = sys.argv[2]
+        s = int(sys.argv[3])
+        pr = float(sys.argv[4])
+        reason = sys.argv[5] if len(sys.argv) > 5 else "manual_exit"
+        record_sell(t, s, pr, reason=reason)
     elif sys.argv[1] == "status":
         show_status()
     else:

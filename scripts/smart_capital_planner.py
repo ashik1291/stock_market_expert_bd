@@ -446,6 +446,17 @@ def generate_smart_plan(amount: float, override_regime: str = None) -> dict:
     bo_trading_buffer = round(wait_cash * 0.25, 2)
     liquid_yield_anchor = round(wait_cash * 0.75, 2)
 
+    # Realistic Tiered Liquidity Allocator based on BD Financial Product Minimums
+    if liquid_yield_anchor >= 100000.0:
+        liquid_instrument = "Bangladesh Bank 91-Day T-Bills via Primary Dealer (11.0% - 11.5% Yield, ৳1L Minimum Ticket)"
+        liquid_tag = "91d T-Bills (11.0%-11.5%)"
+    elif liquid_yield_anchor >= 5000.0:
+        liquid_instrument = "Shanta Fixed Income / Amana Cash Fund (9.5% - 10.5% Yield, ৳5,000 Min Initial Tranche)"
+        liquid_tag = "Shanta Liquid Fund (9.5%-10.5%)"
+    else:
+        liquid_instrument = "High-Yield Digital Savings / MFS SND (bKash/Nagad/Bank SND 7.5% - 8.0% Yield, ৳0 Minimum)"
+        liquid_tag = "MFS/SND Digital Cash (7.5%-8.0%)"
+
     return {
         "regime_info": regime_info,
         "invested_capital_input": amount,
@@ -453,7 +464,8 @@ def generate_smart_plan(amount: float, override_regime: str = None) -> dict:
         "cash_reserve_pct": cash_reserve_pct,
         "bo_trading_cash_bdt": bo_trading_buffer,
         "liquid_yield_anchor_bdt": liquid_yield_anchor,
-        "liquid_anchor_instrument": "Shanta Fixed Income / Amana Cash Fund / 91-Day T-Bills (9.5% - 11.5% Yield)",
+        "liquid_anchor_instrument": liquid_instrument,
+        "liquid_anchor_tag": liquid_tag,
         "immediate_tranche_budget": invest_now,
         "allocations": allocations
     }
@@ -476,7 +488,8 @@ def print_plan_report(plan: dict):
     print(f"📝 Quantitative Stance: {r['desc_bn']}")
     print("-"*85)
     print(f"🛡️ Dynamic Defensive Cash Allocation:                ৳{cash:,.2f} ({c_pct}%)")
-    print(f"   ├─ 75% High-Yield Liquid Anchor (9.5%-11.0% Yield): ৳{plan.get('liquid_yield_anchor_bdt', cash*0.75):,.2f} [Shanta Liquid / T-Bills]")
+    liquid_tag = plan.get('liquid_anchor_tag', 'Liquid Yield')
+    print(f"   ├─ 75% High-Yield Liquid Anchor: ৳{plan.get('liquid_yield_anchor_bdt', cash*0.75):,.2f} [{liquid_tag}]")
     print(f"   └─ 25% Active Brokerage BO Cash (Limit Buffer):    ৳{plan.get('bo_trading_cash_bdt', cash*0.25):,.2f}")
     print(f"🎯 Actionable Risk-Parity Equity Tranche:            ৳{tranche:,.2f} ({round(100.0 - c_pct, 1)}%)")
     print("-"*85)

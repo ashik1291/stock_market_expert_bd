@@ -253,23 +253,37 @@ def run_surveillance_scan(asof_date: str | None = None) -> list[dict]:
     return alerts
 
 
-def is_ticker_blacklisted(ticker: str) -> tuple[bool, str]:
+def is_ticker_blacklisted(
+    ticker: str,
+    asof_date: str | None = None,
+    lookback_days: int = 45
+) -> tuple[bool, str]:
     """
     Direct Guard API: Returns (True, Reason) if ticker is flagged as CRITICAL or HIGH manipulation risk.
-    Used by recommenders and portfolio allocators to prevent capital destruction.
+    Point-in-Time Aware: Takes optional asof_date to eliminate lookahead bias in historical evaluations.
+    Decay Window: Flags decay after lookback_days (default 45 days) unless refreshed by surveillance.
     """
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
-    row = conn.execute("""
-        SELECT risk_level, alert_type, description 
+
+    if not asof_date:
+        row = conn.execute("SELECT MAX(date) FROM prices").fetchone()
+        asof_date = row[0] if (row and row[0]) else datetime.date.today().isoformat()
+
+    query = """
+        SELECT risk_level, alert_type, description, date 
         FROM manipulation_alerts 
-        WHERE ticker = ? AND risk_level IN ('CRITICAL', 'HIGH')
+        WHERE ticker = ? 
+          AND risk_level IN ('CRITICAL', 'HIGH')
+          AND date <= ?
+          AND date >= date(?, '-' || ? || ' days')
         ORDER BY date DESC LIMIT 1
-    """, (ticker,)).fetchone()
+    """
+    row = conn.execute(query, (ticker, asof_date, asof_date, str(lookback_days))).fetchone()
     conn.close()
 
     if row:
-        return True, f"Blocked by Forensic Surveillance [{row['risk_level']}: {row['alert_type']} — {row['description']}]"
+        return True, f"Blocked by Forensic Surveillance [{row['risk_level']}: {row['alert_type']} on {row['date']} — {row['description']}]"
     return False, "Clean"
 
 
