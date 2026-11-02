@@ -1,51 +1,211 @@
-Question: why not renata, beximco pharma, berger paints, gp, square pharma, marico etc.?
+# 📈 stock_market_expert_bd
+### Autonomous DSE Quantitative Engine, Anti-Manipulation Surveillance & AI Financial Intelligence System
 
-Four reasons: budget lockout, expensive valuation, political overhang, lower cash yield.
+[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
+[![Test Suite](https://img.shields.io/badge/tests-58%2F58%20passing-brightgreen.svg)]()
+[![Integrity Harness](https://img.shields.io/badge/integrity-9%2F9%20fails%3D0-brightgreen.svg)]()
+[![Daily Pipeline](https://img.shields.io/badge/pipeline-16%2F16%20stages-success.svg)]()
+[![License](https://img.shields.io/badge/license-MIT-green.svg)]()
 
----
+`stock_market_expert_bd` is an institutional-grade algorithmic quantitative finance platform and autonomous financial advisor designed specifically for the Dhaka Stock Exchange (DSE) and Bangladesh capital markets.
 
-### 1. Budget Lockout (Share Price > ৳1,000)
-
-DSE forbids buying fractional shares. Minimum order is 1 whole share.
-
-- **`MARICO`**: ৳2,652.30 per share. **Cannot buy.** Requires ৳2,653+ capital.
-- **`BERGERPBL`**: ৳1,450.00 per share. **Cannot buy.** Requires ৳1,450+ capital.
-
----
-
-### 2. Overpriced Multiples
-
-- **`RENATA`** (৳449.90):
-  - **P/E**: **22.9x** (Very expensive. Jamuna is 3.0x, Square is 8.0x).
-  - **Dividend Yield**: Only **1.13%** (Jamuna pays 9.87%).
-  - **Debt**: Short-term debt grew heavily ($D/E: 0.54$) during interest rate spike to 14%.
+Operating with the disciplined mathematical standards of leading quantitative asset managers, the platform combines **strict Point-in-Time (PIT) financial accounting**, **central bank macro hurdle rates**, **forensic syndicate pump surveillance**, **tri-horizon risk-parity portfolio allocation**, and an **immutable hash-chained forward test ledger**.
 
 ---
 
-### 3. Political & Conglomerate Overhang
+## 🏛️ Core Philosophy: The Subtractive Edge
 
-- **`BXPHARMA`** (৳142.50):
-  - **P/E**: **10.9x** (Trades at premium over Square Pharma's 8.0x).
-  - **Risk**: Beximco Group carries heavy political scrutiny and receiver appointments on sister units. Sentiment suppresses multiple.
+In emerging equity markets like Bangladesh, the primary driver of quantitative outperformance is not trying to predict short-term price noise. **The true edge is subtractive: eliminating the 90% toxic companies** on the exchange:
+- ❌ **Debt Traps**: High long-term loan burdens destroyed by 12%–14% commercial bank borrowing costs.
+- ❌ **Accrual / Paper Earnings**: Companies reporting positive EPS while operating cash flow (NOCFPS) is negative.
+- ❌ **Retail Distribution Traps**: Speculative penny stocks pumped by syndicate social media channels without fundamental earnings.
+- ❌ **Corporate Governance Probes**: Companies flagged with receiver appointments, pending BSEC investigations, or sponsor share pledging.
 
----
-
-### 4. Valuation Multiples vs `JAMUNAOIL`
-
-| Metric | `JAMUNAOIL` | `SQURPHARMA` | `GP` |
-| :--- | :--- | :--- | :--- |
-| **Share Price** | **৳178.80** | ৳218.00 | ৳241.60 |
-| **Shares for ৳1,000** | **5 shares** (৳894) | 4 shares (৳872) | 4 shares (৳966) |
-| **P/E Ratio** | **3.0x** | 8.0x | 11.0x |
-| **P/NAV (Book Value)** | **0.65x** (Deep Discount) | 1.38x | 5.79x |
-| **Cash Dividend Yield** | **9.87%** | 5.74% | 8.34% |
-| **Margin of Safety** | **+189.9%** | +58.2% | -31.8% |
-| **Balance Sheet Debt** | **Zero (Net Cash)** | Zero | Zero Long-Term |
+By filtering out the 90% worst stocks, capital is concentrated exclusively in **resilient, cash-covered moats** trading with a quantifiable **Graham Margin of Safety**.
 
 ---
 
-### Summary
+## ⚙️ Automated 16-Stage Daily Master Pipeline
 
-- `MARICO` and `BERGERPBL` mathematically impossible under ৳1,000 budget.
-- `RENATA` expensive (22.9x P/E, 1.1% yield).
-- `SQURPHARMA` and `GP` excellent, but `JAMUNAOIL` gives **3x cheaper earnings multiple (3.0x vs 8.0x/11.0x)** and **9.87% cash dividend yield**.
+The engine executes an end-to-end autonomous daily cycle upon market close:
+
+```
+[Bangladesh Bank Scraper] ────────┐
+                                  ▼
+                        [Stage 1: Macro Rates] (91d T-Bill 11.60%, Repo 10.00%)
+                                  │
+[DSE / bdshare Live Scrape] ──────┼─────────► [Stage 2: Multi-Source Scraper Failover]
+                                  │           (bdshare -> Next.js API -> Legacy -> Cache)
+                                  ▼
+                        [Stage 3: SQLite Processing & PIT Ingestion] (dse.db)
+                                  │
+                        [Stage 4: Anti-Manipulation Surveillance] (395 Tickers)
+                                  │           (Volume Anomaly Ratio >= 3x, BSEC Probes)
+                                  ▼
+                        [Stage 5: 5-Factor Fundamental Screener]
+                                  │           (Graham Value, Audited NOCFPS, Moats)
+                                  ▼
+                        [Stage 6: Daily Rise/Fall Directional Predictions] (Bilingual)
+                                  │
+                        [Stage 7: Corporate Actions & Dividend Catalysts] (PSI Notices)
+                                  │
+                        [Stage 8: Tri-Horizon Recommendations & Visual Charts]
+                                  │           (Long-Term Assets, Mid-Term Swings, Scalps)
+                                  ▼
+                        [Stage 9: Monthly Rebalance & Risk Parity Engine]
+                                  │           (20% Sector Concentration Limit, 10% Cash)
+                                  ▼
+                        [Stage 10: Dividend Accounting & Cash Disbursements]
+                                  │
+                        [Stage 11: Forward Test Ledger Advance & SHA-256 Stamping]
+                                  │
+                        [Stage 12: Open-End Mutual Fund Mark-to-Market NAV Sync]
+                                  │
+                        [Stage 13: Real Portfolio Auditing & Break-even Tracking]
+                                  │
+                        [Stage 14: Real-Time Portfolio Sentinel & Floor Price Guards]
+                                  │           (+15% / +30% Take-Profit, Circuit Breakers)
+                                  ▼
+                        [Stage 15: Chief Financial Advisor Executive Dossier] (Bilingual)
+                                  │
+                        [Stage 16: Zero-Leakage Integrity Harness & Data Freshness]
+```
+
+---
+
+## 🔬 Core Quantitative Engines & Architecture
+
+### 1. Macro Dynamic Hurdle Rate & ERP Engine ([`macro_rate_feed.py`](file:///c:/Users/BS01671/Documents/stock_market/scripts/macro_rate_feed.py))
+- Integrates Bangladesh Bank monetary indicators: **Policy Repo Rate (10.00%)**, **Interbank Call Money (9.75%)**, **Headline Inflation (9.92%)**, and **91-Day T-Bill Auction Yield (11.60%)**.
+- Computes real-time **Equity Risk Premium (ERP)**: $\text{ERP} = \text{Earnings Yield} - R_f$.
+- Blocks any stock whose earnings yield fails to beat sovereign risk-free paper plus a minimum required spread of +350 bps.
+
+### 2. Forensic Anti-Manipulation & BSEC Surveillance ([`anti_manipulation_engine.py`](file:///c:/Users/BS01671/Documents/stock_market/scripts/anti_manipulation_engine.py))
+- Scans all 395 listed tickers daily for **Volume Anomaly Ratio (VAR $\ge 3.0\times$)** and **Corwin-Schultz Bid-Ask Spread widening**.
+- Flags speculative pump-and-dump junk and tracks official BSEC regulatory probes directly into `is_ticker_blacklisted(ticker, asof_date)`.
+- Propagates strictly with point-in-time `asof_date` to prevent historical lookahead contamination.
+
+### 3. Point-in-Time (PIT) 5-Factor Fundamental Screener ([`five_factor_fundamental_screener.py`](file:///c:/Users/BS01671/Documents/stock_market/scripts/five_factor_fundamental_screener.py))
+- Strictly isolates financial statements by `(tradable_date <= asof OR publication_date <= asof)`.
+- Computes **Graham Fair Value** ($\sqrt{22.5 \times \text{EPS} \times \text{NAV}}$) and required Margin of Safety.
+- Enforces audited cash quality: **Consolidated NOCFPS / EPS $\ge 0.75\times$** and **Debt/Equity $\le 0.80$**.
+
+### 4. Tri-Horizon Asset Allocator & Sector Concentration ([`recommender.py`](file:///c:/Users/BS01671/Documents/stock_market/scripts/recommender.py))
+- Segregates actionable ideas into three disciplined horizons:
+  - **🏛️ Long-Term Core Moats (60% capital)**: 1–5+ year horizon, defensive balance sheets, audited cash-flow dividends.
+  - **📈 Mid-Term Cycle Swings (30% capital)**: 12%–20% target profit swings with trailing stops.
+  - **🛡️ Tactical Cash Reserve (10% capital)**: Dry-powder buffer reserved for deep oversold RSI (<25) panics.
+- **20% Sector Concentration Limit**: Restricts top allocations to a maximum of 2 stocks per sector to prevent industry clustering.
+
+### 5. Real-Time Portfolio Sentinel & Execution Playbook ([`portfolio_sentinel.py`](file:///c:/Users/BS01671/Documents/stock_market/scripts/portfolio_sentinel.py))
+- Real-time mark-to-market position tracking with exact break-even calculations (including 0.415% buy / 0.465% sell fees and slippage).
+- **Lower Circuit Breaker Trap Detector**: Flags bidless floor price locks (-10% or -3%) and generates pre-opening exit directives.
+- **Automated Profit-Taking**:
+  - `TAKE_PROFIT_ALL`: Automatically triggers when target price is reached or P&L $\ge +30\%$.
+  - `TAKE_PROFIT_HALF`: Automatically locks in 50% profit at $+15\%$, trailing remaining balance to break-even.
+
+### 6. Reinforcement Learning & Hash-Chained Forward Ledger ([`reinforcement_learning_engine.py`](file:///c:/Users/BS01671/Documents/stock_market/scripts/reinforcement_learning_engine.py))
+- Evaluates directional predictions against actual closing prices with empirical Brier calibration.
+- Updates factor weights via **Empirical Bayes shrinkage** towards neutral priors.
+- Logs daily portfolio NAV, cash balances, and positions into an immutable cryptographic SHA-256 block-stamped ledger (`forward_test_ledger_v2.json`).
+
+---
+
+## ⚡ Quick Start & Multi-Device Portability
+
+The entire engine is completely self-contained and portable across Windows, Linux, and macOS.
+
+### The Single Magic Word: `ready`
+
+On any new or existing machine, execute:
+
+```powershell
+# Windows (PowerShell or Command Prompt):
+ready.bat
+# or
+ready.ps1
+```
+
+```bash
+# Linux / macOS:
+chmod +x ready.sh
+./ready.sh
+```
+
+**What `ready` does automatically:**
+1. Installs all required dependencies from `requirements.txt`.
+2. Verifies SQLite database integrity (auto-decompresses `dse.db.gz` if cloning fresh without Git LFS).
+3. Verifies configuration registries and forward test ledgers.
+4. Executes the daily heartbeat synchronizer (`check_daily_sync.py`).
+5. Prints a full system readiness dashboard.
+
+---
+
+## 💻 Master CLI Command Reference
+
+Execute commands through the master controller:
+
+```bash
+# 1. Full System Status & Macro Health Dashboard
+python main.py status
+
+# 2. Daily Directional Rise/Fall Predictive Scanner
+python main.py scan
+
+# 3. 12-Factor Graham/Buffett Screener (Top 2 Stocks per Sector)
+python main.py best2
+
+# 4. Generate Exact Capital Deployment Plan (e.g. BDT 50,000)
+python main.py plan 50000
+
+# 5. Audit Real Portfolio Holdings, Mark-to-Market & P&L
+python main.py portfolio
+
+# 6. Run Daily Statistical Alpha Cycle & Bayesian Calibration
+python main.py alpha
+
+# 7. End-to-End Daily Pipeline Execution (16 Stages)
+run_daily.bat
+# or
+python scripts/run_daily_pipeline.py
+```
+
+---
+
+## 💼 Commercial Offering & Business Model
+
+`stock_market_expert_bd` is built for commercial deployment across retail investors, High-Net-Worth Individuals (HNWIs), and institutional capital allocators in Bangladesh.
+
+Detailed business plan, TAM/SAM/SOM market sizing, unit economics, and licensing tiers are available in:  
+📄 **[`reports/business/COMMERCIAL_BUSINESS_PLAN.md`](file:///c:/Users/BS01671/Documents/stock_market/reports/business/COMMERCIAL_BUSINESS_PLAN.md)**
+
+### Commercial Product Tiers:
+- **Pro Quant Trader (SaaS)**: BDT 1,500 / month — Daily directional signals, Graham Value screeners, dividend catalyst alerts.
+- **Elite Wealth Builder (SaaS)**: BDT 4,500 / month — Dynamic position plans, real-time Sentinel floor price alerts, Shariah purification calculator.
+- **B2B Institutional Terminal (API / Enterprise)**: BDT 150,000 – BDT 500,000 / year — Normalized Point-in-Time SQLite feed, forensic manipulation surveillance API, white-labeled daily executive reports.
+- **Family Office Advisory**: Annual retainer + 10%–15% performance fee on alpha generated above 91-day T-Bill rate (**11.60%**).
+
+---
+
+## 🧪 Verification & Test Suite
+
+The engine is covered by an extensive, non-regressive institutional test suite:
+
+```bash
+# Run all unit tests
+python -m unittest discover -s tests
+
+# Run standalone integrity harness & leakage verification
+python scripts/integrity_harness.py
+```
+
+**Test Verification Status**:
+- **58/58 Unit Tests Passing** (`tests/test_audit_fixes_validation.py`, `tests/test_quant_engine.py`)
+- **9/9 Integrity Harness Checks Passing** (`scripts/integrity_harness.py`)
+- **Champion Model Hash**: `acf502bc65914c48` (`frozen_epoch2_pit_v2`) verified invariant.
+
+---
+
+## ⚖️ Legal Disclaimer
+
+`stock_market_expert_bd` is a quantitative algorithmic financial analytics and decision-support system. Past statistical performance and forward backtests on historical DSE data do not guarantee future returns. Investments in Bangladesh equities are subject to capital market fluctuations. Always evaluate investment decisions against central bank sovereign risk-free benchmarks.

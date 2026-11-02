@@ -1,8 +1,9 @@
 """
-DSE Automated Quantitative Investment & Trading System — Master MVP Controller
+stock_market_expert_bd — Autonomous DSE Quantitative Engine & AI Financial Intelligence System
 
 Usage:
   python main.py [COMMAND] [ARGS]
+  stock_market_expert_bd [COMMAND] [ARGS]
 
 Commands:
   ready         Bootstrap dependencies, verify database integrity, and ready system on this machine
