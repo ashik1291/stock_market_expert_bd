@@ -146,5 +146,5 @@ def maybe_refit_platt_from_ledger() -> dict:
         if i.get("score") is None:
             continue
         scores.append(float(i["score"]))
-        labels.append(1 if i.get("actual_outcome") == "CORRECT" else 0)
+        labels.append(1 if i.get("actual_outcome") in ("CORRECT", "CORRECT_PROFIT") else 0)
     return platt_fit(scores, labels)

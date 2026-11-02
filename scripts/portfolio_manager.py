@@ -260,11 +260,11 @@ def calculate_round_trip_break_even(entry_price: float, shares: int = 1, min_fee
     return round(entry_price * factor, 2)
 
 
-def record_buy(ticker: str, shares: int, price: float, horizon: str = "long_term", min_ticket_fee: float = 5.0):
+def record_buy(ticker: str, shares: int, price: float, horizon: str = "long_term", min_ticket_fee: float = 5.0, asof_date: str | None = None):
     # Guard against blacklisted / manipulated stocks
     try:
         from anti_manipulation_engine import is_ticker_blacklisted
-        is_blocked, bl_msg = is_ticker_blacklisted(ticker.upper())
+        is_blocked, bl_msg = is_ticker_blacklisted(ticker.upper(), asof_date=asof_date)
         if is_blocked:
             print(f"⛔ REJECTED: Cannot record BUY for {ticker.upper()} — {bl_msg}")
             return False

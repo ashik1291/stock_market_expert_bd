@@ -103,8 +103,10 @@ def run_5_factor_screener(halal_tier: str = "flexible") -> list[dict]:
         f.raw_data
     FROM companies c
     JOIN prices p ON c.ticker = p.ticker AND p.date = ?
-    LEFT JOIN fundamentals_pit pit ON c.ticker = pit.ticker AND pit.snapshot_date = (
-        SELECT MAX(snapshot_date) FROM fundamentals_pit WHERE ticker = c.ticker
+    LEFT JOIN fundamentals_pit pit ON c.ticker = pit.ticker AND pit.id = (
+        SELECT id FROM fundamentals_pit
+        WHERE ticker = c.ticker AND (tradable_date <= ? OR publication_date <= ? OR snapshot_date <= ?)
+        ORDER BY COALESCE(tradable_date, publication_date, snapshot_date) DESC, snapshot_date DESC LIMIT 1
     )
     LEFT JOIN fundamentals f ON c.ticker = f.ticker AND f.id = (
         SELECT id FROM fundamentals WHERE ticker = c.ticker 
@@ -113,7 +115,7 @@ def run_5_factor_screener(halal_tier: str = "flexible") -> list[dict]:
     WHERE c.category = 'A' AND p.close IS NOT NULL AND p.close > 0
     """
 
-    rows = conn.execute(query, (latest_date,)).fetchall()
+    rows = conn.execute(query, (latest_date, latest_date, latest_date, latest_date)).fetchall()
     conn.close()
 
     screened = []
@@ -125,7 +127,7 @@ def run_5_factor_screener(halal_tier: str = "flexible") -> list[dict]:
         # Universal Gate 0: Anti-Manipulation / BSEC Probe Blacklist
         try:
             from anti_manipulation_engine import is_ticker_blacklisted
-            is_blocked, _ = is_ticker_blacklisted(ticker)
+            is_blocked, _ = is_ticker_blacklisted(ticker, asof_date=latest_date)
             if is_blocked:
                 continue
         except Exception:

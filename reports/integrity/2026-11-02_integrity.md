@@ -1,4 +1,4 @@
-# Integrity Harness — 2026-11-02T10:34:39.279997
+# Integrity Harness — 2026-11-02T12:13:00.358005
 **Result**: PASS (0 failures)
 
 | Check | Status | Detail |
@@ -8,7 +8,7 @@
 | `thresholds_weights_sum_1` | **PASS** | sum=1.0 |
 | `served_weights_match_frozen_hash` | **PASS** | model=frozen_epoch2_pit_v2 hash=acf502bc65914c48 weights={'div': 1.0, 'value': 1.0, 'debt': 0.0, 'rsi': 0.0} |
 | `shadow_ic_weights_nonnegative` | **PASS** | weights={'div': 1.0, 'value': 1.0, 'rsi': 1.0, 'debt': 1.0} |
-| `rank_log_full_universe` | **PASS** | ranks=114 features=114 date=2026-11-02 |
+| `rank_log_full_universe` | **PASS** | ranks=119 features=119 date=2026-11-02 |
 | `registry_champion` | **PASS** | id=frozen_epoch2_pit_v2 hash=acf502bc65914c48 |
 | `no_fake_base_rate_66_4` | **PASS** | clean |
 | `data_freshness` | **PASS** | fresh (latest=2026-11-02, expected=2026-11-02, lag=0 sessions) |

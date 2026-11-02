@@ -53,7 +53,7 @@ def scan_dividend_catalysts(asof_date: str | None = None) -> list[dict]:
     try:
         from anti_manipulation_engine import is_ticker_blacklisted
     except ImportError:
-        is_ticker_blacklisted = lambda t: (False, "Clean")
+        is_ticker_blacklisted = lambda t, asof_date=None, lookback_days=45: (False, "Clean")
 
     try:
         from halal_guard import HalalGuard
@@ -87,7 +87,7 @@ def scan_dividend_catalysts(asof_date: str | None = None) -> list[dict]:
         seen.add(key)
         
         # 1. Forensic Blacklist Gate & Shariah Halal Gate
-        is_b, bl_reason = is_ticker_blacklisted(t)
+        is_b, bl_reason = is_ticker_blacklisted(t, asof_date=asof_date)
         if is_b:
             continue
         if halal_checker:

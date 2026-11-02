@@ -510,6 +510,8 @@ def run_full_buffett_screener() -> dict:
 
     tickers_rows = conn.execute("SELECT ticker, sector FROM companies WHERE category='A' ORDER BY sector, ticker").fetchall()
     log.info(f"Loaded {len(tickers_rows)} Category A tickers from database.")
+    asof_row = conn.execute("SELECT MAX(date) FROM prices").fetchone()
+    asof_date = asof_row[0] if asof_row and asof_row[0] else None
 
     evaluated = []
     try:
@@ -520,7 +522,7 @@ def run_full_buffett_screener() -> dict:
     for r in tickers_rows:
         ticker = r[0]
         if is_ticker_blacklisted:
-            is_b, _ = is_ticker_blacklisted(ticker)
+            is_b, _ = is_ticker_blacklisted(ticker, asof_date=asof_date)
             if is_b:
                 log.info(f"Skipping {ticker} — flagged by forensic surveillance blacklist.")
                 continue

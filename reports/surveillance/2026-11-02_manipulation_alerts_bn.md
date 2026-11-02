@@ -1,10 +1,10 @@
 # 🚨 DSE মার্কেট সার্ভেইল্যান্স ও অ্যান্টি-ম্যানিপুলেশন সতর্কবার্তা রিপোর্ট
-**বাজার তারিখ**: `2026-11-02` | **তৈরির সময়**: `2026-11-02 10:33:02`
+**বাজার তারিখ**: `2026-11-02` | **তৈরির সময়**: `2026-11-02 12:11:11`
 **নজরদারির আওতা**: ৩৯৫টি পূর্ণ স্টক ইউনিভার্স | ভলিউম স্পাইক অ্যানোমালি, সিন্ডিকেট কর্নার ও পাম্প-অ্যান্ড-ডাম্প নজরদারি
 
 ### 🛡️ নজরদারি সারসংক্ষেপ
 - **সংকটজনক ঝুঁকি (তাত্ক্ষণিক ব্ল্যাকলিস্ট - ভুলেও কিনবেন না)**: **0টি কোম্পানি**
-- **উচ্চ ফরেনসিক সতর্কতা (সিন্ডিকেট তৎপরতা সন্দেহ)**: **5টি কোম্পানি**
+- **উচ্চ ফরেনসিক সতর্কতা (সিন্ডিকেট তৎপরতা সন্দেহ)**: **6টি কোম্পানি**
 - **মাঝারি নজরদারি ফ্ল্যাগ**: **0টি কোম্পানি**
 
 ---
@@ -22,6 +22,7 @@
 | **RAHIMAFOOD** | `45/১০০` | **REGULATORY_PROBE** | **0.0x** | +0.9% | BSEC Regulatory Enforcement / Probe: BSEC regulatory enforcement / probe |
 | **UNIONCAP** | `35/১০০` | **SPECULATIVE_JUNK_PUMP** | **3.0x** | +8.2% | Price up +8.16% on untracked / high-risk security without verified earnings |
 | **MLDYEING** | `35/১০০` | **SPECULATIVE_JUNK_PUMP** | **1.1x** | +4.8% | Price up +4.85% with poor fundamentals (Negative EPS) |
+| **MEGHNACEM** | `35/১০০` | **SPECULATIVE_JUNK_PUMP** | **0.1x** | +4.4% | Price up +4.41% with poor fundamentals (Negative EPS) |
 | **RSRMSTEEL** | `35/১০০` | **SPECULATIVE_JUNK_PUMP** | **0.0x** | +4.7% | Price up +4.69% with poor fundamentals (Negative EPS) |
 
 ---

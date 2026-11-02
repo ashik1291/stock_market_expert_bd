@@ -274,5 +274,94 @@ class TestAuditFixesValidation(unittest.TestCase):
         self.assertEqual(rows[1][3], 1.0)
 
 
+    # --- LAYER 8 ADVERSARIAL AUDIT FIXES VALIDATION ---
+
+    def test_layer8_macro_tbill_hurdle_rate(self):
+        """Verify 91-day T-Bill benchmark is 11.60% (avoiding inverted spread against 10% repo rate)."""
+        from macro_rate_feed import get_latest_macro_rates
+        rates = get_latest_macro_rates()
+        self.assertGreaterEqual(rates["risk_free_rate_pct"], 11.60)
+        self.assertGreaterEqual(rates["t_bill_91d_pct"], 11.60)
+        # Policy repo is 10.00%, T-Bill (11.60%) must exceed repo rate (normal upward-sloping spread)
+        self.assertGreater(rates["t_bill_91d_pct"], rates["policy_repo_rate_pct"])
+
+    def test_layer8_corporate_actions_cleaned(self):
+        """Verify synthetic dilution rows from circuit breach scripts are purged from corporate_actions."""
+        db_path = os.path.join(ROOT, "data", "processed", "dse.db")
+        con = sqlite3.connect(db_path)
+        cur = con.cursor()
+        cur.execute("SELECT COUNT(*) FROM corporate_actions WHERE notes LIKE '%circuit-free price discovery%' OR notes LIKE '%Post-record date dividend or bonus dilution price adjustment%'")
+        synthetic_count = cur.fetchone()[0]
+        con.close()
+        self.assertEqual(synthetic_count, 0, "Synthetic dilution rows still present in corporate_actions!")
+
+    def test_layer8_rl_engine_outcome_matching(self):
+        """Verify RL engine matches CORRECT_PROFIT outcomes and reports positive win rate."""
+        from reinforcement_learning_engine import evaluate_pending_predictions
+        res = evaluate_pending_predictions()
+        self.assertIn("lifetime_accuracy_pct", res)
+        self.assertGreater(res["lifetime_accuracy_pct"], 0.0)
+
+    def test_layer8_sentinel_take_profit_directives(self):
+        """Verify portfolio sentinel issues TAKE_PROFIT_ALL and TAKE_PROFIT_HALF directives."""
+        from portfolio_sentinel import audit_portfolio_sentinel
+        # Mock portfolio with profit holdings
+        p_path = os.path.join(ROOT, "data", "portfolio", "portfolio.json")
+        orig_p = json.load(open(p_path, encoding="utf-8"))
+        try:
+            mock_p = dict(orig_p)
+            mock_p["holdings"] = [
+                {
+                    "ticker": "GP",
+                    "shares": 100,
+                    "entry_price": 100.0,
+                    "target_price": 150.0,
+                    "stop_loss": 90.0,
+                    "horizon": "mid_term"
+                }
+            ]
+            with open(p_path, "w", encoding="utf-8") as f:
+                json.dump(mock_p, f, indent=2)
+
+            # GP live price ~ 235 BDT > target 150 BDT and P&L > +30%
+            audit = audit_portfolio_sentinel()
+            holding_actions = [h["action"] for h in audit["holdings"]]
+            self.assertIn("TAKE_PROFIT_ALL", holding_actions)
+        finally:
+            with open(p_path, "w", encoding="utf-8") as f:
+                json.dump(orig_p, f, indent=2)
+
+    def test_layer8_screener_pit_tradable_date(self):
+        """Verify five_factor_fundamental_screener uses PIT date filter and asof_date blacklist check."""
+        with open(os.path.join(ROOT, "scripts", "five_factor_fundamental_screener.py"), "r", encoding="utf-8") as f:
+            code = f.read()
+        self.assertIn("tradable_date <= ?", code)
+        self.assertIn("is_ticker_blacklisted(ticker, asof_date=latest_date)", code)
+
+    def test_layer8_recommender_sector_concentration_cap(self):
+        """Verify sector concentration cap limits any sector to at most 2 stocks in top picks."""
+        from recommender import apply_sector_concentration_cap
+        items = [
+            {"ticker": "BANK1", "sector": "Bank", "confidence": 95},
+            {"ticker": "BANK2", "sector": "Bank", "confidence": 90},
+            {"ticker": "BANK3", "sector": "Bank", "confidence": 85},
+            {"ticker": "BANK4", "sector": "Bank", "confidence": 80},
+            {"ticker": "PHARMA1", "sector": "Pharma", "confidence": 75},
+        ]
+        capped = apply_sector_concentration_cap(items, max_per_sector=2)
+        top_3_sectors = [c["sector"] for c in capped[:3]]
+        # Top 3 cannot be 3 banks; max 2 banks allowed before pharma is promoted
+        self.assertLessEqual(top_3_sectors.count("Bank"), 2)
+        self.assertEqual(capped[2]["ticker"], "PHARMA1")
+
+    def test_layer8_orderbook_turnover_fallback(self):
+        """Verify orderbook depth analyzer falls back to volume * close when value is 0.0."""
+        from orderbook_depth_analyzer import analyze_ticker_liquidity
+        # GP had zero value before 2024; verify fallback computes positive turnover
+        res = analyze_ticker_liquidity("GP", window_days=20, asof_date="2023-12-28")
+        self.assertGreater(res["adv_turnover_bdt"], 0.0)
+        self.assertNotEqual(res["liquidity_tier"], "ILLIQUID")
+
+
 if __name__ == "__main__":
     unittest.main()

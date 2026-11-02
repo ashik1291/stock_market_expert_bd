@@ -608,7 +608,8 @@ def run_pattern_causal_audit(ticker: str) -> dict:
     worth_greed   = evaluate_worth_vs_greed(ticker, series, fund)
     try:
         from anti_manipulation_engine import is_ticker_blacklisted
-        is_blocked, bl_msg = is_ticker_blacklisted(ticker)
+        series_asof = series[-1]["date"] if series else None
+        is_blocked, bl_msg = is_ticker_blacklisted(ticker, asof_date=series_asof)
         worth_greed["is_blacklisted"] = is_blocked
         worth_greed["blacklist_reason"] = bl_msg if is_blocked else None
         if is_blocked:

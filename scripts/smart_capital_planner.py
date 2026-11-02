@@ -90,7 +90,9 @@ def get_market_regime() -> dict:
     
     # Check Macro Indicators
     macro_hurdle = 12.34
-    t_bill = 8.84
+    t_bill = 11.60
+    asof_row = cur.execute("SELECT MAX(date) FROM prices").fetchone()
+    asof_date = asof_row[0] if asof_row and asof_row[0] else None
     macro_row = cur.execute(
         "SELECT value FROM macro_indicators WHERE indicator='t_bill_91d' ORDER BY date DESC LIMIT 1"
     ).fetchone()
@@ -154,6 +156,7 @@ def get_market_regime() -> dict:
         "stance": recommendation_stance,
         "t_bill_rate": t_bill,
         "macro_hurdle": macro_hurdle,
+        "asof_date": asof_date,
         "desc_bn": desc
     }
 
@@ -276,9 +279,10 @@ def load_candidate_pool() -> list[str]:
     return candidates
 
 
-def generate_smart_plan(amount: float, override_regime: str = None) -> dict:
+def generate_smart_plan(amount: float, override_regime: str = None, asof_date: str = None) -> dict:
     regime_info = get_market_regime()
     regime = override_regime if override_regime else regime_info["regime"]
+    asof_date = asof_date or regime_info.get("asof_date")
     
     # 1. Calculate dynamic cash reserve from Volatility Targeting
     cash_reserve_pct = regime_info["cash_buffer_pct"]
@@ -289,7 +293,7 @@ def generate_smart_plan(amount: float, override_regime: str = None) -> dict:
     try:
         from anti_manipulation_engine import is_ticker_blacklisted
     except ImportError:
-        is_ticker_blacklisted = lambda t: (False, "Clean")
+        is_ticker_blacklisted = lambda t, asof_date=None, lookback_days=45: (False, "Clean")
 
     try:
         from halal_guard import HalalGuard
@@ -303,7 +307,7 @@ def generate_smart_plan(amount: float, override_regime: str = None) -> dict:
     # Filter out blacklisted and non-halal stocks, compute dynamic metrics
     verified_candidates = []
     for t in candidate_tickers:
-        is_b, _ = is_ticker_blacklisted(t)
+        is_b, _ = is_ticker_blacklisted(t, asof_date=asof_date)
         if is_b:
             continue
         if halal_checker:
@@ -323,7 +327,7 @@ def generate_smart_plan(amount: float, override_regime: str = None) -> dict:
         # Pristine Halal Moats (No conventional interest-bearing financial institutions)
         fallback_tickers = ["JAMUNAOIL", "PADMAOIL", "SQURPHARMA", "BXPHARMA", "GP", "OLYMPIC"]
         for t in fallback_tickers:
-            is_b, _ = is_ticker_blacklisted(t)
+            is_b, _ = is_ticker_blacklisted(t, asof_date=asof_date)
             if not is_b:
                 if halal_checker:
                     h_res = halal_checker.is_eligible(t, tier="flexible")

@@ -978,7 +978,7 @@ def analyze_ticker(ticker: str, timeframe: Timeframe, ticker_data: dict) -> dict
     is_blacklisted = False
     try:
         from anti_manipulation_engine import is_ticker_blacklisted
-        is_blocked, bl_reason = is_ticker_blacklisted(ticker)
+        is_blocked, bl_reason = is_ticker_blacklisted(ticker, asof_date=last_price_date)
         if is_blocked:
             is_blacklisted = True
     except Exception as e:

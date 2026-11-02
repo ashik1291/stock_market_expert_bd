@@ -93,7 +93,7 @@ def build_weekly_drift_report() -> dict:
         for p in evaluated:
             t = tier_of(p.get("score"))
             buckets[t]["n"] += 1
-            if p.get("actual_outcome") == "CORRECT":
+            if p.get("actual_outcome") in ("CORRECT", "CORRECT_PROFIT"):
                 buckets[t]["wins"] += 1
         for t, b in buckets.items():
             tier_stats[t] = {
@@ -105,7 +105,7 @@ def build_weekly_drift_report() -> dict:
     calib_bins = {"50-65": {"n": 0, "wins": 0}, "65-80": {"n": 0, "wins": 0}, "80-100": {"n": 0, "wins": 0}}
     for p in evaluated:
         prob = float(p.get("confidence_prob_pct") or 50)
-        win = 1 if p.get("actual_outcome") == "CORRECT" else 0
+        win = 1 if p.get("actual_outcome") in ("CORRECT", "CORRECT_PROFIT") else 0
         if prob < 65:
             k = "50-65"
         elif prob < 80:
