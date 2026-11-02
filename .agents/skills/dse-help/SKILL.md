@@ -99,10 +99,11 @@ Choose what you want to do and type the phrase or word in chat:
 ### 💻 9. SpecMD Multi-Agent Governance
 | Agent Role | Trigger Command | Purpose |
 | :--- | :--- | :--- |
+| **`dse-planner`** | `plan`, `architecture plan`, `design`, `roadmap` | Reviews SPEC.md, invariant impact, creates task lists before code modification |
 | **`dse-developer`** | `develop`, `build`, `implement`, `fix code` | Build features, enforce invariants, maintain SQLite WAL timeout & PIT rules |
-| **`dse-tester`** | `test`, `verify`, `regression`, `check tests` | Run 68+ unit tests, spec guard, and 9/9 integrity checks |
+| **`dse-tester`** | `test`, `verify`, `regression`, `check tests` | Run 79+ unit tests, spec guard, and 9/9 integrity checks |
 | **`dse-auditor`** | `audit`, `score`, `third eye`, `review` | Brutal quantitative third-eye review, score intelligence (95.0+ standard) |
-| **`dse-user-proxy`** | `user test`, `simulate user`, `retail test` | Real-world retail/HNWI simulation, Bengali translation, trade clarity |
+| **`dse-user-proxy`** | `user test`, `simulate user`, `proxy`, `when to buy` | Real investor test: max profit probability, exact WHEN TO BUY & WHEN TO SELL rules |
 | **`spec-guard`** | `python scripts/spec_guard.py` | Automated verification of the 8 non-negotiable invariants |
 
 ### 💻 10. Master MVP CLI Commands (Terminal Direct)
@@ -111,6 +112,7 @@ Choose what you want to do and type the phrase or word in chat:
 - `python main.py scan` — Runs daily directional Rise vs Fall predictions scanner
 - `python main.py refresh` — Runs full automated refresh pipeline end-to-end
 - `python main.py portfolio` — Displays live portfolio ledger (Mutual Funds + Stocks)
+- `python main.py proxy [BDT]` — Runs user proxy test: max profit probability, entry zone & exit rules
 - `python main.py plan [BDT]` — Generates 4-tranche capital deployment schedule
 - `python main.py report` — Displays latest executive investment strategy report
 ```

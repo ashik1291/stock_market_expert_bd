@@ -15,6 +15,7 @@ Commands:
   pattern [TICKER] Analyze company pattern DNA, multi-interval waves, causal 'WHY', & worth vs greed
   portfolio     Show current portfolio holdings (Mutual Funds + Equities + P&L)
   plan [BDT]    Generate exact capital deployment plan (default BDT 50,000)
+  proxy [BDT]   Run user proxy simulation: max profit probability, entry zone & exit rules
   report        Display the latest weekly investment & trading executive report
   help          Display this command reference
 """
@@ -117,6 +118,13 @@ def cmd_portfolio():
     run_script("portfolio_manager.py", ["status"])
 
 
+def cmd_proxy(capital=None):
+    args = []
+    if capital:
+        args.extend(["--amount", str(capital)])
+    run_script("user_proxy_simulation.py", args)
+
+
 def cmd_plan(capital=None):
     args = ["plan"]
     if capital:
@@ -189,6 +197,9 @@ def main():
         cmd_pattern(t)
     elif cmd in ("portfolio", "holdings"):
         cmd_portfolio()
+    elif cmd in ("proxy", "simulate", "user-proxy"):
+        cap = sys.argv[2] if len(sys.argv) > 2 else None
+        cmd_proxy(cap)
     elif cmd in ("plan", "position"):
         cap = sys.argv[2] if len(sys.argv) > 2 else None
         cmd_plan(cap)

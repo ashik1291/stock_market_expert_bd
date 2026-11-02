@@ -68,6 +68,23 @@ class TestSpecConformance(unittest.TestCase):
         passed = run_spec_guard()
         self.assertTrue(passed, "run_spec_guard() failed one or more invariants")
 
+    def test_planner_skill_exists(self):
+        skill_path = os.path.join(ROOT, ".agents", "skills", "dse-planner", "SKILL.md")
+        self.assertTrue(os.path.exists(skill_path), "dse-planner skill is missing")
+
+    def test_user_proxy_simulation_generates_valid_plan(self):
+        from user_proxy_simulation import evaluate_user_investment_plan
+        res = evaluate_user_investment_plan(capital_bdt=50000.0, top_n=3)
+        self.assertIn("top_picks", res)
+        self.assertGreaterEqual(len(res["top_picks"]), 1)
+        first = res["top_picks"][0]
+        self.assertIn("profit_probability", first)
+        self.assertGreaterEqual(first["profit_probability"], 50.0)
+        self.assertIn("limit_entry", first)
+        self.assertIn("break_even", first)
+        self.assertIn("tp1", first)
+        self.assertIn("stop_loss", first)
+
 
 if __name__ == "__main__":
     unittest.main()
