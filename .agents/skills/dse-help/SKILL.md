@@ -96,7 +96,16 @@ Choose what you want to do and type the phrase or word in chat:
 - **`Full refresh`** or **`Expand full universe`**
   *(Runs complete multi-step pipeline across all 80+ listed companies in 10 sectors)*
 
-### 💻 9. Master MVP CLI Commands (Terminal Direct)
+### 💻 9. SpecMD Multi-Agent Governance
+| Agent Role | Trigger Command | Purpose |
+| :--- | :--- | :--- |
+| **`dse-developer`** | `develop`, `build`, `implement`, `fix code` | Build features, enforce invariants, maintain SQLite WAL timeout & PIT rules |
+| **`dse-tester`** | `test`, `verify`, `regression`, `check tests` | Run 68+ unit tests, spec guard, and 9/9 integrity checks |
+| **`dse-auditor`** | `audit`, `score`, `third eye`, `review` | Brutal quantitative third-eye review, score intelligence (95.0+ standard) |
+| **`dse-user-proxy`** | `user test`, `simulate user`, `retail test` | Real-world retail/HNWI simulation, Bengali translation, trade clarity |
+| **`spec-guard`** | `python scripts/spec_guard.py` | Automated verification of the 8 non-negotiable invariants |
+
+### 💻 10. Master MVP CLI Commands (Terminal Direct)
 - `python main.py status` — Complete health dashboard, macro climate & portfolio summary
 - `python main.py best2` — Runs 12-factor Graham/Buffett screener for Best 2 per sector
 - `python main.py scan` — Runs daily directional Rise vs Fall predictions scanner

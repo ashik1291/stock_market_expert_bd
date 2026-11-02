@@ -2,7 +2,8 @@
 ### Autonomous DSE Quantitative Engine, Anti-Manipulation Surveillance & AI Financial Intelligence System
 
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
-[![Test Suite](https://img.shields.io/badge/tests-68%2F68%20passing-brightgreen.svg)]()
+[![Test Suite](https://img.shields.io/badge/tests-77%2F77%20passing-brightgreen.svg)]()
+[![Spec Guard](https://img.shields.io/badge/spec%20guard-8%2F8%20invariants%20pass-brightgreen.svg)]()
 [![Integrity Harness](https://img.shields.io/badge/integrity-9%2F9%20fails%3D0-brightgreen.svg)]()
 [![Institutional Audit](https://img.shields.io/badge/audit%20score-95.2%20%2F%20100%20(Grade%20A%2B)-gold.svg)]()
 [![Daily Pipeline](https://img.shields.io/badge/pipeline-16%2F16%20stages-success.svg)]()
@@ -120,6 +121,39 @@ python scripts/run_daily_pipeline.py
 ```
 
 ---
+
+
+---
+
+## 📜 SpecMD & Multi-Agent Architecture
+
+To prevent architectural drift and ensure institutional invariants are never compromised during updates, the system implements a strict **Spec-Driven Multi-Agent Protocol**:
+
+```mermaid
+flowchart TD
+    Spec["📜 SPEC.md<br/>(Master Single Source of Truth & Invariants)"] --> Guard["🛡️ scripts/spec_guard.py<br/>(Automated Conformance Check)"]
+    
+    Spec --> Dev["👨‍💻 dse-developer<br/>(Code & Feature Builder)"]
+    Dev --> Test["🧪 dse-tester<br/>(Unit Tests & Edge Simulations)"]
+    Test --> Audit["🔍 dse-auditor<br/>(Institutional Third-Eye Audit)"]
+    Audit --> User["👤 dse-user-proxy<br/>(Retail & HNWI Acceptance Check)"]
+    User --> Commit["🚀 Production Release / GitHub Push"]
+    
+    Guard -. Enforces .-> Dev & Test & Audit & User
+```
+
+| Agent Role | Skill Location | Primary Mandate |
+| :--- | :--- | :--- |
+| **Developer** | `.agents/skills/dse-developer/` | Feature implementation, PEP8, universal SQLite WAL timeouts, PIT assertions |
+| **Tester** | `.agents/skills/dse-tester/` | Regression gatekeeper, 77/77 unit tests, 9/9 integrity checks, edge simulations |
+| **Auditor** | `.agents/skills/dse-auditor/` | Institutional third-eye audit, bias detection, 100-pt scoring (Score >= 95.0) |
+| **User Proxy**| `.agents/skills/dse-user-proxy/`| Real investor simulation (৳1,000 retail, ৳50k swing, ৳1M HNWI), Bengali clarity |
+
+### Automated Invariant Verification
+Run the spec conformance guard at any time:
+```bash
+python scripts/spec_guard.py
+```
 
 ## ⚙️ Automated 16-Stage Daily Master Pipeline
 
