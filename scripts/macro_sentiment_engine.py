@@ -101,7 +101,7 @@ MACRO_TAXONOMY = {
 
 
 def get_db():
-    return sqlite3.connect(DB_PATH)
+    return sqlite3.connect(DB_PATH, timeout=30.0)
 
 
 def load_news(days: int = 14) -> list[dict]:

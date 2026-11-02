@@ -101,7 +101,7 @@ def parse_and_record_dse_psi(
 
     should_close = False
     if conn is None:
-        conn = sqlite3.connect(DB_PATH)
+        conn = sqlite3.connect(DB_PATH, timeout=30.0)
         should_close = True
 
     init_corporate_actions_schema(conn)
@@ -236,7 +236,7 @@ def record_corporate_action(
     """
     should_close = False
     if conn is None:
-        conn = sqlite3.connect(DB_PATH)
+        conn = sqlite3.connect(DB_PATH, timeout=30.0)
         should_close = True
 
     init_corporate_actions_schema(conn)
@@ -278,7 +278,7 @@ def sync_corporate_actions_from_fundamentals(conn: Optional[sqlite3.Connection] 
     """
     should_close = False
     if conn is None:
-        conn = sqlite3.connect(DB_PATH)
+        conn = sqlite3.connect(DB_PATH, timeout=30.0)
         should_close = True
 
     init_corporate_actions_schema(conn)
@@ -394,7 +394,7 @@ def process_portfolio_dividends(
 
     should_close = False
     if conn is None:
-        conn = sqlite3.connect(DB_PATH)
+        conn = sqlite3.connect(DB_PATH, timeout=30.0)
         should_close = True
 
     init_corporate_actions_schema(conn)
@@ -552,7 +552,7 @@ def calculate_ex_dividend_adjustment(
 
 if __name__ == "__main__":
     print("[CORPORATE ACTION PROCESSOR] Starting synchronization...")
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=30.0)
     sync_res = sync_corporate_actions_from_fundamentals(conn)
     print(f"[SYNC RESULT] {sync_res}")
 

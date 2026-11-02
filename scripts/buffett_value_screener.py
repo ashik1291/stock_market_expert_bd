@@ -504,7 +504,7 @@ def run_full_buffett_screener() -> dict:
     Screens all Category A tickers, groups by sector, and extracts the Best 2 per Sector.
     """
     log.info("Starting DSE 12-Factor Buffett Value & Sector Best 2 Screener...")
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=30.0)
     reg = load_json(CONFIG_DIR / "company_registry_12factor.json")
     lead = load_json(CONFIG_DIR / "company_leadership.json")
 

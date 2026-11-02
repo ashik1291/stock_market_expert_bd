@@ -28,7 +28,7 @@ DB_PATH = BASE_DIR / "data" / "processed" / "dse.db"
 
 
 def run_leak_free_portfolio_backtest_with_null(rebalance_stride: int = 63, top_n: int = 10, num_null_sims: int = 1000):
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=30.0)
     conn.row_factory = sqlite3.Row
     c = conn.cursor()
 

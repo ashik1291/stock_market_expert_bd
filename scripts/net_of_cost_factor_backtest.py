@@ -29,7 +29,7 @@ def run_net_of_cost_backtest():
     print("🔬 DSE NET-OF-COST FACTOR PORTFOLIO & REAL TURNOVER BACKTEST")
     print("=" * 80)
 
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=30.0)
     
     # Query price history for active liquid tickers
     print("[1/4] Loading historical OHLCV data from dse.db...")

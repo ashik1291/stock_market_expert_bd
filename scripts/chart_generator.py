@@ -37,7 +37,7 @@ plt.rcParams["figure.autolayout"] = True
 
 
 def get_db():
-    return sqlite3.connect(DB_PATH)
+    return sqlite3.connect(DB_PATH, timeout=30.0)
 
 
 # ── 1. Price-wise Chart ───────────────────────────────────────────────────────

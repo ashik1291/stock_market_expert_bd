@@ -394,7 +394,7 @@ def _rebalance(
 
 def init_or_update_v2_forward_ledger(force_reinit: bool = False):
     PORT_DIR.mkdir(parents=True, exist_ok=True)
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=30.0)
     conn.row_factory = sqlite3.Row
 
     now_utc = datetime.datetime.now(datetime.timezone.utc).isoformat()

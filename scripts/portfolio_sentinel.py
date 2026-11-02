@@ -46,7 +46,7 @@ def audit_portfolio_sentinel(asof_date: str | None = None) -> dict:
     with open(PORTFOLIO_PATH, "r", encoding="utf-8") as f:
         port = json.load(f)
 
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=30.0)
     conn.row_factory = sqlite3.Row
     
     if not asof_date:

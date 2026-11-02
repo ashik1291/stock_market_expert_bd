@@ -22,7 +22,7 @@ DB_PATH = BASE_DIR / "data" / "processed" / "dse.db"
 
 
 def run_factor_panel_evaluation(horizon_days: int = 21):
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=30.0)
     conn.row_factory = sqlite3.Row
     c = conn.cursor()
 

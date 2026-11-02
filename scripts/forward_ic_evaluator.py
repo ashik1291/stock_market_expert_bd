@@ -44,7 +44,7 @@ def evaluate_forward_evidence():
 
     print(f"Logged Forward Dates in Archive: {len(daily_records)} session(s)")
 
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=30.0)
     conn.row_factory = sqlite3.Row
 
     # 2. Check forward return correlation if multiple dates exist

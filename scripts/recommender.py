@@ -1013,7 +1013,7 @@ def run_recommender(timeframe: str = "weekly", tickers: list[str] = None):
         import sqlite3
         db_path = BASE_DIR / "data" / "processed" / "dse.db"
         if db_path.exists():
-            conn = sqlite3.connect(db_path)
+            conn = sqlite3.connect(db_path, timeout=30.0)
             cur = conn.cursor()
             inserted_count = 0
             for h_key, h_list in recs.get("horizons", {}).items():

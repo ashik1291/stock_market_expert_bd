@@ -17,8 +17,14 @@ import json
 import logging
 import math
 import datetime
+import sys
 from pathlib import Path
 from typing import Literal
+
+SCRIPTS_DIR = Path(__file__).resolve().parent
+if str(SCRIPTS_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS_DIR))
+
 
 BASE_DIR   = Path(__file__).resolve().parent.parent
 KNOW_DIR   = BASE_DIR / "data" / "knowledge"
@@ -893,12 +899,31 @@ def analyze_ticker(ticker: str, timeframe: Timeframe, ticker_data: dict) -> dict
         f"(asof={last_price_date}, signal_bars={signal_bars})"
     )
 
+    # Check for temporal price discontinuity (> 25 calendar days gap between trading sessions)
+    has_data_gap = False
+    max_gap_days = 0
+    price_dates = [p.get("date") for p in all_prices if p.get("close") is not None and p.get("date")]
+    if len(price_dates) >= 2:
+        for i in range(1, len(price_dates)):
+            try:
+                d0 = datetime.date.fromisoformat(price_dates[i - 1])
+                d1 = datetime.date.fromisoformat(price_dates[i])
+                gap = (d1 - d0).days
+                if gap > max_gap_days:
+                    max_gap_days = gap
+                if gap > 25:
+                    has_data_gap = True
+            except Exception:
+                pass
+
     # Technical
     tech_result = (
         compute_technical_score(closes, highs, lows, thresholds)
         if len(closes) >= 5
         else {"score": None, "signals": {"error": "insufficient_price_data"}, "sr": {}}
     )
+    if has_data_gap:
+        tech_result.setdefault("signals", {})["data_gap_warning"] = f"unannounced_gap_{max_gap_days}d"
 
     # Fundamental
     fund_result = compute_fundamental_score(fund, thresholds)

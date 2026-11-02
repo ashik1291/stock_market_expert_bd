@@ -368,7 +368,7 @@ def publish_rise_fall_report(res: dict):
         from feature_store import get_feature_row, latest_price_date, build_features_for_date
         import sqlite3
         build_features_for_date()
-        db = sqlite3.connect(BASE_DIR / "data" / "processed" / "dse.db")
+        db = sqlite3.connect(BASE_DIR / "data" / "processed" / "dse.db", timeout=30.0)
         asof = latest_price_date(db)
         db.close()
         asof = asof or today_str

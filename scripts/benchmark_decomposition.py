@@ -2,7 +2,7 @@ import sqlite3
 import pandas as pd
 import numpy as np
 
-conn = sqlite3.connect("data/processed/dse.db")
+conn = sqlite3.connect("data/processed/dse.db", timeout=30.0)
 query = """
 SELECT ticker, date, close 
 FROM prices 

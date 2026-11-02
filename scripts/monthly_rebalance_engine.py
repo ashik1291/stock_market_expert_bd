@@ -92,7 +92,7 @@ def candidate_universe(asof: str | None = None, tier: str | None = None, top_k: 
 def evaluate_moat_valuations(tickers: list[str] | None = None) -> list[dict]:
     """Calculate Graham Fair Value, live price, and Margin of Safety % with strict 5-filter verification."""
     _tickers = tickers if tickers is not None else candidate_universe()
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=30.0)
     conn.row_factory = sqlite3.Row
     results = []
 
@@ -222,7 +222,7 @@ def get_portfolio_sector_weights() -> dict[str, float]:
             p = json.load(f)
         total_eq = 0.0
         sec_eq = {}
-        conn = sqlite3.connect(DB_PATH)
+        conn = sqlite3.connect(DB_PATH, timeout=30.0)
         for h in p.get("holdings", []):
             t = h["ticker"]
             val = float(h.get("gross_cost", 0.0))

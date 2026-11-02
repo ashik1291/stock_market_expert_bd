@@ -402,7 +402,7 @@ def show_status():
     mfs = p.get("mutual_funds", [])
     holdings = p.get("holdings", [])
     
-    conn = sqlite3.connect(DB_PATH) if DB_PATH.exists() else None
+    conn = sqlite3.connect(DB_PATH, timeout=30.0) if DB_PATH.exists() else None
 
     # Check and credit any due cash dividends from corporate actions
     if conn:

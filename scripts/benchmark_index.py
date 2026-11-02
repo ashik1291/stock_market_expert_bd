@@ -17,7 +17,7 @@ def get_dsex_level(conn: sqlite3.Connection | None = None, date: str | None = No
     """Return (date, dsex) from market_summary. Prefer exact date, else latest <= date."""
     own = conn is None
     if own:
-        conn = sqlite3.connect(DB_PATH)
+        conn = sqlite3.connect(DB_PATH, timeout=30.0)
     try:
         if date:
             row = conn.execute(
@@ -52,7 +52,7 @@ def get_dsex_level(conn: sqlite3.Connection | None = None, date: str | None = No
 
 def dsex_return_pct(baseline_date: str, asof_date: str | None = None) -> dict:
     """Percent change in market_summary.dsex between baseline and asof."""
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=30.0)
     try:
         b_date, b_lvl = get_dsex_level(conn, baseline_date)
         a_date, a_lvl = get_dsex_level(conn, asof_date)
@@ -92,7 +92,7 @@ def equal_weight_category_a_nav(
     ADV illiquid filter: stocks with rolling 20d median daily value < BDT 300k are excluded
     from the EQW cross-section (mirrors net_of_cost factor filter). Price-only note preserved.
     """
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=30.0)
     conn.row_factory = sqlite3.Row
     try:
         end = end_date or conn.execute("SELECT MAX(date) FROM prices").fetchone()[0]

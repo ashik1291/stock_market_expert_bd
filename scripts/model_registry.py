@@ -176,7 +176,7 @@ def shadow_score_universe(asof: str | None = None) -> dict:
 
     PORT_DIR.mkdir(parents=True, exist_ok=True)
     reg = load_registry()
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=30.0)
     if asof is None:
         asof = latest_price_date(conn)
     conn.close()
@@ -185,7 +185,7 @@ def shadow_score_universe(asof: str | None = None) -> dict:
 
     build_features_for_date(asof)
     # Raw feature rows (not pre-scored) — re-score per model
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=30.0)
     conn.row_factory = sqlite3.Row
     rows = [dict(r) for r in conn.execute(
         "SELECT * FROM features_daily WHERE date=?", (asof,)

@@ -216,7 +216,7 @@ def evaluate_pending_predictions(eval_window_days: int | None = None) -> dict:
     archive_epoch1_invalid()
     init_learning_storage()
     horizon = eval_window_days or DEFAULT_HORIZON_BARS
-    conn = sqlite3.connect(DB_PATH)
+    conn = sqlite3.connect(DB_PATH, timeout=30.0)
     ledger = load_ledger()
     weights = load_weights()
 
