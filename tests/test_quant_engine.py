@@ -179,10 +179,10 @@ class TestQuantEngine(unittest.TestCase):
 
     def test_unified_score_debt_gate(self):
         from unified_score import score_features, MODEL_ID, is_shariah_excluded_sector
-        bad = score_features(pe=10, debt_equity=2.0, dividend_yield=5, rsi_14=40, sector="Pharma", close=100)
+        bad = score_features(pe=10, debt_equity=2.0, dividend_yield=5, rsi_14=40, sector="Pharma", close=100, enforce_macro_hurdle=False)
         self.assertFalse(bad["is_eligible"])
         self.assertEqual(bad["score"], -999.0)
-        good = score_features(pe=10, debt_equity=0.3, dividend_yield=5, rsi_14=30, sector="Pharma", close=100)
+        good = score_features(pe=10, debt_equity=0.3, dividend_yield=5, rsi_14=30, sector="Pharma", close=100, enforce_macro_hurdle=False)
         self.assertTrue(good["is_eligible"])
         self.assertGreater(good["score"], 0)
         self.assertEqual(good["model_id"], MODEL_ID)
@@ -231,8 +231,8 @@ class TestQuantEngine(unittest.TestCase):
         from unified_score import score_features
         # Explicit weights: shut off RSI (0), boost value
         w = {"div": 1.0, "value": 1.2, "rsi": 0.0, "debt": 1.0}
-        a = score_features(pe=10, debt_equity=0.2, dividend_yield=5, rsi_14=25, sector="Pharma", close=100, factor_weights=w)
-        b = score_features(pe=10, debt_equity=0.2, dividend_yield=5, rsi_14=25, sector="Pharma", close=100, factor_weights={"div": 1, "value": 1, "rsi": 1, "debt": 1})
+        a = score_features(pe=10, debt_equity=0.2, dividend_yield=5, rsi_14=25, sector="Pharma", close=100, factor_weights=w, enforce_macro_hurdle=False)
+        b = score_features(pe=10, debt_equity=0.2, dividend_yield=5, rsi_14=25, sector="Pharma", close=100, factor_weights={"div": 1, "value": 1, "rsi": 1, "debt": 1}, enforce_macro_hurdle=False)
         self.assertTrue(a["is_eligible"])
         # With rsi weight 0, oversold bonus dropped → score should be lower than full rsi weight
         self.assertLess(a["score"], b["score"])
@@ -311,7 +311,7 @@ class TestQuantEngine(unittest.TestCase):
     def test_deterministic_golden_score_formula(self):
         """Golden-value assertion on score_features: pe=12, div=4% -> score exactly 17.0000."""
         from unified_score import score_features
-        res = score_features(pe=12.0, debt_equity=0.4, dividend_yield=4.0, rsi_14=25.0, close=200.0, sector="Pharma")
+        res = score_features(pe=12.0, debt_equity=0.4, dividend_yield=4.0, rsi_14=25.0, close=200.0, sector="Pharma", enforce_macro_hurdle=False)
         self.assertTrue(res["is_eligible"])
         self.assertEqual(res["score"], 17.0000)
         self.assertEqual(res["components"]["div"], 8.0000)
@@ -320,7 +320,7 @@ class TestQuantEngine(unittest.TestCase):
         self.assertEqual(res["components"]["debt"], 0.0000)
 
         # Gate failure check
-        pe_fail = score_features(pe=26.0, debt_equity=0.4, dividend_yield=4.0, rsi_14=25.0, close=200.0, sector="Pharma")
+        pe_fail = score_features(pe=26.0, debt_equity=0.4, dividend_yield=4.0, rsi_14=25.0, close=200.0, sector="Pharma", enforce_macro_hurdle=False)
         self.assertFalse(pe_fail["is_eligible"])
         self.assertEqual(pe_fail["score"], -999.0)
         self.assertIn("pe_gate", pe_fail["gate_reasons"])
@@ -451,12 +451,12 @@ class TestQuantEngine(unittest.TestCase):
         self.assertEqual(f_cfg.get("min_sponsor_holding_pct"), 30, "30% sponsor holding filter missing from thresholds.json")
 
         # 2. Hard Debt Gate check in served score
-        bad_debt = score_features(pe=10.0, debt_equity=1.2, dividend_yield=5.0, rsi_14=40.0, sector="Engineering", close=100.0)
+        bad_debt = score_features(pe=10.0, debt_equity=1.2, dividend_yield=5.0, rsi_14=40.0, sector="Engineering", close=100.0, enforce_macro_hurdle=False)
         self.assertFalse(bad_debt["is_eligible"], "Debt gate failed to block D/E > 1.0 non-bank")
         self.assertEqual(bad_debt["score"], -999.0)
 
         # 3. Clean moat passes gate
-        clean = score_features(pe=8.0, debt_equity=0.01, dividend_yield=5.7, rsi_14=40.0, sector="Pharma", close=220.0)
+        clean = score_features(pe=8.0, debt_equity=0.01, dividend_yield=5.7, rsi_14=40.0, sector="Pharma", close=220.0, enforce_macro_hurdle=False)
         self.assertTrue(clean["is_eligible"])
         self.assertGreater(clean["score"], 0)
 

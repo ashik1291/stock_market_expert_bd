@@ -60,9 +60,9 @@ class TestInstitutionalProofSuite(unittest.TestCase):
 
     def test_pillar_1_verified_pit_isolation(self):
         """Pillar 1: Estimated PIT filings must be rejected in strict live mode."""
-        # Estimated PIT record
+        # Estimated PIT record (pe=6.0 passes macro hurdle 15.10%)
         res_est = score_features(
-            pe=12.0,
+            pe=6.0,
             debt_equity=0.10,
             dividend_yield=5.0,
             rsi_14=40.0,
@@ -75,9 +75,9 @@ class TestInstitutionalProofSuite(unittest.TestCase):
         self.assertIn("estimated_pit_research_only", res_est["gate_reasons"])
         self.assertFalse(res_est["is_pit_verified"])
 
-        # Verified PIT record
+        # Verified PIT record (pe=6.0 passes macro hurdle 15.10%)
         res_ver = score_features(
-            pe=12.0,
+            pe=6.0,
             debt_equity=0.10,
             dividend_yield=5.0,
             rsi_14=40.0,

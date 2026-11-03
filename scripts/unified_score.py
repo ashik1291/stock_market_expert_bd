@@ -138,7 +138,7 @@ def score_features(
     factor_weights: dict | None = None,
     ticker: str | None = None,
     asof_date: str | None = None,
-    enforce_macro_hurdle: bool = False,
+    enforce_macro_hurdle: bool = True,
     publication_is_estimated: int | bool | None = None,
     strict_verified_pit: bool = False,
 ) -> dict:
