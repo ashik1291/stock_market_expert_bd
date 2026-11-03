@@ -1,7 +1,7 @@
 """
 Golden-Value and Regression Tests for Quantitative Logic and Backtester.
 Runs deterministic unit checks against:
-  1. Break-even formula & round-trip brokerage friction (0.833%)
+  1. Break-even formula & round-trip brokerage friction (0.880%)
   2. Conservative stop-loss first execution
   3. Graham ceiling & Buffett valuation formulas
   4. Point-in-time fundamentals isolation (no lookahead)
@@ -24,13 +24,13 @@ sys.path.insert(0, str(SCRIPTS_DIR))
 class TestQuantEngine(unittest.TestCase):
 
     def test_round_trip_breakeven(self):
-        """Verify that break-even multiple strictly matches 0.415% each way."""
+        """Verify that break-even multiple strictly matches statutory rates (0.415% buy, 0.465% sell incl 53BBB AIT)."""
         buy_fee_pct = 0.00415
-        sell_fee_pct = 0.00415
+        sell_fee_pct = 0.00465
         breakeven_ratio = (1.0 + buy_fee_pct) / (1.0 - sell_fee_pct)
-        expected_ratio = 1.008334588
+        expected_ratio = (1.0 + 0.00415) / (1.0 - 0.00465)  # ~1.008856
         self.assertTrue(math.isclose(breakeven_ratio, expected_ratio, rel_tol=1e-5), f"Break-even ratio incorrect: {breakeven_ratio}")
-        self.assertTrue(math.isclose((breakeven_ratio - 1.0) * 100, 0.833, abs_tol=0.005))
+        self.assertTrue(math.isclose((breakeven_ratio - 1.0) * 100, 0.8856, abs_tol=0.01))
 
     def test_graham_ceiling_formula(self):
         """Verify Graham ceiling formula: sqrt(22.5 * EPS * NAV)."""
@@ -413,7 +413,7 @@ class TestQuantEngine(unittest.TestCase):
             json.dumps(CANONICAL_SERVED_PARAMS, sort_keys=True).encode("utf-8")
         ).hexdigest()[:16]
         self.assertEqual(computed_content_hash, CANONICAL_PARAM_CONTENT_HASH)
-        self.assertEqual(computed_content_hash, "7b3020aa89457fa0")
+        self.assertEqual(computed_content_hash, "981db0ef415be2a6")
 
         # Verify Genesis pre-registration string hash matches Block 0 Genesis
         computed_spec_hash = hashlib.sha256("pit_dividend_pe_rsi_sector_capped_v2".encode("utf-8")).hexdigest()[:16]
@@ -592,7 +592,7 @@ class TestQuantEngine(unittest.TestCase):
         import json
         core_hash = hashlib.sha256(json.dumps(CANONICAL_SERVED_PARAMS, sort_keys=True).encode("utf-8")).hexdigest()[:16]
         self.assertEqual(core_hash, CANONICAL_PARAM_CONTENT_HASH, "User personalization leaked into core parameter hash!")
-        self.assertEqual(core_hash, "7b3020aa89457fa0")
+        self.assertEqual(core_hash, "981db0ef415be2a6")
 
         # Cleanup test user directory
         import shutil

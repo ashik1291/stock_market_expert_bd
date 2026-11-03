@@ -1,26 +1,26 @@
 # DSE Phase-2 Learning Audit (Net Excess vs EQW)
-**Audit Timestamp:** 2026-11-03 20:27:16
+**Audit Timestamp:** 2026-11-03 20:40:44
 **Model:** `frozen_epoch2_pit_v2`
-**Label:** `net_excess_vs_eqw_h21_minus_0.833pct`
+**Label:** `net_excess_vs_eqw_h21_minus_0.88pct`
 
 ---
 ## 1. Performance
 - Evaluated closed calls: **146**
-- Long (RISE) Hit Rate: **13.7%** (10 / 73 profitable long calls)
+- Long (RISE) Hit Rate: **12.3%** (9 / 73 profitable long calls)
 - Risk Avoidance (FALL) Rate: **0.0%**
 - Combined System Accuracy: **6.8%** CI [3.8% – 12.1%]
 - Mean net excess: **0.0%**
-- Round-trip cost charged: **0.833%**
+- Round-trip cost charged: **0.88%**
 - Horizon: **21** trading bars
 - Brier: **0.4075**
 
 ## 2. Factor Weights (Beta[2,2] prior @ 50%, floor 0)
 | Factor | Weight |
 |---|---|
-| debt_npl_weight | 0.484 |
-| valuation_mos_weight | 0.484 |
+| debt_npl_weight | 0.469 |
+| valuation_mos_weight | 0.469 |
 | rsi_momentum_weight | 1.094 |
-| smart_money_weight | 0.484 |
+| smart_money_weight | 0.469 |
 
 ## 3. Recent Mistakes
 
@@ -37,9 +37,9 @@
 - `RENATA` 2026-10-07: net_excess=None%
 - `SQURPHARMA` 2026-10-11: net_excess=None%
 - `JAMUNAOIL` 2026-10-11: net_excess=None%
-- `RELIANCINS` 2026-10-12: net_excess=None%
 - `AAMRANET` 2026-10-12: net_excess=None%
 - `MPETROLEUM` 2026-10-13: net_excess=None%
+- `RELIANCINS` 2026-10-13: net_excess=None%
 
 ---
 Epoch-1 archive: `data/learning/prediction_ledger_epoch1_invalid.json` (do not train).

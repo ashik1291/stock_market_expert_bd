@@ -88,9 +88,8 @@ def equal_weight_category_a_nav(
     initial_nav: float = 100.0,
 ) -> dict:
     """
-    Equal-weight daily-rebalanced Category A price index (total-return proxy).
-    Uses close-to-close mean cross-sectional return each session.
-    Dividends not yet applied (PIT dividend events incomplete) — documented as price-only EQW.
+    Equal-weight daily-rebalanced Category A Total Return Index (includes PIT net cash dividends).
+    Uses close-to-close mean cross-sectional return plus cash dividend distributions each session.
     ADV illiquid filter: stocks with rolling 20d median daily value < BDT 300k are excluded
     from the EQW cross-section (mirrors net_of_cost factor filter). Price-only note preserved.
     """
@@ -119,6 +118,14 @@ def equal_weight_category_a_nav(
         # Mirrors net_of_cost_factor_backtest.py:51 rolling 20d median daily value < 300000.
         ADV_THRESHOLD = 300000.0
         adv_excluded: set[str] = set()
+
+        # Pre-fetch all PIT cash dividends in window (net of 10% statutory AIT)
+        div_rows = conn.execute("""
+            SELECT ticker, record_date, cash_amount FROM corporate_actions
+            WHERE action_type = 'cash_dividend' AND record_date >= ? AND record_date <= ?
+              AND cash_amount IS NOT NULL AND cash_amount > 0
+        """, (start_date, end)).fetchall()
+        div_lookup = {(str(r[0]), str(r[1])): float(r[2]) * 0.90 for r in div_rows}
 
         # Portable: fetch close*volume history and compute medians in Python.
         val_history: dict[str, list[tuple[str, float]]] = {}
@@ -193,7 +200,8 @@ def equal_weight_category_a_nav(
                 px = float(r["close"])
                 curr[t] = px
                 if t in prev_closes and prev_closes[t] > 0:
-                    rets.append((px / prev_closes[t]) - 1.0)
+                    c_div = div_lookup.get((t, dt), 0.0)
+                    rets.append(((px + c_div) / prev_closes[t]) - 1.0)
             day_ret = sum(rets) / len(rets) if rets else 0.0
             nav *= 1.0 + day_ret
             series.append({"date": dt, "nav": round(nav, 6), "daily_ret_pct": round(day_ret * 100, 4)})
@@ -203,7 +211,8 @@ def equal_weight_category_a_nav(
         end_nav = series[-1]["nav"]
         return {
             "ok": True,
-            "source": "equal_weight_category_a_price",
+            "source": "equal_weight_category_a_total_return",
+            "benchmark_type": "TOTAL_RETURN_NET_DIVIDENDS",
             "start_date": series[0]["date"],
             "end_date": series[-1]["date"],
             "start_nav": start_nav,

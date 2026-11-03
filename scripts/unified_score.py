@@ -22,7 +22,7 @@ from pathlib import Path
 MODEL_ID = "frozen_epoch2_pit_v2"
 CANONICAL_SPEC = "pit_dividend_pe_rsi_sector_capped_v2"
 FROZEN_PARAMETER_HASH = hashlib.sha256(CANONICAL_SPEC.encode("utf-8")).hexdigest()[:16]  # "acf502bc65914c48"
-ROUND_TRIP_COST_PCT = 0.833
+ROUND_TRIP_COST_PCT = 0.880
 DEFAULT_HORIZON_BARS = 21
 
 # Frozen Epoch 2 weights: strictly locked; dynamic IC calibration moved to offline shadow mode
@@ -66,7 +66,7 @@ CANONICAL_SERVED_PARAMS = {
 
 CANONICAL_PARAM_CONTENT_HASH = hashlib.sha256(
     json.dumps(CANONICAL_SERVED_PARAMS, sort_keys=True).encode("utf-8")
-).hexdigest()[:16]  # Content hash of the actual served parameter dict: "7b3020aa89457fa0"
+).hexdigest()[:16]  # Content hash of the actual served parameter dict: "981db0ef415be2a6"
 
 _BASE = Path(__file__).resolve().parent.parent
 
@@ -110,6 +110,7 @@ def score_features(
     factor_weights: dict | None = None,
     ticker: str | None = None,
     asof_date: str | None = None,
+    enforce_macro_hurdle: bool = False,
 ) -> dict:
     """Return score, eligibility, and component breakdown under frozen model or explicit weights."""
     sec = (sector or "Unknown")
@@ -139,12 +140,18 @@ def score_features(
             eligible = False
             reasons.append("debt_gate")
 
+    ey_v = round((100.0 / pe_v), 2) if (pe_v is not None and pe_v > 0) else 0.0
+    passes_macro = (ey_v >= 15.10)
+
     if pe_v is None:
         eligible = False
         reasons.append("missing_pe_ratio")
     elif pe_v <= 0 or pe_v > 25:
         eligible = False
         reasons.append("pe_gate")
+    elif enforce_macro_hurdle and not passes_macro:
+        eligible = False
+        reasons.append("macro_hurdle_deficit")
 
     if ticker:
         try:
@@ -163,12 +170,15 @@ def score_features(
             "parameter_hash": FROZEN_PARAMETER_HASH,
             "score": -999.0,
             "is_eligible": False,
+            "passes_macro": passes_macro,
+            "earnings_yield_pct": ey_v,
             "gate_reasons": reasons,
             "components": {"div": 0.0, "pe": 0.0, "rsi": 0.0, "debt": 0.0},
             "factor_weights": w,
             "active_signals": {
                 "debt_clean": False,
                 "valuation_mos_positive": False,
+                "passes_macro": passes_macro,
                 "rsi_oversold_triggered": False,
             },
         }
@@ -204,6 +214,8 @@ def score_features(
         "parameter_hash": FROZEN_PARAMETER_HASH,
         "score": score,
         "is_eligible": True,
+        "passes_macro": passes_macro,
+        "earnings_yield_pct": ey_v,
         "gate_reasons": [],
         "components": {
             "div": round(c_div, 4),

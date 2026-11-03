@@ -4,7 +4,7 @@ Enforces strict point-in-time constraints:
   1. NO LOOKAHEAD FUNDAMENTALS: Uses strictly point-in-time price and volume data available as of date t.
   2. UPPER CIRCUIT BUY-FILL CHECK: If stock opens at >= +9.5% limit, buy order is rejected as unfilled.
   3. LOWER CIRCUIT EXIT CHECK: If stock closes at <= -9.5% limit with zero liquidity, cannot exit today.
-  4. PARTICIPATION AND SLIPPAGE: Deducts 0.833% friction + size slippage.
+  4. PARTICIPATION AND SLIPPAGE: Deducts 0.880% friction + size slippage.
   5. 1,000-DRAW MATCHED RANDOM NULL: Draws 1,000 random quarterly portfolios from the exact same eligible universe
      with identical fill constraints and fees to determine true empirical p-value.
 """
@@ -236,7 +236,7 @@ def run_leak_free_portfolio_backtest_with_null(rebalance_stride: int = 63, top_n
     print("="*70)
     print(f"Holding Horizon: {rebalance_stride} bars (~1 Quarter) | Strategy: Pure Point-in-Time Oversold Mean Reversion")
     print(f"Testing Window: {rebalance_dates[0]} to {rebalance_dates[-1]} ({len(rebalance_dates)-1} Periods)")
-    print(f"Friction: 0.833% deducted on turnover | Upper circuit buy locks rejected")
+    print(f"Friction: 0.880% deducted on turnover | Upper circuit buy locks rejected")
     print("-" * 70)
     print(f"  Strategy Final NAV:        ৳{strat_final_nav:,.2f} ({strat_total_ret:+.2f}%)")
     print(f"  Official DSEX Index NAV:   ৳{dsex_nav:,.2f} ({dsex_total_ret:+.2f}%)")

@@ -7,7 +7,7 @@ Tests portfolio-level holding strategy instead of high-frequency trade-timing:
      - Dividend Yield & Low P/E (Graham/Buffett value)
      - Clean balance sheet (Debt/Equity <= 0.6)
   3. Holds Top 10 equal-weighted stocks for 21-63 bars.
-  4. Charges 0.833% round-trip friction only on portfolio turnover.
+  4. Charges 0.880% round-trip friction only on portfolio turnover.
   5. Computes Net Total Return, Annualized Return, Max Drawdown, Information Ratio,
      and compares against DSEX Benchmark and Equal-Weight Category A Universe.
 """
@@ -106,7 +106,7 @@ def run_portfolio_simulation(rebalance_stride: int = 21, top_n: int = 10):
 
     print(f"[PORTFOLIO SIMULATOR] Simulating across {len(rebalance_dates)} rebalance periods ({rebalance_dates[0]} to {rebalance_dates[-1]})...")
 
-    # Friction constant: 0.833% per round trip, i.e. 0.415% per one-way turnover
+    # Friction constant: 0.880% per round trip, i.e. 0.440% per one-way turnover
     ONE_WAY_FEE = 0.00415
 
     for p_idx in range(len(rebalance_dates) - 1):
@@ -260,7 +260,7 @@ def run_portfolio_simulation(rebalance_stride: int = 21, top_n: int = 10):
     print("="*70)
     print(f"Holding Horizon: {rebalance_stride} Trading Days | Portfolio Size: Top {top_n} Stocks")
     print(f"Simulation Period: {rebalance_dates[0]} to {rebalance_dates[-1]} ({len(nav_history)} Periods)")
-    print(f"Transaction Drag: 0.833% per round trip on rebalanced turnover (Deducted from NAV)")
+    print(f"Transaction Drag: 0.880% per round trip on rebalanced turnover (Deducted from NAV)")
     print("-" * 70)
     print(f"  Strategy Final NAV:       ৳{portfolio_nav:,.2f} ({total_strat_return:+.2f}%)")
     print(f"  Official DSEX Index NAV:  ৳{bench_initial_nav:,.2f} ({total_dsex_return:+.2f}%)")

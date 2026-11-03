@@ -200,6 +200,7 @@ def build_features_for_date(asof: str | None = None, category: str = "A") -> dic
             close=float(px["close"]),
             ticker=ticker,
             asof_date=asof,
+            enforce_macro_hurdle=True,
         )
         if scored["is_eligible"]:
             eligible += 1

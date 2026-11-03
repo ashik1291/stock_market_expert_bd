@@ -11,7 +11,7 @@ daily OHLCV bars using academically verified econometrics:
   3. Retail vs Institutional Tranche Guidance:
      - Retail orders (< ৳100,000 or participation < 1.0%): Executed as SINGLE_TRANCHE via limit order.
      - Institutional orders (> ৳100,000 with participation > 1.5%): Spaced into tranches to prevent sweeping the book.
-  4. Total Friction Benchmark: Brokerage/CDBL (0.833% round trip) + Half-Spread (%) + Impact (%).
+  4. Total Friction Benchmark: Brokerage/CDBL/AIT (0.880% round trip) + Half-Spread (%) + Impact (%).
 """
 
 from __future__ import annotations
