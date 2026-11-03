@@ -330,7 +330,9 @@ def _rebalance(
             })
             kept.append(p)
             continue
-        proceeds = round(p["shares"] * fill["price"] * (1.0 - FEE_SELL_PCT), 2)
+        gross_sell = p["shares"] * fill["price"]
+        sell_comm = max(round(gross_sell * FEE_SELL_PCT, 2), 5.0) if gross_sell > 0 else 0.0
+        proceeds = round(gross_sell - sell_comm, 2)
         cash = round(cash + proceeds, 2)
         trades.append({
             "action": "SELL",
@@ -378,7 +380,9 @@ def _rebalance(
             continue
         eff = fill["price"] * (1.0 + FEE_BUY_PCT)
         shares = int(target_alloc / eff) if eff > 0 else 0
-        cost = round(shares * fill["price"] * (1.0 + FEE_BUY_PCT), 2)
+        gross_buy = shares * fill["price"]
+        buy_comm = max(round(gross_buy * FEE_BUY_PCT, 2), 5.0) if gross_buy > 0 else 0.0
+        cost = round(gross_buy + buy_comm, 2)
         if shares <= 0 or cost > cash:
             continue
         cash = round(cash - cost, 2)

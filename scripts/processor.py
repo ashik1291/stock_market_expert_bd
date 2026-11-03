@@ -181,6 +181,9 @@ CREATE INDEX IF NOT EXISTS idx_pit_tradable_date      ON fundamentals_pit(tradab
 CREATE INDEX IF NOT EXISTS idx_fundamentals_ticker    ON fundamentals(ticker);
 CREATE INDEX IF NOT EXISTS idx_news_ticker_date       ON news(ticker, date);
 CREATE INDEX IF NOT EXISTS idx_recommendations_ticker ON recommendations(ticker);
+CREATE INDEX IF NOT EXISTS idx_pit_composite ON fundamentals_pit(ticker, tradable_date, publication_date);
+CREATE INDEX IF NOT EXISTS idx_pit_verified ON fundamentals_pit(publication_is_estimated, tradable_date);
+CREATE INDEX IF NOT EXISTS idx_corp_actions_composite ON corporate_actions(ticker, action_type, record_date);
 """
 
 

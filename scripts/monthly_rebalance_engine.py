@@ -253,11 +253,11 @@ def calculate_opportunistic_deployment(budget_bdt: float = 2000.0) -> dict:
             "valuations": valuations,
         }
 
-    # Sector Concentration Filter: Avoid allocating to sectors already > 35% of stock equity
+    # Sector Concentration Filter: Avoid allocating to sectors already >= 25% of stock equity (SPEC Pillar 5)
     best = None
     for cand in undervalued:
         c_sec = cand.get("sector", "Unknown")
-        if sec_weights.get(c_sec, 0.0) < 35.0 or len(undervalued) == 1:
+        if sec_weights.get(c_sec, 0.0) < 25.0 or len(undervalued) == 1:
             best = cand
             break
     if not best:

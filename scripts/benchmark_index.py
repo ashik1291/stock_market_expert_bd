@@ -127,6 +127,14 @@ def equal_weight_category_a_nav(
         """, (start_date, end)).fetchall()
         div_lookup = {(str(r[0]), str(r[1])): float(r[2]) * 0.90 for r in div_rows}
 
+        # Pre-fetch all PIT bonus share distributions in window
+        bonus_rows = conn.execute("""
+            SELECT ticker, record_date, ratio FROM corporate_actions
+            WHERE action_type = 'bonus_dividend' AND record_date >= ? AND record_date <= ?
+              AND ratio IS NOT NULL AND ratio > 0
+        """, (start_date, end)).fetchall()
+        bonus_lookup = {(str(r[0]), str(r[1])): float(r[2]) for r in bonus_rows}
+
         # Portable: fetch close*volume history and compute medians in Python.
         val_history: dict[str, list[tuple[str, float]]] = {}
         for r in conn.execute(
@@ -201,7 +209,9 @@ def equal_weight_category_a_nav(
                 curr[t] = px
                 if t in prev_closes and prev_closes[t] > 0:
                     c_div = div_lookup.get((t, dt), 0.0)
-                    rets.append(((px + c_div) / prev_closes[t]) - 1.0)
+                    b_ratio = bonus_lookup.get((t, dt), 0.0)
+                    effective_val = px * (1.0 + b_ratio) + c_div
+                    rets.append((effective_val / prev_closes[t]) - 1.0)
             day_ret = sum(rets) / len(rets) if rets else 0.0
             nav *= 1.0 + day_ret
             series.append({"date": dt, "nav": round(nav, 6), "daily_ret_pct": round(day_ret * 100, 4)})
@@ -231,6 +241,53 @@ def equal_weight_category_a_nav(
     finally:
         conn.close()
 
+
+
+def get_multi_asset_benchmark_suite(start_date: str, end_date: str | None = None) -> dict:
+    """
+    Computes performance comparison across 5 institutional benchmarks:
+      1. Category A Equal-Weight Total Return (cash dividends + bonus shares net of 10% AIT)
+      2. Category A Equal-Weight Price Return (price change only)
+      3. DSEX Index Return (exchange index level)
+      4. 91-Day T-Bill (11.60% annualized yield compounded daily)
+      5. Cash (0.0% nominal return)
+    """
+    conn = sqlite3.connect(DB_PATH, timeout=30.0)
+    conn.execute("PRAGMA busy_timeout = 30000;")
+    conn.row_factory = sqlite3.Row
+    try:
+        end = end_date or conn.execute("SELECT MAX(date) FROM prices").fetchone()[0]
+        
+        # 1. Total Return
+        tr_res = equal_weight_category_a_nav(start_date, end)
+        
+        # 2. DSEX Capital Index
+        dsex_start = conn.execute("SELECT dsex FROM market_summary WHERE date >= ? AND dsex IS NOT NULL ORDER BY date ASC LIMIT 1", (start_date,)).fetchone()
+        dsex_end = conn.execute("SELECT dsex FROM market_summary WHERE date <= ? AND dsex IS NOT NULL ORDER BY date DESC LIMIT 1", (end,)).fetchone()
+        dsex_ret = 0.0
+        if dsex_start and dsex_end and dsex_start[0] and dsex_start[0] > 0:
+            dsex_ret = round(((float(dsex_end[0]) - float(dsex_start[0])) / float(dsex_start[0])) * 100.0, 2)
+            
+        # 3. 91-Day T-Bill Compounding
+        sessions = tr_res.get("sessions", 1)
+        # Daily compounding at 11.60% APR (assuming 250 trading days/year)
+        tbill_daily_rate = 0.1160 / 250.0
+        tbill_ret = round(((1.0 + tbill_daily_rate) ** sessions - 1.0) * 100.0, 2)
+        
+        return {
+            "start_date": start_date,
+            "end_date": end,
+            "sessions": sessions,
+            "benchmarks": {
+                "eqw_total_return_pct": tr_res.get("return_pct", 0.0),
+                "dsex_index_pct": dsex_ret,
+                "tbill_91d_pct": tbill_ret,
+                "cash_pct": 0.0
+            },
+            "detail_total_return": tr_res
+        }
+    finally:
+        conn.close()
 
 if __name__ == "__main__":
     d = get_dsex_level()

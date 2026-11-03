@@ -70,12 +70,14 @@ def cmd_status():
     prices_count = conn.execute("SELECT count(*) FROM prices").fetchone()[0]
     fund_count = conn.execute("SELECT count(*) FROM fundamentals").fetchone()[0]
     pit_count = conn.execute("SELECT count(*) FROM fundamentals_pit").fetchone()[0]
+    pit_verified_count = conn.execute("SELECT count(*) FROM fundamentals_pit WHERE publication_is_estimated = 0").fetchone()[0]
+    pit_coverage_pct = round((pit_verified_count / pit_count * 100.0), 1) if pit_count > 0 else 0.0
     latest_price = conn.execute("SELECT MAX(date) FROM prices").fetchone()[0]
     conn.close()
 
     print(f"  * SQLite Database: Hardened WAL Connected ({db_path.name})", flush=True)
     print(f"  * Category A Universe: {cat_a_count} Companies | Historical Bars: {prices_count:,}", flush=True)
-    print(f"  * Audited Point-in-Time Fundamentals: {pit_count} Records (Audited PIT) | Legacy Snapshots: {fund_count} Records", flush=True)
+    print(f"  * Point-in-Time Fundamentals: {pit_count} Records ({pit_verified_count} Verified Live, {pit_count - pit_verified_count} Research-Only Estimated | Coverage: {pit_coverage_pct}%)", flush=True)
     print(f"  * Latest As-of Pricing: {latest_price}", flush=True)
 
     # Real Programmatic Conformance & Integrity Verification
