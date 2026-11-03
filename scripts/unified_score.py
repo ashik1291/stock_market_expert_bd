@@ -91,7 +91,35 @@ def is_shariah_excluded_sector(sector: str | None) -> bool:
     normalized = re.sub(r"[^a-z0-9]+", " ", (sector or "").lower()).strip()
     if normalized in _SHARIAH_EXCLUDED_SECTOR_NAMES:
         return True
-    return "bank" in normalized or "insurance" in normalized
+    return "bank" in normalized or "insurance" in normalized or "financial" in normalized
+
+
+def is_shariah_excluded_company(sector: str | None, ticker: str | None = None, name: str | None = None) -> bool:
+    """Return True if sector, ticker symbol, or company name indicates conventional finance or tobacco."""
+    if is_shariah_excluded_sector(sector):
+        return True
+    if ticker:
+        t_upper = ticker.upper()
+        if any(w in t_upper for w in ("BANK", "FIN", "INSUR", "GENINS", "MF", "MUTUAL")):
+            return True
+        known_financial_tickers = {
+            "ABBANK", "ALARABANK", "BANKASIA", "BRACBANK", "CITYBANK", "DHAKABANK",
+            "DUTCHBANGL", "EBL", "EXIMBANK", "FIRSTSBANK", "GLOBALINS", "ICBIBANK",
+            "IFIC", "ISLAMIBANK", "JAMUNABANK", "MERCANBANK", "MIDASFIN", "MTB",
+            "NBL", "NCCBANK", "NRBBANK", "ONEBANKLTD", "PREMIERBAN", "PRIMEBANK",
+            "PUBALIBANK", "RUPALIBANK", "SBACBANK", "SHAHJABANK", "SIBL", "SOUTHEASTB",
+            "STANDBANKL", "TRUSTBANK", "UFS", "UNIONBANK", "UTTARABANK",
+            "IPDC", "LANKABAFIN", "NHFIL", "UNITEDFIN", "IDLC", "GSPFINANCE", "FASFIN",
+            "PRIMEINSUR", "RUPALIINS", "BGIC", "ISLAMIINS", "KARNAPHULI", "NITOLINS",
+            "PURABIGEN", "RELIANCE1", "BATBC"
+        }
+        if t_upper in known_financial_tickers:
+            return True
+    if name:
+        n_lower = name.lower()
+        if any(w in n_lower for w in ("bank", "finance", "financial", "insurance", "leasing", "tobacco")):
+            return True
+    return False
 
 
 def load_factor_weights() -> dict:
@@ -111,10 +139,12 @@ def score_features(
     ticker: str | None = None,
     asof_date: str | None = None,
     enforce_macro_hurdle: bool = False,
+    publication_is_estimated: int | bool | None = None,
+    strict_verified_pit: bool = False,
 ) -> dict:
     """Return score, eligibility, and component breakdown under frozen model or explicit weights."""
     sec = (sector or "Unknown")
-    is_excluded_sector = is_shariah_excluded_sector(sec)
+    is_excluded_sector = is_shariah_excluded_company(sec, ticker=ticker)
     pe_v = float(pe) if pe is not None else None
     de_v = float(debt_equity) if debt_equity is not None else None
     div_v = float(dividend_yield) if dividend_yield is not None else 0.0
@@ -153,6 +183,10 @@ def score_features(
         eligible = False
         reasons.append("macro_hurdle_deficit")
 
+    if strict_verified_pit and (publication_is_estimated == 1 or publication_is_estimated is True):
+        eligible = False
+        reasons.append("estimated_pit_research_only")
+
     if ticker:
         try:
             from anti_manipulation_engine import is_ticker_blacklisted
@@ -172,6 +206,7 @@ def score_features(
             "is_eligible": False,
             "passes_macro": passes_macro,
             "earnings_yield_pct": ey_v,
+            "is_pit_verified": (publication_is_estimated == 0) if publication_is_estimated is not None else True,
             "gate_reasons": reasons,
             "components": {"div": 0.0, "pe": 0.0, "rsi": 0.0, "debt": 0.0},
             "factor_weights": w,
@@ -216,6 +251,7 @@ def score_features(
         "is_eligible": True,
         "passes_macro": passes_macro,
         "earnings_yield_pct": ey_v,
+        "is_pit_verified": (publication_is_estimated == 0) if publication_is_estimated is not None else True,
         "gate_reasons": [],
         "components": {
             "div": round(c_div, 4),

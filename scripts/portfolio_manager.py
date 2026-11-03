@@ -259,6 +259,42 @@ def calculate_round_trip_break_even(entry_price: float, shares: int = 1, min_fee
         return round((effective_buy_p * (1.0 + TOTAL_BUY_FEE_PCT) + fee_per_share) / (1.0 - TOTAL_SELL_FEE_PCT), 2)
     return round(entry_price * factor, 2)
 
+PORTFOLIO_DRAWDOWN_KILL_THRESHOLD_PCT = 10.0  # -10% from high-water mark freezes new buying
+
+def check_reversal_confirmation(ticker: str, conn) -> bool:
+    """
+    Checks if a falling stock has confirmed a reversal:
+    1. Latest close >= 5-day EMA, OR
+    2. RSI-14 exited oversold corridor (> 30.0 after touching <= 30.0)
+    """
+    if not conn:
+        return False
+    rows = conn.execute(
+        "SELECT close FROM prices WHERE ticker = ? ORDER BY date DESC LIMIT 15",
+        (ticker,),
+    ).fetchall()
+    if len(rows) < 5:
+        return False
+    closes = [float(r[0]) for r in reversed(rows)]
+    multiplier = 2.0 / (5.0 + 1.0)
+    ema = closes[0]
+    for c in closes[1:]:
+        ema = (c * multiplier) + (ema * (1.0 - multiplier))
+    latest_close = closes[-1]
+    return latest_close >= ema
+
+
+def check_portfolio_drawdown_kill(p: dict, current_net_worth: float) -> tuple[bool, float, float]:
+    """Calculates drawdown from high-water mark; returns (is_killed, dd_pct, hwm)."""
+    hwm = float(p.get("high_water_mark_bdt", p.get("total_capital_bdt", current_net_worth)))
+    if current_net_worth > hwm:
+        hwm = current_net_worth
+        p["high_water_mark_bdt"] = hwm
+    dd_pct = round(((hwm - current_net_worth) / hwm) * 100.0, 2) if hwm > 0 else 0.0
+    is_killed = dd_pct >= PORTFOLIO_DRAWDOWN_KILL_THRESHOLD_PCT
+    return is_killed, dd_pct, hwm
+
+
 
 def record_buy(ticker: str, shares: int, price: float, horizon: str = "long_term", min_ticket_fee: float = 5.0, asof_date: str | None = None):
     # Guard against blacklisted / manipulated stocks
@@ -272,6 +308,14 @@ def record_buy(ticker: str, shares: int, price: float, horizon: str = "long_term
         print(f"⚠️ Blacklist verification warning for {ticker.upper()}: {e}")
 
     p = load_portfolio()
+    
+    # Portfolio-Level Drawdown Kill Rule (-10% from high-water mark halts new buying)
+    current_nw = p.get("cash_balance_bdt", 0.0) + sum(h.get("cost_basis", 0.0) for h in p.get("holdings", []))
+    is_killed, dd_pct, hwm = check_portfolio_drawdown_kill(p, current_nw)
+    if is_killed:
+        print(f"⛔ PORTFOLIO DRAWDOWN KILL RULE BREACHED: Drawdown -{dd_pct:.1f}% exceeds 10% limit from HWM ৳{hwm:,.2f}. All new BUY orders are FROZEN.")
+        return False
+
     gross_cost = shares * price
     pct_comm = round(gross_cost * TOTAL_ONE_WAY_FEE, 2)
     # Enforce realistic retail minimum contract note fee
@@ -458,7 +502,11 @@ def show_status():
         else: # long_term
             stop_px   = round(break_even * 0.90, 1)
             target_px = round(break_even * 1.30, 1)
-            action    = "ACCUMULATE_MORE" if cur_px <= break_even else "HOLD_COMPOUND"
+            if cur_px <= break_even:
+                has_reversal = check_reversal_confirmation(t, conn)
+                action = "ACCUMULATE_REVERSAL_CONFIRMED" if has_reversal else "HOLD_FALLING_KNIFE_GUARD"
+            else:
+                action = "HOLD_COMPOUND"
 
         stop_dist_pct = round(((cur_px - stop_px) / cur_px) * 100.0, 1) if cur_px > 0 else 0.0
         tgt_dist_pct  = round(((target_px - cur_px) / cur_px) * 100.0, 1) if cur_px > 0 else 0.0

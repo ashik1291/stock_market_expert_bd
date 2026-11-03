@@ -142,7 +142,8 @@ def build_features_for_date(asof: str | None = None, category: str = "A") -> dic
 
         pit = conn.execute(
             """
-            SELECT snapshot_date, tradable_date, publication_date, eps, nav, pe_ratio, debt_equity, dividend_yield
+            SELECT snapshot_date, tradable_date, publication_date, publication_is_estimated,
+                   eps, nav, pe_ratio, debt_equity, dividend_yield
             FROM fundamentals_pit
             WHERE ticker=? AND tradable_date <= ? AND publication_date <= ? AND pe_ratio IS NOT NULL
             ORDER BY tradable_date DESC, snapshot_date DESC LIMIT 1
@@ -152,7 +153,8 @@ def build_features_for_date(asof: str | None = None, category: str = "A") -> dic
         if pit is None:
             pit = conn.execute(
                 """
-                SELECT snapshot_date, tradable_date, publication_date, eps, nav, pe_ratio, debt_equity, dividend_yield
+                SELECT snapshot_date, tradable_date, publication_date, publication_is_estimated,
+                       eps, nav, pe_ratio, debt_equity, dividend_yield
                 FROM fundamentals_pit
                 WHERE ticker=? AND tradable_date <= ? AND publication_date <= ?
                 ORDER BY tradable_date DESC, snapshot_date DESC LIMIT 1
@@ -191,6 +193,7 @@ def build_features_for_date(asof: str | None = None, category: str = "A") -> dic
         sma20 = _sma(closes, 20)
         sma50 = _sma(closes, 50)
 
+        pub_est = int(pit["publication_is_estimated"] or 0) if pit else 0
         scored = score_features(
             pe=pe,
             debt_equity=de,
@@ -201,6 +204,7 @@ def build_features_for_date(asof: str | None = None, category: str = "A") -> dic
             ticker=ticker,
             asof_date=asof,
             enforce_macro_hurdle=True,
+            publication_is_estimated=pub_est,
         )
         if scored["is_eligible"]:
             eligible += 1

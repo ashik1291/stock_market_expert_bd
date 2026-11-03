@@ -37,9 +37,10 @@ sys.path.insert(0, str(BASE_DIR))
 sys.path.insert(0, str(BASE_DIR / "scripts"))
 
 from scripts.anti_manipulation_engine import is_ticker_blacklisted
-from scripts.unified_score import is_shariah_excluded_sector
+from scripts.unified_score import is_shariah_excluded_sector, is_shariah_excluded_company
 from scripts.smart_capital_planner import load_candidate_pool, compute_dynamic_stock_metrics, get_market_regime
 from scripts.macro_rate_feed import get_latest_macro_rates
+from scripts.calibrated_probability_engine import get_calibrated_empirical_probability
 
 # Statutory Fees
 FEE_BUY_PCT = 0.00415   # 0.415% (Broker + CDBL + DSE)
@@ -117,15 +118,29 @@ def evaluate_user_investment_plan(capital_bdt: float = 50000.0, top_n: int = 3) 
         if not metrics or not metrics.get("current_price"):
             continue
 
-        # Check Shariah compliance
+        # Check Shariah compliance (sector, ticker, name)
         sector = metrics.get("sector", "")
-        if is_shariah_excluded_sector(sector):
+        if is_shariah_excluded_company(sector, ticker=ticker):
             continue
         if metrics.get("debt_equity") is not None and metrics["debt_equity"] > 0.80:
             continue
 
-        # Compute Profit Probability
-        prob = calculate_profit_probability(metrics)
+        # Compute Factor Conviction Index (Heuristic 0-100) & Calibrated Empirical Win Rate
+        conviction = calculate_factor_conviction_score(metrics)
+        mos = metrics.get("mos_pct", 0.0)
+        de = metrics.get("debt_equity")
+        dy = metrics.get("dividend_yield") or 0.0
+        ey = (100.0 / metrics["pe_ratio"]) if metrics.get("pe_ratio") and metrics["pe_ratio"] > 0 else 0.0
+        passes_macro = (ey >= macro_rates.get("equity_hurdle_rate_pct", 15.1))
+        rsi = metrics.get("rsi_14", 50.0)
+
+        emp_data = get_calibrated_empirical_probability(
+            mos_pct=mos,
+            debt_equity=de,
+            passes_macro=passes_macro,
+            rsi_14=rsi,
+        )
+
         cur_px = metrics["current_price"]
         limit_px = metrics.get("target_dip") or round(cur_px * 0.98, 1)
 
@@ -147,7 +162,11 @@ def evaluate_user_investment_plan(capital_bdt: float = 50000.0, top_n: int = 3) 
             "tp2": tp2_px,
             "stop_loss": sl_px,
             "risk_reward": risk_reward,
-            "profit_probability": prob,
+            "conviction_score": conviction,
+            "empirical_prob": emp_data.get("empirical_probability_pct"),
+            "empirical_prob_status": emp_data.get("status"),
+            "empirical_prob_ci": emp_data.get("confidence_interval_95"),
+            "profit_probability": conviction,  # Backward compatibility
             "graham_val": metrics.get("graham_val", 0.0),
             "mos_pct": metrics.get("mos_pct", 0.0),
             "dividend_yield": metrics.get("dividend_yield") or 0.0,
@@ -157,8 +176,8 @@ def evaluate_user_investment_plan(capital_bdt: float = 50000.0, top_n: int = 3) 
 
     conn.close()
 
-    # Sort candidates by Profit Probability DESC, then MoS DESC
-    scored_candidates.sort(key=lambda x: (x["profit_probability"], x["mos_pct"]), reverse=True)
+    # Sort candidates by Conviction Score DESC, then MoS DESC
+    scored_candidates.sort(key=lambda x: (x["conviction_score"], x["mos_pct"]), reverse=True)
     
     # Enforce sector cap: Max 2 stocks per industry sector
     top_picks = []
@@ -214,19 +233,21 @@ def format_user_proxy_report(result: Dict[str, Any]) -> str:
     lines.append("-" * 80)
 
     lines.append(f"\n🎯 সর্বোচ্চ ফান্ডামেন্টাল কনভিকশন (Fundamental Conviction Score) নির্বাচিত স্টক:")
-    lines.append(f"⚠️ [বিজ্ঞপ্তি: এটি মাল্টি-ফ্যাক্টর ফান্ডামেন্টাল স্কোর; কাল্পনিক শতভাগ প্রফিট গ্যারান্টি নয়। ওওএস ফরোয়ার্ড ট্রায়াল N=14 (টার্গেট N=87)]")
-    lines.append(f"{'Ticker':<11} {'Price':<8} {'Buy Limit':<10} {'Score':<7} {'BreakEven':<10} {'Target(TP1)':<12} {'StopLoss':<9} {'R:R':<5}")
+    lines.append(f"⚠️ [বিজ্ঞপ্তি: কনভিকশন স্কোর মাল্টি-ফ্যাক্টর র‍্যাংকিং (০-১০০); কাল্পনিক প্রফিট গ্যারান্টি নয়। ক্যালিব্রেটেড উইন-রেট N>=30 হলে প্রদর্শিত হবে]")
+    lines.append(f"{'Ticker':<10} {'Price':<8} {'Buy Limit':<10} {'Conviction':<11} {'Empirical Win':<16} {'BreakEven':<10} {'Target(TP1)':<12} {'R:R':<5}")
     lines.append("-" * 80)
 
     for p in result["top_picks"]:
+        emp_str = f"{p['empirical_prob']:.1f}%" if p.get('empirical_prob') is not None else "INSUFFICIENT_N"
         lines.append(
-            f"{p['ticker']:<11} ৳{p['current_price']:<7.1f} ৳{p['limit_entry']:<9.1f} {p['profit_probability']:>5.1f}% ৳{p['break_even']:<9.2f} ৳{p['tp1']:<11.2f} ৳{p['stop_loss']:<8.2f} {p['risk_reward']:>4.1f}x"
+            f"{p['ticker']:<10} ৳{p['current_price']:<7.1f} ৳{p['limit_entry']:<9.1f} {p['conviction_score']:>6.1f}/100 {emp_str:>16} ৳{p['break_even']:<9.2f} ৳{p['tp1']:<11.2f} {p['risk_reward']:>4.1f}x"
         )
     lines.append("=" * 80)
 
     lines.append("\n📋 সুনির্দিষ্ট ট্রেড প্ল্যান ও নির্দেশিকা (WHEN TO BUY & WHEN TO SELL):")
     for i, p in enumerate(result["top_picks"], 1):
-        lines.append(f"\n[{i}] {p['ticker']} ({p['sector']}) — মুনাফা সম্ভাবনা: {p['profit_probability']}%")
+        emp_str = f"{p['empirical_prob']:.1f}% [95% CI: {p.get('empirical_prob_ci', [0,0])[0]}% - {p.get('empirical_prob_ci', [0,0])[1]}%]" if p.get('empirical_prob') is not None else "INSUFFICIENT_DATA (N < 30)"
+        lines.append(f"\n[{i}] {p['ticker']} ({p['sector']}) — কনভিকশন: {p['conviction_score']}/100 | ওওএস ক্যালিব্রেটেড উইন রেট: {emp_str}")
         lines.append(f"  ├─ মৌলিক ভিত্তি: Graham MoS: +{p['mos_pct']:.1f}% | Dividend Yield: {p['dividend_yield']:.2f}% | Debt/Equity: {p['debt_equity']:.2f}")
         lines.append(f"  ├─ বরাদ্দ: {p['shares']} শেয়ার (মোট খরচ: ৳{p['outlay_bdt']:,.2f})")
         lines.append(f"  ├─ 🟢 কখন কিনবেন (WHEN TO BUY):")
