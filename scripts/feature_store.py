@@ -205,6 +205,7 @@ def build_features_for_date(asof: str | None = None, category: str = "A") -> dic
             asof_date=asof,
             enforce_macro_hurdle=True,
             publication_is_estimated=pub_est,
+            strict_verified_pit=True,
         )
         if scored["is_eligible"]:
             eligible += 1

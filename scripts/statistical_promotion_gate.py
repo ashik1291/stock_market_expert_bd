@@ -163,8 +163,8 @@ def run_statistical_promotion_gate(
     # adjusted_p = min(1.0, raw_p * num_tested_challengers)
     holm_p = round(min(1.0, raw_p * max(1, num_tested_challengers)), 4)
 
-    # 3. Regime robustness
-    folds_data = walk_forward_results.get("folds_summary", [])
+    # 3. Regime robustness (Evaluate across ALL folds, not just preview summary)
+    folds_data = walk_forward_results.get("all_folds") or walk_forward_results.get("folds_summary", [])
     regime_res = evaluate_regime_performance(folds_data)
     pos_regimes = regime_res.get("positive_regimes_count", 0)
 

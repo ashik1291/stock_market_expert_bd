@@ -1,5 +1,5 @@
 # DSE Phase-2 Learning Audit (Net Excess vs EQW)
-**Audit Timestamp:** 2026-11-03 21:20:28
+**Audit Timestamp:** 2026-11-03 21:47:37
 **Model:** `frozen_epoch2_pit_v2`
 **Label:** `net_excess_vs_eqw_h21_minus_0.88pct`
 
@@ -17,10 +17,10 @@
 ## 2. Factor Weights (Beta[2,2] prior @ 50%, floor 0)
 | Factor | Weight |
 |---|---|
-| debt_npl_weight | 0.463 |
-| valuation_mos_weight | 0.463 |
+| debt_npl_weight | 0.451 |
+| valuation_mos_weight | 0.451 |
 | rsi_momentum_weight | 1.094 |
-| smart_money_weight | 0.463 |
+| smart_money_weight | 0.451 |
 
 ## 3. Recent Mistakes
 

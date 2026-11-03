@@ -96,6 +96,7 @@ def run_purged_walk_forward_evaluation(
     n_periods: int = TARGET_PERIODS,
     horizon_bars: int = HORIZON_BARS,
     embargo_bars: int = EMBARGO_BARS,
+    strict_verified_only: bool = False,
 ) -> Dict[str, Any]:
     """
     Executes the 87-period purged walk-forward validation across Category A universe.
@@ -155,6 +156,7 @@ def run_purged_walk_forward_evaluation(
         oos_excess_returns: List[float] = []
         oos_portfolio_returns: List[float] = []
         oos_benchmark_returns: List[float] = []
+        is_portfolio_returns: List[float] = []
         fold_details: List[Dict[str, Any]] = []
 
         for p_idx in range(n_periods):
@@ -199,7 +201,10 @@ def run_purged_walk_forward_evaluation(
                     de = float(r["debt_equity"]) if r["debt_equity"] is not None else 0.50
                     dy = float(r["dividend_yield"]) if r["dividend_yield"] is not None else 0.0
                     pub_est = int(r["publication_is_estimated"] or 0)
-                    
+                    if strict_verified_only and pub_est != 0:
+                        # Exclude unverified / estimated PIT filings from live-quality proof
+                        continue
+
                     # Score: Higher earnings yield (1/PE) + dividend yield, penalized by debt
                     score = (100.0 / pe) + (dy * 0.5) - (de * 5.0)
                     if pub_est == 0:
@@ -269,6 +274,41 @@ def run_purged_walk_forward_evaluation(
             oos_benchmark_returns.append(bench_ret)
             oos_excess_returns.append(excess_ret)
 
+            # Real In-Sample (IS) training window calculation (preceding horizon_bars before embargo)
+            is_end_idx = train_end_idx
+            is_start_idx = max(0, is_end_idx - horizon_bars)
+            is_start_dt = dates[is_start_idx]
+            is_end_dt = dates[is_end_idx]
+
+            is_cands = []
+            for r in cand_rows:
+                sym = str(r["ticker"])
+                if sym in cat_a_tickers:
+                    pe = float(r["pe_ratio"])
+                    de = float(r["debt_equity"]) if r["debt_equity"] is not None else 0.50
+                    dy = float(r["dividend_yield"]) if r["dividend_yield"] is not None else 0.0
+                    pub_est = int(r["publication_is_estimated"] or 0)
+                    if strict_verified_only and pub_est != 0:
+                        continue
+                    is_score = (100.0 / pe) + (dy * 0.5) - (de * 5.0)
+                    if pub_est == 0:
+                        is_score += 5.0
+                    is_cands.append((sym, is_score))
+            is_cands.sort(key=lambda x: x[1], reverse=True)
+            top_is = [x[0] for x in is_cands[:5]]
+
+            if len(top_is) < 2:
+                is_ret = 0.0
+            else:
+                is_rets = []
+                for sym in top_is:
+                    p_s = conn.execute("SELECT close FROM prices WHERE ticker = ? AND date >= ? ORDER BY date ASC LIMIT 1", (sym, is_start_dt)).fetchone()
+                    p_e = conn.execute("SELECT close FROM prices WHERE ticker = ? AND date <= ? ORDER BY date DESC LIMIT 1", (sym, is_end_dt)).fetchone()
+                    if p_s and p_e and p_s[0] and p_e[0] and p_s[0] > 0 and p_e[0] > 0:
+                        is_rets.append(((float(p_e[0]) / float(p_s[0])) - 1.0) * 100.0)
+                is_ret = (sum(is_rets) / len(is_rets) - TOTAL_FRICTION_PCT) if is_rets else 0.0
+            is_portfolio_returns.append(is_ret)
+
             fold_details.append({
                 "fold_id": p_idx + 1,
                 "manifest_hash": manifest_hash,
@@ -310,9 +350,14 @@ def run_purged_walk_forward_evaluation(
         ann_bench_ret = ((nav_bench / 100.0) ** (1.0 / years) - 1.0) * 100.0 if nav_bench > 0 else -100.0
         ann_excess_ret = ann_port_ret - ann_bench_ret
 
-        # Approximate In-Sample return from historical baseline (8.5% p.a.)
-        is_annualized_baseline = 8.50
-        wfe = round(ann_port_ret / is_annualized_baseline, 2) if is_annualized_baseline > 0 else 0.0
+        # Real In-Sample (IS) annualized return compounded across folds
+        nav_is = 100.0
+        for r_is in is_portfolio_returns:
+            nav_is *= (1.0 + r_is / 100.0)
+        ann_is_ret = ((nav_is / 100.0) ** (1.0 / years) - 1.0) * 100.0 if nav_is > 0 else 0.0
+
+        # Real Walk-Forward Efficiency (WFE) ratio: Annualized OOS Return / Annualized IS Return
+        wfe = round(ann_port_ret / ann_is_ret, 2) if ann_is_ret > 0 else 0.0
 
         return {
             "evaluation_type": "PURGED_WALK_FORWARD_OUT_OF_SAMPLE",
@@ -331,10 +376,12 @@ def run_purged_walk_forward_evaluation(
                 "portfolio_annualized_net_ret_pct": round(ann_port_ret, 2),
                 "benchmark_annualized_total_ret_pct": round(ann_bench_ret, 2),
                 "annualized_net_alpha_pct": round(ann_excess_ret, 2),
+                "portfolio_annualized_is_ret_pct": round(ann_is_ret, 2),
                 "walk_forward_efficiency_ratio": wfe,
                 "max_drawdown_pct": round(max_dd_port, 2),
             },
-            "folds_summary": fold_details[:5] + fold_details[-5:],  # First 5 & last 5 for concise preview
+            "all_folds": fold_details,
+            "folds_summary": fold_details[:5] + fold_details[-5:],
             "total_folds_stored": len(fold_details),
         }
     finally:
