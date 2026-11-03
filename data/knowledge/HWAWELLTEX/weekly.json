@@ -2,52 +2,52 @@
   "ticker": "HWAWELLTEX",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-02T09:04:06.005837",
-  "asof_price_date": "2026-11-02",
+  "analyzed_at": "2026-11-03T14:27:05.091160",
+  "asof_price_date": "2026-11-03",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": 17.1986,
     "is_eligible": true,
-    "rsi_14": 47.61,
+    "rsi_14": 65.1762,
     "pe_ratio": 13.214285714285714,
     "debt_equity": 0.0
   },
   "signal": "BUY",
-  "confidence": 72.03,
+  "confidence": 71.23,
   "trajectory": {
-    "direction": "RISE_PREDICTED",
-    "direction_icon": "\ud83d\udfe2",
-    "rise_probability_pct": 64.6,
-    "momentum_status": "Bullish Reversal / Upward Accumulation",
+    "direction": "CONSOLIDATION_RANGE",
+    "direction_icon": "\ud83d\udfe1",
+    "rise_probability_pct": 59.6,
+    "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+4.2%",
-      "downside_risk_pct": "-2.9%",
-      "target_price": 47.3,
-      "support_price": 44.1,
-      "risk_reward_ratio": "1.4x"
+      "upside_potential_pct": "+4.4%",
+      "downside_risk_pct": "-3.0%",
+      "target_price": 51.9,
+      "support_price": 48.2,
+      "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+12.3%",
-      "downside_risk_pct": "-4.2%",
-      "target_price": 51.0,
-      "trailing_stop": 43.5,
-      "risk_reward_ratio": "2.9x"
+      "upside_potential_pct": "+7.4%",
+      "downside_risk_pct": "-10.1%",
+      "target_price": 53.4,
+      "trailing_stop": 44.7,
+      "risk_reward_ratio": "0.7x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.0%",
-      "downside_risk_pct": "-7.6%",
-      "target_price": 59.0,
+      "downside_risk_pct": "-12.0%",
+      "target_price": 64.6,
       "dividend_cagr": "strong (5.01%)",
-      "risk_reward_ratio": "3.9x"
+      "risk_reward_ratio": "2.5x"
     }
   },
   "trade_levels": {
-    "entry": 45.4,
-    "stop_loss": 43.48,
-    "target": 49.24
+    "entry": 49.7,
+    "stop_loss": 47.47,
+    "target": 54.16
   },
   "precision": {
     "ticker": "HWAWELLTEX",
@@ -70,14 +70,14 @@
       "signal": "Dividend is 500% cash-covered by real operations (NOCFPS: Tk 0.71 vs DPS: Tk 0.0)"
     },
     "liquidity": {
-      "avg_daily_volume": 180854,
-      "daily_turnover_bdt_cr": 0.02,
+      "avg_daily_volume": 259305,
+      "daily_turnover_bdt_cr": 0.03,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 9042,
-      "max_daily_accumulation_shares": 27128,
-      "max_order_bdt": 9042.0,
-      "directive": "Max single order: 9,042 shares (Tk 9,042) to prevent >1% execution slippage"
+      "max_single_order_shares": 12965,
+      "max_daily_accumulation_shares": 38895,
+      "max_order_bdt": 12965.0,
+      "directive": "Max single order: 12,965 shares (Tk 12,965) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -89,61 +89,61 @@
   },
   "pattern_dna": {
     "ticker": "HWAWELLTEX",
-    "audited_at": "2026-11-02 15:04:05",
+    "audited_at": "2026-11-03 20:27:05",
     "worth_vs_greed": {
-      "current_price": 45.4,
+      "current_price": 49.7,
       "intrinsic_worth": 6.64,
-      "margin_of_safety_pct": -85.4,
-      "extension_froth_score": 20.0,
-      "greed_index": 20.0,
-      "rsi_14": 50.0,
-      "price_vs_ema50_pct": -1.4,
-      "price_vs_ema200_pct": 0.8,
+      "margin_of_safety_pct": -86.6,
+      "extension_froth_score": 30.0,
+      "greed_index": 30.0,
+      "rsi_14": 71.1,
+      "price_vs_ema50_pct": 7.6,
+      "price_vs_ema200_pct": 10.2,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f30.83, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f344.5 \u2013 \u09f345.9",
-        "chase_cutoff_price": 46.5,
-        "when_to_wait": "If price opens or rises above \u09f346.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f344.5.",
-        "weekly_target_short": 47.0,
-        "monthly_target_swing": 52.2,
-        "long_term_target_asset": 59.0,
+        "optimal_entry_corridor": "\u09f348.7 \u2013 \u09f350.2",
+        "chase_cutoff_price": 50.9,
+        "when_to_wait": "If price opens or rises above \u09f350.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f348.7.",
+        "weekly_target_short": 51.4,
+        "monthly_target_swing": 57.2,
+        "long_term_target_asset": 64.6,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
       "worth_decision": "AVOID",
-      "reason": "Fundamental value severely lags stock price (MoS: -85.4%).",
+      "reason": "Fundamental value severely lags stock price (MoS: -86.6%).",
       "is_blacklisted": false,
       "blacklist_reason": null
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 3.42,
-          "high": 46.4,
-          "low": 43.7,
-          "range_volatility_pct": 6.18
+          "return_pct": 9.71,
+          "high": 49.7,
+          "low": 45.0,
+          "range_volatility_pct": 10.44
         },
         "monthly_21d": {
-          "return_pct": -1.52,
-          "high": 49.5,
+          "return_pct": 7.11,
+          "high": 49.7,
           "low": 43.7,
-          "range_volatility_pct": 13.27
+          "range_volatility_pct": 13.73
         },
         "quarterly_63d": {
-          "return_pct": -7.91,
+          "return_pct": -0.2,
           "high": 51.9,
           "low": 43.7,
           "range_volatility_pct": 18.76
         },
         "half_yearly_126d": {
-          "return_pct": 10.19,
+          "return_pct": 16.67,
           "high": 52.5,
-          "low": 40.3,
-          "range_volatility_pct": 30.27
+          "low": 40.7,
+          "range_volatility_pct": 28.99
         },
         "yearly_252d": {
-          "return_pct": -2.99,
+          "return_pct": 8.28,
           "high": 52.5,
           "low": 35.6,
           "range_volatility_pct": 47.47
@@ -155,7 +155,7 @@
         "avg_wave_duration_bars": 16.0
       },
       "current_wave_phase": "MARKDOWN_PULLBACK",
-      "phase_guidance": "Ongoing pullback from peak (-8.3%). Wait for stabilizing base.",
+      "phase_guidance": "Ongoing pullback from peak (0.4%). Wait for stabilizing base.",
       "top_seasonal_months": [
         {
           "month": "Aug",
@@ -181,8 +181,8 @@
         },
         {
           "month": "Nov",
-          "avg_return": -4.8,
-          "win_rate": 50.0
+          "avg_return": -3.9,
+          "win_rate": 54.0
         }
       ]
     },
@@ -253,18 +253,18 @@
     ]
   },
   "technical": {
-    "score": 61.25,
+    "score": 60.0,
     "signals": {
       "rsi": "neutral",
       "macd": "bullish_crossover",
       "sma_trend": "bullish",
-      "bb": "inside_bands",
-      "atr": 1.28,
-      "rsi_value": 48.15,
-      "last_close": 45.4,
-      "sma20": 45.67,
-      "sma50": 46.19,
-      "sma200": 44.26,
+      "bb": "at_upper_band_bearish",
+      "atr": 1.49,
+      "rsi_value": 65.56,
+      "last_close": 49.7,
+      "sma20": 45.84,
+      "sma50": 46.2,
+      "sma200": 44.28,
       "support_resistance": {
         "supports": [
           40.2,
@@ -272,7 +272,6 @@
         ],
         "resistances": [
           42.6,
-          44.0,
           45.3,
           51.4
         ]
@@ -285,7 +284,6 @@
       ],
       "resistances": [
         42.6,
-        44.0,
         45.3,
         51.4
       ]
@@ -307,13 +305,13 @@
       "loan_trap_risk": "none",
       "dividend_track_record_years": 5,
       "dividend_consistency": "proven_compounder (5 yrs cash divs)",
-      "cfo_cr": 3.5,
+      "cfo_cr": 0.1,
       "net_profit_cr": 20.4,
-      "accrual_ratio": 0.075,
+      "accrual_ratio": 0.09,
       "earnings_quality": "moderate_accrual_drag",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 13.5,
+        "drawdown_pct": 5.3,
         "high_52w": 52.5,
         "low_52w": 35.6
       }
@@ -348,24 +346,27 @@
     }
   },
   "manipulation": {
-    "manipulation_score": 0,
+    "manipulation_score": 25,
     "manipulation_risk": "low",
     "block_buy": false,
-    "flags": [],
+    "flags": [
+      "volume_spike: volume_9.0x_avg",
+      "price_surge_no_news: price_10.0pct_zero_news"
+    ],
     "checks": {
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 50,
-        "avg_volume": 198735.0,
+        "last_volume": 1796729,
+        "avg_volume": 248756.0,
         "detail": "ok"
       },
       "volume_spike": {
-        "flag": false,
-        "spike_ratio": 0.0,
-        "avg_volume": 208797.0,
-        "today_volume": 50,
-        "detail": "ok"
+        "flag": true,
+        "spike_ratio": 9.04,
+        "avg_volume": 198735.0,
+        "today_volume": 1796729,
+        "detail": "volume_9.0x_avg"
       },
       "serial_trading": {
         "flag": false,
@@ -382,21 +383,21 @@
         "detail": "sponsor_holding_not_available"
       },
       "price_surge_no_news": {
-        "flag": false,
-        "price_change_3d": 0.44,
+        "flag": true,
+        "price_change_3d": 9.96,
         "news_count_3d": 0,
-        "detail": "ok"
+        "detail": "price_10.0pct_zero_news"
       }
     }
   },
   "composite": {
-    "composite_score": 72.03,
+    "composite_score": 71.23,
     "governance_score": 75,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.524,
-      "technical": 0.297,
-      "governance": 0.179,
+      "fundamental": 0.486,
+      "technical": 0.321,
+      "governance": 0.193,
       "sentiment": 0.0
     }
   }

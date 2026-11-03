@@ -1,60 +1,60 @@
 {
   "ticker": "AMCL(PRAN)",
-  "audited_at": "2026-11-02 15:04:04",
+  "audited_at": "2026-11-03 20:27:03",
   "worth_vs_greed": {
-    "current_price": 209.7,
-    "intrinsic_worth": 71.2,
-    "margin_of_safety_pct": -66.0,
+    "current_price": 201.4,
+    "intrinsic_worth": 10.64,
+    "margin_of_safety_pct": -94.7,
     "extension_froth_score": 20.0,
     "greed_index": 20.0,
-    "rsi_14": 35.6,
-    "price_vs_ema50_pct": -2.4,
-    "price_vs_ema200_pct": -3.5,
-    "merit_status": "NEUTRAL_MERIT",
-    "merit_reason": "Valuation is within normal historical ranges.",
+    "rsi_14": 34.6,
+    "price_vs_ema50_pct": -6.1,
+    "price_vs_ema200_pct": -7.3,
+    "merit_status": "EARNINGS_BACKED_MERIT",
+    "merit_reason": "Price supported by solid earnings (EPS: \u09f31.33, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f3205.5 \u2013 \u09f3211.8",
-      "chase_cutoff_price": 214.9,
-      "when_to_wait": "If price opens or rises above \u09f3214.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3205.5.",
-      "weekly_target_short": 217.0,
-      "monthly_target_swing": 241.2,
-      "long_term_target_asset": 272.6,
+      "optimal_entry_corridor": "\u09f3197.4 \u2013 \u09f3203.4",
+      "chase_cutoff_price": 206.4,
+      "when_to_wait": "If price opens or rises above \u09f3206.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3197.4.",
+      "weekly_target_short": 208.4,
+      "monthly_target_swing": 231.6,
+      "long_term_target_asset": 261.8,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -66.0%).",
+    "reason": "Fundamental value severely lags stock price (MoS: -94.7%).",
     "is_blacklisted": false,
     "blacklist_reason": null
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -0.99,
-        "high": 213.9,
-        "low": 204.0,
-        "range_volatility_pct": 4.85
+        "return_pct": -4.1,
+        "high": 212.5,
+        "low": 199.5,
+        "range_volatility_pct": 6.52
       },
       "monthly_21d": {
-        "return_pct": -2.83,
+        "return_pct": -6.63,
         "high": 225.0,
-        "low": 204.0,
-        "range_volatility_pct": 10.29
+        "low": 199.5,
+        "range_volatility_pct": 12.78
       },
       "quarterly_63d": {
-        "return_pct": -7.38,
+        "return_pct": -11.28,
         "high": 243.9,
-        "low": 204.0,
-        "range_volatility_pct": 19.56
+        "low": 199.5,
+        "range_volatility_pct": 22.26
       },
       "half_yearly_126d": {
-        "return_pct": -2.42,
+        "return_pct": -5.31,
         "high": 249.8,
-        "low": 204.0,
-        "range_volatility_pct": 22.45
+        "low": 199.5,
+        "range_volatility_pct": 25.21
       },
       "yearly_252d": {
-        "return_pct": -5.58,
+        "return_pct": -7.53,
         "high": 249.8,
         "low": 194.9,
         "range_volatility_pct": 28.17
@@ -65,8 +65,8 @@
       "median_correction_drop_pct": -12.2,
       "avg_wave_duration_bars": 25.0
     },
-    "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-6.8%). Wait for stabilizing base.",
+    "current_wave_phase": "BOTTOMING_SUPPORT",
+    "phase_guidance": "Drop (-10.5%) matches historical correction depth (-12.2%). Prepare to accumulate.",
     "top_seasonal_months": [
       {
         "month": "Sep",

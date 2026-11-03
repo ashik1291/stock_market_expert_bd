@@ -2,18 +2,18 @@
   "ticker": "SINGERBD",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-02T09:04:05.313532",
-  "asof_price_date": "2026-11-02",
+  "analyzed_at": "2026-11-03T14:27:04.278510",
+  "asof_price_date": "2026-11-03",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 16.2603,
+    "rsi_14": 15.3265,
     "pe_ratio": 0.0,
     "debt_equity": 121.386
   },
   "signal": "HOLD_LOAN_TRAP_RISK",
-  "confidence": 53.29,
+  "confidence": 54.0,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -21,33 +21,33 @@
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Oversold bounce to 20-DMA",
-      "upside_potential_pct": "+5.7%",
+      "upside_potential_pct": "+5.8%",
       "downside_risk_pct": "-3.8%",
-      "target_price": 66.9,
-      "support_price": 60.9,
+      "target_price": 66.0,
+      "support_price": 60.0,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
       "upside_potential_pct": "+25.0%",
-      "downside_risk_pct": "-5.7%",
-      "target_price": 79.1,
-      "trailing_stop": 59.7,
-      "risk_reward_ratio": "4.4x"
+      "downside_risk_pct": "-5.8%",
+      "target_price": 78.0,
+      "trailing_stop": 58.8,
+      "risk_reward_ratio": "4.3x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.0%",
-      "downside_risk_pct": "-10.3%",
-      "target_price": 82.3,
+      "downside_risk_pct": "-10.4%",
+      "target_price": 81.1,
       "dividend_cagr": "no_dividend",
       "risk_reward_ratio": "2.9x"
     }
   },
   "trade_levels": {
-    "entry": 63.3,
-    "stop_loss": 59.65,
-    "target": 70.6
+    "entry": 62.4,
+    "stop_loss": 58.8,
+    "target": 69.6
   },
   "precision": {
     "ticker": "SINGERBD",
@@ -60,24 +60,24 @@
       "signal": "No monthly delta available"
     },
     "cash_flow": {
-      "nocfps": 1.16,
+      "nocfps": -6.58,
       "is_estimated": true,
       "dividend_per_share": 0.0,
-      "dividend_coverage_x": 5.0,
-      "fcf_yield_pct": 116.0,
-      "cash_quality_status": "PRISTINE_REAL_CASH_COVERAGE",
-      "conviction_bonus": 15.0,
-      "signal": "Dividend is 500% cash-covered by real operations (NOCFPS: Tk 1.16 vs DPS: Tk 0.0)"
+      "dividend_coverage_x": 0.0,
+      "fcf_yield_pct": -658.0,
+      "cash_quality_status": "TIGHT_CASH_COVERAGE",
+      "conviction_bonus": -10.0,
+      "signal": "Cash flow covers only 0% of dividend payout"
     },
     "liquidity": {
-      "avg_daily_volume": 12755,
+      "avg_daily_volume": 12585,
       "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 637,
-      "max_daily_accumulation_shares": 1913,
-      "max_order_bdt": 637.0,
-      "directive": "Max single order: 637 shares (Tk 637) to prevent >1% execution slippage"
+      "max_single_order_shares": 629,
+      "max_daily_accumulation_shares": 1887,
+      "max_order_bdt": 629.0,
+      "directive": "Max single order: 629 shares (Tk 629) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -85,68 +85,68 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 15.0
+    "total_precision_bonus": -10.0
   },
   "pattern_dna": {
     "ticker": "SINGERBD",
-    "audited_at": "2026-11-02 15:04:05",
+    "audited_at": "2026-11-03 20:27:04",
     "worth_vs_greed": {
-      "current_price": 63.3,
-      "intrinsic_worth": 10.88,
-      "margin_of_safety_pct": -82.8,
+      "current_price": 62.4,
+      "intrinsic_worth": 31.2,
+      "margin_of_safety_pct": -50.0,
       "extension_froth_score": 30.0,
       "greed_index": 30.0,
-      "rsi_14": 10.6,
-      "price_vs_ema50_pct": -15.0,
-      "price_vs_ema200_pct": -22.6,
-      "merit_status": "EARNINGS_BACKED_MERIT",
-      "merit_reason": "Price supported by solid earnings (EPS: \u09f31.36, P/E: 0.0). Growth is fundamentally justified.",
+      "rsi_14": 9.4,
+      "price_vs_ema50_pct": -15.7,
+      "price_vs_ema200_pct": -23.5,
+      "merit_status": "NEUTRAL_MERIT",
+      "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f362.0 \u2013 \u09f363.9",
-        "chase_cutoff_price": 64.9,
-        "when_to_wait": "If price opens or rises above \u09f364.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f362.0.",
-        "weekly_target_short": 65.5,
-        "monthly_target_swing": 72.8,
-        "long_term_target_asset": 82.3,
+        "optimal_entry_corridor": "\u09f361.2 \u2013 \u09f363.0",
+        "chase_cutoff_price": 64.0,
+        "when_to_wait": "If price opens or rises above \u09f364.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f361.2.",
+        "weekly_target_short": 64.6,
+        "monthly_target_swing": 71.8,
+        "long_term_target_asset": 81.1,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
       "worth_decision": "AVOID",
-      "reason": "Fundamental value severely lags stock price (MoS: -82.8%).",
+      "reason": "Fundamental value severely lags stock price (MoS: -50.0%).",
       "is_blacklisted": false,
       "blacklist_reason": null
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -15.94,
-          "high": 75.0,
-          "low": 62.0,
-          "range_volatility_pct": 20.97
+          "return_pct": -10.73,
+          "high": 70.4,
+          "low": 61.9,
+          "range_volatility_pct": 13.73
         },
         "monthly_21d": {
-          "return_pct": -20.88,
-          "high": 81.0,
-          "low": 62.0,
-          "range_volatility_pct": 30.65
+          "return_pct": -21.61,
+          "high": 80.0,
+          "low": 61.9,
+          "range_volatility_pct": 29.24
         },
         "quarterly_63d": {
-          "return_pct": -19.77,
+          "return_pct": -20.2,
           "high": 82.9,
-          "low": 62.0,
-          "range_volatility_pct": 33.71
+          "low": 61.9,
+          "range_volatility_pct": 33.93
         },
         "half_yearly_126d": {
-          "return_pct": -27.16,
+          "return_pct": -26.59,
           "high": 87.0,
-          "low": 62.0,
-          "range_volatility_pct": 40.32
+          "low": 61.9,
+          "range_volatility_pct": 40.55
         },
         "yearly_252d": {
-          "return_pct": -39.08,
+          "return_pct": -39.3,
           "high": 105.0,
-          "low": 62.0,
-          "range_volatility_pct": 69.35
+          "low": 61.9,
+          "range_volatility_pct": 69.63
         }
       },
       "wave_metrics": {
@@ -155,7 +155,7 @@
         "avg_wave_duration_bars": 27.0
       },
       "current_wave_phase": "BOTTOMING_SUPPORT",
-      "phase_guidance": "Drop (-23.6%) matches historical correction depth (-15.0%). Prepare to accumulate.",
+      "phase_guidance": "Drop (-24.7%) matches historical correction depth (-15.0%). Prepare to accumulate.",
       "top_seasonal_months": [
         {
           "month": "Jul",
@@ -259,12 +259,12 @@
       "macd": "bearish_crossover",
       "sma_trend": "neutral",
       "bb": "at_lower_band_bullish",
-      "atr": 2.43,
-      "rsi_value": 16.51,
-      "last_close": 63.3,
-      "sma20": 73.45,
-      "sma50": 74.55,
-      "sma200": 81.08,
+      "atr": 2.4,
+      "rsi_value": 15.54,
+      "last_close": 62.4,
+      "sma20": 72.69,
+      "sma50": 74.3,
+      "sma200": 80.97,
       "support_resistance": {
         "supports": [
           71.6,
@@ -298,7 +298,7 @@
   "fundamental": {
     "score": 44.17,
     "signals": {
-      "latest_interim_eps": "FY2026Q2 (1.36)",
+      "latest_interim_eps": "FY2027Q3 (-7.74)",
       "eps": "negative (-22.56)",
       "eps_yoy_growth_pct": -359.5,
       "eps_growth_comparison": "FY2025 vs FY2024",
@@ -310,16 +310,15 @@
       "loan_trap_risk": "high",
       "dividend_track_record_years": 4,
       "dividend_consistency": "proven_compounder (4 yrs cash divs)",
-      "cfo_cr": 14.5,
+      "cfo_cr": 15.1,
       "net_profit_cr": -224.9,
-      "accrual_ratio": -14.208,
+      "accrual_ratio": -14.247,
       "earnings_quality": "superior_cash_backed",
       "downturn_resilience": {
-        "status": "growth_at_discount",
-        "drawdown_pct": 41.9,
+        "status": "normal",
+        "drawdown_pct": 42.7,
         "high_52w": 108.9,
-        "low_52w": 62.0,
-        "note": "Share price down 41.9% from 52w peak, yet earnings positive/steady (Conviction discount)"
+        "low_52w": 61.9
       }
     }
   },
@@ -360,15 +359,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 672,
-        "avg_volume": 31089.0,
+        "last_volume": 10270,
+        "avg_volume": 28597.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.02,
-        "avg_volume": 33036.0,
-        "today_volume": 672,
+        "spike_ratio": 0.33,
+        "avg_volume": 31089.0,
+        "today_volume": 10270,
         "detail": "ok"
       },
       "serial_trading": {
@@ -387,20 +386,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": -0.94,
+        "price_change_3d": -2.35,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 53.29,
+    "composite_score": 54.0,
     "governance_score": 75,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.524,
-      "technical": 0.297,
-      "governance": 0.179,
+      "fundamental": 0.486,
+      "technical": 0.321,
+      "governance": 0.193,
       "sentiment": 0.0
     }
   }

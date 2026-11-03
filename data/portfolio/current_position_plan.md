@@ -1,6 +1,6 @@
 # 🎯 Exact Portfolio Position Plan (Capital: ৳11,015)
 
-**Generated**: 2026-11-02 15:04:21  
+**Generated**: 2026-11-03 20:27:19  
 **Allocation**: 60% Core Moats (৳6,609) | 30% Swings (৳3,304) | 10% Cash (৳1,101)
 
 ---
@@ -9,9 +9,9 @@
 
 | Ticker | Current Price | Total Allocation | Total Shares | Tranche 1 (25% Today) | Tranche 1 Cost | Max Slippage Limit | Target Exit (+30%) |
 |---|---|---|---|---|---|---|---|
-| **PADMAOIL** | ৳196.7 | ৳2,203 | **11 sh** | **2 sh** | ৳393 | Max 677 sh | ৳255.7 |
-| **MPETROLEUM** | ৳211.9 | ৳2,203 | **10 sh** | **2 sh** | ৳424 | Max 1,096 sh | ৳275.5 |
-| **SQURPHARMA** | ৳217.4 | ৳2,203 | **10 sh** | **2 sh** | ৳435 | Max 9,499 sh | ৳282.6 |
+| **PADMAOIL** | ৳198.5 | ৳2,203 | **11 sh** | **2 sh** | ৳397 | Max 823 sh | ৳258.1 |
+| **SQURPHARMA** | ৳215.6 | ৳2,203 | **10 sh** | **2 sh** | ৳431 | Max 9,820 sh | ৳280.3 |
+| **MPETROLEUM** | ৳213.9 | ৳2,203 | **10 sh** | **2 sh** | ৳428 | Max 1,599 sh | ৳278.1 |
 
 *Rule: Execute Tranche 1 today. Reserve remaining 75% for 3 systematic dips or weekly confirmations.*
 
@@ -21,8 +21,8 @@
 
 | Ticker | Entry Price | Allocation | Exact Shares | Total Outlay | Swing Target (+15%) | Trailing Stop (-5%) | Risk/Reward |
 |---|---|---|---|---|---|---|---|
-| **PADMAOIL** | ৳196.7 | ৳1,652 | **8 sh** | ৳1,574 | **৳201.0** | ৳191.6 | 3.0x |
-| **MPETROLEUM** | ৳211.9 | ৳1,652 | **7 sh** | ৳1,483 | **৳217.3** | ৳204.1 | 3.0x |
+| **PADMAOIL** | ৳198.5 | ৳1,652 | **8 sh** | ৳1,588 | **৳202.9** | ৳191.6 | 3.0x |
+| **SQURPHARMA** | ৳215.6 | ৳1,652 | **7 sh** | ৳1,509 | **৳220.1** | ৳212.7 | 3.0x |
 
 *Rule: Enter with full swing lot on support confirmation. Strictly exit upon hitting target or stop-loss.*
 
