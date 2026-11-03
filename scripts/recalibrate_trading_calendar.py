@@ -17,6 +17,7 @@ DB_PATH = BASE_DIR / "data" / "processed" / "dse.db"
 
 def recalibrate_trading_calendar():
     conn = sqlite3.connect(DB_PATH, timeout=30.0)
+    conn.execute("PRAGMA busy_timeout = 30000;")
     cur = conn.cursor()
 
     # 1. Fetch all distinct trading dates from prices

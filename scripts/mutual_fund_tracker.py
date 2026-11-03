@@ -85,6 +85,7 @@ def record_nav_to_db(
     source: str = "verified_feed"
 ):
     conn = sqlite3.connect(DB_PATH, timeout=30.0)
+    conn.execute("PRAGMA busy_timeout = 30000;")
     init_db(conn)
     if nav_sale is None:
         nav_sale = nav_redemption
@@ -116,6 +117,7 @@ def get_latest_nav_from_db(fund_name: str) -> Optional[Dict[str, Any]]:
     if not DB_PATH.exists():
         return None
     conn = sqlite3.connect(DB_PATH, timeout=30.0)
+    conn.execute("PRAGMA busy_timeout = 30000;")
     init_db(conn)
     row = conn.execute("""
         SELECT fund_name, asof_date, nav_sale, nav_redemption, repurchase_price, asset_manager, source, updated_at

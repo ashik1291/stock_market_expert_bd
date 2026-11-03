@@ -197,7 +197,7 @@ def simulate_trades(df: pd.DataFrame, ticker: str, strategy: str = "scalp",
                 exit_date  = f_row["date"].strftime("%Y-%m-%d")
 
             pnl_gross = ((exit_price - entry_price) / entry_price) * 100.0
-            round_trip_cost_pct = 0.833  # 0.40% buy + 0.40% sell + 0.033% CDBL settlement
+            round_trip_cost_pct = 0.880  # 0.415% buy + 0.465% sell (incl. Section 53BBB AIT)
             pnl_net = pnl_gross - round_trip_cost_pct
             is_win = (pnl_net > 0)
 
@@ -323,7 +323,7 @@ def run_full_backtest(tickers: list[str] = None) -> dict:
                     break
                 ex_px = float(f_bar["close"])
             gross_r = ((ex_px - e_px) / e_px) * 100.0
-            net_r = gross_r - 0.833
+            net_r = gross_r - 0.880
             random_net_pnls.append(net_r)
 
     rand_wins = [p for p in random_net_pnls if p > 0]
@@ -363,7 +363,7 @@ def run_full_backtest(tickers: list[str] = None) -> dict:
                     ex_px = tgt
                     break
                 ex_px = f_c
-            swing_null_pnls.append(((ex_px - e_px) / e_px) * 100.0 - 0.833)
+            swing_null_pnls.append(((ex_px - e_px) / e_px) * 100.0 - 0.880)
 
     sw_null_wins = [p for p in swing_null_pnls if p > 0]
     sw_null_losses = [p for p in swing_null_pnls if p <= 0]
@@ -413,7 +413,7 @@ def run_full_backtest(tickers: list[str] = None) -> dict:
         json.dump(report, f, indent=2, ensure_ascii=False)
 
     md_lines = [
-        "# 📊 DSE Strategy Backtest & Win-Rate Report (Net of 0.833% Costs)\n",
+        "# 📊 DSE Strategy Backtest & Win-Rate Report (Net of 0.880% Costs)\n",
         f"**Generated**: {report['generated_at']} UTC | **Historical Testing Window**: ~480 Trading Days\n",
         "## 1. Strategy Performance Summary vs Matched Null Controls (Net of Round-Trip Costs)\n",
         "| Strategy / Benchmark | Total Trades | Wins | Losses | Net Win Rate % | Net Profit Factor | Net Avg Return | Permutation p-value |",
@@ -431,7 +431,7 @@ def run_full_backtest(tickers: list[str] = None) -> dict:
     for t, perf in sorted(ticker_breakdown.items(), key=lambda x: x[1]["win_rate"], reverse=True):
         md_lines.append(f"| **{t}** | {perf['trades']} | **{perf['win_rate']}%** | {perf['avg_pnl']:+.2f}% |")
 
-    md_lines.append("\n---\n> Backtest simulated on historical DSE daily bars with 0.833% round-trip friction deducted per trade.")
+    md_lines.append("\n---\n> Backtest simulated on historical DSE daily bars with 0.880% round-trip friction deducted per trade.")
 
     md_content = "\n".join(md_lines)
     with open(REPORT_DIR / "backtest_summary.md", "w", encoding="utf-8") as f:

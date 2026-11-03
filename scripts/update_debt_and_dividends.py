@@ -19,6 +19,7 @@ log = logging.getLogger("dse_debt_sync")
 
 def sync_debt_and_dividends():
     conn = sqlite3.connect(DB_PATH, timeout=30.0)
+    conn.execute("PRAGMA busy_timeout = 30000;")
     rows = conn.execute("SELECT ticker, raw_data FROM fundamentals").fetchall()
     log.info(f"Syncing audited loan and dividend history for {len(rows)} companies...")
 

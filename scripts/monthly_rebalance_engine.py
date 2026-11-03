@@ -93,6 +93,7 @@ def evaluate_moat_valuations(tickers: list[str] | None = None) -> list[dict]:
     """Calculate Graham Fair Value, live price, and Margin of Safety % with strict 5-filter verification."""
     _tickers = tickers if tickers is not None else candidate_universe()
     conn = sqlite3.connect(DB_PATH, timeout=30.0)
+    conn.execute("PRAGMA busy_timeout = 30000;")
     conn.row_factory = sqlite3.Row
     results = []
     asof_row = conn.execute("SELECT MAX(date) FROM prices").fetchone()
@@ -215,6 +216,7 @@ def get_portfolio_sector_weights() -> dict[str, float]:
         total_eq = 0.0
         sec_eq = {}
         conn = sqlite3.connect(DB_PATH, timeout=30.0)
+        conn.execute("PRAGMA busy_timeout = 30000;")
         for h in p.get("holdings", []):
             t = h["ticker"]
             val = float(h.get("gross_cost", 0.0))
@@ -234,23 +236,20 @@ def calculate_opportunistic_deployment(budget_bdt: float = 2000.0) -> dict:
     """Deploy available cash with sector concentration guards (max 35% per sector)."""
     valuations = evaluate_moat_valuations()
     sec_weights = get_portfolio_sector_weights()
-    # Deploy only in undervalued stocks that beat risk-free T-bills (ERP >= 0.0%) and have verified CFO
+    # Deploy only in undervalued stocks meeting macro hurdle (ERP >= +3.50%) with verified positive CFO
     undervalued = [
         v for v in valuations 
-        if (not v["is_overvalued"] and v.get("passes_macro_hurdle", True) and v.get("passes_filters", True))
+        if (not v.get("is_overvalued", False) and v.get("passes_macro_hurdle", False) and v.get("passes_filters", True))
     ]
 
-    # Fallback to general undervalued if strict passes_filters is empty
-    if not undervalued:
-        undervalued = [v for v in valuations if not v["is_overvalued"]]
-
+    # Strict: No fallback to macro-failing or low-CFO stocks — hold 100% cash if no qualified moats
     if not undervalued:
         return {
             "budget_bdt": budget_bdt,
             "allocated_shares": {},
             "total_outlay": 0.0,
             "surplus_cash": budget_bdt,
-            "directive": "All candidates are currently above Graham fair value. HOLD CASH and wait for pullback.",
+            "directive": "No moat candidates meet strict macro hurdle (+3.5% ERP) and CFO quality filters. HOLD CASH buffer.",
             "valuations": valuations,
         }
 

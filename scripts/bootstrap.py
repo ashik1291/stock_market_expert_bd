@@ -70,6 +70,7 @@ def verify_and_restore_database():
         # Check SQLite readability
         try:
             conn = sqlite3.connect(DB_PATH, timeout=30.0)
+            conn.execute("PRAGMA busy_timeout = 30000;")
             cur = conn.cursor()
             p_count = cur.execute("SELECT COUNT(*) FROM prices").fetchone()[0]
             f_count = cur.execute("SELECT COUNT(*) FROM fundamentals").fetchone()[0]

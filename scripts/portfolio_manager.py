@@ -403,6 +403,7 @@ def show_status():
     holdings = p.get("holdings", [])
     
     conn = sqlite3.connect(DB_PATH, timeout=30.0) if DB_PATH.exists() else None
+    conn.execute("PRAGMA busy_timeout = 30000;")
 
     # Check and credit any due cash dividends from corporate actions
     if conn:

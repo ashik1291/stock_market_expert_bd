@@ -600,6 +600,7 @@ def run_pattern_causal_audit(ticker: str) -> dict:
 
     # Load fundamentals
     conn = sqlite3.connect(DB_PATH, timeout=30.0)
+    conn.execute("PRAGMA busy_timeout = 30000;")
     f_row = conn.execute("""
         SELECT pe_ratio, eps, nav, dividend_yield, debt_equity
         FROM fundamentals WHERE ticker = ?

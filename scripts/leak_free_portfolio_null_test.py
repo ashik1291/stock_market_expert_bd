@@ -29,13 +29,20 @@ DB_PATH = BASE_DIR / "data" / "processed" / "dse.db"
 
 def run_leak_free_portfolio_backtest_with_null(rebalance_stride: int = 63, top_n: int = 10, num_null_sims: int = 1000):
     conn = sqlite3.connect(DB_PATH, timeout=30.0)
+    conn.execute("PRAGMA busy_timeout = 30000;")
     conn.row_factory = sqlite3.Row
     c = conn.cursor()
 
     print(f"[LEAK-FREE HARNESS] Starting 14-Year Pure Price Backtest (Rebalance: {rebalance_stride} bars, Top {top_n} Stocks)...")
 
     # 1. Trading Calendar
-    dates = [r[0] for r in c.execute("SELECT date FROM trading_calendar WHERE is_trading_day = 1 ORDER BY date").fetchall()]
+    max_price_date = c.execute("SELECT MAX(date) FROM prices").fetchone()[0]
+    dates = [
+        r[0] for r in c.execute(
+            "SELECT date FROM trading_calendar WHERE is_trading_day = 1 AND date <= ? ORDER BY date",
+            (max_price_date,)
+        ).fetchall()
+    ]
     print(f"[LEAK-FREE HARNESS] Universe spans {len(dates)} trading dates ({dates[0]} to {dates[-1]}).")
 
     # 2. Price Matrix
@@ -85,7 +92,7 @@ def run_leak_free_portfolio_backtest_with_null(rebalance_stride: int = 63, top_n
     rebalance_dates = dates[70::rebalance_stride]
     print(f"[LEAK-FREE HARNESS] Generated {len(rebalance_dates)} rebalance cycles from {rebalance_dates[0]} to {rebalance_dates[-1]}.")
 
-    ONE_WAY_FEE = 0.00415 # 0.833% round trip
+    ONE_WAY_FEE = 0.00440 # 0.880% round trip (0.415% buy + 0.465% sell)
 
     # 3. Simulate Strategy (Mean Reversion / Oversold Focus - The factor that actually works on DSE)
     # Factor score = Oversold RSI (Rank IC = +0.0597, t = +7.22)

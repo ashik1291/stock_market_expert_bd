@@ -69,12 +69,14 @@ def cmd_status():
     cat_a_count = conn.execute("SELECT count(*) FROM companies WHERE category='A'").fetchone()[0]
     prices_count = conn.execute("SELECT count(*) FROM prices").fetchone()[0]
     fund_count = conn.execute("SELECT count(*) FROM fundamentals").fetchone()[0]
+    pit_count = conn.execute("SELECT count(*) FROM fundamentals_pit").fetchone()[0]
     latest_price = conn.execute("SELECT MAX(date) FROM prices").fetchone()[0]
     conn.close()
 
     print(f"  * SQLite Database: Hardened WAL Connected ({db_path.name})", flush=True)
     print(f"  * Category A Universe: {cat_a_count} Companies | Historical Bars: {prices_count:,}", flush=True)
-    print(f"  * Audited PIT Fundamentals: {fund_count} Records | Latest As-of: {latest_price}", flush=True)
+    print(f"  * Audited Point-in-Time Fundamentals: {pit_count} Records (Audited PIT) | Legacy Snapshots: {fund_count} Records", flush=True)
+    print(f"  * Latest As-of Pricing: {latest_price}", flush=True)
 
     # Real Programmatic Conformance & Integrity Verification
     spec_ok = run_spec_guard()
@@ -82,7 +84,9 @@ def cmd_status():
     integrity_ok = integrity_res.get("ok", False) and integrity_res.get("fail_count", 1) == 0
 
     if spec_ok and integrity_ok:
-        print(f"\nSystem Status: ✅ OPERATIONAL (SPEC: 8/8 PASS | Integrity: 9/9 PASS | As-of: {latest_price})\n", flush=True)
+        print(f"\nSystem Status: ✅ OPERATIONAL RESEARCH ENGINE & RISK FILTER (SPEC: 8/8 PASS | Integrity: 9/9 PASS | As-of: {latest_price})", flush=True)
+        print("  * System Classification: Institutional Risk Screening & Research Framework (~52/100)", flush=True)
+        print("  * Advisory Warning: Non-autonomous capital allocator; forward trial calibration active.\n", flush=True)
     else:
         print(f"\nSystem Status: ⚠️ DEGRADED / ATTENTION REQUIRED (Spec: {'PASS' if spec_ok else 'FAIL'}, Integrity: {'PASS' if integrity_ok else 'FAIL'})\n", flush=True)
 

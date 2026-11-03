@@ -256,6 +256,7 @@ def rebuild_database(db_file: Path = DB_PATH):
         db_file.unlink()
 
     conn = sqlite3.connect(db_file, timeout=30.0)
+    conn.execute("PRAGMA busy_timeout = 30000;")
     conn.row_factory = sqlite3.Row
     conn.executescript(SCHEMA)
     conn.commit()
