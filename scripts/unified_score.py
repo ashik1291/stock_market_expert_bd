@@ -154,7 +154,8 @@ def score_features(
                 eligible = False
                 reasons.append("manipulation_blacklist")
         except Exception:
-            pass
+            eligible = False
+            reasons.append("blacklist_check_error_fail_closed")
 
     if not eligible:
         return {
@@ -223,6 +224,7 @@ def score_features(
                 and de_v <= 0.5
             ),
             "valuation_mos_positive": pe_v is not None and pe_v <= 15.0,
+            "passes_macro": (100.0 / pe_v >= 15.10) if (pe_v is not None and pe_v > 0) else False,
             "rsi_oversold_triggered": rsi_v is not None and rsi_v < 35.0,
         },
     }

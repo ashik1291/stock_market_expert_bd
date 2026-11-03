@@ -45,6 +45,7 @@ def get_latest_price_date(conn: sqlite3.Connection) -> str:
 def scan_dividend_catalysts(asof_date: str | None = None) -> list[dict]:
     """Scans and analyzes upcoming corporate action catalysts across the DSE universe."""
     conn = sqlite3.connect(DB_PATH, timeout=30.0)
+    conn.execute("PRAGMA busy_timeout = 30000;")
     conn.row_factory = sqlite3.Row
     
     if not asof_date:
@@ -208,6 +209,7 @@ def scan_dividend_catalysts(asof_date: str | None = None) -> list[dict]:
 def generate_catalyst_reports(asof_date: str | None = None) -> tuple[Path, Path]:
     REPORTS_DIR.mkdir(parents=True, exist_ok=True)
     conn = sqlite3.connect(DB_PATH, timeout=30.0)
+    conn.execute("PRAGMA busy_timeout = 30000;")
     if not asof_date:
         asof_date = get_latest_price_date(conn)
     conn.close()

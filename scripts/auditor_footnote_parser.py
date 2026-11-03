@@ -49,6 +49,7 @@ WARNING_FLAGS = [
 
 def init_db():
     conn = sqlite3.connect(DB_PATH, timeout=30.0)
+    conn.execute("PRAGMA busy_timeout = 30000;")
     conn.execute("""
         CREATE TABLE IF NOT EXISTS auditor_risk_flags (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -69,6 +70,7 @@ def init_db():
 def scan_news_and_disclosures():
     init_db()
     conn = sqlite3.connect(DB_PATH, timeout=30.0)
+    conn.execute("PRAGMA busy_timeout = 30000;")
     conn.row_factory = sqlite3.Row
 
     # Load company aliases for ticker resolution

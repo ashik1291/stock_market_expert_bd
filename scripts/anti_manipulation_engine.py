@@ -56,6 +56,7 @@ def init_db(conn: sqlite3.Connection):
 def run_surveillance_scan(asof_date: str | None = None) -> list[dict]:
     """Scans all tickers for volume anomalies, syndicate corners, and speculative pumps."""
     conn = sqlite3.connect(DB_PATH, timeout=30.0)
+    conn.execute("PRAGMA busy_timeout = 30000;")
     conn.row_factory = sqlite3.Row
     init_db(conn)
 
@@ -67,7 +68,7 @@ def run_surveillance_scan(asof_date: str | None = None) -> list[dict]:
     # Pre-fetch regulatory flags from auditor_risk_flags
     reg_flags: dict[str, list[dict]] = {}
     try:
-        rows = conn.execute("SELECT ticker, risk_level, flag_code, description FROM auditor_risk_flags").fetchall()
+        rows = conn.execute("SELECT ticker, risk_level, flag_code, description FROM auditor_risk_flags WHERE date <= ?", (asof_date,)).fetchall()
         for r in rows:
             t = r["ticker"]
             if t not in reg_flags:

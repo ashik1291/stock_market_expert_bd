@@ -217,6 +217,7 @@ def evaluate_pending_predictions(eval_window_days: int | None = None) -> dict:
     init_learning_storage()
     horizon = eval_window_days or DEFAULT_HORIZON_BARS
     conn = sqlite3.connect(DB_PATH, timeout=30.0)
+    conn.execute("PRAGMA busy_timeout = 30000;")
     ledger = load_ledger()
     weights = load_weights()
 
@@ -321,9 +322,19 @@ def evaluate_pending_predictions(eval_window_days: int | None = None) -> dict:
     total_evaluated = [
         i for i in ledger
         if i.get("status") == "EVALUATED" and i.get("timeframe") != "historical_bootstrap"
+        and i.get("actual_outcome") is not None
     ]
     if total_evaluated:
-        wins = [i for i in total_evaluated if i.get("actual_outcome") in ("CORRECT", "CORRECT_PROFIT")]
+        long_calls = [i for i in total_evaluated if i.get("predicted_direction") == "RISE"]
+        long_wins = [i for i in long_calls if i.get("actual_outcome") in ("CORRECT", "CORRECT_PROFIT")]
+        long_acc = round((len(long_wins) / len(long_calls) * 100.0), 1) if long_calls else 0.0
+
+        fall_calls = [i for i in total_evaluated if i.get("predicted_direction") == "FALL"]
+        fall_wins = [i for i in fall_calls if i.get("actual_outcome") == "AVOIDANCE_SUCCESS"]
+        fall_acc = round((len(fall_wins) / len(fall_calls) * 100.0), 1) if fall_calls else 0.0
+
+        # Harmonized win counting: include successful long profits + successful fall avoidances
+        wins = [i for i in total_evaluated if i.get("actual_outcome") in ("CORRECT", "CORRECT_PROFIT", "AVOIDANCE_SUCCESS")]
         n_total = len(total_evaluated)
         k_wins = len(wins)
         raw_win_rate = (k_wins / n_total) * 100.0
@@ -340,7 +351,6 @@ def evaluate_pending_predictions(eval_window_days: int | None = None) -> dict:
         mean_excess = sum(excesses) / len(excesses)
 
         # Shrink factor weights toward 0.5 prior mean hit-rate (neutral 1.0x weight)
-        # Prior Beta(2,2) → mean 0.5; weaker than retracted Beta(12,8)@60%
         factors_map = {
             "debt_npl_weight": "debt_clean",
             "valuation_mos_weight": "valuation_mos_positive",
@@ -357,7 +367,7 @@ def evaluate_pending_predictions(eval_window_days: int | None = None) -> dict:
                 if i.get("active_signals", {}).get(sig_key)
             ]
             n_f = len(factor_preds)
-            k_f = sum(1 for i in factor_preds if i.get("actual_outcome") in ("CORRECT", "CORRECT_PROFIT"))
+            k_f = sum(1 for i in factor_preds if i.get("actual_outcome") in ("CORRECT", "CORRECT_PROFIT", "AVOIDANCE_SUCCESS"))
             if n_f >= 15:
                 shrunk_p = (k_f + prior_a) / (n_f + prior_a + prior_b)
                 target_w = max(0.0, min(1.40, shrunk_p / prior_mean))
@@ -370,10 +380,12 @@ def evaluate_pending_predictions(eval_window_days: int | None = None) -> dict:
         brier_sum = 0.0
         for item in total_evaluated:
             prob = float(item.get("confidence_prob_pct", 50.0)) / 100.0
-            actual = 1.0 if item.get("actual_outcome") in ("CORRECT", "CORRECT_PROFIT") else 0.0
+            actual = 1.0 if item.get("actual_outcome") in ("CORRECT", "CORRECT_PROFIT", "AVOIDANCE_SUCCESS") else 0.0
             brier_sum += (prob - actual) ** 2
         brier_score = round(brier_sum / n_total, 4)
 
+        weights["long_rise_accuracy_pct"] = long_acc
+        weights["risk_avoidance_accuracy_pct"] = fall_acc
         weights["overall_accuracy_pct"] = round(raw_win_rate, 1)
         weights["accuracy_ci_95"] = f"[{ci_lower}% – {ci_upper}%]"
         weights["mean_net_excess_pct"] = round(mean_excess, 3)
@@ -437,7 +449,9 @@ def generate_learning_report():
         "---",
         "## 1. Performance",
         f"- Evaluated closed calls: **{len(evaluated)}**",
-        f"- Hit rate (net excess sign): **{win_rate}%** CI {weights.get('accuracy_ci_95', 'n/a')}",
+        f"- Long (RISE) Hit Rate: **{cash_win_rate}%** ({len(cash_wins)} / {len(long_calls)} profitable long calls)",
+        f"- Risk Avoidance (FALL) Rate: **{weights.get('risk_avoidance_accuracy_pct', 0.0)}%**",
+        f"- Combined System Accuracy: **{weights.get('overall_accuracy_pct', win_rate)}%** CI {weights.get('accuracy_ci_95', 'n/a')}",
         f"- Mean net excess: **{weights.get('mean_net_excess_pct', 'n/a')}%**",
         f"- Round-trip cost charged: **{ROUND_TRIP_COST_PCT}%**",
         f"- Horizon: **{weights.get('horizon_bars', DEFAULT_HORIZON_BARS)}** trading bars",

@@ -47,6 +47,7 @@ def auto_sync_if_needed():
     if DB_PATH.exists():
         try:
             conn = sqlite3.connect(DB_PATH, timeout=30.0)
+            conn.execute("PRAGMA busy_timeout = 30000;")
             cur = conn.cursor()
             row = cur.execute("SELECT MAX(date) FROM prices").fetchone()
             if row and row[0]:
@@ -75,6 +76,7 @@ def auto_sync_if_needed():
     if DB_PATH.exists():
         try:
             conn = sqlite3.connect(DB_PATH, timeout=30.0)
+            conn.execute("PRAGMA busy_timeout = 30000;")
             cur = conn.cursor()
             row = cur.execute("SELECT MAX(snapshot_date) FROM fundamentals_pit").fetchone()
             if row and row[0]:

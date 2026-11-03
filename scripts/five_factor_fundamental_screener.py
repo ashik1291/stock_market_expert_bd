@@ -62,6 +62,7 @@ def load_json(p: Path) -> dict:
 def run_5_factor_screener(halal_tier: str = "flexible") -> list[dict]:
     """Evaluates all Category A listed stocks against the 5 strict filters."""
     conn = sqlite3.connect(DB_PATH, timeout=30.0)
+    conn.execute("PRAGMA busy_timeout = 30000;")
     conn.row_factory = sqlite3.Row
 
     # 1. Latest price date
@@ -129,14 +130,14 @@ def run_5_factor_screener(halal_tier: str = "flexible") -> list[dict]:
         ticker = r["ticker"]
         sec = r["sector"] or "Unknown"
 
-        # Universal Gate 0: Anti-Manipulation / BSEC Probe Blacklist
+        # Universal Gate 0: Anti-Manipulation / BSEC Probe Blacklist (Fail Closed)
         try:
             from anti_manipulation_engine import is_ticker_blacklisted
             is_blocked, _ = is_ticker_blacklisted(ticker, asof_date=latest_date)
             if is_blocked:
                 continue
         except Exception:
-            pass
+            continue
 
         # Reverse lookup sector if unknown
         if sec == "Unknown" and ticker in ticker_sector_map:

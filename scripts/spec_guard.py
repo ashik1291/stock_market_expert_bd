@@ -49,6 +49,7 @@ def check_inv1_pit_isolation() -> Tuple[bool, str]:
         return False, "Database dse.db missing"
     
     conn = sqlite3.connect(DB_PATH, timeout=30.0)
+    conn.execute("PRAGMA busy_timeout = 30000;")
     cursor = conn.cursor()
     
     # Check fundamentals_pit exists
@@ -197,6 +198,7 @@ def check_inv7_sqlite_wal() -> Tuple[bool, str]:
         return False, "Database dse.db missing"
     
     conn = sqlite3.connect(DB_PATH, timeout=30.0)
+    conn.execute("PRAGMA busy_timeout = 30000;")
     journal_mode = conn.execute("PRAGMA journal_mode;").fetchone()[0]
     conn.close()
     

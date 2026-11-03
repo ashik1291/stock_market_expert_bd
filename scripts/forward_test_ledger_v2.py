@@ -365,7 +365,8 @@ def _rebalance(
                 trades.append({"action": "SKIP_REBALANCE", "ticker": t, "reason": f"BLACKLISTED_{b_reason}"})
                 continue
         except Exception:
-            pass
+            trades.append({"action": "SKIP_REBALANCE", "ticker": t, "reason": "BLACKLIST_CHECK_ERROR_FAIL_CLOSED"})
+            continue
         sec = cand.get("sector") or "Unknown"
         if sector_counts.get(sec, 0) >= SECTOR_MAX:
             continue
@@ -413,6 +414,7 @@ def _rebalance(
 def init_or_update_v2_forward_ledger(force_reinit: bool = False):
     PORT_DIR.mkdir(parents=True, exist_ok=True)
     conn = sqlite3.connect(DB_PATH, timeout=30.0)
+    conn.execute("PRAGMA busy_timeout = 30000;")
     conn.row_factory = sqlite3.Row
 
     now_utc = datetime.datetime.now(datetime.timezone.utc).isoformat()

@@ -89,6 +89,7 @@ FIVE_FACTOR_PATH = ROOT_DIR / "reports" / "five_factor_screened_universe.json"
 def get_market_regime() -> dict:
 
     con = sqlite3.connect(DB_PATH, timeout=30.0)
+    con.execute("PRAGMA busy_timeout = 30000;")
 
     cur = con.cursor()
 
@@ -548,7 +549,12 @@ def load_candidate_pool() -> list[str]:
 
                 cands = data.get("candidates", []) or data.get("screened_universe", [])
 
-                candidates = [item["ticker"] for item in cands if isinstance(item, dict) and "ticker" in item]
+                candidates = [
+                    item["ticker"] for item in cands
+                    if isinstance(item, dict) and "ticker" in item
+                    and not item.get("is_overvalued", False)
+                    and item.get("passes_macro", True)
+                ]
 
         except Exception:
 

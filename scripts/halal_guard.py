@@ -89,6 +89,7 @@ def _resolve_sector(ticker: str, pit_row: Any, policy: dict) -> str:
         db_path = base_dir / "data" / "processed" / "dse.db"
         if db_path.exists():
             conn = sqlite3.connect(db_path, timeout=30.0)
+            conn.execute("PRAGMA busy_timeout = 30000;")
             row = conn.execute("SELECT sector FROM companies WHERE ticker = ?", (t,)).fetchone()
             conn.close()
             if row and row[0]:

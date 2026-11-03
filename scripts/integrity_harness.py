@@ -43,6 +43,7 @@ def run_integrity() -> dict:
         return {"ok": False, "exit_code": 2, "checks": [_check("db_exists", False, "dse.db missing")]}
 
     conn = sqlite3.connect(DB_PATH, timeout=30.0)
+    conn.execute("PRAGMA busy_timeout = 30000;")
     latest_price = conn.execute("SELECT MAX(date) FROM prices").fetchone()[0]
 
     # 1. Ledger asof matches latest price date

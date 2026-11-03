@@ -30,6 +30,7 @@ def run_net_of_cost_backtest():
     print("=" * 80)
 
     conn = sqlite3.connect(DB_PATH, timeout=30.0)
+    conn.execute("PRAGMA busy_timeout = 30000;")
     
     # Query price history for active liquid tickers
     print("[1/4] Loading historical OHLCV data from dse.db...")

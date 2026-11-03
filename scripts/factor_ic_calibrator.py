@@ -130,6 +130,7 @@ def calibrate_factor_ic(
 ) -> dict:
     LEARN_DIR.mkdir(parents=True, exist_ok=True)
     conn = sqlite3.connect(DB_PATH, timeout=30.0)
+    conn.execute("PRAGMA busy_timeout = 30000;")
     conn.row_factory = sqlite3.Row
     ensure_schema(conn)
 
@@ -160,6 +161,7 @@ def calibrate_factor_ic(
             conn.close()
             build_features_for_date(dt)
             conn = sqlite3.connect(DB_PATH, timeout=30.0)
+            conn.execute("PRAGMA busy_timeout = 30000;")
             conn.row_factory = sqlite3.Row
 
         rows = conn.execute(

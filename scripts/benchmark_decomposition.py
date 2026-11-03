@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 
 conn = sqlite3.connect("data/processed/dse.db", timeout=30.0)
+conn.execute("PRAGMA busy_timeout = 30000;")
 query = """
 SELECT ticker, date, close 
 FROM prices 

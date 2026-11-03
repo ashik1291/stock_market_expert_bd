@@ -505,6 +505,7 @@ def run_full_buffett_screener() -> dict:
     """
     log.info("Starting DSE 12-Factor Buffett Value & Sector Best 2 Screener...")
     conn = sqlite3.connect(DB_PATH, timeout=30.0)
+    conn.execute("PRAGMA busy_timeout = 30000;")
     reg = load_json(CONFIG_DIR / "company_registry_12factor.json")
     lead = load_json(CONFIG_DIR / "company_leadership.json")
 

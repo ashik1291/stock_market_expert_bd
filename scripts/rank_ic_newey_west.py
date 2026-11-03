@@ -92,6 +92,7 @@ def newey_west_t_stat(series: list[float], max_lags: int) -> tuple[float, float,
 
 def run_cross_sectional_rank_ic(horizon_bars: int = 21, stride: int = 5):
     conn = sqlite3.connect(DB_PATH, timeout=30.0)
+    conn.execute("PRAGMA busy_timeout = 30000;")
     conn.row_factory = sqlite3.Row
     c = conn.cursor()
 
