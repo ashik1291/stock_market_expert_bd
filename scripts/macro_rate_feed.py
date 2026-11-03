@@ -325,12 +325,17 @@ def calculate_equity_risk_premium(
     earnings_yield = round((eps / price) * 100.0, 2)
     erp = round(earnings_yield - rf_rate, 2)
 
+    MIN_EQUITY_RISK_PREMIUM_PCT = 3.50
+
     if erp >= 5.0:
         verdict = f"PRIME_MACRO_SPREAD (+{erp:.1f}% above T-Bills)"
         passes = True
-    elif erp >= 0.0:
-        verdict = f"COMPETITIVE (+{erp:.1f}% above T-Bills)"
+    elif erp >= MIN_EQUITY_RISK_PREMIUM_PCT:
+        verdict = f"COMPETITIVE (+{erp:.1f}% above T-Bills — Meets Hurdle)"
         passes = True
+    elif erp >= 0.0:
+        verdict = f"SUB_PAR_SPREAD (+{erp:.1f}% above T-Bills — Fails Minimum 3.5% Equity Risk Premium)"
+        passes = False
     else:
         verdict = f"UNCOMPETITIVE ({erp:.1f}% below T-Bills — Risk Uncompensated)"
         passes = False
@@ -342,6 +347,22 @@ def calculate_equity_risk_premium(
         "passes_macro_hurdle": passes,
         "verdict": verdict
     }
+
+
+def macro_hurdle_ok(earnings_yield: float, risk_free_rate: float | None = None) -> tuple[bool, float]:
+    """
+    Central macro hurdle validation enforcing SPEC.md INV-2:
+    Requires earnings_yield >= risk_free_rate (11.60%) + 3.50% ERP = 15.10%
+    """
+    if earnings_yield <= 0:
+        return False, 0.0
+    if risk_free_rate is None:
+        rates = get_latest_macro_rates()
+        rf = float(rates.get("t_bill_91d_pct", 11.60))
+    else:
+        rf = float(risk_free_rate)
+    erp = round(earnings_yield - rf, 2)
+    return (erp >= 3.50, erp)
 
 
 if __name__ == "__main__":

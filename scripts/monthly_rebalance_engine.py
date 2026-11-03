@@ -95,6 +95,8 @@ def evaluate_moat_valuations(tickers: list[str] | None = None) -> list[dict]:
     conn = sqlite3.connect(DB_PATH, timeout=30.0)
     conn.row_factory = sqlite3.Row
     results = []
+    asof_row = conn.execute("SELECT MAX(date) FROM prices").fetchone()
+    asof_date = asof_row[0] if asof_row and asof_row[0] else datetime.date.today().isoformat()
 
     macro_rates = get_latest_macro_rates(conn)
     rf_rate = macro_rates.get("risk_free_rate_pct", 8.84)
@@ -119,39 +121,29 @@ def evaluate_moat_valuations(tickers: list[str] | None = None) -> list[dict]:
             """
             SELECT eps, nav, pe_ratio, debt_equity, dividend_yield 
             FROM fundamentals_pit 
-            WHERE ticker = ? 
-            ORDER BY snapshot_date DESC LIMIT 1
+            WHERE ticker = ?
+              AND tradable_date <= ?
+              AND publication_date <= ?
+            ORDER BY tradable_date DESC, publication_date DESC, snapshot_date DESC LIMIT 1
             """,
-            (ticker,)
-        ).fetchone()
-
-        f_row = conn.execute(
-            """
-            SELECT cash_flow_ops, raw_data FROM fundamentals 
-            WHERE ticker = ? AND (cash_flow_ops IS NOT NULL OR raw_data LIKE '%nocfps%')
-            ORDER BY id DESC LIMIT 1
-            """,
-            (ticker,)
+            (ticker, asof_date, asof_date)
         ).fetchone()
 
         nocfps = None
-        if f_row:
-            if f_row["cash_flow_ops"] is not None:
-                nocfps = float(f_row["cash_flow_ops"])
-            elif f_row["raw_data"]:
-                try:
-                    _raw = json.loads(f_row["raw_data"])
-                    if _raw.get("nocfps"):
-                        nocfps = float(_raw["nocfps"])
-                except Exception:
-                    pass
-        if nocfps is None:
-            pit_cfo = conn.execute(
-                "SELECT cash_flow_ops FROM fundamentals_pit WHERE ticker = ? AND cash_flow_ops IS NOT NULL ORDER BY snapshot_date DESC LIMIT 1",
-                (ticker,)
-            ).fetchone()
-            if pit_cfo and pit_cfo["cash_flow_ops"] is not None:
-                nocfps = float(pit_cfo["cash_flow_ops"])
+        pit_cfo = conn.execute(
+            """
+            SELECT cash_flow_ops
+            FROM fundamentals_pit
+            WHERE ticker = ?
+              AND tradable_date <= ?
+              AND publication_date <= ?
+              AND cash_flow_ops IS NOT NULL
+            ORDER BY tradable_date DESC, publication_date DESC, snapshot_date DESC LIMIT 1
+            """,
+            (ticker, asof_date, asof_date)
+        ).fetchone()
+        if pit_cfo and pit_cfo["cash_flow_ops"] is not None:
+            nocfps = float(pit_cfo["cash_flow_ops"])
 
         eps = float(pit_row["eps"]) if pit_row and pit_row["eps"] else None
         nav = float(pit_row["nav"]) if pit_row and pit_row["nav"] else None

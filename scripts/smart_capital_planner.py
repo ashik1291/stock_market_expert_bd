@@ -328,6 +328,11 @@ def compute_dynamic_stock_metrics(ticker: str, conn: sqlite3.Connection) -> dict
 
     """Computes dynamic 20-DMA, 60-day low support, 30-day realized volatility, and Graham fair value."""
 
+    asof_row = conn.execute("SELECT MAX(date) FROM prices").fetchone()
+    asof_date = asof_row[0] if asof_row and asof_row[0] else None
+    if not asof_date:
+        return {}
+
     # Price series (last 60 bars)
 
     rows = conn.execute("""
@@ -385,30 +390,17 @@ def compute_dynamic_stock_metrics(ticker: str, conn: sqlite3.Connection) -> dict
         LEFT JOIN companies c ON f.ticker = c.ticker
 
         WHERE f.ticker = ?
+          AND f.tradable_date <= ?
+          AND f.publication_date <= ?
+          AND f.pe_ratio IS NOT NULL
+        ORDER BY f.tradable_date DESC, f.publication_date DESC, f.snapshot_date DESC LIMIT 1
 
-        ORDER BY f.snapshot_date DESC LIMIT 1
-
-    """, (ticker,)).fetchone()
-
-    
-
-    if not f_row or f_row[2] is None:
-
-        f_row = conn.execute("""
-
-            SELECT f.eps, f.nav, f.pe_ratio, f.dividend_yield, f.debt_equity, f.cash_flow_ops, c.sector
-
-            FROM fundamentals f
-
-            LEFT JOIN companies c ON f.ticker = c.ticker
-
-            WHERE f.ticker = ?
-
-            ORDER BY (f.pe_ratio IS NOT NULL AND f.dividend_yield IS NOT NULL) DESC, f.year DESC, f.quarter DESC LIMIT 1
-
-        """, (ticker,)).fetchone()
+    """, (ticker, asof_date, asof_date)).fetchone()
 
     
+
+    if not f_row:
+        return {}
 
     eps = float(f_row[0]) if f_row and f_row[0] is not None else None
 
@@ -565,32 +557,14 @@ def load_candidate_pool() -> list[str]:
 
 
     if not candidates:
-
-        conn = sqlite3.connect(DB_PATH, timeout=30.0)
-
-        conn.execute("PRAGMA busy_timeout = 30000;")
-
-        rows = conn.execute("""
-
-            SELECT DISTINCT c.ticker FROM companies c
-
-            JOIN fundamentals f ON c.ticker = f.ticker
-
-            WHERE c.category = 'A'
-
-              AND f.pe_ratio > 0 AND f.pe_ratio <= 20
-
-              AND f.dividend_yield >= 3.0
-
-              AND (f.debt_equity IS NULL OR f.debt_equity <= 0.80)
-
-            ORDER BY f.dividend_yield DESC LIMIT 20
-
-        """).fetchall()
-
-        conn.close()
-
-        candidates = [r[0] for r in rows]
+        try:
+            from five_factor_fundamental_screener import run_5_factor_screener
+            candidates = [
+                row["ticker"]
+                for row in run_5_factor_screener(halal_tier="flexible")
+            ]
+        except Exception:
+            candidates = []
 
 
 

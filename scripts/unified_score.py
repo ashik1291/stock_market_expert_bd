@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 from pathlib import Path
 
 MODEL_ID = "frozen_epoch2_pit_v2"
@@ -70,6 +71,29 @@ CANONICAL_PARAM_CONTENT_HASH = hashlib.sha256(
 _BASE = Path(__file__).resolve().parent.parent
 
 
+_SHARIAH_EXCLUDED_SECTOR_NAMES = {
+    "bank",
+    "banking",
+    "banks",
+    "insurance",
+    "life insurance",
+    "general insurance",
+    "financial institution",
+    "financial institutions",
+    "mutual fund",
+    "mutual funds",
+    "tobacco",
+}
+
+
+def is_shariah_excluded_sector(sector: str | None) -> bool:
+    """Return True for conventional finance or tobacco sectors."""
+    normalized = re.sub(r"[^a-z0-9]+", " ", (sector or "").lower()).strip()
+    if normalized in _SHARIAH_EXCLUDED_SECTOR_NAMES:
+        return True
+    return "bank" in normalized or "insurance" in normalized
+
+
 def load_factor_weights() -> dict:
     """Return immutable copy of frozen factor weights."""
     return dict(FROZEN_FACTOR_WEIGHTS)
@@ -89,7 +113,7 @@ def score_features(
 ) -> dict:
     """Return score, eligibility, and component breakdown under frozen model or explicit weights."""
     sec = (sector or "Unknown")
-    is_bank = sec.lower() in ("banking", "bank", "banks")
+    is_excluded_sector = is_shariah_excluded_sector(sec)
     pe_v = float(pe) if pe is not None else None
     de_v = float(debt_equity) if debt_equity is not None else None
     div_v = float(dividend_yield) if dividend_yield is not None else 0.0
@@ -99,15 +123,19 @@ def score_features(
     reasons = []
     eligible = True
 
+    if is_excluded_sector:
+        eligible = False
+        reasons.append("shariah_excluded_sector")
+
     if close is not None and close <= 0:
         eligible = False
         reasons.append("bad_price")
 
-    if not is_bank:
+    if not is_excluded_sector:
         if de_v is None:
             eligible = False
             reasons.append("missing_debt_equity")
-        elif de_v > 1.0:
+        elif de_v > 0.80:  # Enforce SPEC.md INV-3: Max Debt/Equity <= 0.80
             eligible = False
             reasons.append("debt_gate")
 
@@ -158,8 +186,6 @@ def score_features(
     f_debt = 0.0
     if de_v is not None and de_v <= 0.5:
         f_debt = 5.0
-    elif de_v is None and is_bank:
-        f_debt = 2.0
 
     w_div = float(w.get("div", 1.0))
     w_pe = float(w.get("value", 1.0))
@@ -191,7 +217,11 @@ def score_features(
             "debt": w_debt,
         },
         "active_signals": {
-            "debt_clean": (de_v is None or de_v <= 0.5) or is_bank,
+            "debt_clean": (
+                not is_excluded_sector
+                and de_v is not None
+                and de_v <= 0.5
+            ),
             "valuation_mos_positive": pe_v is not None and pe_v <= 15.0,
             "rsi_oversold_triggered": rsi_v is not None and rsi_v < 35.0,
         },

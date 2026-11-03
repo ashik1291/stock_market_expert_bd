@@ -37,7 +37,7 @@ sys.path.insert(0, str(BASE_DIR))
 sys.path.insert(0, str(BASE_DIR / "scripts"))
 
 from scripts.anti_manipulation_engine import is_ticker_blacklisted
-from scripts.five_factor_fundamental_screener import SHARIAH_EXCLUDED_SECTORS
+from scripts.unified_score import is_shariah_excluded_sector
 from scripts.smart_capital_planner import load_candidate_pool, compute_dynamic_stock_metrics, get_market_regime
 from scripts.macro_rate_feed import get_latest_macro_rates
 
@@ -46,48 +46,51 @@ FEE_BUY_PCT = 0.00415   # 0.415% (Broker + CDBL + DSE)
 FEE_SELL_PCT = 0.00465  # 0.465% (Broker + CDBL + DSE + 0.05% Sec 53BBB AIT)
 
 
-def calculate_profit_probability(metrics: Dict[str, Any]) -> float:
+def calculate_factor_conviction_score(metrics: Dict[str, Any]) -> float:
     """
-    Computes calibrated empirical profit probability %:
-    Base: 50%
-    + MoS >= 40%: +15%
-    + MoS 15-40%: +10%
-    + Dividend Yield >= 6%: +10%
-    + Debt/Equity == 0: +10% (or < 0.3: +5%)
-    + Low Volatility (< 15%): +5%
-    Clamped strictly between 52% and 88%.
+    Computes fundamental factor conviction score (0-100) based on Graham MoS,
+    Debt Solvency, Cash Dividend Yield, and Volatility.
+    
+    NOTE: This is a MULTI-FACTOR HEURISTIC SCORE, NOT a guaranteed empirical profit probability.
     """
-    prob = 50.0
+    de = metrics.get("debt_equity")
+    if de is None or de > 0.80:
+        # FAIL-CLOSED: Missing debt data or excessive leverage in 10-14% rate environment
+        return 0.0
+
+    score = 50.0
     mos = metrics.get("mos_pct", 0.0)
     dy = metrics.get("dividend_yield") or 0.0
-    de = metrics.get("debt_equity") if metrics.get("debt_equity") is not None else 999.0
     vol = metrics.get("volatility_pct", 25.0)
 
     if mos >= 40.0:
-        prob += 15.0
+        score += 15.0
     elif mos >= 15.0:
-        prob += 10.0
+        score += 10.0
     elif mos < 0.0:
-        prob -= 12.0
+        score -= 15.0
 
     if dy >= 6.0:
-        prob += 10.0
+        score += 10.0
     elif dy >= 3.0:
-        prob += 5.0
+        score += 5.0
 
     if de == 0.0:
-        prob += 10.0
+        score += 10.0
     elif de <= 0.30:
-        prob += 5.0
-    elif de > 0.80:
-        prob -= 20.0
+        score += 5.0
 
     if vol <= 12.0:
-        prob += 5.0
+        score += 5.0
     elif vol > 35.0:
-        prob -= 8.0
+        score -= 10.0
 
-    return max(52.0, min(88.0, round(prob, 1)))
+    return max(20.0, min(95.0, round(score, 1)))
+
+
+def calculate_profit_probability(metrics: Dict[str, Any]) -> float:
+    """Compatibility alias for factor conviction score."""
+    return calculate_factor_conviction_score(metrics)
 
 
 def evaluate_user_investment_plan(capital_bdt: float = 50000.0, top_n: int = 3) -> Dict[str, Any]:
@@ -116,7 +119,7 @@ def evaluate_user_investment_plan(capital_bdt: float = 50000.0, top_n: int = 3) 
 
         # Check Shariah compliance
         sector = metrics.get("sector", "")
-        if sector in SHARIAH_EXCLUDED_SECTORS:
+        if is_shariah_excluded_sector(sector):
             continue
         if metrics.get("debt_equity") is not None and metrics["debt_equity"] > 0.80:
             continue
@@ -210,8 +213,9 @@ def format_user_proxy_report(result: Dict[str, Any]) -> str:
     lines.append(f"🛡️ Defensive Cash Buffer: ৳{result['cash_buffer_bdt']:,.2f} | Actionable Equity Tranche: ৳{result['investable_bdt']:,.2f}")
     lines.append("-" * 80)
 
-    lines.append(f"\n🎯 সর্বোচ্চ মুনাফা সম্ভাবনাময় (Max Profit Probability) নির্বাচিত স্টক:")
-    lines.append(f"{'Ticker':<11} {'Price':<8} {'Buy Limit':<10} {'Prob%':<7} {'BreakEven':<10} {'Target(TP1)':<12} {'StopLoss':<9} {'R:R':<5}")
+    lines.append(f"\n🎯 সর্বোচ্চ ফান্ডামেন্টাল কনভিকশন (Fundamental Conviction Score) নির্বাচিত স্টক:")
+    lines.append(f"⚠️ [বিজ্ঞপ্তি: এটি মাল্টি-ফ্যাক্টর ফান্ডামেন্টাল স্কোর; কাল্পনিক শতভাগ প্রফিট গ্যারান্টি নয়। ওওএস ফরোয়ার্ড ট্রায়াল N=14 (টার্গেট N=87)]")
+    lines.append(f"{'Ticker':<11} {'Price':<8} {'Buy Limit':<10} {'Score':<7} {'BreakEven':<10} {'Target(TP1)':<12} {'StopLoss':<9} {'R:R':<5}")
     lines.append("-" * 80)
 
     for p in result["top_picks"]:

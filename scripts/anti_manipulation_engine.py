@@ -89,16 +89,12 @@ def run_surveillance_scan(asof_date: str | None = None) -> list[dict]:
         JOIN (
             SELECT ticker, MAX(snapshot_date) AS max_date
             FROM fundamentals_pit
+            WHERE tradable_date <= ? AND publication_date <= ?
             GROUP BY ticker
         ) latest ON f.ticker = latest.ticker AND f.snapshot_date = latest.max_date
     """
-    for f in conn.execute(query_pit):
+    for f in conn.execute(query_pit, (asof_date, asof_date)):
         fund_map[f["ticker"]] = dict(f)
-
-    # Fallback for tickers in base fundamentals table
-    for f in conn.execute("SELECT ticker, eps, pe_ratio, nav FROM fundamentals"):
-        if f["ticker"] not in fund_map:
-            fund_map[f["ticker"]] = dict(f)
 
     # Fetch prices for active date
     active_prices = conn.execute(
@@ -262,30 +258,40 @@ def is_ticker_blacklisted(
     Direct Guard API: Returns (True, Reason) if ticker is flagged as CRITICAL or HIGH manipulation risk.
     Point-in-Time Aware: Takes optional asof_date to eliminate lookahead bias in historical evaluations.
     Decay Window: Flags decay after lookback_days (default 45 days) unless refreshed by surveillance.
+    Fail-Closed Standard: Any database or query exception returns (True, Reason) to protect capital.
     """
-    conn = sqlite3.connect(DB_PATH, timeout=30.0)
-    conn.row_factory = sqlite3.Row
+    try:
+        try:
+            from scripts.db import get_db_connection
+            conn = get_db_connection(DB_PATH, timeout=30.0, row_factory=sqlite3.Row)
+        except Exception:
+            conn = sqlite3.connect(DB_PATH, timeout=30.0)
+            conn.row_factory = sqlite3.Row
+            conn.execute("PRAGMA busy_timeout = 30000;")
 
-    if not asof_date:
-        row = conn.execute("SELECT MAX(date) FROM prices").fetchone()
-        asof_date = row[0] if (row and row[0]) else datetime.date.today().isoformat()
+        if not asof_date:
+            row = conn.execute("SELECT MAX(date) FROM prices").fetchone()
+            asof_date = row[0] if (row and row[0]) else datetime.date.today().isoformat()
 
-    query = """
-        SELECT risk_level, alert_type, description, date 
-        FROM manipulation_alerts 
-        WHERE ticker = ? 
-          AND risk_level IN ('CRITICAL', 'HIGH')
-          AND date <= ?
-          AND date >= date(?, '-' || ? || ' days')
-        ORDER BY date DESC LIMIT 1
-    """
-    row = conn.execute(query, (ticker, asof_date, asof_date, str(lookback_days))).fetchone()
-    conn.close()
+        query = """
+            SELECT risk_level, alert_type, description, date 
+            FROM manipulation_alerts 
+            WHERE ticker = ? 
+              AND risk_level IN ('CRITICAL', 'HIGH')
+              AND date <= ?
+              AND date >= date(?, '-' || ? || ' days')
+            ORDER BY date DESC LIMIT 1
+        """
+        row = conn.execute(query, (ticker, asof_date, asof_date, str(lookback_days))).fetchone()
+        conn.close()
 
-    if row:
-        return True, f"Blocked by Forensic Surveillance [{row['risk_level']}: {row['alert_type']} on {row['date']} — {row['description']}]"
-    return False, "Clean"
-
+        if row:
+            desc = row["description"] or ""
+            return True, f"Blocked by Forensic Surveillance [{row['risk_level']}: {row['alert_type']} on {row['date']} — {desc}]"
+        return False, "Clean"
+    except Exception as e:
+        # FAIL-CLOSED: In case of database error or surveillance failure, reject the ticker
+        return True, f"Blocked by Forensic Surveillance [FAIL-CLOSED ERROR: {e}]"
 
 def generate_surveillance_reports(asof_date: str | None = None) -> tuple[Path, Path]:
     """Generates comprehensive English and Bengali surveillance reports."""

@@ -140,9 +140,10 @@ class TestAuditFixesValidation(unittest.TestCase):
         self.assertFalse(res2["is_eligible"])
         self.assertIn("missing_debt_equity", res2["gate_reasons"])
 
-        # 3. Missing Debt for Bank is allowed
+        # 3. Conventional banks remain blocked even when debt data is missing
         res3 = score_features(pe=6.0, debt_equity=None, dividend_yield=7.0, rsi_14=40.0, sector="Banking", close=20.0)
-        self.assertTrue(res3["is_eligible"])
+        self.assertFalse(res3["is_eligible"])
+        self.assertIn("shariah_excluded_sector", res3["gate_reasons"])
 
     def test_layer7_portfolio_record_sell(self):
         """Verify Layer 7 fix: record_sell properly executes, deducts commission, and credits net proceeds."""
@@ -337,6 +338,8 @@ class TestAuditFixesValidation(unittest.TestCase):
         with open(os.path.join(ROOT, "scripts", "five_factor_fundamental_screener.py"), "r", encoding="utf-8") as f:
             code = f.read()
         self.assertIn("tradable_date <= ?", code)
+        self.assertIn("publication_date <= ?", code)
+        self.assertNotIn("tradable_date <= ? OR publication_date <= ?", code)
         self.assertIn("is_ticker_blacklisted(ticker, asof_date=latest_date)", code)
 
     def test_layer8_recommender_sector_concentration_cap(self):

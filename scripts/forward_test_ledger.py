@@ -71,8 +71,15 @@ def init_or_update_forward_portfolio(rebalance_mode: str = "quarterly"):
         candidates = c.execute("""
             SELECT p.ticker, p.close, pit.eps, pit.nav, pit.pe_ratio, pit.debt_equity, pit.dividend_yield
             FROM prices p
-            JOIN fundamentals_pit pit ON p.ticker = pit.ticker AND pit.snapshot_date = (
-                SELECT MAX(snapshot_date) FROM fundamentals_pit WHERE ticker = p.ticker
+            JOIN fundamentals_pit pit ON p.ticker = pit.ticker
+                AND pit.tradable_date <= p.date
+                AND pit.publication_date <= p.date
+                AND pit.snapshot_date = (
+                SELECT MAX(snapshot_date)
+                FROM fundamentals_pit
+                WHERE ticker = p.ticker
+                  AND tradable_date <= p.date
+                  AND publication_date <= p.date
             )
             WHERE p.date = (SELECT MAX(date) FROM prices)
               AND (pit.debt_equity IS NULL OR pit.debt_equity <= 0.8)
