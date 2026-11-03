@@ -92,8 +92,20 @@ def check_inv2_macro_hurdle() -> Tuple[bool, str]:
         return False, f"91-day T-Bill rate {t_bill:.2f}% below institutional floor (11.60%)"
     if hurdle < 15.10:
         return False, f"Equity hurdle rate {hurdle:.2f}% below institutional baseline (15.10%)"
+
+    # Enforce programmatic hurdle check: earnings yield < 15.10% must FAIL, >= 15.10% must PASS
+    try:
+        from scripts.macro_rate_feed import macro_hurdle_ok
+        fail_check, _ = macro_hurdle_ok(14.0, risk_free_rate=11.60)
+        pass_check, _ = macro_hurdle_ok(15.2, risk_free_rate=11.60)
+        if fail_check:
+            return False, "macro_hurdle_ok allowed 14.0% yield when minimum hurdle is 15.10%"
+        if not pass_check:
+            return False, "macro_hurdle_ok rejected 15.2% yield when minimum hurdle is 15.10%"
+    except Exception as e:
+        return False, f"macro_hurdle_ok programmatic check failed: {e}"
     
-    return True, f"Macro hurdle anchored: 91d T-Bill={t_bill:.2f}%, Minimum Equity Hurdle={hurdle:.2f}%"
+    return True, f"Macro hurdle anchored: 91d T-Bill={t_bill:.2f}%, Minimum Equity Hurdle={hurdle:.2f}% (Enforced)"
 
 
 def check_inv3_shariah_zero_bank() -> Tuple[bool, str]:

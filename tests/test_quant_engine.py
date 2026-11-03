@@ -178,7 +178,7 @@ class TestQuantEngine(unittest.TestCase):
         self.assertLess(rate, 0.10, f"technical None rate {rate:.1%} on {len(tickers)} tickers")
 
     def test_unified_score_debt_gate(self):
-        from unified_score import score_features, MODEL_ID
+        from unified_score import score_features, MODEL_ID, is_shariah_excluded_sector
         bad = score_features(pe=10, debt_equity=2.0, dividend_yield=5, rsi_14=40, sector="Pharma", close=100)
         self.assertFalse(bad["is_eligible"])
         self.assertEqual(bad["score"], -999.0)
@@ -187,6 +187,19 @@ class TestQuantEngine(unittest.TestCase):
         self.assertGreater(good["score"], 0)
         self.assertEqual(good["model_id"], MODEL_ID)
         self.assertTrue(good["active_signals"]["rsi_oversold_triggered"])
+
+        for sector in ("Bank", "Banking", "Insurance", "Financial Institutions"):
+            self.assertTrue(is_shariah_excluded_sector(sector))
+            blocked = score_features(
+                pe=8,
+                debt_equity=0.1,
+                dividend_yield=5,
+                rsi_14=40,
+                sector=sector,
+                close=100,
+            )
+            self.assertFalse(blocked["is_eligible"], sector)
+            self.assertIn("shariah_excluded_sector", blocked["gate_reasons"])
 
     def test_feature_store_builds_rows(self):
         from feature_store import build_features_for_date, load_scored_universe

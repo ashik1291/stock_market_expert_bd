@@ -199,6 +199,12 @@ def _eligible_ranked(scored: list[dict]) -> list[dict]:
     return elig
 
 
+def _requires_safety_rebalance(positions: list[dict], elig: list[dict]) -> bool:
+    """Force next-session safety cleanup for positions no longer eligible."""
+    eligible_tickers = {str(row.get("ticker")) for row in elig}
+    return any(str(position.get("ticker")) not in eligible_tickers for position in positions)
+
+
 def _top_pct_tickers(elig: list[dict], pct: float) -> set[str]:
     if not elig:
         return set()
@@ -295,10 +301,11 @@ def _rebalance(
     elig: list[dict],
     asof: str,
     killed: bool,
+    safety_only: bool = False,
 ) -> tuple[list, float, list]:
     """Hold-buffer rebalance. Returns (positions, cash, trade_log)."""
     trades = []
-    if killed:
+    if killed and not safety_only:
         return positions, cash, [{"action": "SKIP_REBALANCE", "reason": "STRATEGY_KILLED"}]
 
     keep_set = _top_pct_tickers(elig, HOLD_TOP_PCT)
@@ -333,6 +340,9 @@ def _rebalance(
             **fill,
             "proceeds": proceeds,
         })
+
+    if safety_only:
+        return kept, cash, trades
 
     # Sector counts among kept
     sector_counts = {}
@@ -523,6 +533,7 @@ def init_or_update_v2_forward_ledger(force_reinit: bool = False):
 
     trades = []
     rebalanced = False
+    safety_rebalance = _requires_safety_rebalance(positions, elig)
     if not positions and not killed:
         # Initial open via rebalance logic
         positions, cash, trades = _rebalance(conn, [], cash, elig, latest_date, False)
@@ -530,12 +541,23 @@ def init_or_update_v2_forward_ledger(force_reinit: bool = False):
         b_data["last_rebalance_date"] = latest_date
         nav, positions = _mark_to_market(conn, positions, cash, latest_date)
         print(f"[EPOCH 2] Opened {len(positions)} positions asof={latest_date}")
-    elif _should_rebalance(conn, b_data, latest_date) and b_data.get("asof_price_date") != latest_date:
-        positions, cash, trades = _rebalance(conn, positions, cash, elig, latest_date, killed)
+    elif (safety_rebalance or _should_rebalance(conn, b_data, latest_date)) and (
+        safety_rebalance or b_data.get("asof_price_date") != latest_date
+    ):
+        positions, cash, trades = _rebalance(
+            conn,
+            positions,
+            cash,
+            elig,
+            latest_date,
+            killed and not safety_rebalance,
+            safety_only=safety_rebalance,
+        )
         rebalanced = True
         b_data["last_rebalance_date"] = latest_date
         nav, positions = _mark_to_market(conn, positions, cash, latest_date)
-        print(f"[EPOCH 2] Rebalance asof={latest_date} trades={len(trades)} killed={killed}")
+        reason = "SAFETY_CLEANUP" if safety_rebalance else "SCHEDULED"
+        print(f"[EPOCH 2] Rebalance asof={latest_date} reason={reason} trades={len(trades)} killed={killed}")
 
     # Skip duplicate block same asof with no change
     if b_data.get("asof_price_date") == latest_date and not rebalanced and not force_reinit:

@@ -19,6 +19,7 @@ Outputs:
 import json
 import logging
 import datetime
+import sqlite3
 import sys
 from pathlib import Path
 
@@ -53,6 +54,17 @@ def scan_daily_rise_and_fall(timeframe: str = "weekly") -> dict:
         tickers.extend(sd.get("top_tickers", []))
     tickers = list(dict.fromkeys(tickers))
 
+    try:
+        from unified_score import is_shariah_excluded_sector
+        db = sqlite3.connect(BASE_DIR / "data" / "processed" / "dse.db", timeout=30.0)
+        db.execute("PRAGMA busy_timeout = 30000;")
+        sector_rows = db.execute("SELECT ticker, sector FROM companies").fetchall()
+        db.close()
+        sector_map = {str(t): str(s or "Unknown") for t, s in sector_rows}
+    except Exception as exc:
+        log.error("Sector safety map unavailable: %s", exc)
+        raise RuntimeError("shariah_sector_map_unavailable") from exc
+
     # Macro sentiment
     try:
         from macro_sentiment_engine import analyze_macro_sentiment
@@ -83,6 +95,23 @@ def scan_daily_rise_and_fall(timeframe: str = "weekly") -> dict:
         rise_prob = traj.get("rise_probability_pct", 50.0)
         direction = traj.get("direction", "CONSOLIDATION_RANGE")
         de_val = fund.get("debt_equity_val")
+        sector = sector_map.get(ticker, "Unknown")
+
+        if is_shariah_excluded_sector(sector):
+            reason = f"Shariah / zero-bank exclusion: {sector}"
+            fall_list.append({
+                "ticker": ticker,
+                "price": price,
+                "conviction_tier": "HARD_BLOCK",
+                "served_score": (data.get("served_model") or {}).get("score"),
+                "pe": fund.get("pe"),
+                "debt_equity": de_val,
+                "primary_fall_trigger": reason,
+                "all_triggers": [reason],
+                "management": mgmt.get("managing_director_ceo"),
+                "directive": "DO NOT BUY / BLOCKED",
+            })
+            continue
 
         smart_money = prec.get("smart_money", {})
         cash_flow   = prec.get("cash_flow", {})
@@ -124,6 +153,7 @@ def scan_daily_rise_and_fall(timeframe: str = "weekly") -> dict:
                 "ticker":               ticker,
                 "price":                price,
                 "conviction_tier":      fall_tier,
+                "fall_probability_pct": max(60.0, float(100.0 - (rise_prob if rise_prob is not None else 50.0))),
                 "served_score":         served_score,
                 "pe":                   fund.get("pe"),
                 "debt_equity":          de_val,
@@ -168,6 +198,7 @@ def scan_daily_rise_and_fall(timeframe: str = "weekly") -> dict:
                     "pe":                   fund.get("pe"),
                     "debt_equity":          de_val,
                     "short_term_upside":    st_info.get("upside_potential_pct"),
+                    "rise_probability_pct": float(rise_prob) if rise_prob else 55.0,
                     "mid_term_target":      mt_target,
                     "long_term_target":     lt_info.get("target_price") or price,
                     "rr_ratio":             rr_ratio,
@@ -380,7 +411,7 @@ def publish_rise_fall_report(res: dict):
                 ticker=item["ticker"],
                 timeframe="daily",
                 direction="RISE",
-                prob_pct=50.0,
+                prob_pct=float(item.get("rise_probability_pct", 55.0)),
                 entry_price=item["price"],
                 target_price=item.get("mid_term_target") or round(item["price"] * 1.05, 2),
                 stop_loss=round(item["price"] * 0.96, 2),
@@ -400,7 +431,7 @@ def publish_rise_fall_report(res: dict):
                 ticker=item["ticker"],
                 timeframe="daily",
                 direction="FALL",
-                prob_pct=50.0,
+                prob_pct=float(item.get("fall_probability_pct", 65.0)),
                 entry_price=p,
                 target_price=round(p * 0.90, 2) if p else 0.0,
                 stop_loss=round(p * 1.05, 2) if p else 0.0,

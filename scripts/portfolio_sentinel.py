@@ -47,6 +47,7 @@ def audit_portfolio_sentinel(asof_date: str | None = None) -> dict:
         port = json.load(f)
 
     conn = sqlite3.connect(DB_PATH, timeout=30.0)
+    conn.execute('PRAGMA busy_timeout = 30000;')
     conn.row_factory = sqlite3.Row
     
     if not asof_date:
@@ -56,7 +57,8 @@ def audit_portfolio_sentinel(asof_date: str | None = None) -> dict:
     try:
         from anti_manipulation_engine import is_ticker_blacklisted
     except ImportError:
-        is_ticker_blacklisted = lambda t: (False, "Clean")
+        # FAIL-CLOSED: if surveillance engine is missing, do NOT assume clean
+        is_ticker_blacklisted = lambda t: (True, "Surveillance engine unavailable (Fail-Closed)")
 
     holdings_audit = []
     total_invested_equities = 0.0
@@ -69,7 +71,7 @@ def audit_portfolio_sentinel(asof_date: str | None = None) -> dict:
         sh = int(h["shares"])
         cost = float(h.get("cost_basis") or h.get("gross_cost", 0.0))
         entry_p = float(h["entry_price"])
-        be_price = float(h.get("break_even_price") or (entry_p * 1.0083))
+        be_price = float(h.get("break_even_price") or round(entry_p * (1.0 + 0.00415) / (1.0 - 0.00465), 2))
         
         # Latest Price
         p_row = conn.execute(

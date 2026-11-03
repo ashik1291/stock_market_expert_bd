@@ -98,19 +98,24 @@ def run_5_factor_screener(halal_tier: str = "flexible") -> list[dict]:
         pit.pe_ratio,
         pit.debt_equity,
         pit.dividend_yield,
-        f.cash_flow_ops,
-        f.net_profit_cr,
-        f.raw_data
+        pit.cash_flow_ops,
+        (
+            SELECT COUNT(DISTINCT substr(ca.record_date, 1, 4))
+            FROM corporate_actions ca
+            WHERE ca.ticker = c.ticker
+              AND ca.action_type = 'cash_dividend'
+              AND ca.cash_amount > 0
+              AND ca.record_date <= ?
+        ) AS cash_div_years
     FROM companies c
     JOIN prices p ON c.ticker = p.ticker AND p.date = ?
     LEFT JOIN fundamentals_pit pit ON c.ticker = pit.ticker AND pit.id = (
         SELECT id FROM fundamentals_pit
-        WHERE ticker = c.ticker AND (tradable_date <= ? OR publication_date <= ? OR snapshot_date <= ?)
-        ORDER BY COALESCE(tradable_date, publication_date, snapshot_date) DESC, snapshot_date DESC LIMIT 1
-    )
-    LEFT JOIN fundamentals f ON c.ticker = f.ticker AND f.id = (
-        SELECT id FROM fundamentals WHERE ticker = c.ticker 
-        ORDER BY (raw_data LIKE '%dividend_history%') DESC, year DESC, quarter DESC LIMIT 1
+        WHERE ticker = c.ticker
+          AND tradable_date <= ?
+          AND publication_date <= ?
+          AND cash_flow_ops IS NOT NULL
+        ORDER BY tradable_date DESC, publication_date DESC, snapshot_date DESC LIMIT 1
     )
     WHERE c.category = 'A' AND p.close IS NOT NULL AND p.close > 0
     """
@@ -172,21 +177,8 @@ def run_5_factor_screener(halal_tier: str = "flexible") -> list[dict]:
         if de > 0.80:
             continue
 
-        # Parse raw data for dividend history & cash flow
-        raw = json.loads(r["raw_data"]) if r["raw_data"] else {}
-        div_hist = raw.get("dividend_history", [])
-        
-        # Filter 2: Consecutive Cash Dividend Track Record >= 3 Years
-        # Filter out bonus-only years
-        cash_div_years = 0
-        for d in div_hist:
-            cash_val = float(d.get("cash") or 0.0)
-            if cash_val > 0:
-                cash_div_years += 1
-            else:
-                # Break on gap if checking consecutive, but count >= 3 cash declarations minimum
-                pass
-        
+        # Filter 2: Cash dividend history from dated corporate actions only.
+        cash_div_years = int(r["cash_div_years"] or 0)
         if cash_div_years < 3:
             continue
 
@@ -199,10 +191,6 @@ def run_5_factor_screener(halal_tier: str = "flexible") -> list[dict]:
         # Check direct NOCFPS per share against EPS
         if cfo is not None and eps > 0:
             cfo_ratio = round(cfo / eps, 2)
-        elif raw.get("nocfps") and eps > 0:
-            cfo_ratio = round(float(raw["nocfps"]) / eps, 2)
-        elif r["net_profit_cr"] and float(r["net_profit_cr"]) > 0 and cfo is not None:
-            cfo_ratio = round(cfo / float(r["net_profit_cr"]), 2)
 
         # Strict Enforcement: NO FAKE BYPASS!
         if cfo_ratio is None:
@@ -303,7 +291,9 @@ def generate_5_factor_reports():
 
     # Markdown Report
     md_path = REPORTS_DIR / "five_factor_screened_universe.md"
-    undervalued = [s for s in screened if not s["is_overvalued"]]
+    # Enforce INV-2: Prime Value Moats MUST pass the Central Bank Macro Hurdle (Earnings Yield >= T-Bill + 3.50%)
+    undervalued = [s for s in screened if not s["is_overvalued"] and s.get("passes_macro")]
+    macro_hurdle_fails = [s for s in screened if not s["is_overvalued"] and not s.get("passes_macro")]
     overvalued = [s for s in screened if s["is_overvalued"]]
 
     lines = [
@@ -329,10 +319,24 @@ def generate_5_factor_reports():
             f"| **{u['ticker']}** | {u['sector']} | `{'HALAL' if u.get('is_halal') else 'CONVENTIONAL'}` | ৳{u['price']:.2f} | ৳{u['graham_value']:.2f} | **+{u['margin_of_safety_pct']:.1f}%** | {u['pe']:.1f} | **{u['yield']:.2f}%** | **{u['earnings_yield_pct']:.1f}%** | **{u['equity_risk_premium_pct']:+.1f}%** ({'PRIME' if u['equity_risk_premium_pct']>=5.0 else ('COMPETITIVE' if u['equity_risk_premium_pct']>=0.0 else 'UNCOMPETITIVE')}) | {u['de']:.2f} | {u['promoter_block_pct']:.1f}% | {u['cfo_status']} |"
         )
 
+    if macro_hurdle_fails:
+        lines.extend([
+            "",
+            f"## 2. Macro Hurdle Deficit: Positive MoS But Fails Central Bank 15.10% Hurdle ({len(macro_hurdle_fails)} Stocks)",
+            "> **Action Rule**: DO NOT deploy fresh cash. While accounting Graham MoS is positive, Earnings Yield fails to beat 91-day T-Bill (11.60%) + 3.50% ERP = 15.10% Minimum Equity Hurdle.",
+            "",
+            "| Ticker | Sector | Price (৳) | Graham Fair Value (৳) | Margin of Safety (%) | P/E | Earnings Yield (%) | Deficit vs 15.10% Hurdle |",
+            "| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: |"
+        ])
+        for m in macro_hurdle_fails:
+            lines.append(
+                f"| **{m['ticker']}** | {m['sector']} | ৳{m['price']:.2f} | ৳{m['graham_value']:.2f} | +{m['margin_of_safety_pct']:.1f}% | {m['pe']:.1f} | {m['earnings_yield_pct']:.1f}% | {m['equity_risk_premium_pct']:+.1f}% (Fails +3.5% ERP) |"
+            )
+
     lines.extend([
         "",
-        f"## 2. Premium Quality Moats: Overvalued on Strict Graham Ceiling ({len(overvalued)} Stocks)",
-        "> **Action Rule**: DO NOT sell existing shares (avoid 0.833% friction). Collect cash dividends. Do NOT buy new shares until price corrects to Graham ceiling.",
+        f"## 3. Premium Quality Moats: Overvalued on Strict Graham Ceiling ({len(overvalued)} Stocks)",
+        "> **Action Rule**: DO NOT sell existing shares (avoid friction). Collect cash dividends. Do NOT buy new shares until price corrects to Graham ceiling.",
         "",
         "| Ticker | Sector | Price (৳) | Graham Ceiling (৳) | Margin of Safety (%) | P/E | Div Yield (%) | D/E | Primary Moat |",
         "| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :--- |"

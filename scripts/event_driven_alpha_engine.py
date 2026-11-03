@@ -109,8 +109,12 @@ def scan_dividend_catalysts(asof_date: str | None = None) -> list[dict]:
         # 3. Fundamentals & Debt Filter
         f_row = conn.execute("""
             SELECT eps, nav, pe_ratio, debt_equity, cash_flow_ops 
-            FROM fundamentals_pit WHERE ticker = ? ORDER BY snapshot_date DESC LIMIT 1
-        """, (t,)).fetchone()
+            FROM fundamentals_pit
+            WHERE ticker = ?
+              AND tradable_date <= ?
+              AND publication_date <= ?
+            ORDER BY tradable_date DESC, publication_date DESC, snapshot_date DESC LIMIT 1
+        """, (t, asof_date, asof_date)).fetchone()
         
         de = float(f_row["debt_equity"]) if f_row and f_row["debt_equity"] is not None else None
         cfo = float(f_row["cash_flow_ops"]) if f_row and f_row["cash_flow_ops"] is not None else None
