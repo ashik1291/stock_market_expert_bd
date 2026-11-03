@@ -927,6 +927,47 @@ def insert_market_summary(conn: sqlite3.Connection, date_str: str, raw):
 
 # ── Orchestration ─────────────────────────────────────────────────────────────
 
+
+def _infer_instrument_sector(ticker: str, ticker_sector: dict) -> str:
+    t = ticker.upper()
+    if t.endswith("MF") or "1STMF" in t or "IMF" in t:
+        return "Mutual Funds"
+    if "BOND" in t or t.startswith("TB") or "SUKUK" in t:
+        return "Bonds"
+    if t.endswith("BANK") or t in ("ABBANK", "ALARABANK", "BANKASIA", "BRACBANK", "CITYBANK", "DHAKABANK", "DUTCHBANGL", "EBL", "EXIMBANK", "FIRSTSBANK", "IFIC", "ISLAMIBANK", "JAMUNABANK", "MERCANBANK", "MIDASFIN", "MTB", "NBL", "NCCBANK", "NRBBANK", "ONEBANKLTD", "PREMIERBAN", "PRIMEBANK", "PUBALIBANK", "RUPALIBANK", "SBACBANK", "SIBL", "SOUTHEASTB", "STANDBANKL", "TRUSTBANK", "UFSBANK", "UNIONBANK", "UTTARABANK"):
+        return "Banking"
+    if t.endswith("INS") or "INSUR" in t:
+        return "Insurance"
+    if t.endswith("TEX") or "SPINN" in t or "TEXTILE" in t or "COT" in t or "SYNTH" in t or "KNIT" in t:
+        return "Textile"
+    if t.endswith("PHARMA") or "PHARM" in t or "CHEM" in t or "LAB" in t:
+        return "Pharmaceuticals"
+    if t.endswith("CEM") or "CEMENT" in t:
+        return "Cement"
+    if "POWER" in t or "GEN" in t or "OIL" in t or "GAS" in t or "PETRO" in t:
+        return "Fuel_Power"
+    if "FOOD" in t or "FEED" in t or "AGRO" in t or "SUGAR" in t or "TEA" in t:
+        return "Food_Beverage"
+    if "TEL" in t or "NET" in t or "TECH" in t or "SYS" in t or "INFO" in t:
+        return "IT"
+    if "ENG" in t or "STEEL" in t or "AUTO" in t or "ALUM" in t:
+        return "Engineering"
+    if ticker in ticker_sector:
+        return ticker_sector[ticker]
+    return "Miscellaneous"
+
+
+def _ensure_company_master_record(conn: sqlite3.Connection, ticker: str, rec: dict, ticker_sector: dict):
+    existing = conn.execute("SELECT ticker FROM companies WHERE ticker=?", (ticker,)).fetchone()
+    if not existing:
+        sec = _infer_instrument_sector(ticker, ticker_sector)
+        cat = str(rec.get("category") or "A").strip()
+        name = str(rec.get("name") or ticker).strip()
+        conn.execute("""
+            INSERT OR IGNORE INTO companies (ticker, name, sector, category, updated_at)
+            VALUES (?, ?, ?, ?, ?)
+        """, (ticker, name, sec, cat, datetime.datetime.utcnow().isoformat()))
+
 def process_date(date_str: str = None):
     if date_str is None:
         date_str = datetime.date.today().isoformat()
@@ -956,6 +997,7 @@ def process_date(date_str: str = None):
                 if not ticker:
                     continue
                 insert_prices(conn, ticker, [rec], date_str)
+                _ensure_company_master_record(conn, ticker, rec, ticker_sector)
         conn.commit()
         log.info(f"Inserted {len(all_prices) if isinstance(all_prices, list) else '?'} price snapshots")
 
@@ -1038,7 +1080,16 @@ def get_ticker_data(ticker: str, days: int = 365) -> dict:
         (ticker, since)
     ).fetchall()
 
-    fundamentals = conn.execute(
+    # Query Point-in-Time fundamentals published and tradable by asof date
+    pit_fundamentals = conn.execute(
+        """
+        SELECT * FROM fundamentals_pit
+        WHERE ticker=? AND tradable_date <= ? AND publication_date <= ?
+        ORDER BY tradable_date DESC, snapshot_date DESC LIMIT 12
+        """,
+        (ticker, asof, asof)
+    ).fetchall()
+    fundamentals = pit_fundamentals if pit_fundamentals else conn.execute(
         "SELECT * FROM fundamentals WHERE ticker=? ORDER BY year DESC, quarter DESC LIMIT 12",
         (ticker,)
     ).fetchall()

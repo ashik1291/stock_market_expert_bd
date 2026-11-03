@@ -440,6 +440,13 @@ def generate_learning_report():
     losses = rel_losses + inc_losses
     win_rate = cash_win_rate
 
+    pending_count = sum(1 for i in ledger if i.get("status") == "PENDING")
+    acc_str = f"{weights.get('overall_accuracy_pct')}%" if weights.get('overall_accuracy_pct') is not None else "INSUFFICIENT_DATA (Pending horizon)"
+    long_acc_str = f"{cash_win_rate}%" if long_calls else "INSUFFICIENT_DATA"
+    fall_acc_str = f"{weights.get('risk_avoidance_accuracy_pct')}%" if weights.get('risk_avoidance_accuracy_pct') is not None else "INSUFFICIENT_DATA"
+    mean_excess_str = f"{weights.get('mean_net_excess_pct')}%" if weights.get('mean_net_excess_pct') is not None else "INSUFFICIENT_DATA"
+    brier_str = f"{weights.get('brier_score')}" if weights.get('brier_score') is not None else "INSUFFICIENT_DATA"
+
     lines = [
         "# DSE Phase-2 Learning Audit (Net Excess vs EQW)",
         f"**Audit Timestamp:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
@@ -449,13 +456,15 @@ def generate_learning_report():
         "---",
         "## 1. Performance",
         f"- Evaluated closed calls: **{len(evaluated)}**",
-        f"- Long (RISE) Hit Rate: **{cash_win_rate}%** ({len(cash_wins)} / {len(long_calls)} profitable long calls)",
-        f"- Risk Avoidance (FALL) Rate: **{weights.get('risk_avoidance_accuracy_pct', 0.0)}%**",
-        f"- Combined System Accuracy: **{weights.get('overall_accuracy_pct', win_rate)}%** CI {weights.get('accuracy_ci_95', 'n/a')}",
-        f"- Mean net excess: **{weights.get('mean_net_excess_pct', 'n/a')}%**",
+        f"- Active Pending Forward Predictions: **{pending_count}**",
+        f"- Forward Validation Status: **{'ACCUMULATING_OOS_EVIDENCE' if pending_count else 'IDLE'}**",
+        f"- Long (RISE) Hit Rate: **{long_acc_str}** ({len(cash_wins)} / {len(long_calls)} profitable long calls)",
+        f"- Risk Avoidance (FALL) Rate: **{fall_acc_str}**",
+        f"- Combined System Accuracy: **{acc_str}** CI {weights.get('accuracy_ci_95', 'INSUFFICIENT_DATA')}",
+        f"- Mean net excess: **{mean_excess_str}**",
         f"- Round-trip cost charged: **{ROUND_TRIP_COST_PCT}%**",
         f"- Horizon: **{weights.get('horizon_bars', DEFAULT_HORIZON_BARS)}** trading bars",
-        f"- Brier: **{weights.get('brier_score', 'n/a')}**",
+        f"- Brier Calibration Score: **{brier_str}**",
         "",
         "## 2. Factor Weights (Beta[2,2] prior @ 50%, floor 0)",
         f"| Factor | Weight |",

@@ -710,21 +710,19 @@ def compute_price_trajectory_and_potential(closes: list[float], tech_signals: di
     elif intent_impact < -10:
         bullish_weight -= 1.0
 
-    # Direction Probability (Empirically Calibrated Bayesian Mean-Reversion Model)
-    # Neutral baseline is centered at 50.0% (neither bullish nor bearish).
-    # Positive signals boost up to +25.0% (75.0% institutional cap).
-    # Negative signals penalize down to -35.0% (15.0% floor).
+    # Technical Momentum Bias Score (Heuristic 15-75, NOT a calibrated probability)
+    # Standardized heuristic: positive technicals boost toward 75, negative reduce toward 15.
     if bullish_weight >= 0:
-        raw_prob = 50.0 + (bullish_weight / 6.0) * 25.0
+        raw_score = 50.0 + (bullish_weight / 6.0) * 25.0
     else:
-        raw_prob = 50.0 + (bullish_weight / 5.0) * 35.0
-    rise_prob = round(min(max(raw_prob, 15.0), 75.0), 1)
+        raw_score = 50.0 + (bullish_weight / 5.0) * 35.0
+    momentum_bias_score = round(min(max(raw_score, 15.0), 75.0), 1)
 
-    if rise_prob >= 60.0:
+    if momentum_bias_score >= 60.0:
         direction = "RISE_PREDICTED"
         direction_icon = "🟢"
-        momentum_status = "Bullish Reversal / Upward Accumulation"
-    elif rise_prob >= 45.0:
+        momentum_status = "Bullish Momentum / Upward Bias"
+    elif momentum_bias_score >= 45.0:
         direction = "CONSOLIDATION_RANGE"
         direction_icon = "🟡"
         momentum_status = "Neutral Range Consolidation"
@@ -766,7 +764,8 @@ def compute_price_trajectory_and_potential(closes: list[float], tech_signals: di
     return {
         "direction":             direction,
         "direction_icon":        direction_icon,
-        "rise_probability_pct":  rise_prob,
+        "heuristic_momentum_bias": momentum_bias_score,
+        "rise_probability_pct":  None,  # FAIL-CLOSED: No fake probability from heuristic scores
         "momentum_status":       momentum_status,
         "short_term": {
             "predicted_path":       "Oversold bounce to 20-DMA" if rsi_val < 40 else "Upward momentum swing",
@@ -1067,6 +1066,12 @@ def analyze_ticker(ticker: str, timeframe: Timeframe, ticker_data: dict) -> dict
                 served = get_feature_row(ticker, last_price_date)
     except Exception as e:
         log.warning(f"{ticker}: feature_store attach skipped: {e}")
+
+    # CANONICAL MODEL ENFORCEMENT: If served model marks company ineligible (macro deficit,
+    # debt gate, Shariah exclusion, unverified PIT), downgrade signal immediately.
+    if served and not served.get("is_eligible", False):
+        if signal in ("STRONG_BUY", "BUY"):
+            signal = "HOLD_INELIGIBLE_DEFICIT"
 
     analysis = {
         "ticker":       ticker,

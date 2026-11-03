@@ -78,6 +78,8 @@ class TestSpecConformance(unittest.TestCase):
         self.assertIn("top_picks", res)
         self.assertGreaterEqual(len(res["top_picks"]), 1)
         first = res["top_picks"][0]
+        self.assertIn("heuristic_conviction_score", first)
+        self.assertGreaterEqual(first["heuristic_conviction_score"], 50.0)
         self.assertIn("profit_probability", first)
         self.assertGreaterEqual(first["profit_probability"], 50.0)
         self.assertIn("limit_entry", first)

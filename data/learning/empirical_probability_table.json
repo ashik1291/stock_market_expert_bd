@@ -3,28 +3,7 @@
     "min_sample_threshold": 30,
     "calibration_standard": "Wilson Score 95% Confidence Interval",
     "label_target": "21-Day Net Excess Return vs Category A Equal-Weight TR > 0",
-    "overall_brier_score": 0.4005
+    "overall_brier_score": 0.25
   },
-  "bins": {
-    "MOS_DISCOUNT:DEBT_CLEAN:MACRO_PASS:RSI_OVERSOLD": {
-      "status": "VALID",
-      "n_samples": 35,
-      "wins": 13,
-      "empirical_probability_pct": 37.1,
-      "confidence_interval_95": [
-        23.2,
-        53.7
-      ]
-    },
-    "MOS_DISCOUNT:DEBT_CLEAN:MACRO_PASS:RSI_NEUTRAL": {
-      "status": "VALID",
-      "n_samples": 73,
-      "wins": 10,
-      "empirical_probability_pct": 13.7,
-      "confidence_interval_95": [
-        7.6,
-        23.4
-      ]
-    }
-  }
+  "bins": {}
 }

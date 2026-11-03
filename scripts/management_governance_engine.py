@@ -51,18 +51,20 @@ def get_management_profile(ticker: str, website: str = None) -> dict:
     profile = leadership_db.get(ticker)
 
     if not profile:
-        # Generic profile for tickers not yet in detailed registry
-        profile = {
+        # FAIL-CLOSED: NEVER invent 20 yrs experience or Grade A rating for unknown management
+        return {
+            "ticker": ticker,
             "company_name": ticker,
-            "chairman": "Board Appointed Chairman",
-            "managing_director_ceo": "Managing Director / CEO",
-            "leadership_type": "Public Listed Corporate Board",
-            "industry_experience_years": 20,
-            "governance_rating": "A",
-            "default_loan_history": "None Disclosed",
-            "audit_credibility": "Standard Category A Audit",
-            "key_moat": "DSE Listed Franchise",
-            "management_risk": "Low"
+            "chairman": "UNKNOWN",
+            "managing_director_ceo": "UNKNOWN",
+            "leadership_type": "UNKNOWN_UNREGISTERED",
+            "industry_experience_years": None,
+            "governance_rating": "UNRATED",
+            "audit_credibility": "UNAUDITED_PROFILE",
+            "key_moat": "UNKNOWN",
+            "management_risk": "HIGH_DATA_DEFICIT",
+            "governance_score": 0.0,
+            "is_vetted": False,
         }
 
     # Calculate Quantitative Governance Score (0 - 100)

@@ -89,8 +89,13 @@ def calculate_factor_conviction_score(metrics: Dict[str, Any]) -> float:
     return max(20.0, min(95.0, round(score, 1)))
 
 
+def calculate_heuristic_conviction_score(metrics: Dict[str, Any]) -> float:
+    """Heuristic multi-factor conviction score (0 - 100). NOT a calibrated probability."""
+    return calculate_factor_conviction_score(metrics)
+
+
 def calculate_profit_probability(metrics: Dict[str, Any]) -> float:
-    """Compatibility alias for factor conviction score."""
+    """DEPRECATED alias for heuristic conviction score. NOT a calibrated probability."""
     return calculate_factor_conviction_score(metrics)
 
 
@@ -163,6 +168,7 @@ def evaluate_user_investment_plan(capital_bdt: float = 50000.0, top_n: int = 3) 
             "stop_loss": sl_px,
             "risk_reward": risk_reward,
             "conviction_score": conviction,
+            "heuristic_conviction_score": conviction,
             "empirical_prob": emp_data.get("empirical_probability_pct"),
             "empirical_prob_status": emp_data.get("status"),
             "empirical_prob_ci": emp_data.get("confidence_interval_95"),

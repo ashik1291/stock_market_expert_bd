@@ -121,13 +121,6 @@ def compute_cash_flow_and_dividend_coverage(raw_data: dict, news_text: str = "")
             except Exception:
                 pass
 
-    # If not explicitly in text, estimate conservative operational cash conversion from EPS
-    # Bluechip pharma/monopoly historical avg CFO/EPS is ~0.85
-    cfo_estimated = False
-    if nocfps is None:
-        nocfps = round(eps * 0.85, 2)
-        cfo_estimated = True
-
     # Cash Dividend per share
     div_hist = raw_data.get("dividend_history") or []
     latest_div_pct = 0.0
@@ -137,11 +130,26 @@ def compute_cash_flow_and_dividend_coverage(raw_data: dict, news_text: str = "")
     face_value = float(raw_data.get("faceValue") or 10.0)
     dividend_per_share = round((latest_div_pct / 100.0) * face_value, 2)
 
-    # Coverage ratio = NOCFPS / DPS
+    # FAIL-CLOSED: NEVER fabricate NOCFPS by multiplying EPS by 0.85
+    # If missing, it must remain UNKNOWN with zero bonus.
+    if nocfps is None:
+        return {
+            "nocfps": None,
+            "dividend_per_share": dividend_per_share,
+            "cash_coverage_ratio": None,
+            "fcf_yield_pct": None,
+            "status": "UNKNOWN_CASH_FLOW_DATA_DEFICIT",
+            "signal_text": "NOCFPS (Operating Cash Flow) missing from disclosures — cash flow coverage unknown",
+            "score_bonus": 0.0,
+            "cfo_estimated": False,
+            "is_valid_evidence": False,
+        }
+
+    # Coverage ratio = NOCFPS / DPS (only meaningful if dividend > 0)
     if dividend_per_share > 0:
         coverage_ratio = round(nocfps / dividend_per_share, 2)
     else:
-        coverage_ratio = 5.0 if nocfps > 0 else 0.0
+        coverage_ratio = None  # No dividend declared; do not fabricate 5.0x coverage
 
     # Real Free Cash Flow Yield = NOCFPS / Price
     fcf_yield = round((nocfps / price) * 100, 2) if price > 0 else 0.0
@@ -151,22 +159,26 @@ def compute_cash_flow_and_dividend_coverage(raw_data: dict, news_text: str = "")
         status = "CRITICAL_DIVIDEND_TRAP_DEBT_FUNDED"
         signal_text = f"Operating Cash Flow is NEGATIVE (Tk {nocfps}), but declared Tk {dividend_per_share} dividend (Funded by bank debt)"
         bonus = -30.0
-    elif coverage_ratio >= 1.2:
+    elif coverage_ratio is not None and coverage_ratio >= 1.2:
         status = "PRISTINE_REAL_CASH_COVERAGE"
         signal_text = f"Dividend is {round(coverage_ratio*100)}% cash-covered by real operations (NOCFPS: Tk {nocfps} vs DPS: Tk {dividend_per_share})"
         bonus = +15.0
-    elif coverage_ratio >= 0.8:
+    elif coverage_ratio is not None and coverage_ratio >= 0.8:
         status = "ADEQUATE_CASH_COVERAGE"
         signal_text = f"Dividend is {round(coverage_ratio*100)}% cash-covered by operations"
         bonus = +5.0
-    else:
+    elif coverage_ratio is not None:
         status = "TIGHT_CASH_COVERAGE"
         signal_text = f"Cash flow covers only {round(coverage_ratio*100)}% of dividend payout"
         bonus = -10.0
+    else:
+        status = "NON_DIVIDEND_PAYER_CASH_POSITIVE" if nocfps > 0 else "NON_DIVIDEND_PAYER_CASH_NEGATIVE"
+        signal_text = f"No cash dividend declared (NOCFPS: Tk {nocfps})"
+        bonus = 0.0
 
     return {
         "nocfps":                nocfps,
-        "is_estimated":          cfo_estimated,
+        "is_estimated":          False,
         "dividend_per_share":    dividend_per_share,
         "dividend_coverage_x":   coverage_ratio,
         "fcf_yield_pct":         fcf_yield,

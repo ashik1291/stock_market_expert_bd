@@ -128,6 +128,10 @@ def classify_horizons(records: list[dict], asof_date: str = None) -> dict:
         liquidity   = prec.get("liquidity", {})
         earn_acc    = prec.get("earnings_acceleration", {})
 
+        # 0. Canonical Model Deficit Gate: Never recommend stocks failing served model criteria
+        if r.get("signal") == "HOLD_INELIGIBLE_DEFICIT" or not r.get("is_eligible", True):
+            continue
+
         # 0. Risk Blockades
         is_blocked = False
         try:
@@ -203,6 +207,7 @@ def classify_horizons(records: list[dict], asof_date: str = None) -> dict:
         debt_verified_ok = True if is_bank_or_fin else (de_val is not None and de_val <= 0.80)
 
         is_asset = (
+            r.get("signal") in ("BUY", "STRONG_BUY") and
             pe_val is not None and pe_val <= 16.0 and
             debt_verified_ok and
             loan_risk in ("none", "low") and
@@ -272,6 +277,7 @@ def classify_horizons(records: list[dict], asof_date: str = None) -> dict:
         # 2. Mid-Term Swing Checklist:
         # Momentum, fair valuation (P/E <= 22), debt/equity <= 1.0, 12-20% swing target
         is_swing = (
+            r.get("signal") in ("BUY", "STRONG_BUY") and
             conf >= 60.0 and
             (de_val is None or de_val <= 1.0) and
             loan_risk in ("none", "low") and
@@ -315,7 +321,7 @@ def classify_horizons(records: list[dict], asof_date: str = None) -> dict:
             mid_term.append(mid_rec)
 
         # 3. Short-Term Daily/Weekly Scalp Checklist (Illiquid stocks strictly prohibited from scalping)
-        if conf >= 58.0 and r.get("manipulation_risk") == "low" and not r.get("thin_liquidity_flag"):
+        if r.get("signal") in ("BUY", "STRONG_BUY") and conf >= 58.0 and r.get("manipulation_risk") == "low" and not r.get("thin_liquidity_flag"):
             short_rec = dict(r)
             quick_tgt  = st_info.get("target_price") or round(entry * 1.035, 2)
             tight_stop = st_info.get("support_price") or round(entry * 0.98, 2)
@@ -401,8 +407,13 @@ def build_recommendations(timeframe: str, tickers: list[str] = None, date_str: s
         entry     = levels.get("entry")
         target    = levels.get("target")
         stop_loss = levels.get("stop_loss")
+        served    = analysis.get("served_model") or {}
+        is_eligible = served.get("is_eligible", True) if served else (signal in ("BUY", "STRONG_BUY"))
 
         records.append({
+            "served_model":              served,
+            "is_eligible":               is_eligible,
+            "heuristic_momentum_bias":   traj.get("heuristic_momentum_bias"),
             "ticker":                      ticker,
             "signal":                      signal,
             "confidence":                  confidence,
@@ -548,7 +559,7 @@ def generate_markdown_report(recs: dict) -> str:
     lines.append("## 🏛️ 1. Long-Term Asset Building Plan (Horizon: 1–5+ Years)\n")
     lines.append("*Defensive Moats, Zero/Low Debt, Real Cash-Covered Dividends, Smart-Money Flow Alignment.*\n")
     if h["long_term"]:
-        lines.append("| Ticker | Price | Trajectory & Prob | P/E | Cash Flow Coverage | Smart Money | Max Order Limit | Accumulation Directive |")
+        lines.append("| Ticker | Price | Trajectory & Bias | P/E | Cash Flow Coverage | Smart Money | Max Order Limit | Accumulation Directive |")
         lines.append("|---|---|---|---|---|---|---|---|")
         for r in h["long_term"][:8]:
             entry = f"৳{r['entry']:.1f}" if r['entry'] else "—"
@@ -570,7 +581,7 @@ def generate_markdown_report(recs: dict) -> str:
             lt_info = r.get("lt_info", {})
             _rp = r.get("rise_prob")
             _rp_s = f"{_rp}%" if _rp is not None else "unknown"
-            lines.append(f"#### 📌 **{r['ticker']}** ({r.get('dir_icon') or '—'} Rise Prob: {_rp_s}, P/E: {_fmt_pe(r['pe'])}, Debt: {r['debt_health']})")
+            lines.append(f"#### 📌 **{r['ticker']}** ({r.get('dir_icon') or '—'} Momentum Bias: {r.get('heuristic_momentum_bias') or '—'}, P/E: {_fmt_pe(r['pe'])}, Debt: {r['debt_health']})")
             lines.append(f"- **👔 Top Management**: {r.get('chairman')} (Chairman), {r.get('md_ceo')} (MD/CEO, {r.get('exp_yrs') or 'unknown'}y exp, Rating: {r.get('governance_rating')})")
             lines.append(f"- **🌊 Smart Money Shift**: {r.get('smart_money_sig') or 'unknown'}")
             lines.append(f"- **💰 Real Cash Flow & FCF**: {r.get('cash_flow_cov') or 'unknown'} | FCF Yield: {r.get('fcf_yield') or 'unknown'} | Audit: *{r.get('audit_credibility') or 'unknown'}*")
@@ -755,7 +766,7 @@ def generate_markdown_report_bn(recs: dict) -> str:
     lines.append("## 🏛️ ১. দীর্ঘমেয়াদী সম্পদ গঠন পরিকল্পনা (সময়সীমা: ১–৫+ বছর)\n")
     lines.append("*বাছাইয়ের ভিত্তি: ব্যবসায়িক পরিখা (Moat), শূন্য/স্বল্প ব্যাংক ঋণ, প্রকৃত অপারেটিং ক্যাশ-ফ্লো দ্বারা সমর্থিত নগদ ডিভিডেন্ড এবং স্মার্ট মানি সঞ্চয়ন।*\n")
     if h["long_term"]:
-        lines.append("| কোম্পানি | বর্তমান দর | গতিপথ ও সম্ভাবনা | P/E অনুপাত | ক্যাশ ফ্লো কাভারেজ | স্মার্ট মানি অবস্থা | সর্বোচ্চ নিরাপদ লট | সঞ্চয়ন নির্দেশিকা |")
+        lines.append("| কোম্পানি | বর্তমান দর | গতিপথ ও বায়াস | P/E অনুপাত | ক্যাশ ফ্লো কাভারেজ | স্মার্ট মানি অবস্থা | সর্বোচ্চ নিরাপদ লট | সঞ্চয়ন নির্দেশিকা |")
         lines.append("|---|---|---|---|---|---|---|---|")
         for r in h["long_term"][:8]:
             entry = f"৳{r['entry']:.1f}" if r['entry'] else "—"
@@ -777,7 +788,7 @@ def generate_markdown_report_bn(recs: dict) -> str:
             lt_info = r.get("lt_info", {})
             _rp = r.get("rise_prob")
             _rp_s = f"{_rp}%" if _rp is not None else "অজানা"
-            lines.append(f"#### 📌 **{r['ticker']}** ({r.get('dir_icon') or '—'} বৃদ্ধির সম্ভাবনা: {_rp_s}, P/E: {_fmt_pe(r['pe'])}, ঋণ স্থিতি: {r['debt_health']})")
+            lines.append(f"#### 📌 **{r['ticker']}** ({r.get('dir_icon') or '—'} মোমেন্টাম বায়াস: {r.get('heuristic_momentum_bias') or '—'}, P/E: {_fmt_pe(r['pe'])}, ঋণ স্থিতি: {r['debt_health']})")
             lines.append(f"- **👔 শীর্ষ ব্যবস্থাপনা**: {r.get('chairman')} (চেয়ারম্যান), {r.get('md_ceo')} (এমডি/সিইও, অভিজ্ঞতা: {r.get('exp_yrs') or '—'} বছর, সুশাসন রেটিং: {r.get('governance_rating')})")
             lines.append(f"- **🌊 স্মার্ট মানি প্রবাহ**: {r.get('smart_money_sig') or 'অজানা'}")
             lines.append(f"- **💰 প্রকৃত ক্যাশ ফ্লো ও FCF**: {r.get('cash_flow_cov') or 'অজানা'} | ফ্রি ক্যাশ ফ্লো ইল্ড: {r.get('fcf_yield') or '—'} | নিরীক্ষা বিশ্বাসযোগ্যতা: *{r.get('audit_credibility') or '—'}*")

@@ -297,11 +297,13 @@ class TestAuditFixesValidation(unittest.TestCase):
         self.assertEqual(synthetic_count, 0, "Synthetic dilution rows still present in corporate_actions!")
 
     def test_layer8_rl_engine_outcome_matching(self):
-        """Verify RL engine matches CORRECT_PROFIT outcomes and reports positive win rate."""
+        """Verify RL engine handles outcome matching without corrupting data or faking accuracy."""
         from reinforcement_learning_engine import evaluate_pending_predictions
         res = evaluate_pending_predictions()
         self.assertIn("lifetime_accuracy_pct", res)
-        self.assertGreater(res["lifetime_accuracy_pct"], 0.0)
+        if res["lifetime_accuracy_pct"] is not None:
+            self.assertGreaterEqual(res["lifetime_accuracy_pct"], 0.0)
+            self.assertLessEqual(res["lifetime_accuracy_pct"], 100.0)
 
     def test_layer8_sentinel_take_profit_directives(self):
         """Verify portfolio sentinel issues TAKE_PROFIT_ALL and TAKE_PROFIT_HALF directives."""
