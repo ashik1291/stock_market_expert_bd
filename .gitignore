@@ -64,3 +64,11 @@ scratch_*.py
 *page_dump.txt
 *.log
 *.tmp
+
+# 7. User-Specific Portfolios, Personal Profiles & Custom Halal Preferences
+data/portfolio/portfolio.json
+data/portfolio/current_position_plan*.md
+data/portfolio/halal_*_plan.*
+data/users/*
+!data/users/.gitkeep
+!data/users/profile.template.json
