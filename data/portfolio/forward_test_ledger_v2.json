@@ -2757,6 +2757,150 @@
         "last_rebalance_date": "2026-11-02"
       },
       "block_hash": "e98f8f5b8e93765086ffe3d8f3c4fa0664e4b4b428c4b2726f4cec04bf55e34c"
+    },
+    {
+      "block_index": 15,
+      "timestamp": "2026-11-03T14:26:58.776600+00:00",
+      "prev_hash": "e98f8f5b8e93765086ffe3d8f3c4fa0664e4b4b428c4b2726f4cec04bf55e34c",
+      "data": {
+        "epoch": "EPOCH-2-LIVE-PROSPECTIVE-2026",
+        "registered_at": "2026-10-11T10:39:34.252678+00:00",
+        "git_commit": "3dfc8ce",
+        "trial_count_deflated": 52,
+        "discarded_trials": [
+          "Epoch 0: 2012-2026 Backtest (+576% Lookahead Leak Discarded)",
+          "Epoch 1: 2026-10-07 Forward Ledger (Retroactive Timestamp & Price Index Discarded)"
+        ],
+        "parameter_hash": "acf502bc65914c48",
+        "initial_cash": 1000000.0,
+        "current_cash": 600224.73,
+        "portfolio_nav": 988810.23,
+        "benchmark": "EQUAL_WEIGHTED_TOTAL_RETURN_UNIVERSE",
+        "benchmark_baseline_nav": 100.0,
+        "rules": {
+          "max_sector_weight_pct": 20.0,
+          "max_single_stock_pct": 10.0,
+          "execution_fill": "NEXT_SESSION_OPEN_PLUS_10BPS_SLIPPAGE",
+          "round_trip_fee_pct": 0.833,
+          "required_independent_periods_80pct_power": 87,
+          "precommitted_success_criterion": "Excess Return vs Filtered Total Return >= +4.0% with IR >= +0.50 after T=87 periods",
+          "precommitted_kill_criterion": "Excess Return < -3.0% OR Portfolio Max Drawdown < -25.0%"
+        },
+        "positions": [
+          {
+            "ticker": "JAMUNAOIL",
+            "sector": "Fuel_Power",
+            "entry_date": "2026-10-11",
+            "execution_price": 179.38,
+            "shares": 555,
+            "invested_equity": 99555.9,
+            "buy_fee_deducted": 413.16,
+            "pe": 3.0306643952299828,
+            "yield": 9.87,
+            "last_mark_price": 176.6,
+            "last_mark_date": "2026-11-03",
+            "mark_equity": 98013.0
+          },
+          {
+            "ticker": "MPETROLEUM",
+            "sector": "Fuel_Power",
+            "entry_date": "2026-10-11",
+            "execution_price": 204.3,
+            "shares": 487,
+            "invested_equity": 99494.1,
+            "buy_fee_deducted": 412.9,
+            "pe": 3.352337514253136,
+            "yield": 9.76,
+            "last_mark_price": 213.9,
+            "last_mark_date": "2026-11-03",
+            "mark_equity": 104169.3
+          },
+          {
+            "ticker": "BSRMLTD",
+            "sector": "Engineering",
+            "entry_date": "2026-10-11",
+            "execution_price": 99.3,
+            "shares": 1002,
+            "invested_equity": 99498.6,
+            "buy_fee_deducted": 412.92,
+            "pe": 4.555177442877977,
+            "yield": 6.61,
+            "last_mark_price": 92.1,
+            "last_mark_date": "2026-11-03",
+            "mark_equity": 92284.2
+          },
+          {
+            "ticker": "GP",
+            "sector": "Telecom",
+            "entry_date": "2026-10-11",
+            "execution_price": 241.94,
+            "shares": 411,
+            "invested_equity": 99437.34,
+            "buy_fee_deducted": 412.66,
+            "pe": 10.968036529680365,
+            "yield": 8.34,
+            "last_mark_price": 229.0,
+            "last_mark_date": "2026-11-03",
+            "mark_equity": 94119.0
+          }
+        ],
+        "updated_at": "2026-11-03T14:26:58.776600+00:00",
+        "asof_price_date": "2026-11-03",
+        "model_id": "frozen_epoch2_pit_v2",
+        "feature_build": {
+          "ok": true,
+          "date": "2026-11-03",
+          "rows": 119,
+          "eligible": 32,
+          "model_id": "frozen_epoch2_pit_v2",
+          "parameter_hash": "acf502bc65914c48"
+        },
+        "nav_history": [
+          1000000.0,
+          991809.63,
+          989301.77,
+          993161.47,
+          990323.37,
+          991381.97,
+          995705.87,
+          996175.47,
+          1001386.97,
+          1001032.77,
+          990473.06
+        ],
+        "max_drawdown_pct": -1.09,
+        "strat_return_pct": -0.95,
+        "eqw_return_pct": -1.5304,
+        "excess_vs_eqw_pct": 0.58,
+        "strategy_status": "ACTIVE",
+        "kill_reason": null,
+        "last_trades": [
+          {
+            "action": "SELL",
+            "ticker": "DHAKABANK",
+            "shares": 8963,
+            "reason": "OUTSIDE_TOP_30PCT",
+            "price": 10.76,
+            "fill_date": "2026-11-03",
+            "fill_source": "CLOSE_PROXY",
+            "proceeds": 95993.43
+          },
+          {
+            "action": "SELL",
+            "ticker": "ACMELAB",
+            "shares": 1283,
+            "reason": "OUTSIDE_TOP_30PCT",
+            "price": 76.79,
+            "fill_date": "2026-11-03",
+            "fill_source": "CLOSE_PROXY",
+            "proceeds": 98063.44
+          }
+        ],
+        "daily_ic": null,
+        "eligible_count": 32,
+        "last_rebalance_date": "2026-11-03"
+      },
+      "block_hash": "13740bad9cd5171141e9ef5e2b776663568dedd6a4c546b1ec01568e186a4f6b"
     }
   ]
 }

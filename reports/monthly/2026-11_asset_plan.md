@@ -27,21 +27,21 @@ Do NOT deploy 100% capital in a single day. Spread monthly allocation across 4 s
 
 | Ticker | Entry Zone | Direction & Prob | Upside / Risk | P/E | Debt/Equity | Leadership & Experience | Tranche Pacing | Target Exit |
 |---|---|---|---|---|---|---|---|---|
-| **PADMAOIL** | ৳192.8–৳198.7 | 🟢 (65.8%) | +30.0% / -4.7% | 3.2 | D/E: 0.007 | Md. Masudur Rahman (30y exp, AA+) | 20% per tranche | ৳255.7 |
-| **MPETROLEUM** | ৳207.7–৳214.0 | 🟢 (65.8%) | +30.0% / -6.7% | 3.3 | D/E: 0.006 | Engr. Md. Rehanul Islam (30y exp, AA+) | 20% per tranche | ৳275.5 |
-| **SQURPHARMA** | ৳213.1–৳219.6 | 🟢 (70.8%) | +30.0% / -4.0% | 7.7 | D/E: 0.006 | Tapan Chowdhury (45y exp, AAA) | 20% per tranche | ৳282.6 |
-| **LHB** | ৳47.0–৳48.5 | 🟢 (71.2%) | +30.0% / -5.2% | 10.6 | D/E: 0.0 | Mohammad Iqbal Chowdhury (25y exp, AAA) | 20% per tranche | ৳62.4 |
-| **HWAWELLTEX** | ৳44.5–৳45.9 | 🟢 (64.6%) | +30.0% / -7.6% | 11.0 | D/E: 0.0 | Managing Director / CEO (20y exp, A) | 20% per tranche | ৳59.0 |
+| **PADMAOIL** | ৳194.5–৳200.5 | 🟢 (65.8%) | +30.0% / -6.3% | 3.2 | D/E: 0.007 | Md. Masudur Rahman (30y exp, AA+) | 20% per tranche | ৳258.1 |
+| **SQURPHARMA** | ৳211.3–৳217.8 | 🟢 (74.2%) | +30.0% / -2.3% | 7.7 | D/E: 0.006 | Tapan Chowdhury (45y exp, AAA) | 20% per tranche | ৳280.3 |
+| **MPETROLEUM** | ৳209.6–৳216.0 | 🟢 (61.7%) | +30.0% / -8.3% | 3.3 | D/E: 0.006 | Engr. Md. Rehanul Islam (30y exp, AA+) | 20% per tranche | ৳278.1 |
+| **SAIHAMCOT** | ৳21.1–৳21.7 | 🟡 (58.3%) | +29.8% / -11.7% | 13.8 | D/E: 0.644 | Managing Director / CEO (20y exp, A) | 20% per tranche | ৳27.9 |
+| **HWAWELLTEX** | ৳48.7–৳50.2 | 🟡 (59.6%) | +30.0% / -12.0% | 11.0 | D/E: 0.0 | Managing Director / CEO (20y exp, A) | 20% per tranche | ৳64.6 |
 
 ## 🚀 4. Top Mid-Term Cycle Swings (1–6 Months)
 
 | Ticker | Entry Price | Direction & Prob | Target (+15%) | Trailing Stop (-5%) | Risk/Reward | P/E |
 |---|---|---|---|---|---|---|
-| **PADMAOIL** | ৳196.7 | 🟢 65.8% | **৳201.0** | ৳191.6 | 0.8x | 3.2 |
-| **MPETROLEUM** | ৳211.9 | 🟢 65.8% | **৳217.3** | ৳204.1 | 0.7x | 3.3 |
-| **SQURPHARMA** | ৳217.4 | 🟢 70.8% | **৳221.1** | ৳212.7 | 0.8x | 7.7 |
-| **LHB** | ৳48.0 | 🟢 71.2% | **৳58.1** | ৳46.6 | 7.2x | 10.6 |
-| **HWAWELLTEX** | ৳45.4 | 🟢 64.6% | **৳51.0** | ৳43.5 | 2.9x | 11.0 |
+| **PADMAOIL** | ৳198.5 | 🟢 65.8% | **৳202.9** | ৳191.6 | 0.6x | 3.2 |
+| **SQURPHARMA** | ৳215.6 | 🟢 74.2% | **৳220.1** | ৳212.7 | 1.6x | 7.7 |
+| **MPETROLEUM** | ৳213.9 | 🟢 61.7% | **৳219.7** | ৳204.1 | 0.6x | 3.3 |
+| **SAIHAMCOT** | ৳21.5 | 🟡 58.3% | **৳26.5** | ৳20.1 | 3.6x | 13.8 |
+| **HWAWELLTEX** | ৳49.7 | 🟡 59.6% | **৳53.4** | ৳44.7 | 0.7x | 11.0 |
 
 ## 🛡️ 5. Monthly Risk Filter & Governance Directive
 

@@ -1,60 +1,60 @@
 {
   "ticker": "ACMELAB",
-  "audited_at": "2026-11-02 15:04:02",
+  "audited_at": "2026-11-03 20:27:01",
   "worth_vs_greed": {
-    "current_price": 77.8,
+    "current_price": 77.1,
     "intrinsic_worth": 26.4,
-    "margin_of_safety_pct": -66.1,
+    "margin_of_safety_pct": -65.8,
     "extension_froth_score": 10.0,
     "greed_index": 10.0,
-    "rsi_14": 55.3,
-    "price_vs_ema50_pct": -0.7,
-    "price_vs_ema200_pct": -0.7,
+    "rsi_14": 50.0,
+    "price_vs_ema50_pct": -1.6,
+    "price_vs_ema200_pct": -1.6,
     "merit_status": "EARNINGS_BACKED_MERIT",
     "merit_reason": "Price supported by solid earnings (EPS: \u09f33.30, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f376.2 \u2013 \u09f378.6",
-      "chase_cutoff_price": 79.7,
-      "when_to_wait": "If price opens or rises above \u09f379.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f376.2.",
-      "weekly_target_short": 80.5,
-      "monthly_target_swing": 89.5,
-      "long_term_target_asset": 101.1,
+      "optimal_entry_corridor": "\u09f375.6 \u2013 \u09f377.9",
+      "chase_cutoff_price": 79.0,
+      "when_to_wait": "If price opens or rises above \u09f379.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f375.6.",
+      "weekly_target_short": 79.8,
+      "monthly_target_swing": 88.7,
+      "long_term_target_asset": 100.2,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -66.1%).",
+    "reason": "Fundamental value severely lags stock price (MoS: -65.8%).",
     "is_blacklisted": false,
     "blacklist_reason": null
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 0.91,
+        "return_pct": -0.52,
         "high": 78.4,
-        "low": 77.0,
-        "range_volatility_pct": 1.82
+        "low": 76.9,
+        "range_volatility_pct": 1.95
       },
       "monthly_21d": {
-        "return_pct": -0.51,
-        "high": 78.8,
+        "return_pct": -1.41,
+        "high": 78.7,
         "low": 76.2,
-        "range_volatility_pct": 3.41
+        "range_volatility_pct": 3.28
       },
       "quarterly_63d": {
-        "return_pct": -6.94,
-        "high": 84.9,
+        "return_pct": -7.78,
+        "high": 84.1,
         "low": 75.8,
-        "range_volatility_pct": 12.01
+        "range_volatility_pct": 10.95
       },
       "half_yearly_126d": {
-        "return_pct": 3.05,
+        "return_pct": 2.39,
         "high": 88.7,
         "low": 74.8,
         "range_volatility_pct": 18.58
       },
       "yearly_252d": {
-        "return_pct": 2.1,
+        "return_pct": 2.39,
         "high": 88.7,
         "low": 68.6,
         "range_volatility_pct": 29.3

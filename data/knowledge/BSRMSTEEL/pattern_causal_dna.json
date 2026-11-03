@@ -1,60 +1,60 @@
 {
   "ticker": "BSRMSTEEL",
-  "audited_at": "2026-11-02 15:04:05",
+  "audited_at": "2026-11-03 20:27:04",
   "worth_vs_greed": {
-    "current_price": 90.7,
+    "current_price": 89.6,
     "intrinsic_worth": 50.8,
-    "margin_of_safety_pct": -44.0,
+    "margin_of_safety_pct": -43.3,
     "extension_froth_score": 30.0,
     "greed_index": 30.0,
-    "rsi_14": 63.1,
-    "price_vs_ema50_pct": 2.4,
-    "price_vs_ema200_pct": 11.8,
+    "rsi_14": 71.6,
+    "price_vs_ema50_pct": 1.1,
+    "price_vs_ema200_pct": 10.3,
     "merit_status": "EARNINGS_BACKED_MERIT",
     "merit_reason": "Price supported by solid earnings (EPS: \u09f36.35, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f388.9 \u2013 \u09f391.6",
-      "chase_cutoff_price": 93.0,
-      "when_to_wait": "If price opens or rises above \u09f393.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f388.9.",
-      "weekly_target_short": 93.9,
-      "monthly_target_swing": 104.3,
-      "long_term_target_asset": 117.9,
+      "optimal_entry_corridor": "\u09f387.8 \u2013 \u09f390.5",
+      "chase_cutoff_price": 91.8,
+      "when_to_wait": "If price opens or rises above \u09f391.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f387.8.",
+      "weekly_target_short": 92.7,
+      "monthly_target_swing": 103.0,
+      "long_term_target_asset": 116.5,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -44.0%).",
+    "reason": "Fundamental value severely lags stock price (MoS: -43.3%).",
     "is_blacklisted": false,
     "blacklist_reason": null
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -0.11,
+        "return_pct": -1.86,
         "high": 92.0,
-        "low": 89.8,
-        "range_volatility_pct": 2.45
+        "low": 89.2,
+        "range_volatility_pct": 3.14
       },
       "monthly_21d": {
-        "return_pct": 9.01,
+        "return_pct": 8.08,
         "high": 94.0,
         "low": 82.0,
         "range_volatility_pct": 14.63
       },
       "quarterly_63d": {
-        "return_pct": -8.57,
-        "high": 101.7,
+        "return_pct": -9.77,
+        "high": 101.0,
         "low": 81.5,
-        "range_volatility_pct": 24.79
+        "range_volatility_pct": 23.93
       },
       "half_yearly_126d": {
-        "return_pct": 31.07,
+        "return_pct": 29.48,
         "high": 102.0,
-        "low": 68.0,
-        "range_volatility_pct": 50.0
+        "low": 69.0,
+        "range_volatility_pct": 47.83
       },
       "yearly_252d": {
-        "return_pct": 39.54,
+        "return_pct": 44.98,
         "high": 102.0,
         "low": 55.0,
         "range_volatility_pct": 85.45
@@ -66,7 +66,7 @@
       "avg_wave_duration_bars": 25.0
     },
     "current_wave_phase": "LATE_MARKUP",
-    "phase_guidance": "Approaching historical rally limit (+11.3% vs median +13.0%). Tighten stop.",
+    "phase_guidance": "Approaching historical rally limit (+9.9% vs median +13.0%). Tighten stop.",
     "top_seasonal_months": [
       {
         "month": "Aug",

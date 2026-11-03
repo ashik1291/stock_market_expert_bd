@@ -1,29 +1,29 @@
 {
   "ticker": "UCB",
-  "audited_at": "2026-11-02 15:04:02",
+  "audited_at": "2026-11-03 20:27:01",
   "worth_vs_greed": {
-    "current_price": 8.6,
-    "intrinsic_worth": 5.26,
-    "margin_of_safety_pct": -38.8,
+    "current_price": 8.5,
+    "intrinsic_worth": 0.32,
+    "margin_of_safety_pct": -96.2,
     "extension_froth_score": 50.0,
     "greed_index": 50.0,
-    "rsi_14": 57.1,
-    "price_vs_ema50_pct": -2.1,
-    "price_vs_ema200_pct": -7.0,
-    "merit_status": "NEUTRAL_MERIT",
-    "merit_reason": "Valuation is within normal historical ranges.",
+    "rsi_14": 59.3,
+    "price_vs_ema50_pct": -3.1,
+    "price_vs_ema200_pct": -8.0,
+    "merit_status": "EARNINGS_BACKED_MERIT",
+    "merit_reason": "Price supported by solid earnings (EPS: \u09f30.04, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f38.4 \u2013 \u09f38.7",
-      "chase_cutoff_price": 8.8,
-      "when_to_wait": "If price opens or rises above \u09f38.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f38.4.",
-      "weekly_target_short": 8.9,
-      "monthly_target_swing": 9.9,
-      "long_term_target_asset": 11.2,
+      "optimal_entry_corridor": "\u09f38.3 \u2013 \u09f38.6",
+      "chase_cutoff_price": 8.7,
+      "when_to_wait": "If price opens or rises above \u09f38.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f38.3.",
+      "weekly_target_short": 8.8,
+      "monthly_target_swing": 9.8,
+      "long_term_target_asset": 11.1,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -38.8%).",
+    "reason": "Fundamental value severely lags stock price (MoS: -96.2%).",
     "is_blacklisted": true,
     "blacklist_reason": "Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-10-28 \u2014 Volume is 10.7x 20-day average (2,949,703 vs 274,794) | Price up +9.52% with poor fundamentals (Negative EPS) | Promoters hold only 10.3% (< 30% legal threshold) during price run-up]",
     "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-10-28 \u2014 Volume is 10.7x 20-day average (2,949,703 vs 274,794) | Price up +9.52% with poor fundamentals (Negative EPS) | Promoters hold only 10.3% (< 30% legal threshold) during price run-up]"
@@ -31,31 +31,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 1.18,
+        "return_pct": 1.19,
         "high": 9.6,
         "low": 8.0,
         "range_volatility_pct": 20.0
       },
       "monthly_21d": {
-        "return_pct": -3.37,
+        "return_pct": -2.3,
         "high": 9.6,
         "low": 8.0,
         "range_volatility_pct": 20.0
       },
       "quarterly_63d": {
-        "return_pct": -13.13,
-        "high": 10.0,
+        "return_pct": -14.14,
+        "high": 9.9,
         "low": 8.0,
-        "range_volatility_pct": 25.0
+        "range_volatility_pct": 23.75
       },
       "half_yearly_126d": {
-        "return_pct": -2.27,
+        "return_pct": -1.16,
         "high": 10.2,
         "low": 8.0,
         "range_volatility_pct": 27.5
       },
       "yearly_252d": {
-        "return_pct": -14.0,
+        "return_pct": -16.67,
         "high": 10.8,
         "low": 8.0,
         "range_volatility_pct": 35.0
@@ -67,7 +67,7 @@
       "avg_wave_duration_bars": 21.0
     },
     "current_wave_phase": "MARKUP_RALLY_MID",
-    "phase_guidance": "Midway through rally wave (+7.5% from base, historical target ~+16.9%).",
+    "phase_guidance": "Midway through rally wave (+6.2% from base, historical target ~+16.9%).",
     "top_seasonal_months": [
       {
         "month": "Aug",

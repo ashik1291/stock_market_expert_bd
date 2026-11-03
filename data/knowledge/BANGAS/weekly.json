@@ -2,18 +2,18 @@
   "ticker": "BANGAS",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-02T09:04:05.010446",
-  "asof_price_date": "2026-11-02",
+  "analyzed_at": "2026-11-03T14:27:03.972481",
+  "asof_price_date": "2026-11-03",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 25.9133,
+    "rsi_14": 21.8741,
     "pe_ratio": 421.4285714285714,
     "debt_equity": 0.156
   },
-  "signal": "BUY",
-  "confidence": 60.83,
+  "signal": "HOLD",
+  "confidence": 58.66,
   "trajectory": {
     "direction": "RISE_PREDICTED",
     "direction_icon": "\ud83d\udfe2",
@@ -21,33 +21,33 @@
     "momentum_status": "Bullish Reversal / Upward Accumulation",
     "short_term": {
       "predicted_path": "Oversold bounce to 20-DMA",
-      "upside_potential_pct": "+4.1%",
+      "upside_potential_pct": "+4.3%",
       "downside_risk_pct": "-2.8%",
-      "target_price": 109.4,
-      "support_price": 102.2,
+      "target_price": 106.9,
+      "support_price": 99.6,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
       "upside_potential_pct": "+25.0%",
-      "downside_risk_pct": "-4.1%",
-      "target_price": 131.4,
-      "trailing_stop": 100.8,
-      "risk_reward_ratio": "6.1x"
+      "downside_risk_pct": "-4.3%",
+      "target_price": 128.1,
+      "trailing_stop": 98.1,
+      "risk_reward_ratio": "5.8x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.0%",
-      "downside_risk_pct": "-7.4%",
-      "target_price": 136.6,
+      "downside_risk_pct": "-7.7%",
+      "target_price": 133.2,
       "dividend_cagr": "moderate (0.3%)",
-      "risk_reward_ratio": "4.1x"
+      "risk_reward_ratio": "3.9x"
     }
   },
   "trade_levels": {
-    "entry": 105.1,
-    "stop_loss": 100.77,
-    "target": 113.76
+    "entry": 102.5,
+    "stop_loss": 98.09,
+    "target": 111.32
   },
   "precision": {
     "ticker": "BANGAS",
@@ -70,14 +70,14 @@
       "signal": "Dividend is 500% cash-covered by real operations (NOCFPS: Tk 0.03 vs DPS: Tk 0.0)"
     },
     "liquidity": {
-      "avg_daily_volume": 30563,
+      "avg_daily_volume": 24705,
       "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 1528,
-      "max_daily_accumulation_shares": 4584,
-      "max_order_bdt": 1528.0,
-      "directive": "Max single order: 1,528 shares (Tk 1,528) to prevent >1% execution slippage"
+      "max_single_order_shares": 1235,
+      "max_daily_accumulation_shares": 3705,
+      "max_order_bdt": 1235.0,
+      "directive": "Max single order: 1,235 shares (Tk 1,235) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -89,25 +89,25 @@
   },
   "pattern_dna": {
     "ticker": "BANGAS",
-    "audited_at": "2026-11-02 15:04:05",
+    "audited_at": "2026-11-03 20:27:03",
     "worth_vs_greed": {
-      "current_price": 105.1,
+      "current_price": 102.5,
       "intrinsic_worth": 0.24,
       "margin_of_safety_pct": -99.8,
       "extension_froth_score": 20.0,
       "greed_index": 20.0,
-      "rsi_14": 15.7,
-      "price_vs_ema50_pct": -10.5,
-      "price_vs_ema200_pct": -14.8,
+      "rsi_14": 15.1,
+      "price_vs_ema50_pct": -12.3,
+      "price_vs_ema200_pct": -16.8,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f30.03, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f3103.0 \u2013 \u09f3106.2",
-        "chase_cutoff_price": 107.7,
-        "when_to_wait": "If price opens or rises above \u09f3107.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3103.0.",
-        "weekly_target_short": 108.8,
-        "monthly_target_swing": 120.9,
-        "long_term_target_asset": 136.6,
+        "optimal_entry_corridor": "\u09f3100.5 \u2013 \u09f3103.5",
+        "chase_cutoff_price": 105.1,
+        "when_to_wait": "If price opens or rises above \u09f3105.1, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3100.5.",
+        "weekly_target_short": 106.1,
+        "monthly_target_swing": 117.9,
+        "long_term_target_asset": 133.2,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
@@ -119,31 +119,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -2.78,
+          "return_pct": -3.57,
           "high": 109.2,
-          "low": 105.1,
-          "range_volatility_pct": 3.9
+          "low": 102.0,
+          "range_volatility_pct": 7.06
         },
         "monthly_21d": {
-          "return_pct": -9.4,
+          "return_pct": -11.26,
           "high": 122.5,
-          "low": 105.1,
-          "range_volatility_pct": 16.56
+          "low": 102.0,
+          "range_volatility_pct": 20.1
         },
         "quarterly_63d": {
-          "return_pct": -23.4,
+          "return_pct": -24.52,
           "high": 142.5,
-          "low": 105.1,
-          "range_volatility_pct": 35.59
+          "low": 102.0,
+          "range_volatility_pct": 39.71
         },
         "half_yearly_126d": {
-          "return_pct": -24.39,
+          "return_pct": -23.22,
           "high": 146.9,
-          "low": 105.1,
-          "range_volatility_pct": 39.77
+          "low": 102.0,
+          "range_volatility_pct": 44.02
         },
         "yearly_252d": {
-          "return_pct": -3.93,
+          "return_pct": -3.85,
           "high": 157.0,
           "low": 93.0,
           "range_volatility_pct": 68.82
@@ -253,18 +253,18 @@
     ]
   },
   "technical": {
-    "score": 57.5,
+    "score": 50.0,
     "signals": {
       "rsi": "oversold_bullish",
-      "macd": "neutral",
+      "macd": "bearish_crossover",
       "sma_trend": "neutral",
       "bb": "inside_bands",
-      "atr": 2.89,
-      "rsi_value": 25.89,
-      "last_close": 105.1,
-      "sma20": 111.79,
-      "sma50": 118.04,
-      "sma200": 127.27,
+      "atr": 2.94,
+      "rsi_value": 22.24,
+      "last_close": 102.5,
+      "sma20": 111.11,
+      "sma50": 117.44,
+      "sma200": 127.14,
       "support_resistance": {
         "supports": [
           110.6,
@@ -315,10 +315,10 @@
       "earnings_quality": "moderate_accrual_drag",
       "downturn_resilience": {
         "status": "growth_at_discount",
-        "drawdown_pct": 33.1,
+        "drawdown_pct": 34.7,
         "high_52w": 157.0,
         "low_52w": 93.0,
-        "note": "Share price down 33.1% from 52w peak, yet earnings positive/steady (Conviction discount)"
+        "note": "Share price down 34.7% from 52w peak, yet earnings positive/steady (Conviction discount)"
       }
     }
   },
@@ -359,15 +359,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 3820,
-        "avg_volume": 32963.0,
+        "last_volume": 20335,
+        "avg_volume": 31979.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.11,
-        "avg_volume": 34326.0,
-        "today_volume": 3820,
+        "spike_ratio": 0.62,
+        "avg_volume": 32963.0,
+        "today_volume": 20335,
         "detail": "ok"
       },
       "serial_trading": {
@@ -386,20 +386,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": -0.28,
+        "price_change_3d": -2.75,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 60.83,
+    "composite_score": 58.66,
     "governance_score": 75,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.524,
-      "technical": 0.297,
-      "governance": 0.179,
+      "fundamental": 0.486,
+      "technical": 0.321,
+      "governance": 0.193,
       "sentiment": 0.0
     }
   }
