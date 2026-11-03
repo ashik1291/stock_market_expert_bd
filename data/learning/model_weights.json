@@ -1,42 +1,23 @@
 {
-  "smart_money_weight": 0.451,
-  "valuation_mos_weight": 0.451,
-  "debt_npl_weight": 0.451,
-  "rsi_momentum_weight": 1.094,
+  "smart_money_weight": 1.0,
+  "valuation_mos_weight": 1.0,
+  "debt_npl_weight": 1.0,
+  "rsi_momentum_weight": 1.0,
   "macd_trend_weight": 1.0,
-  "governance_weight": 1.1,
+  "governance_weight": 1.0,
   "macro_bias_weight": 1.0,
   "learning_rate": 0.02,
-  "total_training_cycles": 146,
-  "overall_accuracy_pct": 6.8,
-  "updated_at": "2026-11-03T21:47:37.129984",
-  "accuracy_ci_95": "[3.8% \u2013 12.1%]",
-  "net_expectancy_pct": 0.0,
-  "avg_win_pct": 4.31,
-  "avg_loss_pct": 3.46,
-  "brier_score": 0.4075,
-  "reliability_calibration": {
-    "50-65%": {
-      "count": 60,
-      "mean_predicted_prob_pct": 50.9,
-      "observed_hit_rate_pct": 38.3
-    },
-    "65-80%": {
-      "count": 177,
-      "mean_predicted_prob_pct": 69.3,
-      "observed_hit_rate_pct": 76.3
-    },
-    "80-100%": {
-      "count": 46,
-      "mean_predicted_prob_pct": 85.9,
-      "observed_hit_rate_pct": 52.2
-    }
-  },
-  "mean_net_excess_pct": 0.0,
+  "total_training_cycles": 0,
+  "overall_accuracy_pct": null,
+  "long_rise_accuracy_pct": null,
+  "risk_avoidance_accuracy_pct": null,
+  "accuracy_ci_95": "INSUFFICIENT_DATA",
+  "mean_net_excess_pct": null,
+  "net_expectancy_pct": null,
+  "brier_score": null,
   "horizon_bars": 21,
   "round_trip_cost_pct": 0.88,
-  "model_id": "frozen_epoch2_pit_v2",
   "label_definition": "net_excess_vs_eqw_h21_minus_0.88pct",
-  "long_rise_accuracy_pct": 13.7,
-  "risk_avoidance_accuracy_pct": 0.0
+  "model_id": "frozen_epoch2_pit_v2",
+  "updated_at": "2026-11-03T23:16:34.800391"
 }

@@ -119,3 +119,49 @@ The system has formally discarded three major statistical illusions:
 2. **Execution Realism**: Preventing users from losing money in day-trading scalps and illiquid limit locks.
 3. **Patience & Governance**: Enforcing 5-year multi-pillar accumulation in audited, zero-debt cash generators (e.g. SQURPHARMA, JAMUNAOIL, GP) rather than gambling on speculative momentum pumps.
 4. **Paper Forward Testing**: Tracking whether disciplined value accumulation beats the total-return market over a multi-year horizon without risking real capital prematurely.
+
+
+---
+
+## 6. Institutional Quantitative Audit & Epistemic Verdict (November 2026)
+
+### 6.1 Official Product Identity & Boundary
+- **Official Identity**: **"Bangladesh DSE Quantitative Research, Risk Screening, and Portfolio Decision-Support System"**
+- **Core Purpose**: Rigorous data collection, corporate governance screening, solvency and debt-trap elimination, transaction friction modeling, and multi-year paper forward validation.
+- **Negative Boundary**: The system is **NOT** an autonomous profit generator, an algorithmic trading robot, or a certified financial advisor. In accordance with epistemic rigor, no algorithm can guarantee trading profits on the Dhaka Stock Exchange.
+
+### 6.2 87-Period Purged Walk-Forward Evaluation (Frozen Model Proof)
+Under leak-free purged walk-forward cross-validation (87 independent folds, realistic 0.880% round-trip trading friction, next-session open fills, cash dividend accounting, and central bank macro hurdles):
+- **Annualized Net Alpha**: **-9.27% p.a.** vs DSE Equal-Weight Total Return
+- **Newey-West $t$-Statistic**: **-1.23** (Statistically indistinguishable from null; net negative after costs)
+- **95% Confidence Interval**: **[-1.888%, +0.429%]**
+- **Maximum Drawdown**: **25.28%**
+- **Regime Robustness**: Outperformed in only 1 of 5 macroeconomic regimes
+- **Promotion Gate Conformance**: **0 / 6 Gates Passed**
+- **Institutional Verdict**: **REJECTED**. The current quantitative value/yield model does not demonstrate statistically verified excess returns over the market baseline after full trading costs. It operates as a defensive capital preservation screener, not an alpha generator.
+
+### 6.3 Phase 0 Remediation: Eradication of False Precision
+1. **Zero Cash Flow Fabrication (`scripts/precision_engine.py`)**:
+   - Removed fallback heuristic multiplying EPS by 0.85 to invent NOCFPS. Missing cash flow now strictly outputs `UNKNOWN_CASH_FLOW_DATA_DEFICIT` with zero score bonus.
+   - Removed arbitrary 5.0x dividend coverage fallback when DPS is zero.
+2. **Zero Management Profile Invention (`scripts/management_governance_engine.py`)**:
+   - Eradicated default assumptions (20 years experience, Grade A rating, Low Risk) for unvetted companies. Unregistered management returns `UNRATED`, `HIGH_DATA_DEFICIT`, and zero governance bonus.
+3. **Zero Fabricated Probabilities (`scripts/analyzer.py`, `scripts/user_proxy_simulation.py`)**:
+   - Replaced hand-crafted 15%–75% probability formulas with `heuristic_momentum_bias` (0–100 score).
+   - Removed `profit_probability` across user proxies, standardizing on `heuristic_conviction_score`.
+   - Mandated $N \ge 30$ sample threshold in `calibrated_probability_engine.py`. Bins below threshold strictly output `INSUFFICIENT_DATA`.
+
+### 6.4 Phase 2 Remediation: Canonical Model Path Unification
+- **Single Model Pipeline**: Eliminated the split between `analyzer.py` composite scoring and the frozen registry model (`unified_score.py`).
+- **Ineligibility Gating**: When the canonical served model flags a ticker as ineligible (macro hurdle deficit, debt gate, Shariah exclusion, unverified PIT), `analyzer.py` automatically downgrades the signal to `HOLD_INELIGIBLE_DEFICIT`.
+- **Recommender Alignment**: `scripts/recommender.py` strictly blocks any ticker marked `HOLD_INELIGIBLE_DEFICIT` from appearing on Buy or Accumulation lists.
+- **PIT Data Pipeline**: `scripts/processor.py` (`get_ticker_data`) now queries point-in-time fundamentals (`fundamentals_pit`) with strict tradable and publication date bounds.
+
+### 6.5 Phase 3 Remediation: Clean Forward Ledger Epoch
+- **Contamination Quarantine**: Quarantined 283 legacy records (137 historical bootstrap and 146 pre-Phase-2 evaluated records with null returns) into `data/learning/prediction_ledger_legacy_quarantine.json`.
+- **Pure Out-of-Sample Ledger**: Maintained 208 active forward predictions recorded between October 15 and November 03, 2026. All are cleanly pending their 21-bar horizon without lookahead leaks or missing outcome zero-padding.
+- **Neutral Prior Weights**: Reset factor weights in `data/learning/model_weights.json` to neutral Bayesian priors ($	ext{Beta}[2,2]$ centered at 1.0x).
+
+### 6.6 Phase 5 Remediation: Universal Security Master Coverage
+- Expanded `companies` table from 141 records to all **396 instruments** present on DSE.
+- Integrated automatic ticker classification in `scripts/processor.py` ensuring every traded asset is mapped to an appropriate sector and instrument class (Equities, Mutual Funds, Bonds).

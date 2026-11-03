@@ -98,10 +98,10 @@ def main():
 
     if not skip_scrape:
         steps.append(
-            ("Scraping DSE Daily Prices", ["scripts/scraper.py", "price"], True)
+            ("Scraping DSE Daily Prices", ["scripts/scraper.py", "price"], False)
         )
         steps.append(
-            ("Processing Raw Scraped Data into SQLite", ["scripts/processor.py"], True)
+            ("Processing Raw Scraped Data into SQLite", ["scripts/processor.py"], False)
         )
 
     steps.extend([

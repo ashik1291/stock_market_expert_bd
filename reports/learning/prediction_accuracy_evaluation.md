@@ -1,45 +1,34 @@
 # DSE Phase-2 Learning Audit (Net Excess vs EQW)
-**Audit Timestamp:** 2026-11-03 21:47:37
+**Audit Timestamp:** 2026-11-03 23:16:34
 **Model:** `frozen_epoch2_pit_v2`
 **Label:** `net_excess_vs_eqw_h21_minus_0.88pct`
 
 ---
 ## 1. Performance
-- Evaluated closed calls: **146**
-- Long (RISE) Hit Rate: **12.3%** (9 / 73 profitable long calls)
-- Risk Avoidance (FALL) Rate: **0.0%**
-- Combined System Accuracy: **6.8%** CI [3.8% – 12.1%]
-- Mean net excess: **0.0%**
+- Evaluated closed calls: **0**
+- Active Pending Forward Predictions: **208**
+- Forward Validation Status: **ACCUMULATING_OOS_EVIDENCE**
+- Long (RISE) Hit Rate: **INSUFFICIENT_DATA** (0 / 0 profitable long calls)
+- Risk Avoidance (FALL) Rate: **INSUFFICIENT_DATA**
+- Combined System Accuracy: **INSUFFICIENT_DATA (Pending horizon)** CI INSUFFICIENT_DATA
+- Mean net excess: **INSUFFICIENT_DATA**
 - Round-trip cost charged: **0.88%**
 - Horizon: **21** trading bars
-- Brier: **0.4075**
+- Brier Calibration Score: **INSUFFICIENT_DATA**
 
 ## 2. Factor Weights (Beta[2,2] prior @ 50%, floor 0)
 | Factor | Weight |
 |---|---|
-| debt_npl_weight | 0.451 |
-| valuation_mos_weight | 0.451 |
-| rsi_momentum_weight | 1.094 |
-| smart_money_weight | 0.451 |
+| debt_npl_weight | 1.0 |
+| valuation_mos_weight | 1.0 |
+| rsi_momentum_weight | 1.0 |
+| smart_money_weight | 1.0 |
 
 ## 3. Recent Mistakes
 
-- `JAMUNAOIL` 2026-10-06 RISE: None
-- `PADMAOIL` 2026-10-06 RISE: None
-- `MPETROLEUM` 2026-10-06 RISE: Flat/down drift: Closed at ৳205.0 (-0.1%)
-- `GP` 2026-10-06 RISE: None
-- `LHB` 2026-10-06 RISE: Flat/down drift: Closed at ৳52.0 (-0.38%)
-- `OLYMPIC` 2026-10-06 RISE: Flat/down drift: Closed at ৳141.0 (-0.98%)
-- `RELIANCINS` 2026-10-06 RISE: Stopped out: Low ৳88.7 breached stop ৳97.15 (Drawdown -12.35%)
-- `SQURPHARMA` 2026-10-06 RISE: None
+> No evaluated losses yet (ledger fresh after Epoch-1 archive).
 
 ## 4. Wins
-- `RENATA` 2026-10-07: net_excess=None%
-- `SQURPHARMA` 2026-10-11: net_excess=None%
-- `JAMUNAOIL` 2026-10-11: net_excess=None%
-- `AAMRANET` 2026-10-12: net_excess=None%
-- `MPETROLEUM` 2026-10-13: net_excess=None%
-- `RELIANCINS` 2026-10-13: net_excess=None%
 
 ---
 Epoch-1 archive: `data/learning/prediction_ledger_epoch1_invalid.json` (do not train).

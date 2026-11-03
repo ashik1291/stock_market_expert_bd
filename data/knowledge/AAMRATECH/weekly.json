@@ -2,7 +2,7 @@
   "ticker": "AAMRATECH",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-03T14:27:02.219710",
+  "analyzed_at": "2026-11-03T17:03:46.546836",
   "asof_price_date": "2026-11-03",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -12,13 +12,14 @@
     "pe_ratio": 0.0,
     "debt_equity": 0.412
   },
-  "signal": "BUY",
-  "confidence": 60.09,
+  "signal": "HOLD",
+  "confidence": 52.73,
   "trajectory": {
     "direction": "RISE_PREDICTED",
     "direction_icon": "\ud83d\udfe2",
-    "rise_probability_pct": 64.6,
-    "momentum_status": "Bullish Reversal / Upward Accumulation",
+    "heuristic_momentum_bias": 64.6,
+    "rise_probability_pct": null,
+    "momentum_status": "Bullish Momentum / Upward Bias",
     "short_term": {
       "predicted_path": "Oversold bounce to 20-DMA",
       "upside_potential_pct": "+5.8%",
@@ -60,14 +61,15 @@
       "signal": "No monthly delta available"
     },
     "cash_flow": {
-      "nocfps": -0.55,
-      "is_estimated": true,
+      "nocfps": null,
       "dividend_per_share": 0.0,
-      "dividend_coverage_x": 0.0,
-      "fcf_yield_pct": -55.0,
-      "cash_quality_status": "TIGHT_CASH_COVERAGE",
-      "conviction_bonus": -10.0,
-      "signal": "Cash flow covers only 0% of dividend payout"
+      "cash_coverage_ratio": null,
+      "fcf_yield_pct": null,
+      "status": "UNKNOWN_CASH_FLOW_DATA_DEFICIT",
+      "signal_text": "NOCFPS (Operating Cash Flow) missing from disclosures \u2014 cash flow coverage unknown",
+      "score_bonus": 0.0,
+      "cfo_estimated": false,
+      "is_valid_evidence": false
     },
     "liquidity": {
       "avg_daily_volume": 28245,
@@ -85,11 +87,11 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": -10.0
+    "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "AAMRATECH",
-    "audited_at": "2026-11-03 20:27:02",
+    "audited_at": "2026-11-03 23:03:46",
     "worth_vs_greed": {
       "current_price": 15.4,
       "intrinsic_worth": 7.7,
@@ -292,24 +294,13 @@
     }
   },
   "fundamental": {
-    "score": 58.33,
+    "score": 75.0,
     "signals": {
-      "latest_interim_eps": "FY2026Q3 (-0.65)",
-      "eps": "negative (-0.12)",
-      "eps_yoy_growth_pct": -117.1,
-      "eps_growth_comparison": "FY2024 vs FY2023",
       "nav": 21.73,
       "dividend_yield": "moderate (0.47%)",
       "debt_equity_val": 0.412,
-      "long_term_debt_equity_val": 0.235,
-      "debt_equity": "manageable (0.412)",
-      "loan_trap_risk": "low",
-      "dividend_track_record_years": 5,
-      "dividend_consistency": "proven_compounder (5 yrs cash divs)",
-      "cfo_cr": 0.1,
-      "net_profit_cr": -0.8,
-      "accrual_ratio": -0.006,
-      "earnings_quality": "superior_cash_backed",
+      "debt_equity": "pristine_low (0.412)",
+      "loan_trap_risk": "none",
       "downturn_resilience": {
         "status": "normal",
         "drawdown_pct": 36.1,
@@ -321,15 +312,16 @@
   "management": {
     "ticker": "AAMRATECH",
     "company_name": "AAMRATECH",
-    "chairman": "Board Appointed Chairman",
-    "managing_director_ceo": "Managing Director / CEO",
-    "leadership_type": "Public Listed Corporate Board",
-    "industry_experience_years": 20,
-    "governance_rating": "A",
-    "audit_credibility": "Standard Category A Audit",
-    "key_moat": "DSE Listed Franchise",
-    "management_risk": "Low",
-    "governance_score": 75
+    "chairman": "UNKNOWN",
+    "managing_director_ceo": "UNKNOWN",
+    "leadership_type": "UNKNOWN_UNREGISTERED",
+    "industry_experience_years": null,
+    "governance_rating": "UNRATED",
+    "audit_credibility": "UNAUDITED_PROFILE",
+    "key_moat": "UNKNOWN",
+    "management_risk": "HIGH_DATA_DEFICIT",
+    "governance_score": 0.0,
+    "is_vetted": false
   },
   "news_intent": {
     "ticker": "AAMRATECH",
@@ -389,13 +381,13 @@
     }
   },
   "composite": {
-    "composite_score": 60.09,
-    "governance_score": 75,
+    "composite_score": 52.73,
+    "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.486,
-      "technical": 0.321,
-      "governance": 0.193,
+      "fundamental": 0.463,
+      "technical": 0.335,
+      "governance": 0.202,
       "sentiment": 0.0
     }
   }
