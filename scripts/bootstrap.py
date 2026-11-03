@@ -124,6 +124,27 @@ def verify_configs():
             log(f"Warning: Config file {c} missing.")
     log("Configs verified.")
 
+
+def verify_user_templates():
+    log("Verifying user profile and portfolio templates...")
+    port_dir = BASE_DIR / "data" / "portfolio"
+    port_dir.mkdir(parents=True, exist_ok=True)
+    port_file = port_dir / "portfolio.json"
+    port_tmpl = port_dir / "portfolio.template.json"
+
+    if not port_file.exists() and port_tmpl.exists():
+        shutil.copyfile(port_tmpl, port_file)
+        log("Initialized clean local portfolio.json from template.")
+
+    user_dir = BASE_DIR / "data" / "users" / "default_user"
+    user_dir.mkdir(parents=True, exist_ok=True)
+    prof_file = user_dir / "profile.json"
+    prof_tmpl = BASE_DIR / "data" / "users" / "profile.template.json"
+
+    if not prof_file.exists() and prof_tmpl.exists():
+        shutil.copyfile(prof_tmpl, prof_file)
+        log("Initialized clean local profile.json from template.")
+
 def run_bootstrap():
     print("=" * 80)
     print("🚀 stock_market_expert_bd — PORTABLE MACHINE BOOTSTRAP ('READY')")
@@ -135,8 +156,9 @@ def run_bootstrap():
     # 2. Check/Restore database
     db_ok = verify_and_restore_database()
 
-    # 3. Verify configs
+    # 3. Verify configs & user templates
     verify_configs()
+    verify_user_templates()
 
     # 4. Check/Run silent daily sync
     log("Running daily heartbeat synchronization...")
