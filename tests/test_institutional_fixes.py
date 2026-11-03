@@ -50,6 +50,11 @@ class TestInstitutionalFixes(unittest.TestCase):
         res_fail = score_features(pe=10.0, debt_equity=0.4, dividend_yield=4.0, rsi_14=40.0, close=100.0, sector="Fuel & Power")
         self.assertFalse(res_fail["active_signals"]["passes_macro"])
 
+        # 3. Macro hurdle gate enforcement: when enforce_macro_hurdle=True, PE 20 must be ineligible
+        res_gate = score_features(pe=20.0, debt_equity=0.4, dividend_yield=4.0, rsi_14=40.0, close=100.0, sector="Fuel & Power", enforce_macro_hurdle=True)
+        self.assertFalse(res_gate["is_eligible"])
+        self.assertIn("macro_hurdle_deficit", res_gate["gate_reasons"])
+
     def test_monthly_rebalance_strict_no_macro_fail_fallback(self):
         """Verify monthly_rebalance_engine strictly enforces macro hurdle and passes_filters."""
         from monthly_rebalance_engine import calculate_opportunistic_deployment

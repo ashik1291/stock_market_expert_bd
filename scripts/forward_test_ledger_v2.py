@@ -194,7 +194,7 @@ def _mark_to_market(conn: sqlite3.Connection, positions: list, cash: float, asof
 
 
 def _eligible_ranked(scored: list[dict]) -> list[dict]:
-    elig = [r for r in scored if r.get("is_eligible")]
+    elig = [r for r in scored if r.get("is_eligible") and r.get("passes_macro", True)]
     elig.sort(key=lambda x: float(x.get("score") or -999), reverse=True)
     return elig
 

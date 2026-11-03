@@ -64,7 +64,7 @@ def run_factor_panel_evaluation(horizon_days: int = 21):
             if t_close <= 0 or target_close <= 0:
                 continue
 
-            # Forward return net of friction (0.833%)
+            # Forward return net of friction (0.880%)
             raw_fwd_ret = (target_close - t_close) / t_close
             net_fwd_ret = (target_close * (1.0 - 0.00415) - t_close * (1.0 + 0.00415)) / (t_close * (1.0 + 0.00415))
 

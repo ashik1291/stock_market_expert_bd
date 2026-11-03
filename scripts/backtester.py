@@ -227,7 +227,7 @@ def simulate_trades(df: pd.DataFrame, ticker: str, strategy: str = "scalp",
 def run_full_backtest(tickers: list[str] = None) -> dict:
     """
     Backtests Category A stocks across Scalp and Swing strategies.
-    Computes NET win rate and NET profit factor after deducting 0.833% round-trip fees.
+    Computes NET win rate and NET profit factor after deducting 0.880% round-trip fees.
     Runs 1,000-block Monte Carlo permutation test for statistical significance.
     """
     conn = get_db()

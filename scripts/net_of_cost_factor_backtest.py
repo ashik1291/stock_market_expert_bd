@@ -2,7 +2,7 @@
 Net-of-Cost Factor Portfolio & Turnover Harness.
 Tests whether the 14-day RSI oversold anomaly survives real-world DSE trading friction:
   - Fills: Next-session Open price (not close-to-close)
-  - Friction: 0.833% round-trip (brokerage + CDBL) + 0.10% slippage = 0.933% total friction
+  - Friction: 0.880% round-trip (brokerage + CDBL + AIT) + 0.10% slippage = 0.933% total friction
   - Liquidity filter: Excludes bottom 20% illiquid stocks (ADV < BDT 200,000)
   - Circuit filter: Ignores stocks locked at limit-up on entry or limit-down on exit
   - Measures: Gross return, Net return, Annualized turnover, Max drawdown, and t-statistic
@@ -81,7 +81,7 @@ def run_net_of_cost_backtest():
 
     full_df = pd.concat(ticker_dfs).dropna(subset=['rsi14', 'fwd_ret_14d'])
 
-    # Round trip friction: 0.833% fees + 0.10% entry slippage + 0.10% exit slippage = 1.033%
+    # Round trip friction: 0.880% fees + 0.10% entry slippage + 0.10% exit slippage = 1.080%
     FRICTION_ROUND_TRIP = 0.01033 
 
     print("[3/4] Evaluating Top Decile (Oversold RSI < 35) vs Bottom Decile (RSI > 65)...")
@@ -151,7 +151,7 @@ def run_net_of_cost_backtest():
     print(f"📊 FACTOR PORTFOLIO TEST RESULTS (2020–2026, {T} Independent Periods):")
     print(f"  * Number of Non-Overlapping Rebalance Periods (T): {T}")
     print(f"  * Average Rebalance Turnover: {avg_turnover:.1f}% per 14-day cycle")
-    print(f"  * Round-Trip Friction Applied: {FRICTION_ROUND_TRIP * 100:.3f}% (0.833% fee + 0.20% slippage)")
+    print(f"  * Round-Trip Friction Applied: {FRICTION_ROUND_TRIP * 100:.3f}% (0.880% fee + 0.20% slippage)")
     print(f"  * Gross Annualized Return (Oversold Decile): {mean_gross:+.2f}%")
     print(f"  * Equal-Weighted Benchmark Annualized Return: {mean_bench:+.2f}%")
     print(f"  * Gross Excess Return vs Benchmark: {mean_gross - mean_bench:+.2f}% (t = {t_gross:+.2f})")
