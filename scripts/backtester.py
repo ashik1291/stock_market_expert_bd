@@ -782,6 +782,7 @@ def simulate_institutional_backtest(
     start_date: str = "2023-01-01",
     end_date: str = None,
     tickers: list = None,
+    halal_tier: str = None,
 ) -> dict:
     """
     Institutional Multi-Factor Portfolio Backtester.
@@ -794,6 +795,17 @@ def simulate_institutional_backtest(
     """
     conn = get_db()
     
+    if halal_tier is None:
+        try:
+            prof_file = BASE_DIR / "config" / "profile.json"
+            if prof_file.exists():
+                with open(prof_file, "r", encoding="utf-8") as f:
+                    halal_tier = json.load(f).get("halal_tier", "flexible")
+            else:
+                halal_tier = "flexible"
+        except Exception:
+            halal_tier = "flexible"
+
     if tickers is None:
         rows = conn.execute("""
             SELECT ticker, sector FROM companies 
@@ -803,7 +815,10 @@ def simulate_institutional_backtest(
         candidates = []
         for r in rows:
             t, sec = r[0], r[1]
-            if not is_shariah_excluded_company(sec, ticker=t):
+            if halal_tier in ("strict", "flexible"):
+                if not is_shariah_excluded_company(sec, ticker=t):
+                    candidates.append(t)
+            else:
                 candidates.append(t)
         tickers = candidates[:20]
 

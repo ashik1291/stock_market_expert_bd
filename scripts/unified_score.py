@@ -141,10 +141,27 @@ def score_features(
     enforce_macro_hurdle: bool = True,
     publication_is_estimated: int | bool | None = None,
     strict_verified_pit: bool = False,
+    halal_tier: str | None = None,
 ) -> dict:
-    """Return score, eligibility, and component breakdown under frozen model or explicit weights."""
+    """Return score, eligibility, and component breakdown under frozen model or explicit weights.
+    Supports customizable Halal/Shariah tiers: 'strict', 'flexible', or 'off' (regular stock mode).
+    """
+    if halal_tier is None:
+        try:
+            prof_file = _BASE / "config" / "profile.json"
+            if prof_file.exists():
+                with open(prof_file, "r", encoding="utf-8") as f:
+                    halal_tier = json.load(f).get("halal_tier", "flexible")
+            else:
+                halal_tier = "flexible"
+        except Exception:
+            halal_tier = "flexible"
+
     sec = (sector or "Unknown")
-    is_excluded_sector = is_shariah_excluded_company(sec, ticker=ticker)
+    is_excluded_sector = False
+    if halal_tier in ("strict", "flexible"):
+        is_excluded_sector = is_shariah_excluded_company(sec, ticker=ticker)
+
     pe_v = float(pe) if pe is not None else None
     de_v = float(debt_equity) if debt_equity is not None else None
     div_v = float(dividend_yield) if dividend_yield is not None else 0.0
@@ -162,11 +179,14 @@ def score_features(
         eligible = False
         reasons.append("bad_price")
 
+    max_de = 0.50 if halal_tier == "strict" else (0.80 if halal_tier == "flexible" else 1.50)
+
     if not is_excluded_sector:
         if de_v is None:
-            eligible = False
-            reasons.append("missing_debt_equity")
-        elif de_v > 0.80:  # Enforce SPEC.md INV-3: Max Debt/Equity <= 0.80
+            if halal_tier in ("strict", "flexible"):
+                eligible = False
+                reasons.append("missing_debt_equity")
+        elif de_v > max_de:
             eligible = False
             reasons.append("debt_gate")
 

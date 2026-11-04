@@ -232,6 +232,36 @@ class TestInstitutionalProofSuite(unittest.TestCase):
         self.assertGreater(res["total_dividends_bdt"], 1000.0)
         self.assertEqual(res["initial_capital_bdt"], 50000.0)
 
+    def test_halal_and_regular_stock_customizability(self):
+        """Verify that halal_tier='off' allows regular stocks while halal_tier='flexible' filters them."""
+        # 1. Flexible mode (User preference): Blocks conventional banks
+        res_flex = score_features(
+            pe=5.5,
+            debt_equity=0.30,
+            dividend_yield=8.0,
+            rsi_14=42.0,
+            sector="Banking",
+            ticker="PUBALIBANK",
+            close=28.0,
+            halal_tier="flexible",
+        )
+        self.assertFalse(res_flex["is_eligible"])
+        self.assertIn("shariah_excluded_sector", res_flex["gate_reasons"])
+
+        # 2. Regular stock mode ('off'): Evaluates banks based on valuation/solvency
+        res_off = score_features(
+            pe=5.5,
+            debt_equity=0.30,
+            dividend_yield=8.0,
+            rsi_14=42.0,
+            sector="Banking",
+            ticker="PUBALIBANK",
+            close=28.0,
+            halal_tier="off",
+        )
+        self.assertTrue(res_off["is_eligible"])
+        self.assertNotIn("shariah_excluded_sector", res_off["gate_reasons"])
+
     def test_zero_bank_exposure_inv3(self):
         """Invariant 3: Zero conventional banks/financials permitted, even if marked Unknown."""
         self.assertTrue(is_shariah_excluded_company("Banking"))
