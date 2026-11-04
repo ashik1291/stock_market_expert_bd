@@ -145,6 +145,12 @@ def verify_user_templates():
         shutil.copyfile(prof_tmpl, prof_file)
         log("Initialized clean local profile.json from template.")
 
+    cfg_file = BASE_DIR / "config" / "profile.json"
+    cfg_tmpl = BASE_DIR / "config" / "profile.template.json"
+    if not cfg_file.exists() and cfg_tmpl.exists():
+        shutil.copyfile(cfg_tmpl, cfg_file)
+        log("Initialized clean local config/profile.json from template.")
+
     # Check and configure user preference if not set
     sys.path.insert(0, str(SCRIPTS_DIR))
     try:

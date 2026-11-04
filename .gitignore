@@ -66,9 +66,12 @@ scratch_*.py
 *.tmp
 
 # 7. User-Specific Portfolios, Personal Profiles & Custom Halal Preferences
+config/profile.json
+!config/profile.template.json
 data/portfolio/portfolio.json
 data/portfolio/current_position_plan*.md
 data/portfolio/halal_*_plan.*
 data/users/*
 !data/users/.gitkeep
 !data/users/profile.template.json
+reports/portfolio/
