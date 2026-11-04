@@ -105,7 +105,7 @@ def cmd_scan():
     print("=" * 80, flush=True)
     print("🔮 RUNNING DIRECTIONAL RISE VS FALL SCANNER (CATEGORY A UNIVERSE)", flush=True)
     print("=" * 80, flush=True)
-    run_script("daily_prediction_scanner.py")
+    run_script("daily_rise_fall_scanner.py", ["weekly"])
 
 
 def cmd_refresh():
