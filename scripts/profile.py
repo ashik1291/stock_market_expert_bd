@@ -4,11 +4,12 @@ User profile loader — halal_tier + additive-only custom_exclusions.
 Schema:
   {
     halal_tier: "strict" | "flexible" | "off",
+    configured: bool,
     custom_exclusions: { sectors: string[], tickers: string[] }
   }
 
 Rules:
-  - load_profile() defaults to flexible if file missing/invalid.
+  - load_profile() defaults to off (regular stock) if file missing/invalid.
   - validate_profile(): additive-only strictness — custom_exclusions can only
     *add* exclusions, never relax L1/L2/L5 gates. Validator rejects anything
     that tries to re-enable a blocked ticker/sector.
@@ -57,8 +58,10 @@ def validate_profile(data: dict) -> dict:
     for s in norm_sectors:
         if s.startswith("!") or s.startswith("-"):
             raise ValueError(f"additive-only: custom_exclusions.sectors cannot relax: {s!r}")
+    configured = bool(data.get("configured", False))
     return {
         "halal_tier": tier,
+        "configured": configured,
         "custom_exclusions": {"sectors": norm_sectors, "tickers": norm_tickers},
     }
 
@@ -72,7 +75,7 @@ def load_profile() -> dict:
             return validate_profile(raw)
     except Exception:
         pass
-    return {"halal_tier": "flexible", "custom_exclusions": {"sectors": [], "tickers": []}}
+    return {"halal_tier": "flexible", "configured": False, "custom_exclusions": {"sectors": [], "tickers": []}}
 
 
 def save_profile(profile: dict) -> None:

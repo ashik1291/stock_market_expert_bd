@@ -147,15 +147,7 @@ def score_features(
     Supports customizable Halal/Shariah tiers: 'strict', 'flexible', or 'off' (regular stock mode).
     """
     if halal_tier is None:
-        try:
-            prof_file = _BASE / "config" / "profile.json"
-            if prof_file.exists():
-                with open(prof_file, "r", encoding="utf-8") as f:
-                    halal_tier = json.load(f).get("halal_tier", "flexible")
-            else:
-                halal_tier = "flexible"
-        except Exception:
-            halal_tier = "flexible"
+        halal_tier = "flexible"
 
     sec = (sector or "Unknown")
     is_excluded_sector = False
@@ -179,7 +171,7 @@ def score_features(
         eligible = False
         reasons.append("bad_price")
 
-    max_de = 0.50 if halal_tier == "strict" else (0.80 if halal_tier == "flexible" else 1.50)
+    max_de = 0.50 if halal_tier == "strict" else (0.80 if halal_tier == "flexible" else 1.00)
 
     if not is_excluded_sector:
         if de_v is None:
