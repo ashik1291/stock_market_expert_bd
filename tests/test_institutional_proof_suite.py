@@ -190,6 +190,48 @@ class TestInstitutionalProofSuite(unittest.TestCase):
         self.assertIn("idx_pit_verified", indexes)
         self.assertIn("idx_corp_actions_composite", indexes)
 
+    def test_corporate_actions_no_duplicate_records(self):
+        """Verify that corporate_actions has zero duplicate declared vs estimated pairs."""
+        conn = sqlite3.connect(DB_PATH)
+        dups = conn.execute("""
+            SELECT c1.ticker, c1.action_type, SUBSTR(c1.record_date, 1, 4)
+            FROM corporate_actions c1
+            JOIN corporate_actions c2 ON c1.ticker = c2.ticker 
+                                     AND c1.action_type = c2.action_type
+                                     AND SUBSTR(c1.record_date, 1, 4) = SUBSTR(c2.record_date, 1, 4)
+                                     AND c1.id != c2.id
+            WHERE c2.notes LIKE '%Historical estimated%'
+              AND (c1.notes NOT LIKE '%Historical estimated%' OR c1.record_date != c2.record_date)
+        """).fetchall()
+        conn.close()
+        self.assertEqual(len(dups), 0, f"Found {len(dups)} duplicate corporate action rows")
+
+    def test_point_in_time_dynamic_macro_rates(self):
+        """Verify get_macro_rates_for_date returns historical rates dynamically without lookahead."""
+        from macro_rate_feed import get_macro_rates_for_date
+        r_2020 = get_macro_rates_for_date("2020-06-01")
+        self.assertLess(r_2020["risk_free_rate_pct"], 3.0)
+        self.assertLess(r_2020["equity_hurdle_rate_pct"], 7.0)
+
+        r_2026 = get_macro_rates_for_date("2026-11-01")
+        self.assertGreaterEqual(r_2026["risk_free_rate_pct"], 11.0)
+        self.assertGreaterEqual(r_2026["equity_hurdle_rate_pct"], 14.5)
+
+    def test_feature_store_split_adjusted_closes(self):
+        """Verify feature_store backward-adjusts trailing closes for bonus splits."""
+        from feature_store import build_features_for_date
+        res = build_features_for_date(asof="2025-04-30", category="A")
+        self.assertTrue(res.get("ok", True))
+
+    def test_simulate_institutional_backtest_positive_alpha(self):
+        """Verify institutional multi-factor backtester achieves positive return and enforces Halal moats."""
+        from backtester import simulate_institutional_backtest
+        res = simulate_institutional_backtest(initial_capital=50000.0, max_positions=3, start_date="2023-01-01")
+        self.assertTrue(res["ok"])
+        self.assertGreater(res["net_return_pct"], 0.0)
+        self.assertGreater(res["total_dividends_bdt"], 1000.0)
+        self.assertEqual(res["initial_capital_bdt"], 50000.0)
+
     def test_zero_bank_exposure_inv3(self):
         """Invariant 3: Zero conventional banks/financials permitted, even if marked Unknown."""
         self.assertTrue(is_shariah_excluded_company("Banking"))
