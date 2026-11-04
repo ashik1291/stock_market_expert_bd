@@ -21,6 +21,8 @@ import sys
 from pathlib import Path
 import pandas as pd
 import numpy as np
+from macro_rate_feed import get_macro_rates_for_date
+from unified_score import is_shariah_excluded_company
 
 BASE_DIR   = Path(__file__).resolve().parent.parent
 SCRIPTS_DIR = Path(__file__).resolve().parent
@@ -767,6 +769,270 @@ def simulate_portfolio_backtest(
     }
 
     print("=== PORTFOLIO BACKTEST SUMMARY ===")
+    for k, v in summary.items():
+        print(f"  {k}: {v}")
+    return summary
+
+
+
+
+def simulate_institutional_backtest(
+    initial_capital: float = 50000.0,
+    max_positions: int = 3,
+    start_date: str = "2023-01-01",
+    end_date: str = None,
+    tickers: list = None,
+) -> dict:
+    """
+    Institutional Multi-Factor Portfolio Backtester.
+    - Shariah / Zero-Bank Shield (INV-3)
+    - Central Bank Macro Hurdle with E/P screening (INV-2)
+    - Statutory trading friction (0.415% buy, 0.465% sell incl 53BBB AIT)
+    - Corporate actions accounting (cash dividends + split adjustments)
+    - Tactical Central Bank risk-free cash yield compounding
+    - Trailing stop with cycle rebalancing
+    """
+    conn = get_db()
+    
+    if tickers is None:
+        rows = conn.execute("""
+            SELECT ticker, sector FROM companies 
+            WHERE category='A' AND ticker NOT LIKE '%BOND%'
+            ORDER BY market_cap_cr DESC
+        """).fetchall()
+        candidates = []
+        for r in rows:
+            t, sec = r[0], r[1]
+            if not is_shariah_excluded_company(sec, ticker=t):
+                candidates.append(t)
+        tickers = candidates[:20]
+
+    price_dfs = {}
+    for t in tickers:
+        df = load_price_data(t)
+        if not df.empty and len(df) >= 70:
+            df["date_str"] = df["date"].dt.strftime("%Y-%m-%d")
+            price_dfs[t] = df
+
+    if not price_dfs:
+        conn.close()
+        return {"ok": False, "error": "No price data available"}
+
+    all_dates = sorted(list(set.union(*[set(df["date_str"].tolist()) for df in price_dfs.values()])))
+    test_dates = [d for d in all_dates if d >= start_date and (end_date is None or d <= end_date)]
+    if not test_dates:
+        conn.close()
+        return {"ok": False, "error": f"No trading dates in range >= {start_date}"}
+
+    bars = {}
+    for t, df in price_dfs.items():
+        for idx, row in df.iterrows():
+            bars[(t, row["date_str"])] = row
+
+    ca_rows = conn.execute("""
+        SELECT ticker, record_date, action_type, ratio, cash_amount, adjustment_factor
+        FROM corporate_actions
+    """).fetchall()
+    ca_lookup = {}
+    for r in ca_rows:
+        key = (r[0], r[1])
+        if key not in ca_lookup:
+            ca_lookup[key] = []
+        ca_lookup[key].append({
+            "action_type": r[2],
+            "ratio": float(r[3] or 0.0),
+            "cash_amount": float(r[4] or 0.0),
+            "adjustment_factor": float(r[5] or 1.0)
+        })
+
+    cash = float(initial_capital)
+    active_positions = {}
+    completed_trades = []
+    equity_curve = []
+    total_divs = 0.0
+    
+    buy_fee_pct = 0.00415
+    sell_fee_pct = 0.00465
+    min_ticket_fee = 5.0
+
+    for d_str in test_dates:
+        # Credit cash yield
+        macro = get_macro_rates_for_date(d_str, conn=conn)
+        daily_rf = (macro["risk_free_rate_pct"] / 100.0) / 250.0
+        cash += cash * daily_rf
+
+        # Dividends & splits
+        for t, pos in active_positions.items():
+            cas = ca_lookup.get((t, d_str), [])
+            for ca in cas:
+                if "cash" in str(ca["action_type"]).lower() and ca["cash_amount"] > 0:
+                    net_div = round(pos["shares"] * ca["cash_amount"] * 0.90, 2)
+                    cash += net_div
+                    pos["divs"] = pos.get("divs", 0.0) + net_div
+                    total_divs += net_div
+                elif "bonus" in str(ca["action_type"]).lower() and ca["ratio"] > 0:
+                    bonus_sh = int(pos["shares"] * ca["ratio"])
+                    pos["shares"] += bonus_sh
+                    fac = ca["adjustment_factor"]
+                    if 0 < fac < 1.0:
+                        pos["target_px"] = round(pos["target_px"] * fac, 2)
+                        pos["stop_px"] = round(pos["stop_px"] * fac, 2)
+                        pos["highest_px"] = round(pos["highest_px"] * fac, 2)
+                        pos["entry_px"] = round(pos["total_cost"] / pos["shares"], 2)
+
+        # Exits
+        to_close = []
+        for t, pos in active_positions.items():
+            bar = bars.get((t, d_str))
+            if bar is None:
+                continue
+            c_px, h_px, l_px = float(bar["close"]), float(bar["high"]), float(bar["low"])
+            pos["hold_bars"] += 1
+
+            if h_px > pos["highest_px"]:
+                pos["highest_px"] = h_px
+                pos["stop_px"] = max(pos["stop_px"], pos["highest_px"] * 0.92)
+
+            exit_triggered = False
+            exit_px = c_px
+            exit_reason = ""
+
+            if h_px >= pos["target_px"]:
+                exit_triggered = True
+                exit_px = pos["target_px"]
+                exit_reason = "TARGET_HIT"
+            elif l_px <= pos["stop_px"]:
+                exit_triggered = True
+                exit_px = min(pos["stop_px"], float(bar["open"]))
+                exit_reason = "STOP_LOSS"
+            elif pos["hold_bars"] >= 60:
+                exit_triggered = True
+                exit_px = c_px
+                exit_reason = "CYCLE_REBALANCE"
+
+            if exit_triggered:
+                gross = round(pos["shares"] * exit_px, 2)
+                fee = max(gross * sell_fee_pct, min_ticket_fee)
+                proceeds = round(gross - fee, 2)
+                pnl = round(proceeds + pos.get("divs", 0.0) - pos["total_cost"], 2)
+                cash += proceeds
+                completed_trades.append({
+                    "ticker": t,
+                    "entry_date": pos["entry_date"],
+                    "exit_date": d_str,
+                    "pnl_bdt": pnl,
+                    "pnl_pct": round(pnl / pos["total_cost"] * 100, 2),
+                    "is_win": pnl > 0,
+                    "reason": exit_reason
+                })
+                to_close.append(t)
+
+        for t in to_close:
+            del active_positions[t]
+
+        invested = sum(pos["shares"] * float(bars.get((t, d_str), {}).get("close", pos["entry_px"])) for t, pos in active_positions.items())
+        total_equity = cash + invested
+        equity_curve.append(total_equity)
+
+        # Entries
+        open_slots = max_positions - len(active_positions)
+        if open_slots > 0 and cash >= 5000.0:
+            cands_today = []
+            for t in tickers:
+                if t in active_positions:
+                    continue
+                bar = bars.get((t, d_str))
+                if bar is None:
+                    continue
+                c_px = float(bar["close"])
+                pit = conn.execute("""
+                    SELECT pe_ratio, debt_equity FROM fundamentals_pit
+                    WHERE ticker=? AND tradable_date <= ? AND publication_date <= ?
+                    ORDER BY tradable_date DESC LIMIT 1
+                """, (t, d_str, d_str)).fetchone()
+
+                pe = float(pit[0]) if pit and pit[0] else 999.0
+                de = float(pit[1]) if pit and pit[1] is not None else 0.5
+                hurdle = macro["equity_hurdle_rate_pct"]
+                ey = 100.0 / pe if pe > 0 else 0.0
+
+                if ey >= hurdle and de <= 0.80:
+                    rsi_val = bar.get("RSI", 50.0)
+                    if pd.notna(rsi_val) and 30 <= rsi_val <= 45:
+                        cands_today.append((t, ey, c_px))
+
+            cands_today.sort(key=lambda x: x[1], reverse=True)
+            for t, ey, c_px in cands_today[:open_slots]:
+                budget = min(cash * 0.90, (total_equity / max_positions))
+                if budget < 3000.0 or c_px <= 0:
+                    continue
+                shares = int(budget // (c_px * 1.0010))
+                if shares <= 0:
+                    continue
+                cost_gross = round(shares * c_px * 1.0010, 2)
+                buy_fee = max(cost_gross * buy_fee_pct, min_ticket_fee)
+                tot_cost = round(cost_gross + buy_fee, 2)
+                if cash >= tot_cost:
+                    cash -= tot_cost
+                    active_positions[t] = {
+                        "entry_date": d_str,
+                        "entry_px": c_px,
+                        "shares": shares,
+                        "total_cost": tot_cost,
+                        "target_px": round(c_px * 1.18, 2),
+                        "stop_px": round(c_px * 0.92, 2),
+                        "highest_px": c_px,
+                        "hold_bars": 0,
+                        "divs": 0.0
+                    }
+
+    conn.close()
+
+    net_pnl = total_equity - initial_capital
+    ret_pct = (net_pnl / initial_capital) * 100.0
+    wins = [tr for tr in completed_trades if tr["is_win"]]
+    losses = [tr for tr in completed_trades if not tr["is_win"]]
+    win_rate = (len(wins) / len(completed_trades) * 100) if completed_trades else 0.0
+
+    peak = equity_curve[0] if equity_curve else initial_capital
+    max_dd = 0.0
+    for eq in equity_curve:
+        peak = max(peak, eq)
+        dd = (eq - peak) / peak * 100.0
+        max_dd = min(max_dd, dd)
+
+    tot_win_pnl = sum(tr["pnl_bdt"] for tr in wins)
+    tot_loss_pnl = abs(sum(tr["pnl_bdt"] for tr in losses))
+    profit_factor = round(tot_win_pnl / tot_loss_pnl, 2) if tot_loss_pnl > 0 else (tot_win_pnl if tot_win_pnl > 0 else 1.0)
+
+    # Sharpe ratio
+    daily_rets = []
+    for i in range(1, len(equity_curve)):
+        if equity_curve[i-1] > 0:
+            daily_rets.append((equity_curve[i] / equity_curve[i-1]) - 1.0)
+    std = float(np.std(daily_rets)) if len(daily_rets) > 1 else 0.0
+    mean_ret = float(np.mean(daily_rets)) if daily_rets else 0.0
+    sharpe = (mean_ret / std * np.sqrt(250)) if std > 0 else 0.0
+
+    summary = {
+        "ok": True,
+        "strategy": "institutional_moat_harvest",
+        "initial_capital_bdt": initial_capital,
+        "final_equity_bdt": round(total_equity, 2),
+        "net_pnl_bdt": round(net_pnl, 2),
+        "net_return_pct": round(ret_pct, 2),
+        "total_dividends_bdt": round(total_divs, 2),
+        "max_drawdown_pct": round(max_dd, 2),
+        "annualized_sharpe_ratio": round(sharpe, 2),
+        "total_trades": len(completed_trades),
+        "wins": len(wins),
+        "losses": len(losses),
+        "win_rate_pct": round(win_rate, 1),
+        "profit_factor": profit_factor,
+        "active_positions_at_end": len(active_positions)
+    }
+
+    print("=== INSTITUTIONAL BACKTEST SUMMARY ===")
     for k, v in summary.items():
         print(f"  {k}: {v}")
     return summary
