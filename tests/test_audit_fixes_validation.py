@@ -475,5 +475,26 @@ class TestAuditFixesValidation(unittest.TestCase):
         for k, v in h.items():
             self.assertIsInstance(v, list, f"Horizon key {k} is not a list!")
 
+    def test_dual_engine_portfolio_planner_generates_valid_split(self):
+        """Verify dual_engine_portfolio_planner creates 60% Core and 40% Swing allocations."""
+        from dual_engine_portfolio_planner import generate_dual_engine_portfolio_plan
+        plan = generate_dual_engine_portfolio_plan(50000.0)
+        self.assertIn("core_allocations", plan)
+        self.assertIn("swing_allocations", plan)
+        self.assertIn("defensive_cash_bdt", plan)
+        self.assertGreater(len(plan["core_allocations"]), 0)
+        self.assertGreater(len(plan["swing_allocations"]), 0)
+        # Verify core dividend expectations
+        for core in plan["core_allocations"]:
+            self.assertGreater(core["shares"], 0)
+            self.assertGreater(core["dividend_yield"], 0.0)
+            self.assertGreater(core["annual_expected_dividend_bdt"], 0.0)
+        # Verify swing pricing rules
+        for swing in plan["swing_allocations"]:
+            self.assertGreater(swing["shares"], 0)
+            self.assertGreater(swing["tp1"], swing["break_even"])
+            self.assertGreater(swing["break_even"], swing["limit_entry"])
+            self.assertLess(swing["stop_loss"], swing["limit_entry"])
+
 if __name__ == "__main__":
     unittest.main()

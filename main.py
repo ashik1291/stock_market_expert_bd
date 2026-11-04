@@ -16,6 +16,7 @@ Commands:
   pattern [TICKER] Analyze company pattern DNA, multi-interval waves, causal 'WHY', & worth vs greed
   portfolio     Show current portfolio holdings (Mutual Funds + Equities + P&L)
   plan [BDT]    Generate exact capital deployment plan (default BDT 50,000)
+  dual [BDT]    Generate dual-engine allocation: 60% Long-Term Core + 40% Bi-Weekly Swings
   proxy [BDT]   Run user proxy simulation: max profit probability, entry zone & exit rules
   report        Display the latest weekly investment & trading executive report
   help          Display this command reference
@@ -145,6 +146,14 @@ def cmd_plan(capital=None):
     run_script("smart_capital_planner.py", args)
 
 
+def cmd_dual(capital=None):
+    print("=" * 80, flush=True)
+    print("🏛️ EXECUTING DUAL-ENGINE PORTFOLIO ALLOCATOR (CORE + BI-WEEKLY SWINGS)", flush=True)
+    print("=" * 80, flush=True)
+    args = ["--amount", str(capital)] if capital else []
+    run_script("dual_engine_portfolio_planner.py", args)
+
+
 def cmd_proxy(capital=None):
     print("=" * 80, flush=True)
     print("🤖 EXECUTING USER PROXY SIMULATION (MAX PROFIT PROBABILITY ENGINE)", flush=True)
@@ -231,6 +240,9 @@ def main():
     elif cmd in ("plan", "position"):
         cap = sys.argv[2] if len(sys.argv) > 2 else None
         cmd_plan(cap)
+    elif cmd in ("dual", "dual-engine", "core-satellite", "swings"):
+        cap = sys.argv[2] if len(sys.argv) > 2 else None
+        cmd_dual(cap)
     elif cmd in ("report", "weekly"):
         cmd_report()
     elif cmd in ("help", "menu", "?"):
