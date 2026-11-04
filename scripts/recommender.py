@@ -200,6 +200,14 @@ def classify_horizons(records: list[dict], asof_date: str = None) -> dict:
         else:
             leadership_summary = f"{md_ceo} (exp unknown, {rating})"
 
+        # Determine PIT Data Provenance Badge & Scenario Payoffs
+        is_pit_ver = bool(r.get("served_model", {}).get("is_pit_verified"))
+        prov_badge = "🟢 `GRADE_A_VERIFIED_PIT`" if is_pit_ver else "🟡 `GRADE_B_RESEARCH_PROXY`"
+        prov_badge_bn = "🟢 `গ্রেড-এ যাচাইকৃত পিআইটি`" if is_pit_ver else "🟡 `গ্রেড-বি রিসার্চ প্রক্সি`"
+        bull_tgt = round(entry * 1.25, 1) if entry else "—"
+        base_tgt = round(entry * 1.10, 1) if entry else "—"
+        bear_stop = round(entry * 0.88, 1) if entry else "—"
+
         # 1. Long-Term Asset Checklist:
         # P/E <= 16, low manipulation risk, verified D/E <= 0.8 (non-bank), veteran leadership, proven dividend, confident score
         sec_name = (r.get("sector") or "").lower()
@@ -217,6 +225,16 @@ def classify_horizons(records: list[dict], asof_date: str = None) -> dict:
         )
         if is_asset:
             long_rec = dict(r)
+            long_rec["data_provenance_badge"] = prov_badge
+            long_rec["data_provenance_badge_bn"] = prov_badge_bn
+            long_rec["scenario_bull"] = f"৳{bull_tgt} (+25.0% | Valuation re-rating + earnings expansion)"
+            long_rec["scenario_base"] = f"৳{base_tgt} (+10.0% | Cash dividend harvest + steady EPS)"
+            long_rec["scenario_bear"] = f"৳{bear_stop} (-12.0% | Margin compression / stop-loss trigger)"
+            long_rec["invalidation_rules"] = [
+                "Thesis invalidated if operating cash flow (NOCFPS) turns negative (< 0)",
+                "Thesis invalidated if Debt/Equity expands above 0.80",
+                "Thesis invalidated if quarterly EPS drops YoY for 2 consecutive quarters",
+            ]
             support_low  = round(entry * 0.98, 1)
             support_high = round(entry * 1.01, 1)
             target_long  = lt_info.get("target_price") or round(entry * 1.30, 1)
@@ -286,6 +304,15 @@ def classify_horizons(records: list[dict], asof_date: str = None) -> dict:
         )
         if is_swing:
             mid_rec = dict(r)
+            mid_rec["data_provenance_badge"] = prov_badge
+            mid_rec["data_provenance_badge_bn"] = prov_badge_bn
+            mid_rec["scenario_bull"] = f"৳{round(entry*1.18, 1) if entry else '—'} (+18.0% | Swing cycle overshoot)"
+            mid_rec["scenario_base"] = f"৳{round(entry*1.12, 1) if entry else '—'} (+12.0% | Mean reversion target)"
+            mid_rec["scenario_bear"] = f"৳{round(entry*0.95, 1) if entry else '—'} (-5.0% | Trailing stop trigger)"
+            mid_rec["invalidation_rules"] = [
+                "Thesis invalidated if MACD triggers bearish death cross with RSI < 40",
+                "Thesis invalidated if daily turnover dries up below ৳15 Lakh threshold",
+            ]
             target_mid = mt_info.get("target_price") or round(entry * 1.15, 2)
             trail_stop = mt_info.get("trailing_stop") or round(entry * 0.95, 2)
             mid_rec["target_mid"] = target_mid
@@ -590,6 +617,9 @@ def generate_markdown_report(recs: dict) -> str:
             lines.append(f"  * ⚡ **Short-Term (1–10d)**: Path: {st_info.get('predicted_path') or '—'} | Upside: **{st_info.get('upside_potential_pct') or '—'}** vs Downside: {st_info.get('downside_risk_pct') or '—'} (R:R: {st_info.get('risk_reward_ratio') or '—'})")
             lines.append(f"  * 📈 **Mid-Term (1–6m)**: Path: {mt_info.get('predicted_path') or '—'} | Target: **৳{mt_info.get('target_price') or '—'} ({mt_info.get('upside_potential_pct') or '—'})** | Stop: ৳{mt_info.get('trailing_stop') or '—'} (R:R: {mt_info.get('risk_reward_ratio') or '—'})")
             lines.append(f"  * 🏛️ **Long-Term (1–5y)**: Path: {lt_info.get('predicted_path') or '—'} | Target: **৳{lt_info.get('target_price') or '—'} ({lt_info.get('upside_potential_pct') or '—'})** | Div Yield: {lt_info.get('dividend_cagr') or '—'}")
+            lines.append(f"- **🛡️ Data Provenance**: {r.get('data_provenance_badge')}")
+            lines.append(f"- **📊 3-Scenario Payoffs**: Bull: {r.get('scenario_bull')} | Base: {r.get('scenario_base')} | Bear: {r.get('scenario_bear')}")
+            lines.append(f"- **⚠️ Thesis Invalidation Triggers**: {'; '.join(r.get('invalidation_rules', []))}")
             lines.append(f"- **✅ When to Buy**: {r['when_to_buy']}")
             lines.append(f"- **⛔ When NOT to Buy**: {r['when_not_to_buy']}")
             lines.append(f"- **🎯 When to Sell**: {r['when_to_sell']}\n")
@@ -618,6 +648,9 @@ def generate_markdown_report(recs: dict) -> str:
             lines.append(f"#### 📌 **{r['ticker']}** (Target: ৳{r.get('target_mid')}, Stop: ৳{r.get('trailing_stop')}, R:R: {r.get('mt_rr')})")
             lines.append(f"- **👔 Leadership & Smart Money**: {r.get('leadership_summary')} | Flow: `{r.get('smart_money_sig')}`")
             lines.append(f"- **💧 Liquidity Guard**: {r.get('liquidity_directive')}")
+            lines.append(f"- **🛡️ Data Provenance**: {r.get('data_provenance_badge')}")
+            lines.append(f"- **📊 3-Scenario Payoffs**: Bull: {r.get('scenario_bull')} | Base: {r.get('scenario_base')} | Bear: {r.get('scenario_bear')}")
+            lines.append(f"- **⚠️ Thesis Invalidation Triggers**: {'; '.join(r.get('invalidation_rules', []))}")
             lines.append(f"- **✅ When to Buy**: {r['when_to_buy']}")
             lines.append(f"- **⛔ When NOT to Buy**: {r['when_not_to_buy']}")
             lines.append(f"- **🎯 When to Sell**: {r['when_to_sell']}\n")
@@ -797,6 +830,9 @@ def generate_markdown_report_bn(recs: dict) -> str:
             lines.append(f"  * ⚡ **স্বল্পমেয়াদী (১–১০ দিন)**: গতিপথ: {st_info.get('predicted_path') or '—'} | সম্ভাব্য বৃদ্ধি: **{st_info.get('upside_potential_pct') or '—'}** বনাম ডাউনসাইড ঝুঁকি: {st_info.get('downside_risk_pct') or '—'}")
             lines.append(f"  * 📈 **মধ্যমেয়াদী (১–৬ মাস)**: গতিপথ: {mt_info.get('predicted_path') or '—'} | লক্ষ্যমাত্রা: **৳{mt_info.get('target_price') or '—'} ({mt_info.get('upside_potential_pct') or '—'})** | ট্রেইলিং স্টপ: ৳{mt_info.get('trailing_stop') or '—'}")
             lines.append(f"  * 🏛️ **দীর্ঘমেয়াদী (১–৫ বছর)**: গতিপথ: {lt_info.get('predicted_path') or '—'} | লক্ষ্যমাত্রা: **৳{lt_info.get('target_price') or '—'} ({lt_info.get('upside_potential_pct') or '—'})** | ডিভিডেন্ড প্রবৃদ্ধি: {lt_info.get('dividend_cagr') or '—'}")
+            lines.append(f"- **🛡️ ডেটা প্রোভেন্যান্স**: {r.get('data_provenance_badge_bn')}")
+            lines.append(f"- **📊 ৩-পরিস্থিতি পে-অফ**: বুল: {r.get('scenario_bull')} | বেস: {r.get('scenario_base')} | বেয়ার: {r.get('scenario_bear')}")
+            lines.append(f"- **⚠️ থিসিস বাতিলের শর্তাবলী**: {'; '.join(r.get('invalidation_rules', []))}")
             lines.append(f"- **✅ কখন কিনবেন**: {r.get('when_to_buy') or 'সাপোর্ট লেভেলে কিস্তিতে'}")
             lines.append(f"- **⛔ কখন কিনবেন না**: {r.get('when_not_to_buy') or 'উত্তেজিত বা ওভারবট অবস্থায়'}")
             lines.append(f"- **🎯 কখন প্রস্থান করবেন**: {r.get('when_to_sell') or 'মৌলিক ভিত্তি দুর্বল হলে বা অতিমূল্যায়িত হলে'}\n")

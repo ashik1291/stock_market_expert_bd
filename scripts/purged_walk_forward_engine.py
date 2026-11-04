@@ -30,6 +30,7 @@ DB_PATH = PROC_DIR / "dse.db"
 ROUND_TRIP_COST_PCT = 0.880
 EXECUTION_SPREAD_PCT = 0.200
 TOTAL_FRICTION_PCT = ROUND_TRIP_COST_PCT + EXECUTION_SPREAD_PCT  # 1.080%
+T_BILL_ANNUAL_YIELD_PCT = 11.60  # Bangladesh Bank 91-Day T-Bill risk-free yield
 HORIZON_BARS = 21
 EMBARGO_BARS = 5
 TARGET_PERIODS = 87
@@ -158,6 +159,8 @@ def run_purged_walk_forward_evaluation(
         oos_benchmark_returns: List[float] = []
         is_portfolio_returns: List[float] = []
         fold_details: List[Dict[str, Any]] = []
+        prev_top_portfolio: List[str] = []
+        tbill_period_yield = (T_BILL_ANNUAL_YIELD_PCT / 250.0) * horizon_bars
 
         for p_idx in range(n_periods):
             p_start_bar_idx = p_idx * horizon_bars
@@ -205,22 +208,45 @@ def run_purged_walk_forward_evaluation(
                         # Exclude unverified / estimated PIT filings from live-quality proof
                         continue
 
+                    # Enforce Central Bank Macro Equity Hurdle (15.10% total equity hurdle)
+                    ey = 100.0 / pe
+                    if ey < 15.10:
+                        continue
+
                     # Score: Higher earnings yield (1/PE) + dividend yield, penalized by debt
-                    score = (100.0 / pe) + (dy * 0.5) - (de * 5.0)
+                    score = ey + (dy * 0.5) - (de * 5.0)
                     if pub_est == 0:
                         score += 5.0  # Preference for audited verified PIT
                     eligible_cands.append((sym, score))
 
-            # Sort by score descending
+            # Turnover Buffer: Retain incumbent holdings unless replaced by higher-conviction candidates
             eligible_cands.sort(key=lambda x: x[1], reverse=True)
-            top_portfolio = [x[0] for x in eligible_cands[:5]]
+            cand_map = dict(eligible_cands)
+            top_portfolio = []
+            for inc in prev_top_portfolio:
+                if inc in cand_map:
+                    top_portfolio.append(inc)
+            for sym, sc in eligible_cands:
+                if sym not in top_portfolio:
+                    top_portfolio.append(sym)
+                if len(top_portfolio) >= 5:
+                    break
+            top_portfolio = top_portfolio[:5]
 
-            # If fewer than 2 candidates qualified, fall back to cash buffer
-            if len(top_portfolio) < 2:
-                port_ret = 0.0
+            # Turnover Fraction: Pay friction strictly on turnover (fraction traded), not static hold
+            if prev_top_portfolio and top_portfolio:
+                n_changed = len(set(top_portfolio) - set(prev_top_portfolio))
+                turnover_fraction = n_changed / len(top_portfolio)
             else:
-                # Calculate equal-weight portfolio total return over the 21-bar window
-                # Apply 1.080% friction (0.880% round-trip fee + 0.20% half-spread)
+                turnover_fraction = 1.0
+            prev_top_portfolio = list(top_portfolio)
+
+            # If fewer than 2 candidates qualified, allocate to risk-free Central Bank T-Bill yield
+            if len(top_portfolio) < 2:
+                port_ret = tbill_period_yield
+            else:
+                # Calculate equal-weight portfolio total return over the window
+                # Deduct statutory friction proportionally based on actual turnover
                 stock_rets = []
                 for sym in top_portfolio:
                     px_start = conn.execute(
@@ -243,9 +269,10 @@ def run_purged_walk_forward_evaluation(
 
                 if stock_rets:
                     port_gross = sum(stock_rets) / len(stock_rets)
-                    port_ret = port_gross - TOTAL_FRICTION_PCT
+                    friction = turnover_fraction * TOTAL_FRICTION_PCT
+                    port_ret = port_gross - friction
                 else:
-                    port_ret = 0.0
+                    port_ret = tbill_period_yield
 
             # 2. Calculate Category A Equal-Weight Total Return benchmark over the exact same period
             # Fetch prices for all Cat A companies at start and end
@@ -298,7 +325,7 @@ def run_purged_walk_forward_evaluation(
             top_is = [x[0] for x in is_cands[:5]]
 
             if len(top_is) < 2:
-                is_ret = 0.0
+                is_ret = tbill_period_yield
             else:
                 is_rets = []
                 for sym in top_is:

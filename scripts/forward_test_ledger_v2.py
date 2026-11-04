@@ -160,9 +160,23 @@ def _fill_price(conn: sqlite3.Connection, ticker: str, signal_date: str, close_p
     }
 
 
-def _mark_to_market(conn: sqlite3.Connection, positions: list, cash: float, asof: str) -> tuple[float, list]:
+def _mark_to_market(
+    conn: sqlite3.Connection,
+    positions: list,
+    cash: float,
+    asof: str,
+    prev_asof: str | None = None,
+) -> tuple[float, list, float]:
     updated = []
     equity = 0.0
+
+    # Credit risk-free Central Bank 91-day T-Bill interest (11.60% annualized) on uninvested cash buffer
+    if prev_asof and cash > 0 and asof > prev_asof:
+        bars = _trading_bars_between(conn, prev_asof, asof)
+        if bars > 0:
+            tbill_yield = round(cash * (0.1160 / 250.0) * bars, 2)
+            cash = round(cash + tbill_yield, 2)
+
     for p in positions:
         row = conn.execute(
             "SELECT close FROM prices WHERE ticker=? AND date=?",
@@ -190,7 +204,7 @@ def _mark_to_market(conn: sqlite3.Connection, positions: list, cash: float, asof
         np["mark_equity"] = mtm
         updated.append(np)
         equity += mtm
-    return round(cash + equity, 2), updated
+    return round(cash + equity, 2), updated, cash
 
 
 def _eligible_ranked(scored: list[dict]) -> list[dict]:
@@ -515,7 +529,7 @@ def init_or_update_v2_forward_ledger(force_reinit: bool = False):
     # Prefer first position entry as capital deploy date
     deploy = b_data.get("last_rebalance_date") or (positions[0].get("entry_date") if positions else baseline)
 
-    nav, positions = _mark_to_market(conn, positions, cash, latest_date)
+    nav, positions, cash = _mark_to_market(conn, positions, cash, latest_date, prev_asof=b_data.get("asof_price_date"))
     if not nav_history or nav_history[-1] != nav:
         nav_history.append(nav)
     max_dd = _compute_max_dd(nav_history)
@@ -545,7 +559,7 @@ def init_or_update_v2_forward_ledger(force_reinit: bool = False):
         positions, cash, trades = _rebalance(conn, [], cash, elig, latest_date, False)
         rebalanced = True
         b_data["last_rebalance_date"] = latest_date
-        nav, positions = _mark_to_market(conn, positions, cash, latest_date)
+        nav, positions, cash = _mark_to_market(conn, positions, cash, latest_date)
         print(f"[EPOCH 2] Opened {len(positions)} positions asof={latest_date}")
     elif (safety_rebalance or _should_rebalance(conn, b_data, latest_date)) and (
         safety_rebalance or b_data.get("asof_price_date") != latest_date
@@ -561,7 +575,7 @@ def init_or_update_v2_forward_ledger(force_reinit: bool = False):
         )
         rebalanced = True
         b_data["last_rebalance_date"] = latest_date
-        nav, positions = _mark_to_market(conn, positions, cash, latest_date)
+        nav, positions, cash = _mark_to_market(conn, positions, cash, latest_date)
         reason = "SAFETY_CLEANUP" if safety_rebalance else "SCHEDULED"
         print(f"[EPOCH 2] Rebalance asof={latest_date} reason={reason} trades={len(trades)} killed={killed}")
 
