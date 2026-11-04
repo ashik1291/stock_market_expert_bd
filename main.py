@@ -136,6 +136,10 @@ def cmd_portfolio():
     print("💼 EXAMINING PORTFOLIO HOLDINGS & REAL-TIME PERFORMANCE", flush=True)
     print("=" * 80, flush=True)
     run_script("portfolio_manager.py", ["status"])
+    print("\n" + "=" * 80, flush=True)
+    print("🛡️ RUNNING ACTIVE RISK & PROFIT SENTINEL AUDIT", flush=True)
+    print("=" * 80, flush=True)
+    run_script("portfolio_sentinel.py")
 
 
 def cmd_plan(capital=None):
