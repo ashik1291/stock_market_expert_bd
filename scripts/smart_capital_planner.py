@@ -567,7 +567,7 @@ def load_candidate_pool() -> list[str]:
             from five_factor_fundamental_screener import run_5_factor_screener
             candidates = [
                 row["ticker"]
-                for row in run_5_factor_screener(halal_tier="flexible")
+                for row in run_5_factor_screener(halal_tier=user_halal_tier)
             ]
         except Exception:
             candidates = []
@@ -578,6 +578,52 @@ def load_candidate_pool() -> list[str]:
 
 
 
+
+
+
+def build_tranche_plan(total_shares: int, current_px: float, target_limit: float, min_low_60d: float) -> list[dict]:
+    """
+    Builds institutional 3-tier limit order ladder:
+      - Tranche 1 (Probe 35%): At target_limit (~20-DMA or 2% dip)
+      - Tranche 2 (Value Add 40%): At deeper support (-5% to -8% or min_low_60d)
+      - Tranche 3 (Confirmation 25%): At breakout (+2.5% above current)
+    """
+    if total_shares <= 0:
+        return []
+
+    t2_px = round(min(target_limit * 0.95, current_px * 0.94), 1)
+    if min_low_60d > 0 and min_low_60d < current_px:
+        t2_px = round(max(t2_px, min_low_60d), 1)
+
+    t3_px = round(current_px * 1.025, 1)
+
+    if total_shares == 1:
+        return [{"tranche": "T1 (Full Position)", "pct": 100, "shares": 1, "order_type": "LIMIT", "price": target_limit, "outlay": round(target_limit, 1), "note": "Fair Value Support"}]
+    elif total_shares == 2:
+        return [
+            {"tranche": "T1 (Probe)", "pct": 50, "shares": 1, "order_type": "LIMIT", "price": target_limit, "outlay": round(target_limit, 1), "note": "20-DMA / Initial Dip"},
+            {"tranche": "T2 (Value Add)", "pct": 50, "shares": 1, "order_type": "LIMIT", "price": t2_px, "outlay": round(t2_px, 1), "note": "Deep Margin Support"}
+        ]
+    elif total_shares <= 5:
+        s1 = math.ceil(total_shares * 0.5)
+        s2 = total_shares - s1
+        return [
+            {"tranche": "T1 (Probe)", "pct": round(s1 / total_shares * 100), "shares": s1, "order_type": "LIMIT", "price": target_limit, "outlay": round(s1 * target_limit, 1), "note": "20-DMA / Initial Dip"},
+            {"tranche": "T2 (Value Add)", "pct": round(s2 / total_shares * 100), "shares": s2, "order_type": "LIMIT", "price": t2_px, "outlay": round(s2 * t2_px, 1), "note": "Deep Margin Support"}
+        ]
+    else:
+        s1 = max(1, round(total_shares * 0.35))
+        s2 = max(1, round(total_shares * 0.40))
+        s3 = total_shares - (s1 + s2)
+        if s3 <= 0:
+            s3 = 1
+            if s2 > 1: s2 -= 1
+            elif s1 > 1: s1 -= 1
+        return [
+            {"tranche": "T1 (Probe - 35%)", "pct": round(s1 / total_shares * 100), "shares": s1, "order_type": "LIMIT", "price": target_limit, "outlay": round(s1 * target_limit, 1), "note": "At / Near 20-DMA Support"},
+            {"tranche": "T2 (Value Add - 40%)", "pct": round(s2 / total_shares * 100), "shares": s2, "order_type": "LIMIT", "price": t2_px, "outlay": round(s2 * t2_px, 1), "note": "Deep Structural Support Dip"},
+            {"tranche": "T3 (Reversal - 25%)", "pct": round(s3 / total_shares * 100), "shares": s3, "order_type": "STOP_LIMIT", "price": t3_px, "outlay": round(s3 * t3_px, 1), "note": "Momentum Breakout Confirmation"}
+        ]
 
 
 def generate_smart_plan(amount: float, override_regime: str = None, asof_date: str = None) -> dict:
@@ -612,14 +658,18 @@ def generate_smart_plan(amount: float, override_regime: str = None, asof_date: s
 
 
 
+    user_halal_tier = "flexible"
     try:
-
-        from halal_guard import HalalGuard
-
-        halal_checker = HalalGuard()
-
+        from profile import load_profile
+        prof = load_profile()
+        user_halal_tier = prof.get("halal_tier", "flexible")
     except Exception:
+        pass
 
+    try:
+        from halal_guard import HalalGuard
+        halal_checker = HalalGuard()
+    except Exception:
         halal_checker = None
 
 
@@ -646,7 +696,7 @@ def generate_smart_plan(amount: float, override_regime: str = None, asof_date: s
 
         if halal_checker:
 
-            h_res = halal_checker.is_eligible(t, tier="flexible")
+            h_res = halal_checker.is_eligible(t, tier=user_halal_tier)
 
             if not h_res.get("eligible", True):
 
@@ -686,7 +736,7 @@ def generate_smart_plan(amount: float, override_regime: str = None, asof_date: s
 
                 if halal_checker:
 
-                    h_res = halal_checker.is_eligible(t, tier="flexible")
+                    h_res = halal_checker.is_eligible(t, tier=user_halal_tier)
 
                     if not h_res.get("eligible", True):
 
@@ -827,17 +877,35 @@ def generate_smart_plan(amount: float, override_regime: str = None, asof_date: s
 
 
     if len(chosen_picks) < target_count:
-
-        for cand in sorted_pool:
-
-            if cand not in chosen_picks:
-
-                if cand.get("target_dip", 999999) <= min_alloc_per_pick:
-
-                    chosen_picks.append(cand)
-
+        fb_conn = sqlite3.connect(DB_PATH, timeout=30.0)
+        fb_conn.execute("PRAGMA busy_timeout = 30000;")
+        diverse_fallback_tickers = ["SQURPHARMA", "BXPHARMA", "GP", "OLYMPIC", "BATBC", "BSRMSTEEL"]
+        for fb_t in diverse_fallback_tickers:
+            if any(p["ticker"] == fb_t for p in chosen_picks):
+                continue
+            is_b, _ = is_ticker_blacklisted(fb_t, asof_date=asof_date)
+            if is_b:
+                continue
+            if halal_checker:
+                h_res = halal_checker.is_eligible(fb_t, tier=user_halal_tier)
+                if not h_res.get("eligible", True):
+                    continue
+            fb_m = compute_dynamic_stock_metrics(fb_t, fb_conn)
+            if fb_m and fb_m.get("current_price", 0) > 0:
+                fb_sec = fb_m.get("sector", "Unknown")
+                if fb_sec not in seen_sectors and fb_m.get("target_dip", 999999) <= min_alloc_per_pick:
+                    seen_sectors.add(fb_sec)
+                    chosen_picks.append(fb_m)
                     if len(chosen_picks) >= target_count:
+                        break
+        fb_conn.close()
 
+    if len(chosen_picks) < target_count:
+        for cand in sorted_pool:
+            if cand not in chosen_picks:
+                if cand.get("target_dip", 999999) <= min_alloc_per_pick:
+                    chosen_picks.append(cand)
+                    if len(chosen_picks) >= target_count:
                         break
 
 
@@ -907,6 +975,13 @@ def generate_smart_plan(amount: float, override_regime: str = None, asof_date: s
                 "exact_shares": shares,
 
                 "estimated_outlay": actual_outlay,
+
+                "tranches": build_tranche_plan(
+                    total_shares=shares,
+                    current_px=pick["current_price"],
+                    target_limit=target_p,
+                    min_low_60d=pick.get("min_low_60d", target_p * 0.95)
+                ),
 
                 "rationale": rationale
 
@@ -1029,9 +1104,13 @@ def print_plan_report(plan: dict):
     print("-"*85)
 
     for a in plan["allocations"]:
-
         print(f"{a['ticker']:<12} {a['sector']:<14} ৳{a['current_price']:<9.1f} ৳{a['target_limit_price']:<13.1f} {a['volatility_pct']:<5.1f}% {a['exact_shares']:<8} ৳{a['estimated_outlay']:<12.1f}")
-
+        tranches = a.get("tranches", [])
+        if tranches:
+            print("  └─ 3-Tier Execution Tranches:")
+            for t_idx, tr in enumerate(tranches):
+                connector = "└─" if t_idx == len(tranches) - 1 else "├─"
+                print(f"     {connector} {tr['tranche']:<24}: {tr['shares']:>2} shs @ ৳{tr['price']:<6.1f} ({tr['order_type']}) -> ৳{tr['outlay']:<8.1f} [{tr['note']}]")
         print(f"  └─ Rationale: {a['rationale']}")
 
     print("="*85)

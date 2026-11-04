@@ -123,11 +123,19 @@ def evaluate_user_investment_plan(capital_bdt: float = 50000.0, top_n: int = 3) 
         if not metrics or not metrics.get("current_price"):
             continue
 
-        # Check Shariah compliance (sector, ticker, name)
+        # Check Shariah / Customization compliance based on active profile
+        user_tier = "flexible"
+        try:
+            from profile import load_profile
+            user_tier = load_profile().get("halal_tier", "flexible")
+        except Exception:
+            pass
+
         sector = metrics.get("sector", "")
-        if is_shariah_excluded_company(sector, ticker=ticker):
+        if user_tier in ("strict", "flexible") and is_shariah_excluded_company(sector, ticker=ticker):
             continue
-        if metrics.get("debt_equity") is not None and metrics["debt_equity"] > 0.80:
+        max_de = 0.50 if user_tier == "strict" else (0.80 if user_tier == "flexible" else 1.00)
+        if metrics.get("debt_equity") is not None and metrics["debt_equity"] > max_de:
             continue
 
         # Compute Factor Conviction Index (Heuristic 0-100) & Calibrated Empirical Win Rate
