@@ -2,52 +2,53 @@
   "ticker": "DHAKABANK",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-03T14:27:01.296174",
-  "asof_price_date": "2026-11-03",
+  "analyzed_at": "2026-11-04T08:33:55.297388",
+  "asof_price_date": "2026-11-04",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 35.4747,
+    "rsi_14": 44.6961,
     "pe_ratio": 4.188679245283019,
     "debt_equity": 1.326
   },
-  "signal": "BUY",
-  "confidence": 70.23,
+  "signal": "HOLD_INELIGIBLE_DEFICIT",
+  "confidence": 62.5,
   "trajectory": {
     "direction": "RISE_PREDICTED",
     "direction_icon": "\ud83d\udfe2",
-    "rise_probability_pct": 61.2,
-    "momentum_status": "Bullish Reversal / Upward Accumulation",
+    "heuristic_momentum_bias": 61.2,
+    "rise_probability_pct": null,
+    "momentum_status": "Bullish Momentum / Upward Bias",
     "short_term": {
-      "predicted_path": "Oversold bounce to 20-DMA",
-      "upside_potential_pct": "+2.8%",
-      "downside_risk_pct": "-1.9%",
-      "target_price": 11.1,
-      "support_price": 10.6,
+      "predicted_path": "Upward momentum swing",
+      "upside_potential_pct": "+2.7%",
+      "downside_risk_pct": "-1.8%",
+      "target_price": 11.3,
+      "support_price": 10.8,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+15.7%",
-      "downside_risk_pct": "-2.8%",
+      "upside_potential_pct": "+13.6%",
+      "downside_risk_pct": "-2.7%",
       "target_price": 12.5,
-      "trailing_stop": 10.5,
-      "risk_reward_ratio": "5.6x"
+      "trailing_stop": 10.7,
+      "risk_reward_ratio": "5.0x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-      "upside_potential_pct": "+29.6%",
-      "downside_risk_pct": "-5.0%",
-      "target_price": 14.0,
+      "upside_potential_pct": "+30.0%",
+      "downside_risk_pct": "-4.9%",
+      "target_price": 14.3,
       "dividend_cagr": "strong (8.85%)",
-      "risk_reward_ratio": "5.9x"
+      "risk_reward_ratio": "6.1x"
     }
   },
   "trade_levels": {
-    "entry": 10.8,
-    "stop_loss": 10.47,
-    "target": 11.46
+    "entry": 11.0,
+    "stop_loss": 10.65,
+    "target": 11.7
   },
   "precision": {
     "ticker": "DHAKABANK",
@@ -60,18 +61,19 @@
       "signal": "No monthly delta available"
     },
     "cash_flow": {
-      "nocfps": 0.14,
-      "is_estimated": true,
+      "nocfps": null,
       "dividend_per_share": 0.0,
-      "dividend_coverage_x": 5.0,
-      "fcf_yield_pct": 14.0,
-      "cash_quality_status": "PRISTINE_REAL_CASH_COVERAGE",
-      "conviction_bonus": 15.0,
-      "signal": "Dividend is 500% cash-covered by real operations (NOCFPS: Tk 0.14 vs DPS: Tk 0.0)"
+      "cash_coverage_ratio": null,
+      "fcf_yield_pct": null,
+      "status": "UNKNOWN_CASH_FLOW_DATA_DEFICIT",
+      "signal_text": "NOCFPS (Operating Cash Flow) missing from disclosures \u2014 cash flow coverage unknown",
+      "score_bonus": 0.0,
+      "cfo_estimated": false,
+      "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 1166975,
-      "daily_turnover_bdt_cr": 0.12,
+      "avg_daily_volume": 1127528,
+      "daily_turnover_bdt_cr": 0.11,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
       "max_single_order_shares": 50000,
@@ -85,65 +87,65 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 15.0
+    "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "DHAKABANK",
-    "audited_at": "2026-11-03 20:27:01",
+    "audited_at": "2026-11-04 14:33:55",
     "worth_vs_greed": {
-      "current_price": 10.8,
+      "current_price": 11.0,
       "intrinsic_worth": 1.36,
-      "margin_of_safety_pct": -87.4,
+      "margin_of_safety_pct": -87.6,
       "extension_froth_score": 20.0,
       "greed_index": 20.0,
-      "rsi_14": 46.7,
-      "price_vs_ema50_pct": -4.9,
-      "price_vs_ema200_pct": -8.2,
+      "rsi_14": 52.9,
+      "price_vs_ema50_pct": -3.0,
+      "price_vs_ema200_pct": -6.5,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f30.17, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f310.6 \u2013 \u09f310.9",
-        "chase_cutoff_price": 11.1,
-        "when_to_wait": "If price opens or rises above \u09f311.1, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f310.6.",
-        "weekly_target_short": 11.2,
-        "monthly_target_swing": 12.4,
-        "long_term_target_asset": 14.0,
+        "optimal_entry_corridor": "\u09f310.8 \u2013 \u09f311.1",
+        "chase_cutoff_price": 11.3,
+        "when_to_wait": "If price opens or rises above \u09f311.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f310.8.",
+        "weekly_target_short": 11.4,
+        "monthly_target_swing": 12.6,
+        "long_term_target_asset": 14.3,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
       "worth_decision": "AVOID",
-      "reason": "Fundamental value severely lags stock price (MoS: -87.4%).",
+      "reason": "Fundamental value severely lags stock price (MoS: -87.6%).",
       "is_blacklisted": false,
       "blacklist_reason": null
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -3.57,
+          "return_pct": -0.9,
           "high": 11.1,
           "low": 10.8,
           "range_volatility_pct": 2.78
         },
         "monthly_21d": {
-          "return_pct": -4.42,
+          "return_pct": -1.79,
           "high": 11.5,
           "low": 10.8,
           "range_volatility_pct": 6.48
         },
         "quarterly_63d": {
-          "return_pct": -10.0,
+          "return_pct": -9.84,
           "high": 12.7,
           "low": 10.8,
           "range_volatility_pct": 17.59
         },
         "half_yearly_126d": {
-          "return_pct": -16.28,
-          "high": 13.4,
+          "return_pct": -12.7,
+          "high": 12.8,
           "low": 10.8,
-          "range_volatility_pct": 24.07
+          "range_volatility_pct": 18.52
         },
         "yearly_252d": {
-          "return_pct": -2.7,
+          "return_pct": -0.9,
           "high": 16.0,
           "low": 10.2,
           "range_volatility_pct": 56.86
@@ -151,11 +153,11 @@
       },
       "wave_metrics": {
         "median_rally_gain_pct": 11.6,
-        "median_correction_drop_pct": -12.8,
+        "median_correction_drop_pct": -12.9,
         "avg_wave_duration_bars": 20.0
       },
-      "current_wave_phase": "BOTTOMING_SUPPORT",
-      "phase_guidance": "Drop (-15.0%) matches historical correction depth (-12.8%). Prepare to accumulate.",
+      "current_wave_phase": "ACCUMULATION_TROUGH",
+      "phase_guidance": "Near local cyclical trough base. Maximum reward/risk entry point.",
       "top_seasonal_months": [
         {
           "month": "Jan",
@@ -253,17 +255,17 @@
     ]
   },
   "technical": {
-    "score": 50.0,
+    "score": 57.5,
     "signals": {
       "rsi": "neutral",
-      "macd": "neutral",
+      "macd": "bullish_crossover",
       "sma_trend": "neutral",
       "bb": "inside_bands",
-      "atr": 0.22,
-      "rsi_value": 35.41,
-      "last_close": 10.8,
-      "sma20": 11.03,
-      "sma50": 11.42,
+      "atr": 0.23,
+      "rsi_value": 44.61,
+      "last_close": 11.0,
+      "sma20": 11.02,
+      "sma50": 11.4,
       "sma200": 12.14,
       "support_resistance": {
         "supports": [
@@ -286,42 +288,40 @@
     }
   },
   "fundamental": {
-    "score": 81.67,
+    "score": 75.0,
     "signals": {
-      "latest_interim_eps": "FY2027Q3 (0.17)",
       "eps": "positive (2.65)",
-      "eps_yoy_growth_pct": 108.7,
-      "eps_growth_comparison": "FY2025 vs FY2024",
-      "pe": "deep_value (4.27)",
+      "eps_yoy_growth_pct": 0.0,
+      "eps_growth_comparison": "FYNone vs FYNone",
+      "pe": "deep_value (4.188679245283019)",
       "nav": 23.64,
       "dividend_yield": "strong (8.85%)",
       "bank_npl_pct": 5.5,
       "debt_equity": "bank_acceptable_npl (5.5%)",
       "loan_trap_risk": "low",
-      "dividend_track_record_years": 5,
-      "dividend_consistency": "proven_compounder (5 yrs cash divs)",
       "earnings_quality": "financial_asset_quality_mode",
       "downturn_resilience": {
         "status": "growth_at_discount",
-        "drawdown_pct": 32.5,
+        "drawdown_pct": 31.2,
         "high_52w": 16.0,
         "low_52w": 10.2,
-        "note": "Share price down 32.5% from 52w peak, yet earnings positive/steady (Conviction discount)"
+        "note": "Share price down 31.2% from 52w peak, yet earnings positive/steady (Conviction discount)"
       }
     }
   },
   "management": {
     "ticker": "DHAKABANK",
     "company_name": "DHAKABANK",
-    "chairman": "Board Appointed Chairman",
-    "managing_director_ceo": "Managing Director / CEO",
-    "leadership_type": "Public Listed Corporate Board",
-    "industry_experience_years": 20,
-    "governance_rating": "A",
-    "audit_credibility": "Standard Category A Audit",
-    "key_moat": "DSE Listed Franchise",
-    "management_risk": "Low",
-    "governance_score": 75
+    "chairman": "UNKNOWN",
+    "managing_director_ceo": "UNKNOWN",
+    "leadership_type": "UNKNOWN_UNREGISTERED",
+    "industry_experience_years": null,
+    "governance_rating": "UNRATED",
+    "audit_credibility": "UNAUDITED_PROFILE",
+    "key_moat": "UNKNOWN",
+    "management_risk": "HIGH_DATA_DEFICIT",
+    "governance_score": 0.0,
+    "is_vetted": false
   },
   "news_intent": {
     "ticker": "DHAKABANK",
@@ -347,15 +347,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 897624,
-        "avg_volume": 1314339.0,
+        "last_volume": 675995,
+        "avg_volume": 1290293.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.67,
-        "avg_volume": 1349398.0,
-        "today_volume": 897624,
+        "spike_ratio": 0.51,
+        "avg_volume": 1314339.0,
+        "today_volume": 675995,
         "detail": "ok"
       },
       "serial_trading": {
@@ -374,20 +374,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": -1.82,
+        "price_change_3d": 0.0,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 70.23,
-    "governance_score": 75,
+    "composite_score": 62.5,
+    "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.486,
-      "technical": 0.321,
-      "governance": 0.193,
+      "fundamental": 0.68,
+      "technical": 0.2,
+      "governance": 0.12,
       "sentiment": 0.0
     }
   }

@@ -2,52 +2,53 @@
   "ticker": "MEGHNACEM",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-03T14:27:02.778348",
-  "asof_price_date": "2026-11-03",
+  "analyzed_at": "2026-11-04T08:33:56.395013",
+  "asof_price_date": "2026-11-04",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 40.2054,
+    "rsi_14": 38.4974,
     "pe_ratio": 0.0,
     "debt_equity": 10.733
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 48.38,
+  "confidence": 23.35,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
-    "rise_probability_pct": 50.0,
+    "heuristic_momentum_bias": 50.0,
+    "rise_probability_pct": null,
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
-      "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+8.5%",
-      "downside_risk_pct": "-5.5%",
-      "target_price": 29.4,
-      "support_price": 25.6,
+      "predicted_path": "Oversold bounce to 20-DMA",
+      "upside_potential_pct": "+9.0%",
+      "downside_risk_pct": "-6.0%",
+      "target_price": 29.2,
+      "support_price": 25.2,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+17.7%",
-      "downside_risk_pct": "-8.5%",
+      "upside_potential_pct": "+19.0%",
+      "downside_risk_pct": "-9.0%",
       "target_price": 31.9,
-      "trailing_stop": 24.8,
+      "trailing_stop": 24.4,
       "risk_reward_ratio": "2.1x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+29.9%",
       "downside_risk_pct": "-12.0%",
-      "target_price": 35.2,
+      "target_price": 34.8,
       "dividend_cagr": "no_dividend",
       "risk_reward_ratio": "2.5x"
     }
   },
   "trade_levels": {
-    "entry": 27.1,
-    "stop_loss": 24.8,
-    "target": 31.7
+    "entry": 26.8,
+    "stop_loss": 24.39,
+    "target": 31.62
   },
   "precision": {
     "ticker": "MEGHNACEM",
@@ -60,24 +61,25 @@
       "signal": "No monthly delta available"
     },
     "cash_flow": {
-      "nocfps": -14.43,
-      "is_estimated": true,
+      "nocfps": null,
       "dividend_per_share": 0.0,
-      "dividend_coverage_x": 0.0,
-      "fcf_yield_pct": -1443.0,
-      "cash_quality_status": "TIGHT_CASH_COVERAGE",
-      "conviction_bonus": -10.0,
-      "signal": "Cash flow covers only 0% of dividend payout"
+      "cash_coverage_ratio": null,
+      "fcf_yield_pct": null,
+      "status": "UNKNOWN_CASH_FLOW_DATA_DEFICIT",
+      "signal_text": "NOCFPS (Operating Cash Flow) missing from disclosures \u2014 cash flow coverage unknown",
+      "score_bonus": 0.0,
+      "cfo_estimated": false,
+      "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 4928,
+      "avg_daily_volume": 4821,
       "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 246,
-      "max_daily_accumulation_shares": 739,
-      "max_order_bdt": 246.0,
-      "directive": "Max single order: 246 shares (Tk 246) to prevent >1% execution slippage"
+      "max_single_order_shares": 241,
+      "max_daily_accumulation_shares": 723,
+      "max_order_bdt": 241.0,
+      "directive": "Max single order: 241 shares (Tk 241) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -85,29 +87,29 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": -10.0
+    "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "MEGHNACEM",
-    "audited_at": "2026-11-03 20:27:02",
+    "audited_at": "2026-11-04 14:33:56",
     "worth_vs_greed": {
-      "current_price": 27.1,
-      "intrinsic_worth": 13.55,
+      "current_price": 26.8,
+      "intrinsic_worth": 13.4,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 40.0,
       "greed_index": 40.0,
-      "rsi_14": 45.2,
-      "price_vs_ema50_pct": -6.4,
-      "price_vs_ema200_pct": -15.0,
+      "rsi_14": 42.7,
+      "price_vs_ema50_pct": -7.1,
+      "price_vs_ema200_pct": -15.8,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f326.6 \u2013 \u09f327.4",
-        "chase_cutoff_price": 27.8,
-        "when_to_wait": "If price opens or rises above \u09f327.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f326.6.",
-        "weekly_target_short": 28.0,
-        "monthly_target_swing": 31.2,
-        "long_term_target_asset": 35.2,
+        "optimal_entry_corridor": "\u09f326.3 \u2013 \u09f327.1",
+        "chase_cutoff_price": 27.5,
+        "when_to_wait": "If price opens or rises above \u09f327.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f326.3.",
+        "weekly_target_short": 27.7,
+        "monthly_target_swing": 30.8,
+        "long_term_target_asset": 34.8,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
@@ -120,34 +122,34 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -6.23,
+          "return_pct": -4.29,
           "high": 29.1,
           "low": 25.6,
           "range_volatility_pct": 13.67
         },
         "monthly_21d": {
-          "return_pct": -8.14,
+          "return_pct": -7.27,
           "high": 30.3,
           "low": 25.6,
           "range_volatility_pct": 18.36
         },
         "quarterly_63d": {
-          "return_pct": -13.97,
+          "return_pct": -15.19,
           "high": 32.9,
           "low": 25.6,
           "range_volatility_pct": 28.52
         },
         "half_yearly_126d": {
-          "return_pct": -9.67,
+          "return_pct": -10.07,
           "high": 35.8,
           "low": 25.6,
           "range_volatility_pct": 39.84
         },
         "yearly_252d": {
-          "return_pct": -40.44,
-          "high": 46.2,
+          "return_pct": -41.87,
+          "high": 45.9,
           "low": 25.6,
-          "range_volatility_pct": 80.47
+          "range_volatility_pct": 79.3
         }
       },
       "wave_metrics": {
@@ -254,18 +256,18 @@
     ]
   },
   "technical": {
-    "score": 42.5,
+    "score": 48.75,
     "signals": {
       "rsi": "neutral",
       "macd": "bearish_crossover",
       "sma_trend": "neutral",
-      "bb": "inside_bands",
-      "atr": 1.53,
-      "rsi_value": 40.43,
-      "last_close": 27.1,
-      "sma20": 28.15,
-      "sma50": 28.84,
-      "sma200": 31.11,
+      "bb": "at_lower_band_bullish",
+      "atr": 1.61,
+      "rsi_value": 38.67,
+      "last_close": 26.8,
+      "sma20": 28.07,
+      "sma50": 28.78,
+      "sma200": 31.09,
       "support_resistance": {
         "supports": [
           27.3,
@@ -293,27 +295,17 @@
     }
   },
   "fundamental": {
-    "score": 41.67,
+    "score": 20.0,
     "signals": {
-      "latest_interim_eps": "FY2026Q3 (-16.98)",
-      "eps": "negative (-36.58)",
-      "eps_yoy_growth_pct": -410.9,
-      "eps_growth_comparison": "FY2025 vs FY2024",
+      "nav": 38.33,
       "dividend_yield": "no_dividend",
       "debt_equity_val": 10.733,
-      "long_term_debt_equity_val": 7.128,
       "debt_equity": "danger_high_loan (10.733)",
       "loan_trap_risk": "high",
-      "dividend_track_record_years": 3,
-      "dividend_consistency": "steady_payer (3 yrs cash divs)",
-      "cfo_cr": 4.9,
-      "net_profit_cr": -115.5,
-      "accrual_ratio": -0.995,
-      "earnings_quality": "superior_cash_backed",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 47.8,
-        "high_52w": 51.9,
+        "drawdown_pct": 47.0,
+        "high_52w": 50.6,
         "low_52w": 25.6
       }
     }
@@ -321,15 +313,16 @@
   "management": {
     "ticker": "MEGHNACEM",
     "company_name": "MEGHNACEM",
-    "chairman": "Board Appointed Chairman",
-    "managing_director_ceo": "Managing Director / CEO",
-    "leadership_type": "Public Listed Corporate Board",
-    "industry_experience_years": 20,
-    "governance_rating": "A",
-    "audit_credibility": "Standard Category A Audit",
-    "key_moat": "DSE Listed Franchise",
-    "management_risk": "Low",
-    "governance_score": 75
+    "chairman": "UNKNOWN",
+    "managing_director_ceo": "UNKNOWN",
+    "leadership_type": "UNKNOWN_UNREGISTERED",
+    "industry_experience_years": null,
+    "governance_rating": "UNRATED",
+    "audit_credibility": "UNAUDITED_PROFILE",
+    "key_moat": "UNKNOWN",
+    "management_risk": "HIGH_DATA_DEFICIT",
+    "governance_score": 0.0,
+    "is_vetted": false
   },
   "news_intent": {
     "ticker": "MEGHNACEM",
@@ -355,15 +348,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 3090,
-        "avg_volume": 5244.0,
+        "last_volume": 4108,
+        "avg_volume": 5284.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.5,
-        "avg_volume": 6205.0,
-        "today_volume": 3090,
+        "spike_ratio": 0.78,
+        "avg_volume": 5244.0,
+        "today_volume": 4108,
         "detail": "ok"
       },
       "serial_trading": {
@@ -382,20 +375,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": -0.37,
+        "price_change_3d": -1.47,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 48.38,
-    "governance_score": 75,
+    "composite_score": 23.35,
+    "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.486,
-      "technical": 0.321,
-      "governance": 0.193,
+      "fundamental": 0.68,
+      "technical": 0.2,
+      "governance": 0.12,
       "sentiment": 0.0
     }
   }

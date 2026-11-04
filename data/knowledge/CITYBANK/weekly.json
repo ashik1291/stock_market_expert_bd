@@ -2,52 +2,53 @@
   "ticker": "CITYBANK",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-03T14:27:00.716167",
-  "asof_price_date": "2026-11-03",
+  "analyzed_at": "2026-11-04T08:33:54.969421",
+  "asof_price_date": "2026-11-04",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 26.1391,
+    "rsi_14": 32.3151,
     "pe_ratio": 3.398392652123995,
     "debt_equity": 0.156
   },
-  "signal": "STRONG_BUY",
-  "confidence": 75.79,
+  "signal": "HOLD_INELIGIBLE_DEFICIT",
+  "confidence": 73.67,
   "trajectory": {
     "direction": "RISE_PREDICTED",
     "direction_icon": "\ud83d\udfe2",
-    "rise_probability_pct": 67.9,
-    "momentum_status": "Bullish Reversal / Upward Accumulation",
+    "heuristic_momentum_bias": 67.9,
+    "rise_probability_pct": null,
+    "momentum_status": "Bullish Momentum / Upward Bias",
     "short_term": {
       "predicted_path": "Oversold bounce to 20-DMA",
-      "upside_potential_pct": "+2.1%",
-      "downside_risk_pct": "-1.4%",
-      "target_price": 28.7,
-      "support_price": 27.7,
-      "risk_reward_ratio": "1.5x"
+      "upside_potential_pct": "+2.5%",
+      "downside_risk_pct": "-1.8%",
+      "target_price": 29.1,
+      "support_price": 27.9,
+      "risk_reward_ratio": "1.4x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+12.1%",
-      "downside_risk_pct": "-2.1%",
+      "upside_potential_pct": "+10.9%",
+      "downside_risk_pct": "-2.5%",
       "target_price": 31.5,
-      "trailing_stop": 27.5,
-      "risk_reward_ratio": "5.8x"
+      "trailing_stop": 27.7,
+      "risk_reward_ratio": "4.4x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+29.9%",
-      "downside_risk_pct": "-3.8%",
-      "target_price": 36.5,
+      "downside_risk_pct": "-4.5%",
+      "target_price": 36.9,
       "dividend_cagr": "strong (6.15%)",
-      "risk_reward_ratio": "7.9x"
+      "risk_reward_ratio": "6.6x"
     }
   },
   "trade_levels": {
-    "entry": 28.1,
-    "stop_loss": 27.46,
-    "target": 29.38
+    "entry": 28.4,
+    "stop_loss": 27.71,
+    "target": 29.78
   },
   "precision": {
     "ticker": "CITYBANK",
@@ -60,18 +61,19 @@
       "signal": "No monthly delta available"
     },
     "cash_flow": {
-      "nocfps": 1.66,
-      "is_estimated": true,
+      "nocfps": null,
       "dividend_per_share": 0.0,
-      "dividend_coverage_x": 5.0,
-      "fcf_yield_pct": 166.0,
-      "cash_quality_status": "PRISTINE_REAL_CASH_COVERAGE",
-      "conviction_bonus": 15.0,
-      "signal": "Dividend is 500% cash-covered by real operations (NOCFPS: Tk 1.66 vs DPS: Tk 0.0)"
+      "cash_coverage_ratio": null,
+      "fcf_yield_pct": null,
+      "status": "UNKNOWN_CASH_FLOW_DATA_DEFICIT",
+      "signal_text": "NOCFPS (Operating Cash Flow) missing from disclosures \u2014 cash flow coverage unknown",
+      "score_bonus": 0.0,
+      "cfo_estimated": false,
+      "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 2822976,
-      "daily_turnover_bdt_cr": 0.28,
+      "avg_daily_volume": 2899425,
+      "daily_turnover_bdt_cr": 0.29,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
       "max_single_order_shares": 50000,
@@ -85,65 +87,65 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 15.0
+    "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "CITYBANK",
-    "audited_at": "2026-11-03 20:27:00",
+    "audited_at": "2026-11-04 14:33:54",
     "worth_vs_greed": {
-      "current_price": 28.1,
+      "current_price": 28.4,
       "intrinsic_worth": 15.6,
-      "margin_of_safety_pct": -44.5,
+      "margin_of_safety_pct": -45.1,
       "extension_froth_score": 30.0,
       "greed_index": 30.0,
-      "rsi_14": 28.2,
-      "price_vs_ema50_pct": -6.0,
-      "price_vs_ema200_pct": -3.4,
+      "rsi_14": 34.1,
+      "price_vs_ema50_pct": -4.8,
+      "price_vs_ema200_pct": -2.4,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f31.95, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f327.5 \u2013 \u09f328.4",
-        "chase_cutoff_price": 28.8,
-        "when_to_wait": "If price opens or rises above \u09f328.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f327.5.",
-        "weekly_target_short": 29.1,
-        "monthly_target_swing": 32.3,
-        "long_term_target_asset": 36.5,
+        "optimal_entry_corridor": "\u09f327.8 \u2013 \u09f328.7",
+        "chase_cutoff_price": 29.1,
+        "when_to_wait": "If price opens or rises above \u09f329.1, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f327.8.",
+        "weekly_target_short": 29.4,
+        "monthly_target_swing": 32.7,
+        "long_term_target_asset": 36.9,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
       "worth_decision": "AVOID",
-      "reason": "Fundamental value severely lags stock price (MoS: -44.5%).",
+      "reason": "Fundamental value severely lags stock price (MoS: -45.1%).",
       "is_blacklisted": false,
       "blacklist_reason": null
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -5.39,
+          "return_pct": -5.02,
           "high": 29.9,
           "low": 28.0,
           "range_volatility_pct": 6.79
         },
         "monthly_21d": {
-          "return_pct": -6.02,
+          "return_pct": -4.38,
           "high": 30.4,
           "low": 28.0,
           "range_volatility_pct": 8.57
         },
         "quarterly_63d": {
-          "return_pct": -10.51,
+          "return_pct": -9.84,
           "high": 31.8,
           "low": 28.0,
           "range_volatility_pct": 13.57
         },
         "half_yearly_126d": {
-          "return_pct": -14.59,
+          "return_pct": -13.15,
           "high": 33.2,
           "low": 26.1,
           "range_volatility_pct": 27.2
         },
         "yearly_252d": {
-          "return_pct": 19.57,
+          "return_pct": 19.33,
           "high": 33.9,
           "low": 22.6,
           "range_volatility_pct": 50.0
@@ -253,18 +255,18 @@
     ]
   },
   "technical": {
-    "score": 56.25,
+    "score": 48.75,
     "signals": {
-      "rsi": "oversold_bullish",
+      "rsi": "neutral",
       "macd": "bearish_crossover",
       "sma_trend": "neutral",
       "bb": "at_lower_band_bullish",
-      "atr": 0.43,
-      "rsi_value": 26.33,
-      "last_close": 28.1,
-      "sma20": 29.63,
-      "sma50": 29.84,
-      "sma200": 29.66,
+      "atr": 0.46,
+      "rsi_value": 32.48,
+      "last_close": 28.4,
+      "sma20": 29.57,
+      "sma50": 29.79,
+      "sma200": 29.68,
       "support_resistance": {
         "supports": [
           26.2,
@@ -290,27 +292,24 @@
     }
   },
   "fundamental": {
-    "score": 85.0,
+    "score": 79.0,
     "signals": {
-      "latest_interim_eps": "FY2027Q3 (1.95)",
       "eps": "positive (8.71)",
-      "eps_yoy_growth_pct": 15.7,
-      "eps_growth_comparison": "FY2025 vs FY2024",
-      "pe": "deep_value (2.8)",
+      "eps_yoy_growth_pct": 0.0,
+      "eps_growth_comparison": "FYNone vs FYNone",
+      "pe": "deep_value (3.398392652123995)",
       "nav": 40.67,
       "dividend_yield": "strong (6.15%)",
       "bank_npl_pct": 3.8,
       "debt_equity": "bank_pristine_npl (3.8%)",
       "loan_trap_risk": "none",
-      "dividend_track_record_years": 5,
-      "dividend_consistency": "proven_compounder (5 yrs cash divs)",
       "earnings_quality": "financial_asset_quality_mode",
       "downturn_resilience": {
         "status": "growth_at_discount",
-        "drawdown_pct": 17.1,
+        "drawdown_pct": 16.2,
         "high_52w": 33.9,
         "low_52w": 22.6,
-        "note": "Share price down 17.1% from 52w peak, yet earnings positive/steady (Conviction discount)"
+        "note": "Share price down 16.2% from 52w peak, yet earnings positive/steady (Conviction discount)"
       }
     }
   },
@@ -351,15 +350,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 3677532,
-        "avg_volume": 2370063.0,
+        "last_volume": 2142513,
+        "avg_volume": 2418968.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.61,
-        "avg_volume": 2281751.0,
-        "today_volume": 3677532,
+        "spike_ratio": 0.9,
+        "avg_volume": 2370063.0,
+        "today_volume": 2142513,
         "detail": "ok"
       },
       "serial_trading": {
@@ -378,20 +377,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": -4.1,
+        "price_change_3d": -3.07,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 75.79,
+    "composite_score": 73.67,
     "governance_score": 85,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.486,
-      "technical": 0.321,
-      "governance": 0.193,
+      "fundamental": 0.68,
+      "technical": 0.2,
+      "governance": 0.12,
       "sentiment": 0.0
     }
   }

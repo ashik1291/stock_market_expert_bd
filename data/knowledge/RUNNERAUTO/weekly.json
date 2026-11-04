@@ -2,52 +2,53 @@
   "ticker": "RUNNERAUTO",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-03T14:27:04.448610",
-  "asof_price_date": "2026-11-03",
+  "analyzed_at": "2026-11-04T08:33:57.612538",
+  "asof_price_date": "2026-11-04",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 50.0519,
+    "rsi_14": 57.9959,
     "pe_ratio": 49.0,
     "debt_equity": 1.273
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 63.43,
+  "confidence": 45.89,
   "trajectory": {
     "direction": "FALL_RISK",
     "direction_icon": "\ud83d\udd34",
-    "rise_probability_pct": 29.0,
+    "heuristic_momentum_bias": 29.0,
+    "rise_probability_pct": null,
     "momentum_status": "Bearish Breakdown / Selling Pressure",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+5.4%",
-      "downside_risk_pct": "-3.6%",
-      "target_price": 47.2,
-      "support_price": 43.2,
+      "upside_potential_pct": "+5.2%",
+      "downside_risk_pct": "-3.4%",
+      "target_price": 49.0,
+      "support_price": 45.0,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+18.3%",
-      "downside_risk_pct": "-6.7%",
+      "upside_potential_pct": "+13.7%",
+      "downside_risk_pct": "-10.1%",
       "target_price": 53.0,
-      "trailing_stop": 41.8,
-      "risk_reward_ratio": "2.7x"
+      "trailing_stop": 41.9,
+      "risk_reward_ratio": "1.4x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-      "upside_potential_pct": "+29.9%",
+      "upside_potential_pct": "+30.0%",
       "downside_risk_pct": "-12.0%",
-      "target_price": 58.2,
+      "target_price": 60.6,
       "dividend_cagr": "moderate (4.0%)",
       "risk_reward_ratio": "2.5x"
     }
   },
   "trade_levels": {
-    "entry": 44.8,
-    "stop_loss": 42.43,
-    "target": 49.54
+    "entry": 46.6,
+    "stop_loss": 44.19,
+    "target": 51.42
   },
   "precision": {
     "ticker": "RUNNERAUTO",
@@ -60,24 +61,25 @@
       "signal": "No monthly delta available"
     },
     "cash_flow": {
-      "nocfps": 0.2,
-      "is_estimated": true,
+      "nocfps": null,
       "dividend_per_share": 0.0,
-      "dividend_coverage_x": 5.0,
-      "fcf_yield_pct": 20.0,
-      "cash_quality_status": "PRISTINE_REAL_CASH_COVERAGE",
-      "conviction_bonus": 15.0,
-      "signal": "Dividend is 500% cash-covered by real operations (NOCFPS: Tk 0.2 vs DPS: Tk 0.0)"
+      "cash_coverage_ratio": null,
+      "fcf_yield_pct": null,
+      "status": "UNKNOWN_CASH_FLOW_DATA_DEFICIT",
+      "signal_text": "NOCFPS (Operating Cash Flow) missing from disclosures \u2014 cash flow coverage unknown",
+      "score_bonus": 0.0,
+      "cfo_estimated": false,
+      "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 316595,
+      "avg_daily_volume": 335591,
       "daily_turnover_bdt_cr": 0.03,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 15829,
-      "max_daily_accumulation_shares": 47489,
-      "max_order_bdt": 15829.0,
-      "directive": "Max single order: 15,829 shares (Tk 15,829) to prevent >1% execution slippage"
+      "max_single_order_shares": 16779,
+      "max_daily_accumulation_shares": 50338,
+      "max_order_bdt": 16779.0,
+      "directive": "Max single order: 16,779 shares (Tk 16,779) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -85,34 +87,34 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 15.0
+    "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "RUNNERAUTO",
-    "audited_at": "2026-11-03 20:27:04",
+    "audited_at": "2026-11-04 14:33:57",
     "worth_vs_greed": {
-      "current_price": 44.8,
+      "current_price": 46.6,
       "intrinsic_worth": 1.92,
-      "margin_of_safety_pct": -95.7,
-      "extension_froth_score": 30.0,
-      "greed_index": 30.0,
-      "rsi_14": 63.2,
-      "price_vs_ema50_pct": -0.2,
-      "price_vs_ema200_pct": 7.7,
+      "margin_of_safety_pct": -95.9,
+      "extension_froth_score": 40.0,
+      "greed_index": 40.0,
+      "rsi_14": 67.4,
+      "price_vs_ema50_pct": 3.6,
+      "price_vs_ema200_pct": 11.9,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f30.24, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f343.9 \u2013 \u09f345.2",
-        "chase_cutoff_price": 45.9,
-        "when_to_wait": "If price opens or rises above \u09f345.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f343.9.",
-        "weekly_target_short": 46.4,
-        "monthly_target_swing": 51.5,
-        "long_term_target_asset": 58.2,
+        "optimal_entry_corridor": "\u09f345.7 \u2013 \u09f347.1",
+        "chase_cutoff_price": 47.8,
+        "when_to_wait": "If price opens or rises above \u09f347.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f345.7.",
+        "weekly_target_short": 48.2,
+        "monthly_target_swing": 53.6,
+        "long_term_target_asset": 60.6,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
       "worth_decision": "AVOID",
-      "reason": "Fundamental value severely lags stock price (MoS: -95.7%).",
+      "reason": "Fundamental value severely lags stock price (MoS: -95.9%).",
       "is_blacklisted": true,
       "blacklist_reason": "Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-27 \u2014 Price up +4.86% with poor fundamentals (Negative EPS)]",
       "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-27 \u2014 Price up +4.86% with poor fundamentals (Negative EPS)]"
@@ -120,31 +122,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -1.1,
+          "return_pct": 0.0,
           "high": 46.9,
           "low": 44.2,
           "range_volatility_pct": 6.11
         },
         "monthly_21d": {
-          "return_pct": 2.75,
+          "return_pct": 7.37,
           "high": 46.9,
           "low": 41.2,
           "range_volatility_pct": 13.83
         },
         "quarterly_63d": {
-          "return_pct": -5.29,
+          "return_pct": 1.53,
           "high": 54.2,
           "low": 41.2,
           "range_volatility_pct": 31.55
         },
         "half_yearly_126d": {
-          "return_pct": 18.83,
+          "return_pct": 16.21,
           "high": 54.2,
           "low": 36.0,
           "range_volatility_pct": 50.56
         },
         "yearly_252d": {
-          "return_pct": 59.43,
+          "return_pct": 64.66,
           "high": 54.2,
           "low": 27.9,
           "range_volatility_pct": 94.27
@@ -155,8 +157,8 @@
         "median_correction_drop_pct": -27.5,
         "avg_wave_duration_bars": 24.0
       },
-      "current_wave_phase": "ACCUMULATION_TROUGH",
-      "phase_guidance": "Near local cyclical trough base. Maximum reward/risk entry point.",
+      "current_wave_phase": "MARKUP_RALLY_MID",
+      "phase_guidance": "Midway through rally wave (+13.1% from base, historical target ~+21.9%).",
       "top_seasonal_months": [
         {
           "month": "Nov",
@@ -254,18 +256,18 @@
     ]
   },
   "technical": {
-    "score": 56.25,
+    "score": 66.25,
     "signals": {
       "rsi": "neutral",
-      "macd": "neutral",
+      "macd": "bullish_crossover",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 1.58,
-      "rsi_value": 50.15,
-      "last_close": 44.8,
-      "sma20": 44.17,
-      "sma50": 45.54,
-      "sma200": 41.09,
+      "atr": 1.61,
+      "rsi_value": 58.07,
+      "last_close": 46.6,
+      "sma20": 44.29,
+      "sma50": 45.41,
+      "sma200": 41.13,
       "support_resistance": {
         "supports": [
           29.7
@@ -289,46 +291,38 @@
     }
   },
   "fundamental": {
-    "score": 63.57,
+    "score": 48.0,
     "signals": {
-      "latest_interim_eps": "FY2026Q3 (0.24)",
       "eps": "positive (0.9)",
-      "eps_yoy_growth_pct": 266.7,
-      "eps_growth_comparison": "FY2025 vs FY2024",
-      "pe": "expensive (27.73)",
+      "eps_yoy_growth_pct": 0.0,
+      "eps_growth_comparison": "FYNone vs FYNone",
+      "pe": "expensive (49.0)",
       "nav": 66.7,
       "dividend_yield": "moderate (4.0%)",
       "debt_equity_val": 1.273,
-      "long_term_debt_equity_val": 0.524,
       "debt_equity": "elevated (1.273)",
       "loan_trap_risk": "moderate",
-      "dividend_track_record_years": 4,
-      "dividend_consistency": "proven_compounder (4 yrs cash divs)",
-      "cfo_cr": 16.6,
-      "net_profit_cr": 10.2,
-      "accrual_ratio": -0.008,
-      "earnings_quality": "superior_cash_backed",
       "downturn_resilience": {
-        "status": "growth_at_discount",
-        "drawdown_pct": 17.3,
+        "status": "normal",
+        "drawdown_pct": 14.0,
         "high_52w": 54.2,
-        "low_52w": 27.9,
-        "note": "Share price down 17.3% from 52w peak, yet earnings positive/steady (Conviction discount)"
+        "low_52w": 27.9
       }
     }
   },
   "management": {
     "ticker": "RUNNERAUTO",
     "company_name": "RUNNERAUTO",
-    "chairman": "Board Appointed Chairman",
-    "managing_director_ceo": "Managing Director / CEO",
-    "leadership_type": "Public Listed Corporate Board",
-    "industry_experience_years": 20,
-    "governance_rating": "A",
-    "audit_credibility": "Standard Category A Audit",
-    "key_moat": "DSE Listed Franchise",
-    "management_risk": "Low",
-    "governance_score": 75
+    "chairman": "UNKNOWN",
+    "managing_director_ceo": "UNKNOWN",
+    "leadership_type": "UNKNOWN_UNREGISTERED",
+    "industry_experience_years": null,
+    "governance_rating": "UNRATED",
+    "audit_credibility": "UNAUDITED_PROFILE",
+    "key_moat": "UNKNOWN",
+    "management_risk": "HIGH_DATA_DEFICIT",
+    "governance_score": 0.0,
+    "is_vetted": false
   },
   "news_intent": {
     "ticker": "RUNNERAUTO",
@@ -354,15 +348,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 390459,
-        "avg_volume": 357104.0,
+        "last_volume": 681675,
+        "avg_volume": 358405.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.05,
-        "avg_volume": 372918.0,
-        "today_volume": 390459,
+        "spike_ratio": 1.91,
+        "avg_volume": 357104.0,
+        "today_volume": 681675,
         "detail": "ok"
       },
       "serial_trading": {
@@ -381,20 +375,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": -0.22,
+        "price_change_3d": 3.79,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 63.43,
-    "governance_score": 75,
+    "composite_score": 45.89,
+    "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.486,
-      "technical": 0.321,
-      "governance": 0.193,
+      "fundamental": 0.68,
+      "technical": 0.2,
+      "governance": 0.12,
       "sentiment": 0.0
     }
   }

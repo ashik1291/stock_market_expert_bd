@@ -121,7 +121,7 @@ def cmd_alpha():
     print("=" * 80, flush=True)
     print("⚡ EXECUTING DAILY STATISTICAL ALPHA ROUTINE & BAYESIAN CALIBRATION", flush=True)
     print("=" * 80, flush=True)
-    run_script("daily_alpha_routine.py")
+    run_script("auto_daily_alpha_routine.py")
 
 
 def cmd_learn():

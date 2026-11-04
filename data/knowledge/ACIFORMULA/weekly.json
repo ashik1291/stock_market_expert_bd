@@ -2,52 +2,53 @@
   "ticker": "ACIFORMULA",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-03T14:27:02.003342",
-  "asof_price_date": "2026-11-03",
+  "analyzed_at": "2026-11-04T08:33:55.741603",
+  "asof_price_date": "2026-11-04",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 31.7475,
+    "rsi_14": 37.3865,
     "pe_ratio": 18.866242038216562,
     "debt_equity": 1.021
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 58.33,
+  "confidence": 46.72,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
-    "rise_probability_pct": 58.3,
+    "heuristic_momentum_bias": 55.0,
+    "rise_probability_pct": null,
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Oversold bounce to 20-DMA",
-      "upside_potential_pct": "+5.1%",
-      "downside_risk_pct": "-3.5%",
-      "target_price": 139.9,
-      "support_price": 128.5,
+      "upside_potential_pct": "+4.9%",
+      "downside_risk_pct": "-3.3%",
+      "target_price": 142.8,
+      "support_price": 131.6,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
       "upside_potential_pct": "+25.0%",
-      "downside_risk_pct": "-5.1%",
-      "target_price": 166.4,
-      "trailing_stop": 126.3,
-      "risk_reward_ratio": "4.9x"
+      "downside_risk_pct": "-4.9%",
+      "target_price": 170.1,
+      "trailing_stop": 129.4,
+      "risk_reward_ratio": "5.1x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.0%",
-      "downside_risk_pct": "-9.2%",
-      "target_price": 173.0,
+      "downside_risk_pct": "-8.8%",
+      "target_price": 176.9,
       "dividend_cagr": "moderate (1.97%)",
-      "risk_reward_ratio": "3.3x"
+      "risk_reward_ratio": "3.4x"
     }
   },
   "trade_levels": {
-    "entry": 133.1,
-    "stop_loss": 126.26,
-    "target": 146.78
+    "entry": 136.1,
+    "stop_loss": 129.36,
+    "target": 149.58
   },
   "precision": {
     "ticker": "ACIFORMULA",
@@ -60,24 +61,25 @@
       "signal": "No monthly delta available"
     },
     "cash_flow": {
-      "nocfps": 1.5,
-      "is_estimated": true,
+      "nocfps": null,
       "dividend_per_share": 0.0,
-      "dividend_coverage_x": 5.0,
-      "fcf_yield_pct": 150.0,
-      "cash_quality_status": "PRISTINE_REAL_CASH_COVERAGE",
-      "conviction_bonus": 15.0,
-      "signal": "Dividend is 500% cash-covered by real operations (NOCFPS: Tk 1.5 vs DPS: Tk 0.0)"
+      "cash_coverage_ratio": null,
+      "fcf_yield_pct": null,
+      "status": "UNKNOWN_CASH_FLOW_DATA_DEFICIT",
+      "signal_text": "NOCFPS (Operating Cash Flow) missing from disclosures \u2014 cash flow coverage unknown",
+      "score_bonus": 0.0,
+      "cfo_estimated": false,
+      "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 62275,
+      "avg_daily_volume": 60816,
       "daily_turnover_bdt_cr": 0.01,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 3113,
-      "max_daily_accumulation_shares": 9341,
-      "max_order_bdt": 3113.0,
-      "directive": "Max single order: 3,113 shares (Tk 3,113) to prevent >1% execution slippage"
+      "max_single_order_shares": 3040,
+      "max_daily_accumulation_shares": 9122,
+      "max_order_bdt": 3040.0,
+      "directive": "Max single order: 3,040 shares (Tk 3,040) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -85,34 +87,34 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 15.0
+    "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "ACIFORMULA",
-    "audited_at": "2026-11-03 20:27:01",
+    "audited_at": "2026-11-04 14:33:55",
     "worth_vs_greed": {
-      "current_price": 133.1,
+      "current_price": 136.1,
       "intrinsic_worth": 14.08,
-      "margin_of_safety_pct": -89.4,
+      "margin_of_safety_pct": -89.7,
       "extension_froth_score": 20.0,
       "greed_index": 20.0,
-      "rsi_14": 24.6,
-      "price_vs_ema50_pct": -10.9,
-      "price_vs_ema200_pct": -10.3,
+      "rsi_14": 28.4,
+      "price_vs_ema50_pct": -8.6,
+      "price_vs_ema200_pct": -8.2,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f31.76, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f3130.4 \u2013 \u09f3134.4",
-        "chase_cutoff_price": 136.4,
-        "when_to_wait": "If price opens or rises above \u09f3136.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3130.4.",
-        "weekly_target_short": 137.8,
-        "monthly_target_swing": 153.1,
-        "long_term_target_asset": 173.0,
+        "optimal_entry_corridor": "\u09f3133.4 \u2013 \u09f3137.5",
+        "chase_cutoff_price": 139.5,
+        "when_to_wait": "If price opens or rises above \u09f3139.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3133.4.",
+        "weekly_target_short": 140.9,
+        "monthly_target_swing": 156.5,
+        "long_term_target_asset": 176.9,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
       "worth_decision": "AVOID",
-      "reason": "Fundamental value severely lags stock price (MoS: -89.4%).",
+      "reason": "Fundamental value severely lags stock price (MoS: -89.7%).",
       "is_blacklisted": true,
       "blacklist_reason": "Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-28 \u2014 Price up +4.01% with poor fundamentals (Negative EPS)]",
       "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-28 \u2014 Price up +4.01% with poor fundamentals (Negative EPS)]"
@@ -120,31 +122,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -2.85,
-          "high": 143.6,
+          "return_pct": -4.49,
+          "high": 142.5,
           "low": 132.9,
-          "range_volatility_pct": 8.05
+          "range_volatility_pct": 7.22
         },
         "monthly_21d": {
-          "return_pct": -11.56,
+          "return_pct": -9.15,
           "high": 158.6,
           "low": 132.9,
           "range_volatility_pct": 19.34
         },
         "quarterly_63d": {
-          "return_pct": -25.6,
-          "high": 183.8,
+          "return_pct": -23.58,
+          "high": 180.7,
           "low": 132.9,
-          "range_volatility_pct": 38.3
+          "range_volatility_pct": 35.97
         },
         "half_yearly_126d": {
-          "return_pct": -7.51,
+          "return_pct": -4.36,
           "high": 189.2,
           "low": 132.9,
           "range_volatility_pct": 42.36
         },
         "yearly_252d": {
-          "return_pct": 1.84,
+          "return_pct": 4.69,
           "high": 189.2,
           "low": 115.0,
           "range_volatility_pct": 64.52
@@ -156,7 +158,7 @@
         "avg_wave_duration_bars": 21.0
       },
       "current_wave_phase": "BOTTOMING_SUPPORT",
-      "phase_guidance": "Drop (-18.3%) matches historical correction depth (-15.4%). Prepare to accumulate.",
+      "phase_guidance": "Drop (-16.5%) matches historical correction depth (-15.4%). Prepare to accumulate.",
       "top_seasonal_months": [
         {
           "month": "Feb",
@@ -254,18 +256,18 @@
     ]
   },
   "technical": {
-    "score": 42.5,
+    "score": 50.0,
     "signals": {
       "rsi": "neutral",
-      "macd": "bearish_crossover",
+      "macd": "neutral",
       "sma_trend": "neutral",
       "bb": "inside_bands",
-      "atr": 4.56,
-      "rsi_value": 31.96,
-      "last_close": 133.1,
-      "sma20": 144.34,
-      "sma50": 150.56,
-      "sma200": 147.69,
+      "atr": 4.49,
+      "rsi_value": 37.61,
+      "last_close": 136.1,
+      "sma20": 143.74,
+      "sma50": 149.98,
+      "sma200": 147.72,
       "support_resistance": {
         "supports": [
           138.3,
@@ -291,46 +293,39 @@
     }
   },
   "fundamental": {
-    "score": 62.14,
+    "score": 54.0,
     "signals": {
-      "latest_interim_eps": "FY2026Q3 (1.76)",
       "eps": "positive (7.85)",
-      "eps_yoy_growth_pct": 14.1,
-      "eps_growth_comparison": "FY2025 vs FY2024",
-      "pe": "slightly_expensive (16.16)",
+      "eps_yoy_growth_pct": 0.0,
+      "eps_growth_comparison": "FYNone vs FYNone",
+      "pe": "slightly_expensive (18.866242038216562)",
       "nav": 75.51,
       "dividend_yield": "moderate (1.97%)",
       "debt_equity_val": 1.021,
-      "long_term_debt_equity_val": 0.0,
       "debt_equity": "elevated (1.021)",
       "loan_trap_risk": "moderate",
-      "dividend_track_record_years": 5,
-      "dividend_consistency": "proven_compounder (5 yrs cash divs)",
-      "cfo_cr": 0.7,
-      "net_profit_cr": 37.1,
-      "accrual_ratio": 0.102,
-      "earnings_quality": "moderate_accrual_drag",
       "downturn_resilience": {
         "status": "growth_at_discount",
-        "drawdown_pct": 29.7,
+        "drawdown_pct": 28.1,
         "high_52w": 189.2,
         "low_52w": 115.0,
-        "note": "Share price down 29.7% from 52w peak, yet earnings positive/steady (Conviction discount)"
+        "note": "Share price down 28.1% from 52w peak, yet earnings positive/steady (Conviction discount)"
       }
     }
   },
   "management": {
     "ticker": "ACIFORMULA",
     "company_name": "ACIFORMULA",
-    "chairman": "Board Appointed Chairman",
-    "managing_director_ceo": "Managing Director / CEO",
-    "leadership_type": "Public Listed Corporate Board",
-    "industry_experience_years": 20,
-    "governance_rating": "A",
-    "audit_credibility": "Standard Category A Audit",
-    "key_moat": "DSE Listed Franchise",
-    "management_risk": "Low",
-    "governance_score": 75
+    "chairman": "UNKNOWN",
+    "managing_director_ceo": "UNKNOWN",
+    "leadership_type": "UNKNOWN_UNREGISTERED",
+    "industry_experience_years": null,
+    "governance_rating": "UNRATED",
+    "audit_credibility": "UNAUDITED_PROFILE",
+    "key_moat": "UNKNOWN",
+    "management_risk": "HIGH_DATA_DEFICIT",
+    "governance_score": 0.0,
+    "is_vetted": false
   },
   "news_intent": {
     "ticker": "ACIFORMULA",
@@ -356,15 +351,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 40843,
-        "avg_volume": 84892.0,
+        "last_volume": 52827,
+        "avg_volume": 81989.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.44,
-        "avg_volume": 93446.0,
-        "today_volume": 40843,
+        "spike_ratio": 0.62,
+        "avg_volume": 84892.0,
+        "today_volume": 52827,
         "detail": "ok"
       },
       "serial_trading": {
@@ -383,20 +378,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": -1.48,
+        "price_change_3d": 0.74,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 58.33,
-    "governance_score": 75,
+    "composite_score": 46.72,
+    "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.486,
-      "technical": 0.321,
-      "governance": 0.193,
+      "fundamental": 0.68,
+      "technical": 0.2,
+      "governance": 0.12,
       "sentiment": 0.0
     }
   }

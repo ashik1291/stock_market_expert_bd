@@ -2,52 +2,53 @@
   "ticker": "DUTCHBANGL",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-03T14:27:00.862062",
-  "asof_price_date": "2026-11-03",
+  "analyzed_at": "2026-11-04T08:33:55.060480",
+  "asof_price_date": "2026-11-04",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 43.1304,
+    "rsi_14": 50.69,
     "pe_ratio": 4.709418837675351,
     "debt_equity": 0.523
   },
-  "signal": "BUY",
-  "confidence": 71.33,
+  "signal": "HOLD_INELIGIBLE_DEFICIT",
+  "confidence": 72.55,
   "trajectory": {
-    "direction": "RISE_PREDICTED",
-    "direction_icon": "\ud83d\udfe2",
-    "rise_probability_pct": 64.6,
-    "momentum_status": "Bullish Reversal / Upward Accumulation",
+    "direction": "CONSOLIDATION_RANGE",
+    "direction_icon": "\ud83d\udfe1",
+    "heuristic_momentum_bias": 59.6,
+    "rise_probability_pct": null,
+    "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+3.1%",
-      "downside_risk_pct": "-2.0%",
-      "target_price": 47.0,
-      "support_price": 44.7,
+      "upside_potential_pct": "+3.0%",
+      "downside_risk_pct": "-1.9%",
+      "target_price": 47.6,
+      "support_price": 45.3,
       "risk_reward_ratio": "1.6x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+8.3%",
-      "downside_risk_pct": "-5.9%",
+      "upside_potential_pct": "+6.9%",
+      "downside_risk_pct": "-7.1%",
       "target_price": 49.4,
       "trailing_stop": 42.9,
-      "risk_reward_ratio": "1.4x"
+      "risk_reward_ratio": "1.0x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-      "upside_potential_pct": "+30.0%",
-      "downside_risk_pct": "-10.6%",
-      "target_price": 59.3,
+      "upside_potential_pct": "+30.1%",
+      "downside_risk_pct": "-12.0%",
+      "target_price": 60.1,
       "dividend_cagr": "strong (6.49%)",
-      "risk_reward_ratio": "2.8x"
+      "risk_reward_ratio": "2.5x"
     }
   },
   "trade_levels": {
-    "entry": 45.6,
-    "stop_loss": 44.22,
-    "target": 48.36
+    "entry": 46.2,
+    "stop_loss": 44.82,
+    "target": 48.96
   },
   "precision": {
     "ticker": "DUTCHBANGL",
@@ -60,24 +61,25 @@
       "signal": "No monthly delta available"
     },
     "cash_flow": {
-      "nocfps": 1.53,
-      "is_estimated": true,
+      "nocfps": null,
       "dividend_per_share": 0.0,
-      "dividend_coverage_x": 5.0,
-      "fcf_yield_pct": 153.0,
-      "cash_quality_status": "PRISTINE_REAL_CASH_COVERAGE",
-      "conviction_bonus": 15.0,
-      "signal": "Dividend is 500% cash-covered by real operations (NOCFPS: Tk 1.53 vs DPS: Tk 0.0)"
+      "cash_coverage_ratio": null,
+      "fcf_yield_pct": null,
+      "status": "UNKNOWN_CASH_FLOW_DATA_DEFICIT",
+      "signal_text": "NOCFPS (Operating Cash Flow) missing from disclosures \u2014 cash flow coverage unknown",
+      "score_bonus": 0.0,
+      "cfo_estimated": false,
+      "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 241735,
+      "avg_daily_volume": 242519,
       "daily_turnover_bdt_cr": 0.02,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 12086,
-      "max_daily_accumulation_shares": 36260,
-      "max_order_bdt": 12086.0,
-      "directive": "Max single order: 12,086 shares (Tk 12,086) to prevent >1% execution slippage"
+      "max_single_order_shares": 12125,
+      "max_daily_accumulation_shares": 36377,
+      "max_order_bdt": 12125.0,
+      "directive": "Max single order: 12,125 shares (Tk 12,125) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -85,65 +87,65 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 15.0
+    "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "DUTCHBANGL",
-    "audited_at": "2026-11-03 20:27:00",
+    "audited_at": "2026-11-04 14:33:55",
     "worth_vs_greed": {
-      "current_price": 45.6,
+      "current_price": 46.2,
       "intrinsic_worth": 14.4,
-      "margin_of_safety_pct": -68.4,
-      "extension_froth_score": 20.0,
-      "greed_index": 20.0,
-      "rsi_14": 56.4,
-      "price_vs_ema50_pct": -0.8,
-      "price_vs_ema200_pct": 2.6,
+      "margin_of_safety_pct": -68.8,
+      "extension_froth_score": 30.0,
+      "greed_index": 30.0,
+      "rsi_14": 60.5,
+      "price_vs_ema50_pct": 0.4,
+      "price_vs_ema200_pct": 3.9,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f31.80, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f344.7 \u2013 \u09f346.1",
-        "chase_cutoff_price": 46.7,
-        "when_to_wait": "If price opens or rises above \u09f346.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f344.7.",
-        "weekly_target_short": 47.2,
-        "monthly_target_swing": 52.4,
-        "long_term_target_asset": 59.3,
+        "optimal_entry_corridor": "\u09f345.3 \u2013 \u09f346.7",
+        "chase_cutoff_price": 47.4,
+        "when_to_wait": "If price opens or rises above \u09f347.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f345.3.",
+        "weekly_target_short": 47.8,
+        "monthly_target_swing": 53.1,
+        "long_term_target_asset": 60.1,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
       "worth_decision": "AVOID",
-      "reason": "Fundamental value severely lags stock price (MoS: -68.4%).",
+      "reason": "Fundamental value severely lags stock price (MoS: -68.8%).",
       "is_blacklisted": false,
       "blacklist_reason": null
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -1.94,
+          "return_pct": -0.86,
           "high": 47.2,
-          "low": 45.5,
-          "range_volatility_pct": 3.74
+          "low": 45.3,
+          "range_volatility_pct": 4.19
         },
         "monthly_21d": {
-          "return_pct": -0.44,
+          "return_pct": 1.54,
           "high": 47.5,
           "low": 44.7,
           "range_volatility_pct": 6.26
         },
         "quarterly_63d": {
-          "return_pct": -6.75,
+          "return_pct": -5.91,
           "high": 50.1,
           "low": 42.8,
           "range_volatility_pct": 17.06
         },
         "half_yearly_126d": {
-          "return_pct": 6.05,
+          "return_pct": 3.82,
           "high": 51.7,
           "low": 37.2,
           "range_volatility_pct": 38.98
         },
         "yearly_252d": {
-          "return_pct": 18.13,
+          "return_pct": 19.07,
           "high": 51.7,
           "low": 36.1,
           "range_volatility_pct": 43.21
@@ -151,11 +153,11 @@
       },
       "wave_metrics": {
         "median_rally_gain_pct": 13.6,
-        "median_correction_drop_pct": -13.9,
+        "median_correction_drop_pct": -13.3,
         "avg_wave_duration_bars": 25.0
       },
-      "current_wave_phase": "MARKDOWN_PULLBACK",
-      "phase_guidance": "Ongoing pullback from peak (-3.2%). Wait for stabilizing base.",
+      "current_wave_phase": "ACCUMULATION_TROUGH",
+      "phase_guidance": "Near local cyclical trough base. Maximum reward/risk entry point.",
       "top_seasonal_months": [
         {
           "month": "Aug",
@@ -253,18 +255,18 @@
     ]
   },
   "technical": {
-    "score": 51.25,
+    "score": 53.75,
     "signals": {
       "rsi": "neutral",
       "macd": "bearish_crossover",
       "sma_trend": "bullish",
       "bb": "inside_bands",
       "atr": 0.92,
-      "rsi_value": 43.63,
-      "last_close": 45.6,
-      "sma20": 46.05,
-      "sma50": 45.54,
-      "sma200": 43.6,
+      "rsi_value": 51.2,
+      "last_close": 46.2,
+      "sma20": 46.09,
+      "sma50": 45.53,
+      "sma200": 43.64,
       "support_resistance": {
         "supports": [
           38.6,
@@ -294,27 +296,20 @@
     }
   },
   "fundamental": {
-    "score": 77.14,
+    "score": 75.0,
     "signals": {
-      "latest_interim_eps": "FY2027Q3 (1.8)",
       "eps": "positive (9.98)",
-      "eps_yoy_growth_pct": 85.2,
-      "eps_growth_comparison": "FY2025 vs FY2024",
-      "pe": "deep_value (3.86)",
+      "eps_yoy_growth_pct": 0.0,
+      "eps_growth_comparison": "FYNone vs FYNone",
+      "pe": "deep_value (4.709418837675351)",
       "nav": 62.14,
       "dividend_yield": "strong (6.49%)",
       "bank_npl_pct": 4.1,
       "debt_equity": "bank_acceptable_npl (4.1%)",
       "loan_trap_risk": "low",
-      "dividend_track_record_years": 5,
-      "dividend_consistency": "proven_compounder (5 yrs cash divs)",
-      "cfo_cr": 41.9,
-      "net_profit_cr": 964.8,
-      "accrual_ratio": 0.146,
-      "earnings_quality": "moderate_accrual_drag",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 11.8,
+        "drawdown_pct": 10.6,
         "high_52w": 51.7,
         "low_52w": 36.1
       }
@@ -357,15 +352,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 191701,
-        "avg_volume": 206964.0,
+        "last_volume": 167725,
+        "avg_volume": 206688.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.96,
-        "avg_volume": 200576.0,
-        "today_volume": 191701,
+        "spike_ratio": 0.81,
+        "avg_volume": 206964.0,
+        "today_volume": 167725,
         "detail": "ok"
       },
       "serial_trading": {
@@ -384,20 +379,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": -2.56,
+        "price_change_3d": -1.28,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 71.33,
+    "composite_score": 72.55,
     "governance_score": 90,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.486,
-      "technical": 0.321,
-      "governance": 0.193,
+      "fundamental": 0.68,
+      "technical": 0.2,
+      "governance": 0.12,
       "sentiment": 0.0
     }
   }
