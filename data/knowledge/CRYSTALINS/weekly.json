@@ -2,52 +2,53 @@
   "ticker": "CRYSTALINS",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-03T14:27:05.793907",
-  "asof_price_date": "2026-11-03",
+  "analyzed_at": "2026-11-04T08:33:58.900412",
+  "asof_price_date": "2026-11-04",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 45.2424,
+    "rsi_14": 50.1628,
     "pe_ratio": 19.67065868263473,
     "debt_equity": 0.0
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 64.56,
+  "confidence": 55.88,
   "trajectory": {
-    "direction": "RISE_PREDICTED",
-    "direction_icon": "\ud83d\udfe2",
-    "rise_probability_pct": 61.2,
-    "momentum_status": "Bullish Reversal / Upward Accumulation",
+    "direction": "CONSOLIDATION_RANGE",
+    "direction_icon": "\ud83d\udfe1",
+    "heuristic_momentum_bias": 56.2,
+    "rise_probability_pct": null,
+    "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+5.9%",
-      "downside_risk_pct": "-4.0%",
-      "target_price": 66.7,
-      "support_price": 60.5,
+      "upside_potential_pct": "+5.6%",
+      "downside_risk_pct": "-3.7%",
+      "target_price": 68.4,
+      "support_price": 62.4,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+18.1%",
-      "downside_risk_pct": "-8.9%",
+      "upside_potential_pct": "+14.8%",
+      "downside_risk_pct": "-10.0%",
       "target_price": 74.4,
-      "trailing_stop": 57.4,
-      "risk_reward_ratio": "2.0x"
+      "trailing_stop": 58.3,
+      "risk_reward_ratio": "1.5x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-      "upside_potential_pct": "+30.0%",
+      "upside_potential_pct": "+29.9%",
       "downside_risk_pct": "-12.0%",
-      "target_price": 81.9,
+      "target_price": 84.2,
       "dividend_cagr": "moderate (2.1%)",
       "risk_reward_ratio": "2.5x"
     }
   },
   "trade_levels": {
-    "entry": 63.0,
-    "stop_loss": 59.33,
-    "target": 70.34
+    "entry": 64.8,
+    "stop_loss": 61.17,
+    "target": 72.06
   },
   "precision": {
     "ticker": "CRYSTALINS",
@@ -60,24 +61,25 @@
       "signal": "No monthly delta available"
     },
     "cash_flow": {
-      "nocfps": 0.94,
-      "is_estimated": true,
+      "nocfps": null,
       "dividend_per_share": 0.0,
-      "dividend_coverage_x": 5.0,
-      "fcf_yield_pct": 94.0,
-      "cash_quality_status": "PRISTINE_REAL_CASH_COVERAGE",
-      "conviction_bonus": 15.0,
-      "signal": "Dividend is 500% cash-covered by real operations (NOCFPS: Tk 0.94 vs DPS: Tk 0.0)"
+      "cash_coverage_ratio": null,
+      "fcf_yield_pct": null,
+      "status": "UNKNOWN_CASH_FLOW_DATA_DEFICIT",
+      "signal_text": "NOCFPS (Operating Cash Flow) missing from disclosures \u2014 cash flow coverage unknown",
+      "score_bonus": 0.0,
+      "cfo_estimated": false,
+      "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 204729,
+      "avg_daily_volume": 193855,
       "daily_turnover_bdt_cr": 0.02,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 10236,
-      "max_daily_accumulation_shares": 30709,
-      "max_order_bdt": 10236.0,
-      "directive": "Max single order: 10,236 shares (Tk 10,236) to prevent >1% execution slippage"
+      "max_single_order_shares": 9692,
+      "max_daily_accumulation_shares": 29078,
+      "max_order_bdt": 9692.0,
+      "directive": "Max single order: 9,692 shares (Tk 9,692) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -85,34 +87,34 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 15.0
+    "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "CRYSTALINS",
-    "audited_at": "2026-11-03 20:27:05",
+    "audited_at": "2026-11-04 14:33:58",
     "worth_vs_greed": {
-      "current_price": 63.0,
+      "current_price": 64.8,
       "intrinsic_worth": 8.8,
-      "margin_of_safety_pct": -86.0,
+      "margin_of_safety_pct": -86.4,
       "extension_froth_score": 30.0,
       "greed_index": 30.0,
-      "rsi_14": 48.2,
-      "price_vs_ema50_pct": -3.8,
-      "price_vs_ema200_pct": -5.8,
+      "rsi_14": 51.0,
+      "price_vs_ema50_pct": -1.0,
+      "price_vs_ema200_pct": -3.0,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f31.10, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f361.7 \u2013 \u09f363.6",
-        "chase_cutoff_price": 64.6,
-        "when_to_wait": "If price opens or rises above \u09f364.6, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f361.7.",
-        "weekly_target_short": 65.2,
-        "monthly_target_swing": 72.4,
-        "long_term_target_asset": 81.9,
+        "optimal_entry_corridor": "\u09f363.5 \u2013 \u09f365.4",
+        "chase_cutoff_price": 66.4,
+        "when_to_wait": "If price opens or rises above \u09f366.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f363.5.",
+        "weekly_target_short": 67.1,
+        "monthly_target_swing": 74.5,
+        "long_term_target_asset": 84.2,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
       "worth_decision": "AVOID",
-      "reason": "Fundamental value severely lags stock price (MoS: -86.0%).",
+      "reason": "Fundamental value severely lags stock price (MoS: -86.4%).",
       "is_blacklisted": true,
       "blacklist_reason": "Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-29 \u2014 Price up +5.2% with poor fundamentals (Negative EPS)]",
       "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-29 \u2014 Price up +5.2% with poor fundamentals (Negative EPS)]"
@@ -120,31 +122,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 2.61,
+          "return_pct": 2.05,
           "high": 69.1,
-          "low": 61.6,
-          "range_volatility_pct": 12.18
+          "low": 62.7,
+          "range_volatility_pct": 10.21
         },
         "monthly_21d": {
-          "return_pct": -8.7,
-          "high": 69.9,
+          "return_pct": -3.86,
+          "high": 69.1,
           "low": 60.4,
-          "range_volatility_pct": 15.73
+          "range_volatility_pct": 14.4
         },
         "quarterly_63d": {
-          "return_pct": -8.96,
+          "return_pct": -5.4,
           "high": 76.4,
           "low": 57.1,
           "range_volatility_pct": 33.8
         },
         "half_yearly_126d": {
-          "return_pct": -27.08,
-          "high": 87.0,
+          "return_pct": -21.55,
+          "high": 83.1,
           "low": 57.1,
-          "range_volatility_pct": 52.36
+          "range_volatility_pct": 45.53
         },
         "yearly_252d": {
-          "return_pct": 12.9,
+          "return_pct": 13.88,
           "high": 92.1,
           "low": 40.9,
           "range_volatility_pct": 125.18
@@ -156,7 +158,7 @@
         "avg_wave_duration_bars": 29.0
       },
       "current_wave_phase": "MARKDOWN_PULLBACK",
-      "phase_guidance": "Ongoing pullback from peak (-17.5%). Wait for stabilizing base.",
+      "phase_guidance": "Ongoing pullback from peak (-15.2%). Wait for stabilizing base.",
       "top_seasonal_months": [
         {
           "month": "Jan",
@@ -254,18 +256,18 @@
     ]
   },
   "technical": {
-    "score": 50.0,
+    "score": 55.0,
     "signals": {
       "rsi": "neutral",
       "macd": "neutral",
-      "sma_trend": "neutral",
+      "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 2.45,
-      "rsi_value": 45.28,
-      "last_close": 63.0,
-      "sma20": 63.75,
-      "sma50": 64.61,
-      "sma200": 71.66,
+      "atr": 2.42,
+      "rsi_value": 50.33,
+      "last_close": 64.8,
+      "sma20": 63.7,
+      "sma50": 64.56,
+      "sma200": 71.7,
       "support_resistance": {
         "supports": [
           57.4,
@@ -297,43 +299,40 @@
     }
   },
   "fundamental": {
-    "score": 70.0,
+    "score": 66.0,
     "signals": {
-      "latest_interim_eps": "FY2027Q3 (1.1)",
       "eps": "positive (3.34)",
-      "eps_yoy_growth_pct": 6.7,
-      "eps_growth_comparison": "FY2025 vs FY2024",
-      "pe": "slightly_expensive (17.13)",
+      "eps_yoy_growth_pct": 0.0,
+      "eps_growth_comparison": "FYNone vs FYNone",
+      "pe": "slightly_expensive (19.67065868263473)",
       "nav": 27.65,
       "dividend_yield": "moderate (2.1%)",
       "debt_equity_val": 0.0,
-      "long_term_debt_equity_val": 0.0,
       "debt_equity": "pristine_low (0.0)",
       "loan_trap_risk": "none",
-      "dividend_track_record_years": 5,
-      "dividend_consistency": "proven_compounder (5 yrs cash divs)",
       "earnings_quality": "financial_asset_quality_mode",
       "downturn_resilience": {
         "status": "growth_at_discount",
-        "drawdown_pct": 31.6,
+        "drawdown_pct": 29.6,
         "high_52w": 92.1,
         "low_52w": 40.9,
-        "note": "Share price down 31.6% from 52w peak, yet earnings positive/steady (Conviction discount)"
+        "note": "Share price down 29.6% from 52w peak, yet earnings positive/steady (Conviction discount)"
       }
     }
   },
   "management": {
     "ticker": "CRYSTALINS",
     "company_name": "CRYSTALINS",
-    "chairman": "Board Appointed Chairman",
-    "managing_director_ceo": "Managing Director / CEO",
-    "leadership_type": "Public Listed Corporate Board",
-    "industry_experience_years": 20,
-    "governance_rating": "A",
-    "audit_credibility": "Standard Category A Audit",
-    "key_moat": "DSE Listed Franchise",
-    "management_risk": "Low",
-    "governance_score": 75
+    "chairman": "UNKNOWN",
+    "managing_director_ceo": "UNKNOWN",
+    "leadership_type": "UNKNOWN_UNREGISTERED",
+    "industry_experience_years": null,
+    "governance_rating": "UNRATED",
+    "audit_credibility": "UNAUDITED_PROFILE",
+    "key_moat": "UNKNOWN",
+    "management_risk": "HIGH_DATA_DEFICIT",
+    "governance_score": 0.0,
+    "is_vetted": false
   },
   "news_intent": {
     "ticker": "CRYSTALINS",
@@ -351,25 +350,23 @@
     }
   },
   "manipulation": {
-    "manipulation_score": 10,
+    "manipulation_score": 0,
     "manipulation_risk": "low",
     "block_buy": false,
-    "flags": [
-      "price_surge_no_news: price_-6.0pct_zero_news"
-    ],
+    "flags": [],
     "checks": {
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 315413,
-        "avg_volume": 364532.0,
+        "last_volume": 119506,
+        "avg_volume": 356343.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.88,
-        "avg_volume": 359309.0,
-        "today_volume": 315413,
+        "spike_ratio": 0.33,
+        "avg_volume": 364532.0,
+        "today_volume": 119506,
         "detail": "ok"
       },
       "serial_trading": {
@@ -387,21 +384,21 @@
         "detail": "sponsor_holding_not_available"
       },
       "price_surge_no_news": {
-        "flag": true,
-        "price_change_3d": -5.97,
+        "flag": false,
+        "price_change_3d": -3.28,
         "news_count_3d": 0,
-        "detail": "price_-6.0pct_zero_news"
+        "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 64.56,
-    "governance_score": 75,
+    "composite_score": 55.88,
+    "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.486,
-      "technical": 0.321,
-      "governance": 0.193,
+      "fundamental": 0.68,
+      "technical": 0.2,
+      "governance": 0.12,
       "sentiment": 0.0
     }
   }

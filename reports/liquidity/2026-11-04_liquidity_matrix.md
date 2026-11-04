@@ -1,0 +1,41 @@
+# DSE Historical Liquidity & Execution Friction Matrix
+**Market Date**: `2026-11-04` | **Methodology**: Corwin-Schultz (2012) OHLCV Spread Proxy | **Brokerage**: `0.415%` one-way
+
+> [!NOTE]
+> This report estimates liquidity from historical daily OHLCV trading bars. DSE does not provide public Level-2 order book depth.
+
+## Core Liquidity & Tranche Sizing Guidelines
+- **HIGH_LIQUIDITY**: Daily turnover >= ৳15M. Large retail orders (up to ৳1M) executed with negligible slippage (<0.05%).
+- **MODERATE_LIQUIDITY**: Daily turnover ৳3M - ৳15M. Retail orders (<৳100k) execute fine as single tranche; larger orders use passive limit.
+- **LOW_LIQUIDITY**: Daily turnover < ৳3M. Avoid large market orders; institutional sizes (>৳100k) should split into tranches.
+
+| Ticker | Tier | Price (৳) | 20-Day ADV (Shares) | 20-Day Turnover (৳) | Est. Spread (%) | Safe Max Tranche (Shares) | Safe Max Tranche (৳) |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **SQURPHARMA** | **HIGH_LIQUIDITY** | ৳216.60 | 206,123 | ৳44,990,050 | 0.25% | 3,091 sh | **৳669,511** |
+| **ROBI** | **HIGH_LIQUIDITY** | ৳29.30 | 560,401 | ৳16,645,600 | 1.51% | 8,406 sh | **৳246,296** |
+| **BATBC** | **MODERATE_LIQUIDITY** | ৳191.30 | 75,422 | ৳15,583,250 | 1.48% | 754 sh | **৳144,240** |
+| **GP** | **MODERATE_LIQUIDITY** | ৳230.20 | 53,366 | ৳12,655,850 | 0.72% | 533 sh | **৳122,697** |
+| **BSRMLTD** | **MODERATE_LIQUIDITY** | ৳95.10 | 86,657 | ৳8,394,900 | 1.13% | 866 sh | **৳82,357** |
+| **MPETROLEUM** | **MODERATE_LIQUIDITY** | ৳213.70 | 34,569 | ৳7,274,350 | 0.22% | 345 sh | **৳73,726** |
+| **RENATA** | **LOW_LIQUIDITY** | ৳418.30 | 14,932 | ৳6,557,650 | 1.18% | 74 sh | **৳30,954** |
+| **OLYMPIC** | **MODERATE_LIQUIDITY** | ৳136.90 | 41,779 | ৳5,757,750 | 0.10% | 417 sh | **৳57,087** |
+| **WALTONHIL** | **LOW_LIQUIDITY** | ৳315.30 | 15,073 | ৳4,940,650 | 1.17% | 75 sh | **৳23,648** |
+| **PADMAOIL** | **LOW_LIQUIDITY** | ৳198.40 | 17,929 | ৳3,514,800 | 0.36% | 89 sh | **৳17,658** |
+| **CONFIDCEM** | **MODERATE_LIQUIDITY** | ৳56.40 | 58,538 | ৳3,358,850 | 0.25% | 585 sh | **৳32,994** |
+| **JAMUNAOIL** | **LOW_LIQUIDITY** | ৳177.30 | 7,905 | ৳1,408,900 | 0.10% | 39 sh | **৳6,915** |
+
+## Order Slippage & Execution Friction Simulation (৳50,000 Order Size)
+| Ticker | Participation Rate (%) | One-Way Fee (%) | Half-Spread (%) | Slippage Impact (%) | Total Entry Friction (%) | Round-Trip Break-Even (%) | Execution Plan |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| **SQURPHARMA** | 0.11% | 0.415% | 0.12% | **0.01%** | 0.55% | **+1.10%** | SINGLE_TRANCHE (Retail order < ৳100k; safe ex... |
+| **ROBI** | 0.30% | 0.415% | 0.76% | **0.03%** | 1.20% | **+2.40%** | SINGLE_TRANCHE (Retail order < ৳100k; safe ex... |
+| **BATBC** | 0.35% | 0.415% | 0.74% | **0.05%** | 1.20% | **+2.40%** | SINGLE_TRANCHE (Retail order < ৳100k; safe ex... |
+| **GP** | 0.41% | 0.415% | 0.36% | **0.03%** | 0.80% | **+1.61%** | SINGLE_TRANCHE (Retail order < ৳100k; safe ex... |
+| **BSRMLTD** | 0.61% | 0.415% | 0.56% | **0.10%** | 1.08% | **+2.16%** | SINGLE_TRANCHE (Retail order < ৳100k; safe ex... |
+| **MPETROLEUM** | 0.67% | 0.415% | 0.11% | **0.04%** | 0.56% | **+1.12%** | SINGLE_TRANCHE (Retail order < ৳100k; safe ex... |
+| **RENATA** | 0.80% | 0.415% | 0.59% | **0.05%** | 1.06% | **+2.12%** | SINGLE_TRANCHE (Retail order < ৳100k; safe ex... |
+| **OLYMPIC** | 0.87% | 0.415% | 0.05% | **0.08%** | 0.54% | **+1.09%** | SINGLE_TRANCHE (Retail order < ৳100k; safe ex... |
+| **WALTONHIL** | 1.05% | 0.415% | 0.58% | **0.05%** | 1.05% | **+2.10%** | SINGLE_TRANCHE (Retail order < ৳100k; safe ex... |
+| **PADMAOIL** | 1.41% | 0.415% | 0.18% | **0.04%** | 0.64% | **+1.28%** | SINGLE_TRANCHE (Retail order < ৳100k; safe ex... |
+| **CONFIDCEM** | 1.51% | 0.415% | 0.12% | **0.12%** | 0.66% | **+1.32%** | SINGLE_TRANCHE (Retail order < ৳100k; safe ex... |
+| **JAMUNAOIL** | 3.57% | 0.415% | 0.05% | **0.12%** | 0.59% | **+1.17%** | SPLIT into 2 tranches of ~৳25000.00 each to c... |

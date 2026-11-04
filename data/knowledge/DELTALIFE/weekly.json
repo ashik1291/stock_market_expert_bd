@@ -2,87 +2,84 @@
   "ticker": "DELTALIFE",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-03T14:27:05.356964",
-  "asof_price_date": "2026-11-03",
+  "analyzed_at": "2026-11-04T08:33:58.442767",
+  "asof_price_date": "2026-11-04",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 38.9423,
+    "rsi_14": 43.4302,
     "pe_ratio": 0.0,
     "debt_equity": null
   },
-  "signal": "BUY",
-  "confidence": 65.65,
+  "signal": "HOLD",
+  "confidence": 56.2,
   "trajectory": {
     "direction": "RISE_PREDICTED",
     "direction_icon": "\ud83d\udfe2",
-    "rise_probability_pct": 61.7,
-    "momentum_status": "Bullish Reversal / Upward Accumulation",
+    "heuristic_momentum_bias": 61.7,
+    "rise_probability_pct": null,
+    "momentum_status": "Bullish Momentum / Upward Bias",
     "short_term": {
-      "predicted_path": "Oversold bounce to 20-DMA",
+      "predicted_path": "Upward momentum swing",
       "upside_potential_pct": "+3.2%",
-      "downside_risk_pct": "-2.2%",
-      "target_price": 70.0,
-      "support_price": 66.3,
-      "risk_reward_ratio": "1.5x"
+      "downside_risk_pct": "-2.0%",
+      "target_price": 70.6,
+      "support_price": 67.0,
+      "risk_reward_ratio": "1.6x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+20.9%",
+      "upside_potential_pct": "+19.9%",
       "downside_risk_pct": "-3.2%",
       "target_price": 82.0,
-      "trailing_stop": 65.6,
-      "risk_reward_ratio": "6.5x"
+      "trailing_stop": 66.2,
+      "risk_reward_ratio": "6.2x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-      "upside_potential_pct": "+29.9%",
+      "upside_potential_pct": "+30.0%",
       "downside_risk_pct": "-5.8%",
-      "target_price": 88.1,
+      "target_price": 88.9,
       "dividend_cagr": "strong (9.21%)",
       "risk_reward_ratio": "5.2x"
     }
   },
   "trade_levels": {
-    "entry": 67.8,
-    "stop_loss": 65.56,
-    "target": 72.28
+    "entry": 68.4,
+    "stop_loss": 66.24,
+    "target": 72.72
   },
   "precision": {
     "ticker": "DELTALIFE",
     "smart_money": {
-      "status": "ACTIVE",
-      "latest_date": "Sep 30, 2026",
-      "smart_money_delta_pct": 0.04,
-      "institutional_pct": 15.33,
-      "foreign_pct": 0.0,
-      "sponsor_pct": 48.84,
-      "public_pct": 35.83,
-      "public_delta_pct": -0.04,
-      "classification": "STABLE_HOLDINGS",
+      "status": "INSUFFICIENT_HISTORY",
+      "smart_money_delta_pct": 0.0,
+      "public_delta_pct": 0.0,
+      "classification": "NEUTRAL_HOLDING",
       "conviction_bonus": 0.0,
-      "signal": "Holding shift: Smart money +0.04%, Retail -0.04%"
+      "signal": "No monthly delta available"
     },
     "cash_flow": {
-      "nocfps": 0.0,
-      "is_estimated": true,
-      "dividend_per_share": 3.5,
-      "dividend_coverage_x": 0.0,
-      "fcf_yield_pct": 0.0,
-      "cash_quality_status": "TIGHT_CASH_COVERAGE",
-      "conviction_bonus": -10.0,
-      "signal": "Cash flow covers only 0% of dividend payout"
+      "nocfps": null,
+      "dividend_per_share": 0.0,
+      "cash_coverage_ratio": null,
+      "fcf_yield_pct": null,
+      "status": "UNKNOWN_CASH_FLOW_DATA_DEFICIT",
+      "signal_text": "NOCFPS (Operating Cash Flow) missing from disclosures \u2014 cash flow coverage unknown",
+      "score_bonus": 0.0,
+      "cfo_estimated": false,
+      "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 38155,
-      "daily_turnover_bdt_cr": 0.26,
+      "avg_daily_volume": 35304,
+      "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 1907,
-      "max_daily_accumulation_shares": 5723,
-      "max_order_bdt": 128722.0,
-      "directive": "Max single order: 1,907 shares (Tk 128,722) to prevent >1% execution slippage"
+      "max_single_order_shares": 1765,
+      "max_daily_accumulation_shares": 5295,
+      "max_order_bdt": 1765.0,
+      "directive": "Max single order: 1,765 shares (Tk 1,765) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -90,29 +87,29 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": -10.0
+    "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "DELTALIFE",
-    "audited_at": "2026-11-03 20:27:05",
+    "audited_at": "2026-11-04 14:33:58",
     "worth_vs_greed": {
-      "current_price": 67.8,
-      "intrinsic_worth": 33.9,
+      "current_price": 68.4,
+      "intrinsic_worth": 34.2,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 10.0,
       "greed_index": 10.0,
-      "rsi_14": 50.9,
-      "price_vs_ema50_pct": -4.7,
-      "price_vs_ema200_pct": -8.8,
+      "rsi_14": 54.2,
+      "price_vs_ema50_pct": -3.7,
+      "price_vs_ema200_pct": -7.9,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f366.4 \u2013 \u09f368.5",
-        "chase_cutoff_price": 69.5,
-        "when_to_wait": "If price opens or rises above \u09f369.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f366.4.",
-        "weekly_target_short": 70.2,
-        "monthly_target_swing": 78.0,
-        "long_term_target_asset": 88.1,
+        "optimal_entry_corridor": "\u09f367.0 \u2013 \u09f369.1",
+        "chase_cutoff_price": 70.1,
+        "when_to_wait": "If price opens or rises above \u09f370.1, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f367.0.",
+        "weekly_target_short": 70.8,
+        "monthly_target_swing": 78.7,
+        "long_term_target_asset": 88.9,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
@@ -124,31 +121,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -1.31,
+          "return_pct": -0.44,
           "high": 70.0,
           "low": 66.9,
           "range_volatility_pct": 4.63
         },
         "monthly_21d": {
-          "return_pct": -4.78,
-          "high": 71.7,
+          "return_pct": -3.8,
+          "high": 71.2,
           "low": 66.9,
-          "range_volatility_pct": 7.17
+          "range_volatility_pct": 6.43
         },
         "quarterly_63d": {
-          "return_pct": -14.5,
+          "return_pct": -13.64,
           "high": 85.1,
           "low": 66.9,
           "range_volatility_pct": 27.2
         },
         "half_yearly_126d": {
-          "return_pct": -10.08,
+          "return_pct": -10.24,
           "high": 89.9,
           "low": 66.9,
           "range_volatility_pct": 34.38
         },
         "yearly_252d": {
-          "return_pct": -11.14,
+          "return_pct": -11.05,
           "high": 89.9,
           "low": 60.8,
           "range_volatility_pct": 47.86
@@ -258,17 +255,17 @@
     ]
   },
   "technical": {
-    "score": 57.5,
+    "score": 60.0,
     "signals": {
       "rsi": "neutral",
       "macd": "bullish_crossover",
       "sma_trend": "neutral",
       "bb": "inside_bands",
-      "atr": 1.49,
-      "rsi_value": 39.5,
-      "last_close": 67.8,
-      "sma20": 68.4,
-      "sma50": 71.12,
+      "atr": 1.44,
+      "rsi_value": 44.17,
+      "last_close": 68.4,
+      "sma20": 68.33,
+      "sma50": 70.97,
       "sma200": 74.72,
       "support_resistance": {
         "supports": [
@@ -291,15 +288,13 @@
     }
   },
   "fundamental": {
-    "score": 63.33,
+    "score": 50.0,
     "signals": {
       "eps": "negative (0.0)",
       "dividend_yield": "strong (9.21%)",
-      "dividend_track_record_years": 5,
-      "dividend_consistency": "proven_compounder (5 yrs cash divs)",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 24.6,
+        "drawdown_pct": 23.9,
         "high_52w": 89.9,
         "low_52w": 60.8
       }
@@ -342,15 +337,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 81388,
-        "avg_volume": 42903.0,
+        "last_volume": 15476,
+        "avg_volume": 42507.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.9,
-        "avg_volume": 42895.0,
-        "today_volume": 81388,
+        "spike_ratio": 0.36,
+        "avg_volume": 42903.0,
+        "today_volume": 15476,
         "detail": "ok"
       },
       "serial_trading": {
@@ -369,20 +364,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": 0.59,
+        "price_change_3d": 1.48,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 65.65,
+    "composite_score": 56.2,
     "governance_score": 85,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.486,
-      "technical": 0.321,
-      "governance": 0.193,
+      "fundamental": 0.68,
+      "technical": 0.2,
+      "governance": 0.12,
       "sentiment": 0.0
     }
   }

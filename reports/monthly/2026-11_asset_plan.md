@@ -27,21 +27,21 @@ Do NOT deploy 100% capital in a single day. Spread monthly allocation across 4 s
 
 | Ticker | Entry Zone | Direction & Prob | Upside / Risk | P/E | Debt/Equity | Leadership & Experience | Tranche Pacing | Target Exit |
 |---|---|---|---|---|---|---|---|---|
-| **PADMAOIL** | ৳194.5–৳200.5 | 🟢 (65.8%) | +30.0% / -6.3% | 3.2 | D/E: 0.007 | Md. Masudur Rahman (30y exp, AA+) | 20% per tranche | ৳258.1 |
-| **SQURPHARMA** | ৳211.3–৳217.8 | 🟢 (74.2%) | +30.0% / -2.3% | 7.7 | D/E: 0.006 | Tapan Chowdhury (45y exp, AAA) | 20% per tranche | ৳280.3 |
-| **MPETROLEUM** | ৳209.6–৳216.0 | 🟢 (61.7%) | +30.0% / -8.3% | 3.3 | D/E: 0.006 | Engr. Md. Rehanul Islam (30y exp, AA+) | 20% per tranche | ৳278.1 |
-| **SAIHAMCOT** | ৳21.1–৳21.7 | 🟡 (58.3%) | +29.8% / -11.7% | 13.8 | D/E: 0.644 | Managing Director / CEO (20y exp, A) | 20% per tranche | ৳27.9 |
-| **HWAWELLTEX** | ৳48.7–৳50.2 | 🟡 (59.6%) | +30.0% / -12.0% | 11.0 | D/E: 0.0 | Managing Director / CEO (20y exp, A) | 20% per tranche | ৳64.6 |
+| **PADMAOIL** | ৳194.4–৳200.4 | 🟢 (—%) | +30.0% / -6.1% | 3.4 | D/E: 0.007 | Md. Masudur Rahman (30y exp, AA+) | 20% per tranche | ৳257.9 |
+| **JAMUNAOIL** | ৳173.8–৳179.1 | 🟢 (—%) | +30.0% / -4.0% | 3.1 | D/E: 0.0 | Md. Gias Uddin Ansary (32y exp, AA+) | 20% per tranche | ৳230.5 |
+| **BSRMLTD** | ৳93.2–৳96.1 | 🟢 (—%) | +30.0% / -7.2% | 4.7 | D/E: 0.657 | Aameir Alihussain (45y exp, A) | 20% per tranche | ৳123.6 |
+| **CONFIDCEM** | ৳55.3–৳57.0 | 🟢 (—%) | +30.0% / -7.4% | 5.2 | D/E: 0.74 | Salman Karim (35y exp, A+) | 20% per tranche | ৳73.3 |
+| **MPETROLEUM** | ৳209.4–৳215.8 | 🟢 (—%) | +30.0% / -8.1% | 3.3 | D/E: 0.006 | Engr. Md. Rehanul Islam (30y exp, AA+) | 20% per tranche | ৳277.8 |
 
 ## 🚀 4. Top Mid-Term Cycle Swings (1–6 Months)
 
 | Ticker | Entry Price | Direction & Prob | Target (+15%) | Trailing Stop (-5%) | Risk/Reward | P/E |
 |---|---|---|---|---|---|---|
-| **PADMAOIL** | ৳198.5 | 🟢 65.8% | **৳202.9** | ৳191.6 | 0.6x | 3.2 |
-| **SQURPHARMA** | ৳215.6 | 🟢 74.2% | **৳220.1** | ৳212.7 | 1.6x | 7.7 |
-| **MPETROLEUM** | ৳213.9 | 🟢 61.7% | **৳219.7** | ৳204.1 | 0.6x | 3.3 |
-| **SAIHAMCOT** | ৳21.5 | 🟡 58.3% | **৳26.5** | ৳20.1 | 3.6x | 13.8 |
-| **HWAWELLTEX** | ৳49.7 | 🟡 59.6% | **৳53.4** | ৳44.7 | 0.7x | 11.0 |
+| **PADMAOIL** | ৳198.4 | 🟢 —% | **৳202.9** | ৳191.6 | 0.7x | 3.4 |
+| **JAMUNAOIL** | ৳177.3 | 🟢 —% | **৳183.8** | ৳173.4 | 1.7x | 3.1 |
+| **BSRMLTD** | ৳95.1 | 🟢 —% | **৳101.5** | ৳91.3 | 1.7x | 4.7 |
+| **CONFIDCEM** | ৳56.4 | 🟢 —% | **৳68.0** | ৳54.1 | 5.0x | 5.2 |
+| **MPETROLEUM** | ৳213.7 | 🟢 —% | **৳219.3** | ৳204.1 | 0.6x | 3.3 |
 
 ## 🛡️ 5. Monthly Risk Filter & Governance Directive
 

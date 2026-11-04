@@ -2,23 +2,24 @@
   "ticker": "LHB",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-03T14:27:02.494550",
-  "asof_price_date": "2026-11-03",
+  "analyzed_at": "2026-11-04T08:33:56.163655",
+  "asof_price_date": "2026-11-04",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
-    "score": 26.4127,
-    "is_eligible": true,
-    "rsi_14": 19.4371,
+    "score": -999.0,
+    "is_eligible": false,
+    "rsi_14": 19.5564,
     "pe_ratio": 11.818181818181817,
     "debt_equity": 0.0
   },
-  "signal": "BUY",
-  "confidence": 70.85,
+  "signal": "HOLD_INELIGIBLE_DEFICIT",
+  "confidence": 73.9,
   "trajectory": {
     "direction": "RISE_PREDICTED",
     "direction_icon": "\ud83d\udfe2",
-    "rise_probability_pct": 71.2,
-    "momentum_status": "Bullish Reversal / Upward Accumulation",
+    "heuristic_momentum_bias": 71.2,
+    "rise_probability_pct": null,
+    "momentum_status": "Bullish Momentum / Upward Bias",
     "short_term": {
       "predicted_path": "Oversold bounce to 20-DMA",
       "upside_potential_pct": "+3.2%",
@@ -46,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 47.3,
-    "stop_loss": 45.83,
-    "target": 50.24
+    "stop_loss": 45.84,
+    "target": 50.22
   },
   "precision": {
     "ticker": "LHB",
@@ -60,24 +61,25 @@
       "signal": "No monthly delta available"
     },
     "cash_flow": {
-      "nocfps": 0.46,
-      "is_estimated": true,
+      "nocfps": null,
       "dividend_per_share": 0.0,
-      "dividend_coverage_x": 5.0,
-      "fcf_yield_pct": 46.0,
-      "cash_quality_status": "PRISTINE_REAL_CASH_COVERAGE",
-      "conviction_bonus": 15.0,
-      "signal": "Dividend is 500% cash-covered by real operations (NOCFPS: Tk 0.46 vs DPS: Tk 0.0)"
+      "cash_coverage_ratio": null,
+      "fcf_yield_pct": null,
+      "status": "UNKNOWN_CASH_FLOW_DATA_DEFICIT",
+      "signal_text": "NOCFPS (Operating Cash Flow) missing from disclosures \u2014 cash flow coverage unknown",
+      "score_bonus": 0.0,
+      "cfo_estimated": false,
+      "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 277652,
+      "avg_daily_volume": 280823,
       "daily_turnover_bdt_cr": 0.03,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 13882,
-      "max_daily_accumulation_shares": 41647,
-      "max_order_bdt": 13882.0,
-      "directive": "Max single order: 13,882 shares (Tk 13,882) to prevent >1% execution slippage"
+      "max_single_order_shares": 14041,
+      "max_daily_accumulation_shares": 42123,
+      "max_order_bdt": 14041.0,
+      "directive": "Max single order: 14,041 shares (Tk 14,041) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -85,11 +87,11 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 15.0
+    "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "LHB",
-    "audited_at": "2026-11-03 20:27:02",
+    "audited_at": "2026-11-04 14:33:56",
     "worth_vs_greed": {
       "current_price": 47.3,
       "intrinsic_worth": 4.32,
@@ -97,8 +99,8 @@
       "extension_froth_score": 20.0,
       "greed_index": 20.0,
       "rsi_14": 10.2,
-      "price_vs_ema50_pct": -8.9,
-      "price_vs_ema200_pct": -10.5,
+      "price_vs_ema50_pct": -8.5,
+      "price_vs_ema200_pct": -10.4,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f30.54, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
@@ -119,13 +121,13 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -3.27,
+          "return_pct": -3.86,
           "high": 50.0,
           "low": 46.8,
           "range_volatility_pct": 6.84
         },
         "monthly_21d": {
-          "return_pct": -9.9,
+          "return_pct": -9.39,
           "high": 52.7,
           "low": 46.8,
           "range_volatility_pct": 12.61
@@ -137,7 +139,7 @@
           "range_volatility_pct": 25.85
         },
         "half_yearly_126d": {
-          "return_pct": -3.86,
+          "return_pct": -5.78,
           "high": 62.4,
           "low": 46.8,
           "range_volatility_pct": 33.33
@@ -253,17 +255,17 @@
     ]
   },
   "technical": {
-    "score": 50.0,
+    "score": 57.5,
     "signals": {
       "rsi": "oversold_bullish",
-      "macd": "bearish_crossover",
+      "macd": "neutral",
       "sma_trend": "neutral",
       "bb": "inside_bands",
-      "atr": 0.98,
+      "atr": 0.97,
       "rsi_value": 19.83,
       "last_close": 47.3,
-      "sma20": 50.76,
-      "sma50": 51.87,
+      "sma20": 50.51,
+      "sma50": 51.73,
       "sma200": 52.68,
       "support_resistance": {
         "supports": [
@@ -294,23 +296,15 @@
   "fundamental": {
     "score": 75.0,
     "signals": {
-      "latest_interim_eps": "FY2027Q3 (0.54)",
       "eps": "positive (4.4)",
-      "eps_yoy_growth_pct": 33.7,
-      "eps_growth_comparison": "FY2025 vs FY2024",
-      "pe": "fair_value (10.62)",
+      "eps_yoy_growth_pct": 0.0,
+      "eps_growth_comparison": "FYNone vs FYNone",
+      "pe": "fair_value (11.818181818181817)",
       "nav": 16.41,
       "dividend_yield": "strong (8.57%)",
       "debt_equity_val": 0.0,
-      "long_term_debt_equity_val": 0.0,
       "debt_equity": "pristine_low (0.0)",
       "loan_trap_risk": "none",
-      "dividend_track_record_years": 2,
-      "dividend_consistency": "steady_payer (2 yrs cash divs)",
-      "cfo_cr": 7.3,
-      "net_profit_cr": 510.8,
-      "accrual_ratio": 0.264,
-      "earnings_quality": "moderate_accrual_drag",
       "downturn_resilience": {
         "status": "growth_at_discount",
         "drawdown_pct": 24.2,
@@ -357,15 +351,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 300089,
-        "avg_volume": 390024.0,
+        "last_volume": 293579,
+        "avg_volume": 380124.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.73,
-        "avg_volume": 410673.0,
-        "today_volume": 300089,
+        "spike_ratio": 0.75,
+        "avg_volume": 390024.0,
+        "today_volume": 293579,
         "detail": "ok"
       },
       "serial_trading": {
@@ -391,13 +385,13 @@
     }
   },
   "composite": {
-    "composite_score": 70.85,
+    "composite_score": 73.9,
     "governance_score": 95,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.486,
-      "technical": 0.321,
-      "governance": 0.193,
+      "fundamental": 0.68,
+      "technical": 0.2,
+      "governance": 0.12,
       "sentiment": 0.0
     }
   }

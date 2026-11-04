@@ -2,87 +2,84 @@
   "ticker": "WALTONHIL",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-03T14:27:04.145820",
-  "asof_price_date": "2026-11-03",
+  "analyzed_at": "2026-11-04T08:33:57.370552",
+  "asof_price_date": "2026-11-04",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
-    "score": 21.1942,
-    "is_eligible": true,
-    "rsi_14": 44.1519,
+    "score": -999.0,
+    "is_eligible": false,
+    "rsi_14": 41.7006,
     "pe_ratio": 9.617182933956752,
     "debt_equity": 0.181
   },
-  "signal": "STRONG_BUY",
-  "confidence": 65.5,
+  "signal": "HOLD_INELIGIBLE_DEFICIT",
+  "confidence": 71.42,
   "trajectory": {
     "direction": "RISE_PREDICTED",
     "direction_icon": "\ud83d\udfe2",
-    "rise_probability_pct": 64.6,
-    "momentum_status": "Bullish Reversal / Upward Accumulation",
+    "heuristic_momentum_bias": 67.5,
+    "rise_probability_pct": null,
+    "momentum_status": "Bullish Momentum / Upward Bias",
     "short_term": {
       "predicted_path": "Upward momentum swing",
       "upside_potential_pct": "+3.5%",
       "downside_risk_pct": "-2.3%",
-      "target_price": 330.7,
-      "support_price": 311.9,
+      "target_price": 326.4,
+      "support_price": 307.9,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
       "upside_potential_pct": "+25.0%",
-      "downside_risk_pct": "-7.1%",
-      "target_price": 399.1,
+      "downside_risk_pct": "-5.9%",
+      "target_price": 394.1,
       "trailing_stop": 296.6,
-      "risk_reward_ratio": "3.5x"
+      "risk_reward_ratio": "4.2x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.0%",
-      "downside_risk_pct": "-12.0%",
-      "target_price": 415.2,
-      "dividend_cagr": "moderate (4.49%)",
-      "risk_reward_ratio": "2.5x"
+      "downside_risk_pct": "-10.6%",
+      "target_price": 409.9,
+      "dividend_cagr": "moderate (4.31%)",
+      "risk_reward_ratio": "2.8x"
     }
   },
   "trade_levels": {
-    "entry": 319.4,
-    "stop_loss": 308.1,
-    "target": 342.0
+    "entry": 315.3,
+    "stop_loss": 304.17,
+    "target": 337.56
   },
   "precision": {
     "ticker": "WALTONHIL",
     "smart_money": {
-      "status": "ACTIVE",
-      "latest_date": "Sep 30, 2026",
-      "smart_money_delta_pct": -0.07,
-      "institutional_pct": 0.97,
-      "foreign_pct": 0.03,
-      "sponsor_pct": 71.09,
-      "public_pct": 27.91,
-      "public_delta_pct": 0.07,
-      "classification": "STABLE_HOLDINGS",
+      "status": "INSUFFICIENT_HISTORY",
+      "smart_money_delta_pct": 0.0,
+      "public_delta_pct": 0.0,
+      "classification": "NEUTRAL_HOLDING",
       "conviction_bonus": 0.0,
-      "signal": "Holding shift: Smart money -0.07%, Retail +0.07%"
+      "signal": "No monthly delta available"
     },
     "cash_flow": {
-      "nocfps": 63.72,
-      "is_estimated": false,
-      "dividend_per_share": 18.0,
-      "dividend_coverage_x": 3.54,
-      "fcf_yield_pct": 19.81,
-      "cash_quality_status": "PRISTINE_REAL_CASH_COVERAGE",
-      "conviction_bonus": 15.0,
-      "signal": "Dividend is 354% cash-covered by real operations (NOCFPS: Tk 63.72 vs DPS: Tk 18.0)"
+      "nocfps": null,
+      "dividend_per_share": 0.0,
+      "cash_coverage_ratio": null,
+      "fcf_yield_pct": null,
+      "status": "UNKNOWN_CASH_FLOW_DATA_DEFICIT",
+      "signal_text": "NOCFPS (Operating Cash Flow) missing from disclosures \u2014 cash flow coverage unknown",
+      "score_bonus": 0.0,
+      "cfo_estimated": false,
+      "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 15003,
-      "daily_turnover_bdt_cr": 0.48,
-      "liquidity_rating": "MODERATE_LIQUIDITY",
-      "slippage_risk": "MEDIUM",
-      "max_single_order_shares": 750,
-      "max_daily_accumulation_shares": 2250,
-      "max_order_bdt": 241200.0,
-      "directive": "Max single order: 750 shares (Tk 241,200) to prevent >1% execution slippage"
+      "avg_daily_volume": 15073,
+      "daily_turnover_bdt_cr": 0.0,
+      "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
+      "slippage_risk": "HIGH",
+      "max_single_order_shares": 753,
+      "max_daily_accumulation_shares": 2261,
+      "max_order_bdt": 753.0,
+      "directive": "Max single order: 753 shares (Tk 753) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -90,65 +87,65 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 15.0
+    "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "WALTONHIL",
-    "audited_at": "2026-11-03 20:27:04",
+    "audited_at": "2026-11-04 14:33:57",
     "worth_vs_greed": {
-      "current_price": 319.4,
+      "current_price": 315.3,
       "intrinsic_worth": 404.03,
-      "margin_of_safety_pct": 26.5,
+      "margin_of_safety_pct": 28.1,
       "extension_froth_score": 10.0,
       "greed_index": 10.0,
-      "rsi_14": 43.7,
-      "price_vs_ema50_pct": -6.9,
-      "price_vs_ema200_pct": -15.3,
+      "rsi_14": 40.9,
+      "price_vs_ema50_pct": -7.8,
+      "price_vs_ema200_pct": -16.2,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f333.75, P/E: 11.9). Growth is fundamentally justified.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f3313.0 \u2013 \u09f3322.6",
-        "chase_cutoff_price": 327.4,
-        "when_to_wait": "If price opens or rises above \u09f3327.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3313.0.",
-        "weekly_target_short": 330.6,
-        "monthly_target_swing": 367.3,
-        "long_term_target_asset": 415.2,
+        "optimal_entry_corridor": "\u09f3309.0 \u2013 \u09f3318.5",
+        "chase_cutoff_price": 323.2,
+        "when_to_wait": "If price opens or rises above \u09f3323.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3309.0.",
+        "weekly_target_short": 326.3,
+        "monthly_target_swing": 362.6,
+        "long_term_target_asset": 409.9,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "UNDERVALUED_FEAR",
       "worth_decision": "HIGH_CONVICTION_BUY",
-      "reason": "High Margin of Safety (+26.5%) with depressed market greed (10.0/100) and EARNINGS_BACKED_MERIT. Ideal entry.",
+      "reason": "High Margin of Safety (+28.1%) with depressed market greed (10.0/100) and EARNINGS_BACKED_MERIT. Ideal entry.",
       "is_blacklisted": false,
       "blacklist_reason": null
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 7.12,
+          "return_pct": 5.58,
           "high": 328.1,
           "low": 296.36,
           "range_volatility_pct": 10.71
         },
         "monthly_21d": {
-          "return_pct": -5.14,
-          "high": 336.9,
+          "return_pct": -5.46,
+          "high": 334.8,
           "low": 296.36,
-          "range_volatility_pct": 13.68
+          "range_volatility_pct": 12.97
         },
         "quarterly_63d": {
-          "return_pct": -18.75,
+          "return_pct": -19.85,
           "high": 410.0,
           "low": 296.36,
           "range_volatility_pct": 38.35
         },
         "half_yearly_126d": {
-          "return_pct": -13.37,
+          "return_pct": -13.45,
           "high": 415.6,
           "low": 296.36,
           "range_volatility_pct": 40.23
         },
         "yearly_252d": {
-          "return_pct": -17.51,
+          "return_pct": -19.17,
           "high": 458.1,
           "low": 296.36,
           "range_volatility_pct": 54.58
@@ -160,7 +157,7 @@
         "avg_wave_duration_bars": 21.0
       },
       "current_wave_phase": "MARKDOWN_PULLBACK",
-      "phase_guidance": "Ongoing pullback from peak (-22.1%). Wait for stabilizing base.",
+      "phase_guidance": "Ongoing pullback from peak (-23.1%). Wait for stabilizing base.",
       "top_seasonal_months": [
         {
           "month": "Dec",
@@ -264,12 +261,12 @@
       "macd": "bullish_crossover",
       "sma_trend": "neutral",
       "bb": "inside_bands",
-      "atr": 7.53,
-      "rsi_value": 44.23,
-      "last_close": 319.4,
-      "sma20": 320.04,
-      "sma50": 352.79,
-      "sma200": 376.63,
+      "atr": 7.42,
+      "rsi_value": 41.69,
+      "last_close": 315.3,
+      "sma20": 319.22,
+      "sma50": 351.33,
+      "sma200": 376.31,
       "support_resistance": {
         "supports": [
           358.1
@@ -293,30 +290,23 @@
     }
   },
   "fundamental": {
-    "score": 65.0,
+    "score": 74.0,
     "signals": {
-      "eps": "positive (33.75)",
-      "eps_yoy_growth_pct": -1.4,
-      "eps_growth_comparison": "FY2026 vs FY2025",
-      "pe": "fair_value (11.88)",
-      "nav": 381.26,
-      "dividend_yield": "moderate (4.49%)",
-      "debt_equity_val": 0.137,
-      "long_term_debt_equity_val": 0.012,
-      "debt_equity": "pristine_low (0.137)",
+      "eps": "positive (34.22)",
+      "eps_yoy_growth_pct": 0.0,
+      "eps_growth_comparison": "FYNone vs FYNone",
+      "pe": "deep_value (9.617182933956752)",
+      "nav": 399.74,
+      "dividend_yield": "moderate (4.31%)",
+      "debt_equity_val": 0.181,
+      "debt_equity": "pristine_low (0.181)",
       "loan_trap_risk": "none",
-      "dividend_track_record_years": 5,
-      "dividend_consistency": "proven_compounder (5 yrs cash divs)",
-      "cfo_cr": 63.7,
-      "net_profit_cr": 1124.6,
-      "accrual_ratio": 0.076,
-      "earnings_quality": "moderate_accrual_drag",
       "downturn_resilience": {
         "status": "growth_at_discount",
-        "drawdown_pct": 30.3,
+        "drawdown_pct": 31.2,
         "high_52w": 458.1,
         "low_52w": 296.36,
-        "note": "Share price down 30.3% from 52w peak, yet earnings positive/steady (Conviction discount)"
+        "note": "Share price down 31.2% from 52w peak, yet earnings positive/steady (Conviction discount)"
       }
     }
   },
@@ -353,21 +343,21 @@
     "manipulation_risk": "low",
     "block_buy": false,
     "flags": [
-      "price_surge_no_news: price_7.7pct_zero_news"
+      "price_surge_no_news: price_6.3pct_zero_news"
     ],
     "checks": {
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 22894,
-        "avg_volume": 25713.0,
+        "last_volume": 33204,
+        "avg_volume": 22544.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.92,
-        "avg_volume": 24963.0,
-        "today_volume": 22894,
+        "spike_ratio": 1.29,
+        "avg_volume": 25713.0,
+        "today_volume": 33204,
         "detail": "ok"
       },
       "serial_trading": {
@@ -386,20 +376,20 @@
       },
       "price_surge_no_news": {
         "flag": true,
-        "price_change_3d": 7.67,
+        "price_change_3d": 6.29,
         "news_count_3d": 0,
-        "detail": "price_7.7pct_zero_news"
+        "detail": "price_6.3pct_zero_news"
       }
     }
   },
   "composite": {
-    "composite_score": 65.5,
+    "composite_score": 71.42,
     "governance_score": 80,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.486,
-      "technical": 0.321,
-      "governance": 0.193,
+      "fundamental": 0.68,
+      "technical": 0.2,
+      "governance": 0.12,
       "sentiment": 0.0
     }
   }

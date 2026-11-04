@@ -2,87 +2,84 @@
   "ticker": "SONALILIFE",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-03T14:27:05.403418",
-  "asof_price_date": "2026-11-03",
+  "analyzed_at": "2026-11-04T08:33:58.490809",
+  "asof_price_date": "2026-11-04",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 45.6504,
+    "rsi_14": 48.4801,
     "pe_ratio": 59.87654320987654,
     "debt_equity": 0.0
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 61.83,
+  "confidence": 52.55,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
-    "rise_probability_pct": 57.1,
+    "heuristic_momentum_bias": 57.1,
+    "rise_probability_pct": null,
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+6.6%",
-      "downside_risk_pct": "-4.4%",
-      "target_price": 102.1,
-      "support_price": 91.6,
+      "upside_potential_pct": "+6.4%",
+      "downside_risk_pct": "-4.2%",
+      "target_price": 103.7,
+      "support_price": 93.4,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+12.7%",
-      "downside_risk_pct": "-10.0%",
+      "upside_potential_pct": "+10.8%",
+      "downside_risk_pct": "-9.9%",
       "target_price": 108.0,
-      "trailing_stop": 86.2,
-      "risk_reward_ratio": "1.3x"
+      "trailing_stop": 87.8,
+      "risk_reward_ratio": "1.1x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-      "upside_potential_pct": "+30.0%",
+      "upside_potential_pct": "+30.1%",
       "downside_risk_pct": "-12.0%",
-      "target_price": 124.5,
+      "target_price": 126.8,
       "dividend_cagr": "moderate (2.47%)",
       "risk_reward_ratio": "2.5x"
     }
   },
   "trade_levels": {
-    "entry": 95.8,
-    "stop_loss": 89.55,
-    "target": 108.3
+    "entry": 97.5,
+    "stop_loss": 91.29,
+    "target": 109.92
   },
   "precision": {
     "ticker": "SONALILIFE",
     "smart_money": {
-      "status": "ACTIVE",
-      "latest_date": "Sep 30, 2026",
-      "smart_money_delta_pct": 1.77,
-      "institutional_pct": 5.76,
-      "foreign_pct": 0.0,
-      "sponsor_pct": 54.85,
-      "public_pct": 39.39,
-      "public_delta_pct": -1.77,
-      "classification": "INSTITUTIONAL_ACCUMULATION",
-      "conviction_bonus": 15.0,
-      "signal": "Smart money accumulated +1.77% (Institutes: 1.77%, Foreign: 0.0%) while retail decreased -1.77%"
+      "status": "INSUFFICIENT_HISTORY",
+      "smart_money_delta_pct": 0.0,
+      "public_delta_pct": 0.0,
+      "classification": "NEUTRAL_HOLDING",
+      "conviction_bonus": 0.0,
+      "signal": "No monthly delta available"
     },
     "cash_flow": {
-      "nocfps": 11.81,
-      "is_estimated": false,
-      "dividend_per_share": 1.5,
-      "dividend_coverage_x": 7.87,
-      "fcf_yield_pct": 12.33,
-      "cash_quality_status": "PRISTINE_REAL_CASH_COVERAGE",
-      "conviction_bonus": 15.0,
-      "signal": "Dividend is 787% cash-covered by real operations (NOCFPS: Tk 11.81 vs DPS: Tk 1.5)"
+      "nocfps": null,
+      "dividend_per_share": 0.0,
+      "cash_coverage_ratio": null,
+      "fcf_yield_pct": null,
+      "status": "UNKNOWN_CASH_FLOW_DATA_DEFICIT",
+      "signal_text": "NOCFPS (Operating Cash Flow) missing from disclosures \u2014 cash flow coverage unknown",
+      "score_bonus": 0.0,
+      "cfo_estimated": false,
+      "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 450989,
-      "daily_turnover_bdt_cr": 4.32,
-      "liquidity_rating": "HEALTHY_LIQUIDITY",
-      "slippage_risk": "LOW",
-      "max_single_order_shares": 22549,
-      "max_daily_accumulation_shares": 67648,
-      "max_order_bdt": 2160194.0,
-      "directive": "Max single order: 22,549 shares (Tk 2,160,194) to prevent >1% execution slippage"
+      "avg_daily_volume": 421823,
+      "daily_turnover_bdt_cr": 0.04,
+      "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
+      "slippage_risk": "HIGH",
+      "max_single_order_shares": 21091,
+      "max_daily_accumulation_shares": 63273,
+      "max_order_bdt": 21091.0,
+      "directive": "Max single order: 21,091 shares (Tk 21,091) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -90,34 +87,34 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 30.0
+    "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "SONALILIFE",
-    "audited_at": "2026-11-03 20:27:05",
+    "audited_at": "2026-11-04 14:33:58",
     "worth_vs_greed": {
-      "current_price": 95.8,
+      "current_price": 97.5,
       "intrinsic_worth": 23.6,
-      "margin_of_safety_pct": -75.4,
+      "margin_of_safety_pct": -75.8,
       "extension_froth_score": 50.0,
       "greed_index": 50.0,
-      "rsi_14": 35.9,
-      "price_vs_ema50_pct": 1.3,
-      "price_vs_ema200_pct": 18.5,
+      "rsi_14": 36.3,
+      "price_vs_ema50_pct": 3.0,
+      "price_vs_ema200_pct": 20.3,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f393.9 \u2013 \u09f396.8",
-        "chase_cutoff_price": 98.2,
-        "when_to_wait": "If price opens or rises above \u09f398.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f393.9.",
-        "weekly_target_short": 99.2,
-        "monthly_target_swing": 110.2,
-        "long_term_target_asset": 124.5,
+        "optimal_entry_corridor": "\u09f395.5 \u2013 \u09f398.5",
+        "chase_cutoff_price": 99.9,
+        "when_to_wait": "If price opens or rises above \u09f399.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f395.5.",
+        "weekly_target_short": 100.9,
+        "monthly_target_swing": 112.1,
+        "long_term_target_asset": 126.8,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
       "worth_decision": "AVOID",
-      "reason": "Fundamental value severely lags stock price (MoS: -75.4%).",
+      "reason": "Fundamental value severely lags stock price (MoS: -75.8%).",
       "is_blacklisted": true,
       "blacklist_reason": "Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-28 \u2014 Price up +4.93% with poor fundamentals (Negative EPS)]",
       "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-28 \u2014 Price up +4.93% with poor fundamentals (Negative EPS)]"
@@ -125,31 +122,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -1.64,
+          "return_pct": -4.6,
           "high": 103.8,
           "low": 95.0,
           "range_volatility_pct": 9.26
         },
         "monthly_21d": {
-          "return_pct": 5.62,
+          "return_pct": 0.31,
           "high": 109.5,
-          "low": 90.7,
-          "range_volatility_pct": 20.73
+          "low": 95.0,
+          "range_volatility_pct": 15.26
         },
         "quarterly_63d": {
-          "return_pct": 13.11,
+          "return_pct": 11.05,
           "high": 109.5,
           "low": 78.6,
           "range_volatility_pct": 39.31
         },
         "half_yearly_126d": {
-          "return_pct": 59.14,
+          "return_pct": 65.25,
           "high": 109.5,
           "low": 57.0,
           "range_volatility_pct": 92.11
         },
         "yearly_252d": {
-          "return_pct": 22.98,
+          "return_pct": 31.94,
           "high": 109.5,
           "low": 57.0,
           "range_volatility_pct": 92.11
@@ -161,7 +158,7 @@
         "avg_wave_duration_bars": 23.0
       },
       "current_wave_phase": "LATE_MARKUP",
-      "phase_guidance": "Approaching historical rally limit (+21.9% vs median +24.8%). Tighten stop.",
+      "phase_guidance": "Approaching historical rally limit (+24.0% vs median +24.8%). Tighten stop.",
       "top_seasonal_months": [
         {
           "month": "Aug",
@@ -259,18 +256,18 @@
     ]
   },
   "technical": {
-    "score": 51.25,
+    "score": 58.75,
     "signals": {
       "rsi": "neutral",
-      "macd": "bearish_crossover",
+      "macd": "neutral",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 4.17,
-      "rsi_value": 45.84,
-      "last_close": 95.8,
-      "sma20": 102.49,
-      "sma50": 92.08,
-      "sma200": 76.9,
+      "atr": 4.14,
+      "rsi_value": 48.66,
+      "last_close": 97.5,
+      "sma20": 102.51,
+      "sma50": 92.34,
+      "sma200": 77.06,
       "support_resistance": {
         "supports": [
           57.1,
@@ -299,27 +296,20 @@
     }
   },
   "fundamental": {
-    "score": 63.57,
+    "score": 60.0,
     "signals": {
       "eps": "positive (1.62)",
-      "eps_yoy_growth_pct": -6.4,
-      "eps_growth_comparison": "FY2025 vs FY2024",
-      "pe": "expensive (37.53)",
+      "eps_yoy_growth_pct": 0.0,
+      "eps_growth_comparison": "FYNone vs FYNone",
+      "pe": "expensive (59.87654320987654)",
       "nav": 32.15,
       "dividend_yield": "moderate (2.47%)",
       "debt_equity_val": 0.0,
-      "long_term_debt_equity_val": 0.0,
       "debt_equity": "pristine_low (0.0)",
       "loan_trap_risk": "none",
-      "dividend_track_record_years": 5,
-      "dividend_consistency": "proven_compounder (5 yrs cash divs)",
-      "cfo_cr": 11.8,
-      "net_profit_cr": 7.7,
-      "accrual_ratio": -0.027,
-      "earnings_quality": "superior_cash_backed",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 12.5,
+        "drawdown_pct": 11.0,
         "high_52w": 109.5,
         "low_52w": 57.0
       }
@@ -328,15 +318,16 @@
   "management": {
     "ticker": "SONALILIFE",
     "company_name": "SONALILIFE",
-    "chairman": "Board Appointed Chairman",
-    "managing_director_ceo": "Managing Director / CEO",
-    "leadership_type": "Public Listed Corporate Board",
-    "industry_experience_years": 20,
-    "governance_rating": "A",
-    "audit_credibility": "Standard Category A Audit",
-    "key_moat": "DSE Listed Franchise",
-    "management_risk": "Low",
-    "governance_score": 75
+    "chairman": "UNKNOWN",
+    "managing_director_ceo": "UNKNOWN",
+    "leadership_type": "UNKNOWN_UNREGISTERED",
+    "industry_experience_years": null,
+    "governance_rating": "UNRATED",
+    "audit_credibility": "UNAUDITED_PROFILE",
+    "key_moat": "UNKNOWN",
+    "management_risk": "HIGH_DATA_DEFICIT",
+    "governance_score": 0.0,
+    "is_vetted": false
   },
   "news_intent": {
     "ticker": "SONALILIFE",
@@ -362,15 +353,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 280697,
-        "avg_volume": 458275.0,
+        "last_volume": 135162,
+        "avg_volume": 457765.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.61,
-        "avg_volume": 457641.0,
-        "today_volume": 280697,
+        "spike_ratio": 0.29,
+        "avg_volume": 458275.0,
+        "today_volume": 135162,
         "detail": "ok"
       },
       "serial_trading": {
@@ -389,20 +380,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": -1.64,
+        "price_change_3d": 0.1,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 61.83,
-    "governance_score": 75,
+    "composite_score": 52.55,
+    "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.486,
-      "technical": 0.321,
-      "governance": 0.193,
+      "fundamental": 0.68,
+      "technical": 0.2,
+      "governance": 0.12,
       "sentiment": 0.0
     }
   }
