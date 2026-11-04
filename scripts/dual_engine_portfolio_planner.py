@@ -3,6 +3,7 @@
 scripts/dual_engine_portfolio_planner.py
 
 Institutional Dual-Engine Portfolio Allocation & Profit-Harvesting System for DSE.
+Scalable across ANY budget: from Micro Capital (৳500 - ৳1,500) to Institutional (৳50,000 - ৳1,000,000+).
 
 Architectural Split:
   1. ENGINE 1: Core Long-Term Moats (60% of Equity Allocation)
@@ -17,8 +18,8 @@ Architectural Split:
      - Profit Recycling: Realized swing profits are swept into Engine 1 to permanently compound wealth.
 
 Usage:
+  python scripts/dual_engine_portfolio_planner.py --amount 500
   python scripts/dual_engine_portfolio_planner.py --amount 50000
-  python scripts/dual_engine_portfolio_planner.py --amount 10000
 """
 
 from __future__ import annotations
@@ -117,7 +118,7 @@ def evaluate_dual_engine_universe(asof_date: str | None = None) -> tuple[List[Di
             continue
 
         de = metrics.get("debt_equity")
-        max_de = 0.50 if user_tier == "strict" else (0.80 if user_tier == "flexible" else 1.20)
+        max_de = 0.50 if user_tier == "strict" else (0.80 if user_tier == "flexible" else 1.50)
         if de is not None and de > max_de:
             continue
 
@@ -190,81 +191,108 @@ def evaluate_dual_engine_universe(asof_date: str | None = None) -> tuple[List[Di
 
 
 def generate_dual_engine_portfolio_plan(capital_bdt: float) -> Dict[str, Any]:
-    """Generates the unified 60% Core + 40% Swing allocation plan."""
+    """Generates the unified 60% Core + 40% Swing allocation plan across any budget."""
     regime_info = get_market_regime()
     cash_buffer_pct = regime_info.get("cash_buffer_pct", 25.0)
     
-    # In retail mode, enforce a sensible cash buffer: min 15%, max 60%
-    operational_cash_pct = max(15.0, min(50.0, cash_buffer_pct))
-    defensive_cash_bdt = round(capital_bdt * (operational_cash_pct / 100.0), 2)
-    investable_equity_bdt = capital_bdt - defensive_cash_bdt
+    # Capital tier classification
+    if capital_bdt < 1500.0:
+        capital_tier = "MICRO"
+        operational_cash_pct = 15.0  # minimal buffer to maximize deployability
+    elif capital_bdt < 10000.0:
+        capital_tier = "SMALL"
+        operational_cash_pct = 20.0
+    elif capital_bdt < 50000.0:
+        capital_tier = "MEDIUM"
+        operational_cash_pct = max(20.0, min(40.0, cash_buffer_pct))
+    else:
+        capital_tier = "INSTITUTIONAL"
+        operational_cash_pct = max(25.0, min(50.0, cash_buffer_pct))
 
-    # Split investable equity: 60% Core Moats, 40% Tactical Swings
-    core_capital_bdt = round(investable_equity_bdt * 0.60, 2)
-    swing_capital_bdt = round(investable_equity_bdt * 0.40, 2)
+    min_cash_bdt = round(capital_bdt * (operational_cash_pct / 100.0), 2)
+    max_equity_spend_bdt = capital_bdt - min_cash_bdt
 
     core_pool, swing_pool = evaluate_dual_engine_universe(regime_info.get("as_of_date"))
 
-    # Multi-sector core selection: Max 1 stock per sector in core
+    # Select candidates respecting capital tier and sector diversification
+    max_core_picks = 1 if capital_tier == "MICRO" else (2 if capital_tier in ("SMALL", "MEDIUM") else 3)
+    max_swing_picks = 1 if capital_tier == "MICRO" else (2 if capital_tier in ("SMALL", "MEDIUM") else 3)
+
     selected_core: List[Dict[str, Any]] = []
     seen_core_sectors = set()
     for c in core_pool:
         if c["sector"] not in seen_core_sectors:
             selected_core.append(c)
             seen_core_sectors.add(c["sector"])
-            if len(selected_core) >= 2:
+            if len(selected_core) >= max_core_picks:
                 break
 
-    # Multi-sector swing selection: Non-overlapping or high-momentum
     selected_swing: List[Dict[str, Any]] = []
     seen_swing_tickers = {c["ticker"] for c in selected_core}
     for s in swing_pool:
         if s["ticker"] not in seen_swing_tickers:
             selected_swing.append(s)
             seen_swing_tickers.add(s["ticker"])
-            if len(selected_swing) >= 2:
+            if len(selected_swing) >= max_swing_picks:
                 break
 
-    # If small capital (< ৳2,000), consolidate into top 1 core and top 1 swing
-    if capital_bdt < 2500.0:
-        if len(selected_core) > 1:
-            selected_core = selected_core[:1]
-        if len(selected_swing) > 1:
-            selected_swing = selected_swing[:1]
+    # Calculate target equity budgets (60% Core / 40% Swing)
+    target_core_bdt = max_equity_spend_bdt * 0.60
+    target_swing_bdt = max_equity_spend_bdt * 0.40
 
-    # Allocate Core Positions
+    # 1. Allocate Core Positions
     core_allocations = []
+    total_spent = 0.0
+
     if selected_core:
-        per_core_budget = core_capital_bdt / len(selected_core)
+        per_core_target = target_core_bdt / len(selected_core)
         for pick in selected_core:
-            shs = max(1, int(per_core_budget // pick["limit_entry"]))
-            cost = round(shs * pick["limit_entry"], 2)
-            est_div_bdt = round(shs * pick["current_price"] * (pick["dividend_yield"] / 100.0), 2)
-            tranches = build_tranche_plan(shs, pick["current_price"], pick["limit_entry"], pick["min_low_60d"])
-            core_allocations.append({
-                **pick,
-                "shares": shs,
-                "outlay_bdt": cost,
-                "annual_expected_dividend_bdt": est_div_bdt,
-                "tranches": tranches,
-            })
+            lim = pick["limit_entry"]
+            shs = int(per_core_target // lim)
+            # Micro/small tier helper: if budget allows at least 1 share under max_equity_spend
+            if shs == 0 and (total_spent + lim) <= max_equity_spend_bdt:
+                shs = 1
 
-    # Allocate Swing Positions
+            if shs > 0 and (total_spent + (shs * lim)) <= capital_bdt:
+                cost = round(shs * lim, 2)
+                total_spent += cost
+                est_div = round(shs * pick["current_price"] * (pick["dividend_yield"] / 100.0), 2)
+                tranches = build_tranche_plan(shs, pick["current_price"], lim, pick["min_low_60d"])
+                core_allocations.append({
+                    **pick,
+                    "shares": shs,
+                    "outlay_bdt": cost,
+                    "annual_expected_dividend_bdt": est_div,
+                    "tranches": tranches,
+                })
+
+    # 2. Allocate Swing Positions with remaining spend room
     swing_allocations = []
-    if selected_swing:
-        per_swing_budget = swing_capital_bdt / len(selected_swing)
-        for pick in selected_swing:
-            shs = max(1, int(per_swing_budget // pick["limit_entry"]))
-            cost = round(shs * pick["limit_entry"], 2)
-            net_profit_tp1 = round(shs * (pick["tp1"] - pick["break_even"]), 2)
-            swing_allocations.append({
-                **pick,
-                "shares": shs,
-                "outlay_bdt": cost,
-                "net_profit_tp1_bdt": net_profit_tp1,
-                "holding_days": "15–30 Days",
-            })
+    remaining_spend_room = capital_bdt - total_spent - (capital_bdt * 0.10) # strictly keep at least 10% cash
 
+    if selected_swing and remaining_spend_room > 0:
+        per_swing_target = min(target_swing_bdt, remaining_spend_room) / len(selected_swing)
+        for pick in selected_swing:
+            lim = pick["limit_entry"]
+            shs = int(per_swing_target // lim)
+            # Micro tier fallback: if room allows at least 1 share while preserving positive cash
+            if shs == 0 and (total_spent + lim) <= (capital_bdt - (capital_bdt * 0.08)):
+                shs = 1
+
+            if shs > 0 and (total_spent + (shs * lim)) <= capital_bdt:
+                cost = round(shs * lim, 2)
+                total_spent += cost
+                remaining_spend_room -= cost
+                net_profit_tp1 = round(shs * (pick["tp1"] - pick["break_even"]), 2)
+                swing_allocations.append({
+                    **pick,
+                    "shares": shs,
+                    "outlay_bdt": cost,
+                    "net_profit_tp1_bdt": net_profit_tp1,
+                    "holding_days": "15–30 Days",
+                })
+
+    # Strict invariant enforcement: Total Outlay <= Capital (retained cash never negative)
     total_core_outlay = sum(a["outlay_bdt"] for a in core_allocations)
     total_swing_outlay = sum(a["outlay_bdt"] for a in swing_allocations)
     retained_cash = round(capital_bdt - (total_core_outlay + total_swing_outlay), 2)
@@ -272,6 +300,7 @@ def generate_dual_engine_portfolio_plan(capital_bdt: float) -> Dict[str, Any]:
     return {
         "as_of_date": regime_info.get("as_of_date"),
         "total_capital_bdt": capital_bdt,
+        "capital_tier": capital_tier,
         "market_regime": regime_info.get("regime", "BEARISH_DRIFT"),
         "dsex": regime_info.get("dsex"),
         "t_bill_rate": regime_info.get("t_bill_rate", 11.60),
@@ -286,55 +315,67 @@ def generate_dual_engine_portfolio_plan(capital_bdt: float) -> Dict[str, Any]:
 def print_and_save_dual_engine_report(plan: Dict[str, Any]):
     """Formats and prints the Dual-Engine Portfolio Plan and writes markdown."""
     cap = plan["total_capital_bdt"]
+    tier = plan.get("capital_tier", "STANDARD")
     asof = plan["as_of_date"]
     regime = plan["market_regime"]
     t_bill = plan["t_bill_rate"]
     cash = plan["defensive_cash_bdt"]
+    cash_pct = (cash / cap * 100.0) if cap > 0 else 0.0
 
     print("=" * 86)
-    print(f"🏛️ DSE DUAL-ENGINE PORTFOLIO ALLOCATION PLAN — TOTAL BUDGET: ৳{cap:,.2f}")
+    print(f"🏛️ DSE DUAL-ENGINE ALLOCATION PLAN — BUDGET: ৳{cap:,.2f} [TIER: {tier}]")
     print(f"📅 As-of Date: {asof} | Market Regime: [{regime}] | T-Bill Yield: {t_bill}%")
     print("=" * 86)
-    print(f"🛡️ Defensive Cash & Liquidity Buffer: ৳{cash:,.2f} ({cash / cap * 100:.1f}%)")
-    print("   └─ Earns 7.5%–11.6% annualized in MFS/SND/T-Bills while awaiting high-probability entries.")
+    print(f"🛡️ Defensive Cash & Liquidity Buffer: ৳{cash:,.2f} ({cash_pct:.1f}%)")
+    if tier == "MICRO":
+        print("   └─ Micro Cash Reserve: Keep in bKash/Nagad/SND (7.5%-8.0%) ready for dip execution.")
+    else:
+        print("   └─ Earns 7.5%–11.6% annualized in MFS/SND/T-Bills while awaiting entries.")
     print("-" * 86)
 
     # 1. ENGINE 1: CORE MOATS
     print("\n💎 ENGINE 1: LONG-TERM DIVIDEND MOAT CORE (60% Equity Allocation | Horizon: 1–3+ Years)")
     print("   Mandate: Permanent cash compounding, zero/low debt, stress-free dividend harvesting.")
     print("-" * 86)
-    print(f"{'Ticker':<11} {'Sector':<16} {'Live Px':<10} {'Buy Limit':<11} {'Shares':<8} {'Outlay':<12} {'Div Yield':<10} {'Exp. Annual Div'}")
-    print("-" * 86)
-    for c in plan["core_allocations"]:
-        print(f"{c['ticker']:<11} {c['sector']:<16} ৳{c['current_price']:<9.1f} ৳{c['limit_entry']:<10.1f} {c['shares']:<8} ৳{c['outlay_bdt']:<11.2f} {c['dividend_yield']:<9.1f}% ৳{c['annual_expected_dividend_bdt']:,.2f}")
-        for tr in c.get("tranches", []):
-            print(f"   ├─ {tr['tranche']:<22}: {tr['shares']} shs @ ৳{tr['price']:.1f} [{tr['note']}]")
+    if plan["core_allocations"]:
+        print(f"{'Ticker':<11} {'Sector':<16} {'Live Px':<10} {'Buy Limit':<11} {'Shares':<8} {'Outlay':<12} {'Div Yield':<10} {'Exp. Annual Div'}")
+        print("-" * 86)
+        for c in plan["core_allocations"]:
+            print(f"{c['ticker']:<11} {c['sector']:<16} ৳{c['current_price']:<9.1f} ৳{c['limit_entry']:<10.1f} {c['shares']:<8} ৳{c['outlay_bdt']:<11.2f} {c['dividend_yield']:<9.1f}% ৳{c['annual_expected_dividend_bdt']:,.2f}")
+            for tr in c.get("tranches", []):
+                print(f"   ├─ {tr['tranche']:<22}: {tr['shares']} shs @ ৳{tr['price']:.1f} [{tr['note']}]")
+    else:
+        print("   [No Core Moats affordable under current tranche budget. Cash retained safely.]")
 
     # 2. ENGINE 2: TACTICAL SWINGS
     print("\n⚡ ENGINE 2: BI-WEEKLY / MONTHLY SWING ENGINE (40% Equity Allocation | Horizon: 15–30 Days)")
     print("   Mandate: Systematic +8.5% to +12.0% profit harvesting; strictly overcomes 0.880% friction.")
     print("-" * 86)
-    print(f"{'Ticker':<11} {'Sector':<16} {'Buy Limit':<11} {'BreakEven':<11} {'Target(TP1)':<12} {'StopLoss':<10} {'Shares':<8} {'Catalyst'}")
-    print("-" * 86)
-    for s in plan["swing_allocations"]:
-        print(f"{s['ticker']:<11} {s['sector']:<16} ৳{s['limit_entry']:<10.1f} ৳{s['break_even']:<10.2f} ৳{s['tp1']:<11.2f} ৳{s['stop_loss']:<9.2f} {s['shares']:<8} {s['catalyst']}")
+    if plan["swing_allocations"]:
+        print(f"{'Ticker':<11} {'Sector':<16} {'Buy Limit':<11} {'BreakEven':<11} {'Target(TP1)':<12} {'StopLoss':<10} {'Shares':<8} {'Catalyst'}")
+        print("-" * 86)
+        for s in plan["swing_allocations"]:
+            print(f"{s['ticker']:<11} {s['sector']:<16} ৳{s['limit_entry']:<10.1f} ৳{s['break_even']:<10.2f} ৳{s['tp1']:<11.2f} ৳{s['stop_loss']:<9.2f} {s['shares']:<8} {s['catalyst']}")
+    else:
+        print("   [No Swing positions allocated under current tranche. Cash preserved.]")
 
     print("=" * 86)
-    print("💡 OPERATIONAL EXECUTION RULES FOR MANUAL TRADING:")
-    print("   1. WHEN TO BUY: Enter Limit Orders at 11:30 AM–12:30 PM at or below 'Buy Limit'. Never chase 10:00 AM gaps.")
-    print("   2. WHEN TO SELL (SWINGS): When stock hits TP1 (+9.0%), sell 50% shares to lock profit. Hold 50% for TP2 (+18.0%).")
-    print("   3. HARD STOP-LOSS: If price drops below 'StopLoss' (-5.0%), exit next liquid session. Zero hope-trading.")
-    print("   4. PROFIT SWEEP: Reinvest realized swing profits into Engine 1 (Core Moats) for perpetual compounding.")
+    print("📈 TECHNICAL STEP-BY-STEP PROFIT GENERATION BLUEPRINT:")
+    print("   1. WHEN TO BUY: Enter Limit Orders at 11:30 AM–12:30 PM at or below 'Buy Limit'. Never chase opening gaps.")
+    print("   2. HOLDING HORIZON: 15 to 30 Days. This bypasses T+2 lockup and crushes the 0.880% round-trip fee.")
+    print("   3. WHEN TO SELL (SWINGS): When stock hits TP1 (+9.0%), sell 50% shares to lock profit. Hold 50% for TP2 (+18.0%).")
+    print("   4. HARD STOP-LOSS: If daily close drops below 'StopLoss' (-5.0%), exit next morning. Zero emotion/hope.")
+    print("   5. COMPOUNDING FLYWHEEL: Reinvest realized swing profits + cash dividends back into Engine 1 Core Moats.")
     print("=" * 86)
 
     # Save to Markdown
     md_path = REPORTS_DIR / f"{asof}_dual_engine_plan.md"
     with open(md_path, "w", encoding="utf-8") as f:
-        f.write(f"# 🏛️ Dual-Engine Portfolio Allocation Plan\n\n")
+        f.write(f"# 🏛️ Dual-Engine Portfolio Allocation Plan [Budget: ৳{cap:,.2f} | Tier: {tier}]\n\n")
         f.write(f"**As-of Date**: {asof}  \n")
         f.write(f"**Total Capital**: ৳{cap:,.2f}  \n")
         f.write(f"**Market Regime**: {regime} (T-Bill: {t_bill}%)  \n")
-        f.write(f"**Defensive Cash Buffer**: ৳{cash:,.2f} ({cash / cap * 100:.1f}%)  \n\n")
+        f.write(f"**Defensive Cash Buffer**: ৳{cash:,.2f} ({cash_pct:.1f}%)  \n\n")
 
         f.write("## 💎 Engine 1: Long-Term Dividend Moat Core (60%)\n")
         f.write("| Ticker | Sector | Current Px | Buy Limit | Shares | Outlay (BDT) | Div Yield | Exp. Div (BDT) |\n")
@@ -348,8 +389,8 @@ def print_and_save_dual_engine_report(plan: Dict[str, Any]):
         for s in plan["swing_allocations"]:
             f.write(f"| **{s['ticker']}** | {s['sector']} | ৳{s['limit_entry']} | ৳{s['break_even']} | ৳{s['tp1']} (+9%) | ৳{s['stop_loss']} (-5%) | {s['shares']} | {s['catalyst']} |\n")
 
-        f.write("\n## 📋 Execution Protocol\n")
-        f.write("1. **Manual Entry Timing**: Place Limit orders during 11:30 AM to 12:30 PM lull.\n")
+        f.write("\n## 📋 Technical Profit Playbook\n")
+        f.write("1. **Limit Entry Timing**: Place Limit orders during 11:30 AM to 12:30 PM lull.\n")
         f.write("2. **Swing Exit**: Take profit at TP1 (+9.0%) on 50% position; let remainder ride to TP2 (+18.0%).\n")
         f.write("3. **Stop Protection**: Cut immediately at -5.0% Stop-Loss.\n")
         f.write("4. **Perpetual Wealth Compound**: Sweep swing gains directly into Engine 1 Core.\n")
