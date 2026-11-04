@@ -337,15 +337,17 @@ def sync_corporate_actions_from_fundamentals(conn: Optional[sqlite3.Connection] 
                 except Exception:
                     continue
 
-                # Skip if already captured by real notice for this year
-                if (ticker, "cash_dividend", str(d_year)) in real_dates_recorded:
-                    continue
-
                 cash_pct = float(item.get("cash") or 0.0)
                 stock_pct = float(item.get("stock") or 0.0)
                 est_record_date = f"{d_year}-12-15"
 
-                if cash_pct > 0:
+                # Check if real notice already exists for this year in real_dates_recorded or DB
+                existing_in_db = conn.execute(
+                    "SELECT 1 FROM corporate_actions WHERE ticker = ? AND action_type = 'cash_dividend' AND SUBSTR(record_date, 1, 4) = ? AND notes NOT LIKE '%Historical estimated%'",
+                    (ticker, str(d_year))
+                ).fetchone()
+
+                if cash_pct > 0 and (ticker, "cash_dividend", str(d_year)) not in real_dates_recorded and not existing_in_db:
                     cash_per_share = round((cash_pct / 100.0) * 10.0, 2)
                     conn.execute("""
                         INSERT OR IGNORE INTO corporate_actions (ticker, record_date, action_type, ratio, cash_amount, adjustment_factor, notes)
@@ -353,7 +355,12 @@ def sync_corporate_actions_from_fundamentals(conn: Optional[sqlite3.Connection] 
                     """, (ticker, est_record_date, cash_per_share, f"{cash_pct:.1f}% Cash Dividend (Historical estimated)"))
                     inserted_cash += 1
 
-                if stock_pct > 0:
+                existing_bonus_in_db = conn.execute(
+                    "SELECT 1 FROM corporate_actions WHERE ticker = ? AND action_type = 'bonus_dividend' AND SUBSTR(record_date, 1, 4) = ? AND notes NOT LIKE '%Historical estimated%'",
+                    (ticker, str(d_year))
+                ).fetchone()
+
+                if stock_pct > 0 and (ticker, "bonus_dividend", str(d_year)) not in real_dates_recorded and not existing_bonus_in_db:
                     bonus_ratio = round(stock_pct / 100.0, 4)
                     adj_factor = round(1.0 / (1.0 + bonus_ratio), 6)
                     conn.execute("""

@@ -256,6 +256,59 @@ def update_macro_indicator(
     return {"ok": True, "indicator": indicator, "value": value, "date": asof_date}
 
 
+def get_macro_rates_for_date(asof_date: str, conn: Optional[sqlite3.Connection] = None) -> dict:
+    """
+    Returns point-in-time macro rates active on or immediately before asof_date.
+    Prevents lookahead bias while respecting historical interest rate regimes.
+    """
+    should_close = False
+    if conn is None:
+        conn = sqlite3.connect(DB_PATH, timeout=30.0)
+        conn.execute("PRAGMA busy_timeout = 30000;")
+        should_close = True
+
+    init_macro_schema(conn)
+    row = conn.execute("SELECT MAX(date) FROM macro_indicators WHERE date <= ?", (asof_date,)).fetchone()
+    target_date = row[0] if (row and row[0]) else None
+    if not target_date:
+        row = conn.execute("SELECT MIN(date) FROM macro_indicators").fetchone()
+        target_date = row[0] if (row and row[0]) else asof_date
+
+    rows = conn.execute("""
+        SELECT indicator, value, date
+        FROM macro_indicators
+        WHERE date = ?
+    """, (target_date,)).fetchall()
+
+    data = {r[0]: float(r[1]) for r in rows}
+
+    if should_close:
+        conn.close()
+
+    rf_rate = data.get("t_bill_91d", 11.60)
+    repo_rate = data.get("policy_repo_rate", 10.00)
+    inflation = data.get("cpi_inflation", 9.92)
+    call_money = data.get("call_money_rate", 9.75)
+    real_rate = round(rf_rate - inflation, 2)
+    min_equity_risk_premium = 3.50
+    equity_hurdle_rate = round(rf_rate + min_equity_risk_premium, 2)
+
+    return {
+        "as_of_date": target_date,
+        "risk_free_rate_pct": rf_rate,
+        "t_bill_91d_pct": rf_rate,
+        "t_bill_182d_pct": data.get("t_bill_182d", round(rf_rate + 0.25, 2)),
+        "t_bill_364d_pct": data.get("t_bill_364d", round(rf_rate + 0.40, 2)),
+        "policy_repo_rate_pct": repo_rate,
+        "cpi_inflation_pct": inflation,
+        "real_interest_rate_pct": real_rate,
+        "call_money_rate_pct": call_money,
+        "min_equity_risk_premium_pct": min_equity_risk_premium,
+        "equity_hurdle_rate_pct": equity_hurdle_rate,
+        "fx_reserves_usd_bn": data.get("fx_reserves_usd_bn", 19.82)
+    }
+
+
 def get_latest_macro_rates(conn: Optional[sqlite3.Connection] = None) -> dict:
     """
     Returns latest macro rates dictionary from SQLite or hard benchmark fallback.

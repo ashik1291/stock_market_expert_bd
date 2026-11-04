@@ -23,6 +23,10 @@ from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+SCRIPTS_DIR = BASE_DIR / "scripts"
+if str(SCRIPTS_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS_DIR))
+from macro_rate_feed import get_macro_rates_for_date
 DATA_DIR = BASE_DIR / "data"
 PROC_DIR = DATA_DIR / "processed"
 DB_PATH = PROC_DIR / "dse.db"
@@ -177,6 +181,12 @@ def run_purged_walk_forward_evaluation(
             train_end_idx = max(0, all_dates_idx - embargo_bars)
             train_end_date = dates[train_end_idx]
 
+            # Dynamic Point-in-Time Macro Hurdle & Cash Yield for this historical regime
+            macro_info = get_macro_rates_for_date(start_date, conn=conn)
+            tbill_ann_yield = macro_info["risk_free_rate_pct"]
+            min_equity_hurdle = macro_info["equity_hurdle_rate_pct"]
+            tbill_period_yield = (tbill_ann_yield / 250.0) * horizon_bars
+
             # 1. Screen candidates strictly using PIT fundamentals published and tradable by start_date
             # Select top fundamental candidates (low PE, positive earnings yield, low debt, verified PIT)
             cand_rows = conn.execute(
@@ -208,9 +218,9 @@ def run_purged_walk_forward_evaluation(
                         # Exclude unverified / estimated PIT filings from live-quality proof
                         continue
 
-                    # Enforce Central Bank Macro Equity Hurdle (15.10% total equity hurdle)
+                    # Enforce Central Bank Macro Equity Hurdle for this historical regime
                     ey = 100.0 / pe
-                    if ey < 15.10:
+                    if ey < min_equity_hurdle:
                         continue
 
                     # Score: Higher earnings yield (1/PE) + dividend yield, penalized by debt
