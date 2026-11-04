@@ -170,16 +170,41 @@ def build_features_for_date(asof: str | None = None, category: str = "A") -> dic
             assert pit["snapshot_date"] <= pit["tradable_date"], \
                 f"PIT violation {ticker}: snapshot {pit['snapshot_date']} > tradable {pit['tradable_date']}"
 
-        # Trailing closes for RSI/SMA (need ~60 bars)
+        # Trailing closes for RSI/SMA (need ~60 bars, backward-adjusted for bonus splits)
         hist = conn.execute(
             """
-            SELECT close FROM prices
+            SELECT date, close FROM prices
             WHERE ticker=? AND date<=? AND close IS NOT NULL
             ORDER BY date DESC LIMIT 60
             """,
             (ticker, asof),
         ).fetchall()
-        closes = [float(r["close"]) for r in reversed(hist)]
+        if hist:
+            hist_rev = list(reversed(hist))
+            earliest_dt = hist_rev[0]["date"]
+            ca_rows = conn.execute(
+                """
+                SELECT record_date, adjustment_factor FROM corporate_actions
+                WHERE ticker=? AND action_type='bonus_dividend'
+                  AND record_date > ? AND record_date <= ?
+                  AND adjustment_factor IS NOT NULL AND adjustment_factor > 0
+                ORDER BY record_date ASC
+                """,
+                (ticker, earliest_dt, asof),
+            ).fetchall()
+            if ca_rows:
+                closes = []
+                for r in hist_rev:
+                    d, bar_px = r["date"], float(r["close"])
+                    adj = 1.0
+                    for rec_d, fac in ca_rows:
+                        if d < rec_d:
+                            adj *= float(fac)
+                    closes.append(round(bar_px * adj, 2))
+            else:
+                closes = [float(r["close"]) for r in hist_rev]
+        else:
+            closes = []
 
         pe = pit["pe_ratio"] if pit else None
         de = pit["debt_equity"] if pit else None
