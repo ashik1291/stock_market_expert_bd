@@ -55,7 +55,8 @@ def get_default_profile(user_id: str = DEFAULT_USER_ID) -> dict:
         "language": "banglish",
         "investment_horizon": "long_term",
         "risk_tolerance": "moderate",
-        "halal_tier": "flexible",
+        "halal_tier": "off",
+        "configured": False,
         "target_annual_return_pct": 20.0,
         "max_single_stock_pct": 25.0,
         "custom_exclusions": {
@@ -115,7 +116,8 @@ def load_user_profile(user_id: str = DEFAULT_USER_ID) -> dict:
             with open(LEGACY_PROFILE, encoding="utf-8") as f:
                 leg = json.load(f)
             prof = get_default_profile(user_id)
-            prof["halal_tier"] = leg.get("halal_tier", "flexible")
+            prof["halal_tier"] = leg.get("halal_tier", "off")
+            prof["configured"] = leg.get("configured", False)
             prof["custom_exclusions"] = leg.get("custom_exclusions", {"sectors": [], "tickers": []})
             save_user_profile(user_id, prof)
             return prof
@@ -134,9 +136,9 @@ def save_user_profile(user_id: str, profile: dict) -> None:
     profile_path = user_dir / "profile.json"
 
     # Validation
-    tier = profile.get("halal_tier", "flexible")
+    tier = profile.get("halal_tier", "off")
     if tier not in VALID_HALAL_TIERS:
-        tier = "flexible"
+        tier = "off"
     profile["halal_tier"] = tier
 
     risk = profile.get("risk_tolerance", "moderate")
@@ -154,10 +156,69 @@ def save_user_profile(user_id: str, profile: dict) -> None:
         lang = "banglish"
     profile["language"] = lang
 
+    profile["configured"] = bool(profile.get("configured", False))
     profile["updated_at"] = datetime.datetime.utcnow().isoformat()
 
     with open(profile_path, "w", encoding="utf-8") as f:
         json.dump(profile, f, indent=2, ensure_ascii=False)
+
+    # If default user, also sync to config/profile.json for system-wide unified scoring
+    if user_id == DEFAULT_USER_ID:
+        try:
+            LEGACY_PROFILE.parent.mkdir(parents=True, exist_ok=True)
+            with open(LEGACY_PROFILE, "w", encoding="utf-8") as f:
+                json.dump({
+                    "halal_tier": profile.get("halal_tier", "off"),
+                    "configured": profile.get("configured", False),
+                    "custom_exclusions": profile.get("custom_exclusions", {"sectors": [], "tickers": []})
+                }, f, indent=2, ensure_ascii=False)
+        except Exception:
+            pass
+
+
+def prompt_user_customization(user_id: str = DEFAULT_USER_ID, force_prompt: bool = False) -> dict:
+    """
+    Checks if user preferences are configured. If not (or force_prompt=True):
+      - If interactive terminal: prompts user to choose between Regular Stock, Flexible Halal, Strict Halal.
+      - If non-interactive: defaults to Regular Stock Mode ('off').
+    Saves and returns the profile.
+    """
+    prof = load_user_profile(user_id)
+    if prof.get("configured", False) and not force_prompt:
+        return prof
+
+    is_interactive = hasattr(sys.stdin, "isatty") and sys.stdin.isatty()
+
+    if is_interactive:
+        print("\n" + "=" * 80)
+        print("🎯 INVESTOR CUSTOMIZATION SETUP")
+        print("=" * 80)
+        print("Please choose your stock universe screening preference:")
+        print("  [1] Regular Stock Mode (Default) — Screen all Category A stocks (including")
+        print("      Banking, Insurance, Tobacco) purely on Graham/Buffett fundamentals.")
+        print("  [2] Flexible Halal Mode — Screen Shariah-compliant equities; exclude")
+        print("      interest-bearing finance & high leverage (D/E > 0.80).")
+        print("  [3] Strict Halal Mode — Restrict to DSE Shariah Index (DSES) & D/E <= 0.50.")
+        print("=" * 80)
+        try:
+            choice = input("Select mode [1/2/3, default 1]: ").strip()
+        except Exception:
+            choice = "1"
+
+        if choice == "2":
+            chosen_tier = "flexible"
+        elif choice == "3":
+            chosen_tier = "strict"
+        else:
+            chosen_tier = "off"
+        print(f"-> Saved preference: {chosen_tier.upper()} mode.\n")
+    else:
+        chosen_tier = "off"
+
+    prof["halal_tier"] = chosen_tier
+    prof["configured"] = True
+    save_user_profile(user_id, prof)
+    return prof
 
 
 def load_user_portfolio(user_id: str = DEFAULT_USER_ID) -> dict:
@@ -232,6 +293,7 @@ def create_user(
     profile["investment_horizon"] = investment_horizon if investment_horizon in VALID_HORIZONS else "long_term"
     profile["halal_tier"] = halal_tier if halal_tier in VALID_HALAL_TIERS else "flexible"
     profile["language"] = language if language in VALID_LANGUAGES else "banglish"
+    profile["configured"] = True
 
     save_user_profile(uid, profile)
 

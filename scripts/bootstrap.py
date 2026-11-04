@@ -145,6 +145,16 @@ def verify_user_templates():
         shutil.copyfile(prof_tmpl, prof_file)
         log("Initialized clean local profile.json from template.")
 
+    # Check and configure user preference if not set
+    sys.path.insert(0, str(SCRIPTS_DIR))
+    try:
+        from user_manager import prompt_user_customization
+        prof = prompt_user_customization(force_prompt=False)
+        tier = prof.get("halal_tier", "off")
+        log(f"Customization preference active: {tier.upper()} stock mode.")
+    except Exception as e:
+        log(f"Preference check note: {e}")
+
 def run_bootstrap():
     print("=" * 80)
     print("🚀 stock_market_expert_bd — PORTABLE MACHINE BOOTSTRAP ('READY')")
@@ -176,6 +186,7 @@ def run_bootstrap():
     print("=" * 80)
     print("\nQuick Commands Available:")
     print("  * 'python main.py status'    -> System status & portfolio audit")
+    print("  * 'python main.py config'    -> Configure stock universe preferences (Regular vs Halal)")
     print("  * 'python main.py alpha'     -> Run daily statistical alpha cycle")
     print("  * 'python main.py scan'      -> Directional Rise/Fall predictions")
     print("  * 'python main.py best2'     -> 12-factor Graham/Buffett screener")

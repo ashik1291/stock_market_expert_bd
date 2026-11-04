@@ -8,6 +8,7 @@ Usage:
 Commands:
   ready         Bootstrap dependencies, verify database integrity, and ready system on this machine
   status        Check complete system health, macro bias, active alerts, and portfolio ledger
+  config        Configure stock universe screening preference (Regular Stock vs Halal)
   best2         Run 12-factor Graham/Buffett screener and show Top 2 stocks per sector
   scan          Run daily directional Rise vs Fall scanner across Category A stocks
   refresh       Execute complete end-to-end knowledge base refresh pipeline
@@ -102,84 +103,73 @@ def cmd_best2():
 
 def cmd_scan():
     print("=" * 80, flush=True)
-    print("⚡ RUNNING DAILY DIRECTIONAL RISE VS FALL SCANNER", flush=True)
+    print("🔮 RUNNING DIRECTIONAL RISE VS FALL SCANNER (CATEGORY A UNIVERSE)", flush=True)
     print("=" * 80, flush=True)
-    run_script("daily_rise_fall_scanner.py", ["weekly"])
+    run_script("daily_prediction_scanner.py")
 
 
 def cmd_refresh():
     print("=" * 80, flush=True)
-    print("🔄 STARTING FULL REFRESH PIPELINE", flush=True)
+    print("🔄 EXECUTING COMPREHENSIVE KNOWLEDGE BASE REFRESH PIPELINE", flush=True)
     print("=" * 80, flush=True)
-    steps = [
-        ("1. Live Price & Market Summary Scrape", "scraper.py", ["price"]),
-        ("2. Database Ingestion (Point-In-Time)", "processor.py", []),
-        ("3. Macro Sentiment & Crisis Monitor", "macro_sentiment_engine.py", []),
-        ("4. Technical, Fundamental & Manipulation Analysis", "analyzer.py", ["all", "weekly"]),
-        ("5. 12-Factor Buffett Value & Sector Best 2 Screener", "buffett_value_screener.py", []),
-        ("6. Daily Rise vs Fall Directional Scanner", "daily_rise_fall_scanner.py", ["weekly"]),
-        ("7. Tri-Horizon Recommender & Visual Chart Generator", "recommender.py", ["weekly"]),
-        ("8. 5-Sector Matrix Evaluation", "sector_matrix_evaluator.py", []),
-        ("9. V2 Forward Epoch Tracker & Daily Universe Rank", "forward_test_ledger_v2.py", []),
-        ("10. Auditor Footnote & Regulatory Risk Parser", "auditor_footnote_parser.py", []),
-        ("11. Forward IC & Benchmark Alpha Evaluator", "forward_ic_evaluator.py", [])
-    ]
-
-    for idx, (title, script, args) in enumerate(steps, 1):
-        print(f"\n[{idx}/{len(steps)}] {title}...", flush=True)
-        code = run_script(script, args)
-        if code != 0:
-            print(f"⚠️ Warning: Step {script} exited with code {code}.", flush=True)
-
-    print("\n" + "=" * 80, flush=True)
-    print("✅ REFRESH COMPLETE: V2 QUANT ENGINE & ALL CATEGORY A ASSETS AUDITED", flush=True)
-    print("=" * 80, flush=True)
-
-
-def cmd_portfolio():
-    run_script("portfolio_manager.py", ["status"])
-
-
-def cmd_proxy(capital=None):
-    args = []
-    if capital:
-        args.extend(["--amount", str(capital)])
-    run_script("user_proxy_simulation.py", args)
-
-
-def cmd_plan(capital=None):
-    args = ["plan"]
-    if capital:
-        args.append(str(capital))
-    run_script("portfolio_manager.py", args)
-
-
-def cmd_report():
-    weekly_md = REPORTS_DIR / "weekly"
-    latest_files = sorted(weekly_md.glob("*.md"), reverse=True) if weekly_md.exists() else []
-    if latest_files:
-        with open(latest_files[0], encoding="utf-8") as f:
-            print(f.read())
-    else:
-        print("No weekly report found. Run 'python main.py refresh' to generate.")
-
-
-def cmd_learn():
-    print("=" * 80, flush=True)
-    print("🧠 DSE REINFORCEMENT LEARNING & PREDICTION ACCURACY AUDIT", flush=True)
-    print("=" * 80, flush=True)
-    run_script("reinforcement_learning_engine.py", ["evaluate"])
-    report_file = REPORTS_DIR / "learning" / "prediction_accuracy_evaluation.md"
-    if report_file.exists():
-        with open(report_file, encoding="utf-8") as f:
-            print(f.read(), flush=True)
+    print("Triggering master refresh orchestrator (Scrape -> Process -> Sentiments -> Unified)...")
+    run_script("knowledge_refresh.py")
 
 
 def cmd_alpha():
     print("=" * 80, flush=True)
-    print("🧠 DSE DAILY STATISTICAL ALPHA & ADAPTIVE LEARNING CYCLE", flush=True)
+    print("⚡ EXECUTING DAILY STATISTICAL ALPHA ROUTINE & BAYESIAN CALIBRATION", flush=True)
     print("=" * 80, flush=True)
-    run_script("auto_daily_alpha_routine.py")
+    run_script("daily_alpha_routine.py")
+
+
+def cmd_learn():
+    print("=" * 80, flush=True)
+    print("📊 EVALUATING PREDICTION ACCURACY & STATISTICAL LEDGER ADVANCEMENT", flush=True)
+    print("=" * 80, flush=True)
+    run_script("evaluate_accuracy_simple.py")
+
+
+def cmd_portfolio():
+    print("=" * 80, flush=True)
+    print("💼 EXAMINING PORTFOLIO HOLDINGS & REAL-TIME PERFORMANCE", flush=True)
+    print("=" * 80, flush=True)
+    run_script("portfolio_manager.py", ["status"])
+
+
+def cmd_plan(capital=None):
+    print("=" * 80, flush=True)
+    print("🎯 GENERATING TARGET POSITION ALLOCATION PLAN", flush=True)
+    print("=" * 80, flush=True)
+    args = [capital] if capital else []
+    run_script("position_plan.py", args)
+
+
+def cmd_proxy(capital=None):
+    print("=" * 80, flush=True)
+    print("🤖 EXECUTING USER PROXY SIMULATION (MAX PROFIT PROBABILITY ENGINE)", flush=True)
+    print("=" * 80, flush=True)
+    args = [capital] if capital else []
+    run_script("user_proxy.py", args)
+
+
+def cmd_report():
+    print("=" * 80, flush=True)
+    print("📑 GENERATING / DISPLAYING LATEST EXECUTIVE RECOMMENDATION REPORT", flush=True)
+    print("=" * 80, flush=True)
+    # Check if a report file exists, if not generate one
+    rep_files = list(REPORTS_DIR.glob("**/*.md"))
+    if rep_files:
+        latest_rep = max(rep_files, key=lambda p: p.stat().st_mtime)
+        print(f"\nDisplaying Latest Report: {latest_rep.name}\n" + "-" * 80)
+        try:
+            with open(latest_rep, encoding="utf-8") as f:
+                print(f.read())
+        except Exception as e:
+            print(f"Could not read report: {e}")
+    else:
+        print("No prior reports found. Generating fresh report...")
+        run_script("generate_reports.py")
 
 
 def cmd_pattern(ticker: str):
@@ -190,11 +180,25 @@ def cmd_ready():
     run_script("bootstrap.py")
 
 
+def cmd_config():
+    sys.path.insert(0, str(SCRIPTS_DIR))
+    from user_manager import prompt_user_customization
+    prof = prompt_user_customization(force_prompt=True)
+    print(f"[CONFIG] Active screening mode: {prof.get('halal_tier', 'off').upper()} stock mode.")
+
+
 def cmd_help():
     print(__doc__)
 
 
 def main():
+    sys.path.insert(0, str(SCRIPTS_DIR))
+    try:
+        from user_manager import prompt_user_customization
+        prompt_user_customization(force_prompt=False)
+    except Exception:
+        pass
+
     if len(sys.argv) < 2:
         cmd_help()
         return
@@ -204,6 +208,8 @@ def main():
         cmd_ready()
     elif cmd in ("status", "info"):
         cmd_status()
+    elif cmd in ("config", "preference", "preferences", "custom"):
+        cmd_config()
     elif cmd in ("best2", "screener", "buffett"):
         cmd_best2()
     elif cmd in ("scan", "daily", "rise-fall"):
