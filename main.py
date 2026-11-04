@@ -139,18 +139,18 @@ def cmd_portfolio():
 
 def cmd_plan(capital=None):
     print("=" * 80, flush=True)
-    print("🎯 GENERATING TARGET POSITION ALLOCATION PLAN", flush=True)
+    print("🎯 GENERATING TARGET POSITION ALLOCATION PLAN (3-TIER TRANCHE LADDER)", flush=True)
     print("=" * 80, flush=True)
-    args = [capital] if capital else []
-    run_script("position_plan.py", args)
+    args = ["--amount", str(capital)] if capital else []
+    run_script("smart_capital_planner.py", args)
 
 
 def cmd_proxy(capital=None):
     print("=" * 80, flush=True)
     print("🤖 EXECUTING USER PROXY SIMULATION (MAX PROFIT PROBABILITY ENGINE)", flush=True)
     print("=" * 80, flush=True)
-    args = [capital] if capital else []
-    run_script("user_proxy.py", args)
+    args = ["--amount", str(capital)] if capital else []
+    run_script("user_proxy_simulation.py", args)
 
 
 def cmd_report():
