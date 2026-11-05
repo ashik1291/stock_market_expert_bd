@@ -145,6 +145,7 @@ def evaluate_dual_engine_universe(asof_date: str | None = None) -> tuple[List[Di
             "ticker": ticker,
             "sector": sec,
             "limit_entry": limit_px,
+            "immediate_fill": cur_px,
             "break_even": be_px,
             "tp1": tp1_px,
             "tp2": tp2_px,
@@ -338,10 +339,10 @@ def print_and_save_dual_engine_report(plan: Dict[str, Any]):
     print("   Mandate: Permanent cash compounding, zero/low debt, stress-free dividend harvesting.")
     print("-" * 86)
     if plan["core_allocations"]:
-        print(f"{'Ticker':<11} {'Sector':<16} {'Live Px':<10} {'Buy Limit':<11} {'Shares':<8} {'Outlay':<12} {'Div Yield':<10} {'Exp. Annual Div'}")
-        print("-" * 86)
+        print(f"{'Ticker':<11} {'Sector':<15} {'Dip Limit':<11} {'Instant Fill':<13} {'Shares':<7} {'Outlay':<11} {'Yield':<8} {'Exp. Div'}")
+        print("-" * 88)
         for c in plan["core_allocations"]:
-            print(f"{c['ticker']:<11} {c['sector']:<16} ৳{c['current_price']:<9.1f} ৳{c['limit_entry']:<10.1f} {c['shares']:<8} ৳{c['outlay_bdt']:<11.2f} {c['dividend_yield']:<9.1f}% ৳{c['annual_expected_dividend_bdt']:,.2f}")
+            print(f"{c['ticker']:<11} {c['sector']:<15} ৳{c['limit_entry']:<10.1f} ৳{c.get('immediate_fill', c['current_price']):<12.1f} {c['shares']:<7} ৳{c['outlay_bdt']:<10.2f} {c['dividend_yield']:<7.1f}% ৳{c['annual_expected_dividend_bdt']:,.2f}")
             for tr in c.get("tranches", []):
                 print(f"   ├─ {tr['tranche']:<22}: {tr['shares']} shs @ ৳{tr['price']:.1f} [{tr['note']}]")
     else:
@@ -350,23 +351,23 @@ def print_and_save_dual_engine_report(plan: Dict[str, Any]):
     # 2. ENGINE 2: TACTICAL SWINGS
     print("\n⚡ ENGINE 2: BI-WEEKLY / MONTHLY SWING ENGINE (40% Equity Allocation | Horizon: 15–30 Days)")
     print("   Mandate: Systematic +8.5% to +12.0% profit harvesting; strictly overcomes 0.880% friction.")
-    print("-" * 86)
+    print("-" * 88)
     if plan["swing_allocations"]:
-        print(f"{'Ticker':<11} {'Sector':<16} {'Buy Limit':<11} {'BreakEven':<11} {'Target(TP1)':<12} {'StopLoss':<10} {'Shares':<8} {'Catalyst'}")
-        print("-" * 86)
+        print(f"{'Ticker':<11} {'Sector':<14} {'Dip Limit':<11} {'Instant Fill':<13} {'BreakEven':<10} {'TP1(+9%)':<10} {'StopLoss':<9} {'Shares':<6}")
+        print("-" * 88)
         for s in plan["swing_allocations"]:
-            print(f"{s['ticker']:<11} {s['sector']:<16} ৳{s['limit_entry']:<10.1f} ৳{s['break_even']:<10.2f} ৳{s['tp1']:<11.2f} ৳{s['stop_loss']:<9.2f} {s['shares']:<8} {s['catalyst']}")
+            print(f"{s['ticker']:<11} {s['sector']:<14} ৳{s['limit_entry']:<10.1f} ৳{s.get('immediate_fill', s['current_price']):<12.1f} ৳{s['break_even']:<9.2f} ৳{s['tp1']:<9.2f} ৳{s['stop_loss']:<8.2f} {s['shares']:<6}")
     else:
         print("   [No Swing positions allocated under current tranche. Cash preserved.]")
 
-    print("=" * 86)
+    print("=" * 88)
     print("📈 TECHNICAL STEP-BY-STEP PROFIT GENERATION BLUEPRINT:")
-    print("   1. WHEN TO BUY: Enter Limit Orders at 11:30 AM–12:30 PM at or below 'Buy Limit'. Never chase opening gaps.")
+    print("   1. DUAL FILL STRATEGY: Place 'Dip Limit' bids during 11:30 AM–12:30 PM lull. Use 'Instant Fill' (LTP) if buying during active uptrend.")
     print("   2. HOLDING HORIZON: 15 to 30 Days. This bypasses T+2 lockup and crushes the 0.880% round-trip fee.")
     print("   3. WHEN TO SELL (SWINGS): When stock hits TP1 (+9.0%), sell 50% shares to lock profit. Hold 50% for TP2 (+18.0%).")
     print("   4. HARD STOP-LOSS: If daily close drops below 'StopLoss' (-5.0%), exit next morning. Zero emotion/hope.")
     print("   5. COMPOUNDING FLYWHEEL: Reinvest realized swing profits + cash dividends back into Engine 1 Core Moats.")
-    print("=" * 86)
+    print("=" * 88)
 
     # Save to Markdown
     md_path = REPORTS_DIR / f"{asof}_dual_engine_plan.md"
@@ -378,19 +379,19 @@ def print_and_save_dual_engine_report(plan: Dict[str, Any]):
         f.write(f"**Defensive Cash Buffer**: ৳{cash:,.2f} ({cash_pct:.1f}%)  \n\n")
 
         f.write("## 💎 Engine 1: Long-Term Dividend Moat Core (60%)\n")
-        f.write("| Ticker | Sector | Current Px | Buy Limit | Shares | Outlay (BDT) | Div Yield | Exp. Div (BDT) |\n")
+        f.write("| Ticker | Sector | Dip Limit | Instant Fill | Shares | Outlay (BDT) | Div Yield | Exp. Div (BDT) |\n")
         f.write("|---|---|---|---|---|---|---|---|\n")
         for c in plan["core_allocations"]:
-            f.write(f"| **{c['ticker']}** | {c['sector']} | ৳{c['current_price']} | ৳{c['limit_entry']} | {c['shares']} | ৳{c['outlay_bdt']:,.2f} | {c['dividend_yield']}% | ৳{c['annual_expected_dividend_bdt']:,.2f} |\n")
+            f.write(f"| **{c['ticker']}** | {c['sector']} | ৳{c['limit_entry']} | ৳{c.get('immediate_fill', c['current_price'])} | {c['shares']} | ৳{c['outlay_bdt']:,.2f} | {c['dividend_yield']}% | ৳{c['annual_expected_dividend_bdt']:,.2f} |\n")
 
         f.write("\n## ⚡ Engine 2: Bi-Weekly / Monthly Swing Engine (40%)\n")
-        f.write("| Ticker | Sector | Buy Limit | Break-even | Target (TP1) | Stop Loss | Shares | Catalyst |\n")
-        f.write("|---|---|---|---|---|---|---|---|\n")
+        f.write("| Ticker | Sector | Dip Limit | Instant Fill | Break-even | Target (TP1) | Stop Loss | Shares | Catalyst |\n")
+        f.write("|---|---|---|---|---|---|---|---|---|\n")
         for s in plan["swing_allocations"]:
-            f.write(f"| **{s['ticker']}** | {s['sector']} | ৳{s['limit_entry']} | ৳{s['break_even']} | ৳{s['tp1']} (+9%) | ৳{s['stop_loss']} (-5%) | {s['shares']} | {s['catalyst']} |\n")
+            f.write(f"| **{s['ticker']}** | {s['sector']} | ৳{s['limit_entry']} | ৳{s.get('immediate_fill', s['current_price'])} | ৳{s['break_even']} | ৳{s['tp1']} (+9%) | ৳{s['stop_loss']} (-5%) | {s['shares']} | {s['catalyst']} |\n")
 
         f.write("\n## 📋 Technical Profit Playbook\n")
-        f.write("1. **Limit Entry Timing**: Place Limit orders during 11:30 AM to 12:30 PM lull.\n")
+        f.write("1. **Dual Fill Strategy**: Place 'Dip Limit' bids during 11:30 AM–12:30 PM lull. Use 'Instant Fill' (LTP) if entering on strong market momentum.\n")
         f.write("2. **Swing Exit**: Take profit at TP1 (+9.0%) on 50% position; let remainder ride to TP2 (+18.0%).\n")
         f.write("3. **Stop Protection**: Cut immediately at -5.0% Stop-Loss.\n")
         f.write("4. **Perpetual Wealth Compound**: Sweep swing gains directly into Engine 1 Core.\n")

@@ -1,5 +1,5 @@
 # DSE Phase-2 Learning Audit (Net Excess vs EQW)
-**Audit Timestamp:** 2026-11-05 10:19:12
+**Audit Timestamp:** 2026-11-05 11:58:19
 **Model:** `frozen_epoch2_pit_v2`
 **Label:** `net_excess_vs_eqw_h21_minus_0.88pct`
 
