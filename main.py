@@ -14,9 +14,13 @@ Commands:
   refresh       Execute complete end-to-end knowledge base refresh pipeline
   alpha         Execute automated statistical alpha routine, ledger advance & Bayesian calibration
   pattern [TICKER] Analyze company pattern DNA, multi-interval waves, causal 'WHY', & worth vs greed
+  check         Run unified daily portfolio audit & seasonal catalyst check in 5 seconds
   portfolio     Show current portfolio holdings (Mutual Funds + Equities + P&L)
   plan [BDT]    Generate exact capital deployment plan (default BDT 50,000)
   dual [BDT]    Generate dual-engine allocation: 60% Long-Term Core + 40% Bi-Weekly Swings
+  radar         Run pre-dividend seasonal catalyst radar (15-25 day swings)
+  buy [TICKER] [SHS] [PX]  Record a manual stock purchase into portfolio ledger
+  sell [TICKER] [SHS] [PX] Record a manual stock sale & calculate realized net P&L
   proxy [BDT]   Run user proxy simulation: max profit probability, entry zone & exit rules
   report        Display the latest weekly investment & trading executive report
   help          Display this command reference
@@ -150,6 +154,39 @@ def cmd_plan(capital=None):
     run_script("smart_capital_planner.py", args)
 
 
+def cmd_check():
+    print("=" * 80, flush=True)
+    print("🔎 EXECUTING UNIFIED DAILY PORTFOLIO & CATALYST ACTION AUDIT", flush=True)
+    print("=" * 80, flush=True)
+    run_script("portfolio_sentinel.py")
+    print("\n" + "=" * 80, flush=True)
+    run_script("catalyst_radar.py")
+    print("=" * 80, flush=True)
+    print("✅ AUDIT COMPLETE: Review Active Stop-Losses, Take-Profits & Catalyst Windows above.", flush=True)
+    print("=" * 80, flush=True)
+
+
+def cmd_radar():
+    print("=" * 80, flush=True)
+    print("🎯 EXECUTING PRE-DIVIDEND & SEASONAL CATALYST RADAR", flush=True)
+    print("=" * 80, flush=True)
+    run_script("catalyst_radar.py")
+
+
+def cmd_buy(ticker: str, shares: str, price: str):
+    print("=" * 80, flush=True)
+    print(f"💼 RECORDING BUY: {shares} shares of {ticker.upper()} @ ৳{price}", flush=True)
+    print("=" * 80, flush=True)
+    run_script("portfolio_manager.py", ["buy", ticker, str(shares), str(price)])
+
+
+def cmd_sell(ticker: str, shares: str, price: str):
+    print("=" * 80, flush=True)
+    print(f"💼 RECORDING SELL: {shares} shares of {ticker.upper()} @ ৳{price}", flush=True)
+    print("=" * 80, flush=True)
+    run_script("portfolio_manager.py", ["sell", ticker, str(shares), str(price)])
+
+
 def cmd_dual(capital=None):
     print("=" * 80, flush=True)
     print("🏛️ EXECUTING DUAL-ENGINE PORTFOLIO ALLOCATOR (CORE + BI-WEEKLY SWINGS)", flush=True)
@@ -236,6 +273,8 @@ def main():
     elif cmd in ("pattern", "cycles", "why", "dna"):
         t = sys.argv[2] if len(sys.argv) > 2 else "SQURPHARMA"
         cmd_pattern(t)
+    elif cmd in ("check", "audit", "daily", "daily-check", "review"):
+        cmd_check()
     elif cmd in ("portfolio", "holdings"):
         cmd_portfolio()
     elif cmd in ("proxy", "simulate", "user-proxy"):
@@ -247,6 +286,12 @@ def main():
     elif cmd in ("dual", "dual-engine", "core-satellite", "swings"):
         cap = sys.argv[2] if len(sys.argv) > 2 else None
         cmd_dual(cap)
+    elif cmd in ("radar", "catalyst", "catalysts", "season"):
+        cmd_radar()
+    elif cmd == "buy" and len(sys.argv) >= 5:
+        cmd_buy(sys.argv[2], sys.argv[3], sys.argv[4])
+    elif cmd == "sell" and len(sys.argv) >= 5:
+        cmd_sell(sys.argv[2], sys.argv[3], sys.argv[4])
     elif cmd in ("report", "weekly"):
         cmd_report()
     elif cmd in ("help", "menu", "?"):

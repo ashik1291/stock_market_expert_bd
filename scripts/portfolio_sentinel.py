@@ -89,8 +89,14 @@ def audit_portfolio_sentinel(asof_date: str | None = None) -> dict:
         
         # Targets & Stops (DSE Tiered Circuit Breaker Aware)
         from dse_circuit_breaker import get_dse_circuit_limit_pct, get_lower_circuit_floor, is_price_circuit_locked
-        target_p = round(entry_p * 1.30, 1)  # +30% long-term target
-        stop_p = round(entry_p * 0.90, 1)    # -10% hard stop
+        horizon = h.get('horizon', 'long_term')
+        is_swing = horizon in ('swing', 'mid_term', 'short_term')
+        if is_swing:
+            target_p = round(entry_p * 1.09, 1)  # +9.0% TP1
+            stop_p = round(entry_p * 0.95, 1)    # -5.0% hard stop
+        else:
+            target_p = round(entry_p * 1.30, 1)  # +30.0% long-term target
+            stop_p = round(entry_p * 0.90, 1)    # -10.0% hard stop
         
         # Liquidity Check (20-day average daily turnover)
         vol_rows = conn.execute(
@@ -147,7 +153,7 @@ def audit_portfolio_sentinel(asof_date: str | None = None) -> dict:
             action_desc += f" [⚠️ থিন লিকুইডিটি: টার্নওভার ৳{avg_turnover_cr} কোটি]"
 
 
-        # Check upcoming dividend receivables for this holding
+        # Check upcoming dividend receivables and Pre-Dividend Exit window
         div_row = conn.execute("""
             SELECT record_date, cash_amount FROM corporate_actions 
             WHERE ticker = ? AND action_type = 'cash_dividend' AND record_date >= ?
@@ -155,22 +161,44 @@ def audit_portfolio_sentinel(asof_date: str | None = None) -> dict:
         """, (t, asof_date)).fetchone()
         
         div_info = None
+        days_to_record = 999
         if div_row and div_row["cash_amount"]:
             cash_rate = float(div_row["cash_amount"])
             net_rate = round(cash_rate * 0.90, 2)  # 10% standard withholding tax
             receivable_bdt = round(sh * net_rate, 2)
             total_dividends_receivable += receivable_bdt
+            try:
+                rec_dt = datetime.date.fromisoformat(div_row["record_date"])
+                as_dt = datetime.date.fromisoformat(asof_date)
+                days_to_record = (rec_dt - as_dt).days
+            except Exception:
+                days_to_record = 999
+
             div_info = {
                 "record_date": div_row["record_date"],
                 "gross_per_share": cash_rate,
-                "net_receivable_bdt": receivable_bdt
+                "net_receivable_bdt": receivable_bdt,
+                "days_to_record": days_to_record
             }
             upcoming_dividends.append({
                 "ticker": t,
                 "shares": sh,
                 "record_date": div_row["record_date"],
-                "net_amount_bdt": receivable_bdt
+                "net_amount_bdt": receivable_bdt,
+                "days_to_record": days_to_record
             })
+
+        # Pre-Record Date Exit Check (Capture Run-Up tax-free before ex-dividend drop)
+        if 0 <= days_to_record <= 2 and (is_swing or pnl_pct > 0):
+            action = "PRE_RECORD_DATE_EXIT"
+            action_desc = f"📅 রেকর্ড ডেট আসন্ন ({days_to_record} দিন বাকি: {div_row['record_date']})! সুইং মুনাফা করমুক্ত করতে আজই প্রস্থান করুন।"
+
+        # Shannon Rebalancing Profit Sweep Directive
+        sweep_directive = None
+        if pnl_pct >= 8.5 or action in ("TAKE_PROFIT_ALL", "TAKE_PROFIT_HALF", "PRE_RECORD_DATE_EXIT"):
+            sell_proceeds = round(sh * live_p * (1.0 - 0.00465), 2)
+            sweep_candidate = "JAMUNAOIL" if t != "JAMUNAOIL" else "SQURPHARMA"
+            sweep_directive = f"🔄 রি-ইনভেস্টমেন্ট সুইপ নির্দেশ: বিক্রি থেকে প্রাপ্ত ৳{sell_proceeds:,.2f} সরাসরি {sweep_candidate} (কোর মোটে) রি-ইনভেস্ট করে স্থায়ী সম্পদ চক্রবৃদ্ধি করুন।"
 
         holdings_audit.append({
             "ticker": t,
@@ -184,6 +212,8 @@ def audit_portfolio_sentinel(asof_date: str | None = None) -> dict:
             "pnl_pct": pnl_pct,
             "target_price": target_p,
             "stop_price": stop_p,
+            "horizon": horizon,
+            "sweep_directive": sweep_directive,
             "action": action,
             "action_desc_bn": action_desc,
             "dividend_info": div_info
@@ -295,6 +325,8 @@ def main():
     print("-" * 85)
     for h in audit["holdings"]:
         print(f"[{h['action']:<20}] {h['ticker']:<12} Live: ৳{h['live_price']:<7.1f} P&L: ৳{h['pnl_bdt']:<7.2f} ({h['pnl_pct']:>5.1f}%) | {h['action_desc_bn']}")
+        if h.get("sweep_directive"):
+            print(f"   └─ {h['sweep_directive']}")
     print("=" * 85)
     bn_p, _ = generate_sentinel_reports()
     print(f"[Sentinel Report Published: {bn_p.name}]")
