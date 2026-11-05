@@ -2,18 +2,18 @@
   "ticker": "BXPHARMA",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-04T08:33:55.444002",
-  "asof_price_date": "2026-11-04",
+  "analyzed_at": "2026-11-05T10:49:02.541676",
+  "asof_price_date": "2026-11-05",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 42.3232,
+    "rsi_14": 46.9943,
     "pe_ratio": 10.925784238714614,
     "debt_equity": 0.126
   },
   "signal": "HOLD_INELIGIBLE_DEFICIT",
-  "confidence": 66.45,
+  "confidence": 67.95,
   "trajectory": {
     "direction": "RISE_PREDICTED",
     "direction_icon": "\ud83d\udfe2",
@@ -22,33 +22,33 @@
     "momentum_status": "Bullish Momentum / Upward Bias",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+3.0%",
-      "downside_risk_pct": "-2.0%",
-      "target_price": 146.6,
-      "support_price": 139.5,
+      "upside_potential_pct": "+2.9%",
+      "downside_risk_pct": "-1.9%",
+      "target_price": 147.8,
+      "support_price": 140.8,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+7.7%",
-      "downside_risk_pct": "-3.0%",
+      "upside_potential_pct": "+6.7%",
+      "downside_risk_pct": "-2.9%",
       "target_price": 153.2,
-      "trailing_stop": 138.0,
-      "risk_reward_ratio": "2.6x"
+      "trailing_stop": 139.4,
+      "risk_reward_ratio": "2.3x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.0%",
-      "downside_risk_pct": "-5.4%",
-      "target_price": 185.0,
+      "downside_risk_pct": "-5.2%",
+      "target_price": 186.7,
       "dividend_cagr": "moderate (3.39%)",
-      "risk_reward_ratio": "5.6x"
+      "risk_reward_ratio": "5.8x"
     }
   },
   "trade_levels": {
-    "entry": 142.3,
-    "stop_loss": 138.04,
-    "target": 150.82
+    "entry": 143.6,
+    "stop_loss": 139.41,
+    "target": 151.98
   },
   "precision": {
     "ticker": "BXPHARMA",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 303587,
+      "avg_daily_volume": 279164,
       "daily_turnover_bdt_cr": 0.03,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 15179,
-      "max_daily_accumulation_shares": 45538,
-      "max_order_bdt": 15179.0,
-      "directive": "Max single order: 15,179 shares (Tk 15,179) to prevent >1% execution slippage"
+      "max_single_order_shares": 13958,
+      "max_daily_accumulation_shares": 41874,
+      "max_order_bdt": 13958.0,
+      "directive": "Max single order: 13,958 shares (Tk 13,958) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,61 +91,61 @@
   },
   "pattern_dna": {
     "ticker": "BXPHARMA",
-    "audited_at": "2026-11-04 14:33:55",
+    "audited_at": "2026-11-05 16:49:02",
     "worth_vs_greed": {
-      "current_price": 142.3,
+      "current_price": 143.6,
       "intrinsic_worth": 39.84,
-      "margin_of_safety_pct": -72.0,
+      "margin_of_safety_pct": -72.3,
       "extension_froth_score": 10.0,
       "greed_index": 10.0,
-      "rsi_14": 40.8,
-      "price_vs_ema50_pct": -1.8,
-      "price_vs_ema200_pct": 6.1,
+      "rsi_14": 42.5,
+      "price_vs_ema50_pct": -0.9,
+      "price_vs_ema200_pct": 7.0,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f34.98, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f3139.5 \u2013 \u09f3143.7",
-        "chase_cutoff_price": 145.9,
-        "when_to_wait": "If price opens or rises above \u09f3145.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3139.5.",
-        "weekly_target_short": 147.3,
-        "monthly_target_swing": 163.6,
-        "long_term_target_asset": 185.0,
+        "optimal_entry_corridor": "\u09f3140.7 \u2013 \u09f3145.0",
+        "chase_cutoff_price": 147.2,
+        "when_to_wait": "If price opens or rises above \u09f3147.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3140.7.",
+        "weekly_target_short": 148.6,
+        "monthly_target_swing": 165.1,
+        "long_term_target_asset": 186.7,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
       "worth_decision": "AVOID",
-      "reason": "Fundamental value severely lags stock price (MoS: -72.0%).",
+      "reason": "Fundamental value severely lags stock price (MoS: -72.3%).",
       "is_blacklisted": false,
       "blacklist_reason": null
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -0.49,
+          "return_pct": -0.07,
           "high": 145.8,
           "low": 139.7,
           "range_volatility_pct": 4.37
         },
         "monthly_21d": {
-          "return_pct": -1.52,
+          "return_pct": 0.56,
           "high": 147.4,
           "low": 138.5,
           "range_volatility_pct": 6.43
         },
         "quarterly_63d": {
-          "return_pct": -2.4,
+          "return_pct": -0.97,
           "high": 154.5,
           "low": 138.5,
           "range_volatility_pct": 11.55
         },
         "half_yearly_126d": {
-          "return_pct": 23.95,
+          "return_pct": 25.09,
           "high": 158.5,
           "low": 110.0,
           "range_volatility_pct": 44.09
         },
         "yearly_252d": {
-          "return_pct": 28.55,
+          "return_pct": 34.58,
           "high": 158.5,
           "low": 99.5,
           "range_volatility_pct": 59.3
@@ -255,22 +255,22 @@
     ]
   },
   "technical": {
-    "score": 46.25,
+    "score": 53.75,
     "signals": {
       "rsi": "neutral",
-      "macd": "bearish_crossover",
+      "macd": "neutral",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 2.84,
-      "rsi_value": 42.44,
-      "last_close": 142.3,
-      "sma20": 143.8,
-      "sma50": 146.15,
-      "sma200": 131.74,
+      "atr": 2.79,
+      "rsi_value": 47.05,
+      "last_close": 143.6,
+      "sma20": 144.0,
+      "sma50": 146.16,
+      "sma200": 131.95,
       "support_resistance": {
         "supports": [
-          100.6,
           110.6,
+          139.6,
           143.0
         ],
         "resistances": [
@@ -282,8 +282,8 @@
     },
     "sr": {
       "supports": [
-        100.6,
         110.6,
+        139.6,
         143.0
       ],
       "resistances": [
@@ -307,7 +307,7 @@
       "loan_trap_risk": "none",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 10.2,
+        "drawdown_pct": 9.4,
         "high_52w": 158.5,
         "low_52w": 99.5
       }
@@ -350,15 +350,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 307291,
-        "avg_volume": 465093.0,
+        "last_volume": 24529,
+        "avg_volume": 448538.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.65,
-        "avg_volume": 470298.0,
-        "today_volume": 307291,
+        "spike_ratio": 0.05,
+        "avg_volume": 465093.0,
+        "today_volume": 24529,
         "detail": "ok"
       },
       "serial_trading": {
@@ -377,14 +377,14 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": -1.32,
+        "price_change_3d": -0.49,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 66.45,
+    "composite_score": 67.95,
     "governance_score": 80,
     "sentiment_score": 50.0,
     "applied_weights": {

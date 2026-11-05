@@ -1,19 +1,19 @@
 {
-  "ok": false,
-  "exit_code": 1,
-  "checked_at": "2026-11-05T12:16:53.464703",
+  "ok": true,
+  "exit_code": 0,
+  "checked_at": "2026-11-05T16:50:31.494985",
   "latest_price_date": "2026-11-05",
-  "fail_count": 2,
+  "fail_count": 0,
   "checks": [
     {
       "check": "ledger_asof_matches_prices",
-      "status": "FAIL",
-      "detail": "ledger_asof=2026-11-04 latest_price=2026-11-05"
+      "status": "PASS",
+      "detail": "ledger_asof=2026-11-05 latest_price=2026-11-05"
     },
     {
       "check": "ledger_strategy_status_present",
       "status": "PASS",
-      "detail": "status=ACTIVE"
+      "detail": "status=KILLED"
     },
     {
       "check": "thresholds_weights_sum_1",
@@ -31,9 +31,9 @@
       "detail": "weights={'div': 1.4, 'value': 0.0, 'rsi': 1.4, 'debt': 0.0}"
     },
     {
-      "check": "rank_log_latest_date",
-      "status": "FAIL",
-      "detail": "last_rank_date=2026-11-04 latest_price=2026-11-05"
+      "check": "rank_log_full_universe",
+      "status": "PASS",
+      "detail": "ranks=374 features=374 date=2026-11-05"
     },
     {
       "check": "registry_champion",

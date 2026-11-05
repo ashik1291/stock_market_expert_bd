@@ -1,11 +1,11 @@
 # 🚨 DSE মার্কেট সার্ভেইল্যান্স ও অ্যান্টি-ম্যানিপুলেশন সতর্কবার্তা রিপোর্ট
-**বাজার তারিখ**: `2026-11-05` | **তৈরির সময়**: `2026-11-05 12:16:50`
+**বাজার তারিখ**: `2026-11-05` | **তৈরির সময়**: `2026-11-05 16:50:28`
 **নজরদারির আওতা**: ৩৯৫টি পূর্ণ স্টক ইউনিভার্স | ভলিউম স্পাইক অ্যানোমালি, সিন্ডিকেট কর্নার ও পাম্প-অ্যান্ড-ডাম্প নজরদারি
 
 ### 🛡️ নজরদারি সারসংক্ষেপ
 - **সংকটজনক ঝুঁকি (তাত্ক্ষণিক ব্ল্যাকলিস্ট - ভুলেও কিনবেন না)**: **0টি কোম্পানি**
-- **উচ্চ ফরেনসিক সতর্কতা (সিন্ডিকেট তৎপরতা সন্দেহ)**: **6টি কোম্পানি**
-- **মাঝারি নজরদারি ফ্ল্যাগ**: **0টি কোম্পানি**
+- **উচ্চ ফরেনসিক সতর্কতা (সিন্ডিকেট তৎপরতা সন্দেহ)**: **7টি কোম্পানি**
+- **মাঝারি নজরদারি ফ্ল্যাগ**: **2টি কোম্পানি**
 
 ---
 ## ⛔ ১. সংকটজনক ব্ল্যাকলিস্ট (DO NOT BUY — মূলধন ক্ষয়ের সর্বোচ্চ ঝুঁকি)
@@ -21,6 +21,7 @@
 | **LOVELLO** | `45/১০০` | **REGULATORY_PROBE** | **0.1x** | +0.6% | BSEC Regulatory Enforcement / Probe: BSEC regulatory enforcement / probe |
 | **RAHIMAFOOD** | `45/১০০` | **REGULATORY_PROBE** | **0.0x** | +2.5% | BSEC Regulatory Enforcement / Probe: BSEC regulatory enforcement / probe |
 | **ATLASBANG** | `35/১০০` | **SPECULATIVE_JUNK_PUMP** | **2.8x** | +7.5% | Price up +7.51% on untracked / high-risk security without verified earnings |
+| **MEGHNACEM** | `35/১০০` | **SPECULATIVE_JUNK_PUMP** | **0.6x** | +4.1% | Price up +4.1% with poor fundamentals (Negative EPS) |
 | **SHARPIND** | `35/১০০` | **SPECULATIVE_JUNK_PUMP** | **0.3x** | +6.1% | Price up +6.14% with poor fundamentals (Negative EPS) |
 | **ZAHEENSPIN** | `35/১০০` | **SPECULATIVE_JUNK_PUMP** | **0.1x** | +6.8% | Price up +6.82% on untracked / high-risk security without verified earnings |
 | **ARAMIT** | `35/১০০` | **SPECULATIVE_JUNK_PUMP** | **0.0x** | +4.8% | Price up +4.81% with poor fundamentals (Extreme P/E (84.0x)) |

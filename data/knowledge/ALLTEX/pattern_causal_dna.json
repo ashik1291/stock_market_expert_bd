@@ -1,24 +1,24 @@
 {
   "ticker": "ALLTEX",
-  "audited_at": "2026-11-04 14:33:58",
+  "audited_at": "2026-11-05 16:49:06",
   "worth_vs_greed": {
-    "current_price": 27.5,
-    "intrinsic_worth": 13.75,
+    "current_price": 27.6,
+    "intrinsic_worth": 13.8,
     "margin_of_safety_pct": -50.0,
     "extension_froth_score": 30.0,
     "greed_index": 30.0,
-    "rsi_14": 60.0,
+    "rsi_14": 48.1,
     "price_vs_ema50_pct": 9.5,
     "price_vs_ema200_pct": 38.1,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f326.9 \u2013 \u09f327.8",
-      "chase_cutoff_price": 28.2,
-      "when_to_wait": "If price opens or rises above \u09f328.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f326.9.",
-      "weekly_target_short": 28.5,
-      "monthly_target_swing": 31.6,
-      "long_term_target_asset": 35.8,
+      "optimal_entry_corridor": "\u09f327.0 \u2013 \u09f327.9",
+      "chase_cutoff_price": 28.3,
+      "when_to_wait": "If price opens or rises above \u09f328.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f327.0.",
+      "weekly_target_short": 28.6,
+      "monthly_target_swing": 31.7,
+      "long_term_target_asset": 35.9,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -30,31 +30,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 1.1,
-        "high": 28.5,
+        "return_pct": 0.0,
+        "high": 28.3,
         "low": 27.1,
-        "range_volatility_pct": 5.17
+        "range_volatility_pct": 4.43
       },
       "monthly_21d": {
-        "return_pct": 20.09,
+        "return_pct": 20.0,
         "high": 28.8,
-        "low": 22.6,
-        "range_volatility_pct": 27.43
+        "low": 22.8,
+        "range_volatility_pct": 26.32
       },
       "quarterly_63d": {
-        "return_pct": 21.68,
+        "return_pct": 23.77,
         "high": 28.8,
         "low": 21.0,
         "range_volatility_pct": 37.14
       },
       "half_yearly_126d": {
-        "return_pct": 83.33,
+        "return_pct": 84.0,
         "high": 28.8,
         "low": 14.6,
         "range_volatility_pct": 97.26
       },
       "yearly_252d": {
-        "return_pct": 111.54,
+        "return_pct": 112.31,
         "high": 28.8,
         "low": 12.2,
         "range_volatility_pct": 136.07
@@ -66,7 +66,7 @@
       "avg_wave_duration_bars": 16.0
     },
     "current_wave_phase": "LATE_MARKUP",
-    "phase_guidance": "Approaching historical rally limit (+31.0% vs median +21.5%). Tighten stop.",
+    "phase_guidance": "Approaching historical rally limit (+31.4% vs median +21.5%). Tighten stop.",
     "top_seasonal_months": [
       {
         "month": "Aug",
