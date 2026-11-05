@@ -2,13 +2,13 @@
   "ticker": "AAMRATECH",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-04T08:33:55.917435",
-  "asof_price_date": "2026-11-04",
+  "analyzed_at": "2026-11-05T10:49:03.257382",
+  "asof_price_date": "2026-11-05",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 57.9696,
+    "rsi_14": 58.1661,
     "pe_ratio": 0.0,
     "debt_equity": 0.412
   },
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 16.9,
-    "stop_loss": 15.91,
-    "target": 18.88
+    "stop_loss": 15.88,
+    "target": 18.94
   },
   "precision": {
     "ticker": "AAMRATECH",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 34770,
+      "avg_daily_volume": 34803,
       "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 1738,
-      "max_daily_accumulation_shares": 5215,
-      "max_order_bdt": 1738.0,
-      "directive": "Max single order: 1,738 shares (Tk 1,738) to prevent >1% execution slippage"
+      "max_single_order_shares": 1740,
+      "max_daily_accumulation_shares": 5220,
+      "max_order_bdt": 1740.0,
+      "directive": "Max single order: 1,740 shares (Tk 1,740) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,16 +91,16 @@
   },
   "pattern_dna": {
     "ticker": "AAMRATECH",
-    "audited_at": "2026-11-04 14:33:55",
+    "audited_at": "2026-11-05 16:49:03",
     "worth_vs_greed": {
       "current_price": 16.9,
       "intrinsic_worth": 8.45,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 30.0,
       "greed_index": 30.0,
-      "rsi_14": 60.9,
-      "price_vs_ema50_pct": 2.6,
-      "price_vs_ema200_pct": 8.1,
+      "rsi_14": 56.1,
+      "price_vs_ema50_pct": 2.5,
+      "price_vs_ema200_pct": 8.0,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -122,7 +122,7 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 9.03,
+          "return_pct": 7.64,
           "high": 16.9,
           "low": 15.3,
           "range_volatility_pct": 10.46
@@ -134,19 +134,19 @@
           "range_volatility_pct": 19.18
         },
         "quarterly_63d": {
-          "return_pct": -21.03,
+          "return_pct": -22.48,
           "high": 24.1,
           "low": 14.6,
           "range_volatility_pct": 65.07
         },
         "half_yearly_126d": {
-          "return_pct": 31.01,
+          "return_pct": 33.07,
           "high": 24.1,
           "low": 11.7,
           "range_volatility_pct": 105.98
         },
         "yearly_252d": {
-          "return_pct": 38.52,
+          "return_pct": 44.44,
           "high": 24.1,
           "low": 9.5,
           "range_volatility_pct": 153.68
@@ -262,12 +262,12 @@
       "macd": "bullish_crossover",
       "sma_trend": "bullish",
       "bb": "at_upper_band_bearish",
-      "atr": 0.66,
+      "atr": 0.68,
       "rsi_value": 59.45,
       "last_close": 16.9,
-      "sma20": 15.84,
-      "sma50": 16.38,
-      "sma200": 14.95,
+      "sma20": 15.87,
+      "sma50": 16.36,
+      "sma200": 14.97,
       "support_resistance": {
         "supports": [
           11.1,
@@ -275,7 +275,6 @@
           15.5
         ],
         "resistances": [
-          12.2,
           15.1,
           23.1
         ]
@@ -288,7 +287,6 @@
         15.5
       ],
       "resistances": [
-        12.2,
         15.1,
         23.1
       ]
@@ -340,27 +338,26 @@
     }
   },
   "manipulation": {
-    "manipulation_score": 25,
+    "manipulation_score": 10,
     "manipulation_risk": "low",
     "block_buy": false,
     "flags": [
-      "volume_spike: volume_4.3x_avg",
-      "price_surge_no_news: price_8.3pct_zero_news"
+      "price_surge_no_news: price_7.0pct_zero_news"
     ],
     "checks": {
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 144449,
-        "avg_volume": 36477.0,
+        "last_volume": 665,
+        "avg_volume": 35627.0,
         "detail": "ok"
       },
       "volume_spike": {
-        "flag": true,
-        "spike_ratio": 4.3,
-        "avg_volume": 33602.0,
-        "today_volume": 144449,
-        "detail": "volume_4.3x_avg"
+        "flag": false,
+        "spike_ratio": 0.02,
+        "avg_volume": 36477.0,
+        "today_volume": 665,
+        "detail": "ok"
       },
       "serial_trading": {
         "flag": false,
@@ -378,9 +375,9 @@
       },
       "price_surge_no_news": {
         "flag": true,
-        "price_change_3d": 8.33,
+        "price_change_3d": 6.96,
         "news_count_3d": 0,
-        "detail": "price_8.3pct_zero_news"
+        "detail": "price_7.0pct_zero_news"
       }
     }
   },

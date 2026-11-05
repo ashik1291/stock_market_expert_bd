@@ -2,13 +2,13 @@
   "ticker": "AAMRANET",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-04T08:33:55.875164",
-  "asof_price_date": "2026-11-04",
+  "analyzed_at": "2026-11-05T10:49:03.209825",
+  "asof_price_date": "2026-11-05",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 63.1159,
+    "rsi_14": 63.0248,
     "pe_ratio": 7.032520325203253,
     "debt_equity": 0.134
   },
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 19.5,
-    "stop_loss": 18.46,
-    "target": 21.58
+    "stop_loss": 18.48,
+    "target": 21.54
   },
   "precision": {
     "ticker": "AAMRANET",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 97303,
+      "avg_daily_volume": 94461,
       "daily_turnover_bdt_cr": 0.01,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 4865,
-      "max_daily_accumulation_shares": 14595,
-      "max_order_bdt": 4865.0,
-      "directive": "Max single order: 4,865 shares (Tk 4,865) to prevent >1% execution slippage"
+      "max_single_order_shares": 4723,
+      "max_daily_accumulation_shares": 14169,
+      "max_order_bdt": 4723.0,
+      "directive": "Max single order: 4,723 shares (Tk 4,723) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,15 +91,15 @@
   },
   "pattern_dna": {
     "ticker": "AAMRANET",
-    "audited_at": "2026-11-04 14:33:55",
+    "audited_at": "2026-11-05 16:49:03",
     "worth_vs_greed": {
       "current_price": 19.5,
       "intrinsic_worth": 9.75,
       "margin_of_safety_pct": -50.0,
-      "extension_froth_score": 40.0,
-      "greed_index": 40.0,
-      "rsi_14": 73.7,
-      "price_vs_ema50_pct": 4.5,
+      "extension_froth_score": 30.0,
+      "greed_index": 30.0,
+      "rsi_14": 67.7,
+      "price_vs_ema50_pct": 4.3,
       "price_vs_ema200_pct": 3.4,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
@@ -121,16 +121,16 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 7.14,
-          "high": 19.6,
-          "low": 18.1,
-          "range_volatility_pct": 8.29
+          "return_pct": 6.56,
+          "high": 19.8,
+          "low": 18.2,
+          "range_volatility_pct": 8.79
         },
         "monthly_21d": {
-          "return_pct": 4.84,
-          "high": 19.6,
+          "return_pct": 4.28,
+          "high": 19.8,
           "low": 17.3,
-          "range_volatility_pct": 13.29
+          "range_volatility_pct": 14.45
         },
         "quarterly_63d": {
           "return_pct": -7.58,
@@ -139,13 +139,13 @@
           "range_volatility_pct": 31.76
         },
         "half_yearly_126d": {
-          "return_pct": 21.12,
+          "return_pct": 22.64,
           "high": 23.0,
           "low": 15.8,
           "range_volatility_pct": 45.57
         },
         "yearly_252d": {
-          "return_pct": 0.52,
+          "return_pct": 1.56,
           "high": 23.0,
           "low": 14.5,
           "range_volatility_pct": 58.62
@@ -261,12 +261,12 @@
       "macd": "bullish_crossover",
       "sma_trend": "bullish",
       "bb": "at_upper_band_bearish",
-      "atr": 0.69,
+      "atr": 0.68,
       "rsi_value": 63.38,
       "last_close": 19.5,
-      "sma20": 18.16,
-      "sma50": 18.56,
-      "sma200": 18.08,
+      "sma20": 18.21,
+      "sma50": 18.54,
+      "sma200": 18.09,
       "support_resistance": {
         "supports": [
           15.3,
@@ -352,21 +352,21 @@
     "manipulation_risk": "low",
     "block_buy": false,
     "flags": [
-      "price_surge_no_news: price_6.6pct_zero_news"
+      "price_surge_no_news: price_7.1pct_zero_news"
     ],
     "checks": {
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 167688,
-        "avg_volume": 127876.0,
+        "last_volume": 13383,
+        "avg_volume": 116495.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.33,
-        "avg_volume": 126554.0,
-        "today_volume": 167688,
+        "spike_ratio": 0.1,
+        "avg_volume": 127876.0,
+        "today_volume": 13383,
         "detail": "ok"
       },
       "serial_trading": {
@@ -385,9 +385,9 @@
       },
       "price_surge_no_news": {
         "flag": true,
-        "price_change_3d": 6.56,
+        "price_change_3d": 7.14,
         "news_count_3d": 0,
-        "detail": "price_6.6pct_zero_news"
+        "detail": "price_7.1pct_zero_news"
       }
     }
   },

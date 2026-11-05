@@ -2,13 +2,13 @@
   "ticker": "CONTININS",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-04T08:33:59.026446",
-  "asof_price_date": "2026-11-04",
+  "analyzed_at": "2026-11-05T10:49:06.837086",
+  "asof_price_date": "2026-11-05",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 48.0224,
+    "rsi_14": 48.0715,
     "pe_ratio": 20.866666666666667,
     "debt_equity": 0.0
   },
@@ -22,10 +22,10 @@
     "momentum_status": "Bullish Momentum / Upward Bias",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+5.8%",
-      "downside_risk_pct": "-3.8%",
-      "target_price": 33.0,
-      "support_price": 30.0,
+      "upside_potential_pct": "+5.4%",
+      "downside_risk_pct": "-3.5%",
+      "target_price": 32.9,
+      "support_price": 30.1,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 31.2,
-    "stop_loss": 29.45,
-    "target": 34.7
+    "stop_loss": 29.55,
+    "target": 34.5
   },
   "precision": {
     "ticker": "CONTININS",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 115795,
+      "avg_daily_volume": 104517,
       "daily_turnover_bdt_cr": 0.01,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 5789,
-      "max_daily_accumulation_shares": 17369,
-      "max_order_bdt": 5789.0,
-      "directive": "Max single order: 5,789 shares (Tk 5,789) to prevent >1% execution slippage"
+      "max_single_order_shares": 5225,
+      "max_daily_accumulation_shares": 15677,
+      "max_order_bdt": 5225.0,
+      "directive": "Max single order: 5,225 shares (Tk 5,225) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,15 +91,15 @@
   },
   "pattern_dna": {
     "ticker": "CONTININS",
-    "audited_at": "2026-11-04 14:33:59",
+    "audited_at": "2026-11-05 16:49:06",
     "worth_vs_greed": {
       "current_price": 31.2,
       "intrinsic_worth": 3.76,
       "margin_of_safety_pct": -87.9,
       "extension_froth_score": 30.0,
       "greed_index": 30.0,
-      "rsi_14": 56.0,
-      "price_vs_ema50_pct": -2.9,
+      "rsi_14": 52.2,
+      "price_vs_ema50_pct": -2.8,
       "price_vs_ema200_pct": 0.9,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f30.47, P/E: 0.0). Growth is fundamentally justified.",
@@ -121,31 +121,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 1.63,
+          "return_pct": 0.65,
           "high": 32.8,
           "low": 30.3,
           "range_volatility_pct": 8.25
         },
         "monthly_21d": {
-          "return_pct": -3.7,
+          "return_pct": -0.32,
           "high": 32.8,
           "low": 29.1,
           "range_volatility_pct": 12.71
         },
         "quarterly_63d": {
-          "return_pct": -9.83,
+          "return_pct": -14.29,
           "high": 38.9,
           "low": 29.1,
           "range_volatility_pct": 33.68
         },
         "half_yearly_126d": {
-          "return_pct": 12.23,
+          "return_pct": 13.45,
           "high": 39.0,
           "low": 26.3,
           "range_volatility_pct": 48.29
         },
         "yearly_252d": {
-          "return_pct": 15.99,
+          "return_pct": 18.63,
           "high": 39.0,
           "low": 19.4,
           "range_volatility_pct": 101.03
@@ -261,12 +261,12 @@
       "macd": "neutral",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 1.17,
+      "atr": 1.1,
       "rsi_value": 48.3,
       "last_close": 31.2,
-      "sma20": 30.75,
-      "sma50": 32.43,
-      "sma200": 30.42,
+      "sma20": 30.78,
+      "sma50": 32.36,
+      "sma200": 30.46,
       "support_resistance": {
         "supports": [
           22.9,
@@ -351,15 +351,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 99234,
-        "avg_volume": 180420.0,
+        "last_volume": 4451,
+        "avg_volume": 166918.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.51,
-        "avg_volume": 193491.0,
-        "today_volume": 99234,
+        "spike_ratio": 0.02,
+        "avg_volume": 180420.0,
+        "today_volume": 4451,
         "detail": "ok"
       },
       "serial_trading": {
@@ -378,7 +378,7 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": -2.8,
+        "price_change_3d": -3.11,
         "news_count_3d": 0,
         "detail": "ok"
       }

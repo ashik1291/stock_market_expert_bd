@@ -1,11 +1,11 @@
 # 🚨 DSE Market Surveillance & Forensic Anti-Manipulation Report
-**Market Date**: `2026-11-05` | **Generated**: `2026-11-05 12:16:50`
+**Market Date**: `2026-11-05` | **Generated**: `2026-11-05 16:50:28`
 **Surveillance Scope**: Full 395 Tickers | Volume Anomaly, Syndicate Corners, Speculative Pumps
 
 ### 🛡️ Executive Summary
 - **Critical Risk Alerts (Instant Blacklist)**: **0 Companies**
-- **High Forensic Alerts (Strict Retail Caution)**: **6 Companies**
-- **Medium Surveillance Flags**: **0 Companies**
+- **High Forensic Alerts (Strict Retail Caution)**: **7 Companies**
+- **Medium Surveillance Flags**: **2 Companies**
 
 ---
 ## ⛔ 1. Critical Blacklist (DO NOT BUY — Capital Destruction Risk)
@@ -21,6 +21,7 @@
 | **LOVELLO** | `45/100` | **REGULATORY_PROBE** | **0.1x** | +0.6% | BSEC Regulatory Enforcement / Probe: BSEC regulatory enforcement / probe |
 | **RAHIMAFOOD** | `45/100` | **REGULATORY_PROBE** | **0.0x** | +2.5% | BSEC Regulatory Enforcement / Probe: BSEC regulatory enforcement / probe |
 | **ATLASBANG** | `35/100` | **SPECULATIVE_JUNK_PUMP** | **2.8x** | +7.5% | Price up +7.51% on untracked / high-risk security without verified earnings |
+| **MEGHNACEM** | `35/100` | **SPECULATIVE_JUNK_PUMP** | **0.6x** | +4.1% | Price up +4.1% with poor fundamentals (Negative EPS) |
 | **SHARPIND** | `35/100` | **SPECULATIVE_JUNK_PUMP** | **0.3x** | +6.1% | Price up +6.14% with poor fundamentals (Negative EPS) |
 | **ZAHEENSPIN** | `35/100` | **SPECULATIVE_JUNK_PUMP** | **0.1x** | +6.8% | Price up +6.82% on untracked / high-risk security without verified earnings |
 | **ARAMIT** | `35/100` | **SPECULATIVE_JUNK_PUMP** | **0.0x** | +4.8% | Price up +4.81% with poor fundamentals (Extreme P/E (84.0x)) |

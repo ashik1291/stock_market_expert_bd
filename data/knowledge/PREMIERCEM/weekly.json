@@ -2,18 +2,18 @@
   "ticker": "PREMIERCEM",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-04T08:33:56.349393",
-  "asof_price_date": "2026-11-04",
+  "analyzed_at": "2026-11-05T10:49:03.756097",
+  "asof_price_date": "2026-11-05",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 30.5216,
+    "rsi_14": 31.8149,
     "pe_ratio": 31.007751937984494,
     "debt_equity": 3.638
   },
   "signal": "HOLD_LOAN_TRAP_RISK",
-  "confidence": 38.99,
+  "confidence": 39.24,
   "trajectory": {
     "direction": "FALL_RISK",
     "direction_icon": "\ud83d\udd34",
@@ -22,32 +22,32 @@
     "momentum_status": "Bearish Breakdown / Selling Pressure",
     "short_term": {
       "predicted_path": "Oversold bounce to 20-DMA",
-      "upside_potential_pct": "+5.2%",
-      "downside_risk_pct": "-3.6%",
-      "target_price": 38.2,
-      "support_price": 35.0,
-      "risk_reward_ratio": "1.4x"
+      "upside_potential_pct": "+4.9%",
+      "downside_risk_pct": "-3.3%",
+      "target_price": 38.3,
+      "support_price": 35.3,
+      "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+25.1%",
-      "downside_risk_pct": "-5.2%",
-      "target_price": 45.4,
-      "trailing_stop": 34.4,
-      "risk_reward_ratio": "4.8x"
+      "upside_potential_pct": "+24.9%",
+      "downside_risk_pct": "-4.9%",
+      "target_price": 45.6,
+      "trailing_stop": 34.7,
+      "risk_reward_ratio": "5.1x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-      "upside_potential_pct": "+30.0%",
-      "downside_risk_pct": "-9.4%",
-      "target_price": 47.2,
+      "upside_potential_pct": "+30.1%",
+      "downside_risk_pct": "-8.8%",
+      "target_price": 47.5,
       "dividend_cagr": "moderate (2.02%)",
-      "risk_reward_ratio": "3.2x"
+      "risk_reward_ratio": "3.4x"
     }
   },
   "trade_levels": {
-    "entry": 36.3,
-    "stop_loss": 34.39,
+    "entry": 36.5,
+    "stop_loss": 34.69,
     "target": 40.12
   },
   "precision": {
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 183864,
+      "avg_daily_volume": 172675,
       "daily_turnover_bdt_cr": 0.02,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 9193,
-      "max_daily_accumulation_shares": 27579,
-      "max_order_bdt": 9193.0,
-      "directive": "Max single order: 9,193 shares (Tk 9,193) to prevent >1% execution slippage"
+      "max_single_order_shares": 8633,
+      "max_daily_accumulation_shares": 25901,
+      "max_order_bdt": 8633.0,
+      "directive": "Max single order: 8,633 shares (Tk 8,633) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,61 +91,61 @@
   },
   "pattern_dna": {
     "ticker": "PREMIERCEM",
-    "audited_at": "2026-11-04 14:33:56",
+    "audited_at": "2026-11-05 16:49:03",
     "worth_vs_greed": {
-      "current_price": 36.3,
+      "current_price": 36.5,
       "intrinsic_worth": 14.4,
-      "margin_of_safety_pct": -60.3,
+      "margin_of_safety_pct": -60.5,
       "extension_froth_score": 20.0,
       "greed_index": 20.0,
-      "rsi_14": 23.7,
-      "price_vs_ema50_pct": -12.7,
-      "price_vs_ema200_pct": -16.9,
+      "rsi_14": 14.7,
+      "price_vs_ema50_pct": -11.8,
+      "price_vs_ema200_pct": -16.3,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f31.80, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f335.6 \u2013 \u09f336.7",
-        "chase_cutoff_price": 37.2,
-        "when_to_wait": "If price opens or rises above \u09f337.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f335.6.",
-        "weekly_target_short": 37.6,
-        "monthly_target_swing": 41.7,
-        "long_term_target_asset": 47.2,
+        "optimal_entry_corridor": "\u09f335.8 \u2013 \u09f336.9",
+        "chase_cutoff_price": 37.4,
+        "when_to_wait": "If price opens or rises above \u09f337.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f335.8.",
+        "weekly_target_short": 37.8,
+        "monthly_target_swing": 42.0,
+        "long_term_target_asset": 47.5,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
       "worth_decision": "AVOID",
-      "reason": "Fundamental value severely lags stock price (MoS: -60.3%).",
+      "reason": "Fundamental value severely lags stock price (MoS: -60.5%).",
       "is_blacklisted": false,
       "blacklist_reason": null
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -7.4,
-          "high": 39.3,
+          "return_pct": -4.7,
+          "high": 38.5,
           "low": 35.8,
-          "range_volatility_pct": 9.78
+          "range_volatility_pct": 7.54
         },
         "monthly_21d": {
-          "return_pct": -14.18,
-          "high": 42.7,
+          "return_pct": -12.05,
+          "high": 41.8,
           "low": 35.8,
-          "range_volatility_pct": 19.27
+          "range_volatility_pct": 16.76
         },
         "quarterly_63d": {
-          "return_pct": -26.81,
+          "return_pct": -25.81,
           "high": 53.5,
           "low": 35.8,
           "range_volatility_pct": 49.44
         },
         "half_yearly_126d": {
-          "return_pct": 0.28,
+          "return_pct": -8.29,
           "high": 56.0,
           "low": 35.8,
           "range_volatility_pct": 56.42
         },
         "yearly_252d": {
-          "return_pct": -16.17,
+          "return_pct": -14.32,
           "high": 56.0,
           "low": 34.9,
           "range_volatility_pct": 60.46
@@ -255,18 +255,18 @@
     ]
   },
   "technical": {
-    "score": 48.75,
+    "score": 50.0,
     "signals": {
       "rsi": "neutral",
-      "macd": "bearish_crossover",
+      "macd": "neutral",
       "sma_trend": "neutral",
-      "bb": "at_lower_band_bullish",
-      "atr": 1.27,
-      "rsi_value": 30.28,
-      "last_close": 36.3,
-      "sma20": 39.3,
-      "sma50": 41.91,
-      "sma200": 42.4,
+      "bb": "inside_bands",
+      "atr": 1.21,
+      "rsi_value": 31.8,
+      "last_close": 36.5,
+      "sma20": 39.1,
+      "sma50": 41.68,
+      "sma200": 42.39,
       "support_resistance": {
         "supports": [
           36.1,
@@ -309,10 +309,10 @@
       "loan_trap_risk": "high",
       "downturn_resilience": {
         "status": "growth_at_discount",
-        "drawdown_pct": 35.2,
+        "drawdown_pct": 34.8,
         "high_52w": 56.0,
         "low_52w": 34.9,
-        "note": "Share price down 35.2% from 52w peak, yet earnings positive/steady (Conviction discount)"
+        "note": "Share price down 34.8% from 52w peak, yet earnings positive/steady (Conviction discount)"
       }
     }
   },
@@ -354,15 +354,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 204652,
-        "avg_volume": 297735.0,
+        "last_volume": 14701,
+        "avg_volume": 290348.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.69,
-        "avg_volume": 298179.0,
-        "today_volume": 204652,
+        "spike_ratio": 0.05,
+        "avg_volume": 297735.0,
+        "today_volume": 14701,
         "detail": "ok"
       },
       "serial_trading": {
@@ -381,14 +381,14 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": -3.46,
+        "price_change_3d": -3.18,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 38.99,
+    "composite_score": 39.24,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

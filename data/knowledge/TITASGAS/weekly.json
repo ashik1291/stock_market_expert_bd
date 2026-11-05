@@ -2,13 +2,13 @@
   "ticker": "TITASGAS",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-04T08:33:56.562419",
-  "asof_price_date": "2026-11-04",
+  "analyzed_at": "2026-11-05T10:49:04.022835",
+  "asof_price_date": "2026-11-05",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 43.3543,
+    "rsi_14": 43.1482,
     "pe_ratio": 0.0,
     "debt_equity": 0.054
   },
@@ -22,33 +22,33 @@
     "momentum_status": "Bullish Momentum / Upward Bias",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+3.6%",
+      "upside_potential_pct": "+3.0%",
       "downside_risk_pct": "-2.4%",
-      "target_price": 17.3,
+      "target_price": 17.2,
       "support_price": 16.3,
-      "risk_reward_ratio": "1.5x"
+      "risk_reward_ratio": "1.2x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
       "upside_potential_pct": "+21.0%",
-      "downside_risk_pct": "-3.6%",
+      "downside_risk_pct": "-3.0%",
       "target_price": 20.2,
-      "trailing_stop": 16.1,
-      "risk_reward_ratio": "5.8x"
+      "trailing_stop": 16.2,
+      "risk_reward_ratio": "7.0x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+29.9%",
-      "downside_risk_pct": "-6.5%",
+      "downside_risk_pct": "-5.4%",
       "target_price": 21.7,
       "dividend_cagr": "moderate (1.04%)",
-      "risk_reward_ratio": "4.6x"
+      "risk_reward_ratio": "5.5x"
     }
   },
   "trade_levels": {
     "entry": 16.7,
-    "stop_loss": 16.13,
-    "target": 17.84
+    "stop_loss": 16.16,
+    "target": 17.78
   },
   "precision": {
     "ticker": "TITASGAS",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 73374,
+      "avg_daily_volume": 68220,
       "daily_turnover_bdt_cr": 0.01,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 3668,
-      "max_daily_accumulation_shares": 11006,
-      "max_order_bdt": 3668.0,
-      "directive": "Max single order: 3,668 shares (Tk 3,668) to prevent >1% execution slippage"
+      "max_single_order_shares": 3411,
+      "max_daily_accumulation_shares": 10233,
+      "max_order_bdt": 3411.0,
+      "directive": "Max single order: 3,411 shares (Tk 3,411) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,16 +91,16 @@
   },
   "pattern_dna": {
     "ticker": "TITASGAS",
-    "audited_at": "2026-11-04 14:33:56",
+    "audited_at": "2026-11-05 16:49:04",
     "worth_vs_greed": {
       "current_price": 16.7,
       "intrinsic_worth": 8.35,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 10.0,
       "greed_index": 10.0,
-      "rsi_14": 50.0,
-      "price_vs_ema50_pct": -3.6,
-      "price_vs_ema200_pct": -6.7,
+      "rsi_14": 41.2,
+      "price_vs_ema50_pct": -3.4,
+      "price_vs_ema200_pct": -6.6,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -121,13 +121,13 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -0.6,
-          "high": 17.0,
+          "return_pct": 0.6,
+          "high": 16.8,
           "low": 16.4,
-          "range_volatility_pct": 3.66
+          "range_volatility_pct": 2.44
         },
         "monthly_21d": {
-          "return_pct": -4.57,
+          "return_pct": -0.6,
           "high": 17.6,
           "low": 16.4,
           "range_volatility_pct": 7.32
@@ -139,13 +139,13 @@
           "range_volatility_pct": 26.22
         },
         "half_yearly_126d": {
-          "return_pct": 0.6,
+          "return_pct": 1.83,
           "high": 22.2,
           "low": 15.9,
           "range_volatility_pct": 39.62
         },
         "yearly_252d": {
-          "return_pct": -5.65,
+          "return_pct": -4.02,
           "high": 22.2,
           "low": 14.5,
           "range_volatility_pct": 53.1
@@ -261,11 +261,11 @@
       "macd": "bullish_crossover",
       "sma_trend": "neutral",
       "bb": "inside_bands",
-      "atr": 0.38,
+      "atr": 0.36,
       "rsi_value": 44.17,
       "last_close": 16.7,
-      "sma20": 16.75,
-      "sma50": 17.24,
+      "sma20": 16.73,
+      "sma50": 17.22,
       "sma200": 17.5,
       "support_resistance": {
         "supports": [
@@ -345,15 +345,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 73587,
-        "avg_volume": 101230.0,
+        "last_volume": 1106,
+        "avg_volume": 97902.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.7,
-        "avg_volume": 105620.0,
-        "today_volume": 73587,
+        "spike_ratio": 0.01,
+        "avg_volume": 101230.0,
+        "today_volume": 1106,
         "detail": "ok"
       },
       "serial_trading": {
@@ -372,7 +372,7 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": 0.6,
+        "price_change_3d": 1.21,
         "news_count_3d": 0,
         "detail": "ok"
       }
