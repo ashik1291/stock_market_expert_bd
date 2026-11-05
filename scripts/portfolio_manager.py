@@ -296,7 +296,7 @@ def check_portfolio_drawdown_kill(p: dict, current_net_worth: float) -> tuple[bo
 
 
 
-def record_buy(ticker: str, shares: int, price: float, horizon: str = "long_term", min_ticket_fee: float = 5.0, asof_date: str | None = None):
+def record_buy(ticker: str, shares: int, price: float, horizon: str = "long_term", min_ticket_fee: float = 0.0, asof_date: str | None = None):
     # Guard against blacklisted / manipulated stocks
     try:
         from anti_manipulation_engine import is_ticker_blacklisted
@@ -310,7 +310,8 @@ def record_buy(ticker: str, shares: int, price: float, horizon: str = "long_term
     p = load_portfolio()
     
     # Portfolio-Level Drawdown Kill Rule (-10% from high-water mark halts new buying)
-    current_nw = p.get("cash_balance_bdt", 0.0) + sum(h.get("cost_basis", 0.0) for h in p.get("holdings", []))
+    mf_val = sum(float(m.get("market_value_bdt") or m.get("total_cost_bdt", 0.0)) for m in p.get("mutual_funds", []))
+    current_nw = p.get("cash_balance_bdt", 0.0) + sum(h.get("cost_basis", 0.0) for h in p.get("holdings", [])) + mf_val
     is_killed, dd_pct, hwm = check_portfolio_drawdown_kill(p, current_nw)
     if is_killed:
         print(f"⛔ PORTFOLIO DRAWDOWN KILL RULE BREACHED: Drawdown -{dd_pct:.1f}% exceeds 10% limit from HWM ৳{hwm:,.2f}. All new BUY orders are FROZEN.")
@@ -318,7 +319,6 @@ def record_buy(ticker: str, shares: int, price: float, horizon: str = "long_term
 
     gross_cost = shares * price
     pct_comm = round(gross_cost * TOTAL_ONE_WAY_FEE, 2)
-    # Enforce realistic retail minimum contract note fee
     comm = max(pct_comm, min_ticket_fee if gross_cost > 0 else 0.0)
     net_cost = round(gross_cost + comm, 2)
     round_trip_be = calculate_round_trip_break_even(price, shares=shares, min_fee=min_ticket_fee)
@@ -331,19 +331,48 @@ def record_buy(ticker: str, shares: int, price: float, horizon: str = "long_term
     elif remaining_cash < min_cash_buffer:
         print(f"⚠️ LIQUIDITY BUFFER WARNING: Purchase leaves cash (৳{remaining_cash:,.2f}) below mandatory 10% buffer (৳{min_cash_buffer:,.2f}). Reserve dry-powder!")
 
-    p["cash_balance_bdt"] -= net_cost
-    p["holdings"].append({
-        "ticker":          ticker.upper(),
-        "shares":          shares,
-        "entry_price":     price,
-        "gross_cost":      gross_cost,
-        "commission_bdt":  comm,
-        "cost_basis":      net_cost,
-        "effective_entry": effective_entry,
-        "break_even_price": round_trip_be,
-        "horizon":         horizon,
-        "bought_at":       datetime.date.today().isoformat()
-    })
+    p["cash_balance_bdt"] = round(p["cash_balance_bdt"] - net_cost, 2)
+
+    # Check for existing holding of the same ticker to merge/average cost
+    existing_holding = None
+    for h in p.get("holdings", []):
+        if h.get("ticker", "").upper() == ticker.upper():
+            existing_holding = h
+            break
+
+    if existing_holding:
+        prev_shares = int(existing_holding.get("shares", 0))
+        total_sh = prev_shares + shares
+        prev_gross = float(existing_holding.get("gross_cost", 0.0)) or (prev_shares * float(existing_holding.get("entry_price", price)))
+        total_gross = round(prev_gross + gross_cost, 2)
+        total_comm = round(float(existing_holding.get("commission_bdt", 0.0)) + comm, 2)
+        total_cost = round(float(existing_holding.get("cost_basis", 0.0)) + net_cost, 2)
+        avg_entry = round(total_gross / total_sh, 2)
+        eff_entry = round(total_cost / total_sh, 2)
+        merged_be = calculate_round_trip_break_even(avg_entry, shares=total_sh, min_fee=min_ticket_fee)
+        
+        existing_holding["shares"] = total_sh
+        existing_holding["entry_price"] = avg_entry
+        existing_holding["gross_cost"] = total_gross
+        existing_holding["commission_bdt"] = total_comm
+        existing_holding["cost_basis"] = total_cost
+        existing_holding["effective_entry"] = eff_entry
+        existing_holding["break_even_price"] = merged_be
+        existing_holding["bought_at"] = datetime.date.today().isoformat()
+    else:
+        p["holdings"].append({
+            "ticker":          ticker.upper(),
+            "shares":          shares,
+            "entry_price":     price,
+            "gross_cost":      gross_cost,
+            "commission_bdt":  comm,
+            "cost_basis":      net_cost,
+            "effective_entry": effective_entry,
+            "break_even_price": round_trip_be,
+            "horizon":         horizon,
+            "bought_at":       datetime.date.today().isoformat()
+        })
+
     p["history"].append({
         "action":     "BUY",
         "ticker":     ticker.upper(),
@@ -355,6 +384,7 @@ def record_buy(ticker: str, shares: int, price: float, horizon: str = "long_term
     })
     save_portfolio(p)
     print(f"Recorded BUY: {shares} shares of {ticker.upper()} @ ৳{price:.1f} + ৳{comm:.2f} comm (Total: ৳{net_cost:,.2f}). Remaining Cash: ৳{p['cash_balance_bdt']:,.2f}")
+    return True
 
 
 def record_sell(
