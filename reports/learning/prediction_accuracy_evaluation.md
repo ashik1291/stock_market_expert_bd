@@ -1,12 +1,12 @@
 # DSE Phase-2 Learning Audit (Net Excess vs EQW)
-**Audit Timestamp:** 2026-11-04 14:34:09
+**Audit Timestamp:** 2026-11-05 10:19:12
 **Model:** `frozen_epoch2_pit_v2`
 **Label:** `net_excess_vs_eqw_h21_minus_0.88pct`
 
 ---
 ## 1. Performance
 - Evaluated closed calls: **0**
-- Active Pending Forward Predictions: **228**
+- Active Pending Forward Predictions: **248**
 - Forward Validation Status: **ACCUMULATING_OOS_EVIDENCE**
 - Long (RISE) Hit Rate: **INSUFFICIENT_DATA** (0 / 0 profitable long calls)
 - Risk Avoidance (FALL) Rate: **INSUFFICIENT_DATA**
