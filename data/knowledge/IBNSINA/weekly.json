@@ -2,18 +2,18 @@
   "ticker": "IBNSINA",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-05T10:49:02.692560",
-  "asof_price_date": "2026-11-05",
+  "analyzed_at": "2026-11-08T10:27:18.622100",
+  "asof_price_date": "2026-11-08",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 49.0659,
+    "rsi_14": 43.5465,
     "pe_ratio": 14.898865318204242,
     "debt_equity": 0.521
   },
   "signal": "HOLD",
-  "confidence": 56.2,
+  "confidence": 55.7,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -24,31 +24,31 @@
       "predicted_path": "Upward momentum swing",
       "upside_potential_pct": "+2.7%",
       "downside_risk_pct": "-1.8%",
-      "target_price": 311.3,
-      "support_price": 297.5,
+      "target_price": 307.5,
+      "support_price": 293.8,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+6.5%",
-      "downside_risk_pct": "-3.5%",
-      "target_price": 322.7,
-      "trailing_stop": 292.4,
-      "risk_reward_ratio": "1.9x"
+      "upside_potential_pct": "+7.7%",
+      "downside_risk_pct": "-2.7%",
+      "target_price": 322.4,
+      "trailing_stop": 291.1,
+      "risk_reward_ratio": "2.9x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.0%",
-      "downside_risk_pct": "-6.3%",
-      "target_price": 393.9,
+      "downside_risk_pct": "-4.9%",
+      "target_price": 389.1,
       "dividend_cagr": "moderate (2.18%)",
-      "risk_reward_ratio": "4.8x"
+      "risk_reward_ratio": "6.1x"
     }
   },
   "trade_levels": {
-    "entry": 303.0,
-    "stop_loss": 294.74,
-    "target": 319.52
+    "entry": 299.3,
+    "stop_loss": 291.1,
+    "target": 315.7
   },
   "precision": {
     "ticker": "IBNSINA",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 9384,
+      "avg_daily_volume": 9303,
       "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 469,
-      "max_daily_accumulation_shares": 1407,
-      "max_order_bdt": 469.0,
-      "directive": "Max single order: 469 shares (Tk 469) to prevent >1% execution slippage"
+      "max_single_order_shares": 465,
+      "max_daily_accumulation_shares": 1395,
+      "max_order_bdt": 465.0,
+      "directive": "Max single order: 465 shares (Tk 465) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,61 +91,61 @@
   },
   "pattern_dna": {
     "ticker": "IBNSINA",
-    "audited_at": "2026-11-05 16:49:02",
+    "audited_at": "2026-11-08 16:27:18",
     "worth_vs_greed": {
-      "current_price": 303.0,
+      "current_price": 299.3,
       "intrinsic_worth": 37.36,
-      "margin_of_safety_pct": -87.7,
+      "margin_of_safety_pct": -87.5,
       "extension_froth_score": 10.0,
       "greed_index": 10.0,
-      "rsi_14": 40.9,
-      "price_vs_ema50_pct": -1.4,
-      "price_vs_ema200_pct": -3.1,
+      "rsi_14": 47.0,
+      "price_vs_ema50_pct": -2.5,
+      "price_vs_ema200_pct": -4.2,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f34.67, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f3296.9 \u2013 \u09f3306.0",
-        "chase_cutoff_price": 310.6,
-        "when_to_wait": "If price opens or rises above \u09f3310.6, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3296.9.",
-        "weekly_target_short": 313.6,
-        "monthly_target_swing": 348.4,
-        "long_term_target_asset": 393.9,
+        "optimal_entry_corridor": "\u09f3293.3 \u2013 \u09f3302.3",
+        "chase_cutoff_price": 306.8,
+        "when_to_wait": "If price opens or rises above \u09f3306.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3293.3.",
+        "weekly_target_short": 309.8,
+        "monthly_target_swing": 344.2,
+        "long_term_target_asset": 389.1,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
       "worth_decision": "AVOID",
-      "reason": "Fundamental value severely lags stock price (MoS: -87.7%).",
+      "reason": "Fundamental value severely lags stock price (MoS: -87.5%).",
       "is_blacklisted": false,
       "blacklist_reason": null
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 3.34,
+          "return_pct": 0.81,
           "high": 303.5,
-          "low": 290.5,
-          "range_volatility_pct": 4.48
+          "low": 295.0,
+          "range_volatility_pct": 2.88
         },
         "monthly_21d": {
-          "return_pct": -1.72,
+          "return_pct": -2.29,
           "high": 311.6,
           "low": 289.6,
           "range_volatility_pct": 7.6
         },
         "quarterly_63d": {
-          "return_pct": -5.28,
+          "return_pct": -6.23,
           "high": 325.0,
           "low": 289.6,
           "range_volatility_pct": 12.22
         },
         "half_yearly_126d": {
-          "return_pct": -2.26,
+          "return_pct": -2.73,
           "high": 345.0,
           "low": 289.6,
           "range_volatility_pct": 19.13
         },
         "yearly_252d": {
-          "return_pct": 3.48,
+          "return_pct": 1.53,
           "high": 371.0,
           "low": 285.0,
           "range_volatility_pct": 30.18
@@ -157,7 +157,7 @@
         "avg_wave_duration_bars": 22.0
       },
       "current_wave_phase": "MARKDOWN_PULLBACK",
-      "phase_guidance": "Ongoing pullback from peak (-6.5%). Wait for stabilizing base.",
+      "phase_guidance": "Ongoing pullback from peak (-7.6%). Wait for stabilizing base.",
       "top_seasonal_months": [
         {
           "month": "Aug",
@@ -255,18 +255,18 @@
     ]
   },
   "technical": {
-    "score": 60.0,
+    "score": 57.5,
     "signals": {
       "rsi": "neutral",
       "macd": "bullish_crossover",
       "sma_trend": "neutral",
       "bb": "inside_bands",
-      "atr": 5.51,
-      "rsi_value": 49.33,
-      "last_close": 303.0,
-      "sma20": 301.69,
-      "sma50": 308.94,
-      "sma200": 317.72,
+      "atr": 5.47,
+      "rsi_value": 43.76,
+      "last_close": 299.3,
+      "sma20": 301.16,
+      "sma50": 308.64,
+      "sma200": 317.62,
       "support_resistance": {
         "supports": [
           305.5
@@ -303,10 +303,10 @@
       "loan_trap_risk": "low",
       "downturn_resilience": {
         "status": "growth_at_discount",
-        "drawdown_pct": 18.3,
+        "drawdown_pct": 19.3,
         "high_52w": 371.0,
         "low_52w": 273.8,
-        "note": "Share price down 18.3% from 52w peak, yet earnings positive/steady (Conviction discount)"
+        "note": "Share price down 19.3% from 52w peak, yet earnings positive/steady (Conviction discount)"
       }
     }
   },
@@ -348,15 +348,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 51,
-        "avg_volume": 12953.0,
+        "last_volume": 3225,
+        "avg_volume": 12247.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.0,
-        "avg_volume": 13477.0,
-        "today_volume": 51,
+        "spike_ratio": 0.25,
+        "avg_volume": 12953.0,
+        "today_volume": 3225,
         "detail": "ok"
       },
       "serial_trading": {
@@ -375,14 +375,14 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": 1.71,
+        "price_change_3d": -1.22,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 56.2,
+    "composite_score": 55.7,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

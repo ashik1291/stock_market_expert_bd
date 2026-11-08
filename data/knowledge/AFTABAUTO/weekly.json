@@ -2,53 +2,53 @@
   "ticker": "AFTABAUTO",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-05T10:49:05.377082",
-  "asof_price_date": "2026-11-05",
+  "analyzed_at": "2026-11-08T10:27:21.102838",
+  "asof_price_date": "2026-11-08",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 48.7055,
+    "rsi_14": 50.9657,
     "pe_ratio": 0.0,
     "debt_equity": 2.955
   },
   "signal": "HOLD_LOAN_TRAP_RISK",
   "confidence": 34.1,
   "trajectory": {
-    "direction": "CONSOLIDATION_RANGE",
-    "direction_icon": "\ud83d\udfe1",
-    "heuristic_momentum_bias": 50.0,
+    "direction": "FALL_RISK",
+    "direction_icon": "\ud83d\udd34",
+    "heuristic_momentum_bias": 41.6,
     "rise_probability_pct": null,
-    "momentum_status": "Neutral Range Consolidation",
+    "momentum_status": "Bearish Breakdown / Selling Pressure",
     "short_term": {
       "predicted_path": "Upward momentum swing",
       "upside_potential_pct": "+4.3%",
-      "downside_risk_pct": "-2.8%",
-      "target_price": 26.4,
-      "support_price": 24.6,
-      "risk_reward_ratio": "1.5x"
+      "downside_risk_pct": "-2.7%",
+      "target_price": 26.6,
+      "support_price": 24.8,
+      "risk_reward_ratio": "1.6x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+20.2%",
-      "downside_risk_pct": "-4.7%",
-      "target_price": 30.4,
+      "upside_potential_pct": "+18.4%",
+      "downside_risk_pct": "-5.5%",
+      "target_price": 30.2,
       "trailing_stop": 24.1,
-      "risk_reward_ratio": "4.3x"
+      "risk_reward_ratio": "3.3x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-      "upside_potential_pct": "+30.0%",
-      "downside_risk_pct": "-8.5%",
-      "target_price": 32.9,
+      "upside_potential_pct": "+29.8%",
+      "downside_risk_pct": "-9.9%",
+      "target_price": 33.1,
       "dividend_cagr": "moderate (3.38%)",
-      "risk_reward_ratio": "3.5x"
+      "risk_reward_ratio": "3.0x"
     }
   },
   "trade_levels": {
-    "entry": 25.3,
-    "stop_loss": 24.25,
-    "target": 27.4
+    "entry": 25.5,
+    "stop_loss": 24.45,
+    "target": 27.6
   },
   "precision": {
     "ticker": "AFTABAUTO",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 60765,
+      "avg_daily_volume": 62828,
       "daily_turnover_bdt_cr": 0.01,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 3038,
-      "max_daily_accumulation_shares": 9114,
-      "max_order_bdt": 3038.0,
-      "directive": "Max single order: 3,038 shares (Tk 3,038) to prevent >1% execution slippage"
+      "max_single_order_shares": 3141,
+      "max_daily_accumulation_shares": 9424,
+      "max_order_bdt": 3141.0,
+      "directive": "Max single order: 3,141 shares (Tk 3,141) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,25 +91,25 @@
   },
   "pattern_dna": {
     "ticker": "AFTABAUTO",
-    "audited_at": "2026-11-05 16:49:05",
+    "audited_at": "2026-11-08 16:27:21",
     "worth_vs_greed": {
-      "current_price": 25.3,
-      "intrinsic_worth": 12.65,
+      "current_price": 25.5,
+      "intrinsic_worth": 12.75,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 20.0,
       "greed_index": 20.0,
-      "rsi_14": 47.5,
-      "price_vs_ema50_pct": -3.3,
-      "price_vs_ema200_pct": -12.7,
+      "rsi_14": 51.2,
+      "price_vs_ema50_pct": -2.4,
+      "price_vs_ema200_pct": -11.9,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f324.8 \u2013 \u09f325.6",
-        "chase_cutoff_price": 25.9,
-        "when_to_wait": "If price opens or rises above \u09f325.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f324.8.",
-        "weekly_target_short": 26.2,
-        "monthly_target_swing": 29.1,
-        "long_term_target_asset": 32.9,
+        "optimal_entry_corridor": "\u09f325.0 \u2013 \u09f325.8",
+        "chase_cutoff_price": 26.1,
+        "when_to_wait": "If price opens or rises above \u09f326.1, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f325.0.",
+        "weekly_target_short": 26.4,
+        "monthly_target_swing": 29.3,
+        "long_term_target_asset": 33.1,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
@@ -121,31 +121,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 3.27,
-          "high": 25.9,
-          "low": 24.1,
-          "range_volatility_pct": 7.47
+          "return_pct": 3.24,
+          "high": 26.0,
+          "low": 24.3,
+          "range_volatility_pct": 7.0
         },
         "monthly_21d": {
-          "return_pct": -0.78,
-          "high": 25.9,
+          "return_pct": 3.24,
+          "high": 26.0,
           "low": 23.8,
-          "range_volatility_pct": 8.82
+          "range_volatility_pct": 9.24
         },
         "quarterly_63d": {
-          "return_pct": -17.59,
+          "return_pct": -16.12,
           "high": 30.9,
           "low": 23.8,
           "range_volatility_pct": 29.83
         },
         "half_yearly_126d": {
-          "return_pct": -9.64,
+          "return_pct": -6.93,
           "high": 33.2,
           "low": 23.8,
           "range_volatility_pct": 39.5
         },
         "yearly_252d": {
-          "return_pct": -24.02,
+          "return_pct": -25.22,
           "high": 39.7,
           "low": 23.8,
           "range_volatility_pct": 66.81
@@ -157,7 +157,7 @@
         "avg_wave_duration_bars": 29.0
       },
       "current_wave_phase": "MARKUP_RALLY_MID",
-      "phase_guidance": "Midway through rally wave (+6.3% from base, historical target ~+25.8%).",
+      "phase_guidance": "Midway through rally wave (+7.1% from base, historical target ~+25.8%).",
       "top_seasonal_months": [
         {
           "month": "Jul",
@@ -262,11 +262,11 @@
       "sma_trend": "neutral",
       "bb": "inside_bands",
       "atr": 0.7,
-      "rsi_value": 49.08,
-      "last_close": 25.3,
-      "sma20": 24.97,
-      "sma50": 26.03,
-      "sma200": 28.96,
+      "rsi_value": 51.31,
+      "last_close": 25.5,
+      "sma20": 25.01,
+      "sma50": 25.98,
+      "sma200": 28.92,
       "support_resistance": {
         "supports": [
           26.5,
@@ -297,7 +297,7 @@
       "loan_trap_risk": "high",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 36.3,
+        "drawdown_pct": 35.8,
         "high_52w": 39.7,
         "low_52w": 23.8
       }
@@ -341,15 +341,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 511,
-        "avg_volume": 65078.0,
+        "last_volume": 91602,
+        "avg_volume": 65820.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.01,
-        "avg_volume": 66529.0,
-        "today_volume": 511,
+        "spike_ratio": 1.41,
+        "avg_volume": 65078.0,
+        "today_volume": 91602,
         "detail": "ok"
       },
       "serial_trading": {
@@ -368,7 +368,7 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": 2.85,
+        "price_change_3d": 0.79,
         "news_count_3d": 0,
         "detail": "ok"
       }

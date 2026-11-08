@@ -2,13 +2,13 @@
   "ticker": "MATINSPINN",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-05T10:49:05.770462",
-  "asof_price_date": "2026-11-05",
+  "analyzed_at": "2026-11-08T10:27:21.449177",
+  "asof_price_date": "2026-11-08",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 89.3096,
+    "rsi_14": 91.7248,
     "pe_ratio": 15.51063829787234,
     "debt_equity": 0.839
   },
@@ -23,32 +23,32 @@
     "short_term": {
       "predicted_path": "Upward momentum swing",
       "upside_potential_pct": "+7.2%",
-      "downside_risk_pct": "-4.9%",
-      "target_price": 114.4,
-      "support_price": 101.5,
+      "downside_risk_pct": "-4.8%",
+      "target_price": 124.3,
+      "support_price": 110.3,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+12.1%",
+      "upside_potential_pct": "+12.0%",
       "downside_risk_pct": "-10.0%",
-      "target_price": 119.6,
-      "trailing_stop": 96.0,
+      "target_price": 129.8,
+      "trailing_stop": 104.3,
       "risk_reward_ratio": "1.2x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.0%",
       "downside_risk_pct": "-12.0%",
-      "target_price": 138.7,
+      "target_price": 150.7,
       "dividend_cagr": "strong (7.73%)",
       "risk_reward_ratio": "2.5x"
     }
   },
   "trade_levels": {
-    "entry": 106.7,
-    "stop_loss": 98.96,
-    "target": 122.18
+    "entry": 115.9,
+    "stop_loss": 107.55,
+    "target": 132.6
   },
   "precision": {
     "ticker": "MATINSPINN",
@@ -72,7 +72,7 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 1148769,
+      "avg_daily_volume": 1138411,
       "daily_turnover_bdt_cr": 0.11,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
@@ -91,30 +91,30 @@
   },
   "pattern_dna": {
     "ticker": "MATINSPINN",
-    "audited_at": "2026-11-05 16:49:05",
+    "audited_at": "2026-11-08 16:27:21",
     "worth_vs_greed": {
-      "current_price": 106.7,
+      "current_price": 115.9,
       "intrinsic_worth": 9.92,
-      "margin_of_safety_pct": -90.7,
+      "margin_of_safety_pct": -91.4,
       "extension_froth_score": 90.0,
       "greed_index": 90.0,
-      "rsi_14": 95.6,
-      "price_vs_ema50_pct": 41.2,
-      "price_vs_ema200_pct": 76.2,
+      "rsi_14": 96.4,
+      "price_vs_ema50_pct": 50.3,
+      "price_vs_ema200_pct": 89.6,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f31.24, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f3104.6 \u2013 \u09f3107.8",
-        "chase_cutoff_price": 109.4,
-        "when_to_wait": "If price opens or rises above \u09f3109.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3104.6.",
-        "weekly_target_short": 110.4,
-        "monthly_target_swing": 122.7,
-        "long_term_target_asset": 138.7,
+        "optimal_entry_corridor": "\u09f3113.6 \u2013 \u09f3117.1",
+        "chase_cutoff_price": 118.8,
+        "when_to_wait": "If price opens or rises above \u09f3118.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3113.6.",
+        "weekly_target_short": 120.0,
+        "monthly_target_swing": 133.3,
+        "long_term_target_asset": 150.7,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "OVERVALUED_EUPHORIA",
       "worth_decision": "SELL_TAKE_PROFIT",
-      "reason": "Price is 90.7% above intrinsic worth while market greed is euphoric (90.0/100). Danger of sharp mean reversion.",
+      "reason": "Price is 91.4% above intrinsic worth while market greed is euphoric (90.0/100). Danger of sharp mean reversion.",
       "is_blacklisted": true,
       "blacklist_reason": "Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-11-01 \u2014 Price up +9.95% with poor fundamentals (Negative EPS)]",
       "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-11-01 \u2014 Price up +9.95% with poor fundamentals (Negative EPS)]"
@@ -122,34 +122,34 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 27.94,
-          "high": 111.3,
-          "low": 83.0,
-          "range_volatility_pct": 34.1
+          "return_pct": 26.39,
+          "high": 115.9,
+          "low": 91.5,
+          "range_volatility_pct": 26.67
         },
         "monthly_21d": {
-          "return_pct": 46.36,
-          "high": 111.3,
+          "return_pct": 55.99,
+          "high": 115.9,
           "low": 69.8,
-          "range_volatility_pct": 59.46
+          "range_volatility_pct": 66.05
         },
         "quarterly_63d": {
-          "return_pct": 73.78,
-          "high": 111.3,
+          "return_pct": 91.25,
+          "high": 115.9,
           "low": 57.5,
-          "range_volatility_pct": 93.57
+          "range_volatility_pct": 101.57
         },
         "half_yearly_126d": {
-          "return_pct": 131.96,
-          "high": 111.3,
+          "return_pct": 151.41,
+          "high": 115.9,
           "low": 45.7,
-          "range_volatility_pct": 143.54
+          "range_volatility_pct": 153.61
         },
         "yearly_252d": {
-          "return_pct": 92.95,
-          "high": 111.3,
+          "return_pct": 107.71,
+          "high": 115.9,
           "low": 43.8,
-          "range_volatility_pct": 154.11
+          "range_volatility_pct": 164.61
         }
       },
       "wave_metrics": {
@@ -158,7 +158,7 @@
         "avg_wave_duration_bars": 21.0
       },
       "current_wave_phase": "LATE_MARKUP",
-      "phase_guidance": "Approaching historical rally limit (+85.6% vs median +14.9%). Tighten stop.",
+      "phase_guidance": "Approaching historical rally limit (+101.6% vs median +14.9%). Tighten stop.",
       "top_seasonal_months": [
         {
           "month": "Aug",
@@ -262,12 +262,12 @@
       "macd": "bullish_crossover",
       "sma_trend": "bullish",
       "bb": "at_upper_band_bearish",
-      "atr": 5.16,
-      "rsi_value": 89.39,
-      "last_close": 106.7,
-      "sma20": 82.74,
-      "sma50": 71.99,
-      "sma200": 56.19,
+      "atr": 5.57,
+      "rsi_value": 91.83,
+      "last_close": 115.9,
+      "sma20": 84.81,
+      "sma50": 73.06,
+      "sma200": 56.54,
       "support_resistance": {
         "supports": [
           44.9,
@@ -307,8 +307,8 @@
       "earnings_quality": "financial_asset_quality_mode",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 4.1,
-        "high_52w": 111.3,
+        "drawdown_pct": 0.0,
+        "high_52w": 115.9,
         "low_52w": 43.8
       }
     }
@@ -347,21 +347,21 @@
     "manipulation_risk": "low",
     "block_buy": false,
     "flags": [
-      "price_surge_no_news: price_15.4pct_zero_news"
+      "price_surge_no_news: price_8.6pct_zero_news"
     ],
     "checks": {
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 73523,
-        "avg_volume": 1020805.0,
+        "last_volume": 1448315,
+        "avg_volume": 1041783.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.07,
-        "avg_volume": 1028448.0,
-        "today_volume": 73523,
+        "spike_ratio": 1.42,
+        "avg_volume": 1020805.0,
+        "today_volume": 1448315,
         "detail": "ok"
       },
       "serial_trading": {
@@ -380,9 +380,9 @@
       },
       "price_surge_no_news": {
         "flag": true,
-        "price_change_3d": 15.35,
+        "price_change_3d": 8.62,
         "news_count_3d": 0,
-        "detail": "price_15.4pct_zero_news"
+        "detail": "price_8.6pct_zero_news"
       }
     }
   },
