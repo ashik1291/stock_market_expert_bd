@@ -2,13 +2,13 @@
   "ticker": "CITYGENINS",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-08T10:27:22.346122",
-  "asof_price_date": "2026-11-08",
+  "analyzed_at": "2026-11-09T08:37:12.830200",
+  "asof_price_date": "2026-11-09",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 73.8645,
+    "rsi_14": 75.2273,
     "pe_ratio": 39.05882352941177,
     "debt_equity": 0.0
   },
@@ -22,33 +22,33 @@
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+2.1%",
+      "upside_potential_pct": "+2.2%",
       "downside_risk_pct": "-1.4%",
-      "target_price": 141.0,
-      "support_price": 136.1,
-      "risk_reward_ratio": "1.5x"
+      "target_price": 141.9,
+      "support_price": 136.8,
+      "risk_reward_ratio": "1.6x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+3.5%",
+      "upside_potential_pct": "+3.7%",
       "downside_risk_pct": "-10.0%",
-      "target_price": 143.0,
-      "trailing_stop": 124.3,
-      "risk_reward_ratio": "0.3x"
+      "target_price": 143.9,
+      "trailing_stop": 124.9,
+      "risk_reward_ratio": "0.4x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.0%",
       "downside_risk_pct": "-12.0%",
-      "target_price": 179.5,
+      "target_price": 180.4,
       "dividend_cagr": "moderate (1.15%)",
       "risk_reward_ratio": "2.5x"
     }
   },
   "trade_levels": {
-    "entry": 138.1,
-    "stop_loss": 135.16,
-    "target": 143.98
+    "entry": 138.8,
+    "stop_loss": 135.73,
+    "target": 144.94
   },
   "precision": {
     "ticker": "CITYGENINS",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 46447,
-      "daily_turnover_bdt_cr": 0.0,
+      "avg_daily_volume": 50109,
+      "daily_turnover_bdt_cr": 0.01,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 2322,
-      "max_daily_accumulation_shares": 6967,
-      "max_order_bdt": 2322.0,
-      "directive": "Max single order: 2,322 shares (Tk 2,322) to prevent >1% execution slippage"
+      "max_single_order_shares": 2505,
+      "max_daily_accumulation_shares": 7516,
+      "max_order_bdt": 2505.0,
+      "directive": "Max single order: 2,505 shares (Tk 2,505) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,25 +91,25 @@
   },
   "pattern_dna": {
     "ticker": "CITYGENINS",
-    "audited_at": "2026-11-08 16:27:22",
+    "audited_at": "2026-11-09 14:37:12",
     "worth_vs_greed": {
-      "current_price": 138.1,
+      "current_price": 138.8,
       "intrinsic_worth": 7.6,
       "margin_of_safety_pct": -94.5,
       "extension_froth_score": 30.0,
       "greed_index": 30.0,
-      "rsi_14": 75.0,
-      "price_vs_ema50_pct": 7.5,
-      "price_vs_ema200_pct": 26.3,
+      "rsi_14": 77.2,
+      "price_vs_ema50_pct": 7.7,
+      "price_vs_ema200_pct": 26.6,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f30.95, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f3135.3 \u2013 \u09f3139.5",
-        "chase_cutoff_price": 141.6,
-        "when_to_wait": "If price opens or rises above \u09f3141.6, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3135.3.",
-        "weekly_target_short": 142.9,
-        "monthly_target_swing": 158.8,
-        "long_term_target_asset": 179.5,
+        "optimal_entry_corridor": "\u09f3136.0 \u2013 \u09f3140.2",
+        "chase_cutoff_price": 142.3,
+        "when_to_wait": "If price opens or rises above \u09f3142.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3136.0.",
+        "weekly_target_short": 143.7,
+        "monthly_target_swing": 159.6,
+        "long_term_target_asset": 180.4,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
@@ -121,31 +121,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 5.82,
+          "return_pct": 6.77,
           "high": 139.8,
-          "low": 130.0,
-          "range_volatility_pct": 7.54
+          "low": 130.3,
+          "range_volatility_pct": 7.29
         },
         "monthly_21d": {
-          "return_pct": 5.42,
+          "return_pct": 6.28,
           "high": 139.8,
           "low": 129.3,
           "range_volatility_pct": 8.12
         },
         "quarterly_63d": {
-          "return_pct": 20.09,
+          "return_pct": 21.22,
           "high": 139.8,
-          "low": 114.4,
-          "range_volatility_pct": 22.2
+          "low": 114.5,
+          "range_volatility_pct": 22.1
         },
         "half_yearly_126d": {
-          "return_pct": 36.46,
+          "return_pct": 37.02,
           "high": 139.8,
-          "low": 100.6,
-          "range_volatility_pct": 38.97
+          "low": 100.9,
+          "range_volatility_pct": 38.55
         },
         "yearly_252d": {
-          "return_pct": 88.66,
+          "return_pct": 88.08,
           "high": 139.8,
           "low": 70.2,
           "range_volatility_pct": 99.15
@@ -157,7 +157,7 @@
         "avg_wave_duration_bars": 26.0
       },
       "current_wave_phase": "MARKDOWN_PULLBACK",
-      "phase_guidance": "Ongoing pullback from peak (2.3%). Wait for stabilizing base.",
+      "phase_guidance": "Ongoing pullback from peak (2.8%). Wait for stabilizing base.",
       "top_seasonal_months": [
         {
           "month": "Sep",
@@ -261,12 +261,12 @@
       "macd": "bullish_crossover",
       "sma_trend": "bullish",
       "bb": "at_upper_band_bearish",
-      "atr": 1.96,
-      "rsi_value": 74.14,
-      "last_close": 138.1,
-      "sma20": 131.06,
-      "sma50": 129.8,
-      "sma200": 108.13,
+      "atr": 2.05,
+      "rsi_value": 75.28,
+      "last_close": 138.8,
+      "sma20": 131.47,
+      "sma50": 130.04,
+      "sma200": 108.4,
       "support_resistance": {
         "supports": [],
         "resistances": [
@@ -296,7 +296,7 @@
       "earnings_quality": "financial_asset_quality_mode",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 1.2,
+        "drawdown_pct": 0.7,
         "high_52w": 139.8,
         "low_52w": 68.3
       }
@@ -332,25 +332,23 @@
     }
   },
   "manipulation": {
-    "manipulation_score": 10,
+    "manipulation_score": 0,
     "manipulation_risk": "low",
     "block_buy": false,
-    "flags": [
-      "price_surge_no_news: price_6.0pct_zero_news"
-    ],
+    "flags": [],
     "checks": {
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 47533,
-        "avg_volume": 51726.0,
+        "last_volume": 96235,
+        "avg_volume": 51990.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.93,
-        "avg_volume": 51212.0,
-        "today_volume": 47533,
+        "spike_ratio": 1.86,
+        "avg_volume": 51726.0,
+        "today_volume": 96235,
         "detail": "ok"
       },
       "serial_trading": {
@@ -368,10 +366,10 @@
         "detail": "sponsor_holding_not_available"
       },
       "price_surge_no_news": {
-        "flag": true,
-        "price_change_3d": 5.99,
+        "flag": false,
+        "price_change_3d": 0.51,
         "news_count_3d": 0,
-        "detail": "price_6.0pct_zero_news"
+        "detail": "ok"
       }
     }
   },

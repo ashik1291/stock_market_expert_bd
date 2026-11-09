@@ -2,13 +2,13 @@
   "ticker": "DHAKABANK",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-08T10:27:18.279223",
-  "asof_price_date": "2026-11-08",
+  "analyzed_at": "2026-11-09T08:37:09.676155",
+  "asof_price_date": "2026-11-09",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 44.168,
+    "rsi_14": 44.2745,
     "pe_ratio": 4.188679245283019,
     "debt_equity": 1.326
   },
@@ -30,11 +30,11 @@
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+12.7%",
+      "upside_potential_pct": "+11.8%",
       "downside_risk_pct": "-2.7%",
-      "target_price": 12.4,
+      "target_price": 12.3,
       "trailing_stop": 10.7,
-      "risk_reward_ratio": "4.7x"
+      "risk_reward_ratio": "4.4x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 1018832,
+      "avg_daily_volume": 986952,
       "daily_turnover_bdt_cr": 0.1,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 50000,
-      "max_daily_accumulation_shares": 150000,
-      "max_order_bdt": 50000.0,
-      "directive": "Max single order: 50,000 shares (Tk 50,000) to prevent >1% execution slippage"
+      "max_single_order_shares": 49347,
+      "max_daily_accumulation_shares": 148042,
+      "max_order_bdt": 49347.0,
+      "directive": "Max single order: 49,347 shares (Tk 49,347) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,16 +91,16 @@
   },
   "pattern_dna": {
     "ticker": "DHAKABANK",
-    "audited_at": "2026-11-08 16:27:18",
+    "audited_at": "2026-11-09 14:37:09",
     "worth_vs_greed": {
       "current_price": 11.0,
       "intrinsic_worth": 1.36,
       "margin_of_safety_pct": -87.6,
-      "extension_froth_score": 20.0,
-      "greed_index": 20.0,
-      "rsi_14": 56.2,
-      "price_vs_ema50_pct": -2.8,
-      "price_vs_ema200_pct": -6.4,
+      "extension_froth_score": 10.0,
+      "greed_index": 10.0,
+      "rsi_14": 50.0,
+      "price_vs_ema50_pct": -2.7,
+      "price_vs_ema200_pct": -6.3,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f30.17, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
@@ -127,13 +127,13 @@
           "range_volatility_pct": 3.7
         },
         "monthly_21d": {
-          "return_pct": -0.9,
+          "return_pct": -1.79,
           "high": 11.5,
           "low": 10.8,
           "range_volatility_pct": 6.48
         },
         "quarterly_63d": {
-          "return_pct": -8.33,
+          "return_pct": -9.09,
           "high": 12.7,
           "low": 10.8,
           "range_volatility_pct": 17.59
@@ -145,7 +145,7 @@
           "range_volatility_pct": 18.52
         },
         "yearly_252d": {
-          "return_pct": 0.92,
+          "return_pct": 2.8,
           "high": 16.0,
           "low": 10.2,
           "range_volatility_pct": 56.86
@@ -265,8 +265,8 @@
       "rsi_value": 44.61,
       "last_close": 11.0,
       "sma20": 11.0,
-      "sma50": 11.36,
-      "sma200": 12.13,
+      "sma50": 11.34,
+      "sma200": 12.12,
       "support_resistance": {
         "supports": [
           10.9,
@@ -347,15 +347,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 989367,
-        "avg_volume": 1215157.0,
+        "last_volume": 322839,
+        "avg_volume": 1159439.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.8,
-        "avg_volume": 1234204.0,
-        "today_volume": 989367,
+        "spike_ratio": 0.27,
+        "avg_volume": 1215157.0,
+        "today_volume": 322839,
         "detail": "ok"
       },
       "serial_trading": {

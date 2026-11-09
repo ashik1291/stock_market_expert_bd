@@ -2,13 +2,13 @@
   "ticker": "CITYBANK",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-08T10:27:17.743767",
-  "asof_price_date": "2026-11-08",
+  "analyzed_at": "2026-11-09T08:37:09.369869",
+  "asof_price_date": "2026-11-09",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 44.5707,
+    "rsi_14": 43.333,
     "pe_ratio": 3.398392652123995,
     "debt_equity": 0.156
   },
@@ -24,31 +24,31 @@
       "predicted_path": "Upward momentum swing",
       "upside_potential_pct": "+2.4%",
       "downside_risk_pct": "-1.7%",
-      "target_price": 29.8,
-      "support_price": 28.6,
+      "target_price": 29.7,
+      "support_price": 28.5,
       "risk_reward_ratio": "1.4x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+7.6%",
-      "downside_risk_pct": "-3.4%",
+      "upside_potential_pct": "+7.9%",
+      "downside_risk_pct": "-3.1%",
       "target_price": 31.3,
       "trailing_stop": 28.1,
-      "risk_reward_ratio": "2.2x"
+      "risk_reward_ratio": "2.5x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-      "upside_potential_pct": "+29.9%",
-      "downside_risk_pct": "-6.1%",
-      "target_price": 37.8,
+      "upside_potential_pct": "+30.0%",
+      "downside_risk_pct": "-5.6%",
+      "target_price": 37.7,
       "dividend_cagr": "strong (6.15%)",
-      "risk_reward_ratio": "4.9x"
+      "risk_reward_ratio": "5.4x"
     }
   },
   "trade_levels": {
-    "entry": 29.1,
-    "stop_loss": 28.4,
-    "target": 30.5
+    "entry": 29.0,
+    "stop_loss": 28.31,
+    "target": 30.38
   },
   "precision": {
     "ticker": "CITYBANK",
@@ -72,7 +72,7 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 2882104,
+      "avg_daily_volume": 2898717,
       "daily_turnover_bdt_cr": 0.29,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
@@ -91,61 +91,61 @@
   },
   "pattern_dna": {
     "ticker": "CITYBANK",
-    "audited_at": "2026-11-08 16:27:17",
+    "audited_at": "2026-11-09 14:37:09",
     "worth_vs_greed": {
-      "current_price": 29.1,
+      "current_price": 29.0,
       "intrinsic_worth": 15.6,
-      "margin_of_safety_pct": -46.4,
+      "margin_of_safety_pct": -46.2,
       "extension_froth_score": 20.0,
       "greed_index": 20.0,
-      "rsi_14": 46.7,
-      "price_vs_ema50_pct": -2.2,
-      "price_vs_ema200_pct": 0.1,
+      "rsi_14": 43.2,
+      "price_vs_ema50_pct": -2.4,
+      "price_vs_ema200_pct": -0.3,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f31.95, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f328.5 \u2013 \u09f329.4",
-        "chase_cutoff_price": 29.8,
-        "when_to_wait": "If price opens or rises above \u09f329.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f328.5.",
-        "weekly_target_short": 30.1,
-        "monthly_target_swing": 33.5,
-        "long_term_target_asset": 37.8,
+        "optimal_entry_corridor": "\u09f328.4 \u2013 \u09f329.3",
+        "chase_cutoff_price": 29.7,
+        "when_to_wait": "If price opens or rises above \u09f329.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f328.4.",
+        "weekly_target_short": 30.0,
+        "monthly_target_swing": 33.3,
+        "long_term_target_asset": 37.7,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
       "worth_decision": "AVOID",
-      "reason": "Fundamental value severely lags stock price (MoS: -46.4%).",
+      "reason": "Fundamental value severely lags stock price (MoS: -46.2%).",
       "is_blacklisted": false,
       "blacklist_reason": null
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -0.68,
+          "return_pct": -1.02,
           "high": 29.5,
           "low": 28.0,
           "range_volatility_pct": 5.36
         },
         "monthly_21d": {
-          "return_pct": -2.02,
+          "return_pct": -3.01,
           "high": 30.4,
           "low": 28.0,
           "range_volatility_pct": 8.57
         },
         "quarterly_63d": {
-          "return_pct": -7.62,
+          "return_pct": -7.05,
           "high": 31.8,
           "low": 28.0,
           "range_volatility_pct": 13.57
         },
         "half_yearly_126d": {
-          "return_pct": -11.82,
+          "return_pct": 1.4,
           "high": 32.5,
           "low": 26.1,
           "range_volatility_pct": 24.52
         },
         "yearly_252d": {
-          "return_pct": 21.76,
+          "return_pct": 21.34,
           "high": 33.9,
           "low": 22.6,
           "range_volatility_pct": 50.0
@@ -261,12 +261,12 @@
       "macd": "neutral",
       "sma_trend": "neutral",
       "bb": "inside_bands",
-      "atr": 0.47,
-      "rsi_value": 44.83,
-      "last_close": 29.1,
-      "sma20": 29.47,
-      "sma50": 29.72,
-      "sma200": 29.72,
+      "atr": 0.46,
+      "rsi_value": 43.59,
+      "last_close": 29.0,
+      "sma20": 29.43,
+      "sma50": 29.69,
+      "sma200": 29.73,
       "support_resistance": {
         "supports": [
           26.2,
@@ -306,7 +306,7 @@
       "earnings_quality": "financial_asset_quality_mode",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 14.2,
+        "drawdown_pct": 14.5,
         "high_52w": 33.9,
         "low_52w": 22.6
       }
@@ -349,15 +349,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 1806294,
-        "avg_volume": 2394468.0,
+        "last_volume": 1163384,
+        "avg_volume": 2388366.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.76,
-        "avg_volume": 2390034.0,
-        "today_volume": 1806294,
+        "spike_ratio": 0.49,
+        "avg_volume": 2394468.0,
+        "today_volume": 1163384,
         "detail": "ok"
       },
       "serial_trading": {
@@ -376,7 +376,7 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": 2.11,
+        "price_change_3d": -0.34,
         "news_count_3d": 0,
         "detail": "ok"
       }

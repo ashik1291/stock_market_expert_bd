@@ -27,21 +27,21 @@ Do NOT deploy 100% capital in a single day. Spread monthly allocation across 4 s
 
 | Ticker | Entry Zone | Direction & Prob | Upside / Risk | P/E | Debt/Equity | Leadership & Experience | Tranche Pacing | Target Exit |
 |---|---|---|---|---|---|---|---|---|
-| **JAMUNAOIL** | ৳175.4–৳180.8 | 🟢 (—%) | +30.0% / -4.3% | 3.1 | D/E: 0.0 | Md. Gias Uddin Ansary (32y exp, AA+) | 20% per tranche | ৳232.7 |
-| **PADMAOIL** | ৳193.7–৳199.7 | 🟢 (—%) | +30.0% / -5.6% | 3.4 | D/E: 0.007 | Md. Masudur Rahman (30y exp, AA+) | 20% per tranche | ৳257.0 |
-| **BSRMLTD** | ৳93.0–৳95.8 | 🟢 (—%) | +30.0% / -7.2% | 4.7 | D/E: 0.657 | Aameir Alihussain (45y exp, A) | 20% per tranche | ৳123.4 |
-| **CONFIDCEM** | ৳56.2–৳57.9 | 🟢 (—%) | +30.0% / -7.6% | 5.2 | D/E: 0.74 | Salman Karim (35y exp, A+) | 20% per tranche | ৳74.5 |
-| **MPETROLEUM** | ৳213.5–৳220.1 | 🟢 (—%) | +30.0% / -11.3% | 3.3 | D/E: 0.006 | Engr. Md. Rehanul Islam (30y exp, AA+) | 20% per tranche | ৳283.3 |
+| **PADMAOIL** | ৳192.7–৳198.6 | 🟢 (—%) | +30.0% / -4.5% | 3.4 | D/E: 0.007 | Md. Masudur Rahman (30y exp, AA+) | 20% per tranche | ৳255.6 |
+| **MPETROLEUM** | ৳212.9–৳219.4 | 🟢 (—%) | +30.0% / -10.8% | 3.3 | D/E: 0.006 | Engr. Md. Rehanul Islam (30y exp, AA+) | 20% per tranche | ৳282.4 |
+| **BSRMLTD** | ৳94.1–৳97.0 | 🟡 (—%) | +30.0% / -7.4% | 4.7 | D/E: 0.657 | Aameir Alihussain (45y exp, A) | 20% per tranche | ৳124.8 |
+| **CONFIDCEM** | ৳56.9–৳58.7 | 🟡 (—%) | +29.9% / -9.5% | 5.2 | D/E: 0.74 | Salman Karim (35y exp, A+) | 20% per tranche | ৳75.5 |
+| **JAMUNAOIL** | ৳166.1–৳171.2 | 🟢 (—%) | +30.0% / -5.0% | 3.1 | D/E: 0.0 | Md. Gias Uddin Ansary (32y exp, AA+) | 20% per tranche | ৳220.3 |
 
 ## 🚀 4. Top Mid-Term Cycle Swings (1–6 Months)
 
 | Ticker | Entry Price | Direction & Prob | Target (+15%) | Trailing Stop (-5%) | Risk/Reward | P/E |
 |---|---|---|---|---|---|---|
-| **JAMUNAOIL** | ৳179.0 | 🟢 —% | **৳185.3** | ৳174.7 | 1.5x | 3.1 |
-| **PADMAOIL** | ৳197.7 | 🟢 —% | **৳202.7** | ৳191.6 | 0.8x | 3.4 |
-| **BSRMLTD** | ৳94.9 | 🟢 —% | **৳101.5** | ৳91.1 | 1.8x | 4.7 |
-| **CONFIDCEM** | ৳57.3 | 🟢 —% | **৳67.3** | ৳54.9 | 4.2x | 5.2 |
-| **MPETROLEUM** | ৳217.9 | 🟢 —% | **৳223.9** | ৳204.1 | 0.4x | 3.3 |
+| **PADMAOIL** | ৳196.6 | 🟢 —% | **৳201.7** | ৳191.6 | 1.0x | 3.4 |
+| **MPETROLEUM** | ৳217.2 | 🟢 —% | **৳223.2** | ৳204.1 | 0.5x | 3.3 |
+| **BSRMLTD** | ৳96.0 | 🟡 —% | **৳102.2** | ৳92.1 | 1.6x | 4.7 |
+| **CONFIDCEM** | ৳58.1 | 🟡 —% | **৳66.8** | ৳55.0 | 2.8x | 5.2 |
+| **JAMUNAOIL** | ৳169.5 | 🟢 —% | **৳182.2** | ৳164.8 | 2.7x | 3.1 |
 
 ## 🛡️ 5. Monthly Risk Filter & Governance Directive
 

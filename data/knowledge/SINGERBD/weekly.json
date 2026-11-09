@@ -2,13 +2,13 @@
   "ticker": "SINGERBD",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-08T10:27:21.037435",
-  "asof_price_date": "2026-11-08",
+  "analyzed_at": "2026-11-09T08:37:11.702416",
+  "asof_price_date": "2026-11-09",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 15.8294,
+    "rsi_14": 13.8086,
     "pe_ratio": 0.0,
     "debt_equity": 121.386
   },
@@ -22,33 +22,33 @@
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Oversold bounce to 20-DMA",
-      "upside_potential_pct": "+5.8%",
-      "downside_risk_pct": "-3.9%",
-      "target_price": 65.6,
-      "support_price": 59.6,
+      "upside_potential_pct": "+6.0%",
+      "downside_risk_pct": "-4.0%",
+      "target_price": 63.8,
+      "support_price": 57.8,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+25.0%",
-      "downside_risk_pct": "-5.8%",
-      "target_price": 77.5,
-      "trailing_stop": 58.4,
-      "risk_reward_ratio": "4.3x"
+      "upside_potential_pct": "+24.9%",
+      "downside_risk_pct": "-6.0%",
+      "target_price": 75.2,
+      "trailing_stop": 56.6,
+      "risk_reward_ratio": "4.1x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-      "upside_potential_pct": "+30.0%",
-      "downside_risk_pct": "-10.4%",
-      "target_price": 80.6,
+      "upside_potential_pct": "+30.1%",
+      "downside_risk_pct": "-10.8%",
+      "target_price": 78.3,
       "dividend_cagr": "no_dividend",
-      "risk_reward_ratio": "2.9x"
+      "risk_reward_ratio": "2.8x"
     }
   },
   "trade_levels": {
-    "entry": 62.0,
-    "stop_loss": 58.43,
-    "target": 69.14
+    "entry": 60.2,
+    "stop_loss": 56.65,
+    "target": 67.3
   },
   "precision": {
     "ticker": "SINGERBD",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 10847,
+      "avg_daily_volume": 11250,
       "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 542,
-      "max_daily_accumulation_shares": 1627,
-      "max_order_bdt": 542.0,
-      "directive": "Max single order: 542 shares (Tk 542) to prevent >1% execution slippage"
+      "max_single_order_shares": 562,
+      "max_daily_accumulation_shares": 1687,
+      "max_order_bdt": 562.0,
+      "directive": "Max single order: 562 shares (Tk 562) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,25 +91,25 @@
   },
   "pattern_dna": {
     "ticker": "SINGERBD",
-    "audited_at": "2026-11-08 16:27:21",
+    "audited_at": "2026-11-09 14:37:11",
     "worth_vs_greed": {
-      "current_price": 62.0,
-      "intrinsic_worth": 31.0,
+      "current_price": 60.2,
+      "intrinsic_worth": 30.1,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 30.0,
       "greed_index": 30.0,
-      "rsi_14": 5.8,
-      "price_vs_ema50_pct": -14.7,
-      "price_vs_ema200_pct": -23.5,
+      "rsi_14": 1.2,
+      "price_vs_ema50_pct": -16.6,
+      "price_vs_ema200_pct": -25.5,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f360.8 \u2013 \u09f362.6",
-        "chase_cutoff_price": 63.5,
-        "when_to_wait": "If price opens or rises above \u09f363.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f360.8.",
-        "weekly_target_short": 64.2,
-        "monthly_target_swing": 71.3,
-        "long_term_target_asset": 80.6,
+        "optimal_entry_corridor": "\u09f359.0 \u2013 \u09f360.8",
+        "chase_cutoff_price": 61.7,
+        "when_to_wait": "If price opens or rises above \u09f361.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f359.0.",
+        "weekly_target_short": 62.3,
+        "monthly_target_swing": 69.2,
+        "long_term_target_asset": 78.3,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
@@ -121,31 +121,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -2.97,
-          "high": 64.7,
+          "return_pct": -4.9,
+          "high": 63.9,
           "low": 59.7,
-          "range_volatility_pct": 8.38
+          "range_volatility_pct": 7.04
         },
         "monthly_21d": {
-          "return_pct": -18.53,
-          "high": 77.9,
+          "return_pct": -19.84,
+          "high": 77.2,
           "low": 59.7,
-          "range_volatility_pct": 30.49
+          "range_volatility_pct": 29.31
         },
         "quarterly_63d": {
-          "return_pct": -20.72,
+          "return_pct": -22.52,
           "high": 82.9,
           "low": 59.7,
           "range_volatility_pct": 38.86
         },
         "half_yearly_126d": {
-          "return_pct": -26.54,
+          "return_pct": -27.99,
           "high": 87.0,
           "low": 59.7,
           "range_volatility_pct": 45.73
         },
         "yearly_252d": {
-          "return_pct": -38.61,
+          "return_pct": -40.98,
           "high": 105.0,
           "low": 59.7,
           "range_volatility_pct": 75.88
@@ -157,7 +157,7 @@
         "avg_wave_duration_bars": 27.0
       },
       "current_wave_phase": "BOTTOMING_SUPPORT",
-      "phase_guidance": "Drop (-25.2%) matches historical correction depth (-15.0%). Prepare to accumulate.",
+      "phase_guidance": "Drop (-27.4%) matches historical correction depth (-15.0%). Prepare to accumulate.",
       "top_seasonal_months": [
         {
           "month": "Jul",
@@ -261,12 +261,12 @@
       "macd": "neutral",
       "sma_trend": "neutral",
       "bb": "inside_bands",
-      "atr": 2.38,
-      "rsi_value": 16.11,
-      "last_close": 62.0,
-      "sma20": 70.6,
-      "sma50": 73.58,
-      "sma200": 80.63,
+      "atr": 2.37,
+      "rsi_value": 14.03,
+      "last_close": 60.2,
+      "sma20": 69.84,
+      "sma50": 73.31,
+      "sma200": 80.51,
       "support_resistance": {
         "supports": [
           71.6,
@@ -307,7 +307,7 @@
       "loan_trap_risk": "high",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 43.1,
+        "drawdown_pct": 44.7,
         "high_52w": 108.9,
         "low_52w": 59.7
       }
@@ -351,15 +351,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 8687,
-        "avg_volume": 20119.0,
+        "last_volume": 21255,
+        "avg_volume": 17888.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.37,
-        "avg_volume": 23184.0,
-        "today_volume": 8687,
+        "spike_ratio": 1.06,
+        "avg_volume": 20119.0,
+        "today_volume": 21255,
         "detail": "ok"
       },
       "serial_trading": {
@@ -378,7 +378,7 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": -0.16,
+        "price_change_3d": -2.9,
         "news_count_3d": 0,
         "detail": "ok"
       }

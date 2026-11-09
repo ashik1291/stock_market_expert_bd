@@ -2,13 +2,13 @@
   "ticker": "EBL",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-08T10:27:17.832710",
-  "asof_price_date": "2026-11-08",
+  "analyzed_at": "2026-11-09T08:37:09.398534",
+  "asof_price_date": "2026-11-09",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 46.8841,
+    "rsi_14": 46.8722,
     "pe_ratio": 4.359464627151051,
     "debt_equity": 2.071
   },
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 23.2,
-    "stop_loss": 22.57,
-    "target": 24.46
+    "stop_loss": 22.59,
+    "target": 24.42
   },
   "precision": {
     "ticker": "EBL",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 869258,
+      "avg_daily_volume": 857995,
       "daily_turnover_bdt_cr": 0.09,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 43462,
-      "max_daily_accumulation_shares": 130388,
-      "max_order_bdt": 43462.0,
-      "directive": "Max single order: 43,462 shares (Tk 43,462) to prevent >1% execution slippage"
+      "max_single_order_shares": 42899,
+      "max_daily_accumulation_shares": 128699,
+      "max_order_bdt": 42899.0,
+      "directive": "Max single order: 42,899 shares (Tk 42,899) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,14 +91,14 @@
   },
   "pattern_dna": {
     "ticker": "EBL",
-    "audited_at": "2026-11-08 16:27:17",
+    "audited_at": "2026-11-09 14:37:09",
     "worth_vs_greed": {
       "current_price": 23.2,
       "intrinsic_worth": 11.44,
       "margin_of_safety_pct": -50.7,
       "extension_froth_score": 10.0,
       "greed_index": 10.0,
-      "rsi_14": 55.6,
+      "rsi_14": 44.8,
       "price_vs_ema50_pct": -1.0,
       "price_vs_ema200_pct": -4.2,
       "merit_status": "EARNINGS_BACKED_MERIT",
@@ -121,16 +121,16 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -0.85,
+          "return_pct": -0.43,
           "high": 23.6,
           "low": 22.9,
           "range_volatility_pct": 3.06
         },
         "monthly_21d": {
-          "return_pct": 2.2,
+          "return_pct": 1.75,
           "high": 24.3,
-          "low": 22.6,
-          "range_volatility_pct": 7.52
+          "low": 22.7,
+          "range_volatility_pct": 7.05
         },
         "quarterly_63d": {
           "return_pct": -3.73,
@@ -139,7 +139,7 @@
           "range_volatility_pct": 12.11
         },
         "half_yearly_126d": {
-          "return_pct": -15.02,
+          "return_pct": -14.71,
           "high": 27.6,
           "low": 22.3,
           "range_volatility_pct": 23.77
@@ -261,12 +261,12 @@
       "macd": "bearish_crossover",
       "sma_trend": "neutral",
       "bb": "inside_bands",
-      "atr": 0.42,
+      "atr": 0.41,
       "rsi_value": 46.96,
       "last_close": 23.2,
-      "sma20": 23.36,
-      "sma50": 23.27,
-      "sma200": 24.91,
+      "sma20": 23.38,
+      "sma50": 23.25,
+      "sma200": 24.9,
       "support_resistance": {
         "supports": [
           22.5,
@@ -349,15 +349,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 851624,
-        "avg_volume": 1106402.0,
+        "last_volume": 363939,
+        "avg_volume": 1046169.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.73,
-        "avg_volume": 1159864.0,
-        "today_volume": 851624,
+        "spike_ratio": 0.33,
+        "avg_volume": 1106402.0,
+        "today_volume": 363939,
         "detail": "ok"
       },
       "serial_trading": {
@@ -376,7 +376,7 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": -1.28,
+        "price_change_3d": 0.0,
         "news_count_3d": 0,
         "detail": "ok"
       }

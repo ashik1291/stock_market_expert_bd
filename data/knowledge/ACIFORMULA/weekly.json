@@ -2,13 +2,13 @@
   "ticker": "ACIFORMULA",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-08T10:27:18.903846",
-  "asof_price_date": "2026-11-08",
+  "analyzed_at": "2026-11-09T08:37:10.099717",
+  "asof_price_date": "2026-11-09",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 37.601,
+    "rsi_14": 37.2569,
     "pe_ratio": 18.866242038216562,
     "debt_equity": 1.021
   },
@@ -22,33 +22,33 @@
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Oversold bounce to 20-DMA",
-      "upside_potential_pct": "+4.5%",
-      "downside_risk_pct": "-3.1%",
-      "target_price": 142.6,
-      "support_price": 132.2,
+      "upside_potential_pct": "+4.4%",
+      "downside_risk_pct": "-2.9%",
+      "target_price": 142.4,
+      "support_price": 132.4,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
       "upside_potential_pct": "+25.0%",
-      "downside_risk_pct": "-4.5%",
+      "downside_risk_pct": "-4.4%",
       "target_price": 170.5,
-      "trailing_stop": 130.2,
-      "risk_reward_ratio": "5.6x"
+      "trailing_stop": 130.4,
+      "risk_reward_ratio": "5.7x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.0%",
-      "downside_risk_pct": "-8.1%",
+      "downside_risk_pct": "-7.9%",
       "target_price": 177.3,
       "dividend_cagr": "moderate (1.97%)",
-      "risk_reward_ratio": "3.7x"
+      "risk_reward_ratio": "3.8x"
     }
   },
   "trade_levels": {
     "entry": 136.4,
-    "stop_loss": 130.16,
-    "target": 148.88
+    "stop_loss": 130.36,
+    "target": 148.48
   },
   "precision": {
     "ticker": "ACIFORMULA",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 55984,
-      "daily_turnover_bdt_cr": 0.01,
+      "avg_daily_volume": 46352,
+      "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 2799,
-      "max_daily_accumulation_shares": 8397,
-      "max_order_bdt": 2799.0,
-      "directive": "Max single order: 2,799 shares (Tk 2,799) to prevent >1% execution slippage"
+      "max_single_order_shares": 2317,
+      "max_daily_accumulation_shares": 6952,
+      "max_order_bdt": 2317.0,
+      "directive": "Max single order: 2,317 shares (Tk 2,317) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,16 +91,16 @@
   },
   "pattern_dna": {
     "ticker": "ACIFORMULA",
-    "audited_at": "2026-11-08 16:27:18",
+    "audited_at": "2026-11-09 14:37:10",
     "worth_vs_greed": {
       "current_price": 136.4,
       "intrinsic_worth": 14.08,
       "margin_of_safety_pct": -89.7,
       "extension_froth_score": 20.0,
       "greed_index": 20.0,
-      "rsi_14": 34.3,
-      "price_vs_ema50_pct": -7.8,
-      "price_vs_ema200_pct": -7.9,
+      "rsi_14": 37.5,
+      "price_vs_ema50_pct": -7.5,
+      "price_vs_ema200_pct": -7.8,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f31.76, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
@@ -122,31 +122,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 0.96,
+          "return_pct": -0.37,
           "high": 139.3,
           "low": 132.9,
           "range_volatility_pct": 4.82
         },
         "monthly_21d": {
-          "return_pct": -7.9,
+          "return_pct": -8.39,
           "high": 158.6,
           "low": 132.9,
           "range_volatility_pct": 19.34
         },
         "quarterly_63d": {
-          "return_pct": -19.91,
+          "return_pct": -20.23,
           "high": 180.7,
           "low": 132.9,
           "range_volatility_pct": 35.97
         },
         "half_yearly_126d": {
-          "return_pct": -3.06,
+          "return_pct": -3.4,
           "high": 189.2,
           "low": 132.9,
           "range_volatility_pct": 42.36
         },
         "yearly_252d": {
-          "return_pct": 3.02,
+          "return_pct": 3.1,
           "high": 189.2,
           "low": 115.0,
           "range_volatility_pct": 64.52
@@ -262,12 +262,12 @@
       "macd": "neutral",
       "sma_trend": "neutral",
       "bb": "inside_bands",
-      "atr": 4.16,
+      "atr": 4.03,
       "rsi_value": 38.16,
       "last_close": 136.4,
-      "sma20": 142.53,
-      "sma50": 149.02,
-      "sma200": 147.79,
+      "sma20": 141.62,
+      "sma50": 148.58,
+      "sma200": 147.83,
       "support_resistance": {
         "supports": [
           138.3,
@@ -351,15 +351,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 33736,
-        "avg_volume": 72473.0,
+        "last_volume": 46618,
+        "avg_volume": 67042.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.44,
-        "avg_volume": 77096.0,
-        "today_volume": 33736,
+        "spike_ratio": 0.64,
+        "avg_volume": 72473.0,
+        "today_volume": 46618,
         "detail": "ok"
       },
       "serial_trading": {

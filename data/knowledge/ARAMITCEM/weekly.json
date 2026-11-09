@@ -2,13 +2,13 @@
   "ticker": "ARAMITCEM",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-08T10:27:19.689964",
-  "asof_price_date": "2026-11-08",
+  "analyzed_at": "2026-11-09T08:37:10.793780",
+  "asof_price_date": "2026-11-09",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 47.4116,
+    "rsi_14": 47.5607,
     "pe_ratio": 0.0,
     "debt_equity": 17.553
   },
@@ -23,10 +23,10 @@
     "short_term": {
       "predicted_path": "Upward momentum swing",
       "upside_potential_pct": "+6.5%",
-      "downside_risk_pct": "-4.6%",
+      "downside_risk_pct": "-3.7%",
       "target_price": 11.5,
-      "support_price": 10.3,
-      "risk_reward_ratio": "1.4x"
+      "support_price": 10.4,
+      "risk_reward_ratio": "1.8x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 10.8,
-    "stop_loss": 10.11,
-    "target": 12.18
+    "stop_loss": 10.14,
+    "target": 12.12
   },
   "precision": {
     "ticker": "ARAMITCEM",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 7309,
+      "avg_daily_volume": 6772,
       "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 365,
-      "max_daily_accumulation_shares": 1096,
-      "max_order_bdt": 365.0,
-      "directive": "Max single order: 365 shares (Tk 365) to prevent >1% execution slippage"
+      "max_single_order_shares": 338,
+      "max_daily_accumulation_shares": 1015,
+      "max_order_bdt": 338.0,
+      "directive": "Max single order: 338 shares (Tk 338) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,7 +91,7 @@
   },
   "pattern_dna": {
     "ticker": "ARAMITCEM",
-    "audited_at": "2026-11-08 16:27:19",
+    "audited_at": "2026-11-09 14:37:10",
     "worth_vs_greed": {
       "current_price": 10.8,
       "intrinsic_worth": 5.4,
@@ -99,8 +99,8 @@
       "extension_froth_score": 30.0,
       "greed_index": 30.0,
       "rsi_14": 46.9,
-      "price_vs_ema50_pct": -3.2,
-      "price_vs_ema200_pct": -6.3,
+      "price_vs_ema50_pct": -3.1,
+      "price_vs_ema200_pct": -6.2,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -122,31 +122,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 0.93,
+          "return_pct": -1.82,
           "high": 11.0,
           "low": 10.4,
           "range_volatility_pct": 5.77
         },
         "monthly_21d": {
-          "return_pct": 0.93,
+          "return_pct": -1.82,
           "high": 11.7,
           "low": 10.0,
           "range_volatility_pct": 17.0
         },
         "quarterly_63d": {
-          "return_pct": -14.96,
+          "return_pct": -13.6,
           "high": 14.2,
           "low": 10.0,
           "range_volatility_pct": 42.0
         },
         "half_yearly_126d": {
-          "return_pct": 0.0,
+          "return_pct": -2.7,
           "high": 15.0,
           "low": 10.0,
           "range_volatility_pct": 50.0
         },
         "yearly_252d": {
-          "return_pct": -1.82,
+          "return_pct": -2.7,
           "high": 15.0,
           "low": 7.6,
           "range_volatility_pct": 97.37
@@ -262,12 +262,12 @@
       "macd": "bullish_crossover",
       "sma_trend": "neutral",
       "bb": "inside_bands",
-      "atr": 0.46,
+      "atr": 0.44,
       "rsi_value": 47.81,
       "last_close": 10.8,
-      "sma20": 10.84,
-      "sma50": 11.16,
-      "sma200": 11.42,
+      "sma20": 10.83,
+      "sma50": 11.14,
+      "sma200": 11.43,
       "support_resistance": {
         "supports": [
           8.7,
@@ -348,15 +348,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 18503,
-        "avg_volume": 9953.0,
+        "last_volume": 209,
+        "avg_volume": 9878.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.96,
-        "avg_volume": 9454.0,
-        "today_volume": 18503,
+        "spike_ratio": 0.02,
+        "avg_volume": 9953.0,
+        "today_volume": 209,
         "detail": "ok"
       },
       "serial_trading": {
@@ -375,7 +375,7 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": 0.93,
+        "price_change_3d": 0.0,
         "news_count_3d": 0,
         "detail": "ok"
       }

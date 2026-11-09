@@ -1,60 +1,60 @@
 {
   "ticker": "SAIHAMCOT",
-  "audited_at": "2026-11-08 16:27:21",
+  "audited_at": "2026-11-09 14:37:12",
   "worth_vs_greed": {
-    "current_price": 21.5,
+    "current_price": 22.0,
     "intrinsic_worth": 2.48,
-    "margin_of_safety_pct": -88.5,
-    "extension_froth_score": 20.0,
-    "greed_index": 20.0,
-    "rsi_14": 59.5,
-    "price_vs_ema50_pct": -1.4,
-    "price_vs_ema200_pct": 4.2,
+    "margin_of_safety_pct": -88.7,
+    "extension_froth_score": 30.0,
+    "greed_index": 30.0,
+    "rsi_14": 63.0,
+    "price_vs_ema50_pct": 0.9,
+    "price_vs_ema200_pct": 6.5,
     "merit_status": "EARNINGS_BACKED_MERIT",
     "merit_reason": "Price supported by solid earnings (EPS: \u09f30.31, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f321.1 \u2013 \u09f321.7",
-      "chase_cutoff_price": 22.0,
-      "when_to_wait": "If price opens or rises above \u09f322.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f321.1.",
-      "weekly_target_short": 22.3,
-      "monthly_target_swing": 24.7,
-      "long_term_target_asset": 27.9,
+      "optimal_entry_corridor": "\u09f321.6 \u2013 \u09f322.2",
+      "chase_cutoff_price": 22.5,
+      "when_to_wait": "If price opens or rises above \u09f322.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f321.6.",
+      "weekly_target_short": 22.8,
+      "monthly_target_swing": 25.3,
+      "long_term_target_asset": 28.6,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -88.5%).",
+    "reason": "Fundamental value severely lags stock price (MoS: -88.7%).",
     "is_blacklisted": false,
     "blacklist_reason": null
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -0.46,
+        "return_pct": 0.46,
         "high": 22.7,
         "low": 21.1,
         "range_volatility_pct": 7.58
       },
       "monthly_21d": {
-        "return_pct": -3.59,
-        "high": 23.3,
+        "return_pct": -5.17,
+        "high": 22.7,
         "low": 19.7,
-        "range_volatility_pct": 18.27
+        "range_volatility_pct": 15.23
       },
       "quarterly_63d": {
-        "return_pct": -3.59,
+        "return_pct": 0.0,
         "high": 26.8,
         "low": 19.7,
         "range_volatility_pct": 36.04
       },
       "half_yearly_126d": {
-        "return_pct": 0.47,
+        "return_pct": 2.8,
         "high": 26.8,
         "low": 18.6,
         "range_volatility_pct": 44.09
       },
       "yearly_252d": {
-        "return_pct": 33.54,
+        "return_pct": 37.5,
         "high": 26.8,
         "low": 15.4,
         "range_volatility_pct": 74.03
@@ -66,7 +66,7 @@
       "avg_wave_duration_bars": 20.0
     },
     "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-11.9%). Wait for stabilizing base.",
+    "phase_guidance": "Ongoing pullback from peak (-9.8%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Aug",
