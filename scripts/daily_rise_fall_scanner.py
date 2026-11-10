@@ -189,6 +189,23 @@ def scan_daily_rise_and_fall(timeframe: str = "weekly") -> dict:
             
             # Strict Gate: R:R must be >= 1.75:1 and EV must be positive on matched horizon
             is_asymmetric_merit = (rr_ratio >= 1.75 and net_expected_value_pct > 0.0)
+
+            # Volume surge breakout confirmation check (20-day median baseline)
+            vol_surge_ratio = 1.0
+            has_breakout_vol = False
+            try:
+                import statistics
+                db_v = sqlite3.connect(BASE_DIR / "data" / "processed" / "dse.db", timeout=30.0)
+                v_rows = db_v.execute("SELECT volume FROM prices WHERE ticker = ? ORDER BY date DESC LIMIT 21", (ticker,)).fetchall()
+                db_v.close()
+                if v_rows and len(v_rows) >= 5:
+                    cur_v = float(v_rows[0][0] or 0.0)
+                    hist_v = [float(r[0] or 0.0) for r in v_rows[1:]]
+                    med_v = float(statistics.median(hist_v)) if hist_v else 0.0
+                    vol_surge_ratio = round(cur_v / med_v, 2) if med_v > 0 else 1.0
+                    has_breakout_vol = (vol_surge_ratio >= 1.5)
+            except Exception:
+                pass
             
             if is_asymmetric_merit:
                 rise_list.append({
@@ -206,7 +223,9 @@ def scan_daily_rise_and_fall(timeframe: str = "weekly") -> dict:
                     "smart_money_flow":     smart_money.get("classification") or "unknown",
                     "cash_flow_cov":        _cov,
                     "max_order_shares":     liquidity.get("max_single_order_shares"),
-                    "primary_catalyst":     f"{mgmt.get('key_moat') or 'unknown'} | R:R {rr_ratio}x (EV +{net_expected_value_pct}%)",
+                    "volume_surge_ratio":   vol_surge_ratio,
+                    "breakout_volume_confirmed": has_breakout_vol,
+                    "primary_catalyst":     f"{mgmt.get('key_moat') or 'unknown'} | R:R {rr_ratio}x (EV +{net_expected_value_pct}%) | Vol {vol_surge_ratio}x",
                     "directive":            "TIER_ASYMMETRIC_MERIT_CANDIDATE"
                 })
             else:
@@ -238,7 +257,10 @@ def scan_daily_rise_and_fall(timeframe: str = "weekly") -> dict:
             item["tier_note"] = tinfo["note"]
             if tinfo["show_probability"]:
                 item["calibrated_prob_pct"] = tinfo["probability_pct"]
-            item["directive"] = f"TIER_{tinfo['tier']}_CANDIDATE"
+            if not item.get("breakout_volume_confirmed"):
+                item["directive"] = f"TIER_{tinfo['tier']}_LOW_VOLUME_DRIFT"
+            else:
+                item["directive"] = f"TIER_{tinfo['tier']}_VOLUME_BREAKOUT"
     except Exception as e:
         log.warning(f"tier attach skipped: {e}")
 
