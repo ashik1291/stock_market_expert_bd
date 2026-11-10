@@ -16,9 +16,9 @@ Operating with the disciplined mathematical standards of leading quantitative as
 
 ---
 
-## 🚀 Quick Start (Instant Zero-Broken Setup in 3 Seconds)
+## 🚀 Quick Start (Zero-Broken Setup with Live Market Sync)
 
-The entire system is packaged with a single-word self-healing bootstrap engine. Anyone on Windows, Linux, or macOS can clone and run immediately without missing dependencies or broken database states.
+The entire system is packaged with a single-word self-healing bootstrap engine. Whether you are using an **AI Agentic Coding Assistant (Google Antigravity, Claude Code, Cursor, Codex)** or a **Standard CLI Terminal**, you can clone and launch immediately with 100% live and gap-free data.
 
 ### 1. Clone the Repository (Ultra-Fast ~35 MB)
 ```bash
@@ -26,7 +26,25 @@ git clone https://github.com/ashik1291/stock_market_expert_bd.git
 cd stock_market_expert_bd
 ```
 
-### 2. Run One-Click Bootstrap
+### 2. Launching the App with Full Live & Updated Data
+
+#### Option A: Using with AI Agents (Google Antigravity, Claude Code, Cursor, Codex)
+If you open this repository inside an AI coding tool, you do not need to memorize commands. Simply type one word into the agent chat:
+
+```text
+ready
+```
+*(Also accepts: `setup`, `bootstrap`, `init`, or "launch app with live data")*
+
+The AI assistant automatically activates the built-in `dse-ready` skill to:
+1. Check & auto-install any missing dependencies from `requirements.txt`.
+2. Unpack the compressed master Point-in-Time SQLite database (`dse.db.gz`).
+3. Audit the database against today's live exchange trading calendar (Asia/Dhaka).
+4. Fetch and backfill any missed trading sessions so price histories and indicators have **zero gaps**.
+5. Scrape real-time live prices across all ~395 DSE equities, live DSEX index levels, and official PSI disclosures.
+6. Present a complete live readiness dossier and portfolio mark-to-market status directly in your chat.
+
+#### Option B: From Command Line / Terminal (Without AI Agent)
 - **Windows (Double-Click or CMD)**:
   ```cmd
   ready.bat
@@ -40,12 +58,20 @@ cd stock_market_expert_bd
   chmod +x ready.sh
   ./ready.sh
   ```
-- **Direct Python on Any Platform**:
+- **Direct Python on Any OS**:
   ```bash
-  python scripts/bootstrap.py
+  python main.py ready
   ```
 
-#### What Bootstrap Does Automatically:
+#### Option C: Instant Live Market Sync (On Demand)
+Whenever you want to sync today's live prices, index values, and backfill intermediate dates without re-running bootstrap:
+```bash
+python main.py sync
+```
+
+---
+
+#### What Bootstrap Does Automatically Behind the Scenes:
 1. **Python Dependencies**: Verifies packages from `requirements.txt` (`requests`, `beautifulsoup4`, `lxml`, `matplotlib`, `pandas`, `bdshare`, `pdfplumber`). Auto-installs if missing.
 2. **Database Auto-Restoration**: Verifies `data/processed/dse.db`. On a fresh clone, automatically decompresses the master PIT archive (`dse.db.gz`, ~29 MB) into the full uncompressed database (138 MB, 1,093,326 historical price bars, 5,570 continuous trading sessions).
 3. **Configuration & Template Verification**: Validates 12-factor company registries, sector maps, and threshold manifests. Sets up clean private local user profile/portfolio templates.
