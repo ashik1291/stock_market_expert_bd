@@ -7,7 +7,7 @@
 [![Integrity Harness](https://img.shields.io/badge/integrity-9%2F9%20fails%3D0-brightgreen.svg)]()
 [![Forensic Risk Filter](https://img.shields.io/badge/risk%20filter-100%25%20validated-brightgreen.svg)]()
 [![Alpha Predictor](https://img.shields.io/badge/alpha%20trial-forward%20testing%20(N%3D22)-blue.svg)]()
-[![Repo Footprint](https://img.shields.io/badge/clone%20size-~35%20MB-blue.svg)]()
+[![Repo Footprint](https://img.shields.io/badge/clone%20download-~100%20MB-blue.svg)]()
 [![License](https://img.shields.io/badge/license-MIT-green.svg)]()
 
 `stock_market_expert_bd` is an institutional-grade algorithmic quantitative finance platform and autonomous financial advisor designed specifically for the Dhaka Stock Exchange (DSE) and Bangladesh capital markets.
@@ -37,11 +37,16 @@ In institutional quantitative finance, scientific honesty and statistical humili
 
 The entire system is packaged with a single-word self-healing bootstrap engine. Whether you are using an **AI Agentic Coding Assistant (Google Antigravity, Claude Code, Cursor, Codex)** or a **Standard CLI Terminal**, you can clone and launch immediately with 100% live and gap-free data.
 
-### 1. Clone the Repository (Ultra-Fast ~35 MB)
+### 1. Clone the Repository (~100 MB Git Transfer | ~72 MB Tree)
 ```bash
 git clone https://github.com/ashik1291/stock_market_expert_bd.git
 cd stock_market_expert_bd
 ```
+
+> 📦 **Storage Footprint**:
+> - **Git Clone Download**: **~100 MB** (Git packfile containing complete history + compressed master database `dse.db.gz`).
+> - **Checked-Out Working Tree**: **~72 MB** (Source code, configurations, reports, model weights, and `dse.db.gz`).
+> - **Post-Bootstrap Decompressed Database**: **~210 MB** (After `dse.db.gz` automatically expands into the full 140 MB SQLite WAL database `dse.db` with 1,093,326 continuous historical price bars).
 
 ### 2. Launching the App with Full Live & Updated Data
 
