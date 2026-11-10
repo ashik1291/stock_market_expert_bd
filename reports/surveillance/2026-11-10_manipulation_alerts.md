@@ -1,5 +1,5 @@
 # 🚨 DSE Market Surveillance & Forensic Anti-Manipulation Report
-**Market Date**: `2026-11-10` | **Generated**: `2026-11-10 19:49:38`
+**Market Date**: `2026-11-10` | **Generated**: `2026-11-10 20:37:58`
 **Surveillance Scope**: Full 395 Tickers | Volume Anomaly, Syndicate Corners, Speculative Pumps
 
 ### 🛡️ Executive Summary

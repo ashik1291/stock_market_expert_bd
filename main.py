@@ -8,6 +8,7 @@ Usage:
 Commands:
   ready         Bootstrap dependencies, verify database integrity, and ready system on this machine
   sync          Synchronize live market prices, backfill missed dates, and refresh readiness
+  pit-resolve   Cross-reference & verify Point-in-Time fundamentals with official DSE disclosures
   status        Check complete system health, macro bias, active alerts, and portfolio ledger
   config        Configure stock universe screening preference (Regular Stock vs Halal)
   best2         Run 12-factor Graham/Buffett screener and show Top 2 stocks per sector
@@ -235,6 +236,10 @@ def cmd_sync():
     run_script("live_market_sync.py")
 
 
+def cmd_pit_resolve():
+    run_script("pit_disclosure_resolver.py")
+
+
 def cmd_config():
     sys.path.insert(0, str(SCRIPTS_DIR))
     from user_manager import prompt_user_customization
@@ -263,6 +268,8 @@ def main():
         cmd_ready()
     elif cmd in ("sync", "live", "catchup"):
         cmd_sync()
+    elif cmd in ("pit-resolve", "pit", "resolve-pit"):
+        cmd_pit_resolve()
     elif cmd in ("status", "info"):
         cmd_status()
     elif cmd in ("config", "preference", "preferences", "custom"):
