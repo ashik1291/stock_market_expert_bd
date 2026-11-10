@@ -2,13 +2,13 @@
   "ticker": "SUMITPOWER",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-09T08:37:11.139894",
-  "asof_price_date": "2026-11-09",
+  "analyzed_at": "2026-11-10T13:49:48.951268",
+  "asof_price_date": "2026-11-10",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 72.765,
+    "rsi_14": 72.5303,
     "pe_ratio": 39.73684210526316,
     "debt_equity": 0.602
   },
@@ -23,18 +23,18 @@
     "short_term": {
       "predicted_path": "Upward momentum swing",
       "upside_potential_pct": "+4.2%",
-      "downside_risk_pct": "-2.4%",
+      "downside_risk_pct": "-3.0%",
       "target_price": 17.4,
-      "support_price": 16.3,
-      "risk_reward_ratio": "1.8x"
+      "support_price": 16.2,
+      "risk_reward_ratio": "1.4x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+6.6%",
+      "upside_potential_pct": "+7.2%",
       "downside_risk_pct": "-10.2%",
-      "target_price": 17.8,
+      "target_price": 17.9,
       "trailing_stop": 15.0,
-      "risk_reward_ratio": "0.6x"
+      "risk_reward_ratio": "0.7x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 16.7,
-    "stop_loss": 16.04,
-    "target": 18.02
+    "stop_loss": 15.96,
+    "target": 18.18
   },
   "precision": {
     "ticker": "SUMITPOWER",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 666098,
-      "daily_turnover_bdt_cr": 0.07,
+      "avg_daily_volume": 859018,
+      "daily_turnover_bdt_cr": 0.09,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 33304,
-      "max_daily_accumulation_shares": 99914,
-      "max_order_bdt": 33304.0,
-      "directive": "Max single order: 33,304 shares (Tk 33,304) to prevent >1% execution slippage"
+      "max_single_order_shares": 42950,
+      "max_daily_accumulation_shares": 128852,
+      "max_order_bdt": 42950.0,
+      "directive": "Max single order: 42,950 shares (Tk 42,950) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,16 +91,16 @@
   },
   "pattern_dna": {
     "ticker": "SUMITPOWER",
-    "audited_at": "2026-11-09 14:37:11",
+    "audited_at": "2026-11-10 19:49:48",
     "worth_vs_greed": {
       "current_price": 16.7,
       "intrinsic_worth": 4.08,
       "margin_of_safety_pct": -75.6,
-      "extension_froth_score": 50.0,
-      "greed_index": 50.0,
+      "extension_froth_score": 60.0,
+      "greed_index": 60.0,
       "rsi_14": 79.2,
-      "price_vs_ema50_pct": 7.1,
-      "price_vs_ema200_pct": 10.0,
+      "price_vs_ema50_pct": 6.8,
+      "price_vs_ema200_pct": 9.9,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f30.51, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
@@ -121,13 +121,13 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 7.74,
+          "return_pct": 9.15,
           "high": 17.0,
-          "low": 15.2,
-          "range_volatility_pct": 11.84
+          "low": 15.4,
+          "range_volatility_pct": 10.39
         },
         "monthly_21d": {
-          "return_pct": 11.33,
+          "return_pct": 7.74,
           "high": 17.0,
           "low": 15.1,
           "range_volatility_pct": 12.58
@@ -145,7 +145,7 @@
           "range_volatility_pct": 32.59
         },
         "yearly_252d": {
-          "return_pct": 18.44,
+          "return_pct": 15.97,
           "high": 17.9,
           "low": 12.0,
           "range_volatility_pct": 49.17
@@ -261,12 +261,12 @@
       "macd": "bullish_crossover",
       "sma_trend": "bullish",
       "bb": "at_upper_band_bearish",
-      "atr": 0.44,
+      "atr": 0.49,
       "rsi_value": 73.0,
       "last_close": 16.7,
-      "sma20": 15.53,
-      "sma50": 15.45,
-      "sma200": 14.77,
+      "sma20": 15.59,
+      "sma50": 15.47,
+      "sma200": 14.79,
       "support_resistance": {
         "supports": [
           13.6,
@@ -343,7 +343,7 @@
     "manipulation_risk": "low",
     "block_buy": false,
     "flags": [
-      "volume_spike: volume_9.2x_avg",
+      "volume_spike: volume_7.1x_avg",
       "price_surge_no_news: price_5.0pct_zero_news"
     ],
     "checks": {
@@ -351,15 +351,15 @@
         "flag": false,
         "price_chg": 0,
         "last_volume": 4168127,
-        "avg_volume": 583164.0,
+        "avg_volume": 707453.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": true,
-        "spike_ratio": 9.15,
-        "avg_volume": 455296.0,
+        "spike_ratio": 7.15,
+        "avg_volume": 583164.0,
         "today_volume": 4168127,
-        "detail": "volume_9.2x_avg"
+        "detail": "volume_7.1x_avg"
       },
       "serial_trading": {
         "flag": false,

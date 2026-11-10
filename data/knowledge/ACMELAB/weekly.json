@@ -2,13 +2,13 @@
   "ticker": "ACMELAB",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-09T08:37:09.922496",
-  "asof_price_date": "2026-11-09",
+  "analyzed_at": "2026-11-10T13:49:47.628316",
+  "asof_price_date": "2026-11-10",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 62.9162,
+    "rsi_14": 62.993,
     "pe_ratio": 6.7421602787456445,
     "debt_equity": 0.928
   },
@@ -22,19 +22,19 @@
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+2.0%",
+      "upside_potential_pct": "+2.1%",
       "downside_risk_pct": "-1.4%",
-      "target_price": 80.8,
+      "target_price": 80.9,
       "support_price": 78.1,
-      "risk_reward_ratio": "1.4x"
+      "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+5.1%",
+      "upside_potential_pct": "+4.4%",
       "downside_risk_pct": "-4.0%",
-      "target_price": 83.2,
+      "target_price": 82.7,
       "trailing_stop": 76.0,
-      "risk_reward_ratio": "1.3x"
+      "risk_reward_ratio": "1.1x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 79.2,
-    "stop_loss": 77.59,
-    "target": 82.42
+    "stop_loss": 77.51,
+    "target": 82.58
   },
   "precision": {
     "ticker": "ACMELAB",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 92171,
+      "avg_daily_volume": 110436,
       "daily_turnover_bdt_cr": 0.01,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 4608,
-      "max_daily_accumulation_shares": 13825,
-      "max_order_bdt": 4608.0,
-      "directive": "Max single order: 4,608 shares (Tk 4,608) to prevent >1% execution slippage"
+      "max_single_order_shares": 5521,
+      "max_daily_accumulation_shares": 16565,
+      "max_order_bdt": 5521.0,
+      "directive": "Max single order: 5,521 shares (Tk 5,521) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,13 +91,13 @@
   },
   "pattern_dna": {
     "ticker": "ACMELAB",
-    "audited_at": "2026-11-09 14:37:09",
+    "audited_at": "2026-11-10 19:49:47",
     "worth_vs_greed": {
       "current_price": 79.2,
       "intrinsic_worth": 26.4,
       "margin_of_safety_pct": -66.7,
-      "extension_froth_score": 20.0,
-      "greed_index": 20.0,
+      "extension_froth_score": 30.0,
+      "greed_index": 30.0,
       "rsi_14": 68.0,
       "price_vs_ema50_pct": 1.2,
       "price_vs_ema200_pct": 1.1,
@@ -121,10 +121,10 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 1.8,
+          "return_pct": 2.72,
           "high": 79.3,
-          "low": 76.9,
-          "range_volatility_pct": 3.12
+          "low": 77.0,
+          "range_volatility_pct": 2.99
         },
         "monthly_21d": {
           "return_pct": 2.19,
@@ -133,19 +133,19 @@
           "range_volatility_pct": 3.66
         },
         "quarterly_63d": {
-          "return_pct": -3.88,
+          "return_pct": -4.12,
           "high": 84.1,
           "low": 75.8,
           "range_volatility_pct": 10.95
         },
         "half_yearly_126d": {
-          "return_pct": 4.49,
+          "return_pct": 3.39,
           "high": 88.7,
           "low": 74.8,
           "range_volatility_pct": 18.58
         },
         "yearly_252d": {
-          "return_pct": 5.74,
+          "return_pct": 6.17,
           "high": 88.7,
           "low": 68.6,
           "range_volatility_pct": 29.3
@@ -261,12 +261,12 @@
       "macd": "bullish_crossover",
       "sma_trend": "bullish",
       "bb": "at_upper_band_bearish",
-      "atr": 1.07,
+      "atr": 1.13,
       "rsi_value": 63.57,
       "last_close": 79.2,
-      "sma20": 77.52,
+      "sma20": 77.61,
       "sma50": 77.84,
-      "sma200": 78.36,
+      "sma200": 78.39,
       "support_resistance": {
         "supports": [
           74.3,
@@ -344,22 +344,22 @@
     "manipulation_risk": "low",
     "block_buy": false,
     "flags": [
-      "volume_spike: volume_4.0x_avg"
+      "volume_spike: volume_3.6x_avg"
     ],
     "checks": {
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
         "last_volume": 368525,
-        "avg_volume": 101436.0,
+        "avg_volume": 111832.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": true,
-        "spike_ratio": 3.96,
-        "avg_volume": 93034.0,
+        "spike_ratio": 3.63,
+        "avg_volume": 101436.0,
         "today_volume": 368525,
-        "detail": "volume_4.0x_avg"
+        "detail": "volume_3.6x_avg"
       },
       "serial_trading": {
         "flag": false,

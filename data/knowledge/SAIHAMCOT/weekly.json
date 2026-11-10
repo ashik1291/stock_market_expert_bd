@@ -2,18 +2,18 @@
   "ticker": "SAIHAMCOT",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-09T08:37:12.173962",
-  "asof_price_date": "2026-11-09",
+  "analyzed_at": "2026-11-10T13:49:50.393333",
+  "asof_price_date": "2026-11-10",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 52.7844,
+    "rsi_14": 52.6454,
     "pe_ratio": 22.525252525252526,
     "debt_equity": 0.644
   },
   "signal": "HOLD",
-  "confidence": 57.63,
+  "confidence": 56.13,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 22.0,
-    "stop_loss": 20.82,
-    "target": 24.36
+    "stop_loss": 20.8,
+    "target": 24.4
   },
   "precision": {
     "ticker": "SAIHAMCOT",
@@ -72,7 +72,7 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 1580973,
+      "avg_daily_volume": 1643869,
       "daily_turnover_bdt_cr": 0.16,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
@@ -91,7 +91,7 @@
   },
   "pattern_dna": {
     "ticker": "SAIHAMCOT",
-    "audited_at": "2026-11-09 14:37:12",
+    "audited_at": "2026-11-10 19:49:50",
     "worth_vs_greed": {
       "current_price": 22.0,
       "intrinsic_worth": 2.48,
@@ -99,7 +99,7 @@
       "extension_froth_score": 30.0,
       "greed_index": 30.0,
       "rsi_14": 63.0,
-      "price_vs_ema50_pct": 0.9,
+      "price_vs_ema50_pct": 0.8,
       "price_vs_ema200_pct": 6.5,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f30.31, P/E: 0.0). Growth is fundamentally justified.",
@@ -121,31 +121,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 0.46,
+          "return_pct": 2.33,
           "high": 22.7,
-          "low": 21.1,
-          "range_volatility_pct": 7.58
+          "low": 21.3,
+          "range_volatility_pct": 6.57
         },
         "monthly_21d": {
-          "return_pct": -5.17,
+          "return_pct": 0.46,
           "high": 22.7,
           "low": 19.7,
           "range_volatility_pct": 15.23
         },
         "quarterly_63d": {
-          "return_pct": 0.0,
+          "return_pct": -0.9,
           "high": 26.8,
           "low": 19.7,
           "range_volatility_pct": 36.04
         },
         "half_yearly_126d": {
-          "return_pct": 2.8,
+          "return_pct": 3.77,
           "high": 26.8,
           "low": 18.6,
           "range_volatility_pct": 44.09
         },
         "yearly_252d": {
-          "return_pct": 37.5,
+          "return_pct": 38.36,
           "high": 26.8,
           "low": 15.4,
           "range_volatility_pct": 74.03
@@ -255,18 +255,18 @@
     ]
   },
   "technical": {
-    "score": 63.75,
+    "score": 56.25,
     "signals": {
       "rsi": "neutral",
-      "macd": "bullish_crossover",
+      "macd": "neutral",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 0.79,
+      "atr": 0.8,
       "rsi_value": 52.94,
       "last_close": 22.0,
-      "sma20": 21.22,
-      "sma50": 22.32,
-      "sma200": 20.73,
+      "sma20": 21.24,
+      "sma50": 22.31,
+      "sma200": 20.74,
       "support_resistance": {
         "supports": [
           17.9,
@@ -355,13 +355,13 @@
         "flag": false,
         "price_chg": 0,
         "last_volume": 2105404,
-        "avg_volume": 2465389.0,
+        "avg_volume": 2456370.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.83,
-        "avg_volume": 2532343.0,
+        "spike_ratio": 0.85,
+        "avg_volume": 2465389.0,
         "today_volume": 2105404,
         "detail": "ok"
       },
@@ -388,7 +388,7 @@
     }
   },
   "composite": {
-    "composite_score": 57.63,
+    "composite_score": 56.13,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

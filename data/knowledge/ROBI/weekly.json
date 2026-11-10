@@ -2,18 +2,18 @@
   "ticker": "ROBI",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-09T08:37:10.206652",
-  "asof_price_date": "2026-11-09",
+  "analyzed_at": "2026-11-10T13:49:47.962349",
+  "asof_price_date": "2026-11-10",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 59.1272,
+    "rsi_14": 59.1879,
     "pe_ratio": 16.59217877094972,
     "debt_equity": 0.0
   },
-  "signal": "HOLD",
-  "confidence": 59.53,
+  "signal": "HOLD_INELIGIBLE_DEFICIT",
+  "confidence": 60.78,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -22,19 +22,19 @@
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+2.3%",
+      "upside_potential_pct": "+2.6%",
       "downside_risk_pct": "-1.7%",
-      "target_price": 31.0,
+      "target_price": 31.1,
       "support_price": 29.8,
-      "risk_reward_ratio": "1.4x"
+      "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+5.0%",
+      "upside_potential_pct": "+4.3%",
       "downside_risk_pct": "-4.3%",
-      "target_price": 31.8,
+      "target_price": 31.6,
       "trailing_stop": 29.0,
-      "risk_reward_ratio": "1.2x"
+      "risk_reward_ratio": "1.0x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 30.3,
-    "stop_loss": 29.57,
-    "target": 31.76
+    "stop_loss": 29.52,
+    "target": 31.86
   },
   "precision": {
     "ticker": "ROBI",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 563888,
+      "avg_daily_volume": 616153,
       "daily_turnover_bdt_cr": 0.06,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 28194,
-      "max_daily_accumulation_shares": 84583,
-      "max_order_bdt": 28194.0,
-      "directive": "Max single order: 28,194 shares (Tk 28,194) to prevent >1% execution slippage"
+      "max_single_order_shares": 30807,
+      "max_daily_accumulation_shares": 92422,
+      "max_order_bdt": 30807.0,
+      "directive": "Max single order: 30,807 shares (Tk 30,807) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,7 +91,7 @@
   },
   "pattern_dna": {
     "ticker": "ROBI",
-    "audited_at": "2026-11-09 14:37:10",
+    "audited_at": "2026-11-10 19:49:47",
     "worth_vs_greed": {
       "current_price": 30.3,
       "intrinsic_worth": 3.84,
@@ -121,31 +121,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 2.36,
+          "return_pct": 4.48,
           "high": 30.5,
           "low": 28.8,
           "range_volatility_pct": 5.9
         },
         "monthly_21d": {
-          "return_pct": 1.34,
+          "return_pct": 1.68,
           "high": 30.5,
           "low": 28.8,
           "range_volatility_pct": 5.9
         },
         "quarterly_63d": {
-          "return_pct": -4.42,
+          "return_pct": -4.11,
           "high": 33.2,
           "low": 28.8,
           "range_volatility_pct": 15.28
         },
         "half_yearly_126d": {
-          "return_pct": 1.0,
+          "return_pct": 2.02,
           "high": 33.9,
           "low": 28.4,
           "range_volatility_pct": 19.37
         },
         "yearly_252d": {
-          "return_pct": 4.12,
+          "return_pct": 2.02,
           "high": 33.9,
           "low": 26.7,
           "range_volatility_pct": 26.97
@@ -255,17 +255,17 @@
     ]
   },
   "technical": {
-    "score": 56.25,
+    "score": 62.5,
     "signals": {
       "rsi": "neutral",
       "macd": "bullish_crossover",
       "sma_trend": "bullish",
-      "bb": "at_upper_band_bearish",
-      "atr": 0.49,
+      "bb": "inside_bands",
+      "atr": 0.52,
       "rsi_value": 59.41,
       "last_close": 30.3,
-      "sma20": 29.69,
-      "sma50": 29.89,
+      "sma20": 29.71,
+      "sma50": 29.88,
       "sma200": 30.47,
       "support_resistance": {
         "supports": [
@@ -348,13 +348,13 @@
         "flag": false,
         "price_chg": 0,
         "last_volume": 1083008,
-        "avg_volume": 601214.0,
+        "avg_volume": 607123.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.86,
-        "avg_volume": 581563.0,
+        "spike_ratio": 1.8,
+        "avg_volume": 601214.0,
         "today_volume": 1083008,
         "detail": "ok"
       },
@@ -381,7 +381,7 @@
     }
   },
   "composite": {
-    "composite_score": 59.53,
+    "composite_score": 60.78,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

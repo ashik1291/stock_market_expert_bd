@@ -2,13 +2,13 @@
   "ticker": "DELTALIFE",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-09T08:37:12.480792",
-  "asof_price_date": "2026-11-09",
+  "analyzed_at": "2026-11-10T13:49:50.664986",
+  "asof_price_date": "2026-11-10",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 39.571,
+    "rsi_14": 40.0903,
     "pe_ratio": 0.0,
     "debt_equity": null
   },
@@ -30,11 +30,11 @@
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+18.3%",
+      "upside_potential_pct": "+14.9%",
       "downside_risk_pct": "-3.1%",
-      "target_price": 80.0,
+      "target_price": 77.7,
       "trailing_stop": 65.5,
-      "risk_reward_ratio": "5.9x"
+      "risk_reward_ratio": "4.8x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 67.6,
-    "stop_loss": 65.52,
-    "target": 71.76
+    "stop_loss": 65.54,
+    "target": 71.72
   },
   "precision": {
     "ticker": "DELTALIFE",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 36510,
+      "avg_daily_volume": 41352,
       "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 1825,
-      "max_daily_accumulation_shares": 5476,
-      "max_order_bdt": 1825.0,
-      "directive": "Max single order: 1,825 shares (Tk 1,825) to prevent >1% execution slippage"
+      "max_single_order_shares": 2067,
+      "max_daily_accumulation_shares": 6202,
+      "max_order_bdt": 2067.0,
+      "directive": "Max single order: 2,067 shares (Tk 2,067) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,7 +91,7 @@
   },
   "pattern_dna": {
     "ticker": "DELTALIFE",
-    "audited_at": "2026-11-09 14:37:12",
+    "audited_at": "2026-11-10 19:49:50",
     "worth_vs_greed": {
       "current_price": 67.6,
       "intrinsic_worth": 33.8,
@@ -99,7 +99,7 @@
       "extension_froth_score": 10.0,
       "greed_index": 10.0,
       "rsi_14": 39.7,
-      "price_vs_ema50_pct": -4.4,
+      "price_vs_ema50_pct": -4.2,
       "price_vs_ema200_pct": -8.7,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
@@ -121,31 +121,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 0.3,
+          "return_pct": -0.29,
           "high": 69.5,
           "low": 66.9,
           "range_volatility_pct": 3.89
         },
         "monthly_21d": {
-          "return_pct": -2.59,
+          "return_pct": -1.02,
           "high": 70.3,
           "low": 66.9,
           "range_volatility_pct": 5.08
         },
         "quarterly_63d": {
-          "return_pct": -16.44,
+          "return_pct": -17.26,
           "high": 83.8,
           "low": 66.9,
           "range_volatility_pct": 25.26
         },
         "half_yearly_126d": {
-          "return_pct": -11.05,
+          "return_pct": -9.75,
           "high": 89.9,
           "low": 66.9,
           "range_volatility_pct": 34.38
         },
         "yearly_252d": {
-          "return_pct": -10.23,
+          "return_pct": -9.38,
           "high": 89.9,
           "low": 60.8,
           "range_volatility_pct": 47.86
@@ -261,14 +261,15 @@
       "macd": "neutral",
       "sma_trend": "neutral",
       "bb": "inside_bands",
-      "atr": 1.39,
+      "atr": 1.37,
       "rsi_value": 40.05,
       "last_close": 67.6,
-      "sma20": 68.15,
-      "sma50": 70.52,
-      "sma200": 74.7,
+      "sma20": 68.17,
+      "sma50": 70.35,
+      "sma200": 74.69,
       "support_resistance": {
         "supports": [
+          67.1,
           67.7
         ],
         "resistances": [
@@ -279,6 +280,7 @@
     },
     "sr": {
       "supports": [
+        67.1,
         67.7
       ],
       "resistances": [
@@ -338,13 +340,13 @@
         "flag": false,
         "price_chg": 0,
         "last_volume": 101529,
-        "avg_volume": 42097.0,
+        "avg_volume": 43157.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 2.43,
-        "avg_volume": 41716.0,
+        "spike_ratio": 2.41,
+        "avg_volume": 42097.0,
         "today_volume": 101529,
         "detail": "ok"
       },

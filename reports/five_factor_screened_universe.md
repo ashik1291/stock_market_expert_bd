@@ -1,5 +1,5 @@
 # DSE 5-Filter Quantitative Fundamental & Value Screening Report
-**As of Market Date**: `2026-11-09` | **Generated**: `2026-11-09 14:37:24`
+**As of Market Date**: `2026-11-10` | **Generated**: `2026-11-10 19:50:01`
 
 ## Core 5-Filter Mandate (Strict Capital Preservation)
 1. **Operating Cash Flow Quality** ($CFO / \text{Net Profit} \ge 0.80$): Rejects paper profit fraud traps.

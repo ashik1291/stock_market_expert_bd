@@ -2,13 +2,13 @@
   "ticker": "MEGHNACEM",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-09T08:37:10.746873",
-  "asof_price_date": "2026-11-09",
+  "analyzed_at": "2026-11-10T13:49:48.495070",
+  "asof_price_date": "2026-11-10",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 50.0588,
+    "rsi_14": 50.1178,
     "pe_ratio": 0.0,
     "debt_equity": 10.733
   },
@@ -22,17 +22,17 @@
     "momentum_status": "Bearish Breakdown / Selling Pressure",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+8.2%",
+      "upside_potential_pct": "+7.8%",
       "downside_risk_pct": "-5.3%",
-      "target_price": 30.5,
+      "target_price": 30.4,
       "support_price": 26.7,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+13.5%",
+      "upside_potential_pct": "+13.1%",
       "downside_risk_pct": "-8.2%",
-      "target_price": 32.0,
+      "target_price": 31.9,
       "trailing_stop": 25.9,
       "risk_reward_ratio": "1.6x"
     },
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 28.2,
-    "stop_loss": 25.89,
-    "target": 32.82
+    "stop_loss": 25.95,
+    "target": 32.7
   },
   "precision": {
     "ticker": "MEGHNACEM",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 4860,
+      "avg_daily_volume": 5114,
       "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 243,
-      "max_daily_accumulation_shares": 729,
-      "max_order_bdt": 243.0,
-      "directive": "Max single order: 243 shares (Tk 243) to prevent >1% execution slippage"
+      "max_single_order_shares": 255,
+      "max_daily_accumulation_shares": 767,
+      "max_order_bdt": 255.0,
+      "directive": "Max single order: 255 shares (Tk 255) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,7 +91,7 @@
   },
   "pattern_dna": {
     "ticker": "MEGHNACEM",
-    "audited_at": "2026-11-09 14:37:10",
+    "audited_at": "2026-11-10 19:49:48",
     "worth_vs_greed": {
       "current_price": 28.2,
       "intrinsic_worth": 14.1,
@@ -100,7 +100,7 @@
       "greed_index": 40.0,
       "rsi_14": 48.3,
       "price_vs_ema50_pct": -1.8,
-      "price_vs_ema200_pct": -11.1,
+      "price_vs_ema200_pct": -11.0,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -122,34 +122,34 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -0.7,
-          "high": 29.1,
+          "return_pct": 4.06,
+          "high": 29.0,
           "low": 26.3,
-          "range_volatility_pct": 10.65
+          "range_volatility_pct": 10.27
         },
         "monthly_21d": {
-          "return_pct": 0.0,
+          "return_pct": 0.71,
           "high": 30.3,
           "low": 25.6,
           "range_volatility_pct": 18.36
         },
         "quarterly_63d": {
-          "return_pct": -11.6,
+          "return_pct": -10.76,
           "high": 32.7,
           "low": 25.6,
           "range_volatility_pct": 27.73
         },
         "half_yearly_126d": {
-          "return_pct": -6.62,
+          "return_pct": -8.74,
           "high": 35.8,
           "low": 25.6,
           "range_volatility_pct": 39.84
         },
         "yearly_252d": {
-          "return_pct": -34.72,
-          "high": 44.5,
+          "return_pct": -32.21,
+          "high": 44.2,
           "low": 25.6,
-          "range_volatility_pct": 73.83
+          "range_volatility_pct": 72.66
         }
       },
       "wave_metrics": {
@@ -262,11 +262,11 @@
       "macd": "bullish_crossover",
       "sma_trend": "neutral",
       "bb": "inside_bands",
-      "atr": 1.54,
+      "atr": 1.5,
       "rsi_value": 50.3,
       "last_close": 28.2,
-      "sma20": 28.01,
-      "sma50": 28.67,
+      "sma20": 28.04,
+      "sma50": 28.64,
       "sma200": 31.06,
       "support_resistance": {
         "supports": [
@@ -349,13 +349,13 @@
         "flag": false,
         "price_chg": 0,
         "last_volume": 7972,
-        "avg_volume": 5049.0,
+        "avg_volume": 5187.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.63,
-        "avg_volume": 4885.0,
+        "spike_ratio": 1.58,
+        "avg_volume": 5049.0,
         "today_volume": 7972,
         "detail": "ok"
       },

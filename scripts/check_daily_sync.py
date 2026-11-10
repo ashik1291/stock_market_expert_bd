@@ -34,42 +34,15 @@ def run_script_silent(script_name: str, args: list = None, async_proc: bool = Fa
         return False
 
 def auto_sync_if_needed():
-    now = datetime.datetime.now()
-    today_str = now.strftime("%Y-%m-%d")
-    weekday = now.weekday()  # 0=Mon, 1=Tue, 2=Wed, 3=Thu, 4=Fri, 5=Sat, 6=Sun
-    # DSE standard trading days: Sunday (6) through Thursday (3). Friday and Saturday closed.
-    is_trading_day = weekday in (6, 0, 1, 2, 3)
-    market_closed_today = now.hour >= 16 or (now.hour == 15 and now.minute >= 30)
-
-    # 1. Check prices DB and trading calendar
-    latest_price_date = None
-    is_calendar_holiday = False
-    if DB_PATH.exists():
-        try:
-            conn = sqlite3.connect(DB_PATH, timeout=30.0)
-            conn.execute("PRAGMA busy_timeout = 30000;")
-            cur = conn.cursor()
-            row = cur.execute("SELECT MAX(date) FROM prices").fetchone()
-            if row and row[0]:
-                latest_price_date = row[0]
-            # Check calendar for official exchange holiday
-            cal_row = cur.execute("SELECT is_trading_day FROM trading_calendar WHERE date = ?", (today_str,)).fetchone()
-            if cal_row and cal_row[0] == 0:
-                is_calendar_holiday = True
-            conn.close()
-        except Exception:
-            pass
-
-    # Check if we need to run daily alpha (skip if market holiday)
-    needs_alpha = False
-    if is_trading_day and not is_calendar_holiday and market_closed_today and latest_price_date != today_str:
-        needs_alpha = True
-    elif latest_price_date is None:
-        needs_alpha = True
-
-    if needs_alpha:
-        # Run daily alpha silently
-        run_script_silent("auto_daily_alpha_routine.py")
+    # 1. Live market synchronization & gap backfilling
+    try:
+        sys.path.insert(0, str(SCRIPTS_DIR))
+        from live_market_sync import get_sync_status, sync_live_market
+        status = get_sync_status()
+        if status.get("is_stale"):
+            sync_live_market(verbose=False)
+    except Exception as e:
+        pass
 
     # 2. Check if fundamentals are older than 7 days
     latest_fund_date = None

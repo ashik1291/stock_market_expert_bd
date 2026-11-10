@@ -2,13 +2,13 @@
   "ticker": "PADMAOIL",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-09T08:37:10.987301",
-  "asof_price_date": "2026-11-09",
+  "analyzed_at": "2026-11-10T13:49:48.752168",
+  "asof_price_date": "2026-11-10",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": 39.4058,
     "is_eligible": true,
-    "rsi_14": 51.6904,
+    "rsi_14": 51.7955,
     "pe_ratio": 3.3961605584642234,
     "debt_equity": 0.007
   },
@@ -24,17 +24,17 @@
       "predicted_path": "Upward momentum swing",
       "upside_potential_pct": "+1.6%",
       "downside_risk_pct": "-1.1%",
-      "target_price": 199.7,
+      "target_price": 199.8,
       "support_price": 194.5,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+2.6%",
+      "upside_potential_pct": "+2.7%",
       "downside_risk_pct": "-2.5%",
-      "target_price": 201.7,
+      "target_price": 201.9,
       "trailing_stop": 191.6,
-      "risk_reward_ratio": "1.0x"
+      "risk_reward_ratio": "1.1x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 196.6,
-    "stop_loss": 193.53,
-    "target": 202.74
+    "stop_loss": 193.42,
+    "target": 202.96
   },
   "precision": {
     "ticker": "PADMAOIL",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 23730,
+      "avg_daily_volume": 25987,
       "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 1186,
-      "max_daily_accumulation_shares": 3559,
-      "max_order_bdt": 1186.0,
-      "directive": "Max single order: 1,186 shares (Tk 1,186) to prevent >1% execution slippage"
+      "max_single_order_shares": 1299,
+      "max_daily_accumulation_shares": 3898,
+      "max_order_bdt": 1299.0,
+      "directive": "Max single order: 1,299 shares (Tk 1,299) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,7 +91,7 @@
   },
   "pattern_dna": {
     "ticker": "PADMAOIL",
-    "audited_at": "2026-11-09 14:37:10",
+    "audited_at": "2026-11-10 19:49:48",
     "worth_vs_greed": {
       "current_price": 196.6,
       "intrinsic_worth": 107.68,
@@ -100,7 +100,7 @@
       "greed_index": 40.0,
       "rsi_14": 57.6,
       "price_vs_ema50_pct": 0.5,
-      "price_vs_ema200_pct": 3.3,
+      "price_vs_ema200_pct": 3.2,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f313.46, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
@@ -121,19 +121,19 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -0.05,
+          "return_pct": -0.96,
           "high": 200.3,
           "low": 195.0,
           "range_volatility_pct": 2.72
         },
         "monthly_21d": {
-          "return_pct": 0.25,
+          "return_pct": 0.61,
           "high": 200.3,
           "low": 192.5,
           "range_volatility_pct": 4.05
         },
         "quarterly_63d": {
-          "return_pct": -1.9,
+          "return_pct": -1.99,
           "high": 201.4,
           "low": 191.3,
           "range_volatility_pct": 5.28
@@ -145,7 +145,7 @@
           "range_volatility_pct": 18.79
         },
         "yearly_252d": {
-          "return_pct": 1.03,
+          "return_pct": 0.82,
           "high": 205.5,
           "low": 163.8,
           "range_volatility_pct": 25.46
@@ -261,12 +261,12 @@
       "macd": "neutral",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 2.05,
+      "atr": 2.12,
       "rsi_value": 52.01,
       "last_close": 196.6,
-      "sma20": 195.93,
-      "sma50": 194.91,
-      "sma200": 185.98,
+      "sma20": 196.03,
+      "sma50": 194.95,
+      "sma200": 186.12,
       "support_resistance": {
         "supports": [
           173.1,
@@ -349,13 +349,13 @@
         "flag": false,
         "price_chg": 0,
         "last_volume": 45785,
-        "avg_volume": 20972.0,
+        "avg_volume": 21748.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 2.3,
-        "avg_volume": 19923.0,
+        "spike_ratio": 2.18,
+        "avg_volume": 20972.0,
         "today_volume": 45785,
         "detail": "ok"
       },

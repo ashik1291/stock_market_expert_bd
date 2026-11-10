@@ -2,13 +2,13 @@
   "ticker": "ENVOYTEX",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-09T08:37:11.896403",
-  "asof_price_date": "2026-11-09",
+  "analyzed_at": "2026-11-10T13:49:50.044498",
+  "asof_price_date": "2026-11-10",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 69.3721,
+    "rsi_14": 69.402,
     "pe_ratio": 8.511904761904761,
     "debt_equity": 1.063
   },
@@ -22,17 +22,17 @@
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+6.0%",
-      "downside_risk_pct": "-3.9%",
-      "target_price": 86.8,
-      "support_price": 78.7,
+      "upside_potential_pct": "+6.1%",
+      "downside_risk_pct": "-4.0%",
+      "target_price": 86.9,
+      "support_price": 78.6,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+9.9%",
+      "upside_potential_pct": "+10.1%",
       "downside_risk_pct": "-10.0%",
-      "target_price": 90.0,
+      "target_price": 90.2,
       "trailing_stop": 73.7,
       "risk_reward_ratio": "1.0x"
     },
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 81.9,
-    "stop_loss": 77.04,
-    "target": 91.62
+    "stop_loss": 76.91,
+    "target": 91.88
   },
   "precision": {
     "ticker": "ENVOYTEX",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 999137,
-      "daily_turnover_bdt_cr": 0.1,
+      "avg_daily_volume": 1096853,
+      "daily_turnover_bdt_cr": 0.11,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 49956,
-      "max_daily_accumulation_shares": 149870,
-      "max_order_bdt": 49956.0,
-      "directive": "Max single order: 49,956 shares (Tk 49,956) to prevent >1% execution slippage"
+      "max_single_order_shares": 50000,
+      "max_daily_accumulation_shares": 150000,
+      "max_order_bdt": 50000.0,
+      "directive": "Max single order: 50,000 shares (Tk 50,000) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,16 +91,16 @@
   },
   "pattern_dna": {
     "ticker": "ENVOYTEX",
-    "audited_at": "2026-11-09 14:37:11",
+    "audited_at": "2026-11-10 19:49:50",
     "worth_vs_greed": {
       "current_price": 81.9,
       "intrinsic_worth": 12.32,
       "margin_of_safety_pct": -85.0,
-      "extension_froth_score": 50.0,
-      "greed_index": 50.0,
+      "extension_froth_score": 60.0,
+      "greed_index": 60.0,
       "rsi_14": 74.9,
-      "price_vs_ema50_pct": 15.7,
-      "price_vs_ema200_pct": 36.9,
+      "price_vs_ema50_pct": 14.9,
+      "price_vs_ema200_pct": 36.4,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f31.54, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
@@ -121,31 +121,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 11.89,
+          "return_pct": 1.87,
           "high": 87.2,
-          "low": 73.5,
-          "range_volatility_pct": 18.64
+          "low": 78.6,
+          "range_volatility_pct": 10.94
         },
         "monthly_21d": {
-          "return_pct": 13.12,
+          "return_pct": 16.83,
           "high": 87.2,
           "low": 66.5,
           "range_volatility_pct": 31.13
         },
         "quarterly_63d": {
-          "return_pct": 49.45,
+          "return_pct": 46.51,
           "high": 87.2,
           "low": 51.8,
           "range_volatility_pct": 68.34
         },
         "half_yearly_126d": {
-          "return_pct": 67.48,
+          "return_pct": 67.14,
           "high": 87.2,
           "low": 47.5,
           "range_volatility_pct": 83.58
         },
         "yearly_252d": {
-          "return_pct": 51.39,
+          "return_pct": 50.83,
           "high": 87.2,
           "low": 42.9,
           "range_volatility_pct": 103.26
@@ -261,12 +261,12 @@
       "macd": "neutral",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 3.24,
+      "atr": 3.33,
       "rsi_value": 69.28,
       "last_close": 81.9,
-      "sma20": 73.23,
-      "sma50": 71.08,
-      "sma200": 57.03,
+      "sma20": 73.87,
+      "sma50": 71.54,
+      "sma200": 57.18,
       "support_resistance": {
         "supports": [
           47.5,
@@ -353,13 +353,13 @@
         "flag": false,
         "price_chg": 0,
         "last_volume": 2157235,
-        "avg_volume": 1204679.0,
+        "avg_volume": 1188929.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.78,
-        "avg_volume": 1214492.0,
+        "spike_ratio": 1.79,
+        "avg_volume": 1204679.0,
         "today_volume": 2157235,
         "detail": "ok"
       },

@@ -105,7 +105,8 @@ def build_or_load_empirical_calibration_table(force_refresh: bool = False) -> Di
                         bins[bin_k]["k_success"] += 1
 
                     # Record probability for Brier calculation
-                    prob = float(r.get("confidence_prob_pct", 50.0)) / 100.0
+                    p_val = r.get("confidence_prob_pct")
+                    prob = (float(p_val) / 100.0) if p_val is not None else 0.50
                     brier_records.append((prob, is_win))
 
         # Also populate broader macro / factor baseline bins from 87-period walk-forward

@@ -2,13 +2,13 @@
   "ticker": "HEIDELBCEM",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-09T08:37:10.550930",
-  "asof_price_date": "2026-11-09",
+  "analyzed_at": "2026-11-10T13:49:48.330333",
+  "asof_price_date": "2026-11-10",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 32.2722,
+    "rsi_14": 32.0455,
     "pe_ratio": 57.605633802816904,
     "debt_equity": 0.0
   },
@@ -22,33 +22,33 @@
     "momentum_status": "Bullish Momentum / Upward Bias",
     "short_term": {
       "predicted_path": "Oversold bounce to 20-DMA",
-      "upside_potential_pct": "+3.4%",
-      "downside_risk_pct": "-2.3%",
-      "target_price": 197.3,
-      "support_price": 186.6,
+      "upside_potential_pct": "+3.3%",
+      "downside_risk_pct": "-2.2%",
+      "target_price": 197.2,
+      "support_price": 186.7,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
       "upside_potential_pct": "+18.1%",
-      "downside_risk_pct": "-3.4%",
+      "downside_risk_pct": "-3.3%",
       "target_price": 225.5,
-      "trailing_stop": 184.5,
-      "risk_reward_ratio": "5.3x"
+      "trailing_stop": 184.6,
+      "risk_reward_ratio": "5.5x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.0%",
-      "downside_risk_pct": "-6.1%",
+      "downside_risk_pct": "-5.9%",
       "target_price": 248.2,
       "dividend_cagr": "moderate (0.51%)",
-      "risk_reward_ratio": "4.9x"
+      "risk_reward_ratio": "5.1x"
     }
   },
   "trade_levels": {
     "entry": 190.9,
-    "stop_loss": 184.5,
-    "target": 203.7
+    "stop_loss": 184.62,
+    "target": 203.46
   },
   "precision": {
     "ticker": "HEIDELBCEM",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 4071,
+      "avg_daily_volume": 4033,
       "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 203,
-      "max_daily_accumulation_shares": 610,
-      "max_order_bdt": 203.0,
-      "directive": "Max single order: 203 shares (Tk 203) to prevent >1% execution slippage"
+      "max_single_order_shares": 201,
+      "max_daily_accumulation_shares": 605,
+      "max_order_bdt": 201.0,
+      "directive": "Max single order: 201 shares (Tk 201) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,7 +91,7 @@
   },
   "pattern_dna": {
     "ticker": "HEIDELBCEM",
-    "audited_at": "2026-11-09 14:37:10",
+    "audited_at": "2026-11-10 19:49:48",
     "worth_vs_greed": {
       "current_price": 190.9,
       "intrinsic_worth": 95.45,
@@ -99,8 +99,8 @@
       "extension_froth_score": 20.0,
       "greed_index": 20.0,
       "rsi_14": 23.8,
-      "price_vs_ema50_pct": -6.5,
-      "price_vs_ema200_pct": -12.3,
+      "price_vs_ema50_pct": -6.3,
+      "price_vs_ema200_pct": -12.2,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -121,31 +121,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 1.01,
+          "return_pct": 0.42,
           "high": 196.5,
-          "low": 188.0,
-          "range_volatility_pct": 4.52
+          "low": 189.9,
+          "range_volatility_pct": 3.48
         },
         "monthly_21d": {
-          "return_pct": -7.69,
+          "return_pct": -7.38,
           "high": 208.0,
           "low": 188.0,
           "range_volatility_pct": 10.64
         },
         "quarterly_63d": {
-          "return_pct": -12.99,
+          "return_pct": -12.71,
           "high": 229.0,
           "low": 188.0,
           "range_volatility_pct": 21.81
         },
         "half_yearly_126d": {
-          "return_pct": -6.65,
+          "return_pct": -6.88,
           "high": 272.7,
           "low": 188.0,
           "range_volatility_pct": 45.05
         },
         "yearly_252d": {
-          "return_pct": -16.71,
+          "return_pct": -16.42,
           "high": 272.7,
           "low": 188.0,
           "range_volatility_pct": 45.05
@@ -261,12 +261,12 @@
       "macd": "neutral",
       "sma_trend": "neutral",
       "bb": "inside_bands",
-      "atr": 4.27,
+      "atr": 4.19,
       "rsi_value": 32.66,
       "last_close": 190.9,
-      "sma20": 198.4,
-      "sma50": 204.5,
-      "sma200": 221.08,
+      "sma20": 197.74,
+      "sma50": 204.08,
+      "sma200": 220.95,
       "support_resistance": {
         "supports": [
           197.7,
@@ -353,13 +353,13 @@
         "flag": false,
         "price_chg": 0,
         "last_volume": 1884,
-        "avg_volume": 3985.0,
+        "avg_volume": 3898.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
         "spike_ratio": 0.47,
-        "avg_volume": 3980.0,
+        "avg_volume": 3985.0,
         "today_volume": 1884,
         "detail": "ok"
       },

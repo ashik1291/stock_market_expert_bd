@@ -125,7 +125,11 @@ NEWS_SOURCES = [
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
 def today_str() -> str:
-    return datetime.date.today().isoformat()
+    try:
+        from constants import get_dhaka_today_str
+        return get_dhaka_today_str()
+    except Exception:
+        return datetime.date.today().isoformat()
 
 
 def save_raw(category: str, data: dict | list, date_str: str = None):
@@ -847,12 +851,34 @@ def run_full_scrape(tickers: list[str] = None, historical_years: int = 5):
 
 def is_dse_trading_day(target_date: datetime.date | None = None) -> tuple[bool, str]:
     if target_date is None:
-        target_date = datetime.date.today()
+        try:
+            from constants import get_dhaka_date
+            target_date = get_dhaka_date()
+        except Exception:
+            target_date = datetime.date.today()
     wd = target_date.weekday()
     if wd == 4:
         return False, "Friday (Weekend) — DSE closed"
     if wd == 5:
         return False, "Saturday (Weekend) — DSE closed"
+
+    # Check trading_calendar in database for declared public holidays
+    try:
+        import sqlite3
+        db_path = BASE_DIR / "data" / "processed" / "dse.db"
+        if db_path.exists():
+            conn = sqlite3.connect(db_path, timeout=5.0)
+            row = conn.execute(
+                "SELECT is_trading_day, session_type, notes FROM trading_calendar WHERE date = ?",
+                (target_date.isoformat(),)
+            ).fetchone()
+            conn.close()
+            if row is not None and row[0] == 0:
+                reason = row[2] or row[1] or "Exchange Closed"
+                return False, f"Exchange Holiday ({reason}) — DSE closed"
+    except Exception:
+        pass
+
     return True, "Active Trading Day"
 
 

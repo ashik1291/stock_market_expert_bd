@@ -2,18 +2,18 @@
   "ticker": "BDCOM",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-09T08:37:10.379490",
-  "asof_price_date": "2026-11-09",
+  "analyzed_at": "2026-11-10T13:49:48.139602",
+  "asof_price_date": "2026-11-10",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 62.8133,
+    "rsi_14": 62.9713,
     "pe_ratio": 30.232558139534884,
     "debt_equity": 0.109
   },
   "signal": "HOLD_INELIGIBLE_DEFICIT",
-  "confidence": 61.8,
+  "confidence": 63.05,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -22,19 +22,19 @@
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+4.8%",
-      "downside_risk_pct": "-3.1%",
-      "target_price": 30.4,
-      "support_price": 28.1,
+      "upside_potential_pct": "+5.2%",
+      "downside_risk_pct": "-3.4%",
+      "target_price": 30.5,
+      "support_price": 28.0,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+12.8%",
+      "upside_potential_pct": "+10.3%",
       "downside_risk_pct": "-10.0%",
-      "target_price": 32.7,
+      "target_price": 32.0,
       "trailing_stop": 26.1,
-      "risk_reward_ratio": "1.3x"
+      "risk_reward_ratio": "1.0x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 29.0,
-    "stop_loss": 27.57,
-    "target": 31.86
+    "stop_loss": 27.52,
+    "target": 31.96
   },
   "precision": {
     "ticker": "BDCOM",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 262160,
+      "avg_daily_volume": 329830,
       "daily_turnover_bdt_cr": 0.03,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 13108,
-      "max_daily_accumulation_shares": 39324,
-      "max_order_bdt": 13108.0,
-      "directive": "Max single order: 13,108 shares (Tk 13,108) to prevent >1% execution slippage"
+      "max_single_order_shares": 16491,
+      "max_daily_accumulation_shares": 49474,
+      "max_order_bdt": 16491.0,
+      "directive": "Max single order: 16,491 shares (Tk 16,491) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,7 +91,7 @@
   },
   "pattern_dna": {
     "ticker": "BDCOM",
-    "audited_at": "2026-11-09 14:37:10",
+    "audited_at": "2026-11-10 19:49:48",
     "worth_vs_greed": {
       "current_price": 29.0,
       "intrinsic_worth": 0.24,
@@ -99,7 +99,7 @@
       "extension_froth_score": 40.0,
       "greed_index": 40.0,
       "rsi_14": 73.4,
-      "price_vs_ema50_pct": 3.9,
+      "price_vs_ema50_pct": 3.7,
       "price_vs_ema200_pct": 1.5,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f30.03, P/E: 0.0). Growth is fundamentally justified.",
@@ -121,13 +121,13 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 5.84,
+          "return_pct": 7.41,
           "high": 29.2,
-          "low": 26.8,
-          "range_volatility_pct": 8.96
+          "low": 27.3,
+          "range_volatility_pct": 6.96
         },
         "monthly_21d": {
-          "return_pct": 7.01,
+          "return_pct": 9.02,
           "high": 29.2,
           "low": 24.9,
           "range_volatility_pct": 17.27
@@ -139,13 +139,13 @@
           "range_volatility_pct": 34.94
         },
         "half_yearly_126d": {
-          "return_pct": 1.75,
+          "return_pct": 2.84,
           "high": 36.8,
           "low": 24.9,
           "range_volatility_pct": 47.79
         },
         "yearly_252d": {
-          "return_pct": 16.94,
+          "return_pct": 20.83,
           "high": 36.8,
           "low": 22.5,
           "range_volatility_pct": 63.56
@@ -255,18 +255,18 @@
     ]
   },
   "technical": {
-    "score": 60.0,
+    "score": 66.25,
     "signals": {
       "rsi": "neutral",
       "macd": "bullish_crossover",
       "sma_trend": "bullish",
-      "bb": "at_upper_band_bearish",
-      "atr": 0.95,
+      "bb": "inside_bands",
+      "atr": 0.99,
       "rsi_value": 63.25,
       "last_close": 29.0,
-      "sma20": 26.6,
+      "sma20": 26.74,
       "sma50": 27.73,
-      "sma200": 28.88,
+      "sma200": 28.89,
       "support_resistance": {
         "supports": [
           24.6,
@@ -347,22 +347,22 @@
     "manipulation_risk": "low",
     "block_buy": false,
     "flags": [
-      "volume_spike: volume_6.5x_avg"
+      "volume_spike: volume_5.6x_avg"
     ],
     "checks": {
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
         "last_volume": 1396023,
-        "avg_volume": 249089.0,
+        "avg_volume": 289219.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": true,
-        "spike_ratio": 6.53,
-        "avg_volume": 213855.0,
+        "spike_ratio": 5.6,
+        "avg_volume": 249089.0,
         "today_volume": 1396023,
-        "detail": "volume_6.5x_avg"
+        "detail": "volume_5.6x_avg"
       },
       "serial_trading": {
         "flag": false,
@@ -387,7 +387,7 @@
     }
   },
   "composite": {
-    "composite_score": 61.8,
+    "composite_score": 63.05,
     "governance_score": 75,
     "sentiment_score": 50.0,
     "applied_weights": {

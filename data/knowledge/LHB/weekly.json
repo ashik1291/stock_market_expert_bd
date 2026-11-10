@@ -2,13 +2,13 @@
   "ticker": "LHB",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-09T08:37:10.506478",
-  "asof_price_date": "2026-11-09",
+  "analyzed_at": "2026-11-10T13:49:48.286829",
+  "asof_price_date": "2026-11-10",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 23.6301,
+    "rsi_14": 23.66,
     "pe_ratio": 11.818181818181817,
     "debt_equity": 0.0
   },
@@ -30,11 +30,11 @@
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+21.3%",
+      "upside_potential_pct": "+20.8%",
       "downside_risk_pct": "-2.7%",
-      "target_price": 57.6,
+      "target_price": 57.4,
       "trailing_stop": 46.2,
-      "risk_reward_ratio": "7.9x"
+      "risk_reward_ratio": "7.7x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 47.5,
-    "stop_loss": 46.16,
-    "target": 50.18
+    "stop_loss": 46.2,
+    "target": 50.1
   },
   "precision": {
     "ticker": "LHB",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 269863,
+      "avg_daily_volume": 284087,
       "daily_turnover_bdt_cr": 0.03,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 13493,
-      "max_daily_accumulation_shares": 40479,
-      "max_order_bdt": 13493.0,
-      "directive": "Max single order: 13,493 shares (Tk 13,493) to prevent >1% execution slippage"
+      "max_single_order_shares": 14204,
+      "max_daily_accumulation_shares": 42613,
+      "max_order_bdt": 14204.0,
+      "directive": "Max single order: 14,204 shares (Tk 14,204) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,7 +91,7 @@
   },
   "pattern_dna": {
     "ticker": "LHB",
-    "audited_at": "2026-11-09 14:37:10",
+    "audited_at": "2026-11-10 19:49:48",
     "worth_vs_greed": {
       "current_price": 47.5,
       "intrinsic_worth": 4.32,
@@ -99,8 +99,8 @@
       "extension_froth_score": 10.0,
       "greed_index": 10.0,
       "rsi_14": 11.5,
-      "price_vs_ema50_pct": -7.3,
-      "price_vs_ema200_pct": -9.7,
+      "price_vs_ema50_pct": -7.1,
+      "price_vs_ema200_pct": -9.6,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f30.54, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
@@ -121,10 +121,10 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -1.04,
+          "return_pct": 0.42,
           "high": 48.1,
-          "low": 46.8,
-          "range_volatility_pct": 2.78
+          "low": 47.2,
+          "range_volatility_pct": 1.91
         },
         "monthly_21d": {
           "return_pct": -9.0,
@@ -133,19 +133,19 @@
           "range_volatility_pct": 12.61
         },
         "quarterly_63d": {
-          "return_pct": -17.53,
+          "return_pct": -16.08,
           "high": 58.3,
           "low": 46.8,
           "range_volatility_pct": 24.57
         },
         "half_yearly_126d": {
-          "return_pct": -5.75,
+          "return_pct": -5.0,
           "high": 62.4,
           "low": 46.8,
           "range_volatility_pct": 33.33
         },
         "yearly_252d": {
-          "return_pct": -7.23,
+          "return_pct": -10.88,
           "high": 62.4,
           "low": 45.0,
           "range_volatility_pct": 38.67
@@ -261,11 +261,11 @@
       "macd": "neutral",
       "sma_trend": "neutral",
       "bb": "inside_bands",
-      "atr": 0.89,
+      "atr": 0.87,
       "rsi_value": 24.56,
       "last_close": 47.5,
-      "sma20": 49.83,
-      "sma50": 51.37,
+      "sma20": 49.6,
+      "sma50": 51.27,
       "sma200": 52.69,
       "support_resistance": {
         "supports": [
@@ -352,13 +352,13 @@
         "flag": false,
         "price_chg": 0,
         "last_volume": 334222,
-        "avg_volume": 326817.0,
+        "avg_volume": 289059.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.97,
-        "avg_volume": 346317.0,
+        "spike_ratio": 1.02,
+        "avg_volume": 326817.0,
         "today_volume": 334222,
         "detail": "ok"
       },

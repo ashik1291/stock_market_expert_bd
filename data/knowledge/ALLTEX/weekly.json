@@ -2,13 +2,13 @@
   "ticker": "ALLTEX",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-09T08:37:12.331406",
-  "asof_price_date": "2026-11-09",
+  "analyzed_at": "2026-11-10T13:49:50.555692",
+  "asof_price_date": "2026-11-10",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 61.3725,
+    "rsi_14": 61.2506,
     "pe_ratio": 0.0,
     "debt_equity": 2.218
   },
@@ -30,9 +30,9 @@
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+8.7%",
+      "upside_potential_pct": "+9.4%",
       "downside_risk_pct": "-10.1%",
-      "target_price": 30.1,
+      "target_price": 30.3,
       "trailing_stop": 24.9,
       "risk_reward_ratio": "0.9x"
     },
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 27.7,
-    "stop_loss": 26.23,
-    "target": 30.64
+    "stop_loss": 26.16,
+    "target": 30.78
   },
   "precision": {
     "ticker": "ALLTEX",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 301835,
+      "avg_daily_volume": 313434,
       "daily_turnover_bdt_cr": 0.03,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 15091,
-      "max_daily_accumulation_shares": 45275,
-      "max_order_bdt": 15091.0,
-      "directive": "Max single order: 15,091 shares (Tk 15,091) to prevent >1% execution slippage"
+      "max_single_order_shares": 15671,
+      "max_daily_accumulation_shares": 47015,
+      "max_order_bdt": 15671.0,
+      "directive": "Max single order: 15,671 shares (Tk 15,671) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,16 +91,16 @@
   },
   "pattern_dna": {
     "ticker": "ALLTEX",
-    "audited_at": "2026-11-09 14:37:12",
+    "audited_at": "2026-11-10 19:49:50",
     "worth_vs_greed": {
       "current_price": 27.7,
       "intrinsic_worth": 13.85,
       "margin_of_safety_pct": -50.0,
-      "extension_froth_score": 30.0,
-      "greed_index": 30.0,
+      "extension_froth_score": 40.0,
+      "greed_index": 40.0,
       "rsi_14": 46.9,
-      "price_vs_ema50_pct": 9.0,
-      "price_vs_ema200_pct": 37.5,
+      "price_vs_ema50_pct": 8.6,
+      "price_vs_ema200_pct": 37.0,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -121,31 +121,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 0.36,
+          "return_pct": 0.73,
           "high": 28.9,
           "low": 27.1,
           "range_volatility_pct": 6.64
         },
         "monthly_21d": {
-          "return_pct": 20.43,
+          "return_pct": 2.21,
           "high": 28.9,
           "low": 25.9,
           "range_volatility_pct": 11.58
         },
         "quarterly_63d": {
-          "return_pct": 24.77,
+          "return_pct": 19.4,
           "high": 28.9,
           "low": 21.0,
           "range_volatility_pct": 37.62
         },
         "half_yearly_126d": {
-          "return_pct": 76.43,
+          "return_pct": 70.99,
           "high": 28.9,
-          "low": 15.7,
-          "range_volatility_pct": 84.08
+          "low": 16.1,
+          "range_volatility_pct": 79.5
         },
         "yearly_252d": {
-          "return_pct": 118.11,
+          "return_pct": 119.84,
           "high": 28.9,
           "low": 12.5,
           "range_volatility_pct": 131.2
@@ -261,12 +261,12 @@
       "macd": "bearish_crossover",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 0.98,
+      "atr": 1.03,
       "rsi_value": 62.01,
       "last_close": 27.7,
-      "sma20": 27.47,
-      "sma50": 25.22,
-      "sma200": 18.74,
+      "sma20": 27.54,
+      "sma50": 25.29,
+      "sma200": 18.82,
       "support_resistance": {
         "supports": [
           12.8,
@@ -346,13 +346,13 @@
         "flag": false,
         "price_chg": 0,
         "last_volume": 506815,
-        "avg_volume": 269748.0,
+        "avg_volume": 280096.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.99,
-        "avg_volume": 254232.0,
+        "spike_ratio": 1.88,
+        "avg_volume": 269748.0,
         "today_volume": 506815,
         "detail": "ok"
       },

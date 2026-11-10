@@ -28,20 +28,20 @@ Do NOT deploy 100% capital in a single day. Spread monthly allocation across 4 s
 | Ticker | Entry Zone | Direction & Prob | Upside / Risk | P/E | Debt/Equity | Leadership & Experience | Tranche Pacing | Target Exit |
 |---|---|---|---|---|---|---|---|---|
 | **PADMAOIL** | ৳192.7–৳198.6 | 🟢 (—%) | +30.0% / -4.5% | 3.4 | D/E: 0.007 | Md. Masudur Rahman (30y exp, AA+) | 20% per tranche | ৳255.6 |
-| **MPETROLEUM** | ৳212.9–৳219.4 | 🟢 (—%) | +30.0% / -10.8% | 3.3 | D/E: 0.006 | Engr. Md. Rehanul Islam (30y exp, AA+) | 20% per tranche | ৳282.4 |
+| **JAMUNAOIL** | ৳166.1–৳171.2 | 🟢 (—%) | +30.0% / -5.8% | 3.1 | D/E: 0.0 | Md. Gias Uddin Ansary (32y exp, AA+) | 20% per tranche | ৳220.3 |
 | **BSRMLTD** | ৳94.1–৳97.0 | 🟡 (—%) | +30.0% / -7.4% | 4.7 | D/E: 0.657 | Aameir Alihussain (45y exp, A) | 20% per tranche | ৳124.8 |
 | **CONFIDCEM** | ৳56.9–৳58.7 | 🟡 (—%) | +29.9% / -9.5% | 5.2 | D/E: 0.74 | Salman Karim (35y exp, A+) | 20% per tranche | ৳75.5 |
-| **JAMUNAOIL** | ৳166.1–৳171.2 | 🟢 (—%) | +30.0% / -5.0% | 3.1 | D/E: 0.0 | Md. Gias Uddin Ansary (32y exp, AA+) | 20% per tranche | ৳220.3 |
+| **MPETROLEUM** | ৳212.9–৳219.4 | 🟢 (—%) | +30.0% / -10.8% | 3.3 | D/E: 0.006 | Engr. Md. Rehanul Islam (30y exp, AA+) | 20% per tranche | ৳282.4 |
 
 ## 🚀 4. Top Mid-Term Cycle Swings (1–6 Months)
 
 | Ticker | Entry Price | Direction & Prob | Target (+15%) | Trailing Stop (-5%) | Risk/Reward | P/E |
 |---|---|---|---|---|---|---|
-| **PADMAOIL** | ৳196.6 | 🟢 —% | **৳201.7** | ৳191.6 | 1.0x | 3.4 |
+| **PADMAOIL** | ৳196.6 | 🟢 —% | **৳201.9** | ৳191.6 | 1.1x | 3.4 |
+| **JAMUNAOIL** | ৳169.5 | 🟢 —% | **৳181.2** | ৳164.0 | 2.2x | 3.1 |
+| **BSRMLTD** | ৳96.0 | 🟡 —% | **৳102.1** | ৳92.1 | 1.6x | 4.7 |
+| **CONFIDCEM** | ৳58.1 | 🟡 —% | **৳66.6** | ৳55.0 | 2.8x | 5.2 |
 | **MPETROLEUM** | ৳217.2 | 🟢 —% | **৳223.2** | ৳204.1 | 0.5x | 3.3 |
-| **BSRMLTD** | ৳96.0 | 🟡 —% | **৳102.2** | ৳92.1 | 1.6x | 4.7 |
-| **CONFIDCEM** | ৳58.1 | 🟡 —% | **৳66.8** | ৳55.0 | 2.8x | 5.2 |
-| **JAMUNAOIL** | ৳169.5 | 🟢 —% | **৳182.2** | ৳164.8 | 2.7x | 3.1 |
 
 ## 🛡️ 5. Monthly Risk Filter & Governance Directive
 

@@ -2,18 +2,18 @@
   "ticker": "RELIANCINS",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-09T08:37:12.410072",
-  "asof_price_date": "2026-11-09",
+  "analyzed_at": "2026-11-10T13:49:50.614567",
+  "asof_price_date": "2026-11-10",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 34.2981,
+    "rsi_14": 34.0311,
     "pe_ratio": 12.019002375296912,
     "debt_equity": 0.0
   },
   "signal": "HOLD_INELIGIBLE_DEFICIT",
-  "confidence": 69.35,
+  "confidence": 68.1,
   "trajectory": {
     "direction": "RISE_PREDICTED",
     "direction_icon": "\ud83d\udfe2",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 258215,
+      "avg_daily_volume": 266657,
       "daily_turnover_bdt_cr": 0.03,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 12910,
-      "max_daily_accumulation_shares": 38732,
-      "max_order_bdt": 12910.0,
-      "directive": "Max single order: 12,910 shares (Tk 12,910) to prevent >1% execution slippage"
+      "max_single_order_shares": 13332,
+      "max_daily_accumulation_shares": 39998,
+      "max_order_bdt": 13332.0,
+      "directive": "Max single order: 13,332 shares (Tk 13,332) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,7 +91,7 @@
   },
   "pattern_dna": {
     "ticker": "RELIANCINS",
-    "audited_at": "2026-11-09 14:37:12",
+    "audited_at": "2026-11-10 19:49:50",
     "worth_vs_greed": {
       "current_price": 85.4,
       "intrinsic_worth": 19.28,
@@ -99,8 +99,8 @@
       "extension_froth_score": 20.0,
       "greed_index": 20.0,
       "rsi_14": 33.2,
-      "price_vs_ema50_pct": -12.6,
-      "price_vs_ema200_pct": -8.4,
+      "price_vs_ema50_pct": -12.2,
+      "price_vs_ema200_pct": -8.3,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f32.41, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
@@ -121,31 +121,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -8.37,
-          "high": 92.0,
-          "low": 84.7,
-          "range_volatility_pct": 8.62
+          "return_pct": -0.47,
+          "high": 90.9,
+          "low": 85.0,
+          "range_volatility_pct": 6.94
         },
         "monthly_21d": {
-          "return_pct": -12.32,
-          "high": 97.9,
+          "return_pct": -6.87,
+          "high": 96.0,
           "low": 84.7,
-          "range_volatility_pct": 15.58
+          "range_volatility_pct": 13.34
         },
         "quarterly_63d": {
-          "return_pct": -23.61,
+          "return_pct": -23.34,
           "high": 120.5,
           "low": 84.7,
           "range_volatility_pct": 42.27
         },
         "half_yearly_126d": {
-          "return_pct": -6.46,
+          "return_pct": -7.68,
           "high": 128.2,
           "low": 81.3,
           "range_volatility_pct": 57.69
         },
         "yearly_252d": {
-          "return_pct": 31.18,
+          "return_pct": 29.2,
           "high": 128.2,
           "low": 56.6,
           "range_volatility_pct": 126.5
@@ -255,18 +255,18 @@
     ]
   },
   "technical": {
-    "score": 48.75,
+    "score": 42.5,
     "signals": {
       "rsi": "neutral",
       "macd": "bearish_crossover",
       "sma_trend": "neutral",
-      "bb": "at_lower_band_bullish",
+      "bb": "inside_bands",
       "atr": 3.87,
       "rsi_value": 34.35,
       "last_close": 85.4,
-      "sma20": 91.14,
-      "sma50": 99.58,
-      "sma200": 92.56,
+      "sma20": 90.95,
+      "sma50": 99.15,
+      "sma200": 92.65,
       "support_resistance": {
         "supports": [
           65.3,
@@ -351,13 +351,13 @@
         "flag": false,
         "price_chg": 0,
         "last_volume": 316951,
-        "avg_volume": 440134.0,
+        "avg_volume": 417189.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.68,
-        "avg_volume": 465575.0,
+        "spike_ratio": 0.72,
+        "avg_volume": 440134.0,
         "today_volume": 316951,
         "detail": "ok"
       },
@@ -384,7 +384,7 @@
     }
   },
   "composite": {
-    "composite_score": 69.35,
+    "composite_score": 68.1,
     "governance_score": 100,
     "sentiment_score": 50.0,
     "applied_weights": {

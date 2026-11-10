@@ -2,18 +2,18 @@
   "ticker": "SQURPHARMA",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-09T08:37:09.716344",
-  "asof_price_date": "2026-11-09",
+  "analyzed_at": "2026-11-10T13:49:47.321587",
+  "asof_price_date": "2026-11-10",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 56.8166,
+    "rsi_14": 57.0005,
     "pe_ratio": 8.121301775147929,
     "debt_equity": 0.006
   },
   "signal": "HOLD_INELIGIBLE_DEFICIT",
-  "confidence": 77.97,
+  "confidence": 79.47,
   "trajectory": {
     "direction": "RISE_PREDICTED",
     "direction_icon": "\ud83d\udfe2",
@@ -25,14 +25,14 @@
       "upside_potential_pct": "+1.0%",
       "downside_risk_pct": "-0.7%",
       "target_price": 221.4,
-      "support_price": 217.5,
+      "support_price": 217.6,
       "risk_reward_ratio": "1.4x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+1.8%",
+      "upside_potential_pct": "+1.7%",
       "downside_risk_pct": "-2.9%",
-      "target_price": 223.0,
+      "target_price": 222.9,
       "trailing_stop": 212.7,
       "risk_reward_ratio": "0.6x"
     },
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 219.1,
-    "stop_loss": 216.76,
-    "target": 223.78
+    "stop_loss": 216.84,
+    "target": 223.62
   },
   "precision": {
     "ticker": "SQURPHARMA",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 203695,
+      "avg_daily_volume": 211939,
       "daily_turnover_bdt_cr": 0.02,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 10184,
-      "max_daily_accumulation_shares": 30554,
-      "max_order_bdt": 10184.0,
-      "directive": "Max single order: 10,184 shares (Tk 10,184) to prevent >1% execution slippage"
+      "max_single_order_shares": 10596,
+      "max_daily_accumulation_shares": 31790,
+      "max_order_bdt": 10596.0,
+      "directive": "Max single order: 10,596 shares (Tk 10,596) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,7 +91,7 @@
   },
   "pattern_dna": {
     "ticker": "SQURPHARMA",
-    "audited_at": "2026-11-09 14:37:09",
+    "audited_at": "2026-11-10 19:49:47",
     "worth_vs_greed": {
       "current_price": 219.1,
       "intrinsic_worth": 53.84,
@@ -121,25 +121,25 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 0.78,
+          "return_pct": 1.62,
           "high": 219.3,
-          "low": 213.8,
-          "range_volatility_pct": 2.57
+          "low": 215.5,
+          "range_volatility_pct": 1.76
         },
         "monthly_21d": {
-          "return_pct": 0.87,
+          "return_pct": 0.27,
           "high": 220.7,
           "low": 213.8,
           "range_volatility_pct": 3.23
         },
         "quarterly_63d": {
-          "return_pct": 0.14,
+          "return_pct": -0.36,
           "high": 221.5,
           "low": 210.0,
           "range_volatility_pct": 5.48
         },
         "half_yearly_126d": {
-          "return_pct": 3.89,
+          "return_pct": 4.13,
           "high": 228.0,
           "low": 207.0,
           "range_volatility_pct": 10.14
@@ -255,18 +255,18 @@
     ]
   },
   "technical": {
-    "score": 61.25,
+    "score": 68.75,
     "signals": {
       "rsi": "neutral",
-      "macd": "neutral",
+      "macd": "bullish_crossover",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 1.56,
+      "atr": 1.51,
       "rsi_value": 56.86,
       "last_close": 219.1,
-      "sma20": 218.4,
-      "sma50": 217.13,
-      "sma200": 216.8,
+      "sma20": 218.46,
+      "sma50": 217.17,
+      "sma200": 216.87,
       "support_resistance": {
         "supports": [
           207.3,
@@ -347,13 +347,13 @@
         "flag": false,
         "price_chg": 0,
         "last_volume": 198936,
-        "avg_volume": 207900.0,
+        "avg_volume": 202529.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.86,
-        "avg_volume": 230243.0,
+        "spike_ratio": 0.96,
+        "avg_volume": 207900.0,
         "today_volume": 198936,
         "detail": "ok"
       },
@@ -380,7 +380,7 @@
     }
   },
   "composite": {
-    "composite_score": 77.97,
+    "composite_score": 79.47,
     "governance_score": 100,
     "sentiment_score": 50.0,
     "applied_weights": {

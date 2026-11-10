@@ -2,13 +2,13 @@
   "ticker": "UCB",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-09T08:37:09.539966",
-  "asof_price_date": "2026-11-09",
+  "analyzed_at": "2026-11-10T13:49:47.067898",
+  "asof_price_date": "2026-11-10",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 49.0179,
+    "rsi_14": 48.9949,
     "pe_ratio": 58.0,
     "debt_equity": 1.08
   },
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 8.6,
-    "stop_loss": 8.11,
-    "target": 9.58
+    "stop_loss": 8.12,
+    "target": 9.56
   },
   "precision": {
     "ticker": "UCB",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 535558,
-      "daily_turnover_bdt_cr": 0.05,
+      "avg_daily_volume": 568972,
+      "daily_turnover_bdt_cr": 0.06,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 26777,
-      "max_daily_accumulation_shares": 80333,
-      "max_order_bdt": 26777.0,
-      "directive": "Max single order: 26,777 shares (Tk 26,777) to prevent >1% execution slippage"
+      "max_single_order_shares": 28448,
+      "max_daily_accumulation_shares": 85345,
+      "max_order_bdt": 28448.0,
+      "directive": "Max single order: 28,448 shares (Tk 28,448) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,7 +91,7 @@
   },
   "pattern_dna": {
     "ticker": "UCB",
-    "audited_at": "2026-11-09 14:37:09",
+    "audited_at": "2026-11-10 19:49:47",
     "worth_vs_greed": {
       "current_price": 8.6,
       "intrinsic_worth": 0.32,
@@ -99,7 +99,7 @@
       "extension_froth_score": 50.0,
       "greed_index": 50.0,
       "rsi_14": 57.7,
-      "price_vs_ema50_pct": -1.8,
+      "price_vs_ema50_pct": -1.7,
       "price_vs_ema200_pct": -6.7,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f30.04, P/E: 0.0). Growth is fundamentally justified.",
@@ -122,25 +122,25 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 0.0,
+          "return_pct": 1.18,
           "high": 8.8,
-          "low": 8.2,
-          "range_volatility_pct": 7.32
+          "low": 8.4,
+          "range_volatility_pct": 4.76
         },
         "monthly_21d": {
-          "return_pct": 2.38,
+          "return_pct": 6.17,
           "high": 9.6,
           "low": 8.0,
           "range_volatility_pct": 20.0
         },
         "quarterly_63d": {
-          "return_pct": -9.47,
+          "return_pct": -8.51,
           "high": 9.9,
           "low": 8.0,
           "range_volatility_pct": 23.75
         },
         "half_yearly_126d": {
-          "return_pct": -2.27,
+          "return_pct": -5.49,
           "high": 10.2,
           "low": 8.0,
           "range_volatility_pct": 27.5
@@ -262,12 +262,12 @@
       "macd": "neutral",
       "sma_trend": "neutral",
       "bb": "inside_bands",
-      "atr": 0.33,
+      "atr": 0.32,
       "rsi_value": 49.14,
       "last_close": 8.6,
-      "sma20": 8.48,
-      "sma50": 8.79,
-      "sma200": 9.25,
+      "sma20": 8.5,
+      "sma50": 8.78,
+      "sma200": 9.24,
       "support_resistance": {
         "supports": [
           8.7
@@ -302,10 +302,10 @@
       "loan_trap_risk": "high",
       "downturn_resilience": {
         "status": "growth_at_discount",
-        "drawdown_pct": 22.5,
-        "high_52w": 11.1,
+        "drawdown_pct": 20.4,
+        "high_52w": 10.8,
         "low_52w": 8.0,
-        "note": "Share price down 22.5% from 52w peak, yet earnings positive/steady (Conviction discount)"
+        "note": "Share price down 20.4% from 52w peak, yet earnings positive/steady (Conviction discount)"
       }
     }
   },
@@ -348,13 +348,13 @@
         "flag": false,
         "price_chg": 0,
         "last_volume": 694776,
-        "avg_volume": 458804.0,
+        "avg_volume": 473301.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.53,
-        "avg_volume": 452894.0,
+        "spike_ratio": 1.51,
+        "avg_volume": 458804.0,
         "today_volume": 694776,
         "detail": "ok"
       },

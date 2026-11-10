@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-22T10:43:37.795664+00:00",
+  "updated_at": "2026-11-10T03:53:15.585647+00:00",
   "trial_count": 52,
   "required_periods": 12,
   "holm_alpha": 0.05,
@@ -77,6 +77,28 @@
         }
       },
       "registered_at": "2026-10-22T10:43:37.795664+00:00",
+      "role": "challenger",
+      "status": "SHADOW"
+    },
+    {
+      "model_id": "shadow_bayesian_adaptive_v1",
+      "parameter_hash": "e2b44867902cd01d",
+      "params": {
+        "model_id": "shadow_bayesian_adaptive_v1",
+        "score": "bayesian_adaptive_v1",
+        "gates": [
+          "debt_le_1_nonbank",
+          "pe_0_25"
+        ],
+        "factors": [
+          "div",
+          "value",
+          "rsi",
+          "debt"
+        ],
+        "weights_source": "model_weights.json"
+      },
+      "registered_at": "2026-11-10T03:53:15.585647+00:00",
       "role": "challenger",
       "status": "SHADOW"
     }

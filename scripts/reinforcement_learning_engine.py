@@ -150,7 +150,7 @@ def record_prediction(
     ticker: str,
     timeframe: str,
     direction: str,
-    prob_pct: float,
+    prob_pct: float | None,
     entry_price: float,
     target_price: float,
     stop_loss: float,
@@ -379,11 +379,14 @@ def evaluate_pending_predictions(eval_window_days: int | None = None) -> dict:
 
         # Brier on reported probs (only meaningful if probs vary)
         brier_sum = 0.0
+        n_brier = 0
         for item in total_evaluated:
-            prob = float(item.get("confidence_prob_pct", 50.0)) / 100.0
+            p_val = item.get("confidence_prob_pct")
+            prob = (float(p_val) / 100.0) if p_val is not None else 0.50
             actual = 1.0 if item.get("actual_outcome") in ("CORRECT", "CORRECT_PROFIT", "AVOIDANCE_SUCCESS") else 0.0
             brier_sum += (prob - actual) ** 2
-        brier_score = round(brier_sum / n_total, 4)
+            n_brier += 1
+        brier_score = round(brier_sum / max(n_brier, 1), 4)
 
         weights["long_rise_accuracy_pct"] = long_acc
         weights["risk_avoidance_accuracy_pct"] = fall_acc

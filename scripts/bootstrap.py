@@ -176,13 +176,14 @@ def run_bootstrap():
     verify_configs()
     verify_user_templates()
 
-    # 4. Check/Run silent daily sync
-    log("Running daily heartbeat synchronization...")
+    # 4. Live Market Sync & Missed Date Ingestion
+    log("Synchronizing live market prices & backfilling missed dates...")
     try:
-        cmd = [sys.executable, str(SCRIPTS_DIR / "check_daily_sync.py")]
-        subprocess.run(cmd, cwd=str(BASE_DIR))
+        sys.path.insert(0, str(SCRIPTS_DIR))
+        from live_market_sync import sync_live_market
+        sync_live_market(verbose=True)
     except Exception as e:
-        log(f"Sync check note: {e}")
+        log(f"Live market sync note: {e}")
 
     print("\n" + "=" * 80)
     if db_ok:

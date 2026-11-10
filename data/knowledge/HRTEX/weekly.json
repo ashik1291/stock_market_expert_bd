@@ -2,13 +2,13 @@
   "ticker": "HRTEX",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-09T08:37:12.286590",
-  "asof_price_date": "2026-11-09",
+  "analyzed_at": "2026-11-10T13:49:50.493616",
+  "asof_price_date": "2026-11-10",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 49.4812,
+    "rsi_14": 49.3848,
     "pe_ratio": 0.0,
     "debt_equity": 5.58
   },
@@ -22,19 +22,19 @@
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+6.8%",
+      "upside_potential_pct": "+7.5%",
       "downside_risk_pct": "-5.0%",
-      "target_price": 17.2,
+      "target_price": 17.3,
       "support_price": 15.3,
-      "risk_reward_ratio": "1.4x"
+      "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
       "upside_potential_pct": "+24.8%",
-      "downside_risk_pct": "-6.8%",
+      "downside_risk_pct": "-7.5%",
       "target_price": 20.1,
-      "trailing_stop": 15.0,
-      "risk_reward_ratio": "3.6x"
+      "trailing_stop": 14.9,
+      "risk_reward_ratio": "3.3x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 16.1,
-    "stop_loss": 14.96,
-    "target": 18.38
+    "stop_loss": 14.95,
+    "target": 18.4
   },
   "precision": {
     "ticker": "HRTEX",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 32692,
+      "avg_daily_volume": 36669,
       "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 1634,
-      "max_daily_accumulation_shares": 4903,
-      "max_order_bdt": 1634.0,
-      "directive": "Max single order: 1,634 shares (Tk 1,634) to prevent >1% execution slippage"
+      "max_single_order_shares": 1833,
+      "max_daily_accumulation_shares": 5500,
+      "max_order_bdt": 1833.0,
+      "directive": "Max single order: 1,833 shares (Tk 1,833) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,7 +91,7 @@
   },
   "pattern_dna": {
     "ticker": "HRTEX",
-    "audited_at": "2026-11-09 14:37:12",
+    "audited_at": "2026-11-10 19:49:50",
     "worth_vs_greed": {
       "current_price": 16.1,
       "intrinsic_worth": 8.05,
@@ -99,8 +99,8 @@
       "extension_froth_score": 40.0,
       "greed_index": 40.0,
       "rsi_14": 50.0,
-      "price_vs_ema50_pct": -4.2,
-      "price_vs_ema200_pct": -16.2,
+      "price_vs_ema50_pct": -4.1,
+      "price_vs_ema200_pct": -16.1,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -121,31 +121,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 5.92,
+          "return_pct": 3.21,
           "high": 17.2,
           "low": 15.5,
           "range_volatility_pct": 10.97
         },
         "monthly_21d": {
-          "return_pct": 0.63,
-          "high": 17.8,
+          "return_pct": -6.94,
+          "high": 17.7,
           "low": 15.0,
-          "range_volatility_pct": 18.67
+          "range_volatility_pct": 18.0
         },
         "quarterly_63d": {
-          "return_pct": -20.3,
+          "return_pct": -19.9,
           "high": 21.4,
           "low": 15.0,
           "range_volatility_pct": 42.67
         },
         "half_yearly_126d": {
-          "return_pct": -12.97,
+          "return_pct": -11.54,
           "high": 23.0,
           "low": 15.0,
           "range_volatility_pct": 53.33
         },
         "yearly_252d": {
-          "return_pct": -13.9,
+          "return_pct": -11.54,
           "high": 23.0,
           "low": 12.4,
           "range_volatility_pct": 85.48
@@ -261,11 +261,11 @@
       "macd": "neutral",
       "sma_trend": "neutral",
       "bb": "inside_bands",
-      "atr": 0.76,
+      "atr": 0.77,
       "rsi_value": 49.71,
       "last_close": 16.1,
-      "sma20": 15.86,
-      "sma50": 16.66,
+      "sma20": 15.81,
+      "sma50": 16.6,
       "sma200": 18.67,
       "support_resistance": {
         "supports": [
@@ -305,8 +305,8 @@
       "loan_trap_risk": "high",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 32.9,
-        "high_52w": 24.0,
+        "drawdown_pct": 32.1,
+        "high_52w": 23.7,
         "low_52w": 12.4
       }
     }
@@ -350,13 +350,13 @@
         "flag": false,
         "price_chg": 0,
         "last_volume": 83546,
-        "avg_volume": 28345.0,
+        "avg_volume": 30560.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 2.99,
-        "avg_volume": 27915.0,
+        "spike_ratio": 2.95,
+        "avg_volume": 28345.0,
         "today_volume": 83546,
         "detail": "ok"
       },

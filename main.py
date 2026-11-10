@@ -7,6 +7,7 @@ Usage:
 
 Commands:
   ready         Bootstrap dependencies, verify database integrity, and ready system on this machine
+  sync          Synchronize live market prices, backfill missed dates, and refresh readiness
   status        Check complete system health, macro bias, active alerts, and portfolio ledger
   config        Configure stock universe screening preference (Regular Stock vs Halal)
   best2         Run 12-factor Graham/Buffett screener and show Top 2 stocks per sector
@@ -230,6 +231,10 @@ def cmd_ready():
     run_script("bootstrap.py")
 
 
+def cmd_sync():
+    run_script("live_market_sync.py")
+
+
 def cmd_config():
     sys.path.insert(0, str(SCRIPTS_DIR))
     from user_manager import prompt_user_customization
@@ -256,6 +261,8 @@ def main():
     cmd = sys.argv[1].lower().strip("-")
     if cmd in ("ready", "bootstrap", "setup", "init"):
         cmd_ready()
+    elif cmd in ("sync", "live", "catchup"):
+        cmd_sync()
     elif cmd in ("status", "info"):
         cmd_status()
     elif cmd in ("config", "preference", "preferences", "custom"):

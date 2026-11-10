@@ -202,7 +202,8 @@ def _next_trading_day_for_migration(conn: sqlite3.Connection, iso_date: str) -> 
         d = datetime.date.fromisoformat(iso_date[:10])
         for _ in range(7):
             d += datetime.timedelta(days=1)
-            if d.weekday() < 5:
+            # Sunday-Thursday is DSE trading week; Friday (4) and Saturday (5) are closed
+            if d.weekday() not in (4, 5):
                 return d.isoformat()
         return d.isoformat()
     except Exception:
@@ -556,8 +557,8 @@ def upsert_fundamentals(conn: sqlite3.Connection, parsed: dict, raw: dict):
             d = datetime.date.fromisoformat(iso_date)
             for _ in range(7):
                 d += datetime.timedelta(days=1)
-                # Sunday-Saturday: Sat is not trading in DSE calendar
-                if d.weekday() < 5:  # Mon-Fri approx; calendar gives precise
+                # Sunday-Thursday is DSE trading week; Friday (4) and Saturday (5) are closed
+                if d.weekday() not in (4, 5):
                     return d.isoformat()
             return d.isoformat()
         except Exception:

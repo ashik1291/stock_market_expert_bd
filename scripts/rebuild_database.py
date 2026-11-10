@@ -452,8 +452,9 @@ def rebuild_database(db_file: Path = DB_PATH):
             session_type = "regular"
             if d_str in known_saturdays:
                 session_type = "makeup_saturday"
-            elif weekday >= 5:
+            elif weekday in (4, 5):  # Friday (4) or Saturday (5)
                 session_type = "special_weekend"
+            # Sunday (weekday == 6) is a standard DSE regular trading session
 
             # Aggregates from prices table
             stats = conn.execute("""

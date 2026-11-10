@@ -113,6 +113,7 @@ def main():
         ("Calculating Monthly Rebalancing & 10% Cash Reserve Plan", ["scripts/monthly_rebalance_engine.py", "2000"], False),
         ("Processing Corporate Actions & Disbursing Cash Dividends", ["scripts/corporate_action_processor.py"], False),
         ("Advancing Forward Test Ledger & Factor Logs", ["scripts/forward_test_ledger_v2.py"], False),
+        ("Shadow Scoring Model Challengers & Evaluating Statistical Promotion", ["scripts/model_registry.py", "shadow"], True),
         ("Syncing Open-End Mutual Fund NAV & Valuation", ["scripts/mutual_fund_tracker.py"], True),
         ("Auditing Real Portfolio Positions & Break-even Levels", ["scripts/portfolio_manager.py", "status"], False),
         ("Executing Real-Time Portfolio Sentinel Valuation & Guards", ["scripts/portfolio_sentinel.py"], False),

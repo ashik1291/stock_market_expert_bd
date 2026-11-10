@@ -42,3 +42,31 @@ MIN_EQUITY_HURDLE_PCT: float = BENCHMARK_91D_TBILL_PCT + MIN_EQUITY_RISK_PREMIUM
 # ------------------------------------------------------------------------------
 MAX_DEBT_TO_EQUITY: float = 0.80
 MAX_STRICT_DEBT_TO_EQUITY: float = 0.50
+
+
+# ------------------------------------------------------------------------------
+# 4. Exchange Timezone & Operating Hours (DSE / Asia/Dhaka UTC+6)
+# ------------------------------------------------------------------------------
+import datetime
+
+try:
+    from zoneinfo import ZoneInfo
+    DHAKA_TZ = ZoneInfo("Asia/Dhaka")
+except Exception:
+    # Resilient fallback to fixed UTC+6 offset if tzdata is absent
+    DHAKA_TZ = datetime.timezone(datetime.timedelta(hours=6), name="Asia/Dhaka")
+
+
+def get_dhaka_now() -> datetime.datetime:
+    """Returns current localized datetime in Asia/Dhaka (UTC+6)."""
+    return datetime.datetime.now(DHAKA_TZ)
+
+
+def get_dhaka_date() -> datetime.date:
+    """Returns current date in Asia/Dhaka (UTC+6)."""
+    return get_dhaka_now().date()
+
+
+def get_dhaka_today_str() -> str:
+    """Returns current ISO date string (YYYY-MM-DD) anchored to Asia/Dhaka."""
+    return get_dhaka_date().isoformat()

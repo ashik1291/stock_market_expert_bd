@@ -105,10 +105,17 @@ def rsi(closes: list[float], period: int = 14) -> list[float | None]:
     avg_gain = sum(gains[:period]) / period
     avg_loss = sum(losses[:period]) / period
 
-    for i in range(period, len(closes)):   # FIX: was len(closes)-1
-        g_idx = i - 1                      # gains array index
-        avg_gain = (avg_gain * (period - 1) + gains[g_idx]) / period
-        avg_loss = (avg_loss * (period - 1) + losses[g_idx]) / period
+    # First valid Wilder RSI at index = period (using initial period averages)
+    if avg_loss == 0:
+        result.append(100.0)
+    else:
+        rs = avg_gain / avg_loss
+        result.append(100.0 - 100.0 / (1.0 + rs))
+
+    # Wilder exponential smoothing for subsequent bars
+    for i in range(period, len(gains)):
+        avg_gain = (avg_gain * (period - 1) + gains[i]) / period
+        avg_loss = (avg_loss * (period - 1) + losses[i]) / period
         if avg_loss == 0:
             result.append(100.0)
         else:

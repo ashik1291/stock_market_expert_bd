@@ -2,13 +2,13 @@
   "ticker": "CONTININS",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-09T08:37:12.975946",
-  "asof_price_date": "2026-11-09",
+  "analyzed_at": "2026-11-10T13:49:51.098469",
+  "asof_price_date": "2026-11-10",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 47.4287,
+    "rsi_14": 47.0312,
     "pe_ratio": 20.866666666666667,
     "debt_equity": 0.0
   },
@@ -23,10 +23,10 @@
     "short_term": {
       "predicted_path": "Upward momentum swing",
       "upside_potential_pct": "+5.1%",
-      "downside_risk_pct": "-3.5%",
+      "downside_risk_pct": "-3.2%",
       "target_price": 32.7,
-      "support_price": 30.0,
-      "risk_reward_ratio": "1.5x"
+      "support_price": 30.1,
+      "risk_reward_ratio": "1.6x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 31.1,
-    "stop_loss": 29.48,
-    "target": 34.34
+    "stop_loss": 29.53,
+    "target": 34.24
   },
   "precision": {
     "ticker": "CONTININS",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 108185,
+      "avg_daily_volume": 112963,
       "daily_turnover_bdt_cr": 0.01,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 5409,
-      "max_daily_accumulation_shares": 16227,
-      "max_order_bdt": 5409.0,
-      "directive": "Max single order: 5,409 shares (Tk 5,409) to prevent >1% execution slippage"
+      "max_single_order_shares": 5648,
+      "max_daily_accumulation_shares": 16944,
+      "max_order_bdt": 5648.0,
+      "directive": "Max single order: 5,648 shares (Tk 5,648) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,7 +91,7 @@
   },
   "pattern_dna": {
     "ticker": "CONTININS",
-    "audited_at": "2026-11-09 14:37:12",
+    "audited_at": "2026-11-10 19:49:51",
     "worth_vs_greed": {
       "current_price": 31.1,
       "intrinsic_worth": 3.76,
@@ -99,7 +99,7 @@
       "extension_froth_score": 20.0,
       "greed_index": 20.0,
       "rsi_14": 47.9,
-      "price_vs_ema50_pct": -2.9,
+      "price_vs_ema50_pct": -2.8,
       "price_vs_ema200_pct": 0.5,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f30.47, P/E: 0.0). Growth is fundamentally justified.",
@@ -121,31 +121,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -3.42,
+          "return_pct": 1.63,
           "high": 32.4,
-          "low": 30.3,
-          "range_volatility_pct": 6.93
+          "low": 30.6,
+          "range_volatility_pct": 5.88
         },
         "monthly_21d": {
-          "return_pct": 0.65,
+          "return_pct": 3.67,
           "high": 32.8,
           "low": 29.1,
           "range_volatility_pct": 12.71
         },
         "quarterly_63d": {
-          "return_pct": -12.15,
+          "return_pct": -15.03,
           "high": 38.9,
           "low": 29.1,
           "range_volatility_pct": 33.68
         },
         "half_yearly_126d": {
-          "return_pct": 14.76,
+          "return_pct": 15.61,
           "high": 39.0,
           "low": 26.3,
           "range_volatility_pct": 48.29
         },
         "yearly_252d": {
-          "return_pct": 20.54,
+          "return_pct": 21.48,
           "high": 39.0,
           "low": 19.4,
           "range_volatility_pct": 101.03
@@ -261,15 +261,16 @@
       "macd": "neutral",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 1.08,
+      "atr": 1.05,
       "rsi_value": 47.67,
       "last_close": 31.1,
-      "sma20": 30.87,
-      "sma50": 32.23,
-      "sma200": 30.52,
+      "sma20": 30.96,
+      "sma50": 32.17,
+      "sma200": 30.56,
       "support_resistance": {
         "supports": [
           22.9,
+          29.3,
           31.3
         ],
         "resistances": [
@@ -282,6 +283,7 @@
     "sr": {
       "supports": [
         22.9,
+        29.3,
         31.3
       ],
       "resistances": [
@@ -352,13 +354,13 @@
         "flag": false,
         "price_chg": 0,
         "last_volume": 153270,
-        "avg_volume": 160408.0,
+        "avg_volume": 158778.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.94,
-        "avg_volume": 162603.0,
+        "spike_ratio": 0.96,
+        "avg_volume": 160408.0,
         "today_volume": 153270,
         "detail": "ok"
       },

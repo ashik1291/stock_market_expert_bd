@@ -56,6 +56,9 @@ def execute_daily_alpha_cycle():
 
     # Step 6: Run Reinforcement Learning Engine to learn from past mistakes
     run_step("7. Calibrate Empirical Bayes Weights & Evaluate Accuracy", "reinforcement_learning_engine.py", ["evaluate"])
+    run_step("7b. Calibrate Rolling Factor IC Weights", "factor_ic_calibrator.py", [])
+    run_step("7c. Shadow Score Challengers & Evaluate Statistical Promotion Gate", "model_registry.py", ["shadow"])
+    run_step("7d. Evaluate Model Promotion Eligibility (Holm Gate)", "model_registry.py", ["promote"])
 
     # Step 7: Refresh Knowledge Base via Analyzer for active universe
     run_step("8. Update Scoring & Knowledge Base (analyzer.py all weekly)", "analyzer.py", ["all", "weekly"])

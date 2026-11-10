@@ -2,13 +2,13 @@
   "ticker": "SONALILIFE",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-09T08:37:12.516243",
-  "asof_price_date": "2026-11-09",
+  "analyzed_at": "2026-11-10T13:49:50.694460",
+  "asof_price_date": "2026-11-10",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 44.4187,
+    "rsi_14": 44.5479,
     "pe_ratio": 59.87654320987654,
     "debt_equity": 0.0
   },
@@ -22,9 +22,9 @@
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+6.2%",
+      "upside_potential_pct": "+6.1%",
       "downside_risk_pct": "-4.1%",
-      "target_price": 100.8,
+      "target_price": 100.7,
       "support_price": 91.0,
       "risk_reward_ratio": "1.5x"
     },
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 94.9,
-    "stop_loss": 89.01,
-    "target": 106.68
+    "stop_loss": 89.11,
+    "target": 106.48
   },
   "precision": {
     "ticker": "SONALILIFE",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 329447,
+      "avg_daily_volume": 327828,
       "daily_turnover_bdt_cr": 0.03,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 16472,
-      "max_daily_accumulation_shares": 49417,
-      "max_order_bdt": 16472.0,
-      "directive": "Max single order: 16,472 shares (Tk 16,472) to prevent >1% execution slippage"
+      "max_single_order_shares": 16391,
+      "max_daily_accumulation_shares": 49174,
+      "max_order_bdt": 16391.0,
+      "directive": "Max single order: 16,391 shares (Tk 16,391) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,7 +91,7 @@
   },
   "pattern_dna": {
     "ticker": "SONALILIFE",
-    "audited_at": "2026-11-09 14:37:12",
+    "audited_at": "2026-11-10 19:49:50",
     "worth_vs_greed": {
       "current_price": 94.9,
       "intrinsic_worth": 23.6,
@@ -100,7 +100,7 @@
       "greed_index": 40.0,
       "rsi_14": 27.0,
       "price_vs_ema50_pct": 0.1,
-      "price_vs_ema200_pct": 16.5,
+      "price_vs_ema200_pct": 16.3,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -122,13 +122,13 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -3.75,
+          "return_pct": -0.94,
           "high": 98.8,
           "low": 94.1,
           "range_volatility_pct": 4.99
         },
         "monthly_21d": {
-          "return_pct": -9.53,
+          "return_pct": -3.46,
           "high": 109.5,
           "low": 94.1,
           "range_volatility_pct": 16.37
@@ -140,25 +140,25 @@
           "range_volatility_pct": 39.31
         },
         "half_yearly_126d": {
-          "return_pct": 59.5,
+          "return_pct": 60.03,
           "high": 109.5,
           "low": 57.0,
           "range_volatility_pct": 92.11
         },
         "yearly_252d": {
-          "return_pct": 31.62,
+          "return_pct": 29.29,
           "high": 109.5,
           "low": 57.0,
           "range_volatility_pct": 92.11
         }
       },
       "wave_metrics": {
-        "median_rally_gain_pct": 24.8,
+        "median_rally_gain_pct": 24.9,
         "median_correction_drop_pct": -21.9,
         "avg_wave_duration_bars": 23.0
       },
-      "current_wave_phase": "LATE_MARKUP",
-      "phase_guidance": "Approaching historical rally limit (+20.7% vs median +24.8%). Tighten stop.",
+      "current_wave_phase": "MARKDOWN_PULLBACK",
+      "phase_guidance": "Ongoing pullback from peak (-13.3%). Wait for stabilizing base.",
       "top_seasonal_months": [
         {
           "month": "Aug",
@@ -262,12 +262,12 @@
       "macd": "neutral",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 3.93,
+      "atr": 3.86,
       "rsi_value": 44.49,
       "last_close": 94.9,
-      "sma20": 101.62,
-      "sma50": 93.0,
-      "sma200": 77.54,
+      "sma20": 101.51,
+      "sma50": 93.17,
+      "sma200": 77.71,
       "support_resistance": {
         "supports": [
           57.1,
@@ -354,13 +354,13 @@
         "flag": false,
         "price_chg": 0,
         "last_volume": 129353,
-        "avg_volume": 441231.0,
+        "avg_volume": 437740.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
         "spike_ratio": 0.29,
-        "avg_volume": 444968.0,
+        "avg_volume": 441231.0,
         "today_volume": 129353,
         "detail": "ok"
       },

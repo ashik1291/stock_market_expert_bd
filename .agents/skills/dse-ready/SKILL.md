@@ -32,9 +32,14 @@ python scripts/bootstrap.py
 
 ## What It Automatically Checks & Self-Heals:
 1. **Python Dependencies**: Verifies packages from `requirements.txt` (`requests`, `beautifulsoup4`, `lxml`, `matplotlib`, `pandas`, `bdshare`, `pdfplumber`). Auto-installs if missing.
-2. **Database Verification**: Checks `data/processed/dse.db`.
+2. **Database Verification & Decompression**: Checks `data/processed/dse.db`.
    - If missing or unpulled Git LFS pointer (<10KB), auto-decompresses `data/processed/dse.db.gz` (29MB) into `dse.db`.
    - Fallback: triggers `git lfs pull` or `scripts/rebuild_database.py`.
-3. **Configurations**: Verifies `config/` registries and portfolios.
-4. **Heartbeat Sync**: Executes `check_daily_sync.py` to ingest any pending market close sessions.
-5. **Readiness Dashboard**: Confirms 100% operational readiness.
+3. **Configurations**: Verifies `config/` registries and local user profile/portfolio templates.
+4. **Live Market Sync & Missed Date Backfill (`live_market_sync.py`)**:
+   - Compares the uncompressed DB max date against the live exchange trading calendar (Asia/Dhaka).
+   - Detects any missed intermediate trading sessions and backfills historical OHLCV bars across tracked equities.
+   - Scrapes live market prices across the entire universe (~395 instruments), DSE PSI corporate disclosures, and index statistics.
+   - Syncs central bank macro interest rates (91-Day T-bill, repo, equity hurdle).
+   - Refreshes Wilder's RSI, rolling factor ICs, and directional rise/fall predictions.
+5. **Readiness Dashboard**: Confirms 100% operational readiness and outputs a live mark-to-market status report saved to `reports/readiness/latest_live_readiness.md` for both CLI users and AI agents.

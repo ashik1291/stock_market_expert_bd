@@ -64,9 +64,16 @@ def _default_registry() -> dict:
         "factors": ["div", "value", "rsi", "debt"],
         "factor_weights": {"div": 1.0, "value": 1.0, "rsi": 1.0, "debt": 1.0},
     }
+    chall_bayes = {
+        "model_id": "shadow_bayesian_adaptive_v1",
+        "score": "bayesian_adaptive_v1",
+        "gates": ["debt_le_1_nonbank", "pe_0_25"],
+        "factors": ["div", "value", "rsi", "debt"],
+        "weights_source": "model_weights.json",
+    }
     return {
         "updated_at": datetime.now(timezone.utc).isoformat(),
-        "trial_count": 52,  # Accounting for all 52 exploratory trials evaluated (Holm gate deflation)
+        "trial_count": 53,  # Accounting for exploratory trials evaluated (Holm gate deflation)
         "required_periods": REQUIRED_PERIODS,
         "holm_alpha": ALPHA_FAMILY,
         "champion": {
@@ -92,6 +99,14 @@ def _default_registry() -> dict:
                 "registered_at": datetime.now(timezone.utc).isoformat(),
                 "role": "challenger",
                 "status": "SHADOW",
+            },
+            {
+                "model_id": chall_bayes["model_id"],
+                "parameter_hash": _param_hash(chall_bayes),
+                "params": chall_bayes,
+                "registered_at": datetime.now(timezone.utc).isoformat(),
+                "role": "challenger",
+                "status": "SHADOW",
             }
         ],
         "retired": [],
@@ -106,7 +121,29 @@ def load_registry() -> dict:
         save_registry(reg)
         return reg
     with open(REGISTRY_PATH, encoding="utf-8") as f:
-        return json.load(f)
+        reg = json.load(f)
+
+    # Ensure shadow_bayesian_adaptive_v1 challenger is registered
+    chall_ids = {c.get("model_id") for c in reg.get("challengers", [])}
+    if "shadow_bayesian_adaptive_v1" not in chall_ids:
+        chall_bayes = {
+            "model_id": "shadow_bayesian_adaptive_v1",
+            "score": "bayesian_adaptive_v1",
+            "gates": ["debt_le_1_nonbank", "pe_0_25"],
+            "factors": ["div", "value", "rsi", "debt"],
+            "weights_source": "model_weights.json",
+        }
+        reg.setdefault("challengers", []).append({
+            "model_id": chall_bayes["model_id"],
+            "parameter_hash": _param_hash(chall_bayes),
+            "params": chall_bayes,
+            "registered_at": datetime.now(timezone.utc).isoformat(),
+            "role": "challenger",
+            "status": "SHADOW",
+        })
+        save_registry(reg)
+
+    return reg
 
 
 def save_registry(reg: dict) -> None:
@@ -152,6 +189,19 @@ def _score_with_params(row: dict, params: dict) -> dict:
         try:
             from factor_ic_calibrator import load_ic_weights
             fw = load_ic_weights()
+        except Exception:
+            fw = None
+    elif score_mode == "bayesian_adaptive_v1":
+        try:
+            from reinforcement_learning_engine import load_weights
+            raw_w = load_weights()
+            # Map empirical Bayes learned factor weights into scoring weights
+            fw = {
+                "div": float(raw_w.get("smart_money_weight", 1.0)),
+                "value": float(raw_w.get("valuation_mos_weight", 1.0)),
+                "debt": float(raw_w.get("debt_npl_weight", 0.0)),
+                "rsi": float(raw_w.get("rsi_momentum_weight", 0.0)),
+            }
         except Exception:
             fw = None
     else:

@@ -2,13 +2,13 @@
   "ticker": "ACI",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-09T08:37:09.854218",
-  "asof_price_date": "2026-11-09",
+  "analyzed_at": "2026-11-10T13:49:47.514570",
+  "asof_price_date": "2026-11-10",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 35.0131,
+    "rsi_14": 35.0183,
     "pe_ratio": 0.0,
     "debt_equity": 0.77
   },
@@ -22,33 +22,33 @@
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Oversold bounce to 20-DMA",
-      "upside_potential_pct": "+3.5%",
-      "downside_risk_pct": "-2.3%",
-      "target_price": 177.2,
-      "support_price": 167.3,
+      "upside_potential_pct": "+3.4%",
+      "downside_risk_pct": "-2.2%",
+      "target_price": 177.0,
+      "support_price": 167.4,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+15.7%",
-      "downside_risk_pct": "-3.5%",
-      "target_price": 198.2,
-      "trailing_stop": 165.3,
-      "risk_reward_ratio": "4.5x"
+      "upside_potential_pct": "+15.5%",
+      "downside_risk_pct": "-3.4%",
+      "target_price": 197.7,
+      "trailing_stop": 165.5,
+      "risk_reward_ratio": "4.6x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.0%",
-      "downside_risk_pct": "-6.3%",
+      "downside_risk_pct": "-6.1%",
       "target_price": 222.6,
       "dividend_cagr": "moderate (1.33%)",
-      "risk_reward_ratio": "4.8x"
+      "risk_reward_ratio": "4.9x"
     }
   },
   "trade_levels": {
     "entry": 171.24,
-    "stop_loss": 165.31,
-    "target": 183.1
+    "stop_loss": 165.45,
+    "target": 182.82
   },
   "precision": {
     "ticker": "ACI",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 10991,
+      "avg_daily_volume": 11796,
       "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 549,
-      "max_daily_accumulation_shares": 1648,
-      "max_order_bdt": 549.0,
-      "directive": "Max single order: 549 shares (Tk 549) to prevent >1% execution slippage"
+      "max_single_order_shares": 589,
+      "max_daily_accumulation_shares": 1769,
+      "max_order_bdt": 589.0,
+      "directive": "Max single order: 589 shares (Tk 589) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,7 +91,7 @@
   },
   "pattern_dna": {
     "ticker": "ACI",
-    "audited_at": "2026-11-09 14:37:09",
+    "audited_at": "2026-11-10 19:49:47",
     "worth_vs_greed": {
       "current_price": 171.24,
       "intrinsic_worth": 85.62,
@@ -99,8 +99,8 @@
       "extension_froth_score": 20.0,
       "greed_index": 20.0,
       "rsi_14": 30.6,
-      "price_vs_ema50_pct": -5.6,
-      "price_vs_ema200_pct": -9.6,
+      "price_vs_ema50_pct": -5.4,
+      "price_vs_ema200_pct": -9.5,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -121,31 +121,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 1.93,
-          "high": 172.38,
+          "return_pct": 0.39,
+          "high": 171.43,
           "low": 168.57,
-          "range_volatility_pct": 2.26
+          "range_volatility_pct": 1.7
         },
         "monthly_21d": {
-          "return_pct": -6.58,
-          "high": 188.0,
+          "return_pct": -7.19,
+          "high": 184.4,
           "low": 167.0,
-          "range_volatility_pct": 12.57
+          "range_volatility_pct": 10.42
         },
         "quarterly_63d": {
-          "return_pct": -14.38,
+          "return_pct": -14.04,
           "high": 203.0,
           "low": 167.0,
           "range_volatility_pct": 21.56
         },
         "half_yearly_126d": {
-          "return_pct": -9.64,
+          "return_pct": -9.06,
           "high": 211.4,
           "low": 167.0,
           "range_volatility_pct": 26.59
         },
         "yearly_252d": {
-          "return_pct": 0.49,
+          "return_pct": 1.15,
           "high": 231.0,
           "low": 166.5,
           "range_volatility_pct": 38.74
@@ -261,12 +261,12 @@
       "macd": "neutral",
       "sma_trend": "neutral",
       "bb": "inside_bands",
-      "atr": 3.95,
+      "atr": 3.86,
       "rsi_value": 35.34,
       "last_close": 171.24,
-      "sma20": 176.28,
-      "sma50": 181.98,
-      "sma200": 196.35,
+      "sma20": 175.78,
+      "sma50": 181.63,
+      "sma200": 196.19,
       "support_resistance": {
         "supports": [
           178.0,
@@ -352,13 +352,13 @@
         "flag": false,
         "price_chg": 0,
         "last_volume": 16806,
-        "avg_volume": 11051.0,
+        "avg_volume": 11129.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.58,
-        "avg_volume": 10617.0,
+        "spike_ratio": 1.52,
+        "avg_volume": 11051.0,
         "today_volume": 16806,
         "detail": "ok"
       },
