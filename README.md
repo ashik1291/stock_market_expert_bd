@@ -2,11 +2,11 @@
 ### Autonomous DSE Quantitative Engine, Anti-Manipulation Surveillance & AI Financial Intelligence System
 
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
-[![Test Suite](https://img.shields.io/badge/tests-79%2F79%20passing-brightgreen.svg)]()
+[![Test Suite](https://img.shields.io/badge/tests-100%2F100%20passing-brightgreen.svg)]()
 [![Spec Guard](https://img.shields.io/badge/spec%20guard-8%2F8%20invariants%20pass-brightgreen.svg)]()
 [![Integrity Harness](https://img.shields.io/badge/integrity-9%2F9%20fails%3D0-brightgreen.svg)]()
-[![Institutional Audit](https://img.shields.io/badge/audit%20score-95.2%20%2F%20100%20(Grade%20A%2B)-gold.svg)]()
-[![Daily Pipeline](https://img.shields.io/badge/pipeline-16%2F16%20stages-success.svg)]()
+[![Institutional Audit](https://img.shields.io/badge/audit%20rating-52%2F100%20(Risk%20Filter%20Validated)-yellow.svg)]()
+[![Daily Pipeline](https://img.shields.io/badge/pipeline-13%2F13%20alpha%20stages-success.svg)]()
 [![Repo Footprint](https://img.shields.io/badge/clone%20size-~35%20MB-blue.svg)]()
 [![License](https://img.shields.io/badge/license-MIT-green.svg)]()
 
@@ -47,10 +47,10 @@ cd stock_market_expert_bd
 
 #### What Bootstrap Does Automatically:
 1. **Python Dependencies**: Verifies packages from `requirements.txt` (`requests`, `beautifulsoup4`, `lxml`, `matplotlib`, `pandas`, `bdshare`, `pdfplumber`). Auto-installs if missing.
-2. **Database Auto-Restoration**: Verifies `data/processed/dse.db`. On a fresh clone, automatically decompresses the master PIT archive (`dse.db.gz`, 30 MB) into the full uncompressed database (138 MB, 1,090,956 historical price bars, 5,570 continuous trading sessions).
-3. **Configuration Verification**: Validates 12-factor company registries, sector maps, and threshold manifests.
-4. **Heartbeat Sync**: Pulls latest macro benchmark rates (11.60% 91-day T-Bill) and synchronizes daily market close disclosures.
-5. **Readiness Dashboard**: Confirms 100% operational readiness.
+2. **Database Auto-Restoration**: Verifies `data/processed/dse.db`. On a fresh clone, automatically decompresses the master PIT archive (`dse.db.gz`, ~29 MB) into the full uncompressed database (138 MB, 1,093,326 historical price bars, 5,570 continuous trading sessions).
+3. **Configuration & Template Verification**: Validates 12-factor company registries, sector maps, and threshold manifests. Sets up clean private local user profile/portfolio templates.
+4. **Live Market Ingestion & Gap Backfill (`live_market_sync.py`)**: Compares the archive database date against live exchange trading days (`Asia/Dhaka`), backfills any missed intermediate trading sessions, scrapes today's live prices across all ~395 instruments, pulls DSE PSI corporate disclosures, and syncs Bangladesh Bank macro rates.
+5. **Readiness Dashboard**: Confirms 100% operational readiness, outputs live portfolio mark-to-market status, and saves a live readiness report to `reports/readiness/latest_live_readiness.md`.
 
 ---
 
@@ -117,14 +117,16 @@ python main.py portfolio
 # 6. Run Daily Statistical Alpha Cycle & Bayesian Calibration
 python main.py alpha
 
-# 7. End-to-End Daily Pipeline Execution (16 Stages)
+# 7. Synchronize Live Market Prices & Backfill Missed Sessions
+python main.py sync
+
+# 8. End-to-End Daily Pipeline Execution (13 Alpha Stages)
 run_daily.bat
 # or
 python scripts/run_daily_pipeline.py
 ```
 
 ---
-
 
 ---
 
@@ -150,8 +152,8 @@ flowchart TD
 | :--- | :--- | :--- |
 | **Planner** | `.agents/skills/dse-planner/` | Mandatory first step: spec review, task list & invariant impact assessment |
 | **Developer** | `.agents/skills/dse-developer/` | Feature implementation, PEP8, universal SQLite WAL timeouts, PIT assertions |
-| **Tester** | `.agents/skills/dse-tester/` | Regression gatekeeper, 79/79 unit tests, 9/9 integrity checks, edge simulations |
-| **Auditor** | `.agents/skills/dse-auditor/` | Institutional third-eye audit, bias detection, 100-pt scoring (Score >= 95.0) |
+| **Tester** | `.agents/skills/dse-tester/` | Regression gatekeeper, 100/100 unit tests, 9/9 integrity checks, edge simulations |
+| **Auditor** | `.agents/skills/dse-auditor/` | Institutional quantitative auditor: evaluates bias, verifies SPEC invariants, honest ~52/100 research/risk score |
 | **User Proxy**| `.agents/skills/dse-user-proxy/`| Real investor test: max profit probability, exact WHEN TO BUY & WHEN TO SELL rules |
 
 ### Automated Invariant Verification
@@ -251,17 +253,22 @@ The engine executes an end-to-end autonomous daily cycle upon market close:
 The engine is covered by an extensive, non-regressive institutional test suite:
 
 ```bash
-# Run all 68 unit tests
-python -m unittest discover -s tests -p "test_*.py"
+# Run all 100 unit tests
+python -m unittest discover tests
 
 # Run standalone integrity harness & leakage verification
 python scripts/integrity_harness.py
+
+# Run spec conformance guard (8/8 invariants)
+python scripts/spec_guard.py
 ```
 
 **Test Verification Status**:
-- **68/68 Unit Tests Passing** (`tests/test_audit_fixes_validation.py`, `tests/test_quant_engine.py`)
+- **100/100 Unit Tests Passing** (`tests/test_audit_fixes_validation.py`, `tests/test_quant_engine.py`, `tests/test_spec_conformance.py`)
+- **8/8 SPEC Invariants Passing** (INV-1 through INV-8)
 - **9/9 Integrity Harness Checks Passing** (`scripts/integrity_harness.py`)
 - **Champion Model Hash**: `acf502bc65914c48` (`frozen_epoch2_pit_v2`) verified invariant.
+- **Empirical Status**: Validated as 100% reliable forensic risk/junk filter; directional alpha under active forward walk testing.
 
 ---
 
