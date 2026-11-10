@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# .githooks/pre-push — Shell wrapper for cross-platform Git push security guard
+# Works on Windows (Git Bash), Linux, and macOS
+
+python scripts/git_hooks/pre_push_guard.py "$@"
+exit $?

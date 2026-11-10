@@ -175,6 +175,10 @@ def run_bootstrap():
     # 3. Verify configs & user templates
     verify_configs()
     verify_user_templates()
+    try:
+        subprocess.run(["git", "config", "core.hooksPath", ".githooks"], cwd=str(BASE_DIR), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    except Exception:
+        pass
 
     # 4. Live Market Sync & Missed Date Ingestion
     log("Synchronizing live market prices & backfilling missed dates...")
