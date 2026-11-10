@@ -295,6 +295,17 @@ def check_portfolio_drawdown_kill(p: dict, current_net_worth: float) -> tuple[bo
     return is_killed, dd_pct, hwm
 
 
+def update_portfolio_hwm(current_net_worth: float, user_id: str = "default_user") -> float:
+    """Updates high-water mark dynamically if current net worth hits a new high."""
+    p = load_portfolio(user_id=user_id)
+    hwm = float(p.get("high_water_mark_bdt", p.get("total_capital_bdt", current_net_worth)))
+    if current_net_worth > hwm:
+        p["high_water_mark_bdt"] = round(current_net_worth, 2)
+        save_portfolio(p, user_id=user_id)
+        return round(current_net_worth, 2)
+    return hwm
+
+
 
 def record_buy(ticker: str, shares: int, price: float, horizon: str = "long_term", min_ticket_fee: float = 0.0, asof_date: str | None = None):
     # Guard against blacklisted / manipulated stocks

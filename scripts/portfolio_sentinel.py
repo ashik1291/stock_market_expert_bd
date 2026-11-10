@@ -228,6 +228,13 @@ def audit_portfolio_sentinel(asof_date: str | None = None) -> dict:
     target_10pct_cash = round(total_net_worth * 0.10, 2)
     cash_deficit = max(0.0, round(target_10pct_cash - cash_bal, 2))
 
+    # Dynamically track High-Water Mark for portfolio drawdown defense
+    try:
+        from portfolio_manager import update_portfolio_hwm
+        update_portfolio_hwm(total_net_worth)
+    except Exception:
+        pass
+
     # Nano-Diversification & Ticket Drag Audit
     nano_holdings = [h for h in holdings_audit if h["current_value"] < 500.0 or h["shares"] <= 2]
     consolidation_advice = []

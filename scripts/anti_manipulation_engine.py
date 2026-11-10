@@ -20,6 +20,7 @@ import sys
 import json
 import sqlite3
 import datetime
+import statistics
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -131,7 +132,10 @@ def run_surveillance_scan(asof_date: str | None = None) -> list[dict]:
             continue
 
         prev_close = float(hist_rows[0]["close"] or close)
-        avg_vol_20 = sum(float(r["volume"] or 0.0) for r in hist_rows) / len(hist_rows)
+        vols_20 = [float(r["volume"] or 0.0) for r in hist_rows]
+        med_vol = float(statistics.median(vols_20))
+        mean_vol = sum(vols_20) / len(vols_20)
+        avg_vol_20 = med_vol if med_vol > 0 else mean_vol
         price_change_pct = round(((close - prev_close) / prev_close) * 100.0, 2) if prev_close > 0 else 0.0
         spike_ratio = round(volume / avg_vol_20, 2) if avg_vol_20 > 0 else 1.0
 

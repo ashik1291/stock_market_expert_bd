@@ -142,7 +142,7 @@ def parse_and_record_dse_psi(
 
     for (code, summary), bodies in groups.items():
         full_text = " ".join(reversed(bodies))
-        if not re.search(r'(dividend|bonus\s+share)', full_text, re.IGNORECASE):
+        if not re.search(r'(dividend|bonus\s+share|লভ্যাংশ|বোনাস)', full_text, re.IGNORECASE):
             continue
 
         # Record Date extraction
@@ -165,6 +165,10 @@ def parse_and_record_dse_psi(
             cash_m = re.search(r'declared\s+interim\s+cash\s+dividend\s+of\s+(\d+(?:\.\d+)?)%', full_text, re.IGNORECASE)
         if not cash_m:
             cash_m = re.search(r'(\d+(?:\.\d+)?)\s*%\s*Cash', full_text, re.IGNORECASE)
+        if not cash_m:
+            cash_m = re.search(r'(\d+(?:\.\d+)?)\s*%\s*(?:নগদ|ক্যাশ)', full_text, re.IGNORECASE)
+        if not cash_m:
+            cash_m = re.search(r'নগদ\s*লভ্যাংশ.*?(\d+(?:\.\d+)?)\s*%', full_text, re.IGNORECASE)
         if cash_m:
             cash_pct = float(cash_m.group(1))
 
@@ -175,6 +179,10 @@ def parse_and_record_dse_psi(
             stock_m = re.search(r'(\d+(?:\.\d+)?)\s*%\s*Stock', full_text, re.IGNORECASE)
         if not stock_m:
             stock_m = re.search(r'(\d+(?:\.\d+)?)\s*%\s*bonus\s+shares?', full_text, re.IGNORECASE)
+        if not stock_m:
+            stock_m = re.search(r'(\d+(?:\.\d+)?)\s*%\s*(?:বোনাস|স্টক)', full_text, re.IGNORECASE)
+        if not stock_m:
+            stock_m = re.search(r'বোনাস\s*লভ্যাংশ.*?(\d+(?:\.\d+)?)\s*%', full_text, re.IGNORECASE)
         if stock_m:
             stock_pct = float(stock_m.group(1))
 

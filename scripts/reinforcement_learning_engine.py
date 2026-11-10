@@ -357,7 +357,8 @@ def evaluate_pending_predictions(eval_window_days: int | None = None) -> dict:
             "rsi_momentum_weight": "rsi_oversold_triggered",
             "smart_money_weight": "smart_money_active",
         }
-        prior_a, prior_b = 2.0, 2.0
+        # Robust empirical Bayes prior: pseudo-sample count 50 prevents overfitting on small sample sizes
+        prior_a, prior_b = 25.0, 25.0
         prior_mean = 0.5
         lr = float(weights.get("learning_rate", 0.02))
 

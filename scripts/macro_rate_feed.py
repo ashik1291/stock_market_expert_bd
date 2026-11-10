@@ -341,8 +341,17 @@ def get_latest_macro_rates(conn: Optional[sqlite3.Connection] = None) -> dict:
     min_equity_risk_premium = 3.50  # 350 bps minimum required equity spread
     equity_hurdle_rate = round(rf_rate + min_equity_risk_premium, 2)
 
+    try:
+        latest_dt = datetime.datetime.strptime(latest_date[:10], "%Y-%m-%d").date()
+        staleness_days = max(0, (datetime.date.today() - latest_dt).days)
+    except Exception:
+        staleness_days = 0
+    is_stale = staleness_days > 14
+
     return {
         "as_of_date": latest_date,
+        "staleness_days": staleness_days,
+        "is_stale": is_stale,
         "risk_free_rate_pct": rf_rate,
         "t_bill_91d_pct": rf_rate,
         "t_bill_182d_pct": data.get("t_bill_182d", 11.85),
