@@ -75,11 +75,11 @@ flowchart TD
         LEDGER["Cryptographic Forward Ledger<br/>(SHA-256 Hash-Chained Blocks)"]
     end
 
-    L1 --> L2
-    L2 --> L3
-    L3 --> L4
-    L4 --> L5
-    L5 --> L6
+    BB --> PIT
+    PIT --> HALAL
+    HALAL --> HURDLE
+    HURDLE --> SENTINEL
+    SENTINEL --> SPEC & LEDGER
 ```
 
 ---
