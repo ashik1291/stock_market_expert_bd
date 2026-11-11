@@ -324,6 +324,10 @@ python main.py alpha
 
 # 12. Switch Screening Preferences (Halal Flexible / Strict / Off)
 python main.py config
+
+# 13. Automated Cron & Server Scheduler (Install, Status, Uninstall, Daemon)
+python main.py schedule install
+python main.py schedule status
 ```
 
 ---

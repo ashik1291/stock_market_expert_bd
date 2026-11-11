@@ -1,0 +1,18 @@
+[Unit]
+Description=DSE Quantitative Engine — Daily Statistical Alpha & Pipeline Service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=%i
+WorkingDirectory=/path/to/stock_market
+Environment="PYTHONUNBUFFERED=1"
+Environment="TZ=Asia/Dhaka"
+ExecStart=/path/to/stock_market/.venv/bin/python /path/to/stock_market/scripts/auto_daily_alpha_routine.py
+StandardOutput=journal
+StandardError=journal
+Restart=no
+
+[Install]
+WantedBy=multi-user.target

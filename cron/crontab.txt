@@ -1,0 +1,35 @@
+# ==============================================================================
+# stock_market_expert_bd — DSE Quantitative Engine Crontab Template
+# Timezone: Asia/Dhaka (BST: UTC+6)
+# Trading Days: Sunday through Thursday (0-4 or Sun-Thu)
+#
+# Usage:
+#   1. Automatic: run 'python scripts/scheduler_manager.py install'
+#      or 'bash scripts/setup_cron.sh install'
+#   2. Manual: edit the paths below and run 'crontab cron/crontab.txt'
+# ==============================================================================
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+CRON_TZ=Asia/Dhaka
+
+# 1. Post-Market Daily Alpha & Learning Cycle (Sun-Thu at 15:30 BST / 09:30 UTC)
+# Ingests market close prices, syncs Bangladesh Bank hurdle rates, advances forward ledger,
+# updates Empirical Bayes learning weights, refreshes 52-week corridor percentiles, and generates daily signals.
+30 15 * * 0-4 cd /path/to/stock_market && /path/to/python scripts/auto_daily_alpha_routine.py >> logs/cron_daily_alpha.log 2>&1
+
+# 2. Master Daily Pipeline & Position Plan (Sun-Thu at 16:15 BST / 10:15 UTC)
+# Verifies forensic filters, calculates tri-horizon asset allocations, generates English/Bengali plans,
+# and enforces 9/9 System Integrity Harness checks.
+15 16 * * 0-4 cd /path/to/stock_market && /path/to/python scripts/run_daily_pipeline.py --skip-scrape >> logs/cron_daily_pipeline.log 2>&1
+
+# 3. Weekly Deep Knowledge Base Refresh (Every Thursday at 18:00 BST / 12:00 UTC)
+# Runs comprehensive Category A multi-factor analysis, valuation moats, and sector matrix audit.
+00 18 * * 4 cd /path/to/stock_market && /path/to/python scripts/analyzer.py category_a weekly >> logs/cron_weekly_refresh.log 2>&1
+
+# 4. Weekly Baseline Database Compression & Git Push (Every Thursday at 19:00 BST / 13:00 UTC)
+# Recompresses dse.db into dse.db.gz and commits/pushes master baseline archive upstream.
+00 19 * * 4 cd /path/to/stock_market && /path/to/python scripts/push_db_update.py >> logs/cron_push_db.log 2>&1
+
+# 5. Midday Market Pulse & Circuit-Breaker Check (Sun-Thu at 11:30 & 13:30 BST)
+# Checks price feed synchronization and market depth during active trading hours.
+30 11,13 * * 0-4 cd /path/to/stock_market && /path/to/python scripts/check_daily_sync.py >> logs/cron_midday_sync.log 2>&1

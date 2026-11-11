@@ -121,3 +121,47 @@ Once `ready` is executed, the system is permanently autonomous:
 | **Buffett Sector Screener** | Type `best` or run `python main.py best2` |
 | **Monthly Deployment Plan** | Type `plan 2000` or run `python main.py plan 2000` |
 | **Full 11-Step Refresh** | Type `refresh` or run `python main.py refresh` |
+| **Setup Cron / Scheduled Jobs** | Type `schedule install` or run `python main.py schedule install` |
+
+---
+
+## ⏰ Step 4: Production Server Deployment & Automated Cron / Scheduled Jobs
+
+When deploying this repository to a dedicated Linux server, cloud VM, Windows server, or Docker container, you can arm all recurring market automations with a single command.
+
+### 🐧 Linux / macOS Servers (Crontab / Systemd)
+```bash
+# 1. Automatic installation into crontab:
+python main.py schedule install
+# or:
+bash scripts/setup_cron.sh install
+
+# 2. Inspect active crontab:
+python main.py schedule status
+
+# 3. For modern systemd servers (timers):
+bash scripts/setup_cron.sh systemd
+```
+
+### 🪟 Windows Servers (Task Scheduler)
+```powershell
+# In PowerShell:
+python main.py schedule install
+# or:
+powershell -ExecutionPolicy Bypass -File .\scripts\setup_scheduled_tasks.ps1 -Action Install
+```
+
+### 🐳 Docker / Headless Cloud Containers (Continuous Daemon)
+If running inside a Docker container, Kubernetes pod, or cloud instance where crontab is unavailable:
+```bash
+# Runs an in-process, timezone-aware (Asia/Dhaka UTC+6) scheduling daemon:
+python main.py schedule daemon
+```
+
+### 🕒 Automated Trading Schedule (Asia/Dhaka UTC+6):
+- **15:30 BST (Sun–Thu)**: Post-market closing price ingestion, Bangladesh Bank hurdle sync, forward ledger advance, Empirical Bayes calibration, and daily rise/fall scan (`auto_daily_alpha_routine.py`).
+- **16:15 BST (Sun–Thu)**: Master pipeline execution, forensic filtration, portfolio audit, and English + Bengali position plans (`run_daily_pipeline.py`).
+- **18:00 BST (Thursday)**: Comprehensive weekly multi-factor knowledge base refresh and 52-week corridor updates (`analyzer.py category_a weekly`).
+- **19:00 BST (Thursday)**: Master database baseline compression and Git sync (`push_db_update.py`).
+- **11:30 & 13:30 BST (Sun–Thu)**: Midday market heartbeat and price synchronization.
+

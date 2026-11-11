@@ -1,0 +1,10 @@
+[Unit]
+Description=DSE Quantitative Engine — Weekly Knowledge Base Refresh Timer (Thu at 18:00 BST)
+
+[Timer]
+# Every Thursday at 18:00 Dhaka Time (12:00 UTC)
+OnCalendar=Thu *-*-* 18:00:00 Asia/Dhaka
+Persistent=true
+
+[Install]
+WantedBy=timers.target

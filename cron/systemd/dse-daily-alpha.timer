@@ -1,0 +1,10 @@
+[Unit]
+Description=DSE Quantitative Engine — Daily Alpha Cycle Timer (Sun-Thu at 15:30 BST)
+
+[Timer]
+# Sunday through Thursday at 15:30 Dhaka Time (09:30 UTC)
+OnCalendar=Sun..Thu *-*-* 15:30:00 Asia/Dhaka
+Persistent=true
+
+[Install]
+WantedBy=timers.target

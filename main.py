@@ -26,6 +26,7 @@ Commands:
   proxy [BDT]   Run user proxy simulation: max profit probability, entry zone & exit rules
   report        Display the latest weekly investment & trading executive report
   push-db       Compress latest local dse.db into dse.db.gz and push monthly baseline to GitHub
+  schedule      Configure, inspect or run automated cron / scheduled jobs (install, status, uninstall, daemon)
   help          Display this command reference
 """
 
@@ -253,6 +254,10 @@ def cmd_push_db(dry_run: bool = False):
     run_script("push_db_update.py", args)
 
 
+def cmd_schedule(args: list = None):
+    run_script("scheduler_manager.py", args or ["status"])
+
+
 def auto_heal_stale_data():
     """
     Automatic Self-Healing Guard:
@@ -352,6 +357,9 @@ def main():
     elif cmd in ("push-db", "update-db", "sync-db", "push-database"):
         dry = "--dry-run" in sys.argv
         cmd_push_db(dry)
+    elif cmd in ("schedule", "cron", "crontab", "tasks", "jobs"):
+        sub_args = sys.argv[2:] if len(sys.argv) > 2 else ["status"]
+        cmd_schedule(sub_args)
     elif cmd in ("help", "menu", "?"):
         cmd_help()
     else:
