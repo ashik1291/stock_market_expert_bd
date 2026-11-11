@@ -8,7 +8,7 @@
 [![PIT Fundamentals](https://img.shields.io/badge/PIT%20coverage-100%25%20verified%20(Grade%20A%2B)-brightgreen.svg)]()
 [![Forensic Shield](https://img.shields.io/badge/risk%20filter-100%25%20validated-brightgreen.svg)]()
 [![Alpha Predictor](https://img.shields.io/badge/forward%20alpha-trial%20(N%3D22%20blocks)-blue.svg)]()
-[![Clone Download](https://img.shields.io/badge/clone%20download-~100%20MB-blue.svg)]()
+[![Working Tree](https://img.shields.io/badge/working%20tree-~41%20MB-blue.svg)]()
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 `stock_market_expert_bd` is an institutional-grade quantitative finance platform and autonomous investment intelligence system built specifically for the **Dhaka Stock Exchange (DSE)** and Bangladesh capital markets.
@@ -166,16 +166,21 @@ tradable_date >= publication_date >= snapshot_date
 
 The platform includes a self-healing bootstrap engine that initializes the database, validates packages, and syncs live prices automatically.
 
-### 1. Clone the Repository (~100 MB Git Transfer | ~72 MB Tree)
+### 1. Clone the Repository (~33 MB Shallow Clone | ~41 MB Clean Tree)
 ```bash
+# Recommended: Fast shallow clone (~33 MB transfer)
+git clone --depth=1 https://github.com/ashik1291/stock_market_expert_bd.git
+cd stock_market_expert_bd
+
+# Or full clone with complete git history
 git clone https://github.com/ashik1291/stock_market_expert_bd.git
 cd stock_market_expert_bd
 ```
 
 > 📦 **Storage Footprint**:
-> - **Git Clone Download**: **~100 MB** (Packfile containing commit history + master database archive `dse.db.gz`).
-> - **Working Tree**: **~72 MB** (Source scripts, model weights, config, and documentation).
-> - **Post-Bootstrap SQLite Database**: **~140 MB** (`dse.db` expanded with 1,093,326 continuous historical bars).
+> - **Shallow Clone Download (`--depth=1`)**: **~33 MB** (Includes compressed master database archive `dse.db.gz`).
+> - **Clean Working Tree**: **~41 MB** (Source scripts, model weights, config, and documentation — reduced from 72 MB after isolating ephemeral reports).
+> - **Post-Bootstrap SQLite Database**: **~141 MB** (`dse.db` expanded with 1,093,326 continuous historical bars + 100% Point-in-Time disclosures).
 
 ---
 
