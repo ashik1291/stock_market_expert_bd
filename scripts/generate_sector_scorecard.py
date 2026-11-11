@@ -200,18 +200,44 @@ def generate_matrix() -> str:
     return "\n".join(lines)
 
 
+def generate_concise_readme_matrix() -> str:
+    lines = [
+        "### 🏢 Sector Allocation & Institutional Confidence Matrix",
+        "",
+        "Empirically derived across all **396 listed companies** in `data/processed/dse.db`, ranking sectors into 4 actionable capital deployment tiers:",
+        "",
+        "| Allocation Tier | System Confidence | Key Sectors Covered | Macro Hurdle Status | Capital Allocation Stance |",
+        "| :--- | :---: | :--- | :--- | :--- |",
+        "| **Tier 1: Sovereign Moats** | **60% – 70%** (HIGH) | **Fuel & Power**, **Cement**, **Pharmaceuticals**, **Telecom** | Best risk-adjusted yields (`JAMUNAOIL` P/E 3.1, 9.9% yield). Blue-chips (`SQURPHARMA`, `GP`) hold moats. | **Primary Capital Allocation**. Accumulate on support and cyclical rate dips. |",
+        "| **Tier 2: Cyclical Leaders** | **48% – 58%** (MODERATE) | **Engineering**, **Food & Beverage**, **IT**, **Textile** | Deep value in steel (`BSRMLTD`) & consumer (`BATBC`, `OLYMPIC`). Textile faces margin squeeze. | **Selective Swings Only**. Screen individual balance sheets for zero debt. |",
+        "| **Tier 3: High Risk / Illiquid** | **30% – 40%** (LOW) | **Insurance**, **Ceramic**, **Real Estate**, **Tannery**, **Misc** | Severe syndicate pump activity in Insurance (NOCFPS $\\le 0$). Thin liquidity across small-caps. | **Forensic Avoidance**. Near-zero capital allocated; exit on speculative bounces. |",
+        "| **Tier 4: Excluded / Distressed** | **20% – 35%** (BLOCKED) | **Conventional Banking**, **NBFIs**, **Mutual Funds**, **Jute**, **Paper** | 100% excluded under Halal Guard (`INV-3`) or chronic negative equity (Jute, legacy NBFIs). | **Hard Block (0% Allocation)**. System strictly prohibits capital deployment. |",
+        "",
+        "> 📊 *Full 19-sector granular breakdown, company counts, and PIT audit ratios are continuously tracked in [`reports/full_19_sector_matrix.md`](reports/full_19_sector_matrix.md).*",
+    ]
+    return "\n".join(lines)
+
+
 def update_readme():
-    matrix_md = generate_matrix()
+    full_matrix_md = generate_matrix()
+    concise_md = generate_concise_readme_matrix()
+
+    # Save full 19-sector matrix to reports
+    full_report_path = BASE_DIR / "reports" / "full_19_sector_matrix.md"
+    full_report_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(full_report_path, "w", encoding="utf-8") as f:
+        f.write("# 🏢 Complete 19-Sector Empirical Performance & Confidence Matrix\n\n" + full_matrix_md)
+    print(f"✅ Saved full 19-sector matrix to {full_report_path}")
 
     with open(README_PATH, "r", encoding="utf-8") as f:
         readme = f.read()
 
-    start_tag = "### 🏢 Sector Performance & Empirical Confidence Matrix"
+    start_tag = "### 🏢 Sector "
     end_tag = "## 🏛️ End-to-End System Architecture"
 
     start_idx = readme.find(start_tag)
     if start_idx == -1:
-        print("Sector Performance section not found in README.md")
+        print("Sector section not found in README.md")
         return False
 
     end_idx = readme.find(end_tag)
@@ -219,12 +245,12 @@ def update_readme():
         print("Architecture section not found in README.md")
         return False
 
-    updated_readme = readme[:start_idx] + matrix_md + "\n---\n\n" + readme[end_idx:]
+    updated_readme = readme[:start_idx] + concise_md + "\n\n---\n\n" + readme[end_idx:]
 
     with open(README_PATH, "w", encoding="utf-8") as f:
         f.write(updated_readme)
 
-    print("✅ Successfully updated README.md with clean, deduplicated sector matrix!")
+    print("✅ Successfully updated README.md with concise, high-presentation sector matrix!")
     return True
 
 
