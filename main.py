@@ -253,6 +253,30 @@ def cmd_push_db(dry_run: bool = False):
     run_script("push_db_update.py", args)
 
 
+def auto_heal_stale_data():
+    """
+    Automatic Self-Healing Guard:
+    Checks if the local database has missing trading sessions (e.g. user was absent for days/weeks).
+    Automatically backfills missed market data before executing analytical or decision commands.
+    """
+    try:
+        from live_market_sync import get_sync_status, sync_live_market
+        status = get_sync_status()
+        if status.get("is_stale"):
+            missing = status.get("missing_dates", [])
+            print("=" * 80)
+            print(f"⚡ [AUTO-HEAL] Inactivity detected: {len(missing)} missed trading session{'s' if len(missing) != 1 else ''} found.")
+            print(f"⚡ [AUTO-HEAL] Sessions to recover: {missing}")
+            print("⚡ [AUTO-HEAL] Automatically backfilling missed market data to keep system 100% current...")
+            print("=" * 80)
+            sync_live_market(verbose=True)
+            print("=" * 80)
+            print("✅ [AUTO-HEAL] Database and knowledge graph synchronized! Proceeding with requested command...\n")
+    except Exception as e:
+        # Non-blocking: never abort the user command if network/scraper is temporarily unreachable
+        pass
+
+
 def cmd_help():
     print(__doc__)
 
@@ -270,6 +294,17 @@ def main():
         return
 
     cmd = sys.argv[1].lower().strip("-")
+
+    # Auto-heal missed data for analytical & decision commands
+    analytical_cmds = {
+        "status", "info", "best2", "screener", "buffett", "scan", "daily", "rise-fall",
+        "check", "audit", "daily-check", "review", "portfolio", "holdings",
+        "proxy", "simulate", "user-proxy", "plan", "position", "dual", "dual-engine",
+        "core-satellite", "swings", "radar", "catalyst", "catalysts", "season",
+        "report", "weekly", "pattern", "cycles", "why", "dna", "alpha", "daily-alpha"
+    }
+    if cmd in analytical_cmds:
+        auto_heal_stale_data()
     if cmd in ("ready", "bootstrap", "setup", "init"):
         cmd_ready()
     elif cmd in ("sync", "live", "catchup"):

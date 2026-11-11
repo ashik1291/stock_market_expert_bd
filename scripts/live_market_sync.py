@@ -99,9 +99,13 @@ def get_sync_status(conn: Optional[sqlite3.Connection] = None) -> Dict[str, Any]
         if not latest_price_date:
             is_stale = True
         elif missing_dates:
-            # If the only missing date is today, and it's a weekend or pre-market holiday, maybe not stale
-            if len(missing_dates) == 1 and missing_dates[0] == today_dhaka and not is_trading_day_today:
-                is_stale = False
+            # If the only missing date is today:
+            # Not stale if it's a non-trading day OR if market has not opened yet (before 10:00 AM)
+            if len(missing_dates) == 1 and missing_dates[0] == today_dhaka:
+                if not is_trading_day_today or (now_dhaka.hour < 10):
+                    is_stale = False
+                else:
+                    is_stale = True
             else:
                 is_stale = True
 
