@@ -40,9 +40,11 @@ Empirically derived across all **396 listed companies** in `data/processed/dse.d
 | Allocation Tier | System Confidence | Key Sectors Covered | Macro Hurdle Status | Capital Allocation Stance |
 | :--- | :---: | :--- | :--- | :--- |
 | **Tier 1: Sovereign Moats** | **60% – 70%** (HIGH) | **Fuel & Power**, **Cement**, **Pharmaceuticals**, **Telecom** | Best risk-adjusted yields (`JAMUNAOIL` P/E 3.1, 9.9% yield). Blue-chips (`SQURPHARMA`, `GP`) hold moats. | **Primary Capital Allocation**. Accumulate on support and cyclical rate dips. |
-| **Tier 2: Cyclical Leaders** | **48% – 58%** (MODERATE) | **Engineering**, **Food & Beverage**, **IT**, **Textile** | Deep value in steel (`BSRMLTD`) & consumer (`BATBC`, `OLYMPIC`). Textile faces margin squeeze. | **Selective Swings Only**. Screen individual balance sheets for zero debt. |
+| **Tier 2: Cyclical & Value Leaders** | **48% – 58%** (MODERATE) | **Engineering**, **Food & Beverage**, **Banking (Regular Mode)**, **IT**, **Textile** | Deep value in steel (`BSRMLTD`), consumer (`BATBC`), and safe banks with NPL < 6.0% (`CITYBANK`, `PUBALIBANK`). | **Selective Swings & Yield**. Screen balance sheets; enforce NPL < 6.0% for banks. |
 | **Tier 3: High Risk / Illiquid** | **30% – 40%** (LOW) | **Insurance**, **Ceramic**, **Real Estate**, **Tannery**, **Misc** | Severe syndicate pump activity in Insurance (NOCFPS $\le 0$). Thin liquidity across small-caps. | **Forensic Avoidance**. Near-zero capital allocated; exit on speculative bounces. |
-| **Tier 4: Excluded / Distressed** | **20% – 35%** (BLOCKED) | **Conventional Banking**, **NBFIs**, **Mutual Funds**, **Jute**, **Paper** | 100% excluded under Halal Guard (`INV-3`) or chronic negative equity (Jute, legacy NBFIs). | **Hard Block (0% Allocation)**. System strictly prohibits capital deployment. |
+| **Tier 4: Excluded / Distressed** | **20% – 35%** (BLOCKED) | **NBFIs**, **Mutual Funds**, **Jute**, **Paper**, **Toxic Banks (NPL $\ge 6\%$)** | Shariah exclusion for finance in Halal Mode; negative equity or toxic debt across legacy NBFIs and Jute. | **Hard Block (0% Allocation)**. System strictly prohibits capital deployment. |
+
+> 💡 **User Preference Notice**: When `halal_tier: 'flexible' | 'strict'`, Banking is automatically moved to Tier 4 Shariah Filtered (0% allocation). When `halal_tier: 'off'`, safe banks with NPL < 6.0% are active in Tier 2.
 
 > 📊 *Full 19-sector granular breakdown, company counts, and PIT audit ratios are continuously tracked in [`reports/full_19_sector_matrix.md`](reports/full_19_sector_matrix.md).*
 
