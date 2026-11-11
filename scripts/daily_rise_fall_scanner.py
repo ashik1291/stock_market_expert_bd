@@ -49,7 +49,7 @@ def load_config(name: str) -> dict:
     return {}
 
 
-def scan_daily_rise_and_fall(timeframe: str = "weekly") -> dict:
+def scan_daily_rise_and_fall(timeframe: str = "weekly", user_id: str = "default_user", halal_override: str | None = None) -> dict:
     # Full Category A universe from database (375 companies across all 19 sectors)
     tickers = []
     try:
@@ -68,8 +68,19 @@ def scan_daily_rise_and_fall(timeframe: str = "weekly") -> dict:
             tickers.extend(sd.get("top_tickers", []))
         tickers = list(dict.fromkeys(tickers))
 
+    # User profile & Halal preference
+    active_halal_tier = "flexible"
     try:
-        from unified_score import is_shariah_excluded_sector
+        from user_manager import load_user_profile
+        user_prof = load_user_profile(user_id)
+        active_halal_tier = halal_override or user_prof.get("halal_tier", "flexible")
+    except Exception as e:
+        log.warning(f"Could not load user profile: {e}")
+    if active_halal_tier not in ("strict", "flexible", "off"):
+        active_halal_tier = "flexible"
+
+    try:
+        from unified_score import is_shariah_excluded_sector, is_shariah_excluded_company
         db = sqlite3.connect(BASE_DIR / "data" / "processed" / "dse.db", timeout=30.0)
         db.execute("PRAGMA busy_timeout = 30000;")
         sector_rows = db.execute("SELECT ticker, sector FROM companies").fetchall()
@@ -89,6 +100,7 @@ def scan_daily_rise_and_fall(timeframe: str = "weekly") -> dict:
     rise_list   = []
     fall_list   = []
     range_list  = []
+    shariah_excluded_list = []
 
     db_v = sqlite3.connect(BASE_DIR / "data" / "processed" / "dse.db", timeout=30.0)
     db_v.execute("PRAGMA busy_timeout = 30000;")
@@ -124,29 +136,30 @@ def scan_daily_rise_and_fall(timeframe: str = "weekly") -> dict:
             de_val = fund.get("debt_equity_val")
             sector = sector_map.get(ticker, "Unknown")
 
-            if is_shariah_excluded_sector(sector):
-                reason = f"Shariah / zero-bank exclusion: {sector}"
-                fall_list.append({
+            bank_npl = fund.get("bank_npl_pct")
+            is_safe_bank = (bank_npl is not None and bank_npl < 6.0)
+            is_shariah = is_shariah_excluded_sector(sector) or is_shariah_excluded_company(sector, ticker=ticker)
+
+            # If user prefers Shariah / Halal screening (flexible or strict)
+            if active_halal_tier in ("strict", "flexible") and is_shariah:
+                reason = f"Shariah screen ({sector}) — conventional banking / interest"
+                shariah_excluded_list.append({
                     "ticker": ticker,
+                    "sector": sector,
                     "price": price,
-                    "conviction_tier": "HARD_BLOCK",
-                    "served_score": (data.get("served_model") or {}).get("score"),
                     "pe": fund.get("pe"),
                     "debt_equity": de_val,
-                    "primary_fall_trigger": reason,
-                    "all_triggers": [reason],
+                    "bank_npl": bank_npl,
+                    "is_safe_bank": is_safe_bank,
+                    "primary_reason": reason,
                     "management": mgmt.get("managing_director_ceo"),
-                    "directive": "DO NOT BUY / BLOCKED",
+                    "directive": "SHARIAH FILTERED",
                 })
                 continue
 
             smart_money = prec.get("smart_money", {})
             cash_flow   = prec.get("cash_flow", {})
             liquidity   = prec.get("liquidity", {})
-
-            # Check bank asset quality
-            bank_npl = fund.get("bank_npl_pct")
-            is_safe_bank = (bank_npl is not None and bank_npl < 6.0)
 
             # Critical Bearish Fall Flags
             fall_reasons = []
@@ -255,6 +268,28 @@ def scan_daily_rise_and_fall(timeframe: str = "weekly") -> dict:
                         except Exception:
                             div_val = 0.0
 
+                    # If regular mode (halal_tier == 'off') and financial sector:
+                    # Dynamically rescore with halal_tier='off' so banks/FIs get real score & eligibility
+                    if active_halal_tier == "off" and is_shariah:
+                        try:
+                            from unified_score import score_features
+                            rescored = score_features(
+                                pe=pe_num,
+                                debt_equity=de_val if not is_safe_bank else None,
+                                dividend_yield=div_val / 100.0 if div_val else 0.0,
+                                rsi_14=prec.get("rsi_14") or 50.0,
+                                sector=sector,
+                                close=price,
+                                ticker=ticker,
+                                enforce_macro_hurdle=True,
+                                halal_tier="off",
+                            )
+                            served_score = rescored.get("score")
+                            is_eligible = rescored.get("is_eligible", False) and passes_macro
+                            gate_reasons = rescored.get("gate_reasons", [])
+                        except Exception as ex:
+                            log.warning(f"Rescore error for {ticker} under halal_tier=off: {ex}")
+
                     if served_score is not None and served_score > 0 and is_eligible:
                         user_directive_en = "🟢 BUY (CLEARED)"
                         user_directive_bn = "🟢 ক্রয়যোগ্য (BUY)"
@@ -362,8 +397,10 @@ def scan_daily_rise_and_fall(timeframe: str = "weekly") -> dict:
         "generated_at": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "macro":        macro_report,
         "total_scanned": len(tickers),
+        "halal_tier":   active_halal_tier,
         "predicted_to_rise": rise_list,
         "predicted_to_fall": fall_list,
+        "shariah_excluded":  shariah_excluded_list,
         "rangebound":        range_list
     }
 
@@ -390,7 +427,9 @@ def publish_rise_fall_report(res: dict):
     lines.append(f"**Empirical Status**: *Validated as Risk/Junk Filter (0.0% data corruption). Unvalidated as Profit-Generating Predictor (Permutation p = 0.608 vs Random Null).*\n")
 
     macro = res.get("macro", {})
-    lines.append(f"**Macro Bias**: `{macro.get('bias_label', 'Neutral')}` (Score: {macro.get('systemic_market_bias', 0)}/100)\n")
+    ht_label = res.get("halal_tier", "flexible").upper()
+    ht_desc = "Regular Stock Mode — All 19 Sectors Enabled (Banks, FIs, Insurance Active)" if res.get("halal_tier") == "off" else "Shariah-Compliant Only (Advisory exclusion for conventional finance)"
+    lines.append(f"**Macro Bias**: `{macro.get('bias_label', 'Neutral')}` (Score: {macro.get('systemic_market_bias', 0)}/100) | **Halal Guard**: `{ht_label}` ({ht_desc})\n")
     lines.append("---\n")
 
     # 1. Stocks Predicted to RISE
@@ -444,8 +483,22 @@ def publish_rise_fall_report(res: dict):
         )
     lines.append("")
 
-    # 3. Actionable Rule
-    lines.append("## 🛡️ Daily Execution Rules for Capital Protection\n")
+    # 3. Shariah Excluded Equities (Advisory)
+    sh_ex = res.get("shariah_excluded", [])
+    if sh_ex:
+        lines.append(f"## ⚖️ 3. Shariah Filtered Equities (User Mode: {res.get('halal_tier', 'flexible').title()})\n")
+        lines.append("*These stocks are filtered solely based on Islamic Shariah compliance (conventional banking / finance / tobacco). They are NOT predicted to fall or crash. To evaluate all 19 sectors without Shariah filtering, set user halal_tier to 'off'.*\n")
+        lines.append("| Ticker | Sector | Price | P/E Ratio | NPL / Debt Status | Screening Basis |")
+        lines.append("|---|---|---|---|---|---|")
+        for r in sh_ex[:15]:
+            p = f"৳{r['price']:.1f}" if r.get('price') else "—"
+            pe_v = r.get("pe") or "—"
+            npl_txt = f"NPL {r['bank_npl']}% (Safe Bank)" if r.get("is_safe_bank") else (f"NPL {r['bank_npl']}%" if r.get("bank_npl") is not None else (f"D/E {r['debt_equity']}" if r.get("debt_equity") is not None else "—"))
+            lines.append(f"| **{r['ticker']}** | {r.get('sector', '—')} | {p} | {pe_v} | {npl_txt} | {r.get('primary_reason', 'Shariah Filter')} |")
+        lines.append("")
+
+    # 4. Actionable Execution Rules
+    lines.append("## 🛡️ 4. Daily Execution Rules for Capital Protection\n")
     lines.append("1. **Screened Candidates Only**: Evaluate investments exclusively from companies passing debt, cash flow, and Margin of Safety filters.")
     lines.append("2. **Zero Tolerance on Red**: Never buy any stock on the 🔴 **Predicted to Fall** list, no matter how cheap the share price appears.")
     lines.append("3. **Slippage Enforcement**: Never place a single order larger than the **Max Safe Order** limit.")
@@ -470,7 +523,8 @@ def publish_rise_fall_report(res: dict):
     bias_val = macro.get('systemic_market_bias', 0)
     bias_lbl = macro.get('bias_label', 'Neutral')
     bias_lbl_bn = 'উর্ধমুখী (Bullish)' if 'Bull' in bias_lbl else ('মন্দাভাব (Bearish)' if 'Bear' in bias_lbl else 'নিরপেক্ষ (Neutral)')
-    bn_lines.append(f"**সার্বিক ম্যাক্রো পূর্বাভাস**: `{bias_lbl_bn}` (স্কোর: {bias_val}/১০০)\n")
+    ht_desc_bn = "সাধারণ মোড — ব্যাংক ও আর্থিক খাত সহ সকল ১৯টি খাত সক্রিয়" if res.get("halal_tier") == "off" else "শুধুমাত্র শরীয়াহসম্মত শেয়ার (সুদী আর্থিক খাত পৃথক)"
+    bn_lines.append(f"**সার্বিক ম্যাক্রো পূর্বাভাস**: `{bias_lbl_bn}` (স্কোর: {bias_val}/১০০) | **শরীয়াহ ফিল্টার**: `{res.get('halal_tier', 'flexible').upper()}` ({ht_desc_bn})\n")
     bn_lines.append("---\n")
 
     # 1. Stocks Predicted to RISE (Bengali)
@@ -524,8 +578,21 @@ def publish_rise_fall_report(res: dict):
         )
     bn_lines.append("")
 
-    # 3. Actionable Rule (Bengali)
-    bn_lines.append("## 🛡️ মূলধন সুরক্ষার দৈনিক ট্রেডিং ও বিনিয়োগ নীতি\n")
+    # 3. Shariah Excluded Equities (Bengali Advisory)
+    if sh_ex:
+        bn_lines.append(f"## ⚖️ ৩. শরীয়াহ স্ক্রীনিং তালিকা (ব্যবহারকারীর মোড: {res.get('halal_tier', 'flexible').title()})\n")
+        bn_lines.append("*এই শেয়ারগুলো কেবল ইসলামিক শরীয়াহ ফিল্টারের কারণে (সুদী ব্যাংক/বীমা/আর্থিক খাত) সাধারণ তালিকা থেকে পৃথক রাখা হয়েছে। এগুলো কোনোভাবেই পতনের ঝুঁকিপূর্ণ শেয়ার নয়। সকল শেয়ার অ্যানালাইসিস দেখতে প্রোফাইলে halal_tier 'off' করুন।*\n")
+        bn_lines.append("| কোম্পানি | খাত | বর্তমান দর | পি/ই রেশিও | খেলাপি ঋণ / ঋণ স্থিতি | ফিল্টারের কারণ |")
+        bn_lines.append("|---|---|---|---|---|---|")
+        for r in sh_ex[:15]:
+            p = f"৳{r['price']:.1f}" if r.get('price') else "—"
+            pe_v = r.get("pe") or "—"
+            npl_bn = f"খেলাপি ঋণ {r['bank_npl']}% (নিরাপদ)" if r.get("is_safe_bank") else (f"খেলাপি ঋণ {r['bank_npl']}%" if r.get("bank_npl") is not None else (f"ঋণ/ইক্যুইটি {r['debt_equity']}" if r.get("debt_equity") is not None else "—"))
+            bn_lines.append(f"| **{r['ticker']}** | {r.get('sector', '—')} | {p} | {pe_v} | {npl_bn} | সুদী বা অ-অনুমোদিত ব্যবসায়িক কার্যক্রম |")
+        bn_lines.append("")
+
+    # 4. Actionable Execution Rules (Bengali)
+    bn_lines.append("## 🛡️ ৪. মূলধন সুরক্ষার দৈনিক ট্রেডিং ও বিনিয়োগ নীতি\n")
     bn_lines.append("1. **শুধুমাত্র ফিল্টার উত্তীর্ণ শেয়ার**: ঋণমুক্ত, প্রকৃত ক্যাশ-ফ্লো নিশ্চিত এবং পর্যাপ্ত মার্জিন অব সেফটি সম্পন্ন কোম্পানিতেই বিনিয়োগ সীমিত রাখুন।")
     bn_lines.append("2. **লাল তালিকায় শূন্য সহনশীলতা**: পতন বা ক্র্যাশ তালিকায় (🔴 **Predicted to Fall**) থাকা কোনো শেয়ার কখনোই কিনবেন না, দর যতই সস্তা মনে হোক।")
     bn_lines.append("3. **স্লিপেজ নিয়ন্ত্রণ**: লিকুইডিটি ড্রপ এড়াতে কখনোই **Max Safe Order** সীমার বেশি একক অর্ডার প্লেস করবেন না।")
@@ -595,5 +662,28 @@ def publish_rise_fall_report(res: dict):
 
 
 if __name__ == "__main__":
-    tf = sys.argv[1] if len(sys.argv) > 1 else "weekly"
-    scan_daily_rise_and_fall(tf)
+    tf = "weekly"
+    user_id = "default_user"
+    halal_arg = None
+
+    args = sys.argv[1:]
+    idx = 0
+    while idx < len(args):
+        a = args[idx]
+        if a in ("weekly", "monthly", "daily", "quarterly", "yearly"):
+            tf = a
+        elif a in ("off", "flexible", "strict"):
+            halal_arg = a
+        elif a in ("--halal", "-h") and idx + 1 < len(args):
+            halal_arg = args[idx + 1]
+            idx += 1
+        elif a.startswith("--halal="):
+            halal_arg = a.split("=", 1)[1]
+        elif a in ("--user", "-u") and idx + 1 < len(args):
+            user_id = args[idx + 1]
+            idx += 1
+        elif a.startswith("--user="):
+            user_id = a.split("=", 1)[1]
+        idx += 1
+
+    scan_daily_rise_and_fall(timeframe=tf, user_id=user_id, halal_override=halal_arg)

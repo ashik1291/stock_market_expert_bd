@@ -173,8 +173,13 @@ def score_features(
 
     max_de = 0.50 if halal_tier == "strict" else (0.80 if halal_tier == "flexible" else 1.00)
 
+    is_financial = is_shariah_excluded_sector(sec) or (ticker and any(w in ticker.upper() for w in ("BANK", "FIN", "INSUR", "GENINS", "MF")))
+
     if not is_excluded_sector:
-        if de_v is None:
+        if is_financial:
+            # Banking/Finance leverage is deposit/liability based; standard corporate D/E does not apply
+            pass
+        elif de_v is None:
             if halal_tier in ("strict", "flexible"):
                 eligible = False
                 reasons.append("missing_debt_equity")

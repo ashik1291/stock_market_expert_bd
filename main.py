@@ -110,11 +110,12 @@ def cmd_best2():
     run_script("buffett_value_screener.py")
 
 
-def cmd_scan():
+def cmd_scan(extra_args=None):
     print("=" * 80, flush=True)
     print("🔮 RUNNING DIRECTIONAL RISE VS FALL SCANNER (CATEGORY A UNIVERSE)", flush=True)
     print("=" * 80, flush=True)
-    run_script("daily_rise_fall_scanner.py", ["weekly"])
+    args = ["weekly"] + (extra_args or [])
+    run_script("daily_rise_fall_scanner.py", args)
 
 
 def cmd_refresh():
@@ -323,7 +324,7 @@ def main():
     elif cmd in ("best2", "screener", "buffett"):
         cmd_best2()
     elif cmd in ("scan", "daily", "rise-fall"):
-        cmd_scan()
+        cmd_scan(sys.argv[2:] if len(sys.argv) > 2 else None)
     elif cmd in ("refresh", "update"):
         cmd_refresh()
     elif cmd in ("alpha", "daily-alpha"):

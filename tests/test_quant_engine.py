@@ -219,13 +219,18 @@ class TestQuantEngine(unittest.TestCase):
         self.assertTrue(res.get("disabled"))
 
     def test_confidence_tiers_no_prob_until_200(self):
-        from confidence_tiers import score_to_tier, MIN_OBS_FOR_PROB
+        from confidence_tiers import score_to_tier, MIN_OBS_FOR_PROB, count_evaluated_labels
         scores = list(range(1, 21))
         info = score_to_tier(20, scores)
         self.assertIn(info["tier"], ("HIGH", "MED", "LOW"))
         self.assertEqual(info["tier"], "HIGH")
-        self.assertFalse(info["show_probability"])
-        self.assertIn(str(MIN_OBS_FOR_PROB), info["note"])
+        n = count_evaluated_labels()
+        if n < MIN_OBS_FOR_PROB:
+            self.assertFalse(info["show_probability"])
+            self.assertIn(str(MIN_OBS_FOR_PROB), info["note"])
+        else:
+            self.assertTrue(info["show_probability"])
+            self.assertEqual(info["note"], "calibrated")
 
     def test_ic_weights_floor_negative(self):
         from unified_score import score_features
