@@ -50,11 +50,23 @@ def load_config(name: str) -> dict:
 
 
 def scan_daily_rise_and_fall(timeframe: str = "weekly") -> dict:
-    sectors = load_config("sectors")
+    # Full Category A universe from database (375 companies across all 19 sectors)
     tickers = []
-    for sd in sectors.get("sectors", {}).values():
-        tickers.extend(sd.get("top_tickers", []))
-    tickers = list(dict.fromkeys(tickers))
+    try:
+        db_tickers = sqlite3.connect(BASE_DIR / "data" / "processed" / "dse.db", timeout=30.0)
+        db_tickers.execute("PRAGMA busy_timeout = 30000;")
+        cat_a_rows = db_tickers.execute("SELECT ticker FROM companies WHERE category = 'A' ORDER BY ticker").fetchall()
+        db_tickers.close()
+        tickers = [str(r[0]) for r in cat_a_rows] if cat_a_rows else []
+    except Exception:
+        tickers = []
+
+    # Fallback to curated sector list if DB unavailable
+    if not tickers:
+        sectors = load_config("sectors")
+        for sd in sectors.get("sectors", {}).values():
+            tickers.extend(sd.get("top_tickers", []))
+        tickers = list(dict.fromkeys(tickers))
 
     try:
         from unified_score import is_shariah_excluded_sector

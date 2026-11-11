@@ -92,25 +92,25 @@ SECTOR_DESCRIPTIONS = {
 }
 
 CONFIDENCE_MAP = {
-    "Fuel_Power": ("70%", "HIGH"),
-    "Cement": ("65%", "MODERATE-HIGH"),
-    "Pharmaceuticals": ("60%", "MODERATE"),
-    "Telecom": ("60%", "MODERATE"),
-    "Engineering": ("58%", "MODERATE"),
-    "IT": ("55%", "MODERATE"),
-    "Food_Beverage": ("55%", "Bipolar"),
-    "Banking": ("50% (Gen) / 0% (Halal)", "Sector Excluded"),
-    "Textile": ("48%", "LOW-MID"),
-    "Financial Institutions": ("35%", "DISTRESSED"),
-    "Insurance": ("35%", "MANIPULATION ZONE"),
-    "Ceramic": ("35%", "LOW LIQUIDITY"),
-    "Services_RealEstate": ("35%", "LOW LIQUIDITY"),
-    "Tannery": ("30%", "LOW LIQUIDITY"),
-    "Paper_Printing": ("25%", "DATA SPARSE"),
-    "Travel_Leisure": ("25%", "DATA SPARSE"),
-    "Jute": ("20%", "UNINVESTABLE"),
-    "Mutual Funds": ("20%", "EXCLUDED"),
-    "Miscellaneous": ("40%", "LOW"),
+    "Fuel_Power": (70, "70%", "HIGH"),
+    "Cement": (65, "65%", "MODERATE-HIGH"),
+    "Pharmaceuticals": (60, "60%", "MODERATE"),
+    "Telecom": (60, "60%", "MODERATE"),
+    "Engineering": (58, "58%", "MODERATE"),
+    "IT": (55, "55%", "MODERATE"),
+    "Food_Beverage": (55, "55%", "Bipolar"),
+    "Banking": (50, "50% (Gen) / 0% (Halal)", "Sector Excluded"),
+    "Textile": (48, "48%", "LOW-MID"),
+    "Miscellaneous": (40, "40%", "LOW"),
+    "Financial Institutions": (35, "35%", "DISTRESSED"),
+    "Insurance": (35, "35%", "MANIPULATION ZONE"),
+    "Ceramic": (35, "35%", "LOW LIQUIDITY"),
+    "Services_RealEstate": (35, "35%", "LOW LIQUIDITY"),
+    "Tannery": (30, "30%", "LOW LIQUIDITY"),
+    "Paper_Printing": (25, "25%", "DATA SPARSE"),
+    "Travel_Leisure": (25, "25%", "DATA SPARSE"),
+    "Jute": (20, "20%", "UNINVESTABLE"),
+    "Mutual Funds": (20, "20%", "EXCLUDED"),
 }
 
 
@@ -149,10 +149,21 @@ def generate_matrix() -> str:
 
     conn.close()
 
+    # Sort descending by System Confidence score
+    rows = list(rows)
+    rows.sort(key=lambda r: CONFIDENCE_MAP.get(r[0], (0, "0%", "LOW"))[0], reverse=True)
+
     lines = [
-        "### 🏢 Sector Performance & Empirical Confidence Matrix",
+        "### 🏢 Sector Performance & Empirical Confidence Matrix (Ranked by System Confidence)",
         "",
-        f"Empirical breakdown dynamically queried across all **{total_companies} listed companies** in `data/processed/dse.db`:",
+        f"Empirical breakdown dynamically queried across all **{total_companies} listed companies** in `data/processed/dse.db`, sorted descending by **System Confidence**.",
+        "",
+        "> 💡 **What Decides System Confidence?**  ",
+        "> System Confidence (20% to 70%) is determined by 4 objective criteria:  ",
+        "> 1. **Data Transparency & PIT Coverage**: % of companies with audited statutory point-in-time financial filings.  ",
+        "> 2. **Macro Hurdle Feasibility**: Ability of sector leaders to beat the 11.60% sovereign T-Bill yield ($P/E \\le 6.62$).  ",
+        "> 3. **Operating Cash-Flow Health**: Real positive cash generation (NOCFPS > 0) vs debt-funded dividends.  ",
+        "> 4. **Forensic Integrity**: Freedom from syndicate pump-and-dump manipulation (e.g., Insurance heavily penalized at 35%).",
         "",
         "| Sector | Co. Count | PIT Coverage | Passing 15.10% Macro Hurdle (P/E $\\le 6.62$) | Avg Div Yield | System Confidence | Quantitative Assessment & Structural Realities |",
         "| :--- | :---: | :---: | :---: | :---: | :---: | :--- |",
@@ -173,7 +184,8 @@ def generate_matrix() -> str:
         else:
             sample_str = ""
 
-        conf_pct, conf_label = CONFIDENCE_MAP.get(sec, ("30%", "LOW"))
+        c_tuple = CONFIDENCE_MAP.get(sec, (30, "30%", "LOW"))
+        conf_pct, conf_label = c_tuple[1], c_tuple[2]
         desc = SECTOR_DESCRIPTIONS.get(sec, "General sector surveillance active.")
         clean_sec_name = sec.replace("_", " ")
 
