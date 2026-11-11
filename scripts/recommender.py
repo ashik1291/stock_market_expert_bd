@@ -39,6 +39,13 @@ def load_config(name: str) -> dict:
 
 
 def load_analysis(ticker: str, timeframe: str) -> dict | None:
+    try:
+        from knowledge_adapter import load_company_signal
+        sig = load_company_signal(ticker, timeframe)
+        if sig:
+            return sig
+    except Exception:
+        pass
     path = KNOW_DIR / ticker / f"{timeframe}.json"
     if not path.exists():
         return None

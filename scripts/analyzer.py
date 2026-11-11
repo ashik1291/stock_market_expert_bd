@@ -1115,6 +1115,13 @@ def analyze_ticker(ticker: str, timeframe: Timeframe, ticker_data: dict) -> dict
     with open(out_file, "w", encoding="utf-8") as fh:
         json.dump(analysis, fh, indent=2)
 
+    # Persist to SQLite Feature Store table
+    try:
+        from knowledge_adapter import save_signal_to_db_and_disk
+        save_signal_to_db_and_disk(ticker, timeframe, analysis)
+    except Exception as e:
+        log.warning(f"Could not persist to SQLite feature store for {ticker}: {e}")
+
     log.info(
         f"Saved {out_file} | signal={signal} confidence={score} "
         f"manipulation={manip_risk}"

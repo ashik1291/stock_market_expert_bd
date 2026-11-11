@@ -121,14 +121,20 @@ def generate_exact_position_plan(capital_bdt: float = None):
 
         # Slippage check
         slippage_limit = 5000
-        know_file = KNOW_DIR / t / "weekly.json"
-        if know_file.exists():
-            try:
-                with open(know_file, encoding="utf-8") as kf:
-                    kdata = json.load(kf)
-                    slippage_limit = kdata.get("precision", {}).get("liquidity", {}).get("max_single_order_shares", 5000)
-            except Exception:
-                pass
+        try:
+            from knowledge_adapter import load_company_signal
+            kdata = load_company_signal(t, "weekly")
+            if kdata:
+                slippage_limit = kdata.get("precision", {}).get("liquidity", {}).get("max_single_order_shares", 5000)
+        except Exception:
+            know_file = KNOW_DIR / t / "weekly.json"
+            if know_file.exists():
+                try:
+                    with open(know_file, encoding="utf-8") as kf:
+                        kdata = json.load(kf)
+                        slippage_limit = kdata.get("precision", {}).get("liquidity", {}).get("max_single_order_shares", 5000)
+                except Exception:
+                    pass
 
         lines.append(
             f"| **{t}** | ৳{price:.1f} | ৳{per_core_budget:,.0f} | **{total_shares:,} sh** | "

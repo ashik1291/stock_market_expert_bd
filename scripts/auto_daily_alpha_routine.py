@@ -54,14 +54,15 @@ def execute_daily_alpha_cycle():
     # Step 5: Advance V2 Hash-Chained Forward Ledger
     run_step("6. Advance V2 Hash-Chained Forward Ledger & Log Full Universe", "forward_test_ledger_v2.py", [])
 
-    # Step 6: Run Reinforcement Learning Engine to learn from past mistakes
-    run_step("7. Calibrate Empirical Bayes Weights & Evaluate Accuracy", "reinforcement_learning_engine.py", ["evaluate"])
-    run_step("7b. Calibrate Rolling Factor IC Weights", "factor_ic_calibrator.py", [])
-    run_step("7c. Shadow Score Challengers & Evaluate Statistical Promotion Gate", "model_registry.py", ["shadow"])
-    run_step("7d. Evaluate Model Promotion Eligibility (Holm Gate)", "model_registry.py", ["promote"])
+    # Step 6: Run Reinforcement Learning Engine & Multi-Horizon Evaluation to learn from past outcomes
+    run_step("7. Multi-Horizon Prediction Evaluator & Alpha Accrual", "multi_horizon_evaluator.py", ["10"])
+    run_step("7b. Calibrate Empirical Bayes Weights & Evaluate Accuracy", "reinforcement_learning_engine.py", ["evaluate"])
+    run_step("7c. Calibrate Rolling Factor IC Weights", "factor_ic_calibrator.py", [])
+    run_step("7d. Shadow Score Challengers & Evaluate Statistical Promotion Gate", "model_registry.py", ["shadow"])
+    run_step("7e. Evaluate Model Promotion Eligibility (Holm Gate)", "model_registry.py", ["promote"])
 
-    # Step 7: Refresh Knowledge Base via Analyzer for active universe
-    run_step("8. Update Scoring & Knowledge Base (analyzer.py all weekly)", "analyzer.py", ["all", "weekly"])
+    # Step 7: Refresh Knowledge Base via Analyzer for active Category A universe into SQLite Feature Store
+    run_step("8. Update Scoring & Knowledge Base (analyzer.py category_a weekly)", "analyzer.py", ["category_a", "weekly"])
 
     # Step 8: Run Daily Directional Scanner with latest learned weights
     run_step("9. Scan Daily Directional Rise/Fall with Moat & Debt Gates", "daily_rise_fall_scanner.py", ["weekly"])

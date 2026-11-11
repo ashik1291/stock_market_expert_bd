@@ -649,6 +649,13 @@ def run_pattern_causal_audit(ticker: str) -> dict:
     with open(out_file, "w", encoding="utf-8") as f:
         json.dump(result, f, indent=2)
 
+    # Persist to SQLite Feature Store table
+    try:
+        from knowledge_adapter import save_dna_to_db_and_disk
+        save_dna_to_db_and_disk(ticker, result)
+    except Exception as e:
+        pass
+
     return result
 
 
