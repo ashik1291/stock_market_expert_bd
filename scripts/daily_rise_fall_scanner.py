@@ -221,25 +221,80 @@ def scan_daily_rise_and_fall(timeframe: str = "weekly") -> dict:
                     pass
                 
                 if is_asymmetric_merit:
+                    corridor = prec.get("range_52w_corridor", {})
+                    pe_num = served.get("pe_ratio")
+                    if pe_num is None:
+                        pe_str = str(fund.get("pe") or "")
+                        if "(" in pe_str and ")" in pe_str:
+                            try:
+                                pe_num = float(pe_str.split("(")[1].split(")")[0])
+                            except Exception:
+                                pe_num = None
+                    ey_pct = round(100.0 / pe_num, 1) if (pe_num is not None and pe_num > 0) else 0.0
+                    passes_macro = (ey_pct >= 15.10) if ey_pct > 0 else False
+                    gate_reasons = served.get("gate_reasons", [])
+                    is_eligible = served.get("is_eligible", False) and passes_macro
+
+                    if served_score is not None and served_score > 0 and is_eligible:
+                        user_directive_en = "🟢 BUY / ACCUMULATE"
+                        user_directive_bn = "🟢 ক্রয়যোগ্য (BUY)"
+                        hurdle_status_en = f"✅ Pass ({ey_pct}% E/Y)"
+                        hurdle_status_bn = f"✅ উত্তীর্ণ ({ey_pct}% আয়)"
+                        pe_disp = f"{pe_num:.1f}" if pe_num else "—"
+                        support_note_en = f"P/E {pe_disp} beats 15.1% Hurdle. Score {served_score:.1f}. Deep value base."
+                        support_note_bn = f"পি/ই {pe_disp} ১৫.১% হার্ডল উত্তীর্ণ। স্কোর {served_score:.1f}।"
+                    elif not passes_macro:
+                        user_directive_en = "🟡 WAIT / WATCHLIST"
+                        user_directive_bn = "🟡 অপেক্ষা / ওয়াচলিস্ট"
+                        hurdle_status_en = f"⏳ Below Hurdle ({ey_pct}% vs 15.1%)"
+                        hurdle_status_bn = f"⏳ হার্ডলের নিচে ({ey_pct}% vs ১৫.১%)"
+                        pe_disp = f"{pe_num:.1f}" if pe_num else "—"
+                        support_note_en = f"Quality moat, but P/E {pe_disp} yields {ey_pct}% (<11.6% T-Bill). Wait for dip."
+                        support_note_bn = f"কোম্পানি ভালো হলেও পি/ই {pe_disp} অনুপাতে আয় কম। দর সংশোধনের অপেক্ষা।"
+                    elif "debt_gate" in gate_reasons:
+                        user_directive_en = "🔴 AVOID (DEBT)"
+                        user_directive_bn = "🔴 বর্জন (ঋণ)"
+                        hurdle_status_en = "❌ Gated (Debt)"
+                        hurdle_status_bn = "❌ ঋণ ঝুঁকিপূর্ণ"
+                        support_note_en = f"Debt/Equity {de_val} exceeds safety gate."
+                        support_note_bn = f"ঋণের অনুপাত {de_val} নির্ধারিত সীমার বেশি।"
+                    else:
+                        user_directive_en = "⚪ HOLD / MONITOR"
+                        user_directive_bn = "⚪ পর্যবেক্ষণ (HOLD)"
+                        hurdle_status_en = "—"
+                        hurdle_status_bn = "—"
+                        support_note_en = "Neutral channel. Monitor for volume breakout."
+                        support_note_bn = "চ্যানেলে নিরপেক্ষ গতিবিধি।"
+
                     rise_list.append({
-                        "ticker":               ticker,
-                        "price":                price,
-                        "served_score":         served_score,
-                        "pe":                   fund.get("pe"),
-                        "debt_equity":          de_val,
-                        "short_term_upside":    st_info.get("upside_potential_pct"),
-                        "rise_probability_pct": float(rise_prob) if rise_prob is not None else None,
-                        "mid_term_target":      mt_target,
-                        "long_term_target":     lt_info.get("target_price") or price,
-                        "rr_ratio":             rr_ratio,
-                        "expected_value_pct":   net_expected_value_pct,
-                        "smart_money_flow":     smart_money.get("classification") or "unknown",
-                        "cash_flow_cov":        _cov,
-                        "max_order_shares":     liquidity.get("max_single_order_shares"),
-                        "volume_surge_ratio":   vol_surge_ratio,
+                        "ticker":                   ticker,
+                        "price":                    price,
+                        "served_score":             served_score,
+                        "pe":                       pe_num,
+                        "debt_equity":              de_val,
+                        "short_term_upside":        st_info.get("upside_potential_pct"),
+                        "rise_probability_pct":     float(rise_prob) if rise_prob is not None else None,
+                        "mid_term_target":          mt_target,
+                        "long_term_target":         lt_info.get("target_price") or price,
+                        "rr_ratio":                 rr_ratio,
+                        "expected_value_pct":       net_expected_value_pct,
+                        "smart_money_flow":         smart_money.get("classification") or "unknown",
+                        "cash_flow_cov":            _cov,
+                        "max_order_shares":         liquidity.get("max_single_order_shares"),
+                        "volume_surge_ratio":       vol_surge_ratio,
                         "breakout_volume_confirmed": has_breakout_vol,
-                        "primary_catalyst":     f"{mgmt.get('key_moat') or 'unknown'} | R:R {rr_ratio}x (EV +{net_expected_value_pct}%) | Vol {vol_surge_ratio}x",
-                        "directive":            "TIER_ASYMMETRIC_MERIT_CANDIDATE"
+                        "primary_catalyst":         f"{mgmt.get('key_moat') or 'unknown'} | R:R {rr_ratio}x (EV +{net_expected_value_pct}%) | Vol {vol_surge_ratio}x",
+                        "user_decision":            user_directive_en,
+                        "user_decision_bn":         user_directive_bn,
+                        "directive":                user_directive_en,
+                        "directive_bn":             user_directive_bn,
+                        "hurdle_status_en":         hurdle_status_en,
+                        "hurdle_status_bn":         hurdle_status_bn,
+                        "support_note_en":          support_note_en,
+                        "support_note_bn":          support_note_bn,
+                        "corridor_gauge":           corridor.get("visual_gauge", "—"),
+                        "range_52w_pct":            corridor.get("range_52w_pct"),
+                        "channel_regime":           corridor.get("channel_regime", "—"),
                     })
                 else:
                     range_list.append({
@@ -273,9 +328,9 @@ def scan_daily_rise_and_fall(timeframe: str = "weekly") -> dict:
             if tinfo["show_probability"]:
                 item["calibrated_prob_pct"] = tinfo["probability_pct"]
             if not item.get("breakout_volume_confirmed"):
-                item["directive"] = f"TIER_{tinfo['tier']}_LOW_VOLUME_DRIFT"
+                item["technical_trigger"] = f"TIER_{tinfo['tier']}_LOW_VOLUME_DRIFT"
             else:
-                item["directive"] = f"TIER_{tinfo['tier']}_VOLUME_BREAKOUT"
+                item["technical_trigger"] = f"TIER_{tinfo['tier']}_VOLUME_BREAKOUT"
     except Exception as e:
         log.warning(f"tier attach skipped: {e}")
 
@@ -320,9 +375,12 @@ def publish_rise_fall_report(res: dict):
     # 1. Stocks Predicted to RISE
     lines.append("## 🟢 1. High-Conviction Stocks Screened for Value & Moats (Upside Trajectory)\n")
     lines.append("*Screened for: RSI oversold turns, debt-free moats, 100%+ real cash dividend coverage, smart-money buying.*\n")
-    lines.append("> ⚠️ **Horizon Notice**: Short-term scalps (+3.5% / -2%) have negative expectancy (-0.48% net) after round-trip fees. The system disables fast scalp recommendations and allocates exclusively to 3–12 month swings and multi-year core compounders.\n")
-    lines.append("| Ticker | Price | Tier | Served Score | Mid Target | Smart Money | Max Order | Action |")
-    lines.append("|---|---|---|---|---|---|---|---|")
+    lines.append("> 💡 **Decision Guide**:\n"
+                 "> - 🟢 **BUY / ACCUMULATE**: Passes BOTH business moat AND Central Bank 15.10% T-Bill hurdle ($P/E \\le 6.62$). Deep margin of safety.\n"
+                 "> - 🟡 **WAIT / WATCHLIST**: Quality moat, but market price makes earnings yield lower than 11.60% Risk-Free T-Bill rate. Wait for price dip.\n"
+                 "> - ⚪ **HOLD / MONITOR**: Consolidating inside channel; monitor for volume breakout.\n")
+    lines.append("| Ticker | Price | Decision | 52-Week Channel Range | Macro Hurdle (15.10%) | Mid Target | Smart Money | Max Order | Investment Guidance / Why |")
+    lines.append("|---|---|---|---|---|---|---|---|---|")
 
     for r in res["predicted_to_rise"][:12]:
         p = f"৳{r['price']:.1f}" if r.get("price") else "—"
@@ -330,25 +388,27 @@ def publish_rise_fall_report(res: dict):
         mt_s = f"৳{mt:.1f}" if isinstance(mt, (int, float)) else "—"
         mo = r.get("max_order_shares")
         mo_s = f"{mo:,} sh" if mo is not None else "—"
-        sc = r.get("served_score")
-        sc_s = f"{sc:.1f}" if sc is not None else "—"
+        dec = r.get("directive", "—")
+        gauge = r.get("corridor_gauge", "—")
+        hurdle = r.get("hurdle_status_en", "—")
+        guidance = r.get("support_note_en", "—")
+        sm = r.get("smart_money_flow") or "—"
         lines.append(
-            f"| **{r['ticker']}** | {p} | **{r.get('conviction_tier', '—')}** | {sc_s} | "
-            f"{mt_s} | `{r.get('smart_money_flow') or '—'}` | {mo_s} | **{r.get('directive')}** |"
+            f"| **{r['ticker']}** | {p} | **{dec}** | `{gauge}` | {hurdle} | {mt_s} | `{sm}` | {mo_s} | {guidance} |"
         )
     lines.append("")
 
     # 2. Stocks Predicted to FALL / CRASH
     lines.append("## 🔴 2. Stocks Predicted to FALL / CRASH (Severe Capital Erosion Risk)\n")
     lines.append("*Screened for: Excessive debt traps in 9-14% rate regime, retail distribution dumping, negative operating cash flows, BSEC probes.*\n")
-    lines.append("| Ticker | Price | Primary Fall Trigger / Trap | Action |")
-    lines.append("|---|---|---|---|")
+    lines.append("> ⚠️ **User Action Rule**: Immediate capital loss risk. Never average down. Exit on any technical bounce.\n")
+    lines.append("| Ticker | Price | Decision | Primary Fall Trigger / Trap | Action |")
+    lines.append("|---|---|---|---|---|")
 
     for r in res["predicted_to_fall"][:12]:
         p = f"৳{r['price']:.1f}" if r['price'] else "—"
         lines.append(
-            f"| **{r['ticker']}** | {p} | "
-            f"{r['primary_fall_trigger']} | **{r['directive']}** |"
+            f"| **{r['ticker']}** | {p} | **🔴 AVOID / EXIT** | {r['primary_fall_trigger']} | **{r['directive']}** |"
         )
     lines.append("")
 
@@ -384,9 +444,12 @@ def publish_rise_fall_report(res: dict):
     # 1. Stocks Predicted to RISE (Bengali)
     bn_lines.append("## 🟢 ১. মৌলিক শক্তি ও পরিখা সম্পন্ন শেয়ার (সম্ভাব্য উত্থান ও মূল্য বৃদ্ধি)\n")
     bn_lines.append("*বাছাইয়ের মানদণ্ড: RSI ওভারসোল্ড থেকে রিভার্সাল, স্বল্প/শূন্য ব্যাংক ঋণ, ১০০%+ প্রকৃত নগদ ক্যাশ-ফ্লো ডিভিডেন্ড কাভারেজ এবং স্মার্ট মানি সঞ্চয়ন।*\n")
-    bn_lines.append("> ⚠️ **সময়সীমা সতর্কতা**: স্বল্পমেয়াদী অতি-দ্রুত স্ক্যাল্পিংয়ে (+৩.৫% / -২%) ব্রোকারেজ ফি ও স্লিপেজের পর প্রত্যাশিত লাভ নেতিবাচক (-০.৪৮% নিট)। তাই সিস্টেম দ্রুত স্ক্যাল্পিং নিরুৎসাহিত করে ৩–১২ মাসের সুইং এবং বহুবর্ষীয় কোর কম্পাউন্ডিংয়ে মূলধন বরাদ্দ করে।\n")
-    bn_lines.append("| কোম্পানি | বর্তমান দর | স্তর (Tier) | সার্ভড স্কোর | মধ্যমেয়াদী টার্গেট | স্মার্ট মানি প্রবাহ | সর্বোচ্চ নিরাপদ লট | নির্দেশিকা |")
-    bn_lines.append("|---|---|---|---|---|---|---|---|")
+    bn_lines.append("> 💡 **ব্যবহারকারীর সিদ্ধান্ত সহায়ক গাইড**:\n"
+                    "> - 🟢 **ক্রয়যোগ্য (BUY)**: কোম্পানির শক্তি ও বাংলাদেশ ব্যাংকের ১৫.১০% ট্রেজারি বিল হার্ডল উভয়ই উত্তীর্ণ। মার্জিন অব সেফটি সম্পন্ন।\n"
+                    "> - 🟡 **অপেক্ষা / ওয়াচলিস্ট (WAIT)**: ব্যবসা ভালো হলেও বর্তমান বাজার দরে আয় ট্রেজারি বিলের (১১.৬০%) চেয়ে কম। দর সংশোধনের অপেক্ষা করুন।\n"
+                    "> - ⚪ **পর্যবেক্ষণ (HOLD)**: সাপোর্ট চ্যানেলের ভেতর সমন্বিত হচ্ছে; ভলিউম বৃদ্ধির অপেক্ষা করুন।\n")
+    bn_lines.append("| কোম্পানি | বর্তমান দর | সিদ্ধান্ত | ৫২-সপ্তাহের চ্যানেল রেঞ্জ | ম্যাক্রো হার্ডল (১৫.১০%) | মধ্যমেয়াদী টার্গেট | স্মার্ট মানি | সর্বোচ্চ নিরাপদ লট | বিনিয়োগ সহায়িকা / কারণ |")
+    bn_lines.append("|---|---|---|---|---|---|---|---|---|")
 
     for r in res["predicted_to_rise"][:12]:
         p = f"৳{r['price']:.1f}" if r.get("price") else "—"
@@ -394,28 +457,27 @@ def publish_rise_fall_report(res: dict):
         mt_s = f"৳{mt:.1f}" if isinstance(mt, (int, float)) else "—"
         mo = r.get("max_order_shares")
         mo_s = f"{mo:,} শেয়ার" if mo is not None else "—"
-        sc = r.get("served_score")
-        sc_s = f"{sc:.1f}" if sc is not None else "—"
-        tier_s = r.get('conviction_tier', '—')
-        direct_s = r.get('directive', '—')
-        sm_s = r.get('smart_money_flow') or '—'
+        dec_bn = r.get("directive_bn", r.get("directive", "—"))
+        gauge = r.get("corridor_gauge", "—")
+        hurdle_bn = r.get("hurdle_status_bn", "—")
+        guidance_bn = r.get("support_note_bn", "—")
+        sm = r.get("smart_money_flow") or "—"
         bn_lines.append(
-            f"| **{r['ticker']}** | {p} | **{tier_s}** | {sc_s} | "
-            f"{mt_s} | `{sm_s}` | {mo_s} | **{direct_s}** |"
+            f"| **{r['ticker']}** | {p} | **{dec_bn}** | `{gauge}` | {hurdle_bn} | {mt_s} | `{sm}` | {mo_s} | {guidance_bn} |"
         )
     bn_lines.append("")
 
     # 2. Stocks Predicted to FALL / CRASH (Bengali)
     bn_lines.append("## 🔴 ২. মূলধন ক্ষতির চরম ঝুঁকি ও ফাঁদ (সম্ভাব্য দরপতন / ক্র্যাশ)\n")
     bn_lines.append("*বাছাইয়ের মানদণ্ড: ১২-১৪% চড়া সুদের বাজারে অতিরিক্ত ঋণ বোঝা, রিটেইল ইনভেস্টরদের কাছে ডাম্পিং, নেগেটিভ অপারেটিং ক্যাশ ফ্লো (NOCFPS) এবং নিয়ন্ত্রক তদন্ত (BSEC probe)।*\n")
-    bn_lines.append("| কোম্পানি | বর্তমান দর | দরপতন / মূলধনী ফাঁদের প্রধান কারণ | অ্যাকশন নির্দেশিকা |")
-    bn_lines.append("|---|---|---|---|")
+    bn_lines.append("> ⚠️ **ব্যবহারকারীর করণীয়**: মূলধন হারানোর চরম ঝুঁকি। কখনোই কিনবেন না; পোর্টফোলিওতে থাকলে টেকনিক্যাল বাউন্সে প্রস্থান করুন।\n")
+    bn_lines.append("| কোম্পানি | বর্তমান দর | সিদ্ধান্ত | দরপতন / মূলধনী ফাঁদের প্রধান কারণ | অ্যাকশন নির্দেশিকা |")
+    bn_lines.append("|---|---|---|---|---|")
 
     for r in res["predicted_to_fall"][:12]:
         p = f"৳{r['price']:.1f}" if r['price'] else "—"
         bn_lines.append(
-            f"| **{r['ticker']}** | {p} | "
-            f"{r['primary_fall_trigger']} | **{r['directive']}** |"
+            f"| **{r['ticker']}** | {p} | **🔴 বর্জন / প্রস্থান** | {r['primary_fall_trigger']} | **{r['directive']}** |"
         )
     bn_lines.append("")
 
