@@ -1,0 +1,120 @@
+{
+  "ticker": "SAVAREFR",
+  "audited_at": "2026-11-11 09:16:50",
+  "worth_vs_greed": {
+    "current_price": 215.5,
+    "intrinsic_worth": 107.75,
+    "margin_of_safety_pct": -50.0,
+    "extension_froth_score": 10.0,
+    "greed_index": 10.0,
+    "rsi_14": 100.0,
+    "price_vs_ema50_pct": -2.7,
+    "price_vs_ema200_pct": -4.8,
+    "merit_status": "NEUTRAL_MERIT",
+    "merit_reason": "Valuation is within normal historical ranges.",
+    "timing_directives": {
+      "optimal_entry_corridor": "\u09f3211.2 \u2013 \u09f3217.7",
+      "chase_cutoff_price": 220.9,
+      "when_to_wait": "If price opens or rises above \u09f3220.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3211.2.",
+      "weekly_target_short": 223.0,
+      "monthly_target_swing": 247.8,
+      "long_term_target_asset": 280.2,
+      "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
+    },
+    "status": "CHRONIC_OVERVALUATION",
+    "worth_decision": "AVOID",
+    "reason": "Fundamental value severely lags stock price (MoS: -50.0%).",
+    "is_blacklisted": false,
+    "blacklist_reason": null
+  },
+  "multi_interval_wave": {
+    "intervals": {
+      "weekly_5d": {
+        "return_pct": 0.0,
+        "high": 215.5,
+        "low": 215.5,
+        "range_volatility_pct": 0.0
+      },
+      "monthly_21d": {
+        "return_pct": 0.0,
+        "high": 215.5,
+        "low": 215.5,
+        "range_volatility_pct": 0.0
+      },
+      "quarterly_63d": {
+        "return_pct": -17.46,
+        "high": 261.1,
+        "low": 214.5,
+        "range_volatility_pct": 21.72
+      },
+      "half_yearly_126d": {
+        "return_pct": 1.99,
+        "high": 294.5,
+        "low": 203.0,
+        "range_volatility_pct": 45.07
+      },
+      "yearly_252d": {
+        "return_pct": 27.89,
+        "high": 294.5,
+        "low": 165.1,
+        "range_volatility_pct": 78.38
+      }
+    },
+    "wave_metrics": {
+      "median_rally_gain_pct": 45.7,
+      "median_correction_drop_pct": -26.4,
+      "avg_wave_duration_bars": 25.0
+    },
+    "current_wave_phase": "MARKDOWN_PULLBACK",
+    "phase_guidance": "Ongoing pullback from peak (0.0%). Wait for stabilizing base.",
+    "top_seasonal_months": [
+      {
+        "month": "Aug",
+        "avg_return": 17.8,
+        "win_rate": 67.0
+      },
+      {
+        "month": "Apr",
+        "avg_return": 8.8,
+        "win_rate": 50.0
+      },
+      {
+        "month": "Jun",
+        "avg_return": 8.7,
+        "win_rate": 67.0
+      }
+    ],
+    "weak_seasonal_months": [
+      {
+        "month": "Feb",
+        "avg_return": -5.7,
+        "win_rate": 50.0
+      },
+      {
+        "month": "May",
+        "avg_return": -7.8,
+        "win_rate": 17.0
+      }
+    ]
+  },
+  "causal_attributions": [
+    {
+      "event_name": "BSEC Floor Price Regime",
+      "category": "REGULATORY_LAW_AND_ORDER",
+      "period": "2022-07-28 to 2023-05-03",
+      "stock_move_pct": -14.42,
+      "behavior": "MODERATE_CYCLICAL_DROP",
+      "root_cause_why": "Floor prices imposed on all stocks to stop free-fall. Artificially froze liquidity, trapped institutional capital, volume dried up to historic lows.",
+      "market_impact": "LIQUIDITY_FREEZE"
+    },
+    {
+      "event_name": "Economic Normalization & Moat Flight",
+      "category": "SECTOR_MACRO_RECOVERY",
+      "period": "2026-10-05 to 2026-10-06",
+      "stock_move_pct": 0.0,
+      "behavior": "MODERATE_CYCLICAL_DROP",
+      "root_cause_why": "FX reserves stabilized with IMF/World Bank assistance. Remittance surge. Selective institutional accumulation into debt-free cash cows with high dividend yields (Square, GP, Olympic, Padma Oil).",
+      "market_impact": "SELECTIVE_FUNDAMENTAL_ACCUMULATION"
+    }
+  ]
+}

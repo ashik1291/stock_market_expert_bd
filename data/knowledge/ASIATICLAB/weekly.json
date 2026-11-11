@@ -1,0 +1,391 @@
+{
+  "ticker": "ASIATICLAB",
+  "timeframe": "weekly",
+  "horizon": "short",
+  "analyzed_at": "2026-11-11T03:16:32.789405",
+  "asof_price_date": "2026-11-11",
+  "served_model": {
+    "model_id": "frozen_epoch2_pit_v2",
+    "score": -999.0,
+    "is_eligible": false,
+    "rsi_14": 50.8806,
+    "pe_ratio": 18.56,
+    "debt_equity": 0.206
+  },
+  "signal": "HOLD",
+  "confidence": 50.1,
+  "trajectory": {
+    "direction": "CONSOLIDATION_RANGE",
+    "direction_icon": "\ud83d\udfe1",
+    "heuristic_momentum_bias": 56.2,
+    "rise_probability_pct": null,
+    "momentum_status": "Neutral Range Consolidation",
+    "short_term": {
+      "predicted_path": "Upward momentum swing",
+      "upside_potential_pct": "+6.8%",
+      "downside_risk_pct": "-4.5%",
+      "target_price": 99.6,
+      "support_price": 89.1,
+      "risk_reward_ratio": "1.5x"
+    },
+    "mid_term": {
+      "predicted_path": "Cycle valuation recovery to historical median",
+      "upside_potential_pct": "+18.4%",
+      "downside_risk_pct": "-10.0%",
+      "target_price": 110.4,
+      "trailing_stop": 83.9,
+      "risk_reward_ratio": "1.8x"
+    },
+    "long_term": {
+      "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
+      "upside_potential_pct": "+30.1%",
+      "downside_risk_pct": "-12.0%",
+      "target_price": 121.3,
+      "dividend_cagr": "moderate (2.58%)",
+      "risk_reward_ratio": "2.5x"
+    }
+  },
+  "trade_levels": {
+    "entry": 93.27,
+    "stop_loss": 86.98,
+    "target": 105.85
+  },
+  "precision": {
+    "ticker": "ASIATICLAB",
+    "smart_money": {
+      "status": "INSUFFICIENT_HISTORY",
+      "smart_money_delta_pct": 0.0,
+      "public_delta_pct": 0.0,
+      "classification": "NEUTRAL_HOLDING",
+      "conviction_bonus": 0.0,
+      "signal": "No monthly delta available"
+    },
+    "cash_flow": {
+      "nocfps": null,
+      "dividend_per_share": 0.0,
+      "cash_coverage_ratio": null,
+      "fcf_yield_pct": null,
+      "status": "UNKNOWN_CASH_FLOW_DATA_DEFICIT",
+      "signal_text": "NOCFPS (Operating Cash Flow) missing from disclosures \u2014 cash flow coverage unknown",
+      "score_bonus": 0.0,
+      "cfo_estimated": false,
+      "is_valid_evidence": false
+    },
+    "liquidity": {
+      "avg_daily_volume": 527510,
+      "daily_turnover_bdt_cr": 0.05,
+      "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
+      "slippage_risk": "HIGH",
+      "max_single_order_shares": 26375,
+      "max_daily_accumulation_shares": 79126,
+      "max_order_bdt": 26375.0,
+      "directive": "Max single order: 26,375 shares (Tk 26,375) to prevent >1% execution slippage"
+    },
+    "earnings_acceleration": {
+      "status": "INSUFFICIENT_QUARTERLY_DATA",
+      "acceleration_status": "NORMAL_STABLE",
+      "bonus": 0.0,
+      "signal": "Standard annual EPS trajectory"
+    },
+    "total_precision_bonus": 0.0
+  },
+  "pattern_dna": {
+    "ticker": "ASIATICLAB",
+    "audited_at": "2026-11-11 09:16:32",
+    "worth_vs_greed": {
+      "current_price": 93.27,
+      "intrinsic_worth": 11.12,
+      "margin_of_safety_pct": -88.1,
+      "extension_froth_score": 40.0,
+      "greed_index": 40.0,
+      "rsi_14": 22.0,
+      "price_vs_ema50_pct": 11.6,
+      "price_vs_ema200_pct": 52.4,
+      "merit_status": "EARNINGS_BACKED_MERIT",
+      "merit_reason": "Price supported by solid earnings (EPS: \u09f31.39, P/E: 0.0). Growth is fundamentally justified.",
+      "timing_directives": {
+        "optimal_entry_corridor": "\u09f391.4 \u2013 \u09f394.2",
+        "chase_cutoff_price": 95.6,
+        "when_to_wait": "If price opens or rises above \u09f395.6, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f391.4.",
+        "weekly_target_short": 96.5,
+        "monthly_target_swing": 107.3,
+        "long_term_target_asset": 121.3,
+        "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
+      },
+      "status": "CHRONIC_OVERVALUATION",
+      "worth_decision": "AVOID",
+      "reason": "Fundamental value severely lags stock price (MoS: -88.1%).",
+      "is_blacklisted": false,
+      "blacklist_reason": null
+    },
+    "multi_interval_wave": {
+      "intervals": {
+        "weekly_5d": {
+          "return_pct": -1.54,
+          "high": 96.36,
+          "low": 91.73,
+          "range_volatility_pct": 5.05
+        },
+        "monthly_21d": {
+          "return_pct": -10.49,
+          "high": 112.7,
+          "low": 91.0,
+          "range_volatility_pct": 23.85
+        },
+        "quarterly_63d": {
+          "return_pct": 80.06,
+          "high": 112.7,
+          "low": 44.2,
+          "range_volatility_pct": 154.98
+        },
+        "half_yearly_126d": {
+          "return_pct": 71.14,
+          "high": 112.7,
+          "low": 44.2,
+          "range_volatility_pct": 154.98
+        },
+        "yearly_252d": {
+          "return_pct": 130.3,
+          "high": 112.7,
+          "low": 28.8,
+          "range_volatility_pct": 291.32
+        }
+      },
+      "wave_metrics": {
+        "median_rally_gain_pct": 29.9,
+        "median_correction_drop_pct": -25.4,
+        "avg_wave_duration_bars": 40.0
+      },
+      "current_wave_phase": "LATE_MARKUP",
+      "phase_guidance": "Approaching historical rally limit (+111.0% vs median +29.9%). Tighten stop.",
+      "top_seasonal_months": [
+        {
+          "month": "Apr",
+          "avg_return": 46.0,
+          "win_rate": 50.0
+        },
+        {
+          "month": "Nov",
+          "avg_return": 34.1,
+          "win_rate": 67.0
+        },
+        {
+          "month": "May",
+          "avg_return": 29.1,
+          "win_rate": 50.0
+        }
+      ],
+      "weak_seasonal_months": [
+        {
+          "month": "Jun",
+          "avg_return": -5.9,
+          "win_rate": 50.0
+        },
+        {
+          "month": "Oct",
+          "avg_return": -12.0,
+          "win_rate": 0.0
+        }
+      ]
+    },
+    "causal_attributions": [
+      {
+        "event_name": "Phased Floor Price Removal & Price Discovery",
+        "category": "REGULATORY_LAW_AND_ORDER",
+        "period": "2024-03-06 to 2024-03-31",
+        "stock_move_pct": 107.73,
+        "behavior": "STRONG_RESILIENCE_OR_BENEFICIARY",
+        "root_cause_why": "BSEC lifted floor prices in waves. Triggered sharp 1,000+ point DSEX correction as artificial valuations collapsed to fair market levels.",
+        "market_impact": "SHARP_DELEVERAGING"
+      },
+      {
+        "event_name": "SMART Interest Rate & Lending Cap Removal",
+        "category": "ECONOMIC_MONETARY",
+        "period": "2024-03-06 to 2024-05-08",
+        "stock_move_pct": 218.18,
+        "behavior": "STRONG_RESILIENCE_OR_BENEFICIARY",
+        "root_cause_why": "Bangladesh Bank replaced fixed 9% lending cap with SMART rate, later moving to pure market-based repo tightening (repo hiked to 8.5%-10.0%). Corporate borrowing cost surged from 9% to 14-16%.",
+        "market_impact": "DEBT_BURDEN_SHOCK"
+      },
+      {
+        "event_name": "Political Turmoil & National Student Revolution",
+        "category": "POLITICAL_COUNTRY_CONDITION",
+        "period": "2024-06-02 to 2024-08-04",
+        "stock_move_pct": -7.71,
+        "behavior": "MODERATE_CYCLICAL_DROP",
+        "root_cause_why": "Mass protests, nationwide curfews, internet blackouts, supply chain shutdowns leading to resignation of government on Aug 5.",
+        "market_impact": "SYSTEMIC_DISRUPTION"
+      },
+      {
+        "event_name": "Interim Government Formation & Anti-Corruption Drive",
+        "category": "POLITICAL_REGULATORY",
+        "period": "2024-08-06 to 2024-09-15",
+        "stock_move_pct": -26.21,
+        "behavior": "SEVERE_VULNERABILITY",
+        "root_cause_why": "Interim government established under Dr. Yunus. BSEC leadership replaced, investigation task force formed against financial market manipulators and money laundering.",
+        "market_impact": "POST_CRISIS_HOPE_RALLY"
+      },
+      {
+        "event_name": "Banking NPL Revelations & Aggressive Monetary Tightening",
+        "category": "ECONOMIC_MONETARY_BANKING",
+        "period": "2024-09-17 to 2025-06-30",
+        "stock_move_pct": 5.43,
+        "behavior": "DEFENSIVE_STABILITY",
+        "root_cause_why": "True extent of banking non-performing loans exposed by Bangladesh Bank. Liquidity squeeze in weak banks, high 12-14% treasury bill yields drew liquidity away from stock market.",
+        "market_impact": "TIGHT_LIQUIDITY_AND_FLIGHT_TO_SAFETY"
+      },
+      {
+        "event_name": "Economic Normalization & Moat Flight",
+        "category": "SECTOR_MACRO_RECOVERY",
+        "period": "2025-07-02 to 2026-10-06",
+        "stock_move_pct": 167.44,
+        "behavior": "STRONG_RESILIENCE_OR_BENEFICIARY",
+        "root_cause_why": "FX reserves stabilized with IMF/World Bank assistance. Remittance surge. Selective institutional accumulation into debt-free cash cows with high dividend yields (Square, GP, Olympic, Padma Oil).",
+        "market_impact": "SELECTIVE_FUNDAMENTAL_ACCUMULATION"
+      }
+    ]
+  },
+  "technical": {
+    "score": 55.0,
+    "signals": {
+      "rsi": "neutral",
+      "macd": "neutral",
+      "sma_trend": "bullish",
+      "bb": "inside_bands",
+      "atr": 4.19,
+      "rsi_value": 50.78,
+      "last_close": 93.27,
+      "sma20": 102.09,
+      "sma50": 76.74,
+      "sma200": null,
+      "support_resistance": {
+        "supports": [
+          44.9,
+          49.4
+        ],
+        "resistances": [
+          56.5,
+          61.8
+        ]
+      },
+      "data_gap_warning": "unannounced_gap_256d"
+    },
+    "sr": {
+      "supports": [
+        44.9,
+        49.4
+      ],
+      "resistances": [
+        56.5,
+        61.8
+      ]
+    }
+  },
+  "fundamental": {
+    "score": 57.5,
+    "signals": {
+      "eps": "positive (2.09)",
+      "eps_yoy_growth_pct": -25.9,
+      "eps_growth_comparison": "FYNone vs FYNone",
+      "pe": "slightly_expensive (18.56)",
+      "nav": 54.08,
+      "dividend_yield": "moderate (2.58%)",
+      "debt_equity_val": 0.206,
+      "debt_equity": "pristine_low (0.206)",
+      "loan_trap_risk": "none",
+      "cfo_cr": 6.5,
+      "net_profit_cr": 25.5,
+      "accrual_ratio": 0.19,
+      "earnings_quality": "moderate_accrual_drag",
+      "downturn_resilience": {
+        "status": "growth_at_discount",
+        "drawdown_pct": 17.2,
+        "high_52w": 112.7,
+        "low_52w": 44.2,
+        "note": "Share price down 17.2% from 52w peak, yet earnings positive/steady (Conviction discount)"
+      }
+    }
+  },
+  "management": {
+    "ticker": "ASIATICLAB",
+    "company_name": "ASIATICLAB",
+    "chairman": "UNKNOWN",
+    "managing_director_ceo": "UNKNOWN",
+    "leadership_type": "UNKNOWN_UNREGISTERED",
+    "industry_experience_years": null,
+    "governance_rating": "UNRATED",
+    "audit_credibility": "UNAUDITED_PROFILE",
+    "key_moat": "UNKNOWN",
+    "management_risk": "HIGH_DATA_DEFICIT",
+    "governance_score": 0.0,
+    "is_vetted": false
+  },
+  "news_intent": {
+    "ticker": "ASIATICLAB",
+    "intent_score": 0.0,
+    "dominant_intent": "NO_RECENT_NEWS",
+    "articles_analyzed": 0,
+    "red_flags": [],
+    "catalysts": []
+  },
+  "sentiment": {
+    "score": 50.0,
+    "signals": {
+      "news_count": 0,
+      "note": "no_news_neutral"
+    }
+  },
+  "manipulation": {
+    "manipulation_score": 0,
+    "manipulation_risk": "low",
+    "block_buy": false,
+    "flags": [],
+    "checks": {
+      "volume_price_divergence": {
+        "flag": false,
+        "price_chg": 0,
+        "last_volume": 478610,
+        "avg_volume": 722667.0,
+        "detail": "ok"
+      },
+      "volume_spike": {
+        "flag": false,
+        "spike_ratio": 0.63,
+        "avg_volume": 755234.0,
+        "today_volume": 478610,
+        "detail": "ok"
+      },
+      "serial_trading": {
+        "flag": false,
+        "suspicious_days": 0,
+        "detail": "ok"
+      },
+      "circuit_breaker": {
+        "flag": false,
+        "circuit_hits": 0,
+        "detail": "ok"
+      },
+      "sponsor_exit": {
+        "flag": false,
+        "detail": "sponsor_holding_not_available"
+      },
+      "price_surge_no_news": {
+        "flag": false,
+        "price_change_3d": -1.35,
+        "news_count_3d": 0,
+        "detail": "ok"
+      }
+    }
+  },
+  "composite": {
+    "composite_score": 50.1,
+    "governance_score": 0.0,
+    "sentiment_score": 50.0,
+    "applied_weights": {
+      "fundamental": 0.68,
+      "technical": 0.2,
+      "governance": 0.12,
+      "sentiment": 0.0
+    }
+  }
+}

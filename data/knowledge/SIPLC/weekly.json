@@ -1,0 +1,383 @@
+{
+  "ticker": "SIPLC",
+  "timeframe": "weekly",
+  "horizon": "short",
+  "analyzed_at": "2026-11-11T03:16:51.867422",
+  "asof_price_date": "2026-11-11",
+  "served_model": {
+    "model_id": "frozen_epoch2_pit_v2",
+    "score": -999.0,
+    "is_eligible": false,
+    "rsi_14": 66.0266,
+    "pe_ratio": null,
+    "debt_equity": null
+  },
+  "signal": "HOLD",
+  "confidence": 45.5,
+  "trajectory": {
+    "direction": "CONSOLIDATION_RANGE",
+    "direction_icon": "\ud83d\udfe1",
+    "heuristic_momentum_bias": 53.3,
+    "rise_probability_pct": null,
+    "momentum_status": "Neutral Range Consolidation",
+    "short_term": {
+      "predicted_path": "Upward momentum swing",
+      "upside_potential_pct": "+7.9%",
+      "downside_risk_pct": "-5.2%",
+      "target_price": 148.7,
+      "support_price": 130.6,
+      "risk_reward_ratio": "1.5x"
+    },
+    "mid_term": {
+      "predicted_path": "Cycle valuation recovery to historical median",
+      "upside_potential_pct": "+13.1%",
+      "downside_risk_pct": "-10.0%",
+      "target_price": 155.9,
+      "trailing_stop": 124.0,
+      "risk_reward_ratio": "1.3x"
+    },
+    "long_term": {
+      "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
+      "upside_potential_pct": "+30.0%",
+      "downside_risk_pct": "-12.0%",
+      "target_price": 179.1,
+      "dividend_cagr": "5%\u20138%",
+      "risk_reward_ratio": "2.5x"
+    }
+  },
+  "trade_levels": {
+    "entry": 137.8,
+    "stop_loss": 126.94,
+    "target": 159.52
+  },
+  "precision": {
+    "ticker": "SIPLC",
+    "smart_money": {
+      "status": "INSUFFICIENT_HISTORY",
+      "smart_money_delta_pct": 0.0,
+      "public_delta_pct": 0.0,
+      "classification": "NEUTRAL_HOLDING",
+      "conviction_bonus": 0.0,
+      "signal": "No monthly delta available"
+    },
+    "cash_flow": {
+      "nocfps": null,
+      "dividend_per_share": 0.0,
+      "cash_coverage_ratio": null,
+      "fcf_yield_pct": null,
+      "status": "UNKNOWN_CASH_FLOW_DATA_DEFICIT",
+      "signal_text": "NOCFPS (Operating Cash Flow) missing from disclosures \u2014 cash flow coverage unknown",
+      "score_bonus": 0.0,
+      "cfo_estimated": false,
+      "is_valid_evidence": false
+    },
+    "liquidity": {
+      "avg_daily_volume": 262089,
+      "daily_turnover_bdt_cr": 0.03,
+      "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
+      "slippage_risk": "HIGH",
+      "max_single_order_shares": 13104,
+      "max_daily_accumulation_shares": 39313,
+      "max_order_bdt": 13104.0,
+      "directive": "Max single order: 13,104 shares (Tk 13,104) to prevent >1% execution slippage"
+    },
+    "earnings_acceleration": {
+      "status": "INSUFFICIENT_QUARTERLY_DATA",
+      "acceleration_status": "NORMAL_STABLE",
+      "bonus": 0.0,
+      "signal": "Standard annual EPS trajectory"
+    },
+    "total_precision_bonus": 0.0
+  },
+  "pattern_dna": {
+    "ticker": "SIPLC",
+    "audited_at": "2026-11-11 09:16:51",
+    "worth_vs_greed": {
+      "current_price": 137.8,
+      "intrinsic_worth": 68.9,
+      "margin_of_safety_pct": -50.0,
+      "extension_froth_score": 60.0,
+      "greed_index": 60.0,
+      "rsi_14": 53.0,
+      "price_vs_ema50_pct": 30.5,
+      "price_vs_ema200_pct": 99.1,
+      "merit_status": "SPECULATIVE_JUNK_PUMP",
+      "merit_reason": "Price is surging aggressively without positive EPS backing. Pure speculative risk.",
+      "timing_directives": {
+        "optimal_entry_corridor": "\u09f3135.0 \u2013 \u09f3139.2",
+        "chase_cutoff_price": 141.2,
+        "when_to_wait": "If price opens or rises above \u09f3141.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3135.0.",
+        "weekly_target_short": 142.6,
+        "monthly_target_swing": 158.5,
+        "long_term_target_asset": 179.1,
+        "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
+      },
+      "status": "SPECULATIVE_GREED",
+      "worth_decision": "DO_NOT_BUY_WAIT_FOR_PULLBACK",
+      "reason": "Extreme short-term greed (60.0/100) or speculative pump without earnings merit. Risk of buying at local peak.",
+      "is_blacklisted": false,
+      "blacklist_reason": null
+    },
+    "multi_interval_wave": {
+      "intervals": {
+        "weekly_5d": {
+          "return_pct": 3.92,
+          "high": 142.0,
+          "low": 130.0,
+          "range_volatility_pct": 9.23
+        },
+        "monthly_21d": {
+          "return_pct": 6.08,
+          "high": 142.0,
+          "low": 124.0,
+          "range_volatility_pct": 14.52
+        },
+        "quarterly_63d": {
+          "return_pct": 157.57,
+          "high": 149.9,
+          "low": 48.9,
+          "range_volatility_pct": 206.54
+        },
+        "half_yearly_126d": {
+          "return_pct": 178.38,
+          "high": 149.9,
+          "low": 42.1,
+          "range_volatility_pct": 256.06
+        },
+        "yearly_252d": {
+          "return_pct": 230.46,
+          "high": 149.9,
+          "low": 38.0,
+          "range_volatility_pct": 294.47
+        }
+      },
+      "wave_metrics": {
+        "median_rally_gain_pct": 21.3,
+        "median_correction_drop_pct": -18.6,
+        "avg_wave_duration_bars": 22.0
+      },
+      "current_wave_phase": "MARKDOWN_PULLBACK",
+      "phase_guidance": "Ongoing pullback from peak (-8.1%). Wait for stabilizing base.",
+      "top_seasonal_months": [
+        {
+          "month": "Dec",
+          "avg_return": 159.0,
+          "win_rate": 75.0
+        },
+        {
+          "month": "Oct",
+          "avg_return": 25.6,
+          "win_rate": 67.0
+        },
+        {
+          "month": "May",
+          "avg_return": 6.3,
+          "win_rate": 75.0
+        }
+      ],
+      "weak_seasonal_months": [
+        {
+          "month": "Feb",
+          "avg_return": -6.3,
+          "win_rate": 33.0
+        },
+        {
+          "month": "Mar",
+          "avg_return": -13.4,
+          "win_rate": 33.0
+        }
+      ]
+    },
+    "causal_attributions": [
+      {
+        "event_name": "BSEC Floor Price Regime",
+        "category": "REGULATORY_LAW_AND_ORDER",
+        "period": "2022-07-28 to 2024-01-18",
+        "stock_move_pct": 19.43,
+        "behavior": "STRONG_RESILIENCE_OR_BENEFICIARY",
+        "root_cause_why": "Floor prices imposed on all stocks to stop free-fall. Artificially froze liquidity, trapped institutional capital, volume dried up to historic lows.",
+        "market_impact": "LIQUIDITY_FREEZE"
+      },
+      {
+        "event_name": "Phased Floor Price Removal & Price Discovery",
+        "category": "REGULATORY_LAW_AND_ORDER",
+        "period": "2024-01-18 to 2024-03-31",
+        "stock_move_pct": -9.14,
+        "behavior": "MODERATE_CYCLICAL_DROP",
+        "root_cause_why": "BSEC lifted floor prices in waves. Triggered sharp 1,000+ point DSEX correction as artificial valuations collapsed to fair market levels.",
+        "market_impact": "SHARP_DELEVERAGING"
+      },
+      {
+        "event_name": "SMART Interest Rate & Lending Cap Removal",
+        "category": "ECONOMIC_MONETARY",
+        "period": "2023-07-02 to 2024-05-08",
+        "stock_move_pct": 4.21,
+        "behavior": "DEFENSIVE_STABILITY",
+        "root_cause_why": "Bangladesh Bank replaced fixed 9% lending cap with SMART rate, later moving to pure market-based repo tightening (repo hiked to 8.5%-10.0%). Corporate borrowing cost surged from 9% to 14-16%.",
+        "market_impact": "DEBT_BURDEN_SHOCK"
+      },
+      {
+        "event_name": "Political Turmoil & National Student Revolution",
+        "category": "POLITICAL_COUNTRY_CONDITION",
+        "period": "2024-06-02 to 2024-08-04",
+        "stock_move_pct": 9.38,
+        "behavior": "DEFENSIVE_STABILITY",
+        "root_cause_why": "Mass protests, nationwide curfews, internet blackouts, supply chain shutdowns leading to resignation of government on Aug 5.",
+        "market_impact": "SYSTEMIC_DISRUPTION"
+      },
+      {
+        "event_name": "Interim Government Formation & Anti-Corruption Drive",
+        "category": "POLITICAL_REGULATORY",
+        "period": "2024-08-06 to 2024-09-15",
+        "stock_move_pct": -7.43,
+        "behavior": "MODERATE_CYCLICAL_DROP",
+        "root_cause_why": "Interim government established under Dr. Yunus. BSEC leadership replaced, investigation task force formed against financial market manipulators and money laundering.",
+        "market_impact": "POST_CRISIS_HOPE_RALLY"
+      },
+      {
+        "event_name": "Banking NPL Revelations & Aggressive Monetary Tightening",
+        "category": "ECONOMIC_MONETARY_BANKING",
+        "period": "2024-09-17 to 2025-06-30",
+        "stock_move_pct": -11.36,
+        "behavior": "MODERATE_CYCLICAL_DROP",
+        "root_cause_why": "True extent of banking non-performing loans exposed by Bangladesh Bank. Liquidity squeeze in weak banks, high 12-14% treasury bill yields drew liquidity away from stock market.",
+        "market_impact": "TIGHT_LIQUIDITY_AND_FLIGHT_TO_SAFETY"
+      },
+      {
+        "event_name": "Economic Normalization & Moat Flight",
+        "category": "SECTOR_MACRO_RECOVERY",
+        "period": "2025-07-02 to 2026-10-06",
+        "stock_move_pct": 211.41,
+        "behavior": "STRONG_RESILIENCE_OR_BENEFICIARY",
+        "root_cause_why": "FX reserves stabilized with IMF/World Bank assistance. Remittance surge. Selective institutional accumulation into debt-free cash cows with high dividend yields (Square, GP, Olympic, Padma Oil).",
+        "market_impact": "SELECTIVE_FUNDAMENTAL_ACCUMULATION"
+      }
+    ]
+  },
+  "technical": {
+    "score": 57.5,
+    "signals": {
+      "rsi": "neutral",
+      "macd": "neutral",
+      "sma_trend": "bullish",
+      "bb": "inside_bands",
+      "atr": 7.24,
+      "rsi_value": 65.97,
+      "last_close": 137.8,
+      "sma20": 133.94,
+      "sma50": 95.73,
+      "sma200": null,
+      "support_resistance": {
+        "supports": [
+          43.5
+        ],
+        "resistances": [
+          142.0
+        ]
+      },
+      "data_gap_warning": "unannounced_gap_256d"
+    },
+    "sr": {
+      "supports": [
+        43.5
+      ],
+      "resistances": [
+        142.0
+      ]
+    }
+  },
+  "fundamental": {
+    "score": null,
+    "signals": {
+      "error": "no_fundamental_data",
+      "downturn_resilience": {
+        "status": "normal",
+        "drawdown_pct": 8.1,
+        "high_52w": 149.9,
+        "low_52w": 42.1
+      }
+    }
+  },
+  "management": {
+    "ticker": "SIPLC",
+    "company_name": "SIPLC",
+    "chairman": "UNKNOWN",
+    "managing_director_ceo": "UNKNOWN",
+    "leadership_type": "UNKNOWN_UNREGISTERED",
+    "industry_experience_years": null,
+    "governance_rating": "UNRATED",
+    "audit_credibility": "UNAUDITED_PROFILE",
+    "key_moat": "UNKNOWN",
+    "management_risk": "HIGH_DATA_DEFICIT",
+    "governance_score": 0.0,
+    "is_vetted": false
+  },
+  "news_intent": {
+    "ticker": "SIPLC",
+    "intent_score": 0.0,
+    "dominant_intent": "NO_RECENT_NEWS",
+    "articles_analyzed": 0,
+    "red_flags": [],
+    "catalysts": []
+  },
+  "sentiment": {
+    "score": 50.0,
+    "signals": {
+      "news_count": 0,
+      "note": "no_news_neutral"
+    }
+  },
+  "manipulation": {
+    "manipulation_score": 0,
+    "manipulation_risk": "low",
+    "block_buy": false,
+    "flags": [],
+    "checks": {
+      "volume_price_divergence": {
+        "flag": false,
+        "price_chg": 0,
+        "last_volume": 215897,
+        "avg_volume": 294318.0,
+        "detail": "ok"
+      },
+      "volume_spike": {
+        "flag": false,
+        "spike_ratio": 0.7,
+        "avg_volume": 308119.0,
+        "today_volume": 215897,
+        "detail": "ok"
+      },
+      "serial_trading": {
+        "flag": false,
+        "suspicious_days": 0,
+        "detail": "ok"
+      },
+      "circuit_breaker": {
+        "flag": false,
+        "circuit_hits": 0,
+        "detail": "ok"
+      },
+      "sponsor_exit": {
+        "flag": false,
+        "detail": "insufficient_fundamental_history"
+      },
+      "price_surge_no_news": {
+        "flag": false,
+        "price_change_3d": -0.79,
+        "news_count_3d": 0,
+        "detail": "ok"
+      }
+    }
+  },
+  "composite": {
+    "composite_score": 45.5,
+    "governance_score": 0.0,
+    "sentiment_score": 50.0,
+    "applied_weights": {
+      "fundamental": 0.68,
+      "technical": 0.2,
+      "governance": 0.12,
+      "sentiment": 0.0
+    }
+  }
+}

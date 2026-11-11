@@ -1157,12 +1157,24 @@ if __name__ == "__main__":
     ticker_arg = sys.argv[1]
     tf_arg     = sys.argv[2]
 
-    if ticker_arg == "all":
-        sectors = _load_sectors()
-        tickers = []
-        for sd in sectors["sectors"].values():
-            tickers.extend(sd["top_tickers"])
-        tickers = list(dict.fromkeys(tickers))
+    if ticker_arg in ("all", "category_a", "full"):
+        if ticker_arg in ("category_a", "full"):
+            import sqlite3
+            conn = sqlite3.connect(BASE_DIR / "data" / "processed" / "dse.db", timeout=30.0)
+            if ticker_arg == "category_a":
+                rows = conn.execute("SELECT ticker FROM companies WHERE category='A' ORDER BY ticker").fetchall()
+            else:
+                rows = conn.execute("SELECT ticker FROM companies ORDER BY ticker").fetchall()
+            conn.close()
+            tickers = [r[0] for r in rows if r[0]]
+        else:
+            sectors = _load_sectors()
+            tickers = []
+            for sd in sectors["sectors"].values():
+                tickers.extend(sd["top_tickers"])
+            tickers = list(dict.fromkeys(tickers))
+
+        log.info(f"Running multi-factor analysis across {len(tickers)} tickers ({tf_arg})...")
         results = analyze_all(tickers, tf_arg, get_ticker_data)
         print(json.dumps([
             {"ticker": r["ticker"], "signal": r["signal"],

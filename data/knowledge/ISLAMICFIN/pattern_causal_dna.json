@@ -1,0 +1,166 @@
+{
+  "ticker": "ISLAMICFIN",
+  "audited_at": "2026-11-11 09:16:41",
+  "worth_vs_greed": {
+    "current_price": 9.1,
+    "intrinsic_worth": 4.55,
+    "margin_of_safety_pct": -50.0,
+    "extension_froth_score": 20.0,
+    "greed_index": 20.0,
+    "rsi_14": 36.1,
+    "price_vs_ema50_pct": -3.1,
+    "price_vs_ema200_pct": 1.6,
+    "merit_status": "NEUTRAL_MERIT",
+    "merit_reason": "Valuation is within normal historical ranges.",
+    "timing_directives": {
+      "optimal_entry_corridor": "\u09f38.9 \u2013 \u09f39.2",
+      "chase_cutoff_price": 9.3,
+      "when_to_wait": "If price opens or rises above \u09f39.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f38.9.",
+      "weekly_target_short": 9.4,
+      "monthly_target_swing": 10.5,
+      "long_term_target_asset": 11.8,
+      "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
+    },
+    "status": "CHRONIC_OVERVALUATION",
+    "worth_decision": "AVOID",
+    "reason": "Fundamental value severely lags stock price (MoS: -50.0%).",
+    "is_blacklisted": true,
+    "blacklist_reason": "Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-25 \u2014 Price up +5.94% with poor fundamentals (Negative EPS)]",
+    "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-25 \u2014 Price up +5.94% with poor fundamentals (Negative EPS)]"
+  },
+  "multi_interval_wave": {
+    "intervals": {
+      "weekly_5d": {
+        "return_pct": 1.11,
+        "high": 9.5,
+        "low": 9.0,
+        "range_volatility_pct": 5.56
+      },
+      "monthly_21d": {
+        "return_pct": -9.0,
+        "high": 11.0,
+        "low": 8.9,
+        "range_volatility_pct": 23.6
+      },
+      "quarterly_63d": {
+        "return_pct": 10.98,
+        "high": 11.0,
+        "low": 7.9,
+        "range_volatility_pct": 39.24
+      },
+      "half_yearly_126d": {
+        "return_pct": 19.74,
+        "high": 11.0,
+        "low": 5.3,
+        "range_volatility_pct": 107.55
+      },
+      "yearly_252d": {
+        "return_pct": -16.51,
+        "high": 12.9,
+        "low": 5.3,
+        "range_volatility_pct": 143.4
+      }
+    },
+    "wave_metrics": {
+      "median_rally_gain_pct": 24.9,
+      "median_correction_drop_pct": -22.9,
+      "avg_wave_duration_bars": 27.0
+    },
+    "current_wave_phase": "MARKDOWN_PULLBACK",
+    "phase_guidance": "Ongoing pullback from peak (-1.1%). Wait for stabilizing base.",
+    "top_seasonal_months": [
+      {
+        "month": "Aug",
+        "avg_return": 12.6,
+        "win_rate": 73.0
+      },
+      {
+        "month": "Dec",
+        "avg_return": 3.6,
+        "win_rate": 31.0
+      },
+      {
+        "month": "Sep",
+        "avg_return": 3.5,
+        "win_rate": 54.0
+      }
+    ],
+    "weak_seasonal_months": [
+      {
+        "month": "May",
+        "avg_return": -5.0,
+        "win_rate": 33.0
+      },
+      {
+        "month": "Apr",
+        "avg_return": -8.3,
+        "win_rate": 10.0
+      }
+    ]
+  },
+  "causal_attributions": [
+    {
+      "event_name": "BSEC Floor Price Regime",
+      "category": "REGULATORY_LAW_AND_ORDER",
+      "period": "2022-07-28 to 2024-01-18",
+      "stock_move_pct": 1.03,
+      "behavior": "DEFENSIVE_STABILITY",
+      "root_cause_why": "Floor prices imposed on all stocks to stop free-fall. Artificially froze liquidity, trapped institutional capital, volume dried up to historic lows.",
+      "market_impact": "LIQUIDITY_FREEZE"
+    },
+    {
+      "event_name": "Phased Floor Price Removal & Price Discovery",
+      "category": "REGULATORY_LAW_AND_ORDER",
+      "period": "2024-01-18 to 2024-03-31",
+      "stock_move_pct": -30.96,
+      "behavior": "SEVERE_VULNERABILITY",
+      "root_cause_why": "BSEC lifted floor prices in waves. Triggered sharp 1,000+ point DSEX correction as artificial valuations collapsed to fair market levels.",
+      "market_impact": "SHARP_DELEVERAGING"
+    },
+    {
+      "event_name": "SMART Interest Rate & Lending Cap Removal",
+      "category": "ECONOMIC_MONETARY",
+      "period": "2023-07-02 to 2024-05-08",
+      "stock_move_pct": -47.72,
+      "behavior": "SEVERE_VULNERABILITY",
+      "root_cause_why": "Bangladesh Bank replaced fixed 9% lending cap with SMART rate, later moving to pure market-based repo tightening (repo hiked to 8.5%-10.0%). Corporate borrowing cost surged from 9% to 14-16%.",
+      "market_impact": "DEBT_BURDEN_SHOCK"
+    },
+    {
+      "event_name": "Political Turmoil & National Student Revolution",
+      "category": "POLITICAL_COUNTRY_CONDITION",
+      "period": "2024-06-02 to 2024-08-04",
+      "stock_move_pct": -7.78,
+      "behavior": "MODERATE_CYCLICAL_DROP",
+      "root_cause_why": "Mass protests, nationwide curfews, internet blackouts, supply chain shutdowns leading to resignation of government on Aug 5.",
+      "market_impact": "SYSTEMIC_DISRUPTION"
+    },
+    {
+      "event_name": "Interim Government Formation & Anti-Corruption Drive",
+      "category": "POLITICAL_REGULATORY",
+      "period": "2024-08-06 to 2024-09-15",
+      "stock_move_pct": 38.46,
+      "behavior": "STRONG_RESILIENCE_OR_BENEFICIARY",
+      "root_cause_why": "Interim government established under Dr. Yunus. BSEC leadership replaced, investigation task force formed against financial market manipulators and money laundering.",
+      "market_impact": "POST_CRISIS_HOPE_RALLY"
+    },
+    {
+      "event_name": "Banking NPL Revelations & Aggressive Monetary Tightening",
+      "category": "ECONOMIC_MONETARY_BANKING",
+      "period": "2024-09-17 to 2025-06-30",
+      "stock_move_pct": -42.03,
+      "behavior": "SEVERE_VULNERABILITY",
+      "root_cause_why": "True extent of banking non-performing loans exposed by Bangladesh Bank. Liquidity squeeze in weak banks, high 12-14% treasury bill yields drew liquidity away from stock market.",
+      "market_impact": "TIGHT_LIQUIDITY_AND_FLIGHT_TO_SAFETY"
+    },
+    {
+      "event_name": "Economic Normalization & Moat Flight",
+      "category": "SECTOR_MACRO_RECOVERY",
+      "period": "2025-07-02 to 2026-10-06",
+      "stock_move_pct": 13.64,
+      "behavior": "DEFENSIVE_STABILITY",
+      "root_cause_why": "FX reserves stabilized with IMF/World Bank assistance. Remittance surge. Selective institutional accumulation into debt-free cash cows with high dividend yields (Square, GP, Olympic, Padma Oil).",
+      "market_impact": "SELECTIVE_FUNDAMENTAL_ACCUMULATION"
+    }
+  ]
+}

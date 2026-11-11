@@ -1,0 +1,395 @@
+{
+  "ticker": "BDLAMPS",
+  "timeframe": "weekly",
+  "horizon": "short",
+  "analyzed_at": "2026-11-11T03:16:33.724396",
+  "asof_price_date": "2026-11-11",
+  "served_model": {
+    "model_id": "frozen_epoch2_pit_v2",
+    "score": -999.0,
+    "is_eligible": false,
+    "rsi_14": 55.4483,
+    "pe_ratio": 0.0,
+    "debt_equity": 3.057
+  },
+  "signal": "HOLD_LOAN_TRAP_RISK",
+  "confidence": 46.36,
+  "trajectory": {
+    "direction": "FALL_RISK",
+    "direction_icon": "\ud83d\udd34",
+    "heuristic_momentum_bias": 41.6,
+    "rise_probability_pct": null,
+    "momentum_status": "Bearish Breakdown / Selling Pressure",
+    "short_term": {
+      "predicted_path": "Upward momentum swing",
+      "upside_potential_pct": "+6.1%",
+      "downside_risk_pct": "-4.1%",
+      "target_price": 226.7,
+      "support_price": 204.9,
+      "risk_reward_ratio": "1.5x"
+    },
+    "mid_term": {
+      "predicted_path": "Cycle valuation recovery to historical median",
+      "upside_potential_pct": "+22.8%",
+      "downside_risk_pct": "-10.0%",
+      "target_price": 262.4,
+      "trailing_stop": 192.2,
+      "risk_reward_ratio": "2.3x"
+    },
+    "long_term": {
+      "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
+      "upside_potential_pct": "+30.0%",
+      "downside_risk_pct": "-12.0%",
+      "target_price": 277.7,
+      "dividend_cagr": "moderate (0.86%)",
+      "risk_reward_ratio": "2.5x"
+    }
+  },
+  "trade_levels": {
+    "entry": 213.6,
+    "stop_loss": 200.49,
+    "target": 239.82
+  },
+  "precision": {
+    "ticker": "BDLAMPS",
+    "smart_money": {
+      "status": "INSUFFICIENT_HISTORY",
+      "smart_money_delta_pct": 0.0,
+      "public_delta_pct": 0.0,
+      "classification": "NEUTRAL_HOLDING",
+      "conviction_bonus": 0.0,
+      "signal": "No monthly delta available"
+    },
+    "cash_flow": {
+      "nocfps": null,
+      "dividend_per_share": 0.0,
+      "cash_coverage_ratio": null,
+      "fcf_yield_pct": null,
+      "status": "UNKNOWN_CASH_FLOW_DATA_DEFICIT",
+      "signal_text": "NOCFPS (Operating Cash Flow) missing from disclosures \u2014 cash flow coverage unknown",
+      "score_bonus": 0.0,
+      "cfo_estimated": false,
+      "is_valid_evidence": false
+    },
+    "liquidity": {
+      "avg_daily_volume": 59115,
+      "daily_turnover_bdt_cr": 0.01,
+      "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
+      "slippage_risk": "HIGH",
+      "max_single_order_shares": 2955,
+      "max_daily_accumulation_shares": 8867,
+      "max_order_bdt": 2955.0,
+      "directive": "Max single order: 2,955 shares (Tk 2,955) to prevent >1% execution slippage"
+    },
+    "earnings_acceleration": {
+      "status": "INSUFFICIENT_QUARTERLY_DATA",
+      "acceleration_status": "NORMAL_STABLE",
+      "bonus": 0.0,
+      "signal": "Standard annual EPS trajectory"
+    },
+    "total_precision_bonus": 0.0
+  },
+  "pattern_dna": {
+    "ticker": "BDLAMPS",
+    "audited_at": "2026-11-11 09:16:33",
+    "worth_vs_greed": {
+      "current_price": 213.6,
+      "intrinsic_worth": 0.24,
+      "margin_of_safety_pct": -99.9,
+      "extension_froth_score": 50.0,
+      "greed_index": 50.0,
+      "rsi_14": 27.9,
+      "price_vs_ema50_pct": 11.0,
+      "price_vs_ema200_pct": 37.8,
+      "merit_status": "EARNINGS_BACKED_MERIT",
+      "merit_reason": "Price supported by solid earnings (EPS: \u09f30.03, P/E: 0.0). Growth is fundamentally justified.",
+      "timing_directives": {
+        "optimal_entry_corridor": "\u09f3209.3 \u2013 \u09f3215.7",
+        "chase_cutoff_price": 218.9,
+        "when_to_wait": "If price opens or rises above \u09f3218.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3209.3.",
+        "weekly_target_short": 221.1,
+        "monthly_target_swing": 245.6,
+        "long_term_target_asset": 277.7,
+        "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
+      },
+      "status": "CHRONIC_OVERVALUATION",
+      "worth_decision": "AVOID",
+      "reason": "Fundamental value severely lags stock price (MoS: -99.9%).",
+      "is_blacklisted": false,
+      "blacklist_reason": null
+    },
+    "multi_interval_wave": {
+      "intervals": {
+        "weekly_5d": {
+          "return_pct": 1.76,
+          "high": 216.7,
+          "low": 210.0,
+          "range_volatility_pct": 3.19
+        },
+        "monthly_21d": {
+          "return_pct": -14.9,
+          "high": 260.1,
+          "low": 207.5,
+          "range_volatility_pct": 25.35
+        },
+        "quarterly_63d": {
+          "return_pct": 64.69,
+          "high": 271.4,
+          "low": 120.0,
+          "range_volatility_pct": 126.17
+        },
+        "half_yearly_126d": {
+          "return_pct": 34.17,
+          "high": 271.4,
+          "low": 110.1,
+          "range_volatility_pct": 146.5
+        },
+        "yearly_252d": {
+          "return_pct": 102.46,
+          "high": 271.4,
+          "low": 105.0,
+          "range_volatility_pct": 158.48
+        }
+      },
+      "wave_metrics": {
+        "median_rally_gain_pct": 12.2,
+        "median_correction_drop_pct": -25.5,
+        "avg_wave_duration_bars": 19.0
+      },
+      "current_wave_phase": "BOTTOMING_SUPPORT",
+      "phase_guidance": "Drop (-21.3%) matches historical correction depth (-25.5%). Prepare to accumulate.",
+      "top_seasonal_months": [
+        {
+          "month": "Aug",
+          "avg_return": 11.2,
+          "win_rate": 82.0
+        },
+        {
+          "month": "Jul",
+          "avg_return": 7.8,
+          "win_rate": 60.0
+        },
+        {
+          "month": "Oct",
+          "avg_return": 4.2,
+          "win_rate": 38.0
+        }
+      ],
+      "weak_seasonal_months": [
+        {
+          "month": "Apr",
+          "avg_return": -4.6,
+          "win_rate": 25.0
+        },
+        {
+          "month": "Nov",
+          "avg_return": -5.2,
+          "win_rate": 33.0
+        }
+      ]
+    },
+    "causal_attributions": [
+      {
+        "event_name": "BSEC Floor Price Regime",
+        "category": "REGULATORY_LAW_AND_ORDER",
+        "period": "2022-07-28 to 2024-01-18",
+        "stock_move_pct": 10.46,
+        "behavior": "DEFENSIVE_STABILITY",
+        "root_cause_why": "Floor prices imposed on all stocks to stop free-fall. Artificially froze liquidity, trapped institutional capital, volume dried up to historic lows.",
+        "market_impact": "LIQUIDITY_FREEZE"
+      },
+      {
+        "event_name": "Phased Floor Price Removal & Price Discovery",
+        "category": "REGULATORY_LAW_AND_ORDER",
+        "period": "2024-01-18 to 2024-03-31",
+        "stock_move_pct": -45.08,
+        "behavior": "SEVERE_VULNERABILITY",
+        "root_cause_why": "BSEC lifted floor prices in waves. Triggered sharp 1,000+ point DSEX correction as artificial valuations collapsed to fair market levels.",
+        "market_impact": "SHARP_DELEVERAGING"
+      },
+      {
+        "event_name": "SMART Interest Rate & Lending Cap Removal",
+        "category": "ECONOMIC_MONETARY",
+        "period": "2023-07-02 to 2024-05-08",
+        "stock_move_pct": -46.75,
+        "behavior": "SEVERE_VULNERABILITY",
+        "root_cause_why": "Bangladesh Bank replaced fixed 9% lending cap with SMART rate, later moving to pure market-based repo tightening (repo hiked to 8.5%-10.0%). Corporate borrowing cost surged from 9% to 14-16%.",
+        "market_impact": "DEBT_BURDEN_SHOCK"
+      },
+      {
+        "event_name": "Political Turmoil & National Student Revolution",
+        "category": "POLITICAL_COUNTRY_CONDITION",
+        "period": "2024-06-02 to 2024-08-04",
+        "stock_move_pct": 6.89,
+        "behavior": "DEFENSIVE_STABILITY",
+        "root_cause_why": "Mass protests, nationwide curfews, internet blackouts, supply chain shutdowns leading to resignation of government on Aug 5.",
+        "market_impact": "SYSTEMIC_DISRUPTION"
+      },
+      {
+        "event_name": "Interim Government Formation & Anti-Corruption Drive",
+        "category": "POLITICAL_REGULATORY",
+        "period": "2024-08-06 to 2024-09-15",
+        "stock_move_pct": 7.87,
+        "behavior": "DEFENSIVE_STABILITY",
+        "root_cause_why": "Interim government established under Dr. Yunus. BSEC leadership replaced, investigation task force formed against financial market manipulators and money laundering.",
+        "market_impact": "POST_CRISIS_HOPE_RALLY"
+      },
+      {
+        "event_name": "Banking NPL Revelations & Aggressive Monetary Tightening",
+        "category": "ECONOMIC_MONETARY_BANKING",
+        "period": "2024-09-17 to 2025-06-30",
+        "stock_move_pct": -7.32,
+        "behavior": "MODERATE_CYCLICAL_DROP",
+        "root_cause_why": "True extent of banking non-performing loans exposed by Bangladesh Bank. Liquidity squeeze in weak banks, high 12-14% treasury bill yields drew liquidity away from stock market.",
+        "market_impact": "TIGHT_LIQUIDITY_AND_FLIGHT_TO_SAFETY"
+      },
+      {
+        "event_name": "Economic Normalization & Moat Flight",
+        "category": "SECTOR_MACRO_RECOVERY",
+        "period": "2025-07-02 to 2026-10-06",
+        "stock_move_pct": 118.89,
+        "behavior": "STRONG_RESILIENCE_OR_BENEFICIARY",
+        "root_cause_why": "FX reserves stabilized with IMF/World Bank assistance. Remittance surge. Selective institutional accumulation into debt-free cash cows with high dividend yields (Square, GP, Olympic, Padma Oil).",
+        "market_impact": "SELECTIVE_FUNDAMENTAL_ACCUMULATION"
+      }
+    ]
+  },
+  "technical": {
+    "score": 55.0,
+    "signals": {
+      "rsi": "neutral",
+      "macd": "neutral",
+      "sma_trend": "bullish",
+      "bb": "inside_bands",
+      "atr": 8.74,
+      "rsi_value": 55.27,
+      "last_close": 213.6,
+      "sma20": 220.64,
+      "sma50": 184.07,
+      "sma200": null,
+      "support_resistance": {
+        "supports": [
+          111.8
+        ],
+        "resistances": [
+          262.4
+        ]
+      },
+      "data_gap_warning": "unannounced_gap_256d"
+    },
+    "sr": {
+      "supports": [
+        111.8
+      ],
+      "resistances": [
+        262.4
+      ]
+    }
+  },
+  "fundamental": {
+    "score": 52.0,
+    "signals": {
+      "eps": "negative (-6.22)",
+      "eps_yoy_growth_pct": 53.6,
+      "eps_growth_comparison": "FYNone vs FYNone",
+      "nav": 39.93,
+      "dividend_yield": "moderate (0.86%)",
+      "debt_equity_val": 3.057,
+      "debt_equity": "danger_high_loan (3.057)",
+      "loan_trap_risk": "high",
+      "cfo_cr": 3.7,
+      "net_profit_cr": -6.5,
+      "accrual_ratio": -0.102,
+      "earnings_quality": "superior_cash_backed",
+      "downturn_resilience": {
+        "status": "growth_at_discount",
+        "drawdown_pct": 21.3,
+        "high_52w": 271.4,
+        "low_52w": 110.1,
+        "note": "Share price down 21.3% from 52w peak, yet earnings positive/steady (Conviction discount)"
+      }
+    }
+  },
+  "management": {
+    "ticker": "BDLAMPS",
+    "company_name": "BDLAMPS",
+    "chairman": "UNKNOWN",
+    "managing_director_ceo": "UNKNOWN",
+    "leadership_type": "UNKNOWN_UNREGISTERED",
+    "industry_experience_years": null,
+    "governance_rating": "UNRATED",
+    "audit_credibility": "UNAUDITED_PROFILE",
+    "key_moat": "UNKNOWN",
+    "management_risk": "HIGH_DATA_DEFICIT",
+    "governance_score": 0.0,
+    "is_vetted": false
+  },
+  "news_intent": {
+    "ticker": "BDLAMPS",
+    "intent_score": 0.0,
+    "dominant_intent": "NO_RECENT_NEWS",
+    "articles_analyzed": 0,
+    "red_flags": [],
+    "catalysts": []
+  },
+  "sentiment": {
+    "score": 50.0,
+    "signals": {
+      "news_count": 0,
+      "note": "no_news_neutral"
+    }
+  },
+  "manipulation": {
+    "manipulation_score": 0,
+    "manipulation_risk": "low",
+    "block_buy": false,
+    "flags": [],
+    "checks": {
+      "volume_price_divergence": {
+        "flag": false,
+        "price_chg": 0,
+        "last_volume": 34183,
+        "avg_volume": 84428.0,
+        "detail": "ok"
+      },
+      "volume_spike": {
+        "flag": false,
+        "spike_ratio": 0.41,
+        "avg_volume": 83943.0,
+        "today_volume": 34183,
+        "detail": "ok"
+      },
+      "serial_trading": {
+        "flag": false,
+        "suspicious_days": 0,
+        "detail": "ok"
+      },
+      "circuit_breaker": {
+        "flag": false,
+        "circuit_hits": 0,
+        "detail": "ok"
+      },
+      "sponsor_exit": {
+        "flag": false,
+        "detail": "sponsor_holding_not_available"
+      },
+      "price_surge_no_news": {
+        "flag": false,
+        "price_change_3d": 0.28,
+        "news_count_3d": 0,
+        "detail": "ok"
+      }
+    }
+  },
+  "composite": {
+    "composite_score": 46.36,
+    "governance_score": 0.0,
+    "sentiment_score": 50.0,
+    "applied_weights": {
+      "fundamental": 0.68,
+      "technical": 0.2,
+      "governance": 0.12,
+      "sentiment": 0.0
+    }
+  }
+}

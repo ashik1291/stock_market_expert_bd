@@ -1,0 +1,391 @@
+{
+  "ticker": "NHFIL",
+  "timeframe": "weekly",
+  "horizon": "short",
+  "analyzed_at": "2026-11-11T03:16:44.549228",
+  "asof_price_date": "2026-11-11",
+  "served_model": {
+    "model_id": "frozen_epoch2_pit_v2",
+    "score": -999.0,
+    "is_eligible": false,
+    "rsi_14": 66.1242,
+    "pe_ratio": 30.41,
+    "debt_equity": 0.567
+  },
+  "signal": "HOLD",
+  "confidence": 55.95,
+  "trajectory": {
+    "direction": "FALL_RISK",
+    "direction_icon": "\ud83d\udd34",
+    "heuristic_momentum_bias": 43.0,
+    "rise_probability_pct": null,
+    "momentum_status": "Bearish Breakdown / Selling Pressure",
+    "short_term": {
+      "predicted_path": "Upward momentum swing",
+      "upside_potential_pct": "+3.7%",
+      "downside_risk_pct": "-2.6%",
+      "target_price": 27.8,
+      "support_price": 26.1,
+      "risk_reward_ratio": "1.4x"
+    },
+    "mid_term": {
+      "predicted_path": "Cycle valuation recovery to historical median",
+      "upside_potential_pct": "+6.0%",
+      "downside_risk_pct": "-10.1%",
+      "target_price": 28.4,
+      "trailing_stop": 24.1,
+      "risk_reward_ratio": "0.6x"
+    },
+    "long_term": {
+      "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
+      "upside_potential_pct": "+29.9%",
+      "downside_risk_pct": "-12.0%",
+      "target_price": 34.8,
+      "dividend_cagr": "moderate (4.44%)",
+      "risk_reward_ratio": "2.5x"
+    }
+  },
+  "trade_levels": {
+    "entry": 26.8,
+    "stop_loss": 25.81,
+    "target": 28.78
+  },
+  "precision": {
+    "ticker": "NHFIL",
+    "smart_money": {
+      "status": "INSUFFICIENT_HISTORY",
+      "smart_money_delta_pct": 0.0,
+      "public_delta_pct": 0.0,
+      "classification": "NEUTRAL_HOLDING",
+      "conviction_bonus": 0.0,
+      "signal": "No monthly delta available"
+    },
+    "cash_flow": {
+      "nocfps": null,
+      "dividend_per_share": 0.0,
+      "cash_coverage_ratio": null,
+      "fcf_yield_pct": null,
+      "status": "UNKNOWN_CASH_FLOW_DATA_DEFICIT",
+      "signal_text": "NOCFPS (Operating Cash Flow) missing from disclosures \u2014 cash flow coverage unknown",
+      "score_bonus": 0.0,
+      "cfo_estimated": false,
+      "is_valid_evidence": false
+    },
+    "liquidity": {
+      "avg_daily_volume": 534068,
+      "daily_turnover_bdt_cr": 0.05,
+      "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
+      "slippage_risk": "HIGH",
+      "max_single_order_shares": 26703,
+      "max_daily_accumulation_shares": 80110,
+      "max_order_bdt": 26703.0,
+      "directive": "Max single order: 26,703 shares (Tk 26,703) to prevent >1% execution slippage"
+    },
+    "earnings_acceleration": {
+      "status": "INSUFFICIENT_QUARTERLY_DATA",
+      "acceleration_status": "NORMAL_STABLE",
+      "bonus": 0.0,
+      "signal": "Standard annual EPS trajectory"
+    },
+    "total_precision_bonus": 0.0
+  },
+  "pattern_dna": {
+    "ticker": "NHFIL",
+    "audited_at": "2026-11-11 09:16:44",
+    "worth_vs_greed": {
+      "current_price": 26.8,
+      "intrinsic_worth": 4.08,
+      "margin_of_safety_pct": -84.8,
+      "extension_froth_score": 40.0,
+      "greed_index": 40.0,
+      "rsi_14": 64.8,
+      "price_vs_ema50_pct": 8.4,
+      "price_vs_ema200_pct": 7.9,
+      "merit_status": "EARNINGS_BACKED_MERIT",
+      "merit_reason": "Price supported by solid earnings (EPS: \u09f30.51, P/E: 0.0). Growth is fundamentally justified.",
+      "timing_directives": {
+        "optimal_entry_corridor": "\u09f326.3 \u2013 \u09f327.1",
+        "chase_cutoff_price": 27.5,
+        "when_to_wait": "If price opens or rises above \u09f327.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f326.3.",
+        "weekly_target_short": 27.7,
+        "monthly_target_swing": 30.8,
+        "long_term_target_asset": 34.8,
+        "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
+      },
+      "status": "CHRONIC_OVERVALUATION",
+      "worth_decision": "AVOID",
+      "reason": "Fundamental value severely lags stock price (MoS: -84.8%).",
+      "is_blacklisted": false,
+      "blacklist_reason": null
+    },
+    "multi_interval_wave": {
+      "intervals": {
+        "weekly_5d": {
+          "return_pct": 6.77,
+          "high": 26.9,
+          "low": 25.1,
+          "range_volatility_pct": 7.17
+        },
+        "monthly_21d": {
+          "return_pct": 8.94,
+          "high": 26.9,
+          "low": 24.1,
+          "range_volatility_pct": 11.62
+        },
+        "quarterly_63d": {
+          "return_pct": 10.29,
+          "high": 26.9,
+          "low": 21.8,
+          "range_volatility_pct": 23.39
+        },
+        "half_yearly_126d": {
+          "return_pct": 2.68,
+          "high": 29.4,
+          "low": 21.0,
+          "range_volatility_pct": 40.0
+        },
+        "yearly_252d": {
+          "return_pct": 5.1,
+          "high": 30.9,
+          "low": 19.9,
+          "range_volatility_pct": 55.28
+        }
+      },
+      "wave_metrics": {
+        "median_rally_gain_pct": 17.7,
+        "median_correction_drop_pct": -18.9,
+        "avg_wave_duration_bars": 25.0
+      },
+      "current_wave_phase": "LATE_MARKUP",
+      "phase_guidance": "Approaching historical rally limit (+22.9% vs median +17.7%). Tighten stop.",
+      "top_seasonal_months": [
+        {
+          "month": "Sep",
+          "avg_return": 15.0,
+          "win_rate": 83.0
+        },
+        {
+          "month": "Jun",
+          "avg_return": 8.2,
+          "win_rate": 54.0
+        },
+        {
+          "month": "Aug",
+          "avg_return": 4.0,
+          "win_rate": 55.0
+        }
+      ],
+      "weak_seasonal_months": [
+        {
+          "month": "Mar",
+          "avg_return": -7.1,
+          "win_rate": 8.0
+        },
+        {
+          "month": "Apr",
+          "avg_return": -8.4,
+          "win_rate": 17.0
+        }
+      ]
+    },
+    "causal_attributions": [
+      {
+        "event_name": "BSEC Floor Price Regime",
+        "category": "REGULATORY_LAW_AND_ORDER",
+        "period": "2022-07-28 to 2024-01-18",
+        "stock_move_pct": 1.21,
+        "behavior": "DEFENSIVE_STABILITY",
+        "root_cause_why": "Floor prices imposed on all stocks to stop free-fall. Artificially froze liquidity, trapped institutional capital, volume dried up to historic lows.",
+        "market_impact": "LIQUIDITY_FREEZE"
+      },
+      {
+        "event_name": "Phased Floor Price Removal & Price Discovery",
+        "category": "REGULATORY_LAW_AND_ORDER",
+        "period": "2024-01-18 to 2024-03-31",
+        "stock_move_pct": -18.42,
+        "behavior": "SEVERE_VULNERABILITY",
+        "root_cause_why": "BSEC lifted floor prices in waves. Triggered sharp 1,000+ point DSEX correction as artificial valuations collapsed to fair market levels.",
+        "market_impact": "SHARP_DELEVERAGING"
+      },
+      {
+        "event_name": "SMART Interest Rate & Lending Cap Removal",
+        "category": "ECONOMIC_MONETARY",
+        "period": "2023-07-02 to 2024-05-08",
+        "stock_move_pct": -25.92,
+        "behavior": "SEVERE_VULNERABILITY",
+        "root_cause_why": "Bangladesh Bank replaced fixed 9% lending cap with SMART rate, later moving to pure market-based repo tightening (repo hiked to 8.5%-10.0%). Corporate borrowing cost surged from 9% to 14-16%.",
+        "market_impact": "DEBT_BURDEN_SHOCK"
+      },
+      {
+        "event_name": "Political Turmoil & National Student Revolution",
+        "category": "POLITICAL_COUNTRY_CONDITION",
+        "period": "2024-06-02 to 2024-08-04",
+        "stock_move_pct": 1.12,
+        "behavior": "DEFENSIVE_STABILITY",
+        "root_cause_why": "Mass protests, nationwide curfews, internet blackouts, supply chain shutdowns leading to resignation of government on Aug 5.",
+        "market_impact": "SYSTEMIC_DISRUPTION"
+      },
+      {
+        "event_name": "Interim Government Formation & Anti-Corruption Drive",
+        "category": "POLITICAL_REGULATORY",
+        "period": "2024-08-06 to 2024-09-15",
+        "stock_move_pct": 0.67,
+        "behavior": "DEFENSIVE_STABILITY",
+        "root_cause_why": "Interim government established under Dr. Yunus. BSEC leadership replaced, investigation task force formed against financial market manipulators and money laundering.",
+        "market_impact": "POST_CRISIS_HOPE_RALLY"
+      },
+      {
+        "event_name": "Banking NPL Revelations & Aggressive Monetary Tightening",
+        "category": "ECONOMIC_MONETARY_BANKING",
+        "period": "2024-09-17 to 2025-06-30",
+        "stock_move_pct": -22.83,
+        "behavior": "SEVERE_VULNERABILITY",
+        "root_cause_why": "True extent of banking non-performing loans exposed by Bangladesh Bank. Liquidity squeeze in weak banks, high 12-14% treasury bill yields drew liquidity away from stock market.",
+        "market_impact": "TIGHT_LIQUIDITY_AND_FLIGHT_TO_SAFETY"
+      },
+      {
+        "event_name": "Economic Normalization & Moat Flight",
+        "category": "SECTOR_MACRO_RECOVERY",
+        "period": "2025-07-02 to 2026-10-06",
+        "stock_move_pct": 4.1,
+        "behavior": "DEFENSIVE_STABILITY",
+        "root_cause_why": "FX reserves stabilized with IMF/World Bank assistance. Remittance surge. Selective institutional accumulation into debt-free cash cows with high dividend yields (Square, GP, Olympic, Padma Oil).",
+        "market_impact": "SELECTIVE_FUNDAMENTAL_ACCUMULATION"
+      }
+    ]
+  },
+  "technical": {
+    "score": 58.75,
+    "signals": {
+      "rsi": "neutral",
+      "macd": "bullish_crossover",
+      "sma_trend": "bullish",
+      "bb": "at_upper_band_bearish",
+      "atr": 0.66,
+      "rsi_value": 66.15,
+      "last_close": 26.8,
+      "sma20": 25.21,
+      "sma50": 24.35,
+      "sma200": null,
+      "support_resistance": {
+        "supports": [
+          22.2
+        ],
+        "resistances": []
+      },
+      "data_gap_warning": "unannounced_gap_256d"
+    },
+    "sr": {
+      "supports": [
+        22.2
+      ],
+      "resistances": []
+    }
+  },
+  "fundamental": {
+    "score": 65.0,
+    "signals": {
+      "eps": "positive (0.74)",
+      "eps_yoy_growth_pct": 2366.7,
+      "eps_growth_comparison": "FYNone vs FYNone",
+      "pe": "expensive (30.41)",
+      "nav": 17.06,
+      "dividend_yield": "moderate (4.44%)",
+      "debt_equity_val": 0.567,
+      "debt_equity": "manageable (0.567)",
+      "loan_trap_risk": "low",
+      "cfo_cr": 33.5,
+      "net_profit_cr": 9.5,
+      "accrual_ratio": -0.24,
+      "earnings_quality": "superior_cash_backed",
+      "downturn_resilience": {
+        "status": "normal",
+        "drawdown_pct": 0.4,
+        "high_52w": 26.9,
+        "low_52w": 21.0
+      }
+    }
+  },
+  "management": {
+    "ticker": "NHFIL",
+    "company_name": "NHFIL",
+    "chairman": "UNKNOWN",
+    "managing_director_ceo": "UNKNOWN",
+    "leadership_type": "UNKNOWN_UNREGISTERED",
+    "industry_experience_years": null,
+    "governance_rating": "UNRATED",
+    "audit_credibility": "UNAUDITED_PROFILE",
+    "key_moat": "UNKNOWN",
+    "management_risk": "HIGH_DATA_DEFICIT",
+    "governance_score": 0.0,
+    "is_vetted": false
+  },
+  "news_intent": {
+    "ticker": "NHFIL",
+    "intent_score": 0.0,
+    "dominant_intent": "NO_RECENT_NEWS",
+    "articles_analyzed": 0,
+    "red_flags": [],
+    "catalysts": []
+  },
+  "sentiment": {
+    "score": 50.0,
+    "signals": {
+      "news_count": 0,
+      "note": "no_news_neutral"
+    }
+  },
+  "manipulation": {
+    "manipulation_score": 0,
+    "manipulation_risk": "low",
+    "block_buy": false,
+    "flags": [],
+    "checks": {
+      "volume_price_divergence": {
+        "flag": false,
+        "price_chg": 0,
+        "last_volume": 905431,
+        "avg_volume": 437375.0,
+        "detail": "ok"
+      },
+      "volume_spike": {
+        "flag": false,
+        "spike_ratio": 2.18,
+        "avg_volume": 415981.0,
+        "today_volume": 905431,
+        "detail": "ok"
+      },
+      "serial_trading": {
+        "flag": false,
+        "suspicious_days": 0,
+        "detail": "ok"
+      },
+      "circuit_breaker": {
+        "flag": false,
+        "circuit_hits": 0,
+        "detail": "ok"
+      },
+      "sponsor_exit": {
+        "flag": false,
+        "detail": "sponsor_holding_not_available"
+      },
+      "price_surge_no_news": {
+        "flag": false,
+        "price_change_3d": 2.68,
+        "news_count_3d": 0,
+        "detail": "ok"
+      }
+    }
+  },
+  "composite": {
+    "composite_score": 55.95,
+    "governance_score": 0.0,
+    "sentiment_score": 50.0,
+    "applied_weights": {
+      "fundamental": 0.68,
+      "technical": 0.2,
+      "governance": 0.12,
+      "sentiment": 0.0
+    }
+  }
+}

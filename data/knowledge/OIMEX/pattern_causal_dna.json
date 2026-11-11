@@ -1,0 +1,166 @@
+{
+  "ticker": "OIMEX",
+  "audited_at": "2026-11-11 09:16:45",
+  "worth_vs_greed": {
+    "current_price": 16.5,
+    "intrinsic_worth": 8.25,
+    "margin_of_safety_pct": -50.0,
+    "extension_froth_score": 70.0,
+    "greed_index": 70.0,
+    "rsi_14": 75.9,
+    "price_vs_ema50_pct": 14.3,
+    "price_vs_ema200_pct": -12.3,
+    "merit_status": "NEUTRAL_MERIT",
+    "merit_reason": "Valuation is within normal historical ranges.",
+    "timing_directives": {
+      "optimal_entry_corridor": "\u09f316.2 \u2013 \u09f316.7",
+      "chase_cutoff_price": 16.9,
+      "when_to_wait": "If price opens or rises above \u09f316.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f316.2.",
+      "weekly_target_short": 17.1,
+      "monthly_target_swing": 19.0,
+      "long_term_target_asset": 21.4,
+      "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
+    },
+    "status": "OVERVALUED_EUPHORIA",
+    "worth_decision": "SELL_TAKE_PROFIT",
+    "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (70.0/100). Danger of sharp mean reversion.",
+    "is_blacklisted": true,
+    "blacklist_reason": "Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-11-03 \u2014 Low-float spike is 25.1x 20-day average (1,180,766 vs 47,104) | Price up +15.38% on untracked / high-risk security without verified earnings]",
+    "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-11-03 \u2014 Low-float spike is 25.1x 20-day average (1,180,766 vs 47,104) | Price up +15.38% on untracked / high-risk security without verified earnings]"
+  },
+  "multi_interval_wave": {
+    "intervals": {
+      "weekly_5d": {
+        "return_pct": 6.45,
+        "high": 16.7,
+        "low": 15.2,
+        "range_volatility_pct": 9.87
+      },
+      "monthly_21d": {
+        "return_pct": 27.91,
+        "high": 16.7,
+        "low": 12.5,
+        "range_volatility_pct": 33.6
+      },
+      "quarterly_63d": {
+        "return_pct": 9.27,
+        "high": 17.7,
+        "low": 10.8,
+        "range_volatility_pct": 63.89
+      },
+      "half_yearly_126d": {
+        "return_pct": -32.38,
+        "high": 28.0,
+        "low": 10.8,
+        "range_volatility_pct": 159.26
+      },
+      "yearly_252d": {
+        "return_pct": -39.56,
+        "high": 29.4,
+        "low": 10.8,
+        "range_volatility_pct": 172.22
+      }
+    },
+    "wave_metrics": {
+      "median_rally_gain_pct": 8.6,
+      "median_correction_drop_pct": -17.8,
+      "avg_wave_duration_bars": 14.0
+    },
+    "current_wave_phase": "BOTTOMING_SUPPORT",
+    "phase_guidance": "Drop (18.7%) matches historical correction depth (-17.8%). Prepare to accumulate.",
+    "top_seasonal_months": [
+      {
+        "month": "Jul",
+        "avg_return": 5.3,
+        "win_rate": 62.0
+      },
+      {
+        "month": "May",
+        "avg_return": 4.0,
+        "win_rate": 43.0
+      },
+      {
+        "month": "Feb",
+        "avg_return": 3.4,
+        "win_rate": 43.0
+      }
+    ],
+    "weak_seasonal_months": [
+      {
+        "month": "Mar",
+        "avg_return": -4.7,
+        "win_rate": 50.0
+      },
+      {
+        "month": "Oct",
+        "avg_return": -9.5,
+        "win_rate": 12.0
+      }
+    ]
+  },
+  "causal_attributions": [
+    {
+      "event_name": "BSEC Floor Price Regime",
+      "category": "REGULATORY_LAW_AND_ORDER",
+      "period": "2022-07-28 to 2024-01-18",
+      "stock_move_pct": 7.61,
+      "behavior": "DEFENSIVE_STABILITY",
+      "root_cause_why": "Floor prices imposed on all stocks to stop free-fall. Artificially froze liquidity, trapped institutional capital, volume dried up to historic lows.",
+      "market_impact": "LIQUIDITY_FREEZE"
+    },
+    {
+      "event_name": "Phased Floor Price Removal & Price Discovery",
+      "category": "REGULATORY_LAW_AND_ORDER",
+      "period": "2024-01-18 to 2024-03-31",
+      "stock_move_pct": 26.77,
+      "behavior": "STRONG_RESILIENCE_OR_BENEFICIARY",
+      "root_cause_why": "BSEC lifted floor prices in waves. Triggered sharp 1,000+ point DSEX correction as artificial valuations collapsed to fair market levels.",
+      "market_impact": "SHARP_DELEVERAGING"
+    },
+    {
+      "event_name": "SMART Interest Rate & Lending Cap Removal",
+      "category": "ECONOMIC_MONETARY",
+      "period": "2023-07-02 to 2024-05-08",
+      "stock_move_pct": 30.28,
+      "behavior": "STRONG_RESILIENCE_OR_BENEFICIARY",
+      "root_cause_why": "Bangladesh Bank replaced fixed 9% lending cap with SMART rate, later moving to pure market-based repo tightening (repo hiked to 8.5%-10.0%). Corporate borrowing cost surged from 9% to 14-16%.",
+      "market_impact": "DEBT_BURDEN_SHOCK"
+    },
+    {
+      "event_name": "Political Turmoil & National Student Revolution",
+      "category": "POLITICAL_COUNTRY_CONDITION",
+      "period": "2024-06-02 to 2024-08-04",
+      "stock_move_pct": -2.17,
+      "behavior": "MODERATE_CYCLICAL_DROP",
+      "root_cause_why": "Mass protests, nationwide curfews, internet blackouts, supply chain shutdowns leading to resignation of government on Aug 5.",
+      "market_impact": "SYSTEMIC_DISRUPTION"
+    },
+    {
+      "event_name": "Interim Government Formation & Anti-Corruption Drive",
+      "category": "POLITICAL_REGULATORY",
+      "period": "2024-08-06 to 2024-09-15",
+      "stock_move_pct": -12.03,
+      "behavior": "MODERATE_CYCLICAL_DROP",
+      "root_cause_why": "Interim government established under Dr. Yunus. BSEC leadership replaced, investigation task force formed against financial market manipulators and money laundering.",
+      "market_impact": "POST_CRISIS_HOPE_RALLY"
+    },
+    {
+      "event_name": "Banking NPL Revelations & Aggressive Monetary Tightening",
+      "category": "ECONOMIC_MONETARY_BANKING",
+      "period": "2024-09-17 to 2025-06-30",
+      "stock_move_pct": 6.06,
+      "behavior": "DEFENSIVE_STABILITY",
+      "root_cause_why": "True extent of banking non-performing loans exposed by Bangladesh Bank. Liquidity squeeze in weak banks, high 12-14% treasury bill yields drew liquidity away from stock market.",
+      "market_impact": "TIGHT_LIQUIDITY_AND_FLIGHT_TO_SAFETY"
+    },
+    {
+      "event_name": "Economic Normalization & Moat Flight",
+      "category": "SECTOR_MACRO_RECOVERY",
+      "period": "2025-07-02 to 2026-10-06",
+      "stock_move_pct": -48.16,
+      "behavior": "SEVERE_VULNERABILITY",
+      "root_cause_why": "FX reserves stabilized with IMF/World Bank assistance. Remittance surge. Selective institutional accumulation into debt-free cash cows with high dividend yields (Square, GP, Olympic, Padma Oil).",
+      "market_impact": "SELECTIVE_FUNDAMENTAL_ACCUMULATION"
+    }
+  ]
+}

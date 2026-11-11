@@ -1,0 +1,222 @@
+{
+  "ticker": "BNIPLC",
+  "timeframe": "weekly",
+  "horizon": "short",
+  "analyzed_at": "2026-11-11T03:16:34.420249",
+  "asof_price_date": "2026-11-11",
+  "served_model": {
+    "model_id": "frozen_epoch2_pit_v2",
+    "score": -999.0,
+    "is_eligible": false,
+    "rsi_14": 42.4155,
+    "pe_ratio": null,
+    "debt_equity": null
+  },
+  "signal": "HOLD_MANIPULATION_RISK",
+  "confidence": 44.0,
+  "trajectory": {
+    "direction": "CONSOLIDATION_RANGE",
+    "direction_icon": "\ud83d\udfe1",
+    "heuristic_momentum_bias": 58.3,
+    "rise_probability_pct": null,
+    "momentum_status": "Neutral Range Consolidation",
+    "short_term": {
+      "predicted_path": "Upward momentum swing",
+      "upside_potential_pct": "+3.0%",
+      "downside_risk_pct": "-2.0%",
+      "target_price": 152.1,
+      "support_price": 144.7,
+      "risk_reward_ratio": "1.5x"
+    },
+    "mid_term": {
+      "predicted_path": "Cycle valuation recovery to historical median",
+      "upside_potential_pct": "+13.9%",
+      "downside_risk_pct": "-3.0%",
+      "target_price": 168.3,
+      "trailing_stop": 143.3,
+      "risk_reward_ratio": "4.6x"
+    },
+    "long_term": {
+      "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
+      "upside_potential_pct": "+30.0%",
+      "downside_risk_pct": "-5.4%",
+      "target_price": 192.0,
+      "dividend_cagr": "5%\u20138%",
+      "risk_reward_ratio": "5.6x"
+    }
+  },
+  "trade_levels": {
+    "entry": 147.7,
+    "stop_loss": 143.27,
+    "target": 156.56
+  },
+  "precision": {
+    "ticker": "BNIPLC",
+    "smart_money": {
+      "status": "INSUFFICIENT_HISTORY",
+      "smart_money_delta_pct": 0.0,
+      "public_delta_pct": 0.0,
+      "classification": "NEUTRAL_HOLDING",
+      "conviction_bonus": 0.0,
+      "signal": "No monthly delta available"
+    },
+    "cash_flow": {
+      "nocfps": null,
+      "dividend_per_share": 0.0,
+      "cash_coverage_ratio": null,
+      "fcf_yield_pct": null,
+      "status": "UNKNOWN_CASH_FLOW_DATA_DEFICIT",
+      "signal_text": "NOCFPS (Operating Cash Flow) missing from disclosures \u2014 cash flow coverage unknown",
+      "score_bonus": 0.0,
+      "cfo_estimated": false,
+      "is_valid_evidence": false
+    },
+    "liquidity": {
+      "avg_daily_volume": 131464,
+      "daily_turnover_bdt_cr": 0.01,
+      "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
+      "slippage_risk": "HIGH",
+      "max_single_order_shares": 6573,
+      "max_daily_accumulation_shares": 19719,
+      "max_order_bdt": 6573.0,
+      "directive": "Max single order: 6,573 shares (Tk 6,573) to prevent >1% execution slippage"
+    },
+    "earnings_acceleration": {
+      "status": "INSUFFICIENT_QUARTERLY_DATA",
+      "acceleration_status": "NORMAL_STABLE",
+      "bonus": 0.0,
+      "signal": "Standard annual EPS trajectory"
+    },
+    "total_precision_bonus": 0.0
+  },
+  "pattern_dna": {
+    "ticker": "BNIPLC",
+    "audited_at": "2026-11-11 09:16:34",
+    "worth_vs_greed": {
+      "current_price": 147.7,
+      "intrinsic_worth": 73.85,
+      "margin_of_safety_pct": -50.0,
+      "extension_froth_score": 40.0,
+      "greed_index": 40.0,
+      "rsi_14": 44.0,
+      "price_vs_ema50_pct": 0.0,
+      "price_vs_ema200_pct": 0.0,
+      "merit_status": "NEUTRAL_MERIT",
+      "merit_reason": "Valuation is within normal historical ranges.",
+      "timing_directives": {
+        "optimal_entry_corridor": "\u09f3144.7 \u2013 \u09f3149.2",
+        "chase_cutoff_price": 151.4,
+        "when_to_wait": "If price opens or rises above \u09f3151.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3144.7.",
+        "weekly_target_short": 152.9,
+        "monthly_target_swing": 169.9,
+        "long_term_target_asset": 192.0,
+        "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
+      },
+      "status": "CHRONIC_OVERVALUATION",
+      "worth_decision": "AVOID",
+      "reason": "Fundamental value severely lags stock price (MoS: -50.0%).",
+      "is_blacklisted": true,
+      "blacklist_reason": "Blocked by Forensic Surveillance [CRITICAL: ABNORMAL_VOLUME_SURGE on 2026-10-25 \u2014 Volume is 4.9x 20-day average (293,931 vs 60,416) | Price up +9.29% with poor fundamentals (Negative EPS)]",
+      "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [CRITICAL: ABNORMAL_VOLUME_SURGE on 2026-10-25 \u2014 Volume is 4.9x 20-day average (293,931 vs 60,416) | Price up +9.29% with poor fundamentals (Negative EPS)]"
+    },
+    "multi_interval_wave": {
+      "status": "INSUFFICIENT_HISTORY"
+    },
+    "causal_attributions": []
+  },
+  "technical": {
+    "score": null,
+    "signals": {
+      "error": "insufficient_data_lt_30_bars"
+    },
+    "sr": {}
+  },
+  "fundamental": {
+    "score": null,
+    "signals": {
+      "error": "no_fundamental_data",
+      "downturn_resilience": {
+        "status": "normal",
+        "drawdown_pct": 14.5,
+        "high_52w": 172.8,
+        "low_52w": 140.0
+      }
+    }
+  },
+  "management": {
+    "ticker": "BNIPLC",
+    "company_name": "BNIPLC",
+    "chairman": "UNKNOWN",
+    "managing_director_ceo": "UNKNOWN",
+    "leadership_type": "UNKNOWN_UNREGISTERED",
+    "industry_experience_years": null,
+    "governance_rating": "UNRATED",
+    "audit_credibility": "UNAUDITED_PROFILE",
+    "key_moat": "UNKNOWN",
+    "management_risk": "HIGH_DATA_DEFICIT",
+    "governance_score": 0.0,
+    "is_vetted": false
+  },
+  "news_intent": {
+    "ticker": "BNIPLC",
+    "intent_score": 0.0,
+    "dominant_intent": "NO_RECENT_NEWS",
+    "articles_analyzed": 0,
+    "red_flags": [],
+    "catalysts": []
+  },
+  "sentiment": {
+    "score": 50.0,
+    "signals": {
+      "news_count": 0,
+      "note": "no_news_neutral"
+    }
+  },
+  "manipulation": {
+    "manipulation_score": 0,
+    "manipulation_risk": "low",
+    "block_buy": false,
+    "flags": [],
+    "checks": {
+      "volume_price_divergence": {
+        "flag": false,
+        "detail": "insufficient_data"
+      },
+      "volume_spike": {
+        "flag": false,
+        "detail": "insufficient_data"
+      },
+      "serial_trading": {
+        "flag": false,
+        "suspicious_days": 0,
+        "detail": "ok"
+      },
+      "circuit_breaker": {
+        "flag": false,
+        "circuit_hits": 0,
+        "detail": "ok"
+      },
+      "sponsor_exit": {
+        "flag": false,
+        "detail": "insufficient_fundamental_history"
+      },
+      "price_surge_no_news": {
+        "flag": false,
+        "price_change_3d": 2.93,
+        "news_count_3d": 0,
+        "detail": "ok"
+      }
+    }
+  },
+  "composite": {
+    "composite_score": 44.0,
+    "governance_score": 0.0,
+    "sentiment_score": 50.0,
+    "applied_weights": {
+      "fundamental": 0.68,
+      "technical": 0.2,
+      "governance": 0.12,
+      "sentiment": 0.0
+    }
+  }
+}
