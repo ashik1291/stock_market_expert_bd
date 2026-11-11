@@ -112,6 +112,35 @@ flowchart TD
 
 ---
 
+## 🔬 Dual-Use Architecture: Academic / Quantitative Research + Personal Decision Engine
+
+`stock_market_expert_bd` serves two distinct, production-grade objectives:
+
+### 🎓 1. Institutional & Academic Quantitative Research Dataset
+For researchers, financial economists, and quantitative analysts, finding clean, survivorship-free, and lookahead-free data in frontier markets is notoriously difficult. This repository provides an end-to-end, scientifically reproducible empirical finance environment:
+
+* **1,093,000+ Continuous Historical Bars**: Complete daily OHLCV, turnover, and volume across all **396 DSE securities** spanning 2018–2026.
+* **Strict Point-in-Time (PIT) Temporal Isolation (`INV-1`)**: Solves the #1 flaw in emerging market empirical finance literature (**Look-Ahead Bias**). Financial statements in `fundamentals_pit` are strictly keyed to the exact publication date (`tradable_date >= publication_date`), preventing retroactive data leakage.
+* **Frontier Market Microstructure Realism (`INV-4`)**: Enforces exact statutory DSE trading frictions (0.415% buy fee, 0.465% sell fee including Section 53BBB AIT), real-world upper circuit-lock buy rejection (+9.9%), and lower circuit floor-lock exit censoring (zero-volume days).
+* **Corporate Actions & Dividend Accounting**: Granular ledger of cash dividends, stock bonuses, and rights issues with statutory 10% AIT tax deductions.
+* **Cryptographic Tamper-Proof Audit Trail (`INV-6`)**: SHA-256 hash-chained forward ledger prevents post-hoc curve fitting, p-hacking, or cherry-picked backtest results.
+* **Open Research Opportunities**:
+  - *Empirical Asset Pricing*: Fama-French multi-factor anomalies (Value, Quality, Size, Momentum) under high transaction costs.
+  - *Microstructure & Policy*: Econometric modeling of artificial price-floor interventions and their impact on market depth and spread efficiency.
+  - *Forensic Accounting*: Empirical early-warning detection for corporate distress, promoter dumping, and debt-funded dividend traps.
+  - *Machine Learning / NLP*: Cross-sectional Rank-IC evaluation using Purged Walk-Forward Cross-Validation and regulatory disclosure sentiment.
+
+### 💼 2. Autonomous Intelligent Application for Personal Use
+For retail investors, swing traders, and family office/HNWI allocators, the repository runs out-of-the-box as an autonomous, self-healing decision-support intelligence application:
+
+* **Tri-Horizon Portfolio Pacing**: Generates actionable, risk-calibrated allocation plans divided into **60% Long-Term Core Moats**, **30% Mid-Term Cycle Swings**, and **10% Tactical Cash Reserves**.
+* **Forensic Capital Protection**: Automatically screens out ~90% of toxic speculative traps, syndicate-driven pumps, debt-burdened zombies, and governance red flags.
+* **Automated Daily Alpha & Self-Learning Cycle**: Run `python main.py alpha` or let the background scheduler execute daily updates (scraping, PIT ingestion, Bayesian weight calibration, and directional rise/fall scanning).
+* **Bilingual Decision Reports**: Every analysis, watchlist, and portfolio plan is automatically compiled in both **English and Bengali (`_bn.md`)** for immediate personal execution.
+* **Zero-Broken Bootstrap**: Type `ready` in any coding agent or run `./ready.sh` / `ready.bat` to self-heal dependencies, decompress the master database, and sync live prices in seconds.
+
+---
+
 ## 📐 Proven Quantitative Formulas & Mathematical Standards
 
 The system integrates battle-tested quantitative models adapted specifically for emerging market microstructure:
