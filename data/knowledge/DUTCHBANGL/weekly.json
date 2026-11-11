@@ -2,14 +2,14 @@
   "ticker": "DUTCHBANGL",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-10T13:49:46.942477",
-  "asof_price_date": "2026-11-10",
+  "analyzed_at": "2026-11-11T02:45:01.989744",
+  "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 48.6183,
-    "pe_ratio": 4.709418837675351,
+    "rsi_14": 48.565,
+    "pe_ratio": 3.86,
     "debt_equity": 0.523
   },
   "signal": "HOLD_INELIGIBLE_DEFICIT",
@@ -30,11 +30,11 @@
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+5.4%",
+      "upside_potential_pct": "+5.0%",
       "downside_risk_pct": "-6.9%",
-      "target_price": 48.6,
+      "target_price": 48.4,
       "trailing_stop": 42.9,
-      "risk_reward_ratio": "0.8x"
+      "risk_reward_ratio": "0.7x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 46.1,
-    "stop_loss": 44.8,
-    "target": 48.7
+    "stop_loss": 44.77,
+    "target": 48.76
   },
   "precision": {
     "ticker": "DUTCHBANGL",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 244797,
-      "daily_turnover_bdt_cr": 0.02,
+      "avg_daily_volume": 250115,
+      "daily_turnover_bdt_cr": 0.03,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 12239,
-      "max_daily_accumulation_shares": 36719,
-      "max_order_bdt": 12239.0,
-      "directive": "Max single order: 12,239 shares (Tk 12,239) to prevent >1% execution slippage"
+      "max_single_order_shares": 12505,
+      "max_daily_accumulation_shares": 37517,
+      "max_order_bdt": 12505.0,
+      "directive": "Max single order: 12,505 shares (Tk 12,505) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,7 +91,7 @@
   },
   "pattern_dna": {
     "ticker": "DUTCHBANGL",
-    "audited_at": "2026-11-10 19:49:46",
+    "audited_at": "2026-11-11 08:45:01",
     "worth_vs_greed": {
       "current_price": 46.1,
       "intrinsic_worth": 14.4,
@@ -121,10 +121,10 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 1.1,
-          "high": 46.7,
-          "low": 45.3,
-          "range_volatility_pct": 3.09
+          "return_pct": -0.22,
+          "high": 46.9,
+          "low": 45.6,
+          "range_volatility_pct": 2.85
         },
         "monthly_21d": {
           "return_pct": 1.54,
@@ -133,7 +133,7 @@
           "range_volatility_pct": 6.26
         },
         "quarterly_63d": {
-          "return_pct": -5.53,
+          "return_pct": -6.49,
           "high": 50.1,
           "low": 42.8,
           "range_volatility_pct": 17.06
@@ -145,7 +145,7 @@
           "range_volatility_pct": 38.98
         },
         "yearly_252d": {
-          "return_pct": 19.74,
+          "return_pct": 19.12,
           "high": 51.7,
           "low": 36.1,
           "range_volatility_pct": 43.21
@@ -261,12 +261,12 @@
       "macd": "bearish_crossover",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 0.87,
+      "atr": 0.89,
       "rsi_value": 49.43,
       "last_close": 46.1,
-      "sma20": 46.27,
-      "sma50": 45.57,
-      "sma200": 43.76,
+      "sma20": 46.32,
+      "sma50": 45.58,
+      "sma200": 43.78,
       "support_resistance": {
         "supports": [
           38.6,
@@ -299,14 +299,18 @@
     "score": 75.0,
     "signals": {
       "eps": "positive (9.98)",
-      "eps_yoy_growth_pct": 0.0,
+      "eps_yoy_growth_pct": 85.2,
       "eps_growth_comparison": "FYNone vs FYNone",
-      "pe": "deep_value (4.709418837675351)",
+      "pe": "deep_value (3.86)",
       "nav": 62.14,
       "dividend_yield": "strong (6.49%)",
       "bank_npl_pct": 4.1,
       "debt_equity": "bank_acceptable_npl (4.1%)",
       "loan_trap_risk": "low",
+      "cfo_cr": 41.9,
+      "net_profit_cr": 964.8,
+      "accrual_ratio": 9.229,
+      "earnings_quality": "moderate_accrual_drag",
       "downturn_resilience": {
         "status": "normal",
         "drawdown_pct": 10.8,
@@ -352,15 +356,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 141773,
-        "avg_volume": 207152.0,
+        "last_volume": 186568,
+        "avg_volume": 209590.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.69,
-        "avg_volume": 205714.0,
-        "today_volume": 141773,
+        "spike_ratio": 0.9,
+        "avg_volume": 207152.0,
+        "today_volume": 186568,
         "detail": "ok"
       },
       "serial_trading": {

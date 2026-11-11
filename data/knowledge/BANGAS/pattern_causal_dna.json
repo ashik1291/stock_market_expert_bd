@@ -1,60 +1,61 @@
 {
   "ticker": "BANGAS",
-  "audited_at": "2026-11-10 19:49:49",
+  "audited_at": "2026-11-11 08:45:05",
   "worth_vs_greed": {
-    "current_price": 109.1,
+    "current_price": 118.0,
     "intrinsic_worth": 0.24,
     "margin_of_safety_pct": -99.8,
-    "extension_froth_score": 20.0,
-    "greed_index": 20.0,
-    "rsi_14": 44.1,
-    "price_vs_ema50_pct": -5.2,
-    "price_vs_ema200_pct": -10.9,
+    "extension_froth_score": 40.0,
+    "greed_index": 40.0,
+    "rsi_14": 61.1,
+    "price_vs_ema50_pct": 2.4,
+    "price_vs_ema200_pct": -3.6,
     "merit_status": "EARNINGS_BACKED_MERIT",
     "merit_reason": "Price supported by solid earnings (EPS: \u09f30.03, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f3106.9 \u2013 \u09f3110.2",
-      "chase_cutoff_price": 111.8,
-      "when_to_wait": "If price opens or rises above \u09f3111.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3106.9.",
-      "weekly_target_short": 112.9,
-      "monthly_target_swing": 125.5,
-      "long_term_target_asset": 141.8,
+      "optimal_entry_corridor": "\u09f3115.6 \u2013 \u09f3119.2",
+      "chase_cutoff_price": 120.9,
+      "when_to_wait": "If price opens or rises above \u09f3120.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3115.6.",
+      "weekly_target_short": 122.1,
+      "monthly_target_swing": 135.7,
+      "long_term_target_asset": 153.4,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
     "reason": "Fundamental value severely lags stock price (MoS: -99.8%).",
-    "is_blacklisted": false,
-    "blacklist_reason": null
+    "is_blacklisted": true,
+    "blacklist_reason": "Blocked by Forensic Surveillance [CRITICAL: ABNORMAL_VOLUME_SURGE on 2026-11-11 \u2014 Low-float surge is 5.4x 20-day average (123,690 vs 22,813) | Price up +8.16% with poor fundamentals (Extreme P/E (421.4x)) | Promoters hold only 23.0% (< 30% legal threshold) during price run-up]",
+    "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [CRITICAL: ABNORMAL_VOLUME_SURGE on 2026-11-11 \u2014 Low-float surge is 5.4x 20-day average (123,690 vs 22,813) | Price up +8.16% with poor fundamentals (Extreme P/E (421.4x)) | Promoters hold only 23.0% (< 30% legal threshold) during price run-up]"
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 6.44,
-        "high": 110.2,
-        "low": 102.9,
-        "range_volatility_pct": 7.09
+        "return_pct": 13.03,
+        "high": 120.0,
+        "low": 105.2,
+        "range_volatility_pct": 14.07
       },
       "monthly_21d": {
-        "return_pct": -6.59,
-        "high": 118.9,
+        "return_pct": 1.72,
+        "high": 120.0,
         "low": 102.0,
-        "range_volatility_pct": 16.57
+        "range_volatility_pct": 17.65
       },
       "quarterly_63d": {
-        "return_pct": -20.48,
+        "return_pct": -14.92,
         "high": 142.5,
         "low": 102.0,
         "range_volatility_pct": 39.71
       },
       "half_yearly_126d": {
-        "return_pct": -19.84,
+        "return_pct": -12.27,
         "high": 146.9,
         "low": 102.0,
         "range_volatility_pct": 44.02
       },
       "yearly_252d": {
-        "return_pct": 2.83,
+        "return_pct": 4.15,
         "high": 157.0,
         "low": 93.0,
         "range_volatility_pct": 68.82
@@ -65,8 +66,8 @@
       "median_correction_drop_pct": -19.1,
       "avg_wave_duration_bars": 22.0
     },
-    "current_wave_phase": "ACCUMULATION_TROUGH",
-    "phase_guidance": "Near local cyclical trough base. Maximum reward/risk entry point.",
+    "current_wave_phase": "MARKUP_RALLY_MID",
+    "phase_guidance": "Midway through rally wave (+5.2% from base, historical target ~+8.1%).",
     "top_seasonal_months": [
       {
         "month": "Aug",

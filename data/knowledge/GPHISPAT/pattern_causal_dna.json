@@ -1,60 +1,60 @@
 {
   "ticker": "GPHISPAT",
-  "audited_at": "2026-11-10 19:49:49",
+  "audited_at": "2026-11-11 08:45:05",
   "worth_vs_greed": {
-    "current_price": 15.3,
+    "current_price": 15.6,
     "intrinsic_worth": 4.8,
-    "margin_of_safety_pct": -68.6,
+    "margin_of_safety_pct": -69.2,
     "extension_froth_score": 20.0,
     "greed_index": 20.0,
-    "rsi_14": 34.5,
-    "price_vs_ema50_pct": -4.4,
-    "price_vs_ema200_pct": -10.4,
+    "rsi_14": 40.6,
+    "price_vs_ema50_pct": -2.4,
+    "price_vs_ema200_pct": -8.6,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f315.0 \u2013 \u09f315.5",
-      "chase_cutoff_price": 15.7,
-      "when_to_wait": "If price opens or rises above \u09f315.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f315.0.",
-      "weekly_target_short": 15.8,
-      "monthly_target_swing": 17.6,
-      "long_term_target_asset": 19.9,
+      "optimal_entry_corridor": "\u09f315.3 \u2013 \u09f315.8",
+      "chase_cutoff_price": 16.0,
+      "when_to_wait": "If price opens or rises above \u09f316.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f315.3.",
+      "weekly_target_short": 16.1,
+      "monthly_target_swing": 17.9,
+      "long_term_target_asset": 20.3,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -68.6%).",
+    "reason": "Fundamental value severely lags stock price (MoS: -69.2%).",
     "is_blacklisted": false,
     "blacklist_reason": null
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 2.0,
-        "high": 15.4,
-        "low": 14.9,
-        "range_volatility_pct": 3.36
+        "return_pct": 3.31,
+        "high": 15.8,
+        "low": 15.0,
+        "range_volatility_pct": 5.33
       },
       "monthly_21d": {
-        "return_pct": 1.32,
+        "return_pct": 4.7,
         "high": 16.4,
         "low": 14.7,
         "range_volatility_pct": 11.56
       },
       "quarterly_63d": {
-        "return_pct": -17.74,
+        "return_pct": -17.02,
         "high": 19.0,
         "low": 14.7,
         "range_volatility_pct": 29.25
       },
       "half_yearly_126d": {
-        "return_pct": -4.97,
+        "return_pct": -2.5,
         "high": 20.7,
         "low": 14.7,
         "range_volatility_pct": 40.82
       },
       "yearly_252d": {
-        "return_pct": -14.04,
+        "return_pct": -13.33,
         "high": 20.7,
         "low": 14.6,
         "range_volatility_pct": 41.78
@@ -65,8 +65,8 @@
       "median_correction_drop_pct": -16.3,
       "avg_wave_duration_bars": 21.0
     },
-    "current_wave_phase": "MARKUP_RALLY_MID",
-    "phase_guidance": "Midway through rally wave (+4.1% from base, historical target ~+15.2%).",
+    "current_wave_phase": "MARKDOWN_PULLBACK",
+    "phase_guidance": "Ongoing pullback from peak (-4.9%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Aug",

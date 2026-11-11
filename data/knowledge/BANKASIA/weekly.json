@@ -2,18 +2,18 @@
   "ticker": "BANKASIA",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-10T13:49:47.127494",
-  "asof_price_date": "2026-11-10",
+  "analyzed_at": "2026-11-11T02:45:02.195694",
+  "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 62.5483,
-    "pe_ratio": 5.283018867924528,
+    "rsi_14": 62.5838,
+    "pe_ratio": 5.73,
     "debt_equity": 0.717
   },
   "signal": "HOLD_INELIGIBLE_DEFICIT",
-  "confidence": 60.6,
+  "confidence": 62.5,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 397280,
+      "avg_daily_volume": 413235,
       "daily_turnover_bdt_cr": 0.04,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 19864,
-      "max_daily_accumulation_shares": 59592,
-      "max_order_bdt": 19864.0,
-      "directive": "Max single order: 19,864 shares (Tk 19,864) to prevent >1% execution slippage"
+      "max_single_order_shares": 20661,
+      "max_daily_accumulation_shares": 61985,
+      "max_order_bdt": 20661.0,
+      "directive": "Max single order: 20,661 shares (Tk 20,661) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,7 +91,7 @@
   },
   "pattern_dna": {
     "ticker": "BANKASIA",
-    "audited_at": "2026-11-10 19:49:47",
+    "audited_at": "2026-11-11 08:45:02",
     "worth_vs_greed": {
       "current_price": 17.4,
       "intrinsic_worth": 11.76,
@@ -99,7 +99,7 @@
       "extension_froth_score": 30.0,
       "greed_index": 30.0,
       "rsi_14": 62.5,
-      "price_vs_ema50_pct": 2.3,
+      "price_vs_ema50_pct": 2.2,
       "price_vs_ema200_pct": -3.3,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f31.47, P/E: 0.0). Growth is fundamentally justified.",
@@ -121,10 +121,10 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 3.57,
+          "return_pct": 2.35,
           "high": 17.6,
-          "low": 16.7,
-          "range_volatility_pct": 5.39
+          "low": 17.0,
+          "range_volatility_pct": 3.53
         },
         "monthly_21d": {
           "return_pct": 4.82,
@@ -139,13 +139,13 @@
           "range_volatility_pct": 14.47
         },
         "half_yearly_126d": {
-          "return_pct": -12.56,
+          "return_pct": -10.77,
           "high": 20.0,
           "low": 15.9,
           "range_volatility_pct": 25.79
         },
         "yearly_252d": {
-          "return_pct": -0.57,
+          "return_pct": -4.92,
           "high": 23.9,
           "low": 15.9,
           "range_volatility_pct": 50.31
@@ -255,18 +255,18 @@
     ]
   },
   "technical": {
-    "score": 65.0,
+    "score": 57.5,
     "signals": {
       "rsi": "neutral",
-      "macd": "bullish_crossover",
+      "macd": "neutral",
       "sma_trend": "bullish",
       "bb": "inside_bands",
       "atr": 0.29,
       "rsi_value": 62.92,
       "last_close": 17.4,
-      "sma20": 16.93,
-      "sma50": 16.78,
-      "sma200": 18.86,
+      "sma20": 16.96,
+      "sma50": 16.79,
+      "sma200": 18.85,
       "support_resistance": {
         "supports": [
           16.1,
@@ -288,12 +288,12 @@
     }
   },
   "fundamental": {
-    "score": 70.0,
+    "score": 75.0,
     "signals": {
       "eps": "positive (3.18)",
-      "eps_yoy_growth_pct": 0.0,
+      "eps_yoy_growth_pct": 48.6,
       "eps_growth_comparison": "FYNone vs FYNone",
-      "pe": "deep_value (5.283018867924528)",
+      "pe": "deep_value (5.73)",
       "nav": 27.42,
       "dividend_yield": "moderate (4.67%)",
       "bank_npl_pct": 5.2,
@@ -347,15 +347,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 626268,
-        "avg_volume": 483060.0,
+        "last_volume": 640102,
+        "avg_volume": 480585.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.28,
-        "avg_volume": 490119.0,
-        "today_volume": 626268,
+        "spike_ratio": 1.33,
+        "avg_volume": 483060.0,
+        "today_volume": 640102,
         "detail": "ok"
       },
       "serial_trading": {
@@ -381,7 +381,7 @@
     }
   },
   "composite": {
-    "composite_score": 60.6,
+    "composite_score": 62.5,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

@@ -1,24 +1,24 @@
 {
   "ticker": "AAMRANET",
-  "audited_at": "2026-11-10 19:49:47",
+  "audited_at": "2026-11-11 08:45:03",
   "worth_vs_greed": {
-    "current_price": 20.4,
-    "intrinsic_worth": 10.2,
+    "current_price": 21.1,
+    "intrinsic_worth": 10.55,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 40.0,
-    "greed_index": 40.0,
-    "rsi_14": 81.1,
-    "price_vs_ema50_pct": 8.1,
-    "price_vs_ema200_pct": 8.0,
+    "extension_froth_score": 50.0,
+    "greed_index": 50.0,
+    "rsi_14": 84.1,
+    "price_vs_ema50_pct": 11.3,
+    "price_vs_ema200_pct": 11.5,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f320.0 \u2013 \u09f320.6",
-      "chase_cutoff_price": 20.9,
-      "when_to_wait": "If price opens or rises above \u09f320.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f320.0.",
-      "weekly_target_short": 21.1,
-      "monthly_target_swing": 23.5,
-      "long_term_target_asset": 26.5,
+      "optimal_entry_corridor": "\u09f320.7 \u2013 \u09f321.3",
+      "chase_cutoff_price": 21.6,
+      "when_to_wait": "If price opens or rises above \u09f321.6, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f320.7.",
+      "weekly_target_short": 21.8,
+      "monthly_target_swing": 24.3,
+      "long_term_target_asset": 27.4,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -30,31 +30,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 7.37,
-        "high": 20.4,
+        "return_pct": 8.21,
+        "high": 21.3,
         "low": 18.7,
-        "range_volatility_pct": 9.09
+        "range_volatility_pct": 13.9
       },
       "monthly_21d": {
-        "return_pct": 13.33,
-        "high": 20.4,
+        "return_pct": 17.88,
+        "high": 21.3,
         "low": 17.3,
-        "range_volatility_pct": 17.92
+        "range_volatility_pct": 23.12
       },
       "quarterly_63d": {
-        "return_pct": -2.86,
+        "return_pct": 0.48,
         "high": 22.4,
         "low": 17.0,
         "range_volatility_pct": 31.76
       },
       "half_yearly_126d": {
-        "return_pct": 27.5,
+        "return_pct": 32.7,
         "high": 23.0,
         "low": 15.8,
         "range_volatility_pct": 45.57
       },
       "yearly_252d": {
-        "return_pct": 3.03,
+        "return_pct": 7.11,
         "high": 23.0,
         "low": 14.5,
         "range_volatility_pct": 58.62
@@ -66,7 +66,7 @@
       "avg_wave_duration_bars": 30.0
     },
     "current_wave_phase": "MARKUP_RALLY_MID",
-    "phase_guidance": "Midway through rally wave (+17.9% from base, historical target ~+41.9%).",
+    "phase_guidance": "Midway through rally wave (+22.0% from base, historical target ~+41.9%).",
     "top_seasonal_months": [
       {
         "month": "Aug",

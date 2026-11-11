@@ -1,60 +1,60 @@
 {
   "ticker": "ROBI",
-  "audited_at": "2026-11-10 19:49:47",
+  "audited_at": "2026-11-11 08:45:03",
   "worth_vs_greed": {
-    "current_price": 30.3,
+    "current_price": 30.1,
     "intrinsic_worth": 3.84,
-    "margin_of_safety_pct": -87.3,
-    "extension_froth_score": 20.0,
-    "greed_index": 20.0,
-    "rsi_14": 59.4,
-    "price_vs_ema50_pct": 0.9,
-    "price_vs_ema200_pct": 0.6,
+    "margin_of_safety_pct": -87.2,
+    "extension_froth_score": 30.0,
+    "greed_index": 30.0,
+    "rsi_14": 55.9,
+    "price_vs_ema50_pct": 0.2,
+    "price_vs_ema200_pct": -0.1,
     "merit_status": "EARNINGS_BACKED_MERIT",
     "merit_reason": "Price supported by solid earnings (EPS: \u09f30.48, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f329.7 \u2013 \u09f330.6",
-      "chase_cutoff_price": 31.1,
-      "when_to_wait": "If price opens or rises above \u09f331.1, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f329.7.",
-      "weekly_target_short": 31.4,
-      "monthly_target_swing": 34.8,
-      "long_term_target_asset": 39.4,
+      "optimal_entry_corridor": "\u09f329.5 \u2013 \u09f330.4",
+      "chase_cutoff_price": 30.9,
+      "when_to_wait": "If price opens or rises above \u09f330.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f329.5.",
+      "weekly_target_short": 31.2,
+      "monthly_target_swing": 34.6,
+      "long_term_target_asset": 39.1,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -87.3%).",
+    "reason": "Fundamental value severely lags stock price (MoS: -87.2%).",
     "is_blacklisted": false,
     "blacklist_reason": null
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 4.48,
+        "return_pct": 2.73,
         "high": 30.5,
-        "low": 28.8,
-        "range_volatility_pct": 5.9
+        "low": 29.1,
+        "range_volatility_pct": 4.81
       },
       "monthly_21d": {
-        "return_pct": 1.68,
+        "return_pct": 0.67,
         "high": 30.5,
         "low": 28.8,
         "range_volatility_pct": 5.9
       },
       "quarterly_63d": {
-        "return_pct": -4.11,
+        "return_pct": -6.23,
         "high": 33.2,
         "low": 28.8,
         "range_volatility_pct": 15.28
       },
       "half_yearly_126d": {
-        "return_pct": 2.02,
+        "return_pct": 1.69,
         "high": 33.9,
         "low": 28.4,
         "range_volatility_pct": 19.37
       },
       "yearly_252d": {
-        "return_pct": 2.02,
+        "return_pct": -1.63,
         "high": 33.9,
         "low": 26.7,
         "range_volatility_pct": 26.97
@@ -66,7 +66,7 @@
       "avg_wave_duration_bars": 18.0
     },
     "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-8.7%). Wait for stabilizing base.",
+    "phase_guidance": "Ongoing pullback from peak (-9.3%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Jan",

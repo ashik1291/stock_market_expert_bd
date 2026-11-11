@@ -2,18 +2,18 @@
   "ticker": "DESCO",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-10T13:49:48.880592",
-  "asof_price_date": "2026-11-10",
+  "analyzed_at": "2026-11-11T02:45:04.383437",
+  "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 69.6806,
+    "rsi_14": 69.8048,
     "pe_ratio": 0.0,
     "debt_equity": 3.001
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 24.6,
+  "confidence": 44.21,
   "trajectory": {
     "direction": "FALL_RISK",
     "direction_icon": "\ud83d\udd34",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 24.9,
-    "stop_loss": 23.67,
-    "target": 27.36
+    "stop_loss": 23.71,
+    "target": 27.28
   },
   "precision": {
     "ticker": "DESCO",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 152886,
-      "daily_turnover_bdt_cr": 0.02,
+      "avg_daily_volume": 134276,
+      "daily_turnover_bdt_cr": 0.01,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 7644,
-      "max_daily_accumulation_shares": 22932,
-      "max_order_bdt": 7644.0,
-      "directive": "Max single order: 7,644 shares (Tk 7,644) to prevent >1% execution slippage"
+      "max_single_order_shares": 6713,
+      "max_daily_accumulation_shares": 20141,
+      "max_order_bdt": 6713.0,
+      "directive": "Max single order: 6,713 shares (Tk 6,713) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,7 +91,7 @@
   },
   "pattern_dna": {
     "ticker": "DESCO",
-    "audited_at": "2026-11-10 19:49:48",
+    "audited_at": "2026-11-11 08:45:04",
     "worth_vs_greed": {
       "current_price": 24.9,
       "intrinsic_worth": 12.45,
@@ -99,7 +99,7 @@
       "extension_froth_score": 50.0,
       "greed_index": 50.0,
       "rsi_14": 73.2,
-      "price_vs_ema50_pct": 6.7,
+      "price_vs_ema50_pct": 6.4,
       "price_vs_ema200_pct": 6.5,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
@@ -122,10 +122,10 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 10.67,
+          "return_pct": 7.33,
           "high": 25.6,
-          "low": 22.5,
-          "range_volatility_pct": 13.78
+          "low": 23.0,
+          "range_volatility_pct": 11.3
         },
         "monthly_21d": {
           "return_pct": -0.4,
@@ -134,19 +134,19 @@
           "range_volatility_pct": 18.81
         },
         "quarterly_63d": {
-          "return_pct": -2.73,
+          "return_pct": -4.23,
           "high": 26.5,
           "low": 21.4,
           "range_volatility_pct": 23.83
         },
         "half_yearly_126d": {
-          "return_pct": 14.22,
+          "return_pct": 15.28,
           "high": 27.8,
           "low": 21.1,
           "range_volatility_pct": 31.75
         },
         "yearly_252d": {
-          "return_pct": 26.4,
+          "return_pct": 24.5,
           "high": 27.8,
           "low": 18.1,
           "range_volatility_pct": 53.59
@@ -256,18 +256,18 @@
     ]
   },
   "technical": {
-    "score": 55.0,
+    "score": 61.25,
     "signals": {
       "rsi": "overbought_bearish",
       "macd": "bullish_crossover",
       "sma_trend": "bullish",
-      "bb": "at_upper_band_bearish",
-      "atr": 0.82,
+      "bb": "inside_bands",
+      "atr": 0.79,
       "rsi_value": 70.01,
       "last_close": 24.9,
-      "sma20": 23.06,
-      "sma50": 22.92,
-      "sma200": 23.34,
+      "sma20": 23.13,
+      "sma50": 22.96,
+      "sma200": 23.36,
       "support_resistance": {
         "supports": [
           19.5,
@@ -299,13 +299,20 @@
     }
   },
   "fundamental": {
-    "score": 20.0,
+    "score": 47.0,
     "signals": {
+      "eps": "negative (-3.15)",
+      "eps_yoy_growth_pct": 75.2,
+      "eps_growth_comparison": "FYNone vs FYNone",
       "nav": 35.33,
       "dividend_yield": "no_dividend",
       "debt_equity_val": 3.001,
       "debt_equity": "danger_high_loan (3.001)",
       "loan_trap_risk": "high",
+      "cfo_cr": 18.0,
+      "net_profit_cr": -125.2,
+      "accrual_ratio": -1.432,
+      "earnings_quality": "superior_cash_backed",
       "downturn_resilience": {
         "status": "normal",
         "drawdown_pct": 10.4,
@@ -352,15 +359,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 248431,
-        "avg_volume": 149770.0,
+        "last_volume": 160480,
+        "avg_volume": 153059.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.73,
-        "avg_volume": 143418.0,
-        "today_volume": 248431,
+        "spike_ratio": 1.07,
+        "avg_volume": 149770.0,
+        "today_volume": 160480,
         "detail": "ok"
       },
       "serial_trading": {
@@ -386,7 +393,7 @@
     }
   },
   "composite": {
-    "composite_score": 24.6,
+    "composite_score": 44.21,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

@@ -2,13 +2,13 @@
   "ticker": "INTECH",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-10T13:49:48.231328",
-  "asof_price_date": "2026-11-10",
+  "analyzed_at": "2026-11-11T02:45:03.569808",
+  "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 52.5022,
+    "rsi_14": 59.2223,
     "pe_ratio": 0.0,
     "debt_equity": 0.139
   },
@@ -22,33 +22,33 @@
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+6.5%",
-      "downside_risk_pct": "-4.1%",
-      "target_price": 23.1,
-      "support_price": 20.8,
+      "upside_potential_pct": "+6.2%",
+      "downside_risk_pct": "-4.0%",
+      "target_price": 23.9,
+      "support_price": 21.6,
       "risk_reward_ratio": "1.6x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+23.5%",
-      "downside_risk_pct": "-10.1%",
-      "target_price": 26.8,
-      "trailing_stop": 19.5,
-      "risk_reward_ratio": "2.3x"
+      "upside_potential_pct": "+17.3%",
+      "downside_risk_pct": "-10.2%",
+      "target_price": 26.4,
+      "trailing_stop": 20.2,
+      "risk_reward_ratio": "1.7x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-      "upside_potential_pct": "+30.0%",
+      "upside_potential_pct": "+29.8%",
       "downside_risk_pct": "-12.0%",
-      "target_price": 28.2,
+      "target_price": 29.2,
       "dividend_cagr": "no_dividend",
       "risk_reward_ratio": "2.5x"
     }
   },
   "trade_levels": {
-    "entry": 21.7,
-    "stop_loss": 20.3,
-    "target": 24.5
+    "entry": 22.5,
+    "stop_loss": 21.11,
+    "target": 25.28
   },
   "precision": {
     "ticker": "INTECH",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 47394,
-      "daily_turnover_bdt_cr": 0.0,
+      "avg_daily_volume": 50833,
+      "daily_turnover_bdt_cr": 0.01,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 2369,
-      "max_daily_accumulation_shares": 7109,
-      "max_order_bdt": 2369.0,
-      "directive": "Max single order: 2,369 shares (Tk 2,369) to prevent >1% execution slippage"
+      "max_single_order_shares": 2541,
+      "max_daily_accumulation_shares": 7625,
+      "max_order_bdt": 2541.0,
+      "directive": "Max single order: 2,541 shares (Tk 2,541) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,25 +91,25 @@
   },
   "pattern_dna": {
     "ticker": "INTECH",
-    "audited_at": "2026-11-10 19:49:48",
+    "audited_at": "2026-11-11 08:45:03",
     "worth_vs_greed": {
-      "current_price": 21.7,
-      "intrinsic_worth": 10.85,
+      "current_price": 22.5,
+      "intrinsic_worth": 11.25,
       "margin_of_safety_pct": -50.0,
-      "extension_froth_score": 20.0,
-      "greed_index": 20.0,
-      "rsi_14": 57.4,
-      "price_vs_ema50_pct": -4.3,
-      "price_vs_ema200_pct": -20.5,
+      "extension_froth_score": 30.0,
+      "greed_index": 30.0,
+      "rsi_14": 62.9,
+      "price_vs_ema50_pct": -0.7,
+      "price_vs_ema200_pct": -17.4,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f321.3 \u2013 \u09f321.9",
-        "chase_cutoff_price": 22.2,
-        "when_to_wait": "If price opens or rises above \u09f322.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f321.3.",
-        "weekly_target_short": 22.5,
-        "monthly_target_swing": 25.0,
-        "long_term_target_asset": 28.2,
+        "optimal_entry_corridor": "\u09f322.1 \u2013 \u09f322.7",
+        "chase_cutoff_price": 23.1,
+        "when_to_wait": "If price opens or rises above \u09f323.1, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f322.1.",
+        "weekly_target_short": 23.3,
+        "monthly_target_swing": 25.9,
+        "long_term_target_asset": 29.2,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
@@ -122,31 +122,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 9.6,
-          "high": 22.3,
-          "low": 19.8,
-          "range_volatility_pct": 12.63
+          "return_pct": 12.5,
+          "high": 22.7,
+          "low": 20.0,
+          "range_volatility_pct": 13.5
         },
         "monthly_21d": {
-          "return_pct": -6.87,
+          "return_pct": -3.43,
           "high": 23.7,
           "low": 18.7,
           "range_volatility_pct": 26.74
         },
         "quarterly_63d": {
-          "return_pct": -18.11,
+          "return_pct": -15.41,
           "high": 27.4,
           "low": 18.7,
           "range_volatility_pct": 46.52
         },
         "half_yearly_126d": {
-          "return_pct": -38.0,
+          "return_pct": -35.16,
           "high": 39.5,
           "low": 18.7,
           "range_volatility_pct": 111.23
         },
         "yearly_252d": {
-          "return_pct": -28.15,
+          "return_pct": -23.99,
           "high": 44.1,
           "low": 18.0,
           "range_volatility_pct": 145.0
@@ -263,11 +263,11 @@
       "sma_trend": "neutral",
       "bb": "inside_bands",
       "atr": 0.93,
-      "rsi_value": 52.79,
-      "last_close": 21.7,
-      "sma20": 20.76,
-      "sma50": 22.55,
-      "sma200": 30.16,
+      "rsi_value": 59.4,
+      "last_close": 22.5,
+      "sma20": 20.75,
+      "sma50": 22.52,
+      "sma200": 30.12,
       "support_resistance": {
         "supports": [
           22.0,
@@ -300,7 +300,7 @@
       "loan_trap_risk": "none",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 50.8,
+        "drawdown_pct": 49.0,
         "high_52w": 44.1,
         "low_52w": 18.0
       }
@@ -344,15 +344,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 73267,
-        "avg_volume": 45744.0,
+        "last_volume": 100438,
+        "avg_volume": 46776.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.65,
-        "avg_volume": 44283.0,
-        "today_volume": 73267,
+        "spike_ratio": 2.2,
+        "avg_volume": 45744.0,
+        "today_volume": 100438,
         "detail": "ok"
       },
       "serial_trading": {
@@ -371,7 +371,7 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": -0.91,
+        "price_change_3d": 2.74,
         "news_count_3d": 0,
         "detail": "ok"
       }

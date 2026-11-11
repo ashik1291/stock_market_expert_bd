@@ -296,7 +296,7 @@ def fetch_and_ingest_live_today(today_dhaka: str, conn: sqlite3.Connection, verb
 
     # 6. Sync Bangladesh Bank Macro Rates
     import macro_rate_feed
-    macro_res = macro_rate_feed.sync_macro_indicators(asof_date=today_dhaka, conn=conn)
+    macro_res = macro_rate_feed.sync_macro_indicators(asof_date=today_dhaka)
 
     return {
         "prices_count": len(all_prices) if all_prices else 0,

@@ -2,53 +2,53 @@
   "ticker": "SONALILIFE",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-10T13:49:50.694460",
-  "asof_price_date": "2026-11-10",
+  "analyzed_at": "2026-11-11T02:45:06.623579",
+  "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 44.5479,
+    "rsi_14": 34.2708,
     "pe_ratio": 59.87654320987654,
     "debt_equity": 0.0
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 52.55,
+  "confidence": 51.8,
   "trajectory": {
-    "direction": "CONSOLIDATION_RANGE",
-    "direction_icon": "\ud83d\udfe1",
-    "heuristic_momentum_bias": 57.1,
+    "direction": "RISE_PREDICTED",
+    "direction_icon": "\ud83d\udfe2",
+    "heuristic_momentum_bias": 60.4,
     "rise_probability_pct": null,
-    "momentum_status": "Neutral Range Consolidation",
+    "momentum_status": "Bullish Momentum / Upward Bias",
     "short_term": {
-      "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+6.1%",
-      "downside_risk_pct": "-4.1%",
-      "target_price": 100.7,
-      "support_price": 91.0,
+      "predicted_path": "Oversold bounce to 20-DMA",
+      "upside_potential_pct": "+7.4%",
+      "downside_risk_pct": "-5.0%",
+      "target_price": 94.1,
+      "support_price": 83.2,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+13.8%",
-      "downside_risk_pct": "-10.0%",
+      "upside_potential_pct": "+23.3%",
+      "downside_risk_pct": "-8.3%",
       "target_price": 108.0,
-      "trailing_stop": 85.4,
-      "risk_reward_ratio": "1.4x"
+      "trailing_stop": 80.3,
+      "risk_reward_ratio": "2.8x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.0%",
       "downside_risk_pct": "-12.0%",
-      "target_price": 123.4,
+      "target_price": 113.9,
       "dividend_cagr": "moderate (2.47%)",
       "risk_reward_ratio": "2.5x"
     }
   },
   "trade_levels": {
-    "entry": 94.9,
-    "stop_loss": 89.11,
-    "target": 106.48
+    "entry": 87.6,
+    "stop_loss": 81.06,
+    "target": 100.68
   },
   "precision": {
     "ticker": "SONALILIFE",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 327828,
+      "avg_daily_volume": 336307,
       "daily_turnover_bdt_cr": 0.03,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 16391,
-      "max_daily_accumulation_shares": 49174,
-      "max_order_bdt": 16391.0,
-      "directive": "Max single order: 16,391 shares (Tk 16,391) to prevent >1% execution slippage"
+      "max_single_order_shares": 16815,
+      "max_daily_accumulation_shares": 50446,
+      "max_order_bdt": 16815.0,
+      "directive": "Max single order: 16,815 shares (Tk 16,815) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,30 +91,30 @@
   },
   "pattern_dna": {
     "ticker": "SONALILIFE",
-    "audited_at": "2026-11-10 19:49:50",
+    "audited_at": "2026-11-11 08:45:06",
     "worth_vs_greed": {
-      "current_price": 94.9,
+      "current_price": 87.6,
       "intrinsic_worth": 23.6,
-      "margin_of_safety_pct": -75.1,
-      "extension_froth_score": 40.0,
-      "greed_index": 40.0,
-      "rsi_14": 27.0,
-      "price_vs_ema50_pct": 0.1,
-      "price_vs_ema200_pct": 16.3,
+      "margin_of_safety_pct": -73.1,
+      "extension_froth_score": 30.0,
+      "greed_index": 30.0,
+      "rsi_14": 21.5,
+      "price_vs_ema50_pct": -7.3,
+      "price_vs_ema200_pct": 7.3,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f393.0 \u2013 \u09f395.8",
-        "chase_cutoff_price": 97.3,
-        "when_to_wait": "If price opens or rises above \u09f397.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f393.0.",
-        "weekly_target_short": 98.2,
-        "monthly_target_swing": 109.1,
-        "long_term_target_asset": 123.4,
+        "optimal_entry_corridor": "\u09f385.8 \u2013 \u09f388.5",
+        "chase_cutoff_price": 89.8,
+        "when_to_wait": "If price opens or rises above \u09f389.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f385.8.",
+        "weekly_target_short": 90.7,
+        "monthly_target_swing": 100.7,
+        "long_term_target_asset": 113.9,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
       "worth_decision": "AVOID",
-      "reason": "Fundamental value severely lags stock price (MoS: -75.1%).",
+      "reason": "Fundamental value severely lags stock price (MoS: -73.1%).",
       "is_blacklisted": true,
       "blacklist_reason": "Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-28 \u2014 Price up +4.93% with poor fundamentals (Negative EPS)]",
       "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-28 \u2014 Price up +4.93% with poor fundamentals (Negative EPS)]"
@@ -122,31 +122,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -0.94,
-          "high": 98.8,
-          "low": 94.1,
-          "range_volatility_pct": 4.99
+          "return_pct": -10.15,
+          "high": 98.5,
+          "low": 85.6,
+          "range_volatility_pct": 15.07
         },
         "monthly_21d": {
-          "return_pct": -3.46,
+          "return_pct": -9.78,
           "high": 109.5,
-          "low": 94.1,
-          "range_volatility_pct": 16.37
+          "low": 85.6,
+          "range_volatility_pct": 27.92
         },
         "quarterly_63d": {
-          "return_pct": 6.99,
+          "return_pct": -0.34,
           "high": 109.5,
           "low": 78.6,
           "range_volatility_pct": 39.31
         },
         "half_yearly_126d": {
-          "return_pct": 60.03,
+          "return_pct": 48.47,
           "high": 109.5,
           "low": 57.0,
           "range_volatility_pct": 92.11
         },
         "yearly_252d": {
-          "return_pct": 29.29,
+          "return_pct": 20.33,
           "high": 109.5,
           "low": 57.0,
           "range_volatility_pct": 92.11
@@ -157,8 +157,8 @@
         "median_correction_drop_pct": -21.9,
         "avg_wave_duration_bars": 23.0
       },
-      "current_wave_phase": "MARKDOWN_PULLBACK",
-      "phase_guidance": "Ongoing pullback from peak (-13.3%). Wait for stabilizing base.",
+      "current_wave_phase": "BOTTOMING_SUPPORT",
+      "phase_guidance": "Drop (-20.0%) matches historical correction depth (-21.9%). Prepare to accumulate.",
       "top_seasonal_months": [
         {
           "month": "Aug",
@@ -256,18 +256,18 @@
     ]
   },
   "technical": {
-    "score": 58.75,
+    "score": 55.0,
     "signals": {
       "rsi": "neutral",
-      "macd": "neutral",
+      "macd": "bearish_crossover",
       "sma_trend": "bullish",
-      "bb": "inside_bands",
-      "atr": 3.86,
-      "rsi_value": 44.49,
-      "last_close": 94.9,
-      "sma20": 101.51,
-      "sma50": 93.17,
-      "sma200": 77.71,
+      "bb": "at_lower_band_bullish",
+      "atr": 4.36,
+      "rsi_value": 34.32,
+      "last_close": 87.6,
+      "sma20": 100.7,
+      "sma50": 93.21,
+      "sma200": 77.85,
       "support_resistance": {
         "supports": [
           57.1,
@@ -308,10 +308,11 @@
       "debt_equity": "pristine_low (0.0)",
       "loan_trap_risk": "none",
       "downturn_resilience": {
-        "status": "normal",
-        "drawdown_pct": 13.3,
+        "status": "growth_at_discount",
+        "drawdown_pct": 20.0,
         "high_52w": 109.5,
-        "low_52w": 57.0
+        "low_52w": 57.0,
+        "note": "Share price down 20.0% from 52w peak, yet earnings positive/steady (Conviction discount)"
       }
     }
   },
@@ -345,23 +346,25 @@
     }
   },
   "manipulation": {
-    "manipulation_score": 0,
+    "manipulation_score": 10,
     "manipulation_risk": "low",
     "block_buy": false,
-    "flags": [],
+    "flags": [
+      "price_surge_no_news: price_-8.2pct_zero_news"
+    ],
     "checks": {
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 129353,
-        "avg_volume": 437740.0,
+        "last_volume": 688259,
+        "avg_volume": 445803.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.29,
-        "avg_volume": 441231.0,
-        "today_volume": 129353,
+        "spike_ratio": 1.57,
+        "avg_volume": 437740.0,
+        "today_volume": 688259,
         "detail": "ok"
       },
       "serial_trading": {
@@ -379,15 +382,15 @@
         "detail": "sponsor_holding_not_available"
       },
       "price_surge_no_news": {
-        "flag": false,
-        "price_change_3d": -0.52,
+        "flag": true,
+        "price_change_3d": -8.18,
         "news_count_3d": 0,
-        "detail": "ok"
+        "detail": "price_-8.2pct_zero_news"
       }
     }
   },
   "composite": {
-    "composite_score": 52.55,
+    "composite_score": 51.8,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

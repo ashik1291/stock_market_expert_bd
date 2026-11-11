@@ -3513,6 +3513,108 @@
         "last_rebalance_date": "2026-11-03"
       },
       "block_hash": "45382f0ef6643a5236b36ffda6ff1e8cb3af18672c6f7a23f1771b05346b4b98"
+    },
+    {
+      "block_index": 22,
+      "timestamp": "2026-11-11T02:44:43.081607+00:00",
+      "prev_hash": "45382f0ef6643a5236b36ffda6ff1e8cb3af18672c6f7a23f1771b05346b4b98",
+      "data": {
+        "epoch": "EPOCH-2-LIVE-PROSPECTIVE-2026",
+        "registered_at": "2026-10-11T10:39:34.252678+00:00",
+        "git_commit": "3dfc8ce",
+        "trial_count_deflated": 52,
+        "discarded_trials": [
+          "Epoch 0: 2012-2026 Backtest (+576% Lookahead Leak Discarded)",
+          "Epoch 1: 2026-10-07 Forward Ledger (Retroactive Timestamp & Price Index Discarded)"
+        ],
+        "parameter_hash": "acf502bc65914c48",
+        "initial_cash": 1000000.0,
+        "current_cash": 787392.49,
+        "portfolio_nav": 988192.79,
+        "benchmark": "EQUAL_WEIGHTED_TOTAL_RETURN_UNIVERSE",
+        "benchmark_baseline_nav": 100.0,
+        "rules": {
+          "max_sector_weight_pct": 20.0,
+          "max_single_stock_pct": 10.0,
+          "execution_fill": "NEXT_SESSION_OPEN_PLUS_10BPS_SLIPPAGE",
+          "round_trip_fee_pct": 0.833,
+          "required_independent_periods_80pct_power": 87,
+          "precommitted_success_criterion": "Excess Return vs Filtered Total Return >= +4.0% with IR >= +0.50 after T=87 periods",
+          "precommitted_kill_criterion": "Excess Return < -3.0% OR Portfolio Max Drawdown < -25.0%"
+        },
+        "positions": [
+          {
+            "ticker": "JAMUNAOIL",
+            "sector": "Fuel_Power",
+            "entry_date": "2026-10-11",
+            "execution_price": 179.38,
+            "shares": 555,
+            "invested_equity": 99555.9,
+            "buy_fee_deducted": 413.16,
+            "pe": 3.0306643952299828,
+            "yield": 9.87,
+            "last_mark_price": 170.6,
+            "last_mark_date": "2026-11-11",
+            "mark_equity": 94683.0
+          },
+          {
+            "ticker": "MPETROLEUM",
+            "sector": "Fuel_Power",
+            "entry_date": "2026-10-11",
+            "execution_price": 204.3,
+            "shares": 487,
+            "invested_equity": 99494.1,
+            "buy_fee_deducted": 412.9,
+            "pe": 3.352337514253136,
+            "yield": 9.76,
+            "last_mark_price": 217.9,
+            "last_mark_date": "2026-11-11",
+            "mark_equity": 106117.3
+          }
+        ],
+        "updated_at": "2026-11-11T02:44:43.081607+00:00",
+        "asof_price_date": "2026-11-11",
+        "model_id": "frozen_epoch2_pit_v2",
+        "feature_build": {
+          "ok": true,
+          "date": "2026-11-11",
+          "rows": 374,
+          "eligible": 5,
+          "model_id": "frozen_epoch2_pit_v2",
+          "parameter_hash": "acf502bc65914c48"
+        },
+        "nav_history": [
+          1000000.0,
+          991809.63,
+          989301.77,
+          993161.47,
+          990323.37,
+          991381.97,
+          995705.87,
+          996175.47,
+          1001386.97,
+          1001032.77,
+          990473.06,
+          988810.23,
+          988041.69,
+          989391.59,
+          991759.76,
+          986511.2,
+          986876.21,
+          988192.79
+        ],
+        "max_drawdown_pct": -1.49,
+        "strat_return_pct": -1.18,
+        "eqw_return_pct": 3.1947,
+        "excess_vs_eqw_pct": -4.37,
+        "strategy_status": "KILLED",
+        "kill_reason": "excess -3.08% < -3.0%",
+        "last_trades": [],
+        "daily_ic": null,
+        "eligible_count": 5,
+        "last_rebalance_date": "2026-11-03"
+      },
+      "block_hash": "995047ceb28d9886b00f8c614c47ecdcce2d3d0d29b6d016dbc672881886b0a5"
     }
   ]
 }
