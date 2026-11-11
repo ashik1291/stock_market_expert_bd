@@ -25,9 +25,9 @@ In institutional quantitative finance, scientific honesty and statistical humili
 | :--- | :---: | :---: | :--- | :--- |
 | **System Architecture & Data Invariants** | **98%** | `Grade A+` | 100/100 unit tests passing, 8/8 SPEC.md invariants enforced, universal SQLite WAL with 30s timeout guards, zero-broken bootstrap. | Fully hardened production engineering. |
 | **Point-in-Time (PIT) Fundamentals** | **98%** | `Grade A+` | **100% verified disclosure timestamps** across all 1,707 company filing periods with zero lookahead bias (`tradable_date >= publication_date >= snapshot_date`). Verified via 687 DSE PSI news disclosures (40.2%), 403 DSE corporate actions (23.6%), 409 BSEC statutory compliance filings (24.0%), and 208 live scrapes (12.2%). | Covers 141 actively reporting companies (2018–2026); OTC and delisted debt instruments excluded. |
-| **Forensic Surveillance & Risk Shield** | **100%** | `Grade A+` | 100% reliable junk and pump-and-dump filter. Detects volume anomalies ($\text{VAR} \ge 3\times$), negative cash-flow traps ($\text{NOCFPS} \le 0$), toxic leverage in a 12–14% interest regime, and flags regulatory probe actions. | Dependent on official DSE PSI disclosures and exchange volume reporting. |
+| **Forensic Surveillance & Risk Shield** | **100%** | `Grade A+` | 100% reliable junk and pump-and-dump filter. Detects volume anomalies (VAR $\ge 3\times$), negative cash-flow traps (NOCFPS $\le 0$), toxic leverage in a 12–14% interest regime, and flags regulatory probe actions. | Dependent on official DSE PSI disclosures and exchange volume reporting. |
 | **Market Microstructure & Macro Economics** | **95%** | `Grade A` | Anchored to live Bangladesh Bank 91-Day T-Bills (11.60%) with a mandatory 15.10% equity hurdle rate. Real-world fees enforced in all backtests: **0.415% buy / 0.465% sell** (including statutory Section 53BBB Advance Income Tax). | Models standard retail brokerage fee (0.40%); institutional DMA discounts not modeled. |
-| **Directional Alpha & Market Timing** | **52%** | `Active Trial` | Walk-forward Bayesian factor weights, Wilder's smoothed RSI, shadow challenger registry with Holm-Bonferroni multi-testing deflation. | Forward ledger currently has 22 blocks ($N < 200$ sample size); permutation test $p = 0.608$ vs random null. Validated as a capital protection filter, uncertified as a market timer. |
+| **Directional Alpha & Market Timing** | **52%** | `Active Trial` | Walk-forward Bayesian factor weights, Wilder's smoothed RSI, shadow challenger registry with Holm-Bonferroni multi-testing deflation. | Forward ledger currently has 22 blocks ($N < 200$ sample size; permutation test $p = 0.608$ vs random null). Validated as a capital protection filter, uncertified as a market timer. |
 
 > [!NOTE]
 > **Executive Summary**: The engine operates at **Grade A+ institutional maturity for capital preservation, forensic risk filtering, and valuation analysis**. It systematically keeps capital out of 90% of toxic speculative traps on the Dhaka exchange. Directional market-timing predictions remain under forward-walk calibration until 200+ daily sessions mature.
@@ -90,33 +90,67 @@ The system integrates battle-tested quantitative models adapted specifically for
 
 ### 1. Benjamin Graham Intrinsic Value & Margin of Safety
 To determine whether an equity is undervalued relative to underlying tangible assets and normalized earnings:
-$$\text{Graham Fair Value } (V) = \sqrt{22.5 \times \text{EPS} \times \text{NAV}}$$
-$$\text{Margin of Safety (MoS)} = \frac{V - P_{\text{live}}}{P_{\text{live}}} \times 100\%$$
+
+$$
+\text{Graham Fair Value } (V) = \sqrt{22.5 \times \text{EPS} \times \text{NAV}}
+$$
+
+$$
+\text{Margin of Safety (MoS)} = \frac{V - P_{\text{live}}}{P_{\text{live}}} \times 100\%
+$$
+
 - **Benchmark Requirement**: A stock must present a Margin of Safety $\ge +25\%$ to qualify for core capital allocation.
 
 ### 2. Central Bank Macro Hurdle & Equity Risk Premium (ERP)
 In a high-interest-rate environment, equities must compensate investors for equity risk above risk-free government paper:
-$$\text{Earnings Yield } (E/P) = \frac{\text{EPS}}{P_{\text{live}}}$$
-$$\text{Equity Risk Premium (ERP)} = \text{Earnings Yield} - R_{\text{91d T-Bill}} \ge +3.50\%$$
+
+$$
+\text{Earnings Yield } (E/P) = \frac{\text{EPS}}{P_{\text{live}}}
+$$
+
+$$
+\text{Equity Risk Premium (ERP)} = \text{Earnings Yield} - R_{\text{91d T-Bill}} \ge +3.50\%
+$$
+
 - With the Bangladesh Bank 91-Day Treasury Bill auction yield at **11.60%**, the non-negotiable minimum equity hurdle rate is **15.10%**. Any company earning less than this threshold is disqualified.
 
 ### 3. Forensic Anti-Manipulation & Volume Anomaly Surveillance
 Emerging markets frequently witness syndicate-driven pump-and-dump operations. The engine tracks volume spikes decoupled from earnings:
-$$\text{Volume Anomaly Ratio (VAR)} = \frac{\text{Volume}_t}{\frac{1}{20}\sum_{i=1}^{20} \text{Volume}_{t-i}}$$
-$$\text{Junk Trap Condition} = (\text{VAR} \ge 3.0\times) \land (\Delta P \ge +7.5\%) \land (\text{NOCFPS} \le 0)$$
+
+$$
+\text{Volume Anomaly Ratio (VAR)} = \frac{\text{Volume}_t}{\frac{1}{20}\sum_{i=1}^{20} \text{Volume}_{t-i}}
+$$
+
+$$
+\text{Junk Trap Condition} = (\text{VAR} \ge 3.0\times) \land (\Delta P \ge +7.5\%) \land (\text{NOCFPS} \le 0)
+$$
+
 - Tickers meeting this condition are quarantined immediately via `is_ticker_blacklisted(ticker, asof_date)`.
 
 ### 4. Real Microstructure Realism & Statutory Fee Accounting
 All backtesting, paper trading, and live execution engines enforce statutory DSE transaction friction:
-$$\text{Total Buy Cost} = P \times \text{Shares} \times (1 + \text{Fee}_{\text{buy}}), \quad \text{Fee}_{\text{buy}} = 0.415\%$$
-$$\text{Net Sell Proceeds} = P \times \text{Shares} \times (1 - \text{Fee}_{\text{sell}}), \quad \text{Fee}_{\text{sell}} = 0.465\%$$
+
+$$
+\text{Total Buy Cost} = P \times \text{Shares} \times (1 + \text{Fee}_{\text{buy}}), \quad \text{Fee}_{\text{buy}} = 0.415\%
+$$
+
+$$
+\text{Net Sell Proceeds} = P \times \text{Shares} \times (1 - \text{Fee}_{\text{sell}}), \quad \text{Fee}_{\text{sell}} = 0.465\%
+$$
+
 - Fees include standard brokerage ($0.40\%$), exchange clearing ($0.015\%$), and Government Section 53BBB Advance Income Tax ($0.05\%$).
 - **Circuit Lock Guard**: If an instrument locks at its lower circuit limit ($-10\%$ or $-3\%$) with zero bids, exits are deferred to prevent illusory backtest liquidity.
 
 ### 5. Inverse-Volatility Risk Parity Capital Allocation
 Position sizes are inversely scaled according to 20-day realized volatility ($\sigma_i$) and weighted by Graham Margin of Safety:
-$$w_i^* = \frac{\frac{1}{\sigma_i} \times \max(0.1, \text{MoS}_i)}{\sum_{j=1}^N \left(\frac{1}{\sigma_j} \times \max(0.1, \text{MoS}_j)\right)}$$
-$$\text{Defensive Cash Buffer} = \min\left(40\%, \max\left(10\%, \frac{\sigma_{\text{DSEX}}}{15\%} \times 20\%\right)\right)$$
+
+$$
+w_i^* = \frac{\frac{1}{\sigma_i} \times \max(0.1, \text{MoS}_i)}{\sum_{j=1}^N \left(\frac{1}{\sigma_j} \times \max(0.1, \text{MoS}_j)\right)}
+$$
+
+$$
+\text{Defensive Cash Buffer} = \min\left(40\%, \max\left(10\%, \frac{\sigma_{\text{DSEX}}}{15\%} \times 20\%\right)\right)
+$$
 
 ### 6. Point-in-Time (PIT) Temporal Isolation Invariant
 To eliminate survivorship and lookahead bias in historical evaluations:
