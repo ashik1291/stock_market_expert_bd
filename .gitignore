@@ -77,3 +77,23 @@ data/users/*
 reports/portfolio/
 reports/user_proxy/
 reports/dual_engine/
+
+# 8. Ephemeral Output Reports & Visual Charts (Generated on demand; preserved locally)
+reports/advisory/
+reports/catalyst/
+reports/catalysts/
+reports/charts/
+reports/daily/
+reports/drift/
+reports/integrity/
+reports/learning/
+reports/liquidity/
+reports/monthly/
+reports/readiness/
+reports/surveillance/
+reports/weekly/
+reports/*.json
+reports/*.md
+!reports/business/
+!reports/business/**
+!reports/.gitkeep
