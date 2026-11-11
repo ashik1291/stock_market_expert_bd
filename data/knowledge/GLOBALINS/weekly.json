@@ -2,7 +2,7 @@
   "ticker": "GLOBALINS",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:38.686014",
+  "analyzed_at": "2026-11-11T05:51:03.649906",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": null
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 45.5,
+  "confidence": 45.48,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 0.0
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 20.8,
+      "high_52w": 44.3,
+      "range_52w_pct": 88.1,
+      "channel_regime": "OVEREXTENDED_CEILING",
+      "visual_gauge": "[ \u09f320.8 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591| \u09f344.3 ] (88.1% (Truncated))",
+      "conviction_bonus": -10.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 101,
+      "signal": "Price is at 88.1% of 52-week high (near \u09f344.3) \u2014 elevated mean-reversion risk"
+    },
+    "total_precision_bonus": -10.0
   },
   "pattern_dna": {
     "ticker": "GLOBALINS",
-    "audited_at": "2026-11-11 09:16:38",
+    "audited_at": "2026-11-11 11:51:03",
     "worth_vs_greed": {
       "current_price": 41.5,
       "intrinsic_worth": 20.75,
@@ -371,7 +383,7 @@
     }
   },
   "composite": {
-    "composite_score": 45.5,
+    "composite_score": 45.48,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

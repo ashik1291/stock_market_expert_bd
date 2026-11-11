@@ -2,7 +2,7 @@
   "ticker": "ORIONINFU",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:45.382033",
+  "analyzed_at": "2026-11-11T05:51:16.635592",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": null
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 44.0,
+  "confidence": 43.98,
   "trajectory": {
     "direction": "RISE_PREDICTED",
     "direction_icon": "\ud83d\udfe2",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 0.0
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 191.0,
+      "high_52w": 524.0,
+      "range_52w_pct": 4.8,
+      "channel_regime": "DEEP_ACCUMULATION_BASE",
+      "visual_gauge": "[ \u09f3191.0 |\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f3524.0 ] (4.8% (Truncated))",
+      "conviction_bonus": 10.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 100,
+      "signal": "Price is at the bottom 4.8% of 52-week channel (near \u09f3191.0 floor) \u2014 high margin of safety"
+    },
+    "total_precision_bonus": 10.0
   },
   "pattern_dna": {
     "ticker": "ORIONINFU",
-    "audited_at": "2026-11-11 09:16:45",
+    "audited_at": "2026-11-11 11:51:16",
     "worth_vs_greed": {
       "current_price": 207.0,
       "intrinsic_worth": 103.5,
@@ -373,7 +385,7 @@
     }
   },
   "composite": {
-    "composite_score": 44.0,
+    "composite_score": 43.98,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

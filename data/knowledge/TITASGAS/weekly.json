@@ -2,7 +2,7 @@
   "ticker": "TITASGAS",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:53.681867",
+  "analyzed_at": "2026-11-11T05:51:28.813772",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": 0.054
   },
   "signal": "HOLD_INELIGIBLE_DEFICIT",
-  "confidence": 63.5,
+  "confidence": 63.47,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 14.5,
+      "high_52w": 22.2,
+      "range_52w_pct": 35.1,
+      "channel_regime": "EQUILIBRIUM_CHANNEL",
+      "visual_gauge": "[ \u09f314.5 |\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591| \u09f322.2 ] (35.1%)",
+      "conviction_bonus": 0.0,
+      "is_truncated_window": false,
+      "bars_evaluated": 250,
+      "signal": "Price is in mid-channel (35.1% between \u09f314.5 and \u09f322.2)"
+    },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "TITASGAS",
-    "audited_at": "2026-11-11 09:16:53",
+    "audited_at": "2026-11-11 11:51:28",
     "worth_vs_greed": {
       "current_price": 17.2,
       "intrinsic_worth": 8.6,
@@ -379,7 +391,7 @@
     }
   },
   "composite": {
-    "composite_score": 63.5,
+    "composite_score": 63.47,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

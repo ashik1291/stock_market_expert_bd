@@ -2,7 +2,7 @@
   "ticker": "EASTRNLUB",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:36.783201",
+  "analyzed_at": "2026-11-11T05:51:00.125858",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": null
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 46.0,
+  "confidence": 45.98,
   "trajectory": {
     "direction": "RISE_PREDICTED",
     "direction_icon": "\ud83d\udfe2",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 0.0
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 1505.0,
+      "high_52w": 2790.0,
+      "range_52w_pct": 4.0,
+      "channel_regime": "DEEP_ACCUMULATION_BASE",
+      "visual_gauge": "[ \u09f31505.0 |\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f32790.0 ] (4.0% (Truncated))",
+      "conviction_bonus": 10.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 100,
+      "signal": "Price is at the bottom 4.0% of 52-week channel (near \u09f31505.0 floor) \u2014 high margin of safety"
+    },
+    "total_precision_bonus": 10.0
   },
   "pattern_dna": {
     "ticker": "EASTRNLUB",
-    "audited_at": "2026-11-11 09:16:36",
+    "audited_at": "2026-11-11 11:51:00",
     "worth_vs_greed": {
       "current_price": 1556.2,
       "intrinsic_worth": 778.1,
@@ -375,7 +387,7 @@
     }
   },
   "composite": {
-    "composite_score": 46.0,
+    "composite_score": 45.98,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

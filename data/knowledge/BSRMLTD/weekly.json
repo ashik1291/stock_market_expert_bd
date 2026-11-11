@@ -2,7 +2,7 @@
   "ticker": "BSRMLTD",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:34.747998",
+  "analyzed_at": "2026-11-11T05:50:56.411331",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 71.5,
+      "high_52w": 115.0,
+      "range_52w_pct": 58.2,
+      "channel_regime": "EQUILIBRIUM_CHANNEL",
+      "visual_gauge": "[ \u09f371.5 |\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591| \u09f3115.0 ] (58.2%)",
+      "conviction_bonus": 0.0,
+      "is_truncated_window": false,
+      "bars_evaluated": 250,
+      "signal": "Price is in mid-channel (58.2% between \u09f371.5 and \u09f3115.0)"
+    },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "BSRMLTD",
-    "audited_at": "2026-11-11 09:16:34",
+    "audited_at": "2026-11-11 11:50:56",
     "worth_vs_greed": {
       "current_price": 96.8,
       "intrinsic_worth": 70.0,

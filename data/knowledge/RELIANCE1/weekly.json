@@ -2,7 +2,7 @@
   "ticker": "RELIANCE1",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:49.095903",
+  "analyzed_at": "2026-11-11T05:51:21.743207",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": 0.0
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 67.62,
+  "confidence": 67.58,
   "trajectory": {
     "direction": "RISE_PREDICTED",
     "direction_icon": "\ud83d\udfe2",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 0.0
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 10.6,
+      "high_52w": 18.8,
+      "range_52w_pct": 12.2,
+      "channel_regime": "DEEP_ACCUMULATION_BASE",
+      "visual_gauge": "[ \u09f310.6 |\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f318.8 ] (12.2% (Truncated))",
+      "conviction_bonus": 10.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 101,
+      "signal": "Price is at the bottom 12.2% of 52-week channel (near \u09f310.6 floor) \u2014 high margin of safety"
+    },
+    "total_precision_bonus": 10.0
   },
   "pattern_dna": {
     "ticker": "RELIANCE1",
-    "audited_at": "2026-11-11 09:16:49",
+    "audited_at": "2026-11-11 11:51:21",
     "worth_vs_greed": {
       "current_price": 11.6,
       "intrinsic_worth": 5.8,
@@ -382,7 +394,7 @@
     }
   },
   "composite": {
-    "composite_score": 67.62,
+    "composite_score": 67.58,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

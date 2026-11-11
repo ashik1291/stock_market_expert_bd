@@ -2,7 +2,7 @@
   "ticker": "BBSCABLES",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:33.452671",
+  "analyzed_at": "2026-11-11T05:50:54.449989",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": null
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 44.0,
+  "confidence": 43.98,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 0.0
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 11.6,
+      "high_52w": 18.4,
+      "range_52w_pct": 82.4,
+      "channel_regime": "MOMENTUM_EXPANSION",
+      "visual_gauge": "[ \u09f311.6 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591| \u09f318.4 ] (82.4% (Truncated))",
+      "conviction_bonus": 5.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 100,
+      "signal": "Price is in upper channel (82.4%) \u2014 upward breakout momentum"
+    },
+    "total_precision_bonus": 5.0
   },
   "pattern_dna": {
     "ticker": "BBSCABLES",
-    "audited_at": "2026-11-11 09:16:33",
+    "audited_at": "2026-11-11 11:50:54",
     "worth_vs_greed": {
       "current_price": 17.2,
       "intrinsic_worth": 8.6,
@@ -373,7 +385,7 @@
     }
   },
   "composite": {
-    "composite_score": 44.0,
+    "composite_score": 43.98,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

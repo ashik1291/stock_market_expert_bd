@@ -2,7 +2,7 @@
   "ticker": "UNIQUEHRL",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:54.335088",
+  "analyzed_at": "2026-11-11T05:51:29.868219",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": null
   },
   "signal": "HOLD",
-  "confidence": 45.75,
+  "confidence": 45.73,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 35.1,
+      "high_52w": 42.8,
+      "range_52w_pct": 67.5,
+      "channel_regime": "EQUILIBRIUM_CHANNEL",
+      "visual_gauge": "[ \u09f335.1 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591| \u09f342.8 ] (67.5% (Truncated))",
+      "conviction_bonus": 0.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 100,
+      "signal": "Price is in mid-channel (67.5% between \u09f335.1 and \u09f342.8)"
+    },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "UNIQUEHRL",
-    "audited_at": "2026-11-11 09:16:54",
+    "audited_at": "2026-11-11 11:51:29",
     "worth_vs_greed": {
       "current_price": 40.3,
       "intrinsic_worth": 20.15,
@@ -374,7 +386,7 @@
     }
   },
   "composite": {
-    "composite_score": 45.75,
+    "composite_score": 45.73,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

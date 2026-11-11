@@ -2,7 +2,7 @@
   "ticker": "ARAMITCEM",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:32.582387",
+  "analyzed_at": "2026-11-11T05:50:52.954450",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": 17.553
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 25.1,
+  "confidence": 25.09,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 7.6,
+      "high_52w": 15.0,
+      "range_52w_pct": 43.2,
+      "channel_regime": "EQUILIBRIUM_CHANNEL",
+      "visual_gauge": "[ \u09f37.6 |\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591| \u09f315.0 ] (43.2%)",
+      "conviction_bonus": 0.0,
+      "is_truncated_window": false,
+      "bars_evaluated": 250,
+      "signal": "Price is in mid-channel (43.2% between \u09f37.6 and \u09f315.0)"
+    },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "ARAMITCEM",
-    "audited_at": "2026-11-11 09:16:32",
+    "audited_at": "2026-11-11 11:50:52",
     "worth_vs_greed": {
       "current_price": 10.8,
       "intrinsic_worth": 5.4,
@@ -382,7 +394,7 @@
     }
   },
   "composite": {
-    "composite_score": 25.1,
+    "composite_score": 25.09,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

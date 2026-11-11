@@ -2,7 +2,7 @@
   "ticker": "GP",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:38.857602",
+  "analyzed_at": "2026-11-11T05:51:03.912509",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": 0.125
   },
   "signal": "HOLD_INELIGIBLE_DEFICIT",
-  "confidence": 73.9,
+  "confidence": 73.91,
   "trajectory": {
     "direction": "RISE_PREDICTED",
     "direction_icon": "\ud83d\udfe2",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 0.0
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 221.9,
+      "high_52w": 286.0,
+      "range_52w_pct": 1.2,
+      "channel_regime": "DEEP_ACCUMULATION_BASE",
+      "visual_gauge": "[ \u09f3221.9 |\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f3286.0 ] (1.2%)",
+      "conviction_bonus": 10.0,
+      "is_truncated_window": false,
+      "bars_evaluated": 250,
+      "signal": "Price is at the bottom 1.2% of 52-week channel (near \u09f3221.9 floor) \u2014 high margin of safety"
+    },
+    "total_precision_bonus": 10.0
   },
   "pattern_dna": {
     "ticker": "GP",
-    "audited_at": "2026-11-11 09:16:38",
+    "audited_at": "2026-11-11 11:51:03",
     "worth_vs_greed": {
       "current_price": 222.7,
       "intrinsic_worth": 44.48,
@@ -385,7 +397,7 @@
     }
   },
   "composite": {
-    "composite_score": 73.9,
+    "composite_score": 73.91,
     "governance_score": 95,
     "sentiment_score": 50.0,
     "applied_weights": {

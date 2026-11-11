@@ -2,7 +2,7 @@
   "ticker": "ONEBANKPLC",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:45.321887",
+  "analyzed_at": "2026-11-11T05:51:16.526266",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 44.0,
+  "confidence": 43.98,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 6.4,
+      "high_52w": 7.6,
+      "range_52w_pct": 33.3,
+      "channel_regime": "EQUILIBRIUM_CHANNEL",
+      "visual_gauge": "[ \u09f36.4 |\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f37.6 ] (33.3% (Truncated))",
+      "conviction_bonus": 0.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 101,
+      "signal": "Price is in mid-channel (33.3% between \u09f36.4 and \u09f37.6)"
+    },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "ONEBANKPLC",
-    "audited_at": "2026-11-11 09:16:45",
+    "audited_at": "2026-11-11 11:51:16",
     "worth_vs_greed": {
       "current_price": 6.8,
       "intrinsic_worth": 3.4,
@@ -372,7 +384,7 @@
     }
   },
   "composite": {
-    "composite_score": 44.0,
+    "composite_score": 43.98,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

@@ -2,7 +2,7 @@
   "ticker": "SEAPEARL",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:50.761154",
+  "analyzed_at": "2026-11-11T05:51:24.356977",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": null
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 47.0,
+  "confidence": 46.98,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 29.3,
+      "high_52w": 46.0,
+      "range_52w_pct": 32.3,
+      "channel_regime": "EQUILIBRIUM_CHANNEL",
+      "visual_gauge": "[ \u09f329.3 |\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f346.0 ] (32.3% (Truncated))",
+      "conviction_bonus": 0.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 100,
+      "signal": "Price is in mid-channel (32.3% between \u09f329.3 and \u09f346.0)"
+    },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "SEAPEARL",
-    "audited_at": "2026-11-11 09:16:50",
+    "audited_at": "2026-11-11 11:51:24",
     "worth_vs_greed": {
       "current_price": 34.7,
       "intrinsic_worth": 17.35,
@@ -376,7 +388,7 @@
     }
   },
   "composite": {
-    "composite_score": 47.0,
+    "composite_score": 46.98,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

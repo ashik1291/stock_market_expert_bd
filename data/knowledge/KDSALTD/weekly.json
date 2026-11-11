@@ -2,7 +2,7 @@
   "ticker": "KDSALTD",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:41.776839",
+  "analyzed_at": "2026-11-11T05:51:09.596826",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": 0.186
   },
   "signal": "HOLD",
-  "confidence": 54.81,
+  "confidence": 54.79,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 0.0
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 35.9,
+      "high_52w": 46.9,
+      "range_52w_pct": 80.0,
+      "channel_regime": "MOMENTUM_EXPANSION",
+      "visual_gauge": "[ \u09f335.9 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591| \u09f346.9 ] (80.0% (Truncated))",
+      "conviction_bonus": 5.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 100,
+      "signal": "Price is in upper channel (80.0%) \u2014 upward breakout momentum"
+    },
+    "total_precision_bonus": 5.0
   },
   "pattern_dna": {
     "ticker": "KDSALTD",
-    "audited_at": "2026-11-11 09:16:41",
+    "audited_at": "2026-11-11 11:51:09",
     "worth_vs_greed": {
       "current_price": 44.7,
       "intrinsic_worth": 4.16,
@@ -386,7 +398,7 @@
     }
   },
   "composite": {
-    "composite_score": 54.81,
+    "composite_score": 54.79,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

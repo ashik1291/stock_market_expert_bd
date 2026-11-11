@@ -2,7 +2,7 @@
   "ticker": "NCCBANK",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:44.331352",
+  "analyzed_at": "2026-11-11T05:51:14.689594",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": 0.986
   },
   "signal": "HOLD_INELIGIBLE_DEFICIT",
-  "confidence": 61.82,
+  "confidence": 61.79,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 0.0
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 10.19,
+      "high_52w": 15.5,
+      "range_52w_pct": 92.5,
+      "channel_regime": "OVEREXTENDED_CEILING",
+      "visual_gauge": "[ \u09f310.2 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591| \u09f315.5 ] (92.5% (Truncated))",
+      "conviction_bonus": -10.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 101,
+      "signal": "Price is at 92.5% of 52-week high (near \u09f315.5) \u2014 elevated mean-reversion risk"
+    },
+    "total_precision_bonus": -10.0
   },
   "pattern_dna": {
     "ticker": "NCCBANK",
-    "audited_at": "2026-11-11 09:16:44",
+    "audited_at": "2026-11-11 11:51:14",
     "worth_vs_greed": {
       "current_price": 15.1,
       "intrinsic_worth": 7.44,
@@ -375,7 +387,7 @@
     }
   },
   "composite": {
-    "composite_score": 61.82,
+    "composite_score": 61.79,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

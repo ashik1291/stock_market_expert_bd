@@ -2,7 +2,7 @@
   "ticker": "FEKDIL",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:37.980499",
+  "analyzed_at": "2026-11-11T05:51:02.310858",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": 0.166
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 60.44,
+  "confidence": 60.4,
   "trajectory": {
     "direction": "RISE_PREDICTED",
     "direction_icon": "\ud83d\udfe2",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 0.0
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 13.1,
+      "high_52w": 21.7,
+      "range_52w_pct": 79.1,
+      "channel_regime": "MOMENTUM_EXPANSION",
+      "visual_gauge": "[ \u09f313.1 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591| \u09f321.7 ] (79.1% (Truncated))",
+      "conviction_bonus": 5.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 100,
+      "signal": "Price is in upper channel (79.1%) \u2014 upward breakout momentum"
+    },
+    "total_precision_bonus": 5.0
   },
   "pattern_dna": {
     "ticker": "FEKDIL",
-    "audited_at": "2026-11-11 09:16:37",
+    "audited_at": "2026-11-11 11:51:02",
     "worth_vs_greed": {
       "current_price": 19.9,
       "intrinsic_worth": 9.95,
@@ -379,7 +391,7 @@
     }
   },
   "composite": {
-    "composite_score": 60.44,
+    "composite_score": 60.4,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

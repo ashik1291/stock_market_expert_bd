@@ -2,7 +2,7 @@
   "ticker": "BRACBANK",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:34.565947",
+  "analyzed_at": "2026-11-11T05:50:56.094570",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": 0.585
   },
   "signal": "HOLD_INELIGIBLE_DEFICIT",
-  "confidence": 76.72,
+  "confidence": 76.73,
   "trajectory": {
     "direction": "RISE_PREDICTED",
     "direction_icon": "\ud83d\udfe2",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 57.39,
+      "high_52w": 89.6,
+      "range_52w_pct": 25.5,
+      "channel_regime": "EQUILIBRIUM_CHANNEL",
+      "visual_gauge": "[ \u09f357.4 |\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f389.6 ] (25.5%)",
+      "conviction_bonus": 0.0,
+      "is_truncated_window": false,
+      "bars_evaluated": 250,
+      "signal": "Price is in mid-channel (25.5% between \u09f357.4 and \u09f389.6)"
+    },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "BRACBANK",
-    "audited_at": "2026-11-11 09:16:34",
+    "audited_at": "2026-11-11 11:50:56",
     "worth_vs_greed": {
       "current_price": 65.6,
       "intrinsic_worth": 21.04,
@@ -384,7 +396,7 @@
     }
   },
   "composite": {
-    "composite_score": 76.72,
+    "composite_score": 76.73,
     "governance_score": 100,
     "sentiment_score": 50.0,
     "applied_weights": {

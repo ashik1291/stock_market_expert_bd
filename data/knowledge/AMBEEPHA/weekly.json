@@ -2,7 +2,7 @@
   "ticker": "AMBEEPHA",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:31.904456",
+  "analyzed_at": "2026-11-11T05:50:52.026041",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": 0.0
   },
   "signal": "HOLD",
-  "confidence": 50.3,
+  "confidence": 50.28,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 681.0,
+      "high_52w": 829.0,
+      "range_52w_pct": 27.2,
+      "channel_regime": "EQUILIBRIUM_CHANNEL",
+      "visual_gauge": "[ \u09f3681.0 |\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f3829.0 ] (27.2% (Truncated))",
+      "conviction_bonus": 0.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 100,
+      "signal": "Price is in mid-channel (27.2% between \u09f3681.0 and \u09f3829.0)"
+    },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "AMBEEPHA",
-    "audited_at": "2026-11-11 09:16:31",
+    "audited_at": "2026-11-11 11:50:52",
     "worth_vs_greed": {
       "current_price": 721.2,
       "intrinsic_worth": 3.2,
@@ -378,7 +390,7 @@
     }
   },
   "composite": {
-    "composite_score": 50.3,
+    "composite_score": 50.28,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

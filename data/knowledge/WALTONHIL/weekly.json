@@ -2,7 +2,7 @@
   "ticker": "WALTONHIL",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:55.099355",
+  "analyzed_at": "2026-11-11T05:51:30.941430",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": 0.137
   },
   "signal": "HOLD_INELIGIBLE_DEFICIT",
-  "confidence": 61.46,
+  "confidence": 61.47,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 0.0
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 296.36,
+      "high_52w": 458.1,
+      "range_52w_pct": 20.1,
+      "channel_regime": "DEEP_ACCUMULATION_BASE",
+      "visual_gauge": "[ \u09f3296.4 |\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f3458.1 ] (20.1%)",
+      "conviction_bonus": 10.0,
+      "is_truncated_window": false,
+      "bars_evaluated": 250,
+      "signal": "Price is at the bottom 20.1% of 52-week channel (near \u09f3296.4 floor) \u2014 high margin of safety"
+    },
+    "total_precision_bonus": 10.0
   },
   "pattern_dna": {
     "ticker": "WALTONHIL",
-    "audited_at": "2026-11-11 09:16:55",
+    "audited_at": "2026-11-11 11:51:30",
     "worth_vs_greed": {
       "current_price": 328.8,
       "intrinsic_worth": 404.03,
@@ -385,7 +397,7 @@
     }
   },
   "composite": {
-    "composite_score": 61.46,
+    "composite_score": 61.47,
     "governance_score": 80,
     "sentiment_score": 50.0,
     "applied_weights": {

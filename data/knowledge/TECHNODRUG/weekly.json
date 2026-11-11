@@ -2,7 +2,7 @@
   "ticker": "TECHNODRUG",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:53.550954",
+  "analyzed_at": "2026-11-11T05:51:28.578525",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": 0.537
   },
   "signal": "HOLD",
-  "confidence": 48.01,
+  "confidence": 47.99,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 25.2,
+      "high_52w": 40.8,
+      "range_52w_pct": 67.9,
+      "channel_regime": "EQUILIBRIUM_CHANNEL",
+      "visual_gauge": "[ \u09f325.2 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591| \u09f340.8 ] (67.9% (Truncated))",
+      "conviction_bonus": 0.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 100,
+      "signal": "Price is in mid-channel (67.9% between \u09f325.2 and \u09f340.8)"
+    },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "TECHNODRUG",
-    "audited_at": "2026-11-11 09:16:53",
+    "audited_at": "2026-11-11 11:51:28",
     "worth_vs_greed": {
       "current_price": 35.8,
       "intrinsic_worth": 2.48,
@@ -359,7 +371,7 @@
     }
   },
   "composite": {
-    "composite_score": 48.01,
+    "composite_score": 47.99,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

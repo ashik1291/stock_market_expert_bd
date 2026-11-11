@@ -2,7 +2,7 @@
   "ticker": "NPOLYMER",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:44.784669",
+  "analyzed_at": "2026-11-11T05:51:15.592667",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": null
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 46.5,
+  "confidence": 46.48,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 23.5,
+      "high_52w": 32.1,
+      "range_52w_pct": 57.0,
+      "channel_regime": "EQUILIBRIUM_CHANNEL",
+      "visual_gauge": "[ \u09f323.5 |\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591| \u09f332.1 ] (57.0% (Truncated))",
+      "conviction_bonus": 0.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 100,
+      "signal": "Price is in mid-channel (57.0% between \u09f323.5 and \u09f332.1)"
+    },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "NPOLYMER",
-    "audited_at": "2026-11-11 09:16:44",
+    "audited_at": "2026-11-11 11:51:15",
     "worth_vs_greed": {
       "current_price": 28.4,
       "intrinsic_worth": 14.2,
@@ -375,7 +387,7 @@
     }
   },
   "composite": {
-    "composite_score": 46.5,
+    "composite_score": 46.48,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

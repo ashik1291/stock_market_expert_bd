@@ -2,7 +2,7 @@
   "ticker": "SAIHAMCOT",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:50.140549",
+  "analyzed_at": "2026-11-11T05:51:23.343400",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": 0.644
   },
   "signal": "HOLD",
-  "confidence": 58.13,
+  "confidence": 58.1,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 15.4,
+      "high_52w": 26.8,
+      "range_52w_pct": 61.4,
+      "channel_regime": "EQUILIBRIUM_CHANNEL",
+      "visual_gauge": "[ \u09f315.4 |\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591| \u09f326.8 ] (61.4%)",
+      "conviction_bonus": 0.0,
+      "is_truncated_window": false,
+      "bars_evaluated": 250,
+      "signal": "Price is in mid-channel (61.4% between \u09f315.4 and \u09f326.8)"
+    },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "SAIHAMCOT",
-    "audited_at": "2026-11-11 09:16:50",
+    "audited_at": "2026-11-11 11:51:23",
     "worth_vs_greed": {
       "current_price": 22.4,
       "intrinsic_worth": 2.48,
@@ -388,7 +400,7 @@
     }
   },
   "composite": {
-    "composite_score": 58.13,
+    "composite_score": 58.1,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

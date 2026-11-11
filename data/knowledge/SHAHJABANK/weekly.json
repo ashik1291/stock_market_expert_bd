@@ -2,7 +2,7 @@
   "ticker": "SHAHJABANK",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:50.969509",
+  "analyzed_at": "2026-11-11T05:51:24.681118",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": null
   },
   "signal": "HOLD",
-  "confidence": 45.5,
+  "confidence": 45.48,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 15.9,
+      "high_52w": 18.4,
+      "range_52w_pct": 56.0,
+      "channel_regime": "EQUILIBRIUM_CHANNEL",
+      "visual_gauge": "[ \u09f315.9 |\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591| \u09f318.4 ] (56.0% (Truncated))",
+      "conviction_bonus": 0.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 101,
+      "signal": "Price is in mid-channel (56.0% between \u09f315.9 and \u09f318.4)"
+    },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "SHAHJABANK",
-    "audited_at": "2026-11-11 09:16:50",
+    "audited_at": "2026-11-11 11:51:24",
     "worth_vs_greed": {
       "current_price": 17.3,
       "intrinsic_worth": 8.65,
@@ -372,7 +384,7 @@
     }
   },
   "composite": {
-    "composite_score": 45.5,
+    "composite_score": 45.48,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

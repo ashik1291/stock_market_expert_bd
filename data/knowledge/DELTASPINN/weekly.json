@@ -2,7 +2,7 @@
   "ticker": "DELTASPINN",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:36.068389",
+  "analyzed_at": "2026-11-11T05:50:58.571452",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": null
   },
   "signal": "HOLD",
-  "confidence": 45.5,
+  "confidence": 45.48,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 0.0
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 3.5,
+      "high_52w": 7.9,
+      "range_52w_pct": 95.5,
+      "channel_regime": "OVEREXTENDED_CEILING",
+      "visual_gauge": "[ \u09f33.5 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| \u09f37.9 ] (95.5% (Truncated))",
+      "conviction_bonus": -10.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 101,
+      "signal": "Price is at 95.5% of 52-week high (near \u09f37.9) \u2014 elevated mean-reversion risk"
+    },
+    "total_precision_bonus": -10.0
   },
   "pattern_dna": {
     "ticker": "DELTASPINN",
-    "audited_at": "2026-11-11 09:16:36",
+    "audited_at": "2026-11-11 11:50:58",
     "worth_vs_greed": {
       "current_price": 7.7,
       "intrinsic_worth": 3.85,
@@ -376,7 +388,7 @@
     }
   },
   "composite": {
-    "composite_score": 45.5,
+    "composite_score": 45.48,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

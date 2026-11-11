@@ -2,7 +2,7 @@
   "ticker": "CONTININS",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:35.521690",
+  "analyzed_at": "2026-11-11T05:50:57.674671",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": 0.0
   },
   "signal": "HOLD",
-  "confidence": 57.63,
+  "confidence": 57.6,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 19.4,
+      "high_52w": 39.0,
+      "range_52w_pct": 64.8,
+      "channel_regime": "EQUILIBRIUM_CHANNEL",
+      "visual_gauge": "[ \u09f319.4 |\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591| \u09f339.0 ] (64.8%)",
+      "conviction_bonus": 0.0,
+      "is_truncated_window": false,
+      "bars_evaluated": 250,
+      "signal": "Price is in mid-channel (64.8% between \u09f319.4 and \u09f339.0)"
+    },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "CONTININS",
-    "audited_at": "2026-11-11 09:16:35",
+    "audited_at": "2026-11-11 11:50:57",
     "worth_vs_greed": {
       "current_price": 32.1,
       "intrinsic_worth": 3.76,
@@ -387,7 +399,7 @@
     }
   },
   "composite": {
-    "composite_score": 57.63,
+    "composite_score": 57.6,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

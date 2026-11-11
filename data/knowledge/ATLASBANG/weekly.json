@@ -2,7 +2,7 @@
   "ticker": "ATLASBANG",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:32.846211",
+  "analyzed_at": "2026-11-11T05:50:53.417854",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": null
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 43.5,
+  "confidence": 43.48,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 0.0
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 44.2,
+      "high_52w": 84.9,
+      "range_52w_pct": 84.5,
+      "channel_regime": "MOMENTUM_EXPANSION",
+      "visual_gauge": "[ \u09f344.2 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591| \u09f384.9 ] (84.5% (Truncated))",
+      "conviction_bonus": 5.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 100,
+      "signal": "Price is in upper channel (84.5%) \u2014 upward breakout momentum"
+    },
+    "total_precision_bonus": 5.0
   },
   "pattern_dna": {
     "ticker": "ATLASBANG",
-    "audited_at": "2026-11-11 09:16:32",
+    "audited_at": "2026-11-11 11:50:53",
     "worth_vs_greed": {
       "current_price": 78.6,
       "intrinsic_worth": 39.3,
@@ -373,7 +385,7 @@
     }
   },
   "composite": {
-    "composite_score": 43.5,
+    "composite_score": 43.48,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

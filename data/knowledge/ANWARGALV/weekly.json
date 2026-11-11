@@ -2,7 +2,7 @@
   "ticker": "ANWARGALV",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:32.088813",
+  "analyzed_at": "2026-11-11T05:50:52.277591",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": 3.315
   },
   "signal": "HOLD_LOAN_TRAP_RISK",
-  "confidence": 35.05,
+  "confidence": 35.04,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 0.0
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 74.1,
+      "high_52w": 127.6,
+      "range_52w_pct": 72.0,
+      "channel_regime": "MOMENTUM_EXPANSION",
+      "visual_gauge": "[ \u09f374.1 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591| \u09f3127.6 ] (72.0%)",
+      "conviction_bonus": 5.0,
+      "is_truncated_window": false,
+      "bars_evaluated": 250,
+      "signal": "Price is in upper channel (72.0%) \u2014 upward breakout momentum"
+    },
+    "total_precision_bonus": 5.0
   },
   "pattern_dna": {
     "ticker": "ANWARGALV",
-    "audited_at": "2026-11-11 09:16:32",
+    "audited_at": "2026-11-11 11:50:52",
     "worth_vs_greed": {
       "current_price": 112.6,
       "intrinsic_worth": 7.76,
@@ -390,7 +402,7 @@
     }
   },
   "composite": {
-    "composite_score": 35.05,
+    "composite_score": 35.04,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

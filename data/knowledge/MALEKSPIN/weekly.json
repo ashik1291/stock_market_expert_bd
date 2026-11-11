@@ -2,7 +2,7 @@
   "ticker": "MALEKSPIN",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:42.732636",
+  "analyzed_at": "2026-11-11T05:51:11.480146",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": 0.818
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 60.17,
+  "confidence": 60.14,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 0.0
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 23.5,
+      "high_52w": 54.2,
+      "range_52w_pct": 76.2,
+      "channel_regime": "MOMENTUM_EXPANSION",
+      "visual_gauge": "[ \u09f323.5 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591| \u09f354.2 ] (76.2%)",
+      "conviction_bonus": 5.0,
+      "is_truncated_window": false,
+      "bars_evaluated": 250,
+      "signal": "Price is in upper channel (76.2%) \u2014 upward breakout momentum"
+    },
+    "total_precision_bonus": 5.0
   },
   "pattern_dna": {
     "ticker": "MALEKSPIN",
-    "audited_at": "2026-11-11 09:16:42",
+    "audited_at": "2026-11-11 11:51:11",
     "worth_vs_greed": {
       "current_price": 46.9,
       "intrinsic_worth": 4.0,
@@ -388,7 +400,7 @@
     }
   },
   "composite": {
-    "composite_score": 60.17,
+    "composite_score": 60.14,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

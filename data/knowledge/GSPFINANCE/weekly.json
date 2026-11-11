@@ -2,7 +2,7 @@
   "ticker": "GSPFINANCE",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:39.431444",
+  "analyzed_at": "2026-11-11T05:51:04.973788",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 43.5,
+  "confidence": 43.48,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 0.0
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 1.1,
+      "high_52w": 3.7,
+      "range_52w_pct": 88.5,
+      "channel_regime": "OVEREXTENDED_CEILING",
+      "visual_gauge": "[ \u09f31.1 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591| \u09f33.7 ] (88.5% (Truncated))",
+      "conviction_bonus": -10.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 100,
+      "signal": "Price is at 88.5% of 52-week high (near \u09f33.7) \u2014 elevated mean-reversion risk"
+    },
+    "total_precision_bonus": -10.0
   },
   "pattern_dna": {
     "ticker": "GSPFINANCE",
-    "audited_at": "2026-11-11 09:16:39",
+    "audited_at": "2026-11-11 11:51:04",
     "worth_vs_greed": {
       "current_price": 3.4,
       "intrinsic_worth": 1.7,
@@ -372,7 +384,7 @@
     }
   },
   "composite": {
-    "composite_score": 43.5,
+    "composite_score": 43.48,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

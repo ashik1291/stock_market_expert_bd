@@ -2,7 +2,7 @@
   "ticker": "OAL",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:45.119794",
+  "analyzed_at": "2026-11-11T05:51:16.203600",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": null
   },
   "signal": "HOLD",
-  "confidence": 45.75,
+  "confidence": 45.73,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 0.0
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 3.8,
+      "high_52w": 6.8,
+      "range_52w_pct": 76.7,
+      "channel_regime": "MOMENTUM_EXPANSION",
+      "visual_gauge": "[ \u09f33.8 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591| \u09f36.8 ] (76.7% (Truncated))",
+      "conviction_bonus": 5.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 100,
+      "signal": "Price is in upper channel (76.7%) \u2014 upward breakout momentum"
+    },
+    "total_precision_bonus": 5.0
   },
   "pattern_dna": {
     "ticker": "OAL",
-    "audited_at": "2026-11-11 09:16:45",
+    "audited_at": "2026-11-11 11:51:16",
     "worth_vs_greed": {
       "current_price": 6.1,
       "intrinsic_worth": 3.05,
@@ -377,7 +389,7 @@
     }
   },
   "composite": {
-    "composite_score": 45.75,
+    "composite_score": 45.73,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

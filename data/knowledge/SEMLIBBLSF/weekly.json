@@ -2,7 +2,7 @@
   "ticker": "SEMLIBBLSF",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:50.880726",
+  "analyzed_at": "2026-11-11T05:51:24.574562",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 44.75,
+  "confidence": 44.73,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 0.0
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 5.2,
+      "high_52w": 7.9,
+      "range_52w_pct": 96.3,
+      "channel_regime": "OVEREXTENDED_CEILING",
+      "visual_gauge": "[ \u09f35.2 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| \u09f37.9 ] (96.3% (Truncated))",
+      "conviction_bonus": -10.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 101,
+      "signal": "Price is at 96.3% of 52-week high (near \u09f37.9) \u2014 elevated mean-reversion risk"
+    },
+    "total_precision_bonus": -10.0
   },
   "pattern_dna": {
     "ticker": "SEMLIBBLSF",
-    "audited_at": "2026-11-11 09:16:50",
+    "audited_at": "2026-11-11 11:51:24",
     "worth_vs_greed": {
       "current_price": 7.8,
       "intrinsic_worth": 3.9,
@@ -370,7 +382,7 @@
     }
   },
   "composite": {
-    "composite_score": 44.75,
+    "composite_score": 44.73,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

@@ -2,7 +2,7 @@
   "ticker": "ARAMIT",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:32.515163",
+  "analyzed_at": "2026-11-11T05:50:52.852304",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": 0.0
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 50.8,
+  "confidence": 50.78,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 0.0
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 156.1,
+      "high_52w": 227.0,
+      "range_52w_pct": 4.7,
+      "channel_regime": "DEEP_ACCUMULATION_BASE",
+      "visual_gauge": "[ \u09f3156.1 |\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f3227.0 ] (4.7% (Truncated))",
+      "conviction_bonus": 10.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 101,
+      "signal": "Price is at the bottom 4.7% of 52-week channel (near \u09f3156.1 floor) \u2014 high margin of safety"
+    },
+    "total_precision_bonus": 10.0
   },
   "pattern_dna": {
     "ticker": "ARAMIT",
-    "audited_at": "2026-11-11 09:16:32",
+    "audited_at": "2026-11-11 11:50:52",
     "worth_vs_greed": {
       "current_price": 159.4,
       "intrinsic_worth": 79.7,
@@ -382,7 +394,7 @@
     }
   },
   "composite": {
-    "composite_score": 50.8,
+    "composite_score": 50.78,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

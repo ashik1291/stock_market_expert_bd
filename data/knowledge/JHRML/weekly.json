@@ -2,7 +2,7 @@
   "ticker": "JHRML",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:41.427590",
+  "analyzed_at": "2026-11-11T05:51:08.931721",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": null
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 46.5,
+  "confidence": 46.48,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 36.5,
+      "high_52w": 55.0,
+      "range_52w_pct": 29.7,
+      "channel_regime": "EQUILIBRIUM_CHANNEL",
+      "visual_gauge": "[ \u09f336.5 |\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f355.0 ] (29.7% (Truncated))",
+      "conviction_bonus": 0.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 100,
+      "signal": "Price is in mid-channel (29.7% between \u09f336.5 and \u09f355.0)"
+    },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "JHRML",
-    "audited_at": "2026-11-11 09:16:41",
+    "audited_at": "2026-11-11 11:51:08",
     "worth_vs_greed": {
       "current_price": 42.0,
       "intrinsic_worth": 21.0,
@@ -367,7 +379,7 @@
     }
   },
   "composite": {
-    "composite_score": 46.5,
+    "composite_score": 46.48,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

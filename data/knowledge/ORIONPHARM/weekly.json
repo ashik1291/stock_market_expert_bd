@@ -2,7 +2,7 @@
   "ticker": "ORIONPHARM",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:45.458533",
+  "analyzed_at": "2026-11-11T05:51:16.763840",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": 1.272
   },
   "signal": "SELL",
-  "confidence": 40.25,
+  "confidence": 40.23,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 0.0
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 22.9,
+      "high_52w": 33.2,
+      "range_52w_pct": 21.4,
+      "channel_regime": "DEEP_ACCUMULATION_BASE",
+      "visual_gauge": "[ \u09f322.9 |\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f333.2 ] (21.4%)",
+      "conviction_bonus": 10.0,
+      "is_truncated_window": false,
+      "bars_evaluated": 250,
+      "signal": "Price is at the bottom 21.4% of 52-week channel (near \u09f322.9 floor) \u2014 high margin of safety"
+    },
+    "total_precision_bonus": 10.0
   },
   "pattern_dna": {
     "ticker": "ORIONPHARM",
-    "audited_at": "2026-11-11 09:16:45",
+    "audited_at": "2026-11-11 11:51:16",
     "worth_vs_greed": {
       "current_price": 25.1,
       "intrinsic_worth": 12.55,
@@ -386,7 +398,7 @@
     }
   },
   "composite": {
-    "composite_score": 40.25,
+    "composite_score": 40.23,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

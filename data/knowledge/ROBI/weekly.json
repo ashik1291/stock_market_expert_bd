@@ -2,7 +2,7 @@
   "ticker": "ROBI",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:49.550263",
+  "analyzed_at": "2026-11-11T05:51:22.417638",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": 0.0
   },
   "signal": "HOLD_INELIGIBLE_DEFICIT",
-  "confidence": 61.24,
+  "confidence": 61.21,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 26.7,
+      "high_52w": 33.9,
+      "range_52w_pct": 47.2,
+      "channel_regime": "EQUILIBRIUM_CHANNEL",
+      "visual_gauge": "[ \u09f326.7 |\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591| \u09f333.9 ] (47.2%)",
+      "conviction_bonus": 0.0,
+      "is_truncated_window": false,
+      "bars_evaluated": 250,
+      "signal": "Price is in mid-channel (47.2% between \u09f326.7 and \u09f333.9)"
+    },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "ROBI",
-    "audited_at": "2026-11-11 09:16:49",
+    "audited_at": "2026-11-11 11:51:22",
     "worth_vs_greed": {
       "current_price": 30.1,
       "intrinsic_worth": 3.84,
@@ -385,7 +397,7 @@
     }
   },
   "composite": {
-    "composite_score": 61.24,
+    "composite_score": 61.21,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

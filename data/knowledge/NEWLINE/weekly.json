@@ -2,7 +2,7 @@
   "ticker": "NEWLINE",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:44.436650",
+  "analyzed_at": "2026-11-11T05:51:14.918072",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 44.25,
+  "confidence": 44.23,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 0.0
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 2.7,
+      "high_52w": 5.5,
+      "range_52w_pct": 75.0,
+      "channel_regime": "MOMENTUM_EXPANSION",
+      "visual_gauge": "[ \u09f32.7 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591| \u09f35.5 ] (75.0% (Truncated))",
+      "conviction_bonus": 5.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 101,
+      "signal": "Price is in upper channel (75.0%) \u2014 upward breakout momentum"
+    },
+    "total_precision_bonus": 5.0
   },
   "pattern_dna": {
     "ticker": "NEWLINE",
-    "audited_at": "2026-11-11 09:16:44",
+    "audited_at": "2026-11-11 11:51:14",
     "worth_vs_greed": {
       "current_price": 4.8,
       "intrinsic_worth": 2.4,
@@ -374,7 +386,7 @@
     }
   },
   "composite": {
-    "composite_score": 44.25,
+    "composite_score": 44.23,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

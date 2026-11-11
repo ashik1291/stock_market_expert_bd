@@ -2,7 +2,7 @@
   "ticker": "SUMITPOWER",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:53.269661",
+  "analyzed_at": "2026-11-11T05:51:28.063626",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": 0.602
   },
   "signal": "HOLD",
-  "confidence": 51.8,
+  "confidence": 51.78,
   "trajectory": {
     "direction": "FALL_RISK",
     "direction_icon": "\ud83d\udd34",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 0.0
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 12.0,
+      "high_52w": 17.9,
+      "range_52w_pct": 81.4,
+      "channel_regime": "MOMENTUM_EXPANSION",
+      "visual_gauge": "[ \u09f312.0 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591| \u09f317.9 ] (81.4%)",
+      "conviction_bonus": 5.0,
+      "is_truncated_window": false,
+      "bars_evaluated": 250,
+      "signal": "Price is in upper channel (81.4%) \u2014 upward breakout momentum"
+    },
+    "total_precision_bonus": 5.0
   },
   "pattern_dna": {
     "ticker": "SUMITPOWER",
-    "audited_at": "2026-11-11 09:16:53",
+    "audited_at": "2026-11-11 11:51:28",
     "worth_vs_greed": {
       "current_price": 16.8,
       "intrinsic_worth": 4.08,
@@ -383,7 +395,7 @@
     }
   },
   "composite": {
-    "composite_score": 51.8,
+    "composite_score": 51.78,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

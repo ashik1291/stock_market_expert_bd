@@ -2,7 +2,7 @@
   "ticker": "ITC",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:41.177318",
+  "analyzed_at": "2026-11-11T05:51:08.485301",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": 0.354
   },
   "signal": "HOLD_INELIGIBLE_DEFICIT",
-  "confidence": 61.44,
+  "confidence": 61.4,
   "trajectory": {
     "direction": "RISE_PREDICTED",
     "direction_icon": "\ud83d\udfe2",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 35.6,
+      "high_52w": 44.0,
+      "range_52w_pct": 45.2,
+      "channel_regime": "EQUILIBRIUM_CHANNEL",
+      "visual_gauge": "[ \u09f335.6 |\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591| \u09f344.0 ] (45.2% (Truncated))",
+      "conviction_bonus": 0.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 100,
+      "signal": "Price is in mid-channel (45.2% between \u09f335.6 and \u09f344.0)"
+    },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "ITC",
-    "audited_at": "2026-11-11 09:16:41",
+    "audited_at": "2026-11-11 11:51:08",
     "worth_vs_greed": {
       "current_price": 39.4,
       "intrinsic_worth": 7.36,
@@ -386,7 +398,7 @@
     }
   },
   "composite": {
-    "composite_score": 61.44,
+    "composite_score": 61.4,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

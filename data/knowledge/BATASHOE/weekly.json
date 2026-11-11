@@ -2,7 +2,7 @@
   "ticker": "BATASHOE",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:33.182370",
+  "analyzed_at": "2026-11-11T05:50:53.958387",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 43.5,
+  "confidence": 43.48,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 0.0
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 780.1,
+      "high_52w": 908.0,
+      "range_52w_pct": 75.4,
+      "channel_regime": "MOMENTUM_EXPANSION",
+      "visual_gauge": "[ \u09f3780.1 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591| \u09f3908.0 ] (75.4% (Truncated))",
+      "conviction_bonus": 5.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 100,
+      "signal": "Price is in upper channel (75.4%) \u2014 upward breakout momentum"
+    },
+    "total_precision_bonus": 5.0
   },
   "pattern_dna": {
     "ticker": "BATASHOE",
-    "audited_at": "2026-11-11 09:16:33",
+    "audited_at": "2026-11-11 11:50:53",
     "worth_vs_greed": {
       "current_price": 876.6,
       "intrinsic_worth": 438.3,
@@ -370,7 +382,7 @@
     }
   },
   "composite": {
-    "composite_score": 43.5,
+    "composite_score": 43.48,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

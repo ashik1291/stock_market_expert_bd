@@ -2,7 +2,7 @@
   "ticker": "LRBDL",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:42.482204",
+  "analyzed_at": "2026-11-11T05:51:11.016917",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": null
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 45.5,
+  "confidence": 45.48,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 9.0,
+      "high_52w": 14.6,
+      "range_52w_pct": 51.8,
+      "channel_regime": "EQUILIBRIUM_CHANNEL",
+      "visual_gauge": "[ \u09f39.0 |\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591| \u09f314.6 ] (51.8% (Truncated))",
+      "conviction_bonus": 0.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 100,
+      "signal": "Price is in mid-channel (51.8% between \u09f39.0 and \u09f314.6)"
+    },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "LRBDL",
-    "audited_at": "2026-11-11 09:16:42",
+    "audited_at": "2026-11-11 11:51:10",
     "worth_vs_greed": {
       "current_price": 11.9,
       "intrinsic_worth": 5.95,
@@ -375,7 +387,7 @@
     }
   },
   "composite": {
-    "composite_score": 45.5,
+    "composite_score": 45.48,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

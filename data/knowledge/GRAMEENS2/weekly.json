@@ -2,7 +2,7 @@
   "ticker": "GRAMEENS2",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:39.073089",
+  "analyzed_at": "2026-11-11T05:51:04.312144",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 43.5,
+  "confidence": 43.48,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 10.3,
+      "high_52w": 12.6,
+      "range_52w_pct": 56.5,
+      "channel_regime": "EQUILIBRIUM_CHANNEL",
+      "visual_gauge": "[ \u09f310.3 |\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591| \u09f312.6 ] (56.5% (Truncated))",
+      "conviction_bonus": 0.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 101,
+      "signal": "Price is in mid-channel (56.5% between \u09f310.3 and \u09f312.6)"
+    },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "GRAMEENS2",
-    "audited_at": "2026-11-11 09:16:39",
+    "audited_at": "2026-11-11 11:51:04",
     "worth_vs_greed": {
       "current_price": 11.6,
       "intrinsic_worth": 5.8,
@@ -368,7 +380,7 @@
     }
   },
   "composite": {
-    "composite_score": 43.5,
+    "composite_score": 43.48,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

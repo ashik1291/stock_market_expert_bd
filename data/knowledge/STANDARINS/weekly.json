@@ -2,7 +2,7 @@
   "ticker": "STANDARINS",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:53.004832",
+  "analyzed_at": "2026-11-11T05:51:27.677035",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -12,8 +12,8 @@
     "pe_ratio": null,
     "debt_equity": null
   },
-  "signal": "HOLD",
-  "confidence": 45.0,
+  "signal": "SELL",
+  "confidence": 44.98,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 0.0
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 29.3,
+      "high_52w": 50.6,
+      "range_52w_pct": 86.9,
+      "channel_regime": "OVEREXTENDED_CEILING",
+      "visual_gauge": "[ \u09f329.3 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591| \u09f350.6 ] (86.9% (Truncated))",
+      "conviction_bonus": -10.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 101,
+      "signal": "Price is at 86.9% of 52-week high (near \u09f350.6) \u2014 elevated mean-reversion risk"
+    },
+    "total_precision_bonus": -10.0
   },
   "pattern_dna": {
     "ticker": "STANDARINS",
-    "audited_at": "2026-11-11 09:16:53",
+    "audited_at": "2026-11-11 11:51:27",
     "worth_vs_greed": {
       "current_price": 47.8,
       "intrinsic_worth": 23.9,
@@ -370,7 +382,7 @@
     }
   },
   "composite": {
-    "composite_score": 45.0,
+    "composite_score": 44.98,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

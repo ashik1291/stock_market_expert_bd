@@ -277,6 +277,10 @@ def save_signal_to_db_and_disk(ticker: str, timeframe: str, payload: Dict[str, A
         sent_score = (payload.get("sentiment") or {}).get("score")
         comp_obj = payload.get("composite") or {}
         manip_obj = payload.get("manipulation") or {}
+        prec_obj = payload.get("precision") or {}
+        corridor_obj = prec_obj.get("range_52w_corridor") or {}
+        range_52w_pct = corridor_obj.get("range_52w_pct")
+        range_52w_regime = corridor_obj.get("channel_regime")
 
         payload_str = json.dumps(payload, ensure_ascii=False)
 
@@ -287,8 +291,9 @@ def save_signal_to_db_and_disk(ticker: str, timeframe: str, payload: Dict[str, A
                 entry_price, stop_loss, target_price, rsi_14, pe_ratio, debt_equity,
                 technical_score, fundamental_score, sentiment_score, governance_score,
                 composite_score, manipulation_risk, manipulation_score, block_buy,
+                range_52w_pct, range_52w_regime,
                 full_payload
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """, (
             date_str, ticker, timeframe,
             payload.get("horizon", "short"),
@@ -310,6 +315,8 @@ def save_signal_to_db_and_disk(ticker: str, timeframe: str, payload: Dict[str, A
             manip_obj.get("manipulation_risk", "low"),
             manip_obj.get("manipulation_score"),
             1 if manip_obj.get("block_buy") else 0,
+            range_52w_pct,
+            range_52w_regime,
             payload_str
         ))
         conn.commit()

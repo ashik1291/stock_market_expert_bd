@@ -2,7 +2,7 @@
   "ticker": "DOMINAGE",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:36.341762",
+  "analyzed_at": "2026-11-11T05:50:59.059539",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 44.0,
+  "confidence": 43.98,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 0.0
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 19.2,
+      "high_52w": 66.1,
+      "range_52w_pct": 91.5,
+      "channel_regime": "OVEREXTENDED_CEILING",
+      "visual_gauge": "[ \u09f319.2 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591| \u09f366.1 ] (91.5% (Truncated))",
+      "conviction_bonus": -10.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 100,
+      "signal": "Price is at 91.5% of 52-week high (near \u09f366.1) \u2014 elevated mean-reversion risk"
+    },
+    "total_precision_bonus": -10.0
   },
   "pattern_dna": {
     "ticker": "DOMINAGE",
-    "audited_at": "2026-11-11 09:16:36",
+    "audited_at": "2026-11-11 11:50:59",
     "worth_vs_greed": {
       "current_price": 62.1,
       "intrinsic_worth": 31.05,
@@ -370,7 +382,7 @@
     }
   },
   "composite": {
-    "composite_score": 44.0,
+    "composite_score": 43.98,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

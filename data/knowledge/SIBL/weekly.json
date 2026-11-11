@@ -2,7 +2,7 @@
   "ticker": "SIBL",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:51.341590",
+  "analyzed_at": "2026-11-11T05:51:25.248305",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": null
   },
   "signal": "HOLD",
-  "confidence": 46.75,
+  "confidence": 46.73,
   "trajectory": {
     "direction": "RISE_PREDICTED",
     "direction_icon": "\ud83d\udfe2",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 0.0
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 3.0,
+      "high_52w": 6.2,
+      "range_52w_pct": 0.0,
+      "channel_regime": "DEEP_ACCUMULATION_BASE",
+      "visual_gauge": "[ \u09f33.0 |\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f36.2 ] (0.0% (Truncated))",
+      "conviction_bonus": 10.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 48,
+      "signal": "Price is at the bottom 0.0% of 52-week channel (near \u09f33.0 floor) \u2014 high margin of safety"
+    },
+    "total_precision_bonus": 10.0
   },
   "pattern_dna": {
     "ticker": "SIBL",
-    "audited_at": "2026-11-11 09:16:51",
+    "audited_at": "2026-11-11 11:51:25",
     "worth_vs_greed": {
       "current_price": 3.0,
       "intrinsic_worth": 1.5,
@@ -366,7 +378,7 @@
     }
   },
   "composite": {
-    "composite_score": 46.75,
+    "composite_score": 46.73,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

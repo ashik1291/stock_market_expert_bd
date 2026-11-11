@@ -2,7 +2,7 @@
   "ticker": "EGEN",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:37.089727",
+  "analyzed_at": "2026-11-11T05:51:00.649732",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": null
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 45.75,
+  "confidence": 45.73,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 16.5,
+      "high_52w": 26.7,
+      "range_52w_pct": 51.0,
+      "channel_regime": "EQUILIBRIUM_CHANNEL",
+      "visual_gauge": "[ \u09f316.5 |\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591| \u09f326.7 ] (51.0% (Truncated))",
+      "conviction_bonus": 0.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 100,
+      "signal": "Price is in mid-channel (51.0% between \u09f316.5 and \u09f326.7)"
+    },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "EGEN",
-    "audited_at": "2026-11-11 09:16:37",
+    "audited_at": "2026-11-11 11:51:00",
     "worth_vs_greed": {
       "current_price": 21.7,
       "intrinsic_worth": 10.85,
@@ -377,7 +389,7 @@
     }
   },
   "composite": {
-    "composite_score": 45.75,
+    "composite_score": 45.73,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

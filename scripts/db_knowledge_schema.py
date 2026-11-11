@@ -65,6 +65,8 @@ def init_knowledge_schema() -> bool:
             manipulation_risk TEXT DEFAULT 'low',
             manipulation_score REAL,
             block_buy INTEGER DEFAULT 0,
+            range_52w_pct REAL,
+            range_52w_regime TEXT,
             full_payload TEXT NOT NULL,
             created_at TEXT DEFAULT CURRENT_TIMESTAMP,
             PRIMARY KEY (date, ticker, timeframe)
@@ -76,6 +78,7 @@ def init_knowledge_schema() -> bool:
     cur.execute("CREATE INDEX IF NOT EXISTS idx_sig_date_signal ON company_signals_history(date, signal)")
     cur.execute("CREATE INDEX IF NOT EXISTS idx_sig_date_conf ON company_signals_history(date, confidence DESC)")
     cur.execute("CREATE INDEX IF NOT EXISTS idx_sig_date_pe_rsi ON company_signals_history(date, pe_ratio, rsi_14)")
+    cur.execute("CREATE INDEX IF NOT EXISTS idx_sig_range_52w ON company_signals_history(date, range_52w_pct)")
 
     log.info("Creating company_pattern_dna_history table and indexes...")
     cur.execute("""

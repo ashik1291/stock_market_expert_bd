@@ -2,7 +2,7 @@
   "ticker": "AMCL(PRAN)",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:31.964216",
+  "analyzed_at": "2026-11-11T05:50:52.104737",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": 1.287
   },
   "signal": "HOLD",
-  "confidence": 54.94,
+  "confidence": 54.96,
   "trajectory": {
     "direction": "FALL_RISK",
     "direction_icon": "\ud83d\udd34",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 0.0
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 194.9,
+      "high_52w": 249.8,
+      "range_52w_pct": 21.9,
+      "channel_regime": "DEEP_ACCUMULATION_BASE",
+      "visual_gauge": "[ \u09f3194.9 |\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f3249.8 ] (21.9%)",
+      "conviction_bonus": 10.0,
+      "is_truncated_window": false,
+      "bars_evaluated": 250,
+      "signal": "Price is at the bottom 21.9% of 52-week channel (near \u09f3194.9 floor) \u2014 high margin of safety"
+    },
+    "total_precision_bonus": 10.0
   },
   "pattern_dna": {
     "ticker": "AMCL(PRAN)",
-    "audited_at": "2026-11-11 09:16:31",
+    "audited_at": "2026-11-11 11:50:52",
     "worth_vs_greed": {
       "current_price": 206.9,
       "intrinsic_worth": 10.64,
@@ -385,7 +397,7 @@
     }
   },
   "composite": {
-    "composite_score": 54.94,
+    "composite_score": 54.96,
     "governance_score": 90,
     "sentiment_score": 50.0,
     "applied_weights": {

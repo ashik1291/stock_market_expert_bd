@@ -2,7 +2,7 @@
   "ticker": "BDLAMPS",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:33.724396",
+  "analyzed_at": "2026-11-11T05:50:54.844127",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": 3.057
   },
   "signal": "HOLD_LOAN_TRAP_RISK",
-  "confidence": 46.36,
+  "confidence": 46.34,
   "trajectory": {
     "direction": "FALL_RISK",
     "direction_icon": "\ud83d\udd34",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 110.1,
+      "high_52w": 271.4,
+      "range_52w_pct": 64.2,
+      "channel_regime": "EQUILIBRIUM_CHANNEL",
+      "visual_gauge": "[ \u09f3110.1 |\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591| \u09f3271.4 ] (64.2% (Truncated))",
+      "conviction_bonus": 0.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 100,
+      "signal": "Price is in mid-channel (64.2% between \u09f3110.1 and \u09f3271.4)"
+    },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "BDLAMPS",
-    "audited_at": "2026-11-11 09:16:33",
+    "audited_at": "2026-11-11 11:50:54",
     "worth_vs_greed": {
       "current_price": 213.6,
       "intrinsic_worth": 0.24,
@@ -382,7 +394,7 @@
     }
   },
   "composite": {
-    "composite_score": 46.36,
+    "composite_score": 46.34,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

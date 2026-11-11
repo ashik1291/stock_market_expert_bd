@@ -2,7 +2,7 @@
   "ticker": "AFCAGRO",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:31.238235",
+  "analyzed_at": "2026-11-11T05:50:51.146000",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": null
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 45.0,
+  "confidence": 44.98,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 4.0,
+      "high_52w": 7.7,
+      "range_52w_pct": 32.4,
+      "channel_regime": "EQUILIBRIUM_CHANNEL",
+      "visual_gauge": "[ \u09f34.0 |\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f37.7 ] (32.4% (Truncated))",
+      "conviction_bonus": 0.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 101,
+      "signal": "Price is in mid-channel (32.4% between \u09f34.0 and \u09f37.7)"
+    },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "AFCAGRO",
-    "audited_at": "2026-11-11 09:16:31",
+    "audited_at": "2026-11-11 11:50:51",
     "worth_vs_greed": {
       "current_price": 5.2,
       "intrinsic_worth": 2.6,
@@ -375,7 +387,7 @@
     }
   },
   "composite": {
-    "composite_score": 45.0,
+    "composite_score": 44.98,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

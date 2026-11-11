@@ -2,7 +2,7 @@
   "ticker": "BEXIMCO",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:34.269051",
+  "analyzed_at": "2026-11-11T05:50:55.648413",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": 0.719
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 47.5,
+  "confidence": 47.48,
   "trajectory": {
     "direction": "RISE_PREDICTED",
     "direction_icon": "\ud83d\udfe2",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 0.0
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 19.2,
+      "high_52w": 110.1,
+      "range_52w_pct": 1.8,
+      "channel_regime": "DEEP_ACCUMULATION_BASE",
+      "visual_gauge": "[ \u09f319.2 |\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f3110.1 ] (1.8% (Truncated))",
+      "conviction_bonus": 10.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 57,
+      "signal": "Price is at the bottom 1.8% of 52-week channel (near \u09f319.2 floor) \u2014 high margin of safety"
+    },
+    "total_precision_bonus": 10.0
   },
   "pattern_dna": {
     "ticker": "BEXIMCO",
-    "audited_at": "2026-11-11 09:16:34",
+    "audited_at": "2026-11-11 11:50:55",
     "worth_vs_greed": {
       "current_price": 20.8,
       "intrinsic_worth": 10.4,
@@ -373,7 +385,7 @@
     }
   },
   "composite": {
-    "composite_score": 47.5,
+    "composite_score": 47.48,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

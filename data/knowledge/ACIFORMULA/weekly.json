@@ -2,7 +2,7 @@
   "ticker": "ACIFORMULA",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:30.971707",
+  "analyzed_at": "2026-11-11T05:50:50.787290",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": 1.021
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 51.1,
+  "confidence": 51.08,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 115.0,
+      "high_52w": 189.2,
+      "range_52w_pct": 36.3,
+      "channel_regime": "EQUILIBRIUM_CHANNEL",
+      "visual_gauge": "[ \u09f3115.0 |\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591| \u09f3189.2 ] (36.3%)",
+      "conviction_bonus": 0.0,
+      "is_truncated_window": false,
+      "bars_evaluated": 250,
+      "signal": "Price is in mid-channel (36.3% between \u09f3115.0 and \u09f3189.2)"
+    },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "ACIFORMULA",
-    "audited_at": "2026-11-11 09:16:30",
+    "audited_at": "2026-11-11 11:50:50",
     "worth_vs_greed": {
       "current_price": 141.9,
       "intrinsic_worth": 14.08,
@@ -389,7 +401,7 @@
     }
   },
   "composite": {
-    "composite_score": 51.1,
+    "composite_score": 51.08,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

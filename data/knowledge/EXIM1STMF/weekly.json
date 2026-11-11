@@ -2,7 +2,7 @@
   "ticker": "EXIM1STMF",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:37.457984",
+  "analyzed_at": "2026-11-11T05:51:01.321423",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": null
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 43.5,
+  "confidence": 43.48,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 0.0
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 2.3,
+      "high_52w": 6.4,
+      "range_52w_pct": 73.2,
+      "channel_regime": "MOMENTUM_EXPANSION",
+      "visual_gauge": "[ \u09f32.3 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591| \u09f36.4 ] (73.2% (Truncated))",
+      "conviction_bonus": 5.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 101,
+      "signal": "Price is in upper channel (73.2%) \u2014 upward breakout momentum"
+    },
+    "total_precision_bonus": 5.0
   },
   "pattern_dna": {
     "ticker": "EXIM1STMF",
-    "audited_at": "2026-11-11 09:16:37",
+    "audited_at": "2026-11-11 11:51:01",
     "worth_vs_greed": {
       "current_price": 5.3,
       "intrinsic_worth": 2.65,
@@ -373,7 +385,7 @@
     }
   },
   "composite": {
-    "composite_score": 43.5,
+    "composite_score": 43.48,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

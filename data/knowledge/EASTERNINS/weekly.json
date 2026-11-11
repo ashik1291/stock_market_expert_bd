@@ -2,7 +2,7 @@
   "ticker": "EASTERNINS",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:36.675720",
+  "analyzed_at": "2026-11-11T05:50:59.941198",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": 0.0
   },
   "signal": "HOLD",
-  "confidence": 58.28,
+  "confidence": 58.25,
   "trajectory": {
     "direction": "RISE_PREDICTED",
     "direction_icon": "\ud83d\udfe2",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 40.1,
+      "high_52w": 69.3,
+      "range_52w_pct": 50.7,
+      "channel_regime": "EQUILIBRIUM_CHANNEL",
+      "visual_gauge": "[ \u09f340.1 |\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591| \u09f369.3 ] (50.7%)",
+      "conviction_bonus": 0.0,
+      "is_truncated_window": false,
+      "bars_evaluated": 250,
+      "signal": "Price is in mid-channel (50.7% between \u09f340.1 and \u09f369.3)"
+    },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "EASTERNINS",
-    "audited_at": "2026-11-11 09:16:36",
+    "audited_at": "2026-11-11 11:50:59",
     "worth_vs_greed": {
       "current_price": 54.9,
       "intrinsic_worth": 8.32,
@@ -391,7 +403,7 @@
     }
   },
   "composite": {
-    "composite_score": 58.28,
+    "composite_score": 58.25,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

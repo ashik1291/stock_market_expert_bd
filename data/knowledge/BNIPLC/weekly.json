@@ -2,7 +2,7 @@
   "ticker": "BNIPLC",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:34.420249",
+  "analyzed_at": "2026-11-11T05:50:55.907428",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": null
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 44.0,
+  "confidence": 43.98,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 0.0
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 140.0,
+      "high_52w": 172.8,
+      "range_52w_pct": 23.5,
+      "channel_regime": "DEEP_ACCUMULATION_BASE",
+      "visual_gauge": "[ \u09f3140.0 |\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f3172.8 ] (23.5% (Truncated))",
+      "conviction_bonus": 10.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 22,
+      "signal": "Price is at the bottom 23.5% of 52-week channel (near \u09f3140.0 floor) \u2014 high margin of safety"
+    },
+    "total_precision_bonus": 10.0
   },
   "pattern_dna": {
     "ticker": "BNIPLC",
-    "audited_at": "2026-11-11 09:16:34",
+    "audited_at": "2026-11-11 11:50:55",
     "worth_vs_greed": {
       "current_price": 147.7,
       "intrinsic_worth": 73.85,
@@ -209,7 +221,7 @@
     }
   },
   "composite": {
-    "composite_score": 44.0,
+    "composite_score": 43.98,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

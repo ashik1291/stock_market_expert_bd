@@ -2,7 +2,7 @@
   "ticker": "ICBAGRANI1",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:40.061713",
+  "analyzed_at": "2026-11-11T05:51:06.266939",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": null
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 43.5,
+  "confidence": 43.48,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 6.1,
+      "high_52w": 8.2,
+      "range_52w_pct": 61.9,
+      "channel_regime": "EQUILIBRIUM_CHANNEL",
+      "visual_gauge": "[ \u09f36.1 |\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591| \u09f38.2 ] (61.9% (Truncated))",
+      "conviction_bonus": 0.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 101,
+      "signal": "Price is in mid-channel (61.9% between \u09f36.1 and \u09f38.2)"
+    },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "ICBAGRANI1",
-    "audited_at": "2026-11-11 09:16:40",
+    "audited_at": "2026-11-11 11:51:06",
     "worth_vs_greed": {
       "current_price": 7.4,
       "intrinsic_worth": 3.7,
@@ -369,7 +381,7 @@
     }
   },
   "composite": {
-    "composite_score": 43.5,
+    "composite_score": 43.48,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

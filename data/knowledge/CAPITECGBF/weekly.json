@@ -2,7 +2,7 @@
   "ticker": "CAPITECGBF",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:34.909314",
+  "analyzed_at": "2026-11-11T05:50:56.701420",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": null
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 43.5,
+  "confidence": 43.48,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 6.5,
+      "high_52w": 9.3,
+      "range_52w_pct": 35.7,
+      "channel_regime": "EQUILIBRIUM_CHANNEL",
+      "visual_gauge": "[ \u09f36.5 |\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591| \u09f39.3 ] (35.7% (Truncated))",
+      "conviction_bonus": 0.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 101,
+      "signal": "Price is in mid-channel (35.7% between \u09f36.5 and \u09f39.3)"
+    },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "CAPITECGBF",
-    "audited_at": "2026-11-11 09:16:34",
+    "audited_at": "2026-11-11 11:50:56",
     "worth_vs_greed": {
       "current_price": 7.5,
       "intrinsic_worth": 3.75,
@@ -373,7 +385,7 @@
     }
   },
   "composite": {
-    "composite_score": 43.5,
+    "composite_score": 43.48,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

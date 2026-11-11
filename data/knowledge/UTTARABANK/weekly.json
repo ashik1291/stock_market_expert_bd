@@ -2,7 +2,7 @@
   "ticker": "UTTARABANK",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:54.781838",
+  "analyzed_at": "2026-11-11T05:51:30.465614",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": 0.043
   },
   "signal": "HOLD_INELIGIBLE_DEFICIT",
-  "confidence": 62.32,
+  "confidence": 62.29,
   "trajectory": {
     "direction": "RISE_PREDICTED",
     "direction_icon": "\ud83d\udfe2",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 16.48,
+      "high_52w": 24.9,
+      "range_52w_pct": 57.2,
+      "channel_regime": "EQUILIBRIUM_CHANNEL",
+      "visual_gauge": "[ \u09f316.5 |\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591| \u09f324.9 ] (57.2% (Truncated))",
+      "conviction_bonus": 0.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 101,
+      "signal": "Price is in mid-channel (57.2% between \u09f316.5 and \u09f324.9)"
+    },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "UTTARABANK",
-    "audited_at": "2026-11-11 09:16:54",
+    "audited_at": "2026-11-11 11:51:30",
     "worth_vs_greed": {
       "current_price": 21.3,
       "intrinsic_worth": 10.56,
@@ -381,7 +393,7 @@
     }
   },
   "composite": {
-    "composite_score": 62.32,
+    "composite_score": 62.29,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

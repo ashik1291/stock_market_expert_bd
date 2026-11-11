@@ -2,7 +2,7 @@
   "ticker": "INTECH",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:40.807331",
+  "analyzed_at": "2026-11-11T05:51:07.815446",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": 0.139
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 54.5,
+  "confidence": 54.47,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 0.0
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 18.0,
+      "high_52w": 44.1,
+      "range_52w_pct": 17.2,
+      "channel_regime": "DEEP_ACCUMULATION_BASE",
+      "visual_gauge": "[ \u09f318.0 |\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f344.1 ] (17.2%)",
+      "conviction_bonus": 10.0,
+      "is_truncated_window": false,
+      "bars_evaluated": 250,
+      "signal": "Price is at the bottom 17.2% of 52-week channel (near \u09f318.0 floor) \u2014 high margin of safety"
+    },
+    "total_precision_bonus": 10.0
   },
   "pattern_dna": {
     "ticker": "INTECH",
-    "audited_at": "2026-11-11 09:16:40",
+    "audited_at": "2026-11-11 11:51:07",
     "worth_vs_greed": {
       "current_price": 22.5,
       "intrinsic_worth": 11.25,
@@ -378,7 +390,7 @@
     }
   },
   "composite": {
-    "composite_score": 54.5,
+    "composite_score": 54.47,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

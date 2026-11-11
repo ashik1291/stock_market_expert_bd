@@ -2,7 +2,7 @@
   "ticker": "ASIATICLAB",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:32.789405",
+  "analyzed_at": "2026-11-11T05:50:53.328318",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": 0.206
   },
   "signal": "HOLD",
-  "confidence": 50.1,
+  "confidence": 50.08,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 0.0
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 37.27,
+      "high_52w": 102.45,
+      "range_52w_pct": 85.9,
+      "channel_regime": "OVEREXTENDED_CEILING",
+      "visual_gauge": "[ \u09f337.3 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591| \u09f3102.5 ] (85.9% (Truncated))",
+      "conviction_bonus": -10.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 100,
+      "signal": "Price is at 85.9% of 52-week high (near \u09f3102.5) \u2014 elevated mean-reversion risk"
+    },
+    "total_precision_bonus": -10.0
   },
   "pattern_dna": {
     "ticker": "ASIATICLAB",
-    "audited_at": "2026-11-11 09:16:32",
+    "audited_at": "2026-11-11 11:50:53",
     "worth_vs_greed": {
       "current_price": 93.27,
       "intrinsic_worth": 11.12,
@@ -378,7 +390,7 @@
     }
   },
   "composite": {
-    "composite_score": 50.1,
+    "composite_score": 50.08,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

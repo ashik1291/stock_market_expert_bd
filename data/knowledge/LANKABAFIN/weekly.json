@@ -2,7 +2,7 @@
   "ticker": "LANKABAFIN",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:42.144225",
+  "analyzed_at": "2026-11-11T05:51:10.278551",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": 2.452
   },
   "signal": "HOLD_LOAN_TRAP_RISK",
-  "confidence": 34.74,
+  "confidence": 34.72,
   "trajectory": {
     "direction": "FALL_RISK",
     "direction_icon": "\ud83d\udd34",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 11.6,
+      "high_52w": 17.3,
+      "range_52w_pct": 29.8,
+      "channel_regime": "EQUILIBRIUM_CHANNEL",
+      "visual_gauge": "[ \u09f311.6 |\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f317.3 ] (29.8% (Truncated))",
+      "conviction_bonus": 0.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 100,
+      "signal": "Price is in mid-channel (29.8% between \u09f311.6 and \u09f317.3)"
+    },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "LANKABAFIN",
-    "audited_at": "2026-11-11 09:16:42",
+    "audited_at": "2026-11-11 11:51:10",
     "worth_vs_greed": {
       "current_price": 13.3,
       "intrinsic_worth": 2.72,
@@ -385,7 +397,7 @@
     }
   },
   "composite": {
-    "composite_score": 34.74,
+    "composite_score": 34.72,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

@@ -2,7 +2,7 @@
   "ticker": "CITYGENINS",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:35.271863",
+  "analyzed_at": "2026-11-11T05:50:57.286711",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": 0.0
   },
   "signal": "HOLD",
-  "confidence": 51.8,
+  "confidence": 51.78,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 0.0
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 70.2,
+      "high_52w": 140.0,
+      "range_52w_pct": 98.7,
+      "channel_regime": "OVEREXTENDED_CEILING",
+      "visual_gauge": "[ \u09f370.2 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| \u09f3140.0 ] (98.7%)",
+      "conviction_bonus": -10.0,
+      "is_truncated_window": false,
+      "bars_evaluated": 250,
+      "signal": "Price is at 98.7% of 52-week high (near \u09f3140.0) \u2014 elevated mean-reversion risk"
+    },
+    "total_precision_bonus": -10.0
   },
   "pattern_dna": {
     "ticker": "CITYGENINS",
-    "audited_at": "2026-11-11 09:16:35",
+    "audited_at": "2026-11-11 11:50:57",
     "worth_vs_greed": {
       "current_price": 139.1,
       "intrinsic_worth": 7.6,
@@ -374,7 +386,7 @@
     }
   },
   "composite": {
-    "composite_score": 51.8,
+    "composite_score": 51.78,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

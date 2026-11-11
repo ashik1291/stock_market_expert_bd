@@ -2,7 +2,7 @@
   "ticker": "SAIHAMTEX",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:50.213176",
+  "analyzed_at": "2026-11-11T05:51:23.462314",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": 0.421
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 53.05,
+  "confidence": 53.03,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 0.0
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 13.7,
+      "high_52w": 48.6,
+      "range_52w_pct": 99.7,
+      "channel_regime": "OVEREXTENDED_CEILING",
+      "visual_gauge": "[ \u09f313.7 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| \u09f348.6 ] (99.7%)",
+      "conviction_bonus": -10.0,
+      "is_truncated_window": false,
+      "bars_evaluated": 250,
+      "signal": "Price is at 99.7% of 52-week high (near \u09f348.6) \u2014 elevated mean-reversion risk"
+    },
+    "total_precision_bonus": -10.0
   },
   "pattern_dna": {
     "ticker": "SAIHAMTEX",
-    "audited_at": "2026-11-11 09:16:50",
+    "audited_at": "2026-11-11 11:51:23",
     "worth_vs_greed": {
       "current_price": 48.5,
       "intrinsic_worth": 1.76,
@@ -384,7 +396,7 @@
     }
   },
   "composite": {
-    "composite_score": 53.05,
+    "composite_score": 53.03,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

@@ -2,7 +2,7 @@
   "ticker": "AFTABAUTO",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:31.295287",
+  "analyzed_at": "2026-11-11T05:50:51.218218",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": 2.955
   },
   "signal": "HOLD_LOAN_TRAP_RISK",
-  "confidence": 33.35,
+  "confidence": 33.34,
   "trajectory": {
     "direction": "FALL_RISK",
     "direction_icon": "\ud83d\udd34",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 0.0
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 23.8,
+      "high_52w": 39.7,
+      "range_52w_pct": 15.1,
+      "channel_regime": "DEEP_ACCUMULATION_BASE",
+      "visual_gauge": "[ \u09f323.8 |\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f339.7 ] (15.1%)",
+      "conviction_bonus": 10.0,
+      "is_truncated_window": false,
+      "bars_evaluated": 250,
+      "signal": "Price is at the bottom 15.1% of 52-week channel (near \u09f323.8 floor) \u2014 high margin of safety"
+    },
+    "total_precision_bonus": 10.0
   },
   "pattern_dna": {
     "ticker": "AFTABAUTO",
-    "audited_at": "2026-11-11 09:16:31",
+    "audited_at": "2026-11-11 11:50:51",
     "worth_vs_greed": {
       "current_price": 26.2,
       "intrinsic_worth": 13.1,
@@ -377,7 +389,7 @@
     }
   },
   "composite": {
-    "composite_score": 33.35,
+    "composite_score": 33.34,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

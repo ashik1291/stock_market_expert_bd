@@ -2,7 +2,7 @@
   "ticker": "ACMELAB",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:31.027570",
+  "analyzed_at": "2026-11-11T05:50:50.856010",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": 0.928
   },
   "signal": "HOLD_INELIGIBLE_DEFICIT",
-  "confidence": 68.22,
+  "confidence": 68.23,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 68.6,
+      "high_52w": 88.7,
+      "range_52w_pct": 58.7,
+      "channel_regime": "EQUILIBRIUM_CHANNEL",
+      "visual_gauge": "[ \u09f368.6 |\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591| \u09f388.7 ] (58.7%)",
+      "conviction_bonus": 0.0,
+      "is_truncated_window": false,
+      "bars_evaluated": 250,
+      "signal": "Price is in mid-channel (58.7% between \u09f368.6 and \u09f388.7)"
+    },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "ACMELAB",
-    "audited_at": "2026-11-11 09:16:31",
+    "audited_at": "2026-11-11 11:50:50",
     "worth_vs_greed": {
       "current_price": 80.4,
       "intrinsic_worth": 26.4,
@@ -382,7 +394,7 @@
     }
   },
   "composite": {
-    "composite_score": 68.22,
+    "composite_score": 68.23,
     "governance_score": 90,
     "sentiment_score": 50.0,
     "applied_weights": {

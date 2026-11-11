@@ -2,7 +2,7 @@
   "ticker": "HRTEX",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:39.737273",
+  "analyzed_at": "2026-11-11T05:51:05.564887",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": 5.58
   },
   "signal": "HOLD_LOAN_TRAP_RISK",
-  "confidence": 24.1,
+  "confidence": 24.09,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 12.4,
+      "high_52w": 23.0,
+      "range_52w_pct": 34.9,
+      "channel_regime": "EQUILIBRIUM_CHANNEL",
+      "visual_gauge": "[ \u09f312.4 |\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f323.0 ] (34.9%)",
+      "conviction_bonus": 0.0,
+      "is_truncated_window": false,
+      "bars_evaluated": 250,
+      "signal": "Price is in mid-channel (34.9% between \u09f312.4 and \u09f323.0)"
+    },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "HRTEX",
-    "audited_at": "2026-11-11 09:16:39",
+    "audited_at": "2026-11-11 11:51:05",
     "worth_vs_greed": {
       "current_price": 16.1,
       "intrinsic_worth": 8.05,
@@ -383,7 +395,7 @@
     }
   },
   "composite": {
-    "composite_score": 24.1,
+    "composite_score": 24.09,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

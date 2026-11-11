@@ -332,10 +332,11 @@ def compute_quarterly_earnings_acceleration(raw_data: dict) -> dict:
 
 # ── 5. 52-Week Range Percentile & Circuit Corridor ────────────────────────────
 
-def compute_52w_range_corridor(prices: list[dict], current_px: float) -> dict:
+def compute_52w_range_corridor(prices: list[dict], current_px: float, ticker: str = "") -> dict:
     """
     Computes the 52-week price range channel, current price percentile (PRP),
     and visual range slider based on George & Hwang (2004) 52-week anchor anomaly.
+    Applies backward split adjustments for any bonus dividends / stock splits.
     """
     if not prices or current_px <= 0:
         return {
@@ -346,13 +347,56 @@ def compute_52w_range_corridor(prices: list[dict], current_px: float) -> dict:
             "channel_regime": "UNKNOWN",
             "visual_gauge": "[ — ]",
             "conviction_bonus": 0.0,
+            "is_truncated_window": True,
+            "bars_evaluated": 0,
             "signal": "No price history available"
         }
 
     # Up to past 250 trading bars (approx. 1 calendar year)
     hist = prices[-250:]
-    highs = [float(p.get("high") or p.get("close") or 0.0) for p in hist if (p.get("high") or p.get("close"))]
-    lows  = [float(p.get("low") or p.get("close") or 0.0) for p in hist if (p.get("low") or p.get("close")) and float(p.get("low") or p.get("close") or 0.0) > 0]
+    bars_count = len(hist)
+    is_truncated = bars_count < 200
+
+    # Query corporate actions for any stock dividend / bonus / split adjustments
+    bonus_actions = []
+    if DB_PATH.exists() and ticker:
+        try:
+            conn = sqlite3.connect(DB_PATH, timeout=10.0)
+            conn.execute("PRAGMA busy_timeout = 10000;")
+            rows = conn.execute(
+                """
+                SELECT record_date, adjustment_factor, ratio
+                FROM corporate_actions
+                WHERE ticker = ? AND action_type IN ('bonus_dividend', 'cash_bonus_adjustment', 'split')
+                ORDER BY record_date ASC
+                """,
+                (ticker.strip().upper(),),
+            ).fetchall()
+            conn.close()
+            for r in rows:
+                rec_d = r[0]
+                fac = float(r[1]) if r[1] is not None and float(r[1]) > 0 else (1.0 / (1.0 + float(r[2] or 0.0)))
+                bonus_actions.append((rec_d, fac))
+        except Exception:
+            pass
+
+    highs = []
+    lows = []
+    for p in hist:
+        p_date = p.get("date") or ""
+        raw_h = float(p.get("high") or p.get("close") or 0.0)
+        raw_l = float(p.get("low") or p.get("close") or 0.0)
+        if raw_h <= 0 or raw_l <= 0:
+            continue
+
+        # Cumulative backward split adjustment for any subsequent corporate actions
+        adj = 1.0
+        for rec_d, fac in bonus_actions:
+            if rec_d > p_date:
+                adj *= fac
+
+        highs.append(raw_h * adj)
+        lows.append(raw_l * adj)
 
     if not highs or not lows:
         return {
@@ -363,6 +407,8 @@ def compute_52w_range_corridor(prices: list[dict], current_px: float) -> dict:
             "channel_regime": "UNKNOWN",
             "visual_gauge": "[ — ]",
             "conviction_bonus": 0.0,
+            "is_truncated_window": is_truncated,
+            "bars_evaluated": bars_count,
             "signal": "Price data empty"
         }
 
@@ -377,11 +423,11 @@ def compute_52w_range_corridor(prices: list[dict], current_px: float) -> dict:
         pct = max(0.0, min(100.0, pct))
 
     # Visual gauge slider (10 segments)
-    # e.g. [ ৳164.9 |██░░░░░░░░| ৳195.0 ] (17.9%)
     filled = int(round(pct / 10.0))
     filled = max(0, min(10, filled))
     slider = "█" * filled + "░" * (10 - filled)
-    visual = f"[ ৳{low_52w:.1f} |{slider}| ৳{high_52w:.1f} ] ({pct:.1f}%)"
+    trunc_tag = " (Truncated)" if is_truncated else ""
+    visual = f"[ ৳{low_52w:.1f} |{slider}| ৳{high_52w:.1f} ] ({pct:.1f}%{trunc_tag})"
 
     # Institutional Regime Classification
     if pct <= 25.0:
@@ -409,6 +455,8 @@ def compute_52w_range_corridor(prices: list[dict], current_px: float) -> dict:
         "channel_regime": regime,
         "visual_gauge": visual,
         "conviction_bonus": bonus,
+        "is_truncated_window": is_truncated,
+        "bars_evaluated": bars_count,
         "signal": signal,
     }
 
@@ -423,7 +471,8 @@ def run_precision_audit(ticker: str, prices: list[dict], raw_data: dict, news_te
     earnings_acc = compute_quarterly_earnings_acceleration(raw_data)
     range_corridor = compute_52w_range_corridor(
         prices,
-        float(raw_data.get("price") or (prices[-1].get("close") if prices else 1.0))
+        float(raw_data.get("price") or (prices[-1].get("close") if prices else 1.0)),
+        ticker=ticker
     )
 
     total_precision_bonus = (

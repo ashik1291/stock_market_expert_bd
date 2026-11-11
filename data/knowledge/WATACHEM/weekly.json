@@ -2,7 +2,7 @@
   "ticker": "WATACHEM",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:55.184782",
+  "analyzed_at": "2026-11-11T05:51:31.057329",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": null
   },
   "signal": "HOLD",
-  "confidence": 46.0,
+  "confidence": 45.98,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 105.1,
+      "high_52w": 149.9,
+      "range_52w_pct": 47.5,
+      "channel_regime": "EQUILIBRIUM_CHANNEL",
+      "visual_gauge": "[ \u09f3105.1 |\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591| \u09f3149.9 ] (47.5% (Truncated))",
+      "conviction_bonus": 0.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 100,
+      "signal": "Price is in mid-channel (47.5% between \u09f3105.1 and \u09f3149.9)"
+    },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "WATACHEM",
-    "audited_at": "2026-11-11 09:16:55",
+    "audited_at": "2026-11-11 11:51:31",
     "worth_vs_greed": {
       "current_price": 126.4,
       "intrinsic_worth": 63.2,
@@ -370,7 +382,7 @@
     }
   },
   "composite": {
-    "composite_score": 46.0,
+    "composite_score": 45.98,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

@@ -2,7 +2,7 @@
   "ticker": "MARICO",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:42.791574",
+  "analyzed_at": "2026-11-11T05:51:11.603552",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": 0.0
   },
   "signal": "HOLD",
-  "confidence": 56.2,
+  "confidence": 56.17,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 2550.1,
+      "high_52w": 2869.0,
+      "range_52w_pct": 33.0,
+      "channel_regime": "EQUILIBRIUM_CHANNEL",
+      "visual_gauge": "[ \u09f32550.1 |\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f32869.0 ] (33.0% (Truncated))",
+      "conviction_bonus": 0.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 100,
+      "signal": "Price is in mid-channel (33.0% between \u09f32550.1 and \u09f32869.0)"
+    },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "MARICO",
-    "audited_at": "2026-11-11 09:16:42",
+    "audited_at": "2026-11-11 11:51:11",
     "worth_vs_greed": {
       "current_price": 2655.3,
       "intrinsic_worth": 389.6,
@@ -382,7 +394,7 @@
     }
   },
   "composite": {
-    "composite_score": 56.2,
+    "composite_score": 56.17,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {

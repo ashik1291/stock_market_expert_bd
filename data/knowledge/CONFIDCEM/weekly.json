@@ -2,7 +2,7 @@
   "ticker": "CONFIDCEM",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:35.464945",
+  "analyzed_at": "2026-11-11T05:50:57.566665",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": 0.74
   },
   "signal": "BUY",
-  "confidence": 69.12,
+  "confidence": 69.13,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 44.0,
+      "high_52w": 74.6,
+      "range_52w_pct": 58.5,
+      "channel_regime": "EQUILIBRIUM_CHANNEL",
+      "visual_gauge": "[ \u09f344.0 |\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591| \u09f374.6 ] (58.5%)",
+      "conviction_bonus": 0.0,
+      "is_truncated_window": false,
+      "bars_evaluated": 250,
+      "signal": "Price is in mid-channel (58.5% between \u09f344.0 and \u09f374.6)"
+    },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "CONFIDCEM",
-    "audited_at": "2026-11-11 09:16:35",
+    "audited_at": "2026-11-11 11:50:57",
     "worth_vs_greed": {
       "current_price": 61.9,
       "intrinsic_worth": 119.77,
@@ -390,7 +402,7 @@
     }
   },
   "composite": {
-    "composite_score": 69.12,
+    "composite_score": 69.13,
     "governance_score": 85,
     "sentiment_score": 50.0,
     "applied_weights": {

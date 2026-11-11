@@ -2,7 +2,7 @@
   "ticker": "FASFIN",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T03:16:37.785498",
+  "analyzed_at": "2026-11-11T05:51:01.904214",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 44.75,
+  "confidence": 44.73,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -87,11 +87,23 @@
       "bonus": 0.0,
       "signal": "Standard annual EPS trajectory"
     },
-    "total_precision_bonus": 0.0
+    "range_52w_corridor": {
+      "status": "VALID",
+      "low_52w": 0.41,
+      "high_52w": 2.5,
+      "range_52w_pct": 100.0,
+      "channel_regime": "OVEREXTENDED_CEILING",
+      "visual_gauge": "[ \u09f30.4 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| \u09f32.5 ] (100.0% (Truncated))",
+      "conviction_bonus": -10.0,
+      "is_truncated_window": true,
+      "bars_evaluated": 101,
+      "signal": "Price is at 100.0% of 52-week high (near \u09f32.5) \u2014 elevated mean-reversion risk"
+    },
+    "total_precision_bonus": -10.0
   },
   "pattern_dna": {
     "ticker": "FASFIN",
-    "audited_at": "2026-11-11 09:16:37",
+    "audited_at": "2026-11-11 11:51:01",
     "worth_vs_greed": {
       "current_price": 2.5,
       "intrinsic_worth": 1.25,
@@ -372,7 +384,7 @@
     }
   },
   "composite": {
-    "composite_score": 44.75,
+    "composite_score": 44.73,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
