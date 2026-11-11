@@ -24,7 +24,7 @@ In institutional quantitative finance, scientific honesty and statistical humili
 | Evaluation Pillar | Score | Verdict | 🟢 Deterministic Strengths | 🟡 Honest Limitations & Forward Research |
 | :--- | :---: | :---: | :--- | :--- |
 | **System Architecture & Data Invariants** | **98%** | `Grade A+` | 100/100 unit tests passing, 8/8 SPEC.md invariants enforced, universal SQLite WAL with 30s timeout guards, zero-broken bootstrap. | Fully hardened production engineering. |
-| **Point-in-Time (PIT) Fundamentals** | **98%** | `Grade A+` | **100% verified disclosure timestamps** across all 1,707 company filing periods with zero lookahead bias ($\text{tradable\_date} \ge \text{publication\_date} \ge \text{snapshot\_date}$). Verified via 687 DSE PSI news disclosures (40.2%), 403 DSE corporate actions (23.6%), 409 BSEC statutory compliance filings (24.0%), and 208 live scrapes (12.2%). | Covers 141 actively reporting companies (2018–2026); OTC and delisted debt instruments excluded. |
+| **Point-in-Time (PIT) Fundamentals** | **98%** | `Grade A+` | **100% verified disclosure timestamps** across all 1,707 company filing periods with zero lookahead bias (`tradable_date >= publication_date >= snapshot_date`). Verified via 687 DSE PSI news disclosures (40.2%), 403 DSE corporate actions (23.6%), 409 BSEC statutory compliance filings (24.0%), and 208 live scrapes (12.2%). | Covers 141 actively reporting companies (2018–2026); OTC and delisted debt instruments excluded. |
 | **Forensic Surveillance & Risk Shield** | **100%** | `Grade A+` | 100% reliable junk and pump-and-dump filter. Detects volume anomalies ($\text{VAR} \ge 3\times$), negative cash-flow traps ($\text{NOCFPS} \le 0$), toxic leverage in a 12–14% interest regime, and flags regulatory probe actions. | Dependent on official DSE PSI disclosures and exchange volume reporting. |
 | **Market Microstructure & Macro Economics** | **95%** | `Grade A` | Anchored to live Bangladesh Bank 91-Day T-Bills (11.60%) with a mandatory 15.10% equity hurdle rate. Real-world fees enforced in all backtests: **0.415% buy / 0.465% sell** (including statutory Section 53BBB Advance Income Tax). | Models standard retail brokerage fee (0.40%); institutional DMA discounts not modeled. |
 | **Directional Alpha & Market Timing** | **52%** | `Active Trial` | Walk-forward Bayesian factor weights, Wilder's smoothed RSI, shadow challenger registry with Holm-Bonferroni multi-testing deflation. | Forward ledger currently has 22 blocks ($N < 200$ sample size); permutation test $p = 0.608$ vs random null. Validated as a capital protection filter, uncertified as a market timer. |
@@ -116,11 +116,13 @@ $$\text{Net Sell Proceeds} = P \times \text{Shares} \times (1 - \text{Fee}_{\tex
 ### 5. Inverse-Volatility Risk Parity Capital Allocation
 Position sizes are inversely scaled according to 20-day realized volatility ($\sigma_i$) and weighted by Graham Margin of Safety:
 $$w_i^* = \frac{\frac{1}{\sigma_i} \times \max(0.1, \text{MoS}_i)}{\sum_{j=1}^N \left(\frac{1}{\sigma_j} \times \max(0.1, \text{MoS}_j)\right)}$$
-$$\text{Defensive Cash Buffer \%} = \min\left(40\%, \max\left(10\%, \frac{\sigma_{\text{DSEX}}}{15\%} \times 20\%\right)\right)$$
+$$\text{Defensive Cash Buffer} = \min\left(40\%, \max\left(10\%, \frac{\sigma_{\text{DSEX}}}{15\%} \times 20\%\right)\right)$$
 
 ### 6. Point-in-Time (PIT) Temporal Isolation Invariant
 To eliminate survivorship and lookahead bias in historical evaluations:
-$$\text{tradable\_date} \ge \text{publication\_date} \ge \text{snapshot\_date}$$
+```sql
+tradable_date >= publication_date >= snapshot_date
+```
 - No fundamental metric is ever joined into a price bar before the verified public dissemination session.
 
 ---
@@ -243,7 +245,7 @@ To guarantee that system invariants are never compromised during updates, all mo
 | **User Proxy** | `.agents/skills/dse-user-proxy/` | Simulates real retail and HNWI execution, verifies entry corridors and protective stops. |
 
 ### The 8 Non-Negotiable System Invariants:
-1. **INV-1: Strict Point-in-Time Isolation** ($\text{tradable\_date} \ge \text{publication\_date} \ge \text{snapshot\_date}$).
+1. **INV-1: Strict Point-in-Time Isolation** (`tradable_date >= publication_date >= snapshot_date`).
 2. **INV-2: Central Bank Macro Hurdle Rate** (Equity hurdle anchored to live 91-Day T-Bills + 350 bps).
 3. **INV-3: 100% Shariah / Halal Shield** (Excludes conventional banking, insurance, and non-compliant balance sheets).
 4. **INV-4: Frontier Microstructure Realism** (Enforces 0.415% buy / 0.465% sell fees and circuit-lock guards).
