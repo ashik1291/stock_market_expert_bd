@@ -25,6 +25,7 @@ Commands:
   sell [TICKER] [SHS] [PX] Record a manual stock sale & calculate realized net P&L
   proxy [BDT]   Run user proxy simulation: max profit probability, entry zone & exit rules
   report        Display the latest weekly investment & trading executive report
+  push-db       Compress latest local dse.db into dse.db.gz and push monthly baseline to GitHub
   help          Display this command reference
 """
 
@@ -247,6 +248,11 @@ def cmd_config():
     print(f"[CONFIG] Active screening mode: {prof.get('halal_tier', 'off').upper()} stock mode.")
 
 
+def cmd_push_db(dry_run: bool = False):
+    args = ["--dry-run"] if dry_run else []
+    run_script("push_db_update.py", args)
+
+
 def cmd_help():
     print(__doc__)
 
@@ -308,6 +314,9 @@ def main():
         cmd_sell(sys.argv[2], sys.argv[3], sys.argv[4])
     elif cmd in ("report", "weekly"):
         cmd_report()
+    elif cmd in ("push-db", "update-db", "sync-db", "push-database"):
+        dry = "--dry-run" in sys.argv
+        cmd_push_db(dry)
     elif cmd in ("help", "menu", "?"):
         cmd_help()
     else:
