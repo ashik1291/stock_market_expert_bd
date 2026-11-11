@@ -134,6 +134,11 @@ def classify_horizons(records: list[dict], asof_date: str = None) -> dict:
         cash_flow   = prec.get("cash_flow", {})
         liquidity   = prec.get("liquidity", {})
         earn_acc    = prec.get("earnings_acceleration", {})
+        range_52w   = prec.get("range_52w_corridor", {})
+        channel_gauge = range_52w.get("visual_gauge")
+        channel_regime = range_52w.get("channel_regime")
+        channel_sig = range_52w.get("signal")
+        range_52w_pct = range_52w.get("range_52w_pct")
 
         # 0. Canonical Model Deficit Gate: Never recommend stocks failing served model criteria
         if r.get("signal") == "HOLD_INELIGIBLE_DEFICIT" or not r.get("is_eligible", True):
@@ -275,6 +280,10 @@ def classify_horizons(records: list[dict], asof_date: str = None) -> dict:
             long_rec["liquidity_directive"] = liquidity.get("directive") or "unknown"
             long_rec["max_single_order"] = liquidity.get("max_single_order_shares")
             long_rec["earnings_acc_sig"] = earn_acc.get("signal") or "unknown"
+            long_rec["range_52w_gauge"] = channel_gauge
+            long_rec["range_52w_regime"] = channel_regime
+            long_rec["range_52w_signal"] = channel_sig
+            long_rec["range_52w_pct"] = range_52w_pct
 
             long_rec["when_to_buy"] = (
                 f"Buy on support dips between ৳{support_low}–৳{support_high}; "
@@ -340,6 +349,10 @@ def classify_horizons(records: list[dict], asof_date: str = None) -> dict:
             mid_rec["smart_money_sig"] = smart_money.get("signal") or "unknown"
             mid_rec["liquidity_directive"] = liquidity.get("directive") or "unknown"
             mid_rec["max_single_order"] = liquidity.get("max_single_order_shares")
+            mid_rec["range_52w_gauge"] = channel_gauge
+            mid_rec["range_52w_regime"] = channel_regime
+            mid_rec["range_52w_signal"] = channel_sig
+            mid_rec["range_52w_pct"] = range_52w_pct
 
             mid_rec["when_to_buy"] = (
                 f"Enter on support confirmation (৳{round(entry*0.99, 1)}–৳{round(entry*1.01, 1)}) "
@@ -622,6 +635,8 @@ def generate_markdown_report(recs: dict) -> str:
             lines.append(f"- **🌊 Smart Money Shift**: {r.get('smart_money_sig') or 'unknown'}")
             lines.append(f"- **💰 Real Cash Flow & FCF**: {r.get('cash_flow_cov') or 'unknown'} | FCF Yield: {r.get('fcf_yield') or 'unknown'} | Audit: *{r.get('audit_credibility') or 'unknown'}*")
             lines.append(f"- **💧 Liquidity Guard**: {r.get('liquidity_directive') or 'unknown'}")
+            if r.get("range_52w_gauge"):
+                lines.append(f"- **📏 52-Week Range Channel**: `{r.get('range_52w_gauge')}` — *{r.get('range_52w_signal') or r.get('range_52w_regime')}*")
             lines.append(f"- **📊 3-Term Potential Breakdown**:")
             lines.append(f"  * ⚡ **Short-Term (1–10d)**: Path: {st_info.get('predicted_path') or '—'} | Upside: **{st_info.get('upside_potential_pct') or '—'}** vs Downside: {st_info.get('downside_risk_pct') or '—'} (R:R: {st_info.get('risk_reward_ratio') or '—'})")
             lines.append(f"  * 📈 **Mid-Term (1–6m)**: Path: {mt_info.get('predicted_path') or '—'} | Target: **৳{mt_info.get('target_price') or '—'} ({mt_info.get('upside_potential_pct') or '—'})** | Stop: ৳{mt_info.get('trailing_stop') or '—'} (R:R: {mt_info.get('risk_reward_ratio') or '—'})")
@@ -657,6 +672,8 @@ def generate_markdown_report(recs: dict) -> str:
             lines.append(f"#### 📌 **{r['ticker']}** (Target: ৳{r.get('target_mid')}, Stop: ৳{r.get('trailing_stop')}, R:R: {r.get('mt_rr')})")
             lines.append(f"- **👔 Leadership & Smart Money**: {r.get('leadership_summary')} | Flow: `{r.get('smart_money_sig')}`")
             lines.append(f"- **💧 Liquidity Guard**: {r.get('liquidity_directive')}")
+            if r.get("range_52w_gauge"):
+                lines.append(f"- **📏 52-Week Range Channel**: `{r.get('range_52w_gauge')}` — *{r.get('range_52w_signal') or r.get('range_52w_regime')}*")
             lines.append(f"- **🛡️ Data Provenance**: {r.get('data_provenance_badge')}")
             lines.append(f"- **📊 3-Scenario Payoffs**: Bull: {r.get('scenario_bull')} | Base: {r.get('scenario_base')} | Bear: {r.get('scenario_bear')}")
             lines.append(f"- **⚠️ Thesis Invalidation Triggers**: {'; '.join(r.get('invalidation_rules', []))}")
@@ -835,6 +852,8 @@ def generate_markdown_report_bn(recs: dict) -> str:
             lines.append(f"- **🌊 স্মার্ট মানি প্রবাহ**: {r.get('smart_money_sig') or 'অজানা'}")
             lines.append(f"- **💰 প্রকৃত ক্যাশ ফ্লো ও FCF**: {r.get('cash_flow_cov') or 'অজানা'} | ফ্রি ক্যাশ ফ্লো ইল্ড: {r.get('fcf_yield') or '—'} | নিরীক্ষা বিশ্বাসযোগ্যতা: *{r.get('audit_credibility') or '—'}*")
             lines.append(f"- **💧 লিকুইডিটি গার্ড**: {r.get('liquidity_directive') or 'অজানা'}")
+            if r.get("range_52w_gauge"):
+                lines.append(f"- **📏 ৫২-সপ্তাহের প্রাইস চ্যানেল**: `{r.get('range_52w_gauge')}`")
             lines.append(f"- **📊 ৩ মেয়াদের সম্ভাব্য গতিপ্রকৃতি**:")
             lines.append(f"  * ⚡ **স্বল্পমেয়াদী (১–১০ দিন)**: গতিপথ: {st_info.get('predicted_path') or '—'} | সম্ভাব্য বৃদ্ধি: **{st_info.get('upside_potential_pct') or '—'}** বনাম ডাউনসাইড ঝুঁকি: {st_info.get('downside_risk_pct') or '—'}")
             lines.append(f"  * 📈 **মধ্যমেয়াদী (১–৬ মাস)**: গতিপথ: {mt_info.get('predicted_path') or '—'} | লক্ষ্যমাত্রা: **৳{mt_info.get('target_price') or '—'} ({mt_info.get('upside_potential_pct') or '—'})** | ট্রেইলিং স্টপ: ৳{mt_info.get('trailing_stop') or '—'}")

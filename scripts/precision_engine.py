@@ -330,19 +330,107 @@ def compute_quarterly_earnings_acceleration(raw_data: dict) -> dict:
     }
 
 
+# ── 5. 52-Week Range Percentile & Circuit Corridor ────────────────────────────
+
+def compute_52w_range_corridor(prices: list[dict], current_px: float) -> dict:
+    """
+    Computes the 52-week price range channel, current price percentile (PRP),
+    and visual range slider based on George & Hwang (2004) 52-week anchor anomaly.
+    """
+    if not prices or current_px <= 0:
+        return {
+            "status": "INSUFFICIENT_PRICE_HISTORY",
+            "low_52w": None,
+            "high_52w": None,
+            "range_52w_pct": None,
+            "channel_regime": "UNKNOWN",
+            "visual_gauge": "[ — ]",
+            "conviction_bonus": 0.0,
+            "signal": "No price history available"
+        }
+
+    # Up to past 250 trading bars (approx. 1 calendar year)
+    hist = prices[-250:]
+    highs = [float(p.get("high") or p.get("close") or 0.0) for p in hist if (p.get("high") or p.get("close"))]
+    lows  = [float(p.get("low") or p.get("close") or 0.0) for p in hist if (p.get("low") or p.get("close")) and float(p.get("low") or p.get("close") or 0.0) > 0]
+
+    if not highs or not lows:
+        return {
+            "status": "INSUFFICIENT_PRICE_HISTORY",
+            "low_52w": None,
+            "high_52w": None,
+            "range_52w_pct": None,
+            "channel_regime": "UNKNOWN",
+            "visual_gauge": "[ — ]",
+            "conviction_bonus": 0.0,
+            "signal": "Price data empty"
+        }
+
+    high_52w = round(max(highs), 2)
+    low_52w  = round(min(lows), 2)
+    span = high_52w - low_52w
+
+    if span <= 0:
+        pct = 50.0
+    else:
+        pct = round(((current_px - low_52w) / span) * 100.0, 1)
+        pct = max(0.0, min(100.0, pct))
+
+    # Visual gauge slider (10 segments)
+    # e.g. [ ৳164.9 |██░░░░░░░░| ৳195.0 ] (17.9%)
+    filled = int(round(pct / 10.0))
+    filled = max(0, min(10, filled))
+    slider = "█" * filled + "░" * (10 - filled)
+    visual = f"[ ৳{low_52w:.1f} |{slider}| ৳{high_52w:.1f} ] ({pct:.1f}%)"
+
+    # Institutional Regime Classification
+    if pct <= 25.0:
+        regime = "DEEP_ACCUMULATION_BASE"
+        signal = f"Price is at the bottom {pct:.1f}% of 52-week channel (near ৳{low_52w:.1f} floor) — high margin of safety"
+        bonus = +10.0
+    elif pct <= 70.0:
+        regime = "EQUILIBRIUM_CHANNEL"
+        signal = f"Price is in mid-channel ({pct:.1f}% between ৳{low_52w:.1f} and ৳{high_52w:.1f})"
+        bonus = 0.0
+    elif pct <= 85.0:
+        regime = "MOMENTUM_EXPANSION"
+        signal = f"Price is in upper channel ({pct:.1f}%) — upward breakout momentum"
+        bonus = +5.0
+    else:
+        regime = "OVEREXTENDED_CEILING"
+        signal = f"Price is at {pct:.1f}% of 52-week high (near ৳{high_52w:.1f}) — elevated mean-reversion risk"
+        bonus = -10.0
+
+    return {
+        "status": "VALID",
+        "low_52w": low_52w,
+        "high_52w": high_52w,
+        "range_52w_pct": pct,
+        "channel_regime": regime,
+        "visual_gauge": visual,
+        "conviction_bonus": bonus,
+        "signal": signal,
+    }
+
+
 # ── Full Precision Suite Runner ───────────────────────────────────────────────
 
 def run_precision_audit(ticker: str, prices: list[dict], raw_data: dict, news_text: str = "") -> dict:
-    """Runs all 4 institutional precision engines for a company."""
+    """Runs all 5 institutional precision engines for a company."""
     smart_money = compute_smart_money_flow(raw_data)
     cash_flow   = compute_cash_flow_and_dividend_coverage(raw_data, news_text)
     liquidity   = compute_liquidity_depth_guard(prices, float(raw_data.get("price") or 1.0))
     earnings_acc = compute_quarterly_earnings_acceleration(raw_data)
+    range_corridor = compute_52w_range_corridor(
+        prices,
+        float(raw_data.get("price") or (prices[-1].get("close") if prices else 1.0))
+    )
 
     total_precision_bonus = (
         smart_money.get("conviction_bonus", 0.0) +
         cash_flow.get("conviction_bonus", 0.0) +
-        earnings_acc.get("conviction_bonus", 0.0)
+        earnings_acc.get("conviction_bonus", 0.0) +
+        range_corridor.get("conviction_bonus", 0.0)
     )
 
     return {
@@ -351,5 +439,6 @@ def run_precision_audit(ticker: str, prices: list[dict], raw_data: dict, news_te
         "cash_flow":             cash_flow,
         "liquidity":             liquidity,
         "earnings_acceleration": earnings_acc,
+        "range_52w_corridor":    range_corridor,
         "total_precision_bonus": total_precision_bonus
     }
