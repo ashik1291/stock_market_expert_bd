@@ -344,18 +344,6 @@ Integrity Harness: PASS (fails=0 across 9 checks)
 
 ---
 
-## 💼 Commercial Product Tiers & Applications
-
-Detailed commercial business models, TAM/SAM/SOM market sizing, unit economics, and institutional licensing are documented in:  
-📄 **[`reports/business/COMMERCIAL_BUSINESS_PLAN.md`](file:///c:/Users/BS01671/Documents/stock_market/reports/business/COMMERCIAL_BUSINESS_PLAN.md)**
-
-- **Pro Quant Trader (SaaS)**: BDT 1,500 / month — Daily directional signals, Graham Value screeners, dividend catalyst alerts.
-- **Elite Wealth Builder (SaaS)**: BDT 4,500 / month — Dynamic position plans, real-time Sentinel floor price alerts, Shariah purification calculator.
-- **B2B Institutional Terminal (API / Enterprise)**: BDT 150,000 – BDT 500,000 / year — Normalized Point-in-Time SQLite feed, forensic manipulation surveillance API, white-labeled daily executive reports.
-- **Family Office Advisory**: Annual retainer + 10%–15% performance fee on alpha generated above the 91-day T-Bill rate (**11.60%**).
-
----
-
 ## ⚖️ Legal Disclaimer
 
 `stock_market_expert_bd` is a quantitative algorithmic financial intelligence and decision-support platform designed for research, risk screening, and capital preservation. Past statistical backtests on historical DSE data do not guarantee future returns. Equity investments in Bangladesh capital markets carry risk. Always evaluate capital allocations against central bank sovereign risk-free benchmarks.
