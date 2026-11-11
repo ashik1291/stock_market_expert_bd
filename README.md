@@ -39,6 +39,7 @@ In institutional quantitative finance, scientific honesty and statistical humili
 The platform operates as a modular, 6-layer pipeline that transforms raw market noise into risk-screened capital deployment plans:
 
 ```mermaid
+%%{init: {"flowchart": {"rankSpacing": 18, "nodeSpacing": 18, "subGraphTitleMargin": {"top": 4, "bottom": 4}}}}%%
 flowchart TD
     subgraph L1["Layer 1: External Data Ingestion & Live Feeds"]
         DSE["DSE Live / bdshare API<br/>(395 Instruments, OHLCV)"]
@@ -75,11 +76,11 @@ flowchart TD
         LEDGER["Cryptographic Forward Ledger<br/>(SHA-256 Hash-Chained Blocks)"]
     end
 
-    BB --> PIT
-    PIT --> HALAL
-    HALAL --> HURDLE
-    HURDLE --> SENTINEL
-    SENTINEL --> SPEC & LEDGER
+    L1 --> L2
+    L2 --> L3
+    L3 --> L4
+    L4 --> L5
+    L5 --> L6
 ```
 
 ---
