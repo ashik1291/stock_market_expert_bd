@@ -235,36 +235,45 @@ def scan_daily_rise_and_fall(timeframe: str = "weekly") -> dict:
                     gate_reasons = served.get("gate_reasons", [])
                     is_eligible = served.get("is_eligible", False) and passes_macro
 
+                    div_str = str(fund.get("dividend_yield") or "")
+                    div_val = 0.0
+                    if "(" in div_str and "%" in div_str:
+                        try:
+                            div_val = float(div_str.split("(")[1].split("%")[0])
+                        except Exception:
+                            div_val = 0.0
+
                     if served_score is not None and served_score > 0 and is_eligible:
-                        user_directive_en = "🟢 BUY / ACCUMULATE"
+                        user_directive_en = "🟢 BUY (CLEARED)"
                         user_directive_bn = "🟢 ক্রয়যোগ্য (BUY)"
-                        hurdle_status_en = f"✅ Pass ({ey_pct}% E/Y)"
-                        hurdle_status_bn = f"✅ উত্তীর্ণ ({ey_pct}% আয়)"
+                        hurdle_status_en = f"✅ Beats Bank ({ey_pct}% Yield vs 11.6% T-Bill)"
+                        hurdle_status_bn = f"✅ ব্যাংকের চেয়ে লাভ বেশি ({ey_pct}% আয় vs ১১.৬% ব্যাংক)"
                         pe_disp = f"{pe_num:.1f}" if pe_num else "—"
-                        support_note_en = f"P/E {pe_disp} beats 15.1% Hurdle. Score {served_score:.1f}. Deep value base."
-                        support_note_bn = f"পি/ই {pe_disp} ১৫.১% হার্ডল উত্তীর্ণ। স্কোর {served_score:.1f}।"
+                        div_txt = f" + {div_val:.1f}% cash dividend" if div_val > 0 else ""
+                        support_note_en = f"High-profit business at a cheap price (P/E {pe_disp}{div_txt}). Safe entry near 1-year low."
+                        support_note_bn = f"অত্যন্ত সস্তা দামে শক্তিশালী লাভজনক কোম্পানি (পি/ই {pe_disp}{f', লভ্যাংশ {div_val:.1f}%' if div_val>0 else ''})। ১ বছরের সর্বনিম্ন দরের কাছে নিরাপদ ক্রয়মূল্য।"
                     elif not passes_macro:
-                        user_directive_en = "🟡 WAIT / WATCHLIST"
-                        user_directive_bn = "🟡 অপেক্ষা / ওয়াচলিস্ট"
-                        hurdle_status_en = f"⏳ Below Hurdle ({ey_pct}% vs 15.1%)"
-                        hurdle_status_bn = f"⏳ হার্ডলের নিচে ({ey_pct}% vs ১৫.১%)"
+                        user_directive_en = "🟡 WAIT (DON'T CHASE)"
+                        user_directive_bn = "🟡 অপেক্ষা করুন (এখন কেনা মানা)"
+                        hurdle_status_en = f"⏳ Bank Pays Better ({ey_pct}% vs 11.6% T-Bill)"
+                        hurdle_status_bn = f"⏳ ব্যাংকে লাভ বেশি ({ey_pct}% vs ১১.৬% ব্যাংক)"
                         pe_disp = f"{pe_num:.1f}" if pe_num else "—"
-                        support_note_en = f"Quality moat, but P/E {pe_disp} yields {ey_pct}% (<11.6% T-Bill). Wait for dip."
-                        support_note_bn = f"কোম্পানি ভালো হলেও পি/ই {pe_disp} অনুপাতে আয় কম। দর সংশোধনের অপেক্ষা।"
+                        support_note_en = f"Great company with strong business, but stock price is currently too high. Bank interest pays more safely. Wait for price to drop."
+                        support_note_bn = f"কোম্পানির ব্যবসা চমৎকার, তবে বর্তমান শেয়ার দর বেশি থাকায় ব্যাংক সুদের চেয়ে কম আয় দিচ্ছে। দর সংশোধনের অপেক্ষা করুন।"
                     elif "debt_gate" in gate_reasons:
-                        user_directive_en = "🔴 AVOID (DEBT)"
-                        user_directive_bn = "🔴 বর্জন (ঋণ)"
-                        hurdle_status_en = "❌ Gated (Debt)"
-                        hurdle_status_bn = "❌ ঋণ ঝুঁকিপূর্ণ"
-                        support_note_en = f"Debt/Equity {de_val} exceeds safety gate."
-                        support_note_bn = f"ঋণের অনুপাত {de_val} নির্ধারিত সীমার বেশি।"
+                        user_directive_en = "🔴 DANGER / AVOID"
+                        user_directive_bn = "🔴 মারাত্মক ঝুঁকি / কেনা নিষেধ"
+                        hurdle_status_en = "❌ Too Much Debt"
+                        hurdle_status_bn = "❌ মাত্রাতিরিক্ত ঋণ"
+                        support_note_en = f"Company has taken heavy bank loans (Debt {de_val}x equity). At 12-14% interest rates, profits will be eaten up."
+                        support_note_bn = f"কোম্পানির মাত্রাতিরিক্ত ব্যাংক ঋণ রয়েছে। ১২-১৪% চড়া সুদের বাজারে এই ঋণ কোম্পানিকে বিপদে ফেলতে পারে।"
                     else:
-                        user_directive_en = "⚪ HOLD / MONITOR"
-                        user_directive_bn = "⚪ পর্যবেক্ষণ (HOLD)"
+                        user_directive_en = "⚪ HOLD / WATCH"
+                        user_directive_bn = "⚪ ধরে রাখুন / নজরে রাখুন"
                         hurdle_status_en = "—"
                         hurdle_status_bn = "—"
-                        support_note_en = "Neutral channel. Monitor for volume breakout."
-                        support_note_bn = "চ্যানেলে নিরপেক্ষ গতিবিধি।"
+                        support_note_en = "Price moving sideways near baseline support. Keep watching for trading volume increase."
+                        support_note_bn = "দর সাপোর্ট বেজলাইনের কাছে ধীরগতিতে চলছে। লেনদেনের ভলিউম বাড়ার অপেক্ষা করুন।"
 
                     rise_list.append({
                         "ticker":                   ticker,
@@ -402,13 +411,24 @@ def publish_rise_fall_report(res: dict):
     lines.append("## 🔴 2. Stocks Predicted to FALL / CRASH (Severe Capital Erosion Risk)\n")
     lines.append("*Screened for: Excessive debt traps in 9-14% rate regime, retail distribution dumping, negative operating cash flows, BSEC probes.*\n")
     lines.append("> ⚠️ **User Action Rule**: Immediate capital loss risk. Never average down. Exit on any technical bounce.\n")
-    lines.append("| Ticker | Price | Decision | Primary Fall Trigger / Trap | Action |")
+    lines.append("| Ticker | Price | Decision | What is Happening / Why to Avoid | Action |")
     lines.append("|---|---|---|---|---|")
 
     for r in res["predicted_to_fall"][:12]:
         p = f"৳{r['price']:.1f}" if r['price'] else "—"
+        trig = r['primary_fall_trigger']
+        if "EXTREME_VOLUME_SPIKE" in trig or "Promoters hold only" in trig:
+            easy_trig = "🚨 DUMP TRAP: Sponsors hold < 30%. Big players unloading shares to public."
+        elif "SPECULATIVE_JUNK_PUMP" in trig or "Negative EPS" in trig:
+            easy_trig = "🚨 FAKE RALLY: Company losing money (Negative Profit). Artificial price pump."
+        elif "ABNORMAL_VOLUME_SURGE" in trig:
+            easy_trig = "🚨 SUSPICIOUS SURGE: Sudden abnormal trading volume in a loss-making company."
+        elif "zero-bank exclusion" in trig:
+            easy_trig = "⛔ EXCLUDED: Conventional bank/finance with high bad debt risk."
+        else:
+            easy_trig = trig
         lines.append(
-            f"| **{r['ticker']}** | {p} | **🔴 AVOID / EXIT** | {r['primary_fall_trigger']} | **{r['directive']}** |"
+            f"| **{r['ticker']}** | {p} | **🔴 AVOID (DANGER)** | {easy_trig} | **DO NOT BUY / EXIT** |"
         )
     lines.append("")
 
@@ -471,13 +491,24 @@ def publish_rise_fall_report(res: dict):
     bn_lines.append("## 🔴 ২. মূলধন ক্ষতির চরম ঝুঁকি ও ফাঁদ (সম্ভাব্য দরপতন / ক্র্যাশ)\n")
     bn_lines.append("*বাছাইয়ের মানদণ্ড: ১২-১৪% চড়া সুদের বাজারে অতিরিক্ত ঋণ বোঝা, রিটেইল ইনভেস্টরদের কাছে ডাম্পিং, নেগেটিভ অপারেটিং ক্যাশ ফ্লো (NOCFPS) এবং নিয়ন্ত্রক তদন্ত (BSEC probe)।*\n")
     bn_lines.append("> ⚠️ **ব্যবহারকারীর করণীয়**: মূলধন হারানোর চরম ঝুঁকি। কখনোই কিনবেন না; পোর্টফোলিওতে থাকলে টেকনিক্যাল বাউন্সে প্রস্থান করুন।\n")
-    bn_lines.append("| কোম্পানি | বর্তমান দর | সিদ্ধান্ত | দরপতন / মূলধনী ফাঁদের প্রধান কারণ | অ্যাকশন নির্দেশিকা |")
+    bn_lines.append("| কোম্পানি | বর্তমান দর | সিদ্ধান্ত | কেন এড়িয়ে চলবেন / ফাঁদের কারণ | অ্যাকশন নির্দেশিকা |")
     bn_lines.append("|---|---|---|---|---|")
 
     for r in res["predicted_to_fall"][:12]:
         p = f"৳{r['price']:.1f}" if r['price'] else "—"
+        trig = r['primary_fall_trigger']
+        if "EXTREME_VOLUME_SPIKE" in trig or "Promoters hold only" in trig:
+            easy_trig_bn = "🚨 ডাম্পিং ফাঁদ: স্পনসরদের শেয়ার ধারণ ৩০% এর কম। বড় চক্ররা সাধারণ ক্রেতাদের কাছে শেয়ার বিক্রি করে পালাচ্ছে।"
+        elif "SPECULATIVE_JUNK_PUMP" in trig or "Negative EPS" in trig:
+            easy_trig_bn = "🚨 ভুয়া মূল্যবৃদ্ধি: কোম্পানি লোকসানে (নেগেটিভ প্রফিট)। অবাস্তব কৃত্রিম মূল্যবৃদ্ধি।"
+        elif "ABNORMAL_VOLUME_SURGE" in trig:
+            easy_trig_bn = "🚨 অস্বাভাবিক লেনদেন: লোকসানি কোম্পানিতে হঠাৎ অস্বাভাবিক ট্রেডিং স্পাইক।"
+        elif "zero-bank exclusion" in trig:
+            easy_trig_bn = "⛔ বাদ দেওয়া হয়েছে: মাত্রাতিরিক্ত খেলাপি ঋণ ঝুঁকি ও সুদী আর্থিক খাত।"
+        else:
+            easy_trig_bn = trig
         bn_lines.append(
-            f"| **{r['ticker']}** | {p} | **🔴 বর্জন / প্রস্থান** | {r['primary_fall_trigger']} | **{r['directive']}** |"
+            f"| **{r['ticker']}** | {p} | **🔴 বর্জন (ঝুঁকি)** | {easy_trig_bn} | **কখনোই কিনবেন না** |"
         )
     bn_lines.append("")
 
