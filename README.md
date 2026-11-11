@@ -96,10 +96,10 @@ $$
 $$
 
 $$
-\text{Margin of Safety (MoS)} = \frac{V - P_{\text{live}}}{P_{\text{live}}} \times 100\%
+\text{Margin of Safety (MoS)} = \frac{V - P_{\text{live}}}{P_{\text{live}}}
 $$
 
-- **Benchmark Requirement**: A stock must present a Margin of Safety $\ge +25\%$ to qualify for core capital allocation.
+- **Benchmark Requirement**: A stock must present a Margin of Safety $\ge +0.25$ (+25%) to qualify for core capital allocation.
 
 ### 2. Central Bank Macro Hurdle & Equity Risk Premium (ERP)
 In a high-interest-rate environment, equities must compensate investors for equity risk above risk-free government paper:
@@ -109,10 +109,10 @@ $$
 $$
 
 $$
-\text{Equity Risk Premium (ERP)} = \text{Earnings Yield} - R_{\text{91d T-Bill}} \ge +3.50\%
+\text{Equity Risk Premium (ERP)} = \text{Earnings Yield} - R_{\text{91d T-Bill}} \ge 0.035
 $$
 
-- With the Bangladesh Bank 91-Day Treasury Bill auction yield at **11.60%**, the non-negotiable minimum equity hurdle rate is **15.10%**. Any company earning less than this threshold is disqualified.
+- With the Bangladesh Bank 91-Day Treasury Bill auction yield at **11.60%**, the non-negotiable minimum equity hurdle rate is **15.10%** (+350 bps ERP spread). Any company earning less than this threshold is disqualified.
 
 ### 3. Forensic Anti-Manipulation & Volume Anomaly Surveillance
 Emerging markets frequently witness syndicate-driven pump-and-dump operations. The engine tracks volume spikes decoupled from earnings:
@@ -122,7 +122,7 @@ $$
 $$
 
 $$
-\text{Junk Trap Condition} = (\text{VAR} \ge 3.0\times) \land (\Delta P \ge +7.5\%) \land (\text{NOCFPS} \le 0)
+\text{Junk Trap Condition} = (\text{VAR} \ge 3.0) \land (\Delta P \ge 0.075) \land (\text{NOCFPS} \le 0)
 $$
 
 - Tickers meeting this condition are quarantined immediately via `is_ticker_blacklisted(ticker, asof_date)`.
@@ -131,15 +131,15 @@ $$
 All backtesting, paper trading, and live execution engines enforce statutory DSE transaction friction:
 
 $$
-\text{Total Buy Cost} = P \times \text{Shares} \times (1 + \text{Fee}_{\text{buy}}), \quad \text{Fee}_{\text{buy}} = 0.415\%
+\text{Total Buy Cost} = P \times \text{Shares} \times (1 + \text{Fee}_{\text{buy}}), \quad \text{Fee}_{\text{buy}} = 0.00415
 $$
 
 $$
-\text{Net Sell Proceeds} = P \times \text{Shares} \times (1 - \text{Fee}_{\text{sell}}), \quad \text{Fee}_{\text{sell}} = 0.465\%
+\text{Net Sell Proceeds} = P \times \text{Shares} \times (1 - \text{Fee}_{\text{sell}}), \quad \text{Fee}_{\text{sell}} = 0.00465
 $$
 
-- Fees include standard brokerage ($0.40\%$), exchange clearing ($0.015\%$), and Government Section 53BBB Advance Income Tax ($0.05\%$).
-- **Circuit Lock Guard**: If an instrument locks at its lower circuit limit ($-10\%$ or $-3\%$) with zero bids, exits are deferred to prevent illusory backtest liquidity.
+- Fees include standard brokerage (0.40%), exchange clearing (0.015%), and Government Section 53BBB Advance Income Tax (0.05%).
+- **Circuit Lock Guard**: If an instrument locks at its lower circuit limit (-10% or -3%) with zero bids, exits are deferred to prevent illusory backtest liquidity.
 
 ### 5. Inverse-Volatility Risk Parity Capital Allocation
 Position sizes are inversely scaled according to 20-day realized volatility ($\sigma_i$) and weighted by Graham Margin of Safety:
@@ -149,7 +149,7 @@ w_i^* = \frac{\frac{1}{\sigma_i} \times \max(0.1, \text{MoS}_i)}{\sum_{j=1}^N \l
 $$
 
 $$
-\text{Defensive Cash Buffer} = \min\left(40\%, \max\left(10\%, \frac{\sigma_{\text{DSEX}}}{15\%} \times 20\%\right)\right)
+\text{Defensive Cash Buffer} = \min\left(0.40, \max\left(0.10, \frac{\sigma_{\text{DSEX}}}{0.15} \times 0.20\right)\right)
 $$
 
 ### 6. Point-in-Time (PIT) Temporal Isolation Invariant
