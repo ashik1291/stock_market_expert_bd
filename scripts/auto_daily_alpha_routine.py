@@ -76,8 +76,11 @@ def execute_daily_alpha_cycle():
     # Step 11: Update structured recommendations in SQLite DB
     run_step("12. Refresh Tri-Horizon Recommendations & Position Plan", "recommender.py", ["weekly"])
 
-    # Step 12: Nightly System Integrity Harness Verification
-    run_step("13. Execute System Integrity Harness (9/9 Gatekeeper)", "integrity_harness.py", [])
+    # Step 12: Automated SQLite Payload Retention & Storage Hygiene
+    run_step("13. Prune Stale SQLite Payloads (>180 Days)", "db_retention_cleaner.py", ["--days", "180"])
+
+    # Step 13: Nightly System Integrity Harness Verification
+    run_step("14. Execute System Integrity Harness (9/9 Gatekeeper)", "integrity_harness.py", [])
 
     print("\n" + "=" * 80)
     print("✅ AUTO-ALPHA CYCLE COMPLETE: SYSTEM LEARNED & FACTOR LOGS ADVANCED")

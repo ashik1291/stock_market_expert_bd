@@ -92,6 +92,54 @@ def load_company_signal(
     return None
 
 
+def load_multi_timeframe_signals(
+    ticker: str,
+    timeframes: tuple[str, ...] = ("weekly", "monthly", "quarterly"),
+) -> Dict[str, Any]:
+    """
+    Retrieve analytical signals across multiple timeframes simultaneously for a given ticker.
+    Returns dict mapping timeframe name -> payload.
+    """
+    ticker = (ticker or "").strip().upper()
+    if not ticker:
+        return {}
+
+    results: Dict[str, Any] = {}
+    if DB_PATH.exists():
+        try:
+            conn = get_db_connection()
+            placeholders = ",".join("?" for _ in timeframes)
+            rows = conn.execute(
+                f"""
+                SELECT timeframe, full_payload
+                FROM company_signals_history
+                WHERE ticker = ? AND timeframe IN ({placeholders})
+                ORDER BY date DESC
+                """,
+                (ticker, *timeframes),
+            ).fetchall()
+            conn.close()
+
+            for r in rows:
+                tf = r["timeframe"]
+                if tf not in results and r["full_payload"]:
+                    try:
+                        results[tf] = json.loads(r["full_payload"])
+                    except Exception:
+                        pass
+        except Exception as e:
+            log.warning(f"SQLite multi-timeframe query failed for {ticker}: {e}")
+
+    # Fallback for any timeframes missing from DB
+    for tf in timeframes:
+        if tf not in results:
+            sig = load_company_signal(ticker, tf)
+            if sig:
+                results[tf] = sig
+
+    return results
+
+
 def load_company_dna(
     ticker: str,
     asof_date: Optional[str] = None,
@@ -326,6 +374,14 @@ def save_dna_to_disk(ticker: str, payload: Dict[str, Any]):
     out_file = out_dir / "pattern_causal_dna.json"
     with open(out_file, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2)
+
+
+def calculate_signal_velocity(ticker: str, lookback_bars: int = 5) -> Dict[str, Any]:
+    """
+    Convenience wrapper to compute signal velocity and acceleration for a ticker.
+    """
+    from seed_signal_velocity import calculate_velocity_for_ticker
+    return calculate_velocity_for_ticker(ticker, lookback_bars)
 
 
 if __name__ == "__main__":

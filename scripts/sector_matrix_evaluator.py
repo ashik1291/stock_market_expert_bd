@@ -13,6 +13,7 @@ import sqlite3
 import json
 import datetime
 from pathlib import Path
+from knowledge_adapter import load_company_signal
 
 BASE_DIR   = Path(__file__).resolve().parent.parent
 PROC_DIR   = BASE_DIR / "data" / "processed"
@@ -51,10 +52,19 @@ def get_db():
 
 
 def load_knowledge(ticker: str, timeframe: str = "weekly") -> dict:
+    try:
+        sig = load_company_signal(ticker, timeframe)
+        if sig:
+            return sig
+    except Exception:
+        pass
     p = KNOW_DIR / ticker / f"{timeframe}.json"
     if p.exists():
-        with open(p, encoding="utf-8") as f:
-            return json.load(f)
+        try:
+            with open(p, encoding="utf-8") as f:
+                return json.load(f)
+        except Exception:
+            pass
     return {}
 
 

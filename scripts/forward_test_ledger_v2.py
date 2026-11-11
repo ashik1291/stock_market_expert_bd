@@ -316,6 +316,7 @@ def _rebalance(
     asof: str,
     killed: bool,
     safety_only: bool = False,
+    is_epoch_3: bool = False,
 ) -> tuple[list, float, list]:
     """Hold-buffer rebalance. Returns (positions, cash, trade_log)."""
     trades = []
@@ -366,14 +367,24 @@ def _rebalance(
         sector_counts[p.get("sector") or "Unknown"] = sector_counts.get(p.get("sector") or "Unknown", 0) + 1
 
     held = {p["ticker"] for p in kept}
-    target_alloc = INITIAL_CAPITAL / TARGET_POSITIONS
+    target_pos_count = 6 if is_epoch_3 else TARGET_POSITIONS
+    target_alloc = (INITIAL_CAPITAL * 0.60 / target_pos_count) if is_epoch_3 else (INITIAL_CAPITAL / TARGET_POSITIONS)
 
     for cand in elig:
-        if len(kept) >= TARGET_POSITIONS:
+        if len(kept) >= target_pos_count:
             break
         t = cand["ticker"]
         if t in held:
             continue
+        if is_epoch_3:
+            vol = float(cand.get("volume") or 0)
+            px = float(cand.get("close") or 0)
+            if (vol * px) < 1500000.0 or vol < 15000:
+                trades.append({"action": "SKIP_REBALANCE", "ticker": t, "reason": "ILLIQUID_EXCLUDED"})
+                continue
+            if float(cand.get("rsi_14") or 50.0) > 75.0:
+                trades.append({"action": "SKIP_REBALANCE", "ticker": t, "reason": "OVERBOUGHT_CIRCUIT_CEILING"})
+                continue
         try:
             from anti_manipulation_engine import is_ticker_blacklisted
             is_b, b_reason = is_ticker_blacklisted(t, asof_date=asof)
@@ -429,7 +440,7 @@ def _rebalance(
     return kept, cash, trades
 
 
-def init_or_update_v2_forward_ledger(force_reinit: bool = False):
+def init_or_update_v2_forward_ledger(force_reinit: bool = False, start_epoch_3: bool = False):
     PORT_DIR.mkdir(parents=True, exist_ok=True)
     conn = sqlite3.connect(DB_PATH, timeout=30.0)
     conn.execute("PRAGMA busy_timeout = 30000;")
@@ -480,6 +491,56 @@ def init_or_update_v2_forward_ledger(force_reinit: bool = False):
 
     latest_block = ledger["blocks"][-1]
     b_data = dict(latest_block["data"])
+
+    # Support smooth cryptographic transition to Epoch 3
+    start_epoch_3 = start_epoch_3 or ("--epoch-3" in sys.argv)
+    is_epoch_3 = b_data.get("epoch", "").startswith("EPOCH-3")
+
+    if start_epoch_3 and not is_epoch_3:
+        prev_b = latest_block
+        prev_hash = prev_b["block_hash"]
+        epoch3_genesis = {
+            "epoch": "EPOCH-3-REGIME-ADAPTIVE-2026",
+            "registered_at": now_utc,
+            "prior_epoch_killed_at_block": prev_b["block_index"],
+            "model_id": MODEL_ID,
+            "initial_cash": INITIAL_CAPITAL,
+            "current_cash": INITIAL_CAPITAL,
+            "portfolio_nav": INITIAL_CAPITAL,
+            "benchmark": "EQUAL_WEIGHTED_CATEGORY_A_PRICE",
+            "nav_history": [INITIAL_CAPITAL],
+            "strategy_status": "ACTIVE",
+            "regime_mode": "REGIME_ADAPTIVE_DEFENSIVE",
+            "rules": {
+                "hold_buffer_top_pct": HOLD_TOP_PCT * 100,
+                "rebalance_min_bars": REBALANCE_MIN_BARS,
+                "execution_fill": "NEXT_SESSION_OPEN_PLUS_10BPS",
+                "round_trip_fee_pct": ROUND_TRIP_COST_PCT,
+                "kill_excess_pct": KILL_EXCESS_PCT,
+                "kill_max_dd_pct": KILL_MAX_DD_PCT,
+                "regime_cash_floor_pct": 40.0,
+                "liquidity_guard": "TURNOVER_GTE_15LAKH_VOL_GTE_15K",
+            },
+            "positions": [],
+            "last_rebalance_date": None,
+            "asof_price_date": latest_date,
+        }
+        b_hash = compute_sha256(json.dumps(epoch3_genesis, sort_keys=True) + prev_hash)
+        epoch3_block = {
+            "block_index": len(ledger["blocks"]),
+            "timestamp": now_utc,
+            "prev_hash": prev_hash,
+            "data": epoch3_genesis,
+            "block_hash": b_hash,
+        }
+        ledger["blocks"].append(epoch3_block)
+        latest_block = epoch3_block
+        b_data = dict(epoch3_genesis)
+        is_epoch_3 = True
+        print(f"[EPOCH 3] Cryptographically linked Genesis Block {epoch3_block['block_index']} to Block {prev_b['block_index']}!")
+
+    epoch_tag = f"[{b_data.get('epoch', 'EPOCH-2').split('-')[0]} {b_data.get('epoch', 'EPOCH-2').split('-')[1]}]"
+
     scored = load_scored_universe(latest_date)
     elig = _eligible_ranked(scored)
 
@@ -556,11 +617,11 @@ def init_or_update_v2_forward_ledger(force_reinit: bool = False):
     safety_rebalance = _requires_safety_rebalance(positions, elig)
     if not positions and not killed:
         # Initial open via rebalance logic
-        positions, cash, trades = _rebalance(conn, [], cash, elig, latest_date, False)
+        positions, cash, trades = _rebalance(conn, [], cash, elig, latest_date, False, is_epoch_3=is_epoch_3)
         rebalanced = True
         b_data["last_rebalance_date"] = latest_date
         nav, positions, cash = _mark_to_market(conn, positions, cash, latest_date)
-        print(f"[EPOCH 2] Opened {len(positions)} positions asof={latest_date}")
+        print(f"{epoch_tag} Opened {len(positions)} positions asof={latest_date}")
     elif (safety_rebalance or _should_rebalance(conn, b_data, latest_date)) and (
         safety_rebalance or b_data.get("asof_price_date") != latest_date
     ):
@@ -572,17 +633,18 @@ def init_or_update_v2_forward_ledger(force_reinit: bool = False):
             latest_date,
             killed and not safety_rebalance,
             safety_only=safety_rebalance,
+            is_epoch_3=is_epoch_3,
         )
         rebalanced = True
         b_data["last_rebalance_date"] = latest_date
         nav, positions, cash = _mark_to_market(conn, positions, cash, latest_date)
         reason = "SAFETY_CLEANUP" if safety_rebalance else "SCHEDULED"
-        print(f"[EPOCH 2] Rebalance asof={latest_date} reason={reason} trades={len(trades)} killed={killed}")
+        print(f"{epoch_tag} Rebalance asof={latest_date} reason={reason} trades={len(trades)} killed={killed}")
 
     # Skip duplicate block same asof with no change
     if b_data.get("asof_price_date") == latest_date and not rebalanced and not force_reinit:
         if abs(float(b_data.get("portfolio_nav", 0)) - nav) < 0.02 and b_data.get("model_id") == MODEL_ID:
-            print(f"[EPOCH 2] Already current asof={latest_date} NAV={nav:,.2f} status={status}")
+            print(f"{epoch_tag} Already current asof={latest_date} NAV={nav:,.2f} status={status}")
             conn.close()
             return
 
@@ -622,12 +684,12 @@ def init_or_update_v2_forward_ledger(force_reinit: bool = False):
         json.dump(ledger, f, indent=2)
 
     print(
-        f"[EPOCH 2] Block {new_block['block_index']} asof={latest_date} "
+        f"{epoch_tag} Block {new_block['block_index']} asof={latest_date} "
         f"NAV={nav:,.2f} excess={excess:+.2f}% dd={max_dd}% status={status} "
         f"ic={ic_row.get('rank_ic') if ic_row else 'n/a'}"
     )
     if killed:
-        print(f"[EPOCH 2] KILL ACTIVE: {kill_reason}")
+        print(f"{epoch_tag} KILL ACTIVE: {kill_reason}")
     conn.close()
 
 

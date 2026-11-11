@@ -3615,6 +3615,210 @@
         "last_rebalance_date": "2026-11-03"
       },
       "block_hash": "995047ceb28d9886b00f8c614c47ecdcce2d3d0d29b6d016dbc672881886b0a5"
+    },
+    {
+      "block_index": 23,
+      "timestamp": "2026-11-11T05:08:13.106048+00:00",
+      "prev_hash": "995047ceb28d9886b00f8c614c47ecdcce2d3d0d29b6d016dbc672881886b0a5",
+      "data": {
+        "epoch": "EPOCH-3-REGIME-ADAPTIVE-2026",
+        "registered_at": "2026-11-11T05:08:13.106048+00:00",
+        "prior_epoch_killed_at_block": 22,
+        "model_id": "frozen_epoch2_pit_v2",
+        "initial_cash": 1000000.0,
+        "current_cash": 1000000.0,
+        "portfolio_nav": 1000000.0,
+        "benchmark": "EQUAL_WEIGHTED_CATEGORY_A_PRICE",
+        "nav_history": [
+          1000000.0
+        ],
+        "strategy_status": "ACTIVE",
+        "regime_mode": "REGIME_ADAPTIVE_DEFENSIVE",
+        "rules": {
+          "hold_buffer_top_pct": 30.0,
+          "rebalance_min_bars": 21,
+          "execution_fill": "NEXT_SESSION_OPEN_PLUS_10BPS",
+          "round_trip_fee_pct": 0.88,
+          "kill_excess_pct": -3.0,
+          "kill_max_dd_pct": -25.0,
+          "regime_cash_floor_pct": 40.0,
+          "liquidity_guard": "TURNOVER_GTE_15LAKH_VOL_GTE_15K"
+        },
+        "positions": [],
+        "last_rebalance_date": null,
+        "asof_price_date": "2026-11-11"
+      },
+      "block_hash": "bffe6b85f8a12cf625fe58db900a46ab02b895f48aef50e9fba5651d390718de"
+    },
+    {
+      "block_index": 24,
+      "timestamp": "2026-11-11T05:08:13.106048+00:00",
+      "prev_hash": "bffe6b85f8a12cf625fe58db900a46ab02b895f48aef50e9fba5651d390718de",
+      "data": {
+        "epoch": "EPOCH-3-REGIME-ADAPTIVE-2026",
+        "registered_at": "2026-11-11T05:08:13.106048+00:00",
+        "prior_epoch_killed_at_block": 22,
+        "model_id": "frozen_epoch2_pit_v2",
+        "initial_cash": 1000000.0,
+        "current_cash": 600356.82,
+        "portfolio_nav": 996756.82,
+        "benchmark": "EQUAL_WEIGHTED_CATEGORY_A_PRICE",
+        "nav_history": [
+          1000000.0
+        ],
+        "strategy_status": "ACTIVE",
+        "regime_mode": "REGIME_ADAPTIVE_DEFENSIVE",
+        "rules": {
+          "hold_buffer_top_pct": 30.0,
+          "rebalance_min_bars": 21,
+          "execution_fill": "NEXT_SESSION_OPEN_PLUS_10BPS",
+          "round_trip_fee_pct": 0.88,
+          "kill_excess_pct": -3.0,
+          "kill_max_dd_pct": -25.0,
+          "regime_cash_floor_pct": 40.0,
+          "liquidity_guard": "TURNOVER_GTE_15LAKH_VOL_GTE_15K"
+        },
+        "positions": [
+          {
+            "ticker": "JAMUNAOIL",
+            "sector": "Fuel_Power",
+            "entry_date": "2026-11-11",
+            "signal_date": "2026-11-11",
+            "execution_price": 171.28,
+            "fill_source": "CLOSE_PROXY",
+            "shares": 581,
+            "invested_equity": 99513.68,
+            "buy_fee_deducted": 412.98,
+            "pe": 3.0647359454855194,
+            "yield": 9.87,
+            "entry_score": 42.1429,
+            "model_id": "frozen_epoch2_pit_v2",
+            "last_mark_price": 170.6,
+            "last_mark_date": "2026-11-11",
+            "mark_equity": 99118.6
+          },
+          {
+            "ticker": "PADMAOIL",
+            "sector": "Fuel_Power",
+            "entry_date": "2026-11-11",
+            "signal_date": "2026-11-11",
+            "execution_price": 197.99,
+            "fill_source": "CLOSE_PROXY",
+            "shares": 502,
+            "invested_equity": 99390.98,
+            "buy_fee_deducted": 412.47,
+            "pe": 3.19,
+            "yield": 8.75,
+            "entry_score": 39.715,
+            "model_id": "frozen_epoch2_pit_v2",
+            "last_mark_price": 197.2,
+            "last_mark_date": "2026-11-11",
+            "mark_equity": 98994.4
+          },
+          {
+            "ticker": "BSRMLTD",
+            "sector": "Engineering",
+            "entry_date": "2026-11-11",
+            "signal_date": "2026-11-11",
+            "execution_price": 97.19,
+            "fill_source": "CLOSE_PROXY",
+            "shares": 1024,
+            "invested_equity": 99522.56,
+            "buy_fee_deducted": 413.02,
+            "pe": 4.720466699076324,
+            "yield": 6.61,
+            "entry_score": 33.1393,
+            "model_id": "frozen_epoch2_pit_v2",
+            "last_mark_price": 96.8,
+            "last_mark_date": "2026-11-11",
+            "mark_equity": 99123.2
+          },
+          {
+            "ticker": "CONFIDCEM",
+            "sector": "Cement",
+            "entry_date": "2026-11-11",
+            "signal_date": "2026-11-11",
+            "execution_price": 62.15,
+            "fill_source": "CLOSE_PROXY",
+            "shares": 1602,
+            "invested_equity": 99564.3,
+            "buy_fee_deducted": 413.19,
+            "pe": 5.209260908281389,
+            "yield": 2.01,
+            "entry_score": 23.2061,
+            "model_id": "frozen_epoch2_pit_v2",
+            "last_mark_price": 61.9,
+            "last_mark_date": "2026-11-11",
+            "mark_equity": 99163.8
+          }
+        ],
+        "last_rebalance_date": "2026-11-11",
+        "asof_price_date": "2026-11-11",
+        "updated_at": "2026-11-11T05:08:13.106048+00:00",
+        "feature_build": {
+          "ok": true,
+          "date": "2026-11-11",
+          "rows": 374,
+          "eligible": 5,
+          "model_id": "frozen_epoch2_pit_v2",
+          "parameter_hash": "acf502bc65914c48"
+        },
+        "max_drawdown_pct": 0.0,
+        "strat_return_pct": 0.0,
+        "eqw_return_pct": 0.0,
+        "excess_vs_eqw_pct": 0.0,
+        "kill_reason": null,
+        "last_trades": [
+          {
+            "action": "BUY",
+            "ticker": "JAMUNAOIL",
+            "shares": 581,
+            "reason": "TOP_RANK_FILL",
+            "price": 171.28,
+            "fill_date": "2026-11-11",
+            "fill_source": "CLOSE_PROXY",
+            "cost": 99926.66
+          },
+          {
+            "action": "SKIP_REBALANCE",
+            "ticker": "MPETROLEUM",
+            "reason": "OVERBOUGHT_CIRCUIT_CEILING"
+          },
+          {
+            "action": "BUY",
+            "ticker": "PADMAOIL",
+            "shares": 502,
+            "reason": "TOP_RANK_FILL",
+            "price": 197.99,
+            "fill_date": "2026-11-11",
+            "fill_source": "CLOSE_PROXY",
+            "cost": 99803.45
+          },
+          {
+            "action": "BUY",
+            "ticker": "BSRMLTD",
+            "shares": 1024,
+            "reason": "TOP_RANK_FILL",
+            "price": 97.19,
+            "fill_date": "2026-11-11",
+            "fill_source": "CLOSE_PROXY",
+            "cost": 99935.58
+          },
+          {
+            "action": "BUY",
+            "ticker": "CONFIDCEM",
+            "shares": 1602,
+            "reason": "TOP_RANK_FILL",
+            "price": 62.15,
+            "fill_date": "2026-11-11",
+            "fill_source": "CLOSE_PROXY",
+            "cost": 99977.49
+          }
+        ],
+        "daily_ic": null,
+        "eligible_count": 5
+      },
+      "block_hash": "cd390f82e21bd2d99b5cb14032b3a714b0a3e94bef7b7111549fe62e1ea0885c"
     }
   ]
 }

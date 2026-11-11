@@ -35,6 +35,8 @@ REPORT_DIR = BASE_DIR / "reports" / "daily"
 CONFIG_DIR = BASE_DIR / "config"
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
+from knowledge_adapter import load_company_signal
+
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 log = logging.getLogger("rise_fall_scanner")
 
@@ -80,12 +82,22 @@ def scan_daily_rise_and_fall(timeframe: str = "weekly") -> dict:
     db_v.execute("PRAGMA busy_timeout = 30000;")
     try:
         for ticker in tickers:
-            know_file = KNOW_DIR / ticker / f"{timeframe}.json"
-            if not know_file.exists():
+            data = None
+            try:
+                data = load_company_signal(ticker, timeframe)
+            except Exception:
+                pass
+            if not data:
+                know_file = KNOW_DIR / ticker / f"{timeframe}.json"
+                if not know_file.exists():
+                    continue
+                try:
+                    with open(know_file, encoding="utf-8") as f:
+                        data = json.load(f)
+                except Exception:
+                    continue
+            if not data:
                 continue
-
-            with open(know_file, encoding="utf-8") as f:
-                data = json.load(f)
 
             traj = data.get("trajectory", {})
             fund = data.get("fundamental", {}).get("signals", {})

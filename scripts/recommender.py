@@ -228,6 +228,7 @@ def classify_horizons(records: list[dict], asof_date: str = None) -> dict:
             loan_risk in ("none", "low") and
             gov_risk in ("Low", "Medium") and
             r.get("manipulation_risk") == "low" and
+            not r.get("thin_liquidity_flag") and
             conf >= 55.0
         )
         if is_asset:
@@ -307,7 +308,8 @@ def classify_horizons(records: list[dict], asof_date: str = None) -> dict:
             (de_val is None or de_val <= 1.0) and
             loan_risk in ("none", "low") and
             gov_risk in ("Low", "Medium") and
-            r.get("manipulation_risk") == "low"
+            r.get("manipulation_risk") == "low" and
+            not r.get("thin_liquidity_flag")
         )
         if is_swing:
             mid_rec = dict(r)
