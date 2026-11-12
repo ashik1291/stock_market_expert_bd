@@ -1,60 +1,61 @@
 {
   "ticker": "SUNLIFEINS",
-  "audited_at": "2026-11-11 11:51:28",
+  "audited_at": "2026-11-12 13:09:33",
   "worth_vs_greed": {
-    "current_price": 46.9,
-    "intrinsic_worth": 23.45,
+    "current_price": 50.4,
+    "intrinsic_worth": 25.2,
     "margin_of_safety_pct": -50.0,
     "extension_froth_score": 20.0,
     "greed_index": 20.0,
-    "rsi_14": 23.1,
-    "price_vs_ema50_pct": -7.8,
-    "price_vs_ema200_pct": -14.0,
+    "rsi_14": 61.6,
+    "price_vs_ema50_pct": -0.8,
+    "price_vs_ema200_pct": -7.5,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f346.0 \u2013 \u09f347.4",
-      "chase_cutoff_price": 48.1,
-      "when_to_wait": "If price opens or rises above \u09f348.1, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f346.0.",
-      "weekly_target_short": 48.5,
-      "monthly_target_swing": 53.9,
-      "long_term_target_asset": 61.0,
+      "optimal_entry_corridor": "\u09f349.4 \u2013 \u09f350.9",
+      "chase_cutoff_price": 51.7,
+      "when_to_wait": "If price opens or rises above \u09f351.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f349.4.",
+      "weekly_target_short": 52.2,
+      "monthly_target_swing": 58.0,
+      "long_term_target_asset": 65.5,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
     "reason": "Fundamental value severely lags stock price (MoS: -50.0%).",
-    "is_blacklisted": false,
-    "blacklist_reason": null
+    "is_blacklisted": true,
+    "blacklist_reason": "Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-11-12 \u2014 Price up +7.46% on untracked / high-risk security without verified earnings]",
+    "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-11-12 \u2014 Price up +7.46% on untracked / high-risk security without verified earnings]"
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -2.7,
-        "high": 48.8,
+        "return_pct": 4.56,
+        "high": 50.9,
         "low": 46.7,
-        "range_volatility_pct": 4.5
+        "range_volatility_pct": 8.99
       },
       "monthly_21d": {
-        "return_pct": -7.68,
+        "return_pct": 1.0,
         "high": 54.3,
         "low": 46.7,
         "range_volatility_pct": 16.27
       },
       "quarterly_63d": {
-        "return_pct": -14.57,
+        "return_pct": -4.18,
         "high": 62.5,
         "low": 46.7,
         "range_volatility_pct": 33.83
       },
       "half_yearly_126d": {
-        "return_pct": -15.19,
+        "return_pct": -11.42,
         "high": 66.9,
         "low": 40.2,
         "range_volatility_pct": 66.42
       },
       "yearly_252d": {
-        "return_pct": -30.1,
+        "return_pct": -26.32,
         "high": 79.0,
         "low": 40.2,
         "range_volatility_pct": 96.52
@@ -66,7 +67,7 @@
       "avg_wave_duration_bars": 24.0
     },
     "current_wave_phase": "BOTTOMING_SUPPORT",
-    "phase_guidance": "Drop (-25.0%) matches historical correction depth (-23.2%). Prepare to accumulate.",
+    "phase_guidance": "Drop (-19.4%) matches historical correction depth (-23.2%). Prepare to accumulate.",
     "top_seasonal_months": [
       {
         "month": "Jan",

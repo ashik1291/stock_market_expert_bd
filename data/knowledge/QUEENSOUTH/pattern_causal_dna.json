@@ -1,29 +1,29 @@
 {
   "ticker": "QUEENSOUTH",
-  "audited_at": "2026-11-11 11:51:20",
+  "audited_at": "2026-11-12 13:09:27",
   "worth_vs_greed": {
-    "current_price": 13.7,
-    "intrinsic_worth": 6.85,
+    "current_price": 13.9,
+    "intrinsic_worth": 6.95,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 70.0,
-    "greed_index": 70.0,
-    "rsi_14": 65.0,
-    "price_vs_ema50_pct": 11.2,
-    "price_vs_ema200_pct": 10.5,
+    "extension_froth_score": 60.0,
+    "greed_index": 60.0,
+    "rsi_14": 80.0,
+    "price_vs_ema50_pct": 12.3,
+    "price_vs_ema200_pct": 12.0,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f313.4 \u2013 \u09f313.8",
-      "chase_cutoff_price": 14.0,
-      "when_to_wait": "If price opens or rises above \u09f314.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f313.4.",
-      "weekly_target_short": 14.2,
-      "monthly_target_swing": 15.8,
-      "long_term_target_asset": 17.8,
+      "optimal_entry_corridor": "\u09f313.6 \u2013 \u09f314.0",
+      "chase_cutoff_price": 14.2,
+      "when_to_wait": "If price opens or rises above \u09f314.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f313.6.",
+      "weekly_target_short": 14.4,
+      "monthly_target_swing": 16.0,
+      "long_term_target_asset": 18.1,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
-    "status": "OVERVALUED_EUPHORIA",
-    "worth_decision": "SELL_TAKE_PROFIT",
-    "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (70.0/100). Danger of sharp mean reversion.",
+    "status": "CHRONIC_OVERVALUATION",
+    "worth_decision": "AVOID",
+    "reason": "Fundamental value severely lags stock price (MoS: -50.0%).",
     "is_blacklisted": true,
     "blacklist_reason": "Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-28 \u2014 Price up +9.82% with poor fundamentals (Negative EPS)]",
     "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-28 \u2014 Price up +9.82% with poor fundamentals (Negative EPS)]"
@@ -31,31 +31,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 5.38,
-        "high": 13.7,
+        "return_pct": 6.11,
+        "high": 14.1,
         "low": 12.8,
-        "range_volatility_pct": 7.03
+        "range_volatility_pct": 10.16
       },
       "monthly_21d": {
-        "return_pct": 7.87,
-        "high": 13.7,
+        "return_pct": 7.75,
+        "high": 14.1,
         "low": 10.9,
-        "range_volatility_pct": 25.69
+        "range_volatility_pct": 29.36
       },
       "quarterly_63d": {
-        "return_pct": 26.85,
-        "high": 13.9,
+        "return_pct": 31.13,
+        "high": 14.1,
         "low": 10.3,
-        "range_volatility_pct": 34.95
+        "range_volatility_pct": 36.89
       },
       "half_yearly_126d": {
-        "return_pct": -3.52,
+        "return_pct": -3.47,
         "high": 14.8,
         "low": 8.5,
         "range_volatility_pct": 74.12
       },
       "yearly_252d": {
-        "return_pct": -2.84,
+        "return_pct": -2.11,
         "high": 15.0,
         "low": 8.5,
         "range_volatility_pct": 76.47
@@ -67,7 +67,7 @@
       "avg_wave_duration_bars": 37.0
     },
     "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-1.4%). Wait for stabilizing base.",
+    "phase_guidance": "Ongoing pullback from peak (0.0%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Feb",

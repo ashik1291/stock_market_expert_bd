@@ -1,24 +1,24 @@
 {
   "ticker": "QUASEMIND",
-  "audited_at": "2026-11-11 11:51:20",
+  "audited_at": "2026-11-12 13:09:26",
   "worth_vs_greed": {
-    "current_price": 42.0,
-    "intrinsic_worth": 21.0,
+    "current_price": 40.8,
+    "intrinsic_worth": 20.4,
     "margin_of_safety_pct": -50.0,
     "extension_froth_score": 50.0,
     "greed_index": 50.0,
-    "rsi_14": 67.0,
-    "price_vs_ema50_pct": 7.0,
-    "price_vs_ema200_pct": 8.8,
+    "rsi_14": 65.6,
+    "price_vs_ema50_pct": 3.7,
+    "price_vs_ema200_pct": 5.7,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f341.2 \u2013 \u09f342.4",
-      "chase_cutoff_price": 43.0,
-      "when_to_wait": "If price opens or rises above \u09f343.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f341.2.",
-      "weekly_target_short": 43.5,
-      "monthly_target_swing": 48.3,
-      "long_term_target_asset": 54.6,
+      "optimal_entry_corridor": "\u09f340.0 \u2013 \u09f341.2",
+      "chase_cutoff_price": 41.8,
+      "when_to_wait": "If price opens or rises above \u09f341.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f340.0.",
+      "weekly_target_short": 42.2,
+      "monthly_target_swing": 46.9,
+      "long_term_target_asset": 53.0,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -31,34 +31,34 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 8.25,
+        "return_pct": 4.08,
         "high": 43.4,
         "low": 38.4,
         "range_volatility_pct": 13.02
       },
       "monthly_21d": {
-        "return_pct": 15.7,
+        "return_pct": 12.71,
         "high": 43.4,
         "low": 36.0,
         "range_volatility_pct": 20.56
       },
       "quarterly_63d": {
-        "return_pct": -2.1,
-        "high": 44.9,
+        "return_pct": -8.11,
+        "high": 44.7,
         "low": 36.0,
-        "range_volatility_pct": 24.72
+        "range_volatility_pct": 24.17
       },
       "half_yearly_126d": {
-        "return_pct": 2.69,
+        "return_pct": -5.12,
         "high": 49.0,
         "low": 35.3,
         "range_volatility_pct": 38.81
       },
       "yearly_252d": {
-        "return_pct": 53.28,
+        "return_pct": 44.68,
         "high": 49.0,
-        "low": 27.6,
-        "range_volatility_pct": 77.54
+        "low": 28.1,
+        "range_volatility_pct": 74.38
       }
     },
     "wave_metrics": {
@@ -66,8 +66,8 @@
       "median_correction_drop_pct": -23.7,
       "avg_wave_duration_bars": 21.0
     },
-    "current_wave_phase": "LATE_MARKUP",
-    "phase_guidance": "Approaching historical rally limit (+16.7% vs median +19.4%). Tighten stop.",
+    "current_wave_phase": "MARKUP_RALLY_MID",
+    "phase_guidance": "Midway through rally wave (+13.3% from base, historical target ~+19.4%).",
     "top_seasonal_months": [
       {
         "month": "Jul",

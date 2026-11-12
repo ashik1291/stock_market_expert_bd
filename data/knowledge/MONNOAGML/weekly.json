@@ -2,18 +2,18 @@
   "ticker": "MONNOAGML",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T05:51:13.565100",
-  "asof_price_date": "2026-11-11",
+  "analyzed_at": "2026-11-12T07:09:20.995086",
+  "asof_price_date": "2026-11-12",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 33.6539,
+    "rsi_14": 29.8499,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "HOLD",
-  "confidence": 45.48,
+  "confidence": 46.81,
   "trajectory": {
     "direction": "RISE_PREDICTED",
     "direction_icon": "\ud83d\udfe2",
@@ -22,33 +22,33 @@
     "momentum_status": "Bullish Momentum / Upward Bias",
     "short_term": {
       "predicted_path": "Oversold bounce to 20-DMA",
-      "upside_potential_pct": "+5.4%",
-      "downside_risk_pct": "-3.6%",
-      "target_price": 275.8,
-      "support_price": 252.3,
+      "upside_potential_pct": "+5.6%",
+      "downside_risk_pct": "-3.7%",
+      "target_price": 268.8,
+      "support_price": 245.0,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
       "upside_potential_pct": "+25.0%",
-      "downside_risk_pct": "-5.4%",
-      "target_price": 327.1,
-      "trailing_stop": 247.6,
-      "risk_reward_ratio": "4.6x"
+      "downside_risk_pct": "-5.6%",
+      "target_price": 318.1,
+      "trailing_stop": 240.2,
+      "risk_reward_ratio": "4.5x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.0%",
-      "downside_risk_pct": "-9.7%",
-      "target_price": 340.2,
+      "downside_risk_pct": "-10.1%",
+      "target_price": 330.9,
       "dividend_cagr": "5%\u20138%",
-      "risk_reward_ratio": "3.1x"
+      "risk_reward_ratio": "3.0x"
     }
   },
   "trade_levels": {
-    "entry": 261.7,
-    "stop_loss": 247.64,
-    "target": 289.82
+    "entry": 254.5,
+    "stop_loss": 240.24,
+    "target": 283.02
   },
   "precision": {
     "ticker": "MONNOAGML",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 7092,
+      "avg_daily_volume": 7196,
       "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 354,
-      "max_daily_accumulation_shares": 1063,
-      "max_order_bdt": 354.0,
-      "directive": "Max single order: 354 shares (Tk 354) to prevent >1% execution slippage"
+      "max_single_order_shares": 359,
+      "max_daily_accumulation_shares": 1079,
+      "max_order_bdt": 359.0,
+      "directive": "Max single order: 359 shares (Tk 359) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,37 +91,37 @@
       "status": "VALID",
       "low_52w": 248.5,
       "high_52w": 388.0,
-      "range_52w_pct": 9.5,
+      "range_52w_pct": 4.3,
       "channel_regime": "DEEP_ACCUMULATION_BASE",
-      "visual_gauge": "[ \u09f3248.5 |\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f3388.0 ] (9.5% (Truncated))",
+      "visual_gauge": "[ \u09f3248.5 |\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f3388.0 ] (4.3% (Truncated))",
       "conviction_bonus": 10.0,
       "is_truncated_window": true,
       "bars_evaluated": 100,
-      "signal": "Price is at the bottom 9.5% of 52-week channel (near \u09f3248.5 floor) \u2014 high margin of safety"
+      "signal": "Price is at the bottom 4.3% of 52-week channel (near \u09f3248.5 floor) \u2014 high margin of safety"
     },
     "total_precision_bonus": 10.0
   },
   "pattern_dna": {
     "ticker": "MONNOAGML",
-    "audited_at": "2026-11-11 11:51:13",
+    "audited_at": "2026-11-12 13:09:20",
     "worth_vs_greed": {
-      "current_price": 261.7,
-      "intrinsic_worth": 130.85,
+      "current_price": 254.5,
+      "intrinsic_worth": 127.25,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 20.0,
       "greed_index": 20.0,
-      "rsi_14": 25.1,
-      "price_vs_ema50_pct": -11.7,
-      "price_vs_ema200_pct": -20.0,
+      "rsi_14": 27.1,
+      "price_vs_ema50_pct": -13.7,
+      "price_vs_ema200_pct": -22.0,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f3256.5 \u2013 \u09f3264.3",
-        "chase_cutoff_price": 268.2,
-        "when_to_wait": "If price opens or rises above \u09f3268.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3256.5.",
-        "weekly_target_short": 270.9,
-        "monthly_target_swing": 301.0,
-        "long_term_target_asset": 340.2,
+        "optimal_entry_corridor": "\u09f3249.4 \u2013 \u09f3257.0",
+        "chase_cutoff_price": 260.9,
+        "when_to_wait": "If price opens or rises above \u09f3260.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3249.4.",
+        "weekly_target_short": 263.4,
+        "monthly_target_swing": 292.7,
+        "long_term_target_asset": 330.9,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
@@ -133,31 +133,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 4.47,
+          "return_pct": 1.6,
           "high": 262.5,
           "low": 249.5,
           "range_volatility_pct": 5.21
         },
         "monthly_21d": {
-          "return_pct": -13.54,
-          "high": 305.0,
+          "return_pct": -15.36,
+          "high": 304.5,
           "low": 248.5,
-          "range_volatility_pct": 22.74
+          "range_volatility_pct": 22.54
         },
         "quarterly_63d": {
-          "return_pct": -18.5,
+          "return_pct": -20.37,
           "high": 388.0,
           "low": 248.5,
           "range_volatility_pct": 56.14
         },
         "half_yearly_126d": {
-          "return_pct": -33.9,
+          "return_pct": -35.18,
           "high": 424.9,
           "low": 248.5,
           "range_volatility_pct": 70.99
         },
         "yearly_252d": {
-          "return_pct": -19.63,
+          "return_pct": -20.74,
           "high": 424.9,
           "low": 248.5,
           "range_volatility_pct": 70.99
@@ -169,7 +169,7 @@
         "avg_wave_duration_bars": 30.0
       },
       "current_wave_phase": "BOTTOMING_SUPPORT",
-      "phase_guidance": "Drop (-32.6%) matches historical correction depth (-24.6%). Prepare to accumulate.",
+      "phase_guidance": "Drop (-34.4%) matches historical correction depth (-24.6%). Prepare to accumulate.",
       "top_seasonal_months": [
         {
           "month": "Aug",
@@ -267,17 +267,17 @@
     ]
   },
   "technical": {
-    "score": 57.5,
+    "score": 65.0,
     "signals": {
-      "rsi": "neutral",
+      "rsi": "oversold_bullish",
       "macd": "bullish_crossover",
       "sma_trend": "neutral",
       "bb": "inside_bands",
-      "atr": 9.37,
-      "rsi_value": 33.05,
-      "last_close": 261.7,
-      "sma20": 271.14,
-      "sma50": 313.96,
+      "atr": 9.51,
+      "rsi_value": 29.0,
+      "last_close": 254.5,
+      "sma20": 268.89,
+      "sma50": 312.26,
       "sma200": null,
       "support_resistance": {
         "supports": [],
@@ -300,7 +300,7 @@
       "error": "no_fundamental_data",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 32.6,
+        "drawdown_pct": 34.4,
         "high_52w": 388.0,
         "low_52w": 248.5
       }
@@ -344,15 +344,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 14059,
-        "avg_volume": 9266.0,
+        "last_volume": 5853,
+        "avg_volume": 8227.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.5,
-        "avg_volume": 9369.0,
-        "today_volume": 14059,
+        "spike_ratio": 0.63,
+        "avg_volume": 9266.0,
+        "today_volume": 5853,
         "detail": "ok"
       },
       "serial_trading": {
@@ -371,20 +371,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": 4.3,
+        "price_change_3d": 1.11,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 45.48,
+    "composite_score": 46.81,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.68,
-      "technical": 0.2,
-      "governance": 0.12,
+      "fundamental": 0.674,
+      "technical": 0.202,
+      "governance": 0.124,
       "sentiment": 0.0
     }
   }

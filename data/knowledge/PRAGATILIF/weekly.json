@@ -2,53 +2,53 @@
   "ticker": "PRAGATILIF",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T05:51:18.905206",
-  "asof_price_date": "2026-11-11",
+  "analyzed_at": "2026-11-12T07:09:25.629837",
+  "asof_price_date": "2026-11-12",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 45.293,
+    "rsi_14": 60.239,
     "pe_ratio": null,
     "debt_equity": null
   },
-  "signal": "HOLD",
-  "confidence": 45.98,
+  "signal": "HOLD_MANIPULATION_RISK",
+  "confidence": 44.53,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
-    "heuristic_momentum_bias": 58.3,
+    "heuristic_momentum_bias": 53.3,
     "rise_probability_pct": null,
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+4.6%",
-      "downside_risk_pct": "-3.1%",
-      "target_price": 140.1,
-      "support_price": 129.9,
+      "upside_potential_pct": "+4.9%",
+      "downside_risk_pct": "-3.2%",
+      "target_price": 151.9,
+      "support_price": 140.1,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
       "upside_potential_pct": "+25.0%",
-      "downside_risk_pct": "-4.6%",
-      "target_price": 167.5,
-      "trailing_stop": 127.9,
-      "risk_reward_ratio": "5.4x"
+      "downside_risk_pct": "-10.0%",
+      "target_price": 181.0,
+      "trailing_stop": 130.3,
+      "risk_reward_ratio": "2.5x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.0%",
-      "downside_risk_pct": "-8.3%",
-      "target_price": 174.2,
+      "downside_risk_pct": "-12.0%",
+      "target_price": 188.2,
       "dividend_cagr": "5%\u20138%",
-      "risk_reward_ratio": "3.6x"
+      "risk_reward_ratio": "2.5x"
     }
   },
   "trade_levels": {
-    "entry": 134.0,
-    "stop_loss": 127.89,
-    "target": 146.22
+    "entry": 144.8,
+    "stop_loss": 137.75,
+    "target": 158.9
   },
   "precision": {
     "ticker": "PRAGATILIF",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 38102,
+      "avg_daily_volume": 44111,
       "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 1905,
-      "max_daily_accumulation_shares": 5715,
-      "max_order_bdt": 1905.0,
-      "directive": "Max single order: 1,905 shares (Tk 1,905) to prevent >1% execution slippage"
+      "max_single_order_shares": 2205,
+      "max_daily_accumulation_shares": 6616,
+      "max_order_bdt": 2205.0,
+      "directive": "Max single order: 2,205 shares (Tk 2,205) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,73 +91,74 @@
       "status": "VALID",
       "low_52w": 127.3,
       "high_52w": 283.9,
-      "range_52w_pct": 4.3,
+      "range_52w_pct": 11.2,
       "channel_regime": "DEEP_ACCUMULATION_BASE",
-      "visual_gauge": "[ \u09f3127.3 |\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f3283.9 ] (4.3% (Truncated))",
+      "visual_gauge": "[ \u09f3127.3 |\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f3283.9 ] (11.2% (Truncated))",
       "conviction_bonus": 10.0,
       "is_truncated_window": true,
       "bars_evaluated": 101,
-      "signal": "Price is at the bottom 4.3% of 52-week channel (near \u09f3127.3 floor) \u2014 high margin of safety"
+      "signal": "Price is at the bottom 11.2% of 52-week channel (near \u09f3127.3 floor) \u2014 high margin of safety"
     },
     "total_precision_bonus": 10.0
   },
   "pattern_dna": {
     "ticker": "PRAGATILIF",
-    "audited_at": "2026-11-11 11:51:18",
+    "audited_at": "2026-11-12 13:09:25",
     "worth_vs_greed": {
-      "current_price": 134.0,
-      "intrinsic_worth": 67.0,
+      "current_price": 144.8,
+      "intrinsic_worth": 72.4,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 20.0,
       "greed_index": 20.0,
-      "rsi_14": 47.4,
-      "price_vs_ema50_pct": -7.7,
-      "price_vs_ema200_pct": -12.8,
+      "rsi_14": 66.9,
+      "price_vs_ema50_pct": -0.2,
+      "price_vs_ema200_pct": -5.7,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f3131.3 \u2013 \u09f3135.3",
-        "chase_cutoff_price": 137.3,
-        "when_to_wait": "If price opens or rises above \u09f3137.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3131.3.",
-        "weekly_target_short": 138.7,
-        "monthly_target_swing": 154.1,
-        "long_term_target_asset": 174.2,
+        "optimal_entry_corridor": "\u09f3141.9 \u2013 \u09f3146.2",
+        "chase_cutoff_price": 148.4,
+        "when_to_wait": "If price opens or rises above \u09f3148.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3141.9.",
+        "weekly_target_short": 149.9,
+        "monthly_target_swing": 166.5,
+        "long_term_target_asset": 188.2,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
       "worth_decision": "AVOID",
       "reason": "Fundamental value severely lags stock price (MoS: -50.0%).",
-      "is_blacklisted": false,
-      "blacklist_reason": null
+      "is_blacklisted": true,
+      "blacklist_reason": "Blocked by Forensic Surveillance [CRITICAL: ABNORMAL_VOLUME_SURGE on 2026-11-12 \u2014 Low-float surge is 4.2x 20-day average (155,626 vs 36,814) | Price up +8.06% on untracked / high-risk security without verified earnings]",
+      "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [CRITICAL: ABNORMAL_VOLUME_SURGE on 2026-11-12 \u2014 Low-float surge is 4.2x 20-day average (155,626 vs 36,814) | Price up +8.06% on untracked / high-risk security without verified earnings]"
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 1.82,
-          "high": 135.0,
+          "return_pct": 9.7,
+          "high": 146.9,
           "low": 130.3,
-          "range_volatility_pct": 3.61
+          "range_volatility_pct": 12.74
         },
         "monthly_21d": {
-          "return_pct": 0.37,
-          "high": 137.5,
+          "return_pct": 7.18,
+          "high": 146.9,
           "low": 128.0,
-          "range_volatility_pct": 7.42
+          "range_volatility_pct": 14.77
         },
         "quarterly_63d": {
-          "return_pct": -19.37,
+          "return_pct": -12.03,
           "high": 188.0,
           "low": 128.0,
           "range_volatility_pct": 46.88
         },
         "half_yearly_126d": {
-          "return_pct": -18.04,
+          "return_pct": -13.09,
           "high": 283.9,
           "low": 127.3,
           "range_volatility_pct": 123.02
         },
         "yearly_252d": {
-          "return_pct": 22.94,
+          "return_pct": 30.8,
           "high": 283.9,
           "low": 75.1,
           "range_volatility_pct": 278.03
@@ -169,7 +170,7 @@
         "avg_wave_duration_bars": 24.0
       },
       "current_wave_phase": "BOTTOMING_SUPPORT",
-      "phase_guidance": "Drop (-28.7%) matches historical correction depth (-22.6%). Prepare to accumulate.",
+      "phase_guidance": "Drop (-23.0%) matches historical correction depth (-22.6%). Prepare to accumulate.",
       "top_seasonal_months": [
         {
           "month": "Sep",
@@ -267,17 +268,17 @@
     ]
   },
   "technical": {
-    "score": 60.0,
+    "score": 53.75,
     "signals": {
       "rsi": "neutral",
       "macd": "bullish_crossover",
       "sma_trend": "neutral",
-      "bb": "inside_bands",
-      "atr": 4.07,
-      "rsi_value": 44.76,
-      "last_close": 134.0,
-      "sma20": 132.72,
-      "sma50": 145.11,
+      "bb": "at_upper_band_bearish",
+      "atr": 4.7,
+      "rsi_value": 59.67,
+      "last_close": 144.8,
+      "sma20": 133.17,
+      "sma50": 144.96,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -304,7 +305,7 @@
       "error": "no_fundamental_data",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 52.8,
+        "drawdown_pct": 49.0,
         "high_52w": 283.9,
         "low_52w": 127.3
       }
@@ -340,23 +341,25 @@
     }
   },
   "manipulation": {
-    "manipulation_score": 0,
+    "manipulation_score": 10,
     "manipulation_risk": "low",
     "block_buy": false,
-    "flags": [],
+    "flags": [
+      "price_surge_no_news: price_10.5pct_zero_news"
+    ],
     "checks": {
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 53801,
-        "avg_volume": 89489.0,
+        "last_volume": 155626,
+        "avg_volume": 86602.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.58,
-        "avg_volume": 92396.0,
-        "today_volume": 53801,
+        "spike_ratio": 1.74,
+        "avg_volume": 89489.0,
+        "today_volume": 155626,
         "detail": "ok"
       },
       "serial_trading": {
@@ -374,21 +377,21 @@
         "detail": "insufficient_fundamental_history"
       },
       "price_surge_no_news": {
-        "flag": false,
-        "price_change_3d": 1.75,
+        "flag": true,
+        "price_change_3d": 10.53,
         "news_count_3d": 0,
-        "detail": "ok"
+        "detail": "price_10.5pct_zero_news"
       }
     }
   },
   "composite": {
-    "composite_score": 45.98,
+    "composite_score": 44.53,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.68,
-      "technical": 0.2,
-      "governance": 0.12,
+      "fundamental": 0.674,
+      "technical": 0.202,
+      "governance": 0.124,
       "sentiment": 0.0
     }
   }

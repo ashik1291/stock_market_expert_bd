@@ -2,18 +2,18 @@
   "ticker": "SOUTHEASTB",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T05:51:26.871150",
-  "asof_price_date": "2026-11-11",
+  "analyzed_at": "2026-11-12T07:09:31.997348",
+  "asof_price_date": "2026-11-12",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 71.3189,
+    "rsi_14": 71.327,
     "pe_ratio": 3.59,
     "debt_equity": 0.0
   },
   "signal": "HOLD_INELIGIBLE_DEFICIT",
-  "confidence": 60.4,
+  "confidence": 60.06,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 873858,
+      "avg_daily_volume": 878329,
       "daily_turnover_bdt_cr": 0.09,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 43692,
-      "max_daily_accumulation_shares": 131078,
-      "max_order_bdt": 43692.0,
-      "directive": "Max single order: 43,692 shares (Tk 43,692) to prevent >1% execution slippage"
+      "max_single_order_shares": 43916,
+      "max_daily_accumulation_shares": 131749,
+      "max_order_bdt": 43916.0,
+      "directive": "Max single order: 43,916 shares (Tk 43,916) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -103,16 +103,16 @@
   },
   "pattern_dna": {
     "ticker": "SOUTHEASTB",
-    "audited_at": "2026-11-11 11:51:26",
+    "audited_at": "2026-11-12 13:09:31",
     "worth_vs_greed": {
       "current_price": 11.9,
       "intrinsic_worth": 3.04,
       "margin_of_safety_pct": -74.5,
-      "extension_froth_score": 40.0,
-      "greed_index": 40.0,
-      "rsi_14": 71.4,
-      "price_vs_ema50_pct": 10.7,
-      "price_vs_ema200_pct": 24.0,
+      "extension_froth_score": 30.0,
+      "greed_index": 30.0,
+      "rsi_14": 63.6,
+      "price_vs_ema50_pct": 10.3,
+      "price_vs_ema200_pct": 23.7,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f30.38, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
@@ -134,12 +134,12 @@
       "intervals": {
         "weekly_5d": {
           "return_pct": 1.71,
-          "high": 11.9,
-          "low": 11.6,
-          "range_volatility_pct": 2.59
+          "high": 12.0,
+          "low": 11.7,
+          "range_volatility_pct": 2.56
         },
         "monthly_21d": {
-          "return_pct": 5.31,
+          "return_pct": 4.39,
           "high": 12.0,
           "low": 11.1,
           "range_volatility_pct": 8.11
@@ -157,7 +157,7 @@
           "range_volatility_pct": 53.85
         },
         "yearly_252d": {
-          "return_pct": 35.23,
+          "return_pct": 33.71,
           "high": 12.0,
           "low": 6.6,
           "range_volatility_pct": 81.82
@@ -276,8 +276,8 @@
       "atr": 0.27,
       "rsi_value": 70.84,
       "last_close": 11.9,
-      "sma20": 11.61,
-      "sma50": 10.47,
+      "sma20": 11.63,
+      "sma50": 10.53,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -358,15 +358,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 646691,
-        "avg_volume": 808043.0,
+        "last_volume": 553484,
+        "avg_volume": 818250.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.8,
-        "avg_volume": 807552.0,
-        "today_volume": 646691,
+        "spike_ratio": 0.68,
+        "avg_volume": 808043.0,
+        "today_volume": 553484,
         "detail": "ok"
       },
       "serial_trading": {
@@ -392,13 +392,13 @@
     }
   },
   "composite": {
-    "composite_score": 60.4,
+    "composite_score": 60.06,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.68,
-      "technical": 0.2,
-      "governance": 0.12,
+      "fundamental": 0.674,
+      "technical": 0.202,
+      "governance": 0.124,
       "sentiment": 0.0
     }
   }

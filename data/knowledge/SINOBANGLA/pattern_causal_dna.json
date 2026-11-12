@@ -1,24 +1,24 @@
 {
   "ticker": "SINOBANGLA",
-  "audited_at": "2026-11-11 11:51:25",
+  "audited_at": "2026-11-12 13:09:31",
   "worth_vs_greed": {
-    "current_price": 52.4,
-    "intrinsic_worth": 26.2,
+    "current_price": 51.9,
+    "intrinsic_worth": 25.95,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 40.0,
-    "greed_index": 40.0,
-    "rsi_14": 73.1,
-    "price_vs_ema50_pct": 10.3,
-    "price_vs_ema200_pct": 14.1,
+    "extension_froth_score": 30.0,
+    "greed_index": 30.0,
+    "rsi_14": 75.2,
+    "price_vs_ema50_pct": 8.9,
+    "price_vs_ema200_pct": 12.8,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f351.4 \u2013 \u09f352.9",
-      "chase_cutoff_price": 53.7,
-      "when_to_wait": "If price opens or rises above \u09f353.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f351.4.",
-      "weekly_target_short": 54.2,
-      "monthly_target_swing": 60.3,
-      "long_term_target_asset": 68.1,
+      "optimal_entry_corridor": "\u09f350.9 \u2013 \u09f352.4",
+      "chase_cutoff_price": 53.2,
+      "when_to_wait": "If price opens or rises above \u09f353.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f350.9.",
+      "weekly_target_short": 53.7,
+      "monthly_target_swing": 59.7,
+      "long_term_target_asset": 67.5,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -31,31 +31,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 5.43,
+        "return_pct": 4.64,
         "high": 52.9,
-        "low": 49.6,
-        "range_volatility_pct": 6.65
+        "low": 50.0,
+        "range_volatility_pct": 5.8
       },
       "monthly_21d": {
-        "return_pct": 12.45,
+        "return_pct": 13.07,
         "high": 52.9,
         "low": 45.3,
         "range_volatility_pct": 16.78
       },
       "quarterly_63d": {
-        "return_pct": 9.85,
+        "return_pct": 13.32,
         "high": 52.9,
         "low": 41.0,
         "range_volatility_pct": 29.02
       },
       "half_yearly_126d": {
-        "return_pct": 0.0,
+        "return_pct": -3.35,
         "high": 67.0,
         "low": 37.7,
         "range_volatility_pct": 77.72
       },
       "yearly_252d": {
-        "return_pct": 15.16,
+        "return_pct": 11.37,
         "high": 67.0,
         "low": 37.0,
         "range_volatility_pct": 81.08
@@ -67,7 +67,7 @@
       "avg_wave_duration_bars": 25.0
     },
     "current_wave_phase": "LATE_MARKUP",
-    "phase_guidance": "Approaching historical rally limit (+25.1% vs median +19.7%). Tighten stop.",
+    "phase_guidance": "Approaching historical rally limit (+23.9% vs median +19.7%). Tighten stop.",
     "top_seasonal_months": [
       {
         "month": "Jul",

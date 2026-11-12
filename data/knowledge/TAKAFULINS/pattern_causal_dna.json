@@ -1,24 +1,24 @@
 {
   "ticker": "TAKAFULINS",
-  "audited_at": "2026-11-11 11:51:28",
+  "audited_at": "2026-11-12 13:09:33",
   "worth_vs_greed": {
-    "current_price": 45.1,
-    "intrinsic_worth": 22.55,
+    "current_price": 46.0,
+    "intrinsic_worth": 23.0,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 30.0,
-    "greed_index": 30.0,
-    "rsi_14": 41.7,
-    "price_vs_ema50_pct": 8.7,
-    "price_vs_ema200_pct": 22.3,
+    "extension_froth_score": 40.0,
+    "greed_index": 40.0,
+    "rsi_14": 50.5,
+    "price_vs_ema50_pct": 10.4,
+    "price_vs_ema200_pct": 24.4,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f344.2 \u2013 \u09f345.6",
-      "chase_cutoff_price": 46.2,
-      "when_to_wait": "If price opens or rises above \u09f346.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f344.2.",
-      "weekly_target_short": 46.7,
-      "monthly_target_swing": 51.9,
-      "long_term_target_asset": 58.6,
+      "optimal_entry_corridor": "\u09f345.1 \u2013 \u09f346.5",
+      "chase_cutoff_price": 47.1,
+      "when_to_wait": "If price opens or rises above \u09f347.1, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f345.1.",
+      "weekly_target_short": 47.6,
+      "monthly_target_swing": 52.9,
+      "long_term_target_asset": 59.8,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -30,31 +30,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -0.44,
-        "high": 46.5,
+        "return_pct": 0.22,
+        "high": 46.8,
         "low": 44.2,
-        "range_volatility_pct": 5.2
+        "range_volatility_pct": 5.88
       },
       "monthly_21d": {
-        "return_pct": -2.8,
+        "return_pct": -1.71,
         "high": 47.7,
         "low": 42.4,
         "range_volatility_pct": 12.5
       },
       "quarterly_63d": {
-        "return_pct": 32.65,
+        "return_pct": 34.11,
         "high": 52.6,
         "low": 30.0,
         "range_volatility_pct": 75.33
       },
       "half_yearly_126d": {
-        "return_pct": 31.49,
+        "return_pct": 34.5,
         "high": 52.6,
         "low": 30.0,
         "range_volatility_pct": 75.33
       },
       "yearly_252d": {
-        "return_pct": 34.23,
+        "return_pct": 34.9,
         "high": 52.6,
         "low": 30.0,
         "range_volatility_pct": 75.33
@@ -65,8 +65,8 @@
       "median_correction_drop_pct": -16.6,
       "avg_wave_duration_bars": 18.0
     },
-    "current_wave_phase": "BOTTOMING_SUPPORT",
-    "phase_guidance": "Drop (-14.3%) matches historical correction depth (-16.6%). Prepare to accumulate.",
+    "current_wave_phase": "MARKDOWN_PULLBACK",
+    "phase_guidance": "Ongoing pullback from peak (-12.5%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Sep",

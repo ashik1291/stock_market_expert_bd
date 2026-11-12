@@ -2,18 +2,18 @@
   "ticker": "EMERALDOIL",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T05:51:00.933223",
-  "asof_price_date": "2026-11-11",
+  "analyzed_at": "2026-11-12T07:09:11.117767",
+  "asof_price_date": "2026-11-12",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 62.9232,
+    "rsi_14": 64.7509,
     "pe_ratio": null,
     "debt_equity": null
   },
-  "signal": "SELL",
-  "confidence": 43.48,
+  "signal": "HOLD",
+  "confidence": 45.29,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -22,33 +22,33 @@
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+6.0%",
-      "downside_risk_pct": "-4.1%",
-      "target_price": 28.3,
-      "support_price": 25.6,
-      "risk_reward_ratio": "1.5x"
+      "upside_potential_pct": "+5.9%",
+      "downside_risk_pct": "-3.7%",
+      "target_price": 28.6,
+      "support_price": 26.0,
+      "risk_reward_ratio": "1.6x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+10.1%",
-      "downside_risk_pct": "-10.1%",
-      "target_price": 29.4,
-      "trailing_stop": 24.0,
+      "upside_potential_pct": "+9.6%",
+      "downside_risk_pct": "-10.0%",
+      "target_price": 29.6,
+      "trailing_stop": 24.3,
       "risk_reward_ratio": "1.0x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.0%",
       "downside_risk_pct": "-12.0%",
-      "target_price": 34.7,
+      "target_price": 35.1,
       "dividend_cagr": "5%\u20138%",
       "risk_reward_ratio": "2.5x"
     }
   },
   "trade_levels": {
-    "entry": 26.7,
-    "stop_loss": 25.08,
-    "target": 29.94
+    "entry": 27.0,
+    "stop_loss": 25.44,
+    "target": 30.12
   },
   "precision": {
     "ticker": "EMERALDOIL",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 105643,
+      "avg_daily_volume": 102265,
       "daily_turnover_bdt_cr": 0.01,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 5282,
-      "max_daily_accumulation_shares": 15846,
-      "max_order_bdt": 5282.0,
-      "directive": "Max single order: 5,282 shares (Tk 5,282) to prevent >1% execution slippage"
+      "max_single_order_shares": 5113,
+      "max_daily_accumulation_shares": 15339,
+      "max_order_bdt": 5113.0,
+      "directive": "Max single order: 5,113 shares (Tk 5,113) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,37 +91,37 @@
       "status": "VALID",
       "low_52w": 10.2,
       "high_52w": 28.9,
-      "range_52w_pct": 88.2,
+      "range_52w_pct": 89.8,
       "channel_regime": "OVEREXTENDED_CEILING",
-      "visual_gauge": "[ \u09f310.2 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591| \u09f328.9 ] (88.2% (Truncated))",
+      "visual_gauge": "[ \u09f310.2 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591| \u09f328.9 ] (89.8% (Truncated))",
       "conviction_bonus": -10.0,
       "is_truncated_window": true,
       "bars_evaluated": 101,
-      "signal": "Price is at 88.2% of 52-week high (near \u09f328.9) \u2014 elevated mean-reversion risk"
+      "signal": "Price is at 89.8% of 52-week high (near \u09f328.9) \u2014 elevated mean-reversion risk"
     },
     "total_precision_bonus": -10.0
   },
   "pattern_dna": {
     "ticker": "EMERALDOIL",
-    "audited_at": "2026-11-11 11:51:00",
+    "audited_at": "2026-11-12 13:09:11",
     "worth_vs_greed": {
-      "current_price": 26.7,
-      "intrinsic_worth": 13.35,
+      "current_price": 27.0,
+      "intrinsic_worth": 13.5,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 40.0,
       "greed_index": 40.0,
-      "rsi_14": 49.2,
-      "price_vs_ema50_pct": 19.5,
-      "price_vs_ema200_pct": 28.6,
+      "rsi_14": 54.8,
+      "price_vs_ema50_pct": 19.9,
+      "price_vs_ema200_pct": 29.7,
       "merit_status": "SPECULATIVE_JUNK_PUMP",
       "merit_reason": "Price is surging aggressively without positive EPS backing. Pure speculative risk.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f326.2 \u2013 \u09f327.0",
-        "chase_cutoff_price": 27.4,
-        "when_to_wait": "If price opens or rises above \u09f327.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f326.2.",
-        "weekly_target_short": 27.6,
-        "monthly_target_swing": 30.7,
-        "long_term_target_asset": 34.7,
+        "optimal_entry_corridor": "\u09f326.5 \u2013 \u09f327.3",
+        "chase_cutoff_price": 27.7,
+        "when_to_wait": "If price opens or rises above \u09f327.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f326.5.",
+        "weekly_target_short": 27.9,
+        "monthly_target_swing": 31.0,
+        "long_term_target_asset": 35.1,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "SPECULATIVE_GREED",
@@ -133,31 +133,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -1.11,
+          "return_pct": 0.75,
           "high": 27.6,
           "low": 26.5,
           "range_volatility_pct": 4.15
         },
         "monthly_21d": {
-          "return_pct": -3.61,
+          "return_pct": -0.74,
           "high": 28.4,
           "low": 24.8,
           "range_volatility_pct": 14.52
         },
         "quarterly_63d": {
-          "return_pct": 76.82,
+          "return_pct": 82.43,
           "high": 28.9,
           "low": 11.5,
           "range_volatility_pct": 151.3
         },
         "half_yearly_126d": {
-          "return_pct": 42.02,
+          "return_pct": 39.9,
           "high": 28.9,
           "low": 10.2,
           "range_volatility_pct": 183.33
         },
         "yearly_252d": {
-          "return_pct": 15.58,
+          "return_pct": 6.3,
           "high": 28.9,
           "low": 10.2,
           "range_volatility_pct": 183.33
@@ -169,7 +169,7 @@
         "avg_wave_duration_bars": 18.0
       },
       "current_wave_phase": "MARKDOWN_PULLBACK",
-      "phase_guidance": "Ongoing pullback from peak (-7.6%). Wait for stabilizing base.",
+      "phase_guidance": "Ongoing pullback from peak (-6.6%). Wait for stabilizing base.",
       "top_seasonal_months": [
         {
           "month": "Jun",
@@ -267,17 +267,17 @@
     ]
   },
   "technical": {
-    "score": 47.5,
+    "score": 57.5,
     "signals": {
       "rsi": "neutral",
-      "macd": "bearish_crossover",
+      "macd": "neutral",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 1.08,
-      "rsi_value": 63.26,
-      "last_close": 26.7,
-      "sma20": 26.8,
-      "sma50": 20.52,
+      "atr": 1.04,
+      "rsi_value": 64.83,
+      "last_close": 27.0,
+      "sma20": 26.76,
+      "sma50": 20.78,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -306,7 +306,7 @@
       "error": "no_fundamental_data",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 7.6,
+        "drawdown_pct": 6.6,
         "high_52w": 28.9,
         "low_52w": 10.2
       }
@@ -350,15 +350,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 133458,
-        "avg_volume": 104591.0,
+        "last_volume": 45892,
+        "avg_volume": 101371.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.3,
-        "avg_volume": 102383.0,
-        "today_volume": 133458,
+        "spike_ratio": 0.44,
+        "avg_volume": 104591.0,
+        "today_volume": 45892,
         "detail": "ok"
       },
       "serial_trading": {
@@ -377,20 +377,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": -1.84,
+        "price_change_3d": 0.37,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 43.48,
+    "composite_score": 45.29,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.68,
-      "technical": 0.2,
-      "governance": 0.12,
+      "fundamental": 0.674,
+      "technical": 0.202,
+      "governance": 0.124,
       "sentiment": 0.0
     }
   }

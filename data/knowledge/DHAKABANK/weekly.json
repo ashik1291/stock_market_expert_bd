@@ -2,18 +2,18 @@
   "ticker": "DHAKABANK",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T05:50:58.888168",
-  "asof_price_date": "2026-11-11",
+  "analyzed_at": "2026-11-12T07:09:09.552539",
+  "asof_price_date": "2026-11-12",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 57.4551,
+    "rsi_14": 57.3956,
     "pe_ratio": 4.188679245283019,
     "debt_equity": 1.326
   },
   "signal": "HOLD_INELIGIBLE_DEFICIT",
-  "confidence": 62.97,
+  "confidence": 63.14,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -22,11 +22,11 @@
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+3.5%",
+      "upside_potential_pct": "+2.7%",
       "downside_risk_pct": "-1.8%",
-      "target_price": 11.7,
+      "target_price": 11.6,
       "support_price": 11.1,
-      "risk_reward_ratio": "1.9x"
+      "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 11.3,
-    "stop_loss": 10.94,
-    "target": 12.02
+    "stop_loss": 10.96,
+    "target": 11.98
   },
   "precision": {
     "ticker": "DHAKABANK",
@@ -72,7 +72,7 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 1043384,
+      "avg_daily_volume": 1026960,
       "daily_turnover_bdt_cr": 0.1,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
@@ -103,14 +103,14 @@
   },
   "pattern_dna": {
     "ticker": "DHAKABANK",
-    "audited_at": "2026-11-11 11:50:58",
+    "audited_at": "2026-11-12 13:09:09",
     "worth_vs_greed": {
       "current_price": 11.3,
       "intrinsic_worth": 1.36,
       "margin_of_safety_pct": -88.0,
-      "extension_froth_score": 30.0,
-      "greed_index": 30.0,
-      "rsi_14": 58.8,
+      "extension_froth_score": 20.0,
+      "greed_index": 20.0,
+      "rsi_14": 46.2,
       "price_vs_ema50_pct": 0.0,
       "price_vs_ema200_pct": -3.6,
       "merit_status": "EARNINGS_BACKED_MERIT",
@@ -139,25 +139,25 @@
           "range_volatility_pct": 4.63
         },
         "monthly_21d": {
-          "return_pct": 2.73,
+          "return_pct": 3.67,
           "high": 11.5,
           "low": 10.8,
           "range_volatility_pct": 6.48
         },
         "quarterly_63d": {
-          "return_pct": -9.6,
-          "high": 12.7,
+          "return_pct": -8.87,
+          "high": 12.5,
           "low": 10.8,
-          "range_volatility_pct": 17.59
+          "range_volatility_pct": 15.74
         },
         "half_yearly_126d": {
-          "return_pct": -7.38,
+          "return_pct": -8.13,
           "high": 12.8,
           "low": 10.8,
           "range_volatility_pct": 18.52
         },
         "yearly_252d": {
-          "return_pct": 3.67,
+          "return_pct": 2.73,
           "high": 16.0,
           "low": 10.2,
           "range_volatility_pct": 56.86
@@ -267,18 +267,18 @@
     ]
   },
   "technical": {
-    "score": 60.0,
+    "score": 62.5,
     "signals": {
       "rsi": "neutral",
       "macd": "bullish_crossover",
-      "sma_trend": "neutral",
+      "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 0.24,
+      "atr": 0.23,
       "rsi_value": 57.7,
       "last_close": 11.3,
-      "sma20": 11.02,
-      "sma50": 11.31,
-      "sma200": 12.11,
+      "sma20": 11.04,
+      "sma50": 11.29,
+      "sma200": 12.1,
       "support_resistance": {
         "supports": [
           10.9,
@@ -359,15 +359,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 1648347,
-        "avg_volume": 1115986.0,
+        "last_volume": 239931,
+        "avg_volume": 1095354.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.49,
-        "avg_volume": 1108902.0,
-        "today_volume": 1648347,
+        "spike_ratio": 0.21,
+        "avg_volume": 1115986.0,
+        "today_volume": 239931,
         "detail": "ok"
       },
       "serial_trading": {
@@ -393,13 +393,13 @@
     }
   },
   "composite": {
-    "composite_score": 62.97,
+    "composite_score": 63.14,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.68,
-      "technical": 0.2,
-      "governance": 0.12,
+      "fundamental": 0.674,
+      "technical": 0.202,
+      "governance": 0.124,
       "sentiment": 0.0
     }
   }

@@ -2,18 +2,18 @@
   "ticker": "IFIC",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T05:51:07.194388",
-  "asof_price_date": "2026-11-11",
+  "analyzed_at": "2026-11-12T07:09:16.110108",
+  "asof_price_date": "2026-11-12",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 59.98,
+    "rsi_14": 59.9241,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "HOLD",
-  "confidence": 45.48,
+  "confidence": 45.29,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -72,7 +72,7 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 1439558,
+      "avg_daily_volume": 1422324,
       "daily_turnover_bdt_cr": 0.14,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
@@ -90,20 +90,20 @@
     "range_52w_corridor": {
       "status": "VALID",
       "low_52w": 3.6,
-      "high_52w": 6.0,
-      "range_52w_pct": 58.3,
+      "high_52w": 5.8,
+      "range_52w_pct": 63.6,
       "channel_regime": "EQUILIBRIUM_CHANNEL",
-      "visual_gauge": "[ \u09f33.6 |\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591| \u09f36.0 ] (58.3% (Truncated))",
+      "visual_gauge": "[ \u09f33.6 |\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591| \u09f35.8 ] (63.6% (Truncated))",
       "conviction_bonus": 0.0,
       "is_truncated_window": true,
       "bars_evaluated": 101,
-      "signal": "Price is in mid-channel (58.3% between \u09f33.6 and \u09f36.0)"
+      "signal": "Price is in mid-channel (63.6% between \u09f33.6 and \u09f35.8)"
     },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "IFIC",
-    "audited_at": "2026-11-11 11:51:07",
+    "audited_at": "2026-11-12 13:09:16",
     "worth_vs_greed": {
       "current_price": 5.0,
       "intrinsic_worth": 2.5,
@@ -112,7 +112,7 @@
       "greed_index": 30.0,
       "rsi_14": 66.7,
       "price_vs_ema50_pct": 2.3,
-      "price_vs_ema200_pct": -9.3,
+      "price_vs_ema200_pct": -9.2,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -139,16 +139,16 @@
           "range_volatility_pct": 4.17
         },
         "monthly_21d": {
-          "return_pct": 0.0,
+          "return_pct": 2.04,
           "high": 5.1,
           "low": 4.8,
           "range_volatility_pct": 6.25
         },
         "quarterly_63d": {
-          "return_pct": -5.66,
-          "high": 5.4,
+          "return_pct": -1.96,
+          "high": 5.1,
           "low": 4.4,
-          "range_volatility_pct": 22.73
+          "range_volatility_pct": 15.91
         },
         "half_yearly_126d": {
           "return_pct": -16.67,
@@ -274,10 +274,10 @@
       "sma_trend": "bullish",
       "bb": "inside_bands",
       "atr": 0.17,
-      "rsi_value": 59.22,
+      "rsi_value": 59.24,
       "last_close": 5.0,
       "sma20": 4.95,
-      "sma50": 4.81,
+      "sma50": 4.82,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -310,8 +310,8 @@
       "error": "no_fundamental_data",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 16.7,
-        "high_52w": 6.0,
+        "drawdown_pct": 13.8,
+        "high_52w": 5.8,
         "low_52w": 3.6
       }
     }
@@ -354,15 +354,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 2989755,
-        "avg_volume": 1736269.0,
+        "last_volume": 450632,
+        "avg_volume": 1693526.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.76,
-        "avg_volume": 1703127.0,
-        "today_volume": 2989755,
+        "spike_ratio": 0.26,
+        "avg_volume": 1736269.0,
+        "today_volume": 450632,
         "detail": "ok"
       },
       "serial_trading": {
@@ -388,13 +388,13 @@
     }
   },
   "composite": {
-    "composite_score": 45.48,
+    "composite_score": 45.29,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.68,
-      "technical": 0.2,
-      "governance": 0.12,
+      "fundamental": 0.674,
+      "technical": 0.202,
+      "governance": 0.124,
       "sentiment": 0.0
     }
   }

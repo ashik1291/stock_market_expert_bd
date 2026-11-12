@@ -1,24 +1,24 @@
 {
   "ticker": "KAY&QUE",
-  "audited_at": "2026-11-11 11:51:09",
+  "audited_at": "2026-11-12 13:09:17",
   "worth_vs_greed": {
-    "current_price": 351.4,
-    "intrinsic_worth": 175.7,
+    "current_price": 364.5,
+    "intrinsic_worth": 182.25,
     "margin_of_safety_pct": -50.0,
     "extension_froth_score": 20.0,
     "greed_index": 20.0,
-    "rsi_14": 20.8,
-    "price_vs_ema50_pct": -7.1,
-    "price_vs_ema200_pct": 3.1,
+    "rsi_14": 28.6,
+    "price_vs_ema50_pct": -3.5,
+    "price_vs_ema200_pct": 6.9,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f3344.4 \u2013 \u09f3354.9",
-      "chase_cutoff_price": 360.2,
-      "when_to_wait": "If price opens or rises above \u09f3360.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3344.4.",
-      "weekly_target_short": 363.7,
-      "monthly_target_swing": 404.1,
-      "long_term_target_asset": 456.8,
+      "optimal_entry_corridor": "\u09f3357.2 \u2013 \u09f3368.1",
+      "chase_cutoff_price": 373.6,
+      "when_to_wait": "If price opens or rises above \u09f3373.6, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3357.2.",
+      "weekly_target_short": 377.3,
+      "monthly_target_swing": 419.2,
+      "long_term_target_asset": 473.9,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -30,31 +30,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -1.32,
+        "return_pct": 1.25,
         "high": 374.9,
         "low": 350.0,
         "range_volatility_pct": 7.11
       },
       "monthly_21d": {
-        "return_pct": -15.12,
+        "return_pct": -9.69,
         "high": 416.7,
         "low": 342.3,
         "range_volatility_pct": 21.74
       },
       "quarterly_63d": {
-        "return_pct": -10.61,
+        "return_pct": -4.76,
         "high": 425.9,
         "low": 342.3,
         "range_volatility_pct": 24.42
       },
       "half_yearly_126d": {
-        "return_pct": 0.75,
+        "return_pct": 3.85,
         "high": 498.2,
         "low": 339.0,
         "range_volatility_pct": 46.96
       },
       "yearly_252d": {
-        "return_pct": 75.09,
+        "return_pct": 82.52,
         "high": 498.2,
         "low": 182.1,
         "range_volatility_pct": 173.59
@@ -65,8 +65,8 @@
       "median_correction_drop_pct": -21.0,
       "avg_wave_duration_bars": 18.0
     },
-    "current_wave_phase": "BOTTOMING_SUPPORT",
-    "phase_guidance": "Drop (-17.5%) matches historical correction depth (-21.0%). Prepare to accumulate.",
+    "current_wave_phase": "MARKDOWN_PULLBACK",
+    "phase_guidance": "Ongoing pullback from peak (-14.4%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Sep",

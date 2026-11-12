@@ -2,18 +2,18 @@
   "ticker": "KEYACOSMET",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T05:51:09.711833",
-  "asof_price_date": "2026-11-11",
+  "analyzed_at": "2026-11-12T07:09:18.144024",
+  "asof_price_date": "2026-11-12",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 43.5335,
+    "rsi_14": 43.5714,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 44.48,
+  "confidence": 44.28,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 378227,
+      "avg_daily_volume": 396053,
       "daily_turnover_bdt_cr": 0.04,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 18911,
-      "max_daily_accumulation_shares": 56734,
-      "max_order_bdt": 18911.0,
-      "directive": "Max single order: 18,911 shares (Tk 18,911) to prevent >1% execution slippage"
+      "max_single_order_shares": 19802,
+      "max_daily_accumulation_shares": 59407,
+      "max_order_bdt": 19802.0,
+      "directive": "Max single order: 19,802 shares (Tk 19,802) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -103,14 +103,14 @@
   },
   "pattern_dna": {
     "ticker": "KEYACOSMET",
-    "audited_at": "2026-11-11 11:51:09",
+    "audited_at": "2026-11-12 13:09:18",
     "worth_vs_greed": {
       "current_price": 4.5,
       "intrinsic_worth": 2.25,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 30.0,
       "greed_index": 30.0,
-      "rsi_14": 27.3,
+      "rsi_14": 30.0,
       "price_vs_ema50_pct": -1.7,
       "price_vs_ema200_pct": -2.6,
       "merit_status": "NEUTRAL_MERIT",
@@ -135,17 +135,17 @@
         "weekly_5d": {
           "return_pct": -2.17,
           "high": 4.7,
-          "low": 4.5,
-          "range_volatility_pct": 4.44
+          "low": 4.4,
+          "range_volatility_pct": 6.82
         },
         "monthly_21d": {
-          "return_pct": -8.16,
+          "return_pct": -10.0,
           "high": 5.1,
           "low": 4.4,
           "range_volatility_pct": 15.91
         },
         "quarterly_63d": {
-          "return_pct": 0.0,
+          "return_pct": 4.65,
           "high": 5.2,
           "low": 4.0,
           "range_volatility_pct": 30.0
@@ -157,7 +157,7 @@
           "range_volatility_pct": 57.58
         },
         "yearly_252d": {
-          "return_pct": -11.76,
+          "return_pct": -13.46,
           "high": 5.4,
           "low": 3.3,
           "range_volatility_pct": 63.64
@@ -190,8 +190,8 @@
       "weak_seasonal_months": [
         {
           "month": "Nov",
-          "avg_return": -3.4,
-          "win_rate": 29.0
+          "avg_return": -3.9,
+          "win_rate": 27.0
         },
         {
           "month": "Mar",
@@ -276,8 +276,8 @@
       "atr": 0.19,
       "rsi_value": 43.59,
       "last_close": 4.5,
-      "sma20": 4.74,
-      "sma50": 4.55,
+      "sma20": 4.71,
+      "sma50": 4.56,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -350,15 +350,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 532419,
-        "avg_volume": 376198.0,
+        "last_volume": 612233,
+        "avg_volume": 388038.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.42,
-        "avg_volume": 374064.0,
-        "today_volume": 532419,
+        "spike_ratio": 1.63,
+        "avg_volume": 376198.0,
+        "today_volume": 612233,
         "detail": "ok"
       },
       "serial_trading": {
@@ -377,20 +377,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": 0.0,
+        "price_change_3d": -2.17,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 44.48,
+    "composite_score": 44.28,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.68,
-      "technical": 0.2,
-      "governance": 0.12,
+      "fundamental": 0.674,
+      "technical": 0.202,
+      "governance": 0.124,
       "sentiment": 0.0
     }
   }

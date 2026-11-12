@@ -1,61 +1,61 @@
 {
   "ticker": "INTECH",
-  "audited_at": "2026-11-11 11:51:07",
+  "audited_at": "2026-11-12 13:09:16",
   "worth_vs_greed": {
-    "current_price": 22.5,
-    "intrinsic_worth": 11.25,
+    "current_price": 23.5,
+    "intrinsic_worth": 11.75,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 30.0,
-    "greed_index": 30.0,
-    "rsi_14": 62.9,
-    "price_vs_ema50_pct": -0.7,
-    "price_vs_ema200_pct": -17.4,
+    "extension_froth_score": 40.0,
+    "greed_index": 40.0,
+    "rsi_14": 77.8,
+    "price_vs_ema50_pct": 3.6,
+    "price_vs_ema200_pct": -13.6,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f322.1 \u2013 \u09f322.7",
-      "chase_cutoff_price": 23.1,
-      "when_to_wait": "If price opens or rises above \u09f323.1, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f322.1.",
-      "weekly_target_short": 23.3,
-      "monthly_target_swing": 25.9,
-      "long_term_target_asset": 29.2,
+      "optimal_entry_corridor": "\u09f323.0 \u2013 \u09f323.7",
+      "chase_cutoff_price": 24.1,
+      "when_to_wait": "If price opens or rises above \u09f324.1, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f323.0.",
+      "weekly_target_short": 24.3,
+      "monthly_target_swing": 27.0,
+      "long_term_target_asset": 30.6,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
     "reason": "Fundamental value severely lags stock price (MoS: -50.0%).",
     "is_blacklisted": true,
-    "blacklist_reason": "Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-11-08 \u2014 Price up +9.5% with poor fundamentals (Negative EPS)]",
-    "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-11-08 \u2014 Price up +9.5% with poor fundamentals (Negative EPS)]"
+    "blacklist_reason": "Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-11-12 \u2014 Price up +4.44% with poor fundamentals (Negative EPS)]",
+    "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-11-12 \u2014 Price up +4.44% with poor fundamentals (Negative EPS)]"
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 12.5,
-        "high": 22.7,
-        "low": 20.0,
-        "range_volatility_pct": 13.5
+        "return_pct": 17.5,
+        "high": 23.8,
+        "low": 20.4,
+        "range_volatility_pct": 16.67
       },
       "monthly_21d": {
-        "return_pct": -3.43,
-        "high": 23.7,
+        "return_pct": 3.52,
+        "high": 23.8,
         "low": 18.7,
-        "range_volatility_pct": 26.74
+        "range_volatility_pct": 27.27
       },
       "quarterly_63d": {
-        "return_pct": -15.41,
+        "return_pct": -11.32,
         "high": 27.4,
         "low": 18.7,
         "range_volatility_pct": 46.52
       },
       "half_yearly_126d": {
-        "return_pct": -35.16,
+        "return_pct": -31.29,
         "high": 39.5,
         "low": 18.7,
         "range_volatility_pct": 111.23
       },
       "yearly_252d": {
-        "return_pct": -23.99,
+        "return_pct": -16.67,
         "high": 44.1,
         "low": 18.0,
         "range_volatility_pct": 145.0
@@ -66,8 +66,8 @@
       "median_correction_drop_pct": -20.1,
       "avg_wave_duration_bars": 18.0
     },
-    "current_wave_phase": "ACCUMULATION_TROUGH",
-    "phase_guidance": "Near local cyclical trough base. Maximum reward/risk entry point.",
+    "current_wave_phase": "MARKUP_RALLY_MID",
+    "phase_guidance": "Midway through rally wave (+7.3% from base, historical target ~+23.3%).",
     "top_seasonal_months": [
       {
         "month": "Sep",

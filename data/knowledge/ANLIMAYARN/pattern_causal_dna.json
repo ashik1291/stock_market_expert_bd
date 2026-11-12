@@ -1,29 +1,29 @@
 {
   "ticker": "ANLIMAYARN",
-  "audited_at": "2026-11-11 11:50:52",
+  "audited_at": "2026-11-12 13:09:03",
   "worth_vs_greed": {
-    "current_price": 28.6,
-    "intrinsic_worth": 14.3,
+    "current_price": 29.5,
+    "intrinsic_worth": 14.75,
     "margin_of_safety_pct": -50.0,
     "extension_froth_score": 60.0,
     "greed_index": 60.0,
-    "rsi_14": 37.0,
-    "price_vs_ema50_pct": 13.1,
-    "price_vs_ema200_pct": 24.7,
-    "merit_status": "NEUTRAL_MERIT",
-    "merit_reason": "Valuation is within normal historical ranges.",
+    "rsi_14": 49.5,
+    "price_vs_ema50_pct": 15.9,
+    "price_vs_ema200_pct": 28.3,
+    "merit_status": "SPECULATIVE_JUNK_PUMP",
+    "merit_reason": "Price is surging aggressively without positive EPS backing. Pure speculative risk.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f328.0 \u2013 \u09f328.9",
-      "chase_cutoff_price": 29.3,
-      "when_to_wait": "If price opens or rises above \u09f329.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f328.0.",
-      "weekly_target_short": 29.6,
-      "monthly_target_swing": 32.9,
-      "long_term_target_asset": 37.2,
+      "optimal_entry_corridor": "\u09f328.9 \u2013 \u09f329.8",
+      "chase_cutoff_price": 30.2,
+      "when_to_wait": "If price opens or rises above \u09f330.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f328.9.",
+      "weekly_target_short": 30.5,
+      "monthly_target_swing": 33.9,
+      "long_term_target_asset": 38.4,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
-    "status": "CHRONIC_OVERVALUATION",
-    "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -50.0%).",
+    "status": "SPECULATIVE_GREED",
+    "worth_decision": "DO_NOT_BUY_WAIT_FOR_PULLBACK",
+    "reason": "Extreme short-term greed (60.0/100) or speculative pump without earnings merit. Risk of buying at local peak.",
     "is_blacklisted": true,
     "blacklist_reason": "Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-28 \u2014 Price up +6.96% with poor fundamentals (Negative EPS)]",
     "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-28 \u2014 Price up +6.96% with poor fundamentals (Negative EPS)]"
@@ -31,31 +31,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 2.88,
-        "high": 29.6,
+        "return_pct": 2.79,
+        "high": 29.8,
         "low": 27.5,
-        "range_volatility_pct": 7.64
+        "range_volatility_pct": 8.36
       },
       "monthly_21d": {
-        "return_pct": 0.7,
+        "return_pct": -4.22,
         "high": 32.2,
         "low": 26.5,
         "range_volatility_pct": 21.51
       },
       "quarterly_63d": {
-        "return_pct": 51.32,
+        "return_pct": 53.65,
         "high": 32.2,
         "low": 18.0,
         "range_volatility_pct": 78.89
       },
       "half_yearly_126d": {
-        "return_pct": 23.81,
+        "return_pct": 27.16,
         "high": 32.2,
         "low": 15.1,
         "range_volatility_pct": 113.25
       },
       "yearly_252d": {
-        "return_pct": 24.35,
+        "return_pct": 28.82,
         "high": 32.2,
         "low": 15.1,
         "range_volatility_pct": 113.25
@@ -67,7 +67,7 @@
       "avg_wave_duration_bars": 25.0
     },
     "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-11.2%). Wait for stabilizing base.",
+    "phase_guidance": "Ongoing pullback from peak (-8.4%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Feb",

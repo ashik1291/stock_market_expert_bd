@@ -2,18 +2,18 @@
   "ticker": "SKTRIMS",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T05:51:26.090305",
-  "asof_price_date": "2026-11-11",
+  "analyzed_at": "2026-11-12T07:09:31.454871",
+  "asof_price_date": "2026-11-12",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 56.5815,
+    "rsi_14": 56.7456,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 44.98,
+  "confidence": 44.79,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -30,9 +30,9 @@
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+16.0%",
+      "upside_potential_pct": "+15.2%",
       "downside_risk_pct": "-10.4%",
-      "target_price": 14.5,
+      "target_price": 14.4,
       "trailing_stop": 11.2,
       "risk_reward_ratio": "1.5x"
     },
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 12.5,
-    "stop_loss": 11.3,
-    "target": 14.9
+    "stop_loss": 11.35,
+    "target": 14.8
   },
   "precision": {
     "ticker": "SKTRIMS",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 31317,
+      "avg_daily_volume": 29612,
       "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 1565,
-      "max_daily_accumulation_shares": 4697,
-      "max_order_bdt": 1565.0,
-      "directive": "Max single order: 1,565 shares (Tk 1,565) to prevent >1% execution slippage"
+      "max_single_order_shares": 1480,
+      "max_daily_accumulation_shares": 4441,
+      "max_order_bdt": 1480.0,
+      "directive": "Max single order: 1,480 shares (Tk 1,480) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -103,16 +103,16 @@
   },
   "pattern_dna": {
     "ticker": "SKTRIMS",
-    "audited_at": "2026-11-11 11:51:26",
+    "audited_at": "2026-11-12 13:09:31",
     "worth_vs_greed": {
       "current_price": 12.5,
       "intrinsic_worth": 6.25,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 60.0,
       "greed_index": 60.0,
-      "rsi_14": 40.5,
-      "price_vs_ema50_pct": 13.4,
-      "price_vs_ema200_pct": 19.4,
+      "rsi_14": 42.9,
+      "price_vs_ema50_pct": 12.8,
+      "price_vs_ema200_pct": 19.1,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -134,31 +134,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -1.57,
-          "high": 13.0,
+          "return_pct": -3.85,
+          "high": 12.7,
           "low": 12.1,
-          "range_volatility_pct": 7.44
+          "range_volatility_pct": 4.96
         },
         "monthly_21d": {
-          "return_pct": -6.72,
+          "return_pct": -5.3,
           "high": 14.2,
           "low": 11.5,
           "range_volatility_pct": 23.48
         },
         "quarterly_63d": {
-          "return_pct": 60.26,
+          "return_pct": 66.67,
           "high": 14.2,
           "low": 7.0,
           "range_volatility_pct": 102.86
         },
         "half_yearly_126d": {
-          "return_pct": 34.41,
+          "return_pct": 32.98,
           "high": 14.2,
           "low": 6.0,
           "range_volatility_pct": 136.67
         },
         "yearly_252d": {
-          "return_pct": -8.09,
+          "return_pct": -10.07,
           "high": 15.5,
           "low": 6.0,
           "range_volatility_pct": 158.33
@@ -274,11 +274,11 @@
       "macd": "neutral",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 0.8,
+      "atr": 0.77,
       "rsi_value": 56.57,
       "last_close": 12.5,
-      "sma20": 12.82,
-      "sma50": 10.39,
+      "sma20": 12.79,
+      "sma50": 10.49,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -353,15 +353,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 15263,
-        "avg_volume": 36013.0,
+        "last_volume": 11155,
+        "avg_volume": 35881.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.42,
-        "avg_volume": 36131.0,
-        "today_volume": 15263,
+        "spike_ratio": 0.31,
+        "avg_volume": 36013.0,
+        "today_volume": 11155,
         "detail": "ok"
       },
       "serial_trading": {
@@ -387,13 +387,13 @@
     }
   },
   "composite": {
-    "composite_score": 44.98,
+    "composite_score": 44.79,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.68,
-      "technical": 0.2,
-      "governance": 0.12,
+      "fundamental": 0.674,
+      "technical": 0.202,
+      "governance": 0.124,
       "sentiment": 0.0
     }
   }

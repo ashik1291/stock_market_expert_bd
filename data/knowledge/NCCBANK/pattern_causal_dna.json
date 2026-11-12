@@ -1,60 +1,60 @@
 {
   "ticker": "NCCBANK",
-  "audited_at": "2026-11-11 11:51:14",
+  "audited_at": "2026-11-12 13:09:21",
   "worth_vs_greed": {
-    "current_price": 15.1,
+    "current_price": 15.0,
     "intrinsic_worth": 7.44,
-    "margin_of_safety_pct": -50.7,
-    "extension_froth_score": 40.0,
-    "greed_index": 40.0,
-    "rsi_14": 61.9,
-    "price_vs_ema50_pct": 9.1,
-    "price_vs_ema200_pct": 22.7,
+    "margin_of_safety_pct": -50.4,
+    "extension_froth_score": 30.0,
+    "greed_index": 30.0,
+    "rsi_14": 52.6,
+    "price_vs_ema50_pct": 8.1,
+    "price_vs_ema200_pct": 21.6,
     "merit_status": "EARNINGS_BACKED_MERIT",
     "merit_reason": "Price supported by solid earnings (EPS: \u09f30.93, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f314.8 \u2013 \u09f315.3",
-      "chase_cutoff_price": 15.5,
-      "when_to_wait": "If price opens or rises above \u09f315.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f314.8.",
-      "weekly_target_short": 15.6,
-      "monthly_target_swing": 17.4,
-      "long_term_target_asset": 19.6,
+      "optimal_entry_corridor": "\u09f314.7 \u2013 \u09f315.2",
+      "chase_cutoff_price": 15.4,
+      "when_to_wait": "If price opens or rises above \u09f315.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f314.7.",
+      "weekly_target_short": 15.5,
+      "monthly_target_swing": 17.2,
+      "long_term_target_asset": 19.5,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -50.7%).",
+    "reason": "Fundamental value severely lags stock price (MoS: -50.4%).",
     "is_blacklisted": false,
     "blacklist_reason": null
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 2.03,
+        "return_pct": 0.67,
         "high": 15.2,
-        "low": 14.8,
-        "range_volatility_pct": 2.7
+        "low": 14.9,
+        "range_volatility_pct": 2.01
       },
       "monthly_21d": {
-        "return_pct": 6.34,
+        "return_pct": 3.45,
         "high": 15.5,
         "low": 14.3,
         "range_volatility_pct": 8.39
       },
       "quarterly_63d": {
-        "return_pct": 29.06,
+        "return_pct": 29.31,
         "high": 15.5,
         "low": 11.5,
         "range_volatility_pct": 34.78
       },
       "half_yearly_126d": {
-        "return_pct": 24.79,
+        "return_pct": 23.97,
         "high": 15.5,
         "low": 10.5,
         "range_volatility_pct": 47.62
       },
       "yearly_252d": {
-        "return_pct": 49.5,
+        "return_pct": 45.63,
         "high": 15.5,
         "low": 9.6,
         "range_volatility_pct": 61.46
@@ -66,7 +66,7 @@
       "avg_wave_duration_bars": 19.0
     },
     "current_wave_phase": "LATE_MARKUP",
-    "phase_guidance": "Approaching historical rally limit (+43.8% vs median +11.2%). Tighten stop.",
+    "phase_guidance": "Approaching historical rally limit (+42.9% vs median +11.2%). Tighten stop.",
     "top_seasonal_months": [
       {
         "month": "Aug",

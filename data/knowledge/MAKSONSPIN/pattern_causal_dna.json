@@ -1,24 +1,24 @@
 {
   "ticker": "MAKSONSPIN",
-  "audited_at": "2026-11-11 11:51:11",
+  "audited_at": "2026-11-12 13:09:19",
   "worth_vs_greed": {
-    "current_price": 5.0,
-    "intrinsic_worth": 2.5,
+    "current_price": 4.9,
+    "intrinsic_worth": 2.45,
     "margin_of_safety_pct": -50.0,
     "extension_froth_score": 40.0,
     "greed_index": 40.0,
     "rsi_14": 63.6,
-    "price_vs_ema50_pct": 3.0,
-    "price_vs_ema200_pct": -14.1,
+    "price_vs_ema50_pct": 0.9,
+    "price_vs_ema200_pct": -15.7,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f34.9 \u2013 \u09f35.0",
-      "chase_cutoff_price": 5.1,
-      "when_to_wait": "If price opens or rises above \u09f35.1, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f34.9.",
-      "weekly_target_short": 5.2,
-      "monthly_target_swing": 5.8,
-      "long_term_target_asset": 6.5,
+      "optimal_entry_corridor": "\u09f34.8 \u2013 \u09f34.9",
+      "chase_cutoff_price": 5.0,
+      "when_to_wait": "If price opens or rises above \u09f35.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f34.8.",
+      "weekly_target_short": 5.1,
+      "monthly_target_swing": 5.6,
+      "long_term_target_asset": 6.4,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -30,31 +30,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 6.38,
+        "return_pct": 2.08,
         "high": 5.0,
         "low": 4.6,
         "range_volatility_pct": 8.7
       },
       "monthly_21d": {
-        "return_pct": 6.38,
+        "return_pct": 6.52,
         "high": 5.0,
         "low": 4.5,
         "range_volatility_pct": 11.11
       },
       "quarterly_63d": {
-        "return_pct": -21.88,
-        "high": 6.6,
+        "return_pct": -23.44,
+        "high": 6.4,
         "low": 4.5,
-        "range_volatility_pct": 46.67
+        "range_volatility_pct": 42.22
       },
       "half_yearly_126d": {
-        "return_pct": -20.63,
+        "return_pct": -25.76,
         "high": 7.6,
         "low": 3.8,
         "range_volatility_pct": 100.0
       },
       "yearly_252d": {
-        "return_pct": -30.56,
+        "return_pct": -31.94,
         "high": 7.7,
         "low": 3.8,
         "range_volatility_pct": 102.63
@@ -66,7 +66,7 @@
       "avg_wave_duration_bars": 16.0
     },
     "current_wave_phase": "MARKUP_RALLY_MID",
-    "phase_guidance": "Midway through rally wave (+11.1% from base, historical target ~+17.5%).",
+    "phase_guidance": "Midway through rally wave (+8.9% from base, historical target ~+17.5%).",
     "top_seasonal_months": [
       {
         "month": "Jun",
@@ -86,9 +86,9 @@
     ],
     "weak_seasonal_months": [
       {
-        "month": "Nov",
-        "avg_return": -4.6,
-        "win_rate": 15.0
+        "month": "Apr",
+        "avg_return": -4.4,
+        "win_rate": 17.0
       },
       {
         "month": "Mar",

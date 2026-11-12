@@ -1,24 +1,24 @@
 {
   "ticker": "LRBDL",
-  "audited_at": "2026-11-11 11:51:10",
+  "audited_at": "2026-11-12 13:09:19",
   "worth_vs_greed": {
-    "current_price": 11.9,
-    "intrinsic_worth": 5.95,
+    "current_price": 11.7,
+    "intrinsic_worth": 5.85,
     "margin_of_safety_pct": -50.0,
     "extension_froth_score": 40.0,
     "greed_index": 40.0,
-    "rsi_14": 51.6,
-    "price_vs_ema50_pct": 5.5,
-    "price_vs_ema200_pct": -5.3,
+    "rsi_14": 55.2,
+    "price_vs_ema50_pct": 3.6,
+    "price_vs_ema200_pct": -6.8,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f311.7 \u2013 \u09f312.0",
-      "chase_cutoff_price": 12.2,
-      "when_to_wait": "If price opens or rises above \u09f312.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f311.7.",
-      "weekly_target_short": 12.3,
-      "monthly_target_swing": 13.7,
-      "long_term_target_asset": 15.5,
+      "optimal_entry_corridor": "\u09f311.5 \u2013 \u09f311.8",
+      "chase_cutoff_price": 12.0,
+      "when_to_wait": "If price opens or rises above \u09f312.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f311.5.",
+      "weekly_target_short": 12.1,
+      "monthly_target_swing": 13.5,
+      "long_term_target_asset": 15.2,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -31,34 +31,34 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 0.0,
+        "return_pct": -1.68,
         "high": 12.1,
         "low": 11.1,
         "range_volatility_pct": 9.01
       },
       "monthly_21d": {
-        "return_pct": -4.8,
-        "high": 12.6,
+        "return_pct": -2.5,
+        "high": 12.5,
         "low": 11.0,
-        "range_volatility_pct": 14.55
+        "range_volatility_pct": 13.64
       },
       "quarterly_63d": {
-        "return_pct": -2.46,
+        "return_pct": -7.87,
         "high": 13.3,
         "low": 9.1,
         "range_volatility_pct": 46.15
       },
       "half_yearly_126d": {
-        "return_pct": -14.39,
+        "return_pct": -17.61,
         "high": 16.0,
         "low": 9.0,
         "range_volatility_pct": 77.78
       },
       "yearly_252d": {
-        "return_pct": -23.23,
-        "high": 17.0,
+        "return_pct": -29.52,
+        "high": 16.9,
         "low": 9.0,
-        "range_volatility_pct": 88.89
+        "range_volatility_pct": 87.78
       }
     },
     "wave_metrics": {
@@ -67,7 +67,7 @@
       "avg_wave_duration_bars": 14.0
     },
     "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-10.5%). Wait for stabilizing base.",
+    "phase_guidance": "Ongoing pullback from peak (-12.0%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "May",

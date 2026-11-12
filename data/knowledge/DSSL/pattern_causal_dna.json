@@ -1,29 +1,29 @@
 {
   "ticker": "DSSL",
-  "audited_at": "2026-11-11 11:50:59",
+  "audited_at": "2026-11-12 13:09:09",
   "worth_vs_greed": {
-    "current_price": 10.2,
-    "intrinsic_worth": 5.1,
+    "current_price": 9.8,
+    "intrinsic_worth": 4.9,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 70.0,
-    "greed_index": 70.0,
-    "rsi_14": 63.4,
-    "price_vs_ema50_pct": 11.4,
-    "price_vs_ema200_pct": 7.2,
+    "extension_froth_score": 60.0,
+    "greed_index": 60.0,
+    "rsi_14": 65.0,
+    "price_vs_ema50_pct": 6.8,
+    "price_vs_ema200_pct": 2.9,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f310.0 \u2013 \u09f310.3",
-      "chase_cutoff_price": 10.5,
-      "when_to_wait": "If price opens or rises above \u09f310.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f310.0.",
-      "weekly_target_short": 10.6,
-      "monthly_target_swing": 11.7,
-      "long_term_target_asset": 13.3,
+      "optimal_entry_corridor": "\u09f39.6 \u2013 \u09f39.9",
+      "chase_cutoff_price": 10.0,
+      "when_to_wait": "If price opens or rises above \u09f310.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f39.6.",
+      "weekly_target_short": 10.1,
+      "monthly_target_swing": 11.3,
+      "long_term_target_asset": 12.7,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
-    "status": "OVERVALUED_EUPHORIA",
-    "worth_decision": "SELL_TAKE_PROFIT",
-    "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (70.0/100). Danger of sharp mean reversion.",
+    "status": "CHRONIC_OVERVALUATION",
+    "worth_decision": "AVOID",
+    "reason": "Fundamental value severely lags stock price (MoS: -50.0%).",
     "is_blacklisted": true,
     "blacklist_reason": "Blocked by Forensic Surveillance [CRITICAL: ABNORMAL_VOLUME_SURGE on 2026-10-28 \u2014 Volume is 4.7x 20-day average (3,618,176 vs 774,918) | Price up +13.41% with poor fundamentals (Negative EPS)]",
     "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [CRITICAL: ABNORMAL_VOLUME_SURGE on 2026-10-28 \u2014 Volume is 4.7x 20-day average (3,618,176 vs 774,918) | Price up +13.41% with poor fundamentals (Negative EPS)]"
@@ -31,31 +31,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 3.03,
+        "return_pct": -1.01,
         "high": 10.5,
         "low": 9.7,
         "range_volatility_pct": 8.25
       },
       "monthly_21d": {
-        "return_pct": 8.51,
+        "return_pct": 5.38,
         "high": 10.5,
         "low": 8.0,
         "range_volatility_pct": 31.25
       },
       "quarterly_63d": {
-        "return_pct": 17.24,
+        "return_pct": 15.29,
         "high": 11.0,
         "low": 8.0,
         "range_volatility_pct": 37.5
       },
       "half_yearly_126d": {
-        "return_pct": -11.3,
+        "return_pct": -14.04,
         "high": 11.8,
         "low": 6.9,
         "range_volatility_pct": 71.01
       },
       "yearly_252d": {
-        "return_pct": -11.3,
+        "return_pct": -16.95,
         "high": 12.7,
         "low": 6.9,
         "range_volatility_pct": 84.06
@@ -67,7 +67,7 @@
       "avg_wave_duration_bars": 26.0
     },
     "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-7.3%). Wait for stabilizing base.",
+    "phase_guidance": "Ongoing pullback from peak (-10.9%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Jul",

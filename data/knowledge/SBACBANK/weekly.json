@@ -2,18 +2,18 @@
   "ticker": "SBACBANK",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T05:51:24.262689",
-  "asof_price_date": "2026-11-11",
+  "analyzed_at": "2026-11-12T07:09:29.721336",
+  "asof_price_date": "2026-11-12",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 50.3856,
+    "rsi_14": 50.5502,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 44.98,
+  "confidence": 44.79,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 6.6,
-    "stop_loss": 6.3,
-    "target": 7.2
+    "stop_loss": 6.27,
+    "target": 7.26
   },
   "precision": {
     "ticker": "SBACBANK",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 28545,
+      "avg_daily_volume": 36724,
       "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 1427,
-      "max_daily_accumulation_shares": 4281,
-      "max_order_bdt": 1427.0,
-      "directive": "Max single order: 1,427 shares (Tk 1,427) to prevent >1% execution slippage"
+      "max_single_order_shares": 1836,
+      "max_daily_accumulation_shares": 5508,
+      "max_order_bdt": 1836.0,
+      "directive": "Max single order: 1,836 shares (Tk 1,836) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -103,16 +103,16 @@
   },
   "pattern_dna": {
     "ticker": "SBACBANK",
-    "audited_at": "2026-11-11 11:51:24",
+    "audited_at": "2026-11-12 13:09:29",
     "worth_vs_greed": {
       "current_price": 6.6,
       "intrinsic_worth": 3.3,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 30.0,
       "greed_index": 30.0,
-      "rsi_14": 43.8,
-      "price_vs_ema50_pct": 1.1,
-      "price_vs_ema200_pct": -5.1,
+      "rsi_14": 46.7,
+      "price_vs_ema50_pct": 1.0,
+      "price_vs_ema200_pct": -5.0,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -133,31 +133,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 0.0,
+          "return_pct": -2.94,
           "high": 6.8,
-          "low": 6.4,
-          "range_volatility_pct": 6.25
+          "low": 6.3,
+          "range_volatility_pct": 7.94
         },
         "monthly_21d": {
           "return_pct": 0.0,
           "high": 6.9,
-          "low": 6.4,
-          "range_volatility_pct": 7.81
+          "low": 6.3,
+          "range_volatility_pct": 9.52
         },
         "quarterly_63d": {
-          "return_pct": 6.45,
+          "return_pct": 10.0,
           "high": 6.9,
           "low": 5.4,
           "range_volatility_pct": 27.78
         },
         "half_yearly_126d": {
-          "return_pct": -14.29,
+          "return_pct": -16.46,
           "high": 8.0,
           "low": 5.0,
           "range_volatility_pct": 60.0
         },
         "yearly_252d": {
-          "return_pct": -19.51,
+          "return_pct": -22.35,
           "high": 9.8,
           "low": 5.0,
           "range_volatility_pct": 96.0
@@ -273,18 +273,19 @@
       "macd": "neutral",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 0.2,
-      "rsi_value": 50.18,
+      "atr": 0.22,
+      "rsi_value": 50.17,
       "last_close": 6.6,
-      "sma20": 6.69,
-      "sma50": 6.46,
+      "sma20": 6.68,
+      "sma50": 6.47,
       "sma200": null,
       "support_resistance": {
         "supports": [
           5.1
         ],
         "resistances": [
-          6.7
+          6.7,
+          6.8
         ]
       },
       "data_gap_warning": "unannounced_gap_256d"
@@ -294,7 +295,8 @@
         5.1
       ],
       "resistances": [
-        6.7
+        6.7,
+        6.8
       ]
     }
   },
@@ -340,24 +342,26 @@
     }
   },
   "manipulation": {
-    "manipulation_score": 0,
+    "manipulation_score": 15,
     "manipulation_risk": "low",
     "block_buy": false,
-    "flags": [],
+    "flags": [
+      "volume_spike: volume_5.8x_avg"
+    ],
     "checks": {
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 16955,
-        "avg_volume": 34993.0,
+        "last_volume": 204448,
+        "avg_volume": 39271.0,
         "detail": "ok"
       },
       "volume_spike": {
-        "flag": false,
-        "spike_ratio": 0.42,
-        "avg_volume": 40424.0,
-        "today_volume": 16955,
-        "detail": "ok"
+        "flag": true,
+        "spike_ratio": 5.84,
+        "avg_volume": 34993.0,
+        "today_volume": 204448,
+        "detail": "volume_5.8x_avg"
       },
       "serial_trading": {
         "flag": false,
@@ -382,13 +386,13 @@
     }
   },
   "composite": {
-    "composite_score": 44.98,
+    "composite_score": 44.79,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.68,
-      "technical": 0.2,
-      "governance": 0.12,
+      "fundamental": 0.674,
+      "technical": 0.202,
+      "governance": 0.124,
       "sentiment": 0.0
     }
   }

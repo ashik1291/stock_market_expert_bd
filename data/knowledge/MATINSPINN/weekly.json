@@ -2,7 +2,7 @@
   "ticker": "MATINSPINN",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T05:51:11.719053",
+  "analyzed_at": "2026-11-12T07:09:19.577162",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": 0.839
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 64.44,
+  "confidence": 64.07,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -103,7 +103,7 @@
   },
   "pattern_dna": {
     "ticker": "MATINSPINN",
-    "audited_at": "2026-11-11 11:51:11",
+    "audited_at": "2026-11-12 13:09:19",
     "worth_vs_greed": {
       "current_price": 125.7,
       "intrinsic_worth": 9.92,
@@ -353,12 +353,10 @@
     }
   },
   "manipulation": {
-    "manipulation_score": 10,
+    "manipulation_score": 0,
     "manipulation_risk": "low",
     "block_buy": false,
-    "flags": [
-      "price_surge_no_news: price_8.5pct_zero_news"
-    ],
+    "flags": [],
     "checks": {
       "volume_price_divergence": {
         "flag": false,
@@ -389,21 +387,21 @@
         "detail": "sponsor_holding_not_available"
       },
       "price_surge_no_news": {
-        "flag": true,
-        "price_change_3d": 8.46,
+        "flag": false,
+        "price_change_3d": -1.33,
         "news_count_3d": 0,
-        "detail": "price_8.5pct_zero_news"
+        "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 64.44,
+    "composite_score": 64.07,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.68,
-      "technical": 0.2,
-      "governance": 0.12,
+      "fundamental": 0.674,
+      "technical": 0.202,
+      "governance": 0.124,
       "sentiment": 0.0
     }
   }

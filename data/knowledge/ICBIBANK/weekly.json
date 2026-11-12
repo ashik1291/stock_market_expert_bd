@@ -2,18 +2,18 @@
   "ticker": "ICBIBANK",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T05:51:06.654652",
-  "asof_price_date": "2026-11-11",
+  "analyzed_at": "2026-11-12T07:09:15.626945",
+  "asof_price_date": "2026-11-12",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 49.1024,
+    "rsi_14": 48.9693,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 44.98,
+  "confidence": 44.79,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 2.5,
-    "stop_loss": 2.32,
-    "target": 2.86
+    "stop_loss": 2.33,
+    "target": 2.84
   },
   "precision": {
     "ticker": "ICBIBANK",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 44004,
+      "avg_daily_volume": 41841,
       "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 2200,
-      "max_daily_accumulation_shares": 6600,
-      "max_order_bdt": 2200.0,
-      "directive": "Max single order: 2,200 shares (Tk 2,200) to prevent >1% execution slippage"
+      "max_single_order_shares": 2092,
+      "max_daily_accumulation_shares": 6276,
+      "max_order_bdt": 2092.0,
+      "directive": "Max single order: 2,092 shares (Tk 2,092) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -103,16 +103,16 @@
   },
   "pattern_dna": {
     "ticker": "ICBIBANK",
-    "audited_at": "2026-11-11 11:51:06",
+    "audited_at": "2026-11-12 13:09:15",
     "worth_vs_greed": {
       "current_price": 2.5,
       "intrinsic_worth": 1.25,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 40.0,
       "greed_index": 40.0,
-      "rsi_14": 33.3,
+      "rsi_14": 50.0,
       "price_vs_ema50_pct": 0.2,
-      "price_vs_ema200_pct": -5.3,
+      "price_vs_ema200_pct": -5.2,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -146,13 +146,13 @@
           "range_volatility_pct": 12.5
         },
         "quarterly_63d": {
-          "return_pct": -10.71,
-          "high": 2.9,
+          "return_pct": -7.41,
+          "high": 2.8,
           "low": 2.1,
-          "range_volatility_pct": 38.1
+          "range_volatility_pct": 33.33
         },
         "half_yearly_126d": {
-          "return_pct": 0.0,
+          "return_pct": -3.85,
           "high": 2.9,
           "low": 2.1,
           "range_volatility_pct": 38.1
@@ -274,10 +274,10 @@
       "macd": "neutral",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 0.12,
-      "rsi_value": 49.39,
+      "atr": 0.11,
+      "rsi_value": 49.44,
       "last_close": 2.5,
-      "sma20": 2.54,
+      "sma20": 2.53,
       "sma50": 2.45,
       "sma200": null,
       "support_resistance": {
@@ -351,15 +351,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 79092,
-        "avg_volume": 77105.0,
+        "last_volume": 6000,
+        "avg_volume": 74673.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.01,
-        "avg_volume": 78419.0,
-        "today_volume": 79092,
+        "spike_ratio": 0.08,
+        "avg_volume": 77105.0,
+        "today_volume": 6000,
         "detail": "ok"
       },
       "serial_trading": {
@@ -385,13 +385,13 @@
     }
   },
   "composite": {
-    "composite_score": 44.98,
+    "composite_score": 44.79,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.68,
-      "technical": 0.2,
-      "governance": 0.12,
+      "fundamental": 0.674,
+      "technical": 0.202,
+      "governance": 0.124,
       "sentiment": 0.0
     }
   }

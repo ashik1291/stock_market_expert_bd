@@ -1,63 +1,64 @@
 {
   "ticker": "SAFKOSPINN",
-  "audited_at": "2026-11-11 11:51:23",
+  "audited_at": "2026-11-12 13:09:28",
   "worth_vs_greed": {
-    "current_price": 21.2,
-    "intrinsic_worth": 10.6,
+    "current_price": 24.4,
+    "intrinsic_worth": 12.2,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 70.0,
-    "greed_index": 70.0,
-    "rsi_14": 52.8,
-    "price_vs_ema50_pct": 15.9,
-    "price_vs_ema200_pct": 44.2,
+    "extension_froth_score": 90.0,
+    "greed_index": 90.0,
+    "rsi_14": 76.1,
+    "price_vs_ema50_pct": 31.7,
+    "price_vs_ema200_pct": 64.9,
     "merit_status": "SPECULATIVE_JUNK_PUMP",
     "merit_reason": "Price is surging aggressively without positive EPS backing. Pure speculative risk.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f320.8 \u2013 \u09f321.4",
-      "chase_cutoff_price": 21.7,
-      "when_to_wait": "If price opens or rises above \u09f321.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f320.8.",
-      "weekly_target_short": 21.9,
-      "monthly_target_swing": 24.4,
-      "long_term_target_asset": 27.6,
+      "optimal_entry_corridor": "\u09f323.9 \u2013 \u09f324.6",
+      "chase_cutoff_price": 25.0,
+      "when_to_wait": "If price opens or rises above \u09f325.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f323.9.",
+      "weekly_target_short": 25.3,
+      "monthly_target_swing": 28.1,
+      "long_term_target_asset": 31.7,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "OVERVALUED_EUPHORIA",
     "worth_decision": "SELL_TAKE_PROFIT",
-    "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (70.0/100). Danger of sharp mean reversion.",
-    "is_blacklisted": false,
-    "blacklist_reason": null
+    "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (90.0/100). Danger of sharp mean reversion.",
+    "is_blacklisted": true,
+    "blacklist_reason": "Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-11-12 \u2014 Low-float spike is 20.6x 20-day average (817,286 vs 39,772) | Price up +15.09% on untracked / high-risk security without verified earnings]",
+    "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-11-12 \u2014 Low-float spike is 20.6x 20-day average (817,286 vs 39,772) | Price up +15.09% on untracked / high-risk security without verified earnings]"
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 4.43,
-        "high": 21.4,
-        "low": 20.0,
-        "range_volatility_pct": 7.0
+        "return_pct": 22.0,
+        "high": 24.4,
+        "low": 20.3,
+        "range_volatility_pct": 20.2
       },
       "monthly_21d": {
-        "return_pct": -1.85,
-        "high": 21.8,
+        "return_pct": 15.09,
+        "high": 24.4,
         "low": 20.0,
-        "range_volatility_pct": 9.0
+        "range_volatility_pct": 22.0
       },
       "quarterly_63d": {
-        "return_pct": 47.22,
-        "high": 22.9,
+        "return_pct": 74.29,
+        "high": 24.4,
         "low": 12.8,
-        "range_volatility_pct": 78.91
+        "range_volatility_pct": 90.62
       },
       "half_yearly_126d": {
-        "return_pct": 35.9,
-        "high": 22.9,
+        "return_pct": 47.88,
+        "high": 24.4,
         "low": 11.9,
-        "range_volatility_pct": 92.44
+        "range_volatility_pct": 105.04
       },
       "yearly_252d": {
-        "return_pct": 125.53,
-        "high": 22.9,
+        "return_pct": 162.37,
+        "high": 24.4,
         "low": 8.8,
-        "range_volatility_pct": 160.23
+        "range_volatility_pct": 177.27
       }
     },
     "wave_metrics": {
@@ -66,7 +67,7 @@
       "avg_wave_duration_bars": 22.0
     },
     "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-7.4%). Wait for stabilizing base.",
+    "phase_guidance": "Ongoing pullback from peak (6.6%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Jun",

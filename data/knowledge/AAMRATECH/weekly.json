@@ -2,18 +2,18 @@
   "ticker": "AAMRATECH",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T05:50:50.376403",
-  "asof_price_date": "2026-11-11",
+  "analyzed_at": "2026-11-12T07:09:01.730889",
+  "asof_price_date": "2026-11-12",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 54.1929,
+    "rsi_14": 63.1727,
     "pe_ratio": 0.0,
     "debt_equity": 0.412
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 64.22,
+  "confidence": 62.64,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -22,33 +22,33 @@
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+7.2%",
-      "downside_risk_pct": "-4.8%",
-      "target_price": 17.9,
-      "support_price": 15.9,
+      "upside_potential_pct": "+6.8%",
+      "downside_risk_pct": "-4.5%",
+      "target_price": 18.9,
+      "support_price": 16.9,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+25.1%",
-      "downside_risk_pct": "-7.8%",
+      "upside_potential_pct": "+18.1%",
+      "downside_risk_pct": "-10.2%",
       "target_price": 20.9,
-      "trailing_stop": 15.4,
-      "risk_reward_ratio": "3.2x"
+      "trailing_stop": 15.9,
+      "risk_reward_ratio": "1.8x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+29.9%",
       "downside_risk_pct": "-12.0%",
-      "target_price": 21.7,
+      "target_price": 23.0,
       "dividend_cagr": "moderate (0.47%)",
       "risk_reward_ratio": "2.5x"
     }
   },
   "trade_levels": {
-    "entry": 16.7,
-    "stop_loss": 15.51,
-    "target": 19.08
+    "entry": 17.7,
+    "stop_loss": 16.48,
+    "target": 20.14
   },
   "precision": {
     "ticker": "AAMRATECH",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 39548,
+      "avg_daily_volume": 45376,
       "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 1977,
-      "max_daily_accumulation_shares": 5932,
-      "max_order_bdt": 1977.0,
-      "directive": "Max single order: 1,977 shares (Tk 1,977) to prevent >1% execution slippage"
+      "max_single_order_shares": 2268,
+      "max_daily_accumulation_shares": 6806,
+      "max_order_bdt": 2268.0,
+      "directive": "Max single order: 2,268 shares (Tk 2,268) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,74 +91,74 @@
       "status": "VALID",
       "low_52w": 9.5,
       "high_52w": 24.1,
-      "range_52w_pct": 49.3,
+      "range_52w_pct": 56.2,
       "channel_regime": "EQUILIBRIUM_CHANNEL",
-      "visual_gauge": "[ \u09f39.5 |\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591| \u09f324.1 ] (49.3%)",
+      "visual_gauge": "[ \u09f39.5 |\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591| \u09f324.1 ] (56.2%)",
       "conviction_bonus": 0.0,
       "is_truncated_window": false,
       "bars_evaluated": 250,
-      "signal": "Price is in mid-channel (49.3% between \u09f39.5 and \u09f324.1)"
+      "signal": "Price is in mid-channel (56.2% between \u09f39.5 and \u09f324.1)"
     },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "AAMRATECH",
-    "audited_at": "2026-11-11 11:50:50",
+    "audited_at": "2026-11-12 13:09:01",
     "worth_vs_greed": {
-      "current_price": 16.7,
-      "intrinsic_worth": 8.35,
+      "current_price": 17.7,
+      "intrinsic_worth": 8.85,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 40.0,
       "greed_index": 40.0,
-      "rsi_14": 61.2,
-      "price_vs_ema50_pct": 1.2,
-      "price_vs_ema200_pct": 6.5,
+      "rsi_14": 67.2,
+      "price_vs_ema50_pct": 7.0,
+      "price_vs_ema200_pct": 12.8,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f316.4 \u2013 \u09f316.9",
-        "chase_cutoff_price": 17.1,
-        "when_to_wait": "If price opens or rises above \u09f317.1, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f316.4.",
-        "weekly_target_short": 17.3,
-        "monthly_target_swing": 19.2,
-        "long_term_target_asset": 21.7,
+        "optimal_entry_corridor": "\u09f317.3 \u2013 \u09f317.9",
+        "chase_cutoff_price": 18.1,
+        "when_to_wait": "If price opens or rises above \u09f318.1, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f317.3.",
+        "weekly_target_short": 18.3,
+        "monthly_target_swing": 20.4,
+        "long_term_target_asset": 23.0,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
       "worth_decision": "AVOID",
       "reason": "Fundamental value severely lags stock price (MoS: -50.0%).",
       "is_blacklisted": true,
-      "blacklist_reason": "Blocked by Forensic Surveillance [CRITICAL: ABNORMAL_VOLUME_SURGE on 2026-11-04 \u2014 Low-float surge is 5.1x 20-day average (144,449 vs 28,245) | Price up +9.74% with poor fundamentals (Negative EPS)]",
-      "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [CRITICAL: ABNORMAL_VOLUME_SURGE on 2026-11-04 \u2014 Low-float surge is 5.1x 20-day average (144,449 vs 28,245) | Price up +9.74% with poor fundamentals (Negative EPS)]"
+      "blacklist_reason": "Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-11-12 \u2014 Price up +5.99% with poor fundamentals (Negative EPS)]",
+      "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-11-12 \u2014 Price up +5.99% with poor fundamentals (Negative EPS)]"
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -1.18,
-          "high": 17.3,
+          "return_pct": 4.73,
+          "high": 17.8,
           "low": 15.5,
-          "range_volatility_pct": 11.61
+          "range_volatility_pct": 14.84
         },
         "monthly_21d": {
-          "return_pct": 6.37,
-          "high": 17.4,
+          "return_pct": 12.03,
+          "high": 17.8,
           "low": 15.3,
-          "range_volatility_pct": 13.73
+          "range_volatility_pct": 16.34
         },
         "quarterly_63d": {
-          "return_pct": -24.43,
+          "return_pct": -22.03,
           "high": 23.4,
           "low": 14.6,
           "range_volatility_pct": 60.27
         },
         "half_yearly_126d": {
-          "return_pct": 36.89,
+          "return_pct": 48.74,
           "high": 24.1,
           "low": 11.7,
           "range_volatility_pct": 105.98
         },
         "yearly_252d": {
-          "return_pct": 34.68,
+          "return_pct": 46.28,
           "high": 24.1,
           "low": 9.5,
           "range_volatility_pct": 153.68
@@ -170,7 +170,7 @@
         "avg_wave_duration_bars": 26.0
       },
       "current_wave_phase": "MARKDOWN_PULLBACK",
-      "phase_guidance": "Ongoing pullback from peak (-4.0%). Wait for stabilizing base.",
+      "phase_guidance": "Ongoing pullback from peak (1.7%). Wait for stabilizing base.",
       "top_seasonal_months": [
         {
           "month": "Aug",
@@ -268,18 +268,18 @@
     ]
   },
   "technical": {
-    "score": 66.25,
+    "score": 60.0,
     "signals": {
       "rsi": "neutral",
       "macd": "bullish_crossover",
       "sma_trend": "bullish",
-      "bb": "inside_bands",
-      "atr": 0.79,
-      "rsi_value": 55.51,
-      "last_close": 16.7,
-      "sma20": 16.0,
-      "sma50": 16.34,
-      "sma200": 15.06,
+      "bb": "at_upper_band_bearish",
+      "atr": 0.81,
+      "rsi_value": 64.07,
+      "last_close": 17.7,
+      "sma20": 16.09,
+      "sma50": 16.35,
+      "sma200": 15.1,
       "support_resistance": {
         "supports": [
           11.1,
@@ -314,7 +314,7 @@
       "loan_trap_risk": "none",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 30.7,
+        "drawdown_pct": 26.6,
         "high_52w": 24.1,
         "low_52w": 9.5
       }
@@ -350,24 +350,27 @@
     }
   },
   "manipulation": {
-    "manipulation_score": 0,
+    "manipulation_score": 25,
     "manipulation_risk": "low",
     "block_buy": false,
-    "flags": [],
+    "flags": [
+      "volume_spike: volume_3.9x_avg",
+      "price_surge_no_news: price_6.6pct_zero_news"
+    ],
     "checks": {
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 62045,
-        "avg_volume": 35349.0,
+        "last_volume": 139460,
+        "avg_volume": 39252.0,
         "detail": "ok"
       },
       "volume_spike": {
-        "flag": false,
-        "spike_ratio": 1.82,
-        "avg_volume": 34060.0,
-        "today_volume": 62045,
-        "detail": "ok"
+        "flag": true,
+        "spike_ratio": 3.95,
+        "avg_volume": 35349.0,
+        "today_volume": 139460,
+        "detail": "volume_3.9x_avg"
       },
       "serial_trading": {
         "flag": false,
@@ -384,21 +387,21 @@
         "detail": "sponsor_holding_not_available"
       },
       "price_surge_no_news": {
-        "flag": false,
-        "price_change_3d": 4.37,
+        "flag": true,
+        "price_change_3d": 6.63,
         "news_count_3d": 0,
-        "detail": "ok"
+        "detail": "price_6.6pct_zero_news"
       }
     }
   },
   "composite": {
-    "composite_score": 64.22,
+    "composite_score": 62.64,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.68,
-      "technical": 0.2,
-      "governance": 0.12,
+      "fundamental": 0.674,
+      "technical": 0.202,
+      "governance": 0.124,
       "sentiment": 0.0
     }
   }

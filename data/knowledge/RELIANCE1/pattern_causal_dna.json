@@ -1,24 +1,24 @@
 {
   "ticker": "RELIANCE1",
-  "audited_at": "2026-11-11 11:51:21",
+  "audited_at": "2026-11-12 13:09:27",
   "worth_vs_greed": {
-    "current_price": 11.6,
-    "intrinsic_worth": 5.8,
+    "current_price": 12.0,
+    "intrinsic_worth": 6.0,
     "margin_of_safety_pct": -50.0,
     "extension_froth_score": 30.0,
     "greed_index": 30.0,
-    "rsi_14": 52.9,
-    "price_vs_ema50_pct": -9.3,
-    "price_vs_ema200_pct": -24.0,
+    "rsi_14": 61.1,
+    "price_vs_ema50_pct": -6.0,
+    "price_vs_ema200_pct": -21.2,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f311.4 \u2013 \u09f311.7",
-      "chase_cutoff_price": 11.9,
-      "when_to_wait": "If price opens or rises above \u09f311.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f311.4.",
-      "weekly_target_short": 12.0,
-      "monthly_target_swing": 13.3,
-      "long_term_target_asset": 15.1,
+      "optimal_entry_corridor": "\u09f311.8 \u2013 \u09f312.1",
+      "chase_cutoff_price": 12.3,
+      "when_to_wait": "If price opens or rises above \u09f312.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f311.8.",
+      "weekly_target_short": 12.4,
+      "monthly_target_swing": 13.8,
+      "long_term_target_asset": 15.6,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -31,31 +31,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -2.52,
-        "high": 12.2,
+        "return_pct": 1.69,
+        "high": 12.4,
         "low": 11.3,
-        "range_volatility_pct": 7.96
+        "range_volatility_pct": 9.73
       },
       "monthly_21d": {
-        "return_pct": 8.41,
+        "return_pct": 5.26,
         "high": 12.9,
-        "low": 10.8,
-        "range_volatility_pct": 19.44
+        "low": 10.9,
+        "range_volatility_pct": 18.35
       },
       "quarterly_63d": {
-        "return_pct": -19.44,
+        "return_pct": -14.29,
         "high": 17.5,
         "low": 10.6,
         "range_volatility_pct": 65.09
       },
       "half_yearly_126d": {
-        "return_pct": -20.0,
+        "return_pct": -17.81,
         "high": 18.8,
         "low": 10.6,
         "range_volatility_pct": 77.36
       },
       "yearly_252d": {
-        "return_pct": -46.54,
+        "return_pct": -44.44,
         "high": 23.9,
         "low": 10.6,
         "range_volatility_pct": 125.47
@@ -66,8 +66,8 @@
       "median_correction_drop_pct": -10.4,
       "avg_wave_duration_bars": 22.0
     },
-    "current_wave_phase": "MARKUP_RALLY_MID",
-    "phase_guidance": "Midway through rally wave (+9.4% from base, historical target ~+16.4%).",
+    "current_wave_phase": "LATE_MARKUP",
+    "phase_guidance": "Approaching historical rally limit (+13.2% vs median +16.4%). Tighten stop.",
     "top_seasonal_months": [
       {
         "month": "Jan",

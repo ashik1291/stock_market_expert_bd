@@ -1,24 +1,24 @@
 {
   "ticker": "MERCANBANK",
-  "audited_at": "2026-11-11 11:51:12",
+  "audited_at": "2026-11-12 13:09:20",
   "worth_vs_greed": {
-    "current_price": 6.5,
-    "intrinsic_worth": 3.25,
+    "current_price": 6.6,
+    "intrinsic_worth": 3.3,
     "margin_of_safety_pct": -50.0,
     "extension_froth_score": 20.0,
     "greed_index": 20.0,
-    "rsi_14": 66.7,
-    "price_vs_ema50_pct": -5.6,
-    "price_vs_ema200_pct": -19.9,
+    "rsi_14": 62.5,
+    "price_vs_ema50_pct": -4.0,
+    "price_vs_ema200_pct": -18.5,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f36.4 \u2013 \u09f36.6",
-      "chase_cutoff_price": 6.7,
-      "when_to_wait": "If price opens or rises above \u09f36.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f36.4.",
-      "weekly_target_short": 6.7,
-      "monthly_target_swing": 7.5,
-      "long_term_target_asset": 8.5,
+      "optimal_entry_corridor": "\u09f36.5 \u2013 \u09f36.7",
+      "chase_cutoff_price": 6.8,
+      "when_to_wait": "If price opens or rises above \u09f36.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f36.5.",
+      "weekly_target_short": 6.8,
+      "monthly_target_swing": 7.6,
+      "long_term_target_asset": 8.6,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -30,31 +30,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 1.56,
+        "return_pct": 1.54,
         "high": 6.6,
         "low": 6.4,
         "range_volatility_pct": 3.12
       },
       "monthly_21d": {
-        "return_pct": 6.56,
+        "return_pct": 8.2,
         "high": 6.6,
         "low": 6.1,
         "range_volatility_pct": 8.2
       },
       "quarterly_63d": {
-        "return_pct": -21.69,
-        "high": 8.4,
+        "return_pct": -18.52,
+        "high": 8.2,
         "low": 6.1,
-        "range_volatility_pct": 37.7
+        "range_volatility_pct": 34.43
       },
       "half_yearly_126d": {
-        "return_pct": -32.99,
-        "high": 9.9,
+        "return_pct": -31.96,
+        "high": 9.7,
         "low": 6.1,
-        "range_volatility_pct": 62.3
+        "range_volatility_pct": 59.02
       },
       "yearly_252d": {
-        "return_pct": -35.0,
+        "return_pct": -34.65,
         "high": 10.9,
         "low": 6.1,
         "range_volatility_pct": 78.69
@@ -66,7 +66,7 @@
       "avg_wave_duration_bars": 17.0
     },
     "current_wave_phase": "MARKUP_RALLY_MID",
-    "phase_guidance": "Midway through rally wave (+6.6% from base, historical target ~+12.4%).",
+    "phase_guidance": "Midway through rally wave (+8.2% from base, historical target ~+12.4%).",
     "top_seasonal_months": [
       {
         "month": "Aug",

@@ -1,24 +1,24 @@
 {
   "ticker": "OIMEX",
-  "audited_at": "2026-11-11 11:51:16",
+  "audited_at": "2026-11-12 13:09:23",
   "worth_vs_greed": {
-    "current_price": 16.5,
-    "intrinsic_worth": 8.25,
+    "current_price": 16.3,
+    "intrinsic_worth": 8.15,
     "margin_of_safety_pct": -50.0,
     "extension_froth_score": 70.0,
     "greed_index": 70.0,
-    "rsi_14": 75.9,
-    "price_vs_ema50_pct": 14.3,
-    "price_vs_ema200_pct": -12.3,
+    "rsi_14": 80.0,
+    "price_vs_ema50_pct": 12.3,
+    "price_vs_ema200_pct": -13.3,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f316.2 \u2013 \u09f316.7",
-      "chase_cutoff_price": 16.9,
-      "when_to_wait": "If price opens or rises above \u09f316.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f316.2.",
-      "weekly_target_short": 17.1,
-      "monthly_target_swing": 19.0,
-      "long_term_target_asset": 21.4,
+      "optimal_entry_corridor": "\u09f316.0 \u2013 \u09f316.5",
+      "chase_cutoff_price": 16.7,
+      "when_to_wait": "If price opens or rises above \u09f316.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f316.0.",
+      "weekly_target_short": 16.9,
+      "monthly_target_swing": 18.7,
+      "long_term_target_asset": 21.2,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "OVERVALUED_EUPHORIA",
@@ -31,31 +31,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 6.45,
+        "return_pct": 3.82,
         "high": 16.7,
         "low": 15.2,
         "range_volatility_pct": 9.87
       },
       "monthly_21d": {
-        "return_pct": 27.91,
+        "return_pct": 26.36,
         "high": 16.7,
         "low": 12.5,
         "range_volatility_pct": 33.6
       },
       "quarterly_63d": {
-        "return_pct": 9.27,
+        "return_pct": 6.54,
         "high": 17.7,
         "low": 10.8,
         "range_volatility_pct": 63.89
       },
       "half_yearly_126d": {
-        "return_pct": -32.38,
+        "return_pct": -35.32,
         "high": 28.0,
         "low": 10.8,
         "range_volatility_pct": 159.26
       },
       "yearly_252d": {
-        "return_pct": -39.56,
+        "return_pct": -39.85,
         "high": 29.4,
         "low": 10.8,
         "range_volatility_pct": 172.22
@@ -67,7 +67,7 @@
       "avg_wave_duration_bars": 14.0
     },
     "current_wave_phase": "BOTTOMING_SUPPORT",
-    "phase_guidance": "Drop (18.7%) matches historical correction depth (-17.8%). Prepare to accumulate.",
+    "phase_guidance": "Drop (17.3%) matches historical correction depth (-17.8%). Prepare to accumulate.",
     "top_seasonal_months": [
       {
         "month": "Jul",

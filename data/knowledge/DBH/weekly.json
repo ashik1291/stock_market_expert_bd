@@ -2,18 +2,18 @@
   "ticker": "DBH",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T05:50:58.250668",
-  "asof_price_date": "2026-11-11",
+  "analyzed_at": "2026-11-12T07:09:08.857778",
+  "asof_price_date": "2026-11-12",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 55.3178,
+    "rsi_14": 56.4123,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "HOLD",
-  "confidence": 45.48,
+  "confidence": 45.29,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -30,11 +30,11 @@
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+6.7%",
+      "upside_potential_pct": "+6.4%",
       "downside_risk_pct": "-10.0%",
-      "target_price": 41.5,
+      "target_price": 41.4,
       "trailing_stop": 35.0,
-      "risk_reward_ratio": "0.7x"
+      "risk_reward_ratio": "0.6x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 38.9,
-    "stop_loss": 37.35,
-    "target": 42.0
+    "stop_loss": 37.4,
+    "target": 41.9
   },
   "precision": {
     "ticker": "DBH",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 43698,
+      "avg_daily_volume": 44790,
       "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 2184,
-      "max_daily_accumulation_shares": 6554,
-      "max_order_bdt": 2184.0,
-      "directive": "Max single order: 2,184 shares (Tk 2,184) to prevent >1% execution slippage"
+      "max_single_order_shares": 2239,
+      "max_daily_accumulation_shares": 6718,
+      "max_order_bdt": 2239.0,
+      "directive": "Max single order: 2,239 shares (Tk 2,239) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -103,15 +103,15 @@
   },
   "pattern_dna": {
     "ticker": "DBH",
-    "audited_at": "2026-11-11 11:50:58",
+    "audited_at": "2026-11-12 13:09:08",
     "worth_vs_greed": {
       "current_price": 38.9,
       "intrinsic_worth": 19.45,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 30.0,
       "greed_index": 30.0,
-      "rsi_14": 46.3,
-      "price_vs_ema50_pct": 3.1,
+      "rsi_14": 52.5,
+      "price_vs_ema50_pct": 2.9,
       "price_vs_ema200_pct": 5.0,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
@@ -133,31 +133,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 2.91,
-          "high": 39.0,
+          "return_pct": -0.26,
+          "high": 39.5,
           "low": 37.4,
-          "range_volatility_pct": 4.28
+          "range_volatility_pct": 5.61
         },
         "monthly_21d": {
-          "return_pct": -2.75,
-          "high": 40.0,
+          "return_pct": -1.52,
+          "high": 39.9,
           "low": 36.8,
-          "range_volatility_pct": 8.7
+          "range_volatility_pct": 8.42
         },
         "quarterly_63d": {
-          "return_pct": 6.87,
+          "return_pct": 8.96,
           "high": 40.2,
           "low": 32.0,
           "range_volatility_pct": 25.63
         },
         "half_yearly_126d": {
-          "return_pct": 0.52,
+          "return_pct": 0.78,
           "high": 42.1,
           "low": 31.5,
           "range_volatility_pct": 33.65
         },
         "yearly_252d": {
-          "return_pct": 5.99,
+          "return_pct": 5.42,
           "high": 42.1,
           "low": 30.1,
           "range_volatility_pct": 39.87
@@ -273,11 +273,11 @@
       "macd": "neutral",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 1.03,
+      "atr": 1.0,
       "rsi_value": 55.57,
       "last_close": 38.9,
-      "sma20": 38.68,
-      "sma50": 37.41,
+      "sma20": 38.67,
+      "sma50": 37.51,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -348,15 +348,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 195042,
-        "avg_volume": 140971.0,
+        "last_volume": 86831,
+        "avg_volume": 137233.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.4,
-        "avg_volume": 139571.0,
-        "today_volume": 195042,
+        "spike_ratio": 0.62,
+        "avg_volume": 140971.0,
+        "today_volume": 86831,
         "detail": "ok"
       },
       "serial_trading": {
@@ -375,20 +375,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": 2.91,
+        "price_change_3d": 1.83,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 45.48,
+    "composite_score": 45.29,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.68,
-      "technical": 0.2,
-      "governance": 0.12,
+      "fundamental": 0.674,
+      "technical": 0.202,
+      "governance": 0.124,
       "sentiment": 0.0
     }
   }

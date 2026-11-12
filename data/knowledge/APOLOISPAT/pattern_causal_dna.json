@@ -1,61 +1,61 @@
 {
   "ticker": "APOLOISPAT",
-  "audited_at": "2026-11-11 11:50:52",
+  "audited_at": "2026-11-12 13:09:04",
   "worth_vs_greed": {
-    "current_price": 2.2,
-    "intrinsic_worth": 1.1,
+    "current_price": 2.4,
+    "intrinsic_worth": 1.2,
     "margin_of_safety_pct": -50.0,
     "extension_froth_score": 40.0,
     "greed_index": 40.0,
-    "rsi_14": 33.3,
-    "price_vs_ema50_pct": 0.2,
-    "price_vs_ema200_pct": -16.5,
+    "rsi_14": 50.0,
+    "price_vs_ema50_pct": 8.9,
+    "price_vs_ema200_pct": -8.8,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f32.2 \u2013 \u09f32.2",
-      "chase_cutoff_price": 2.3,
-      "when_to_wait": "If price opens or rises above \u09f32.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f32.2.",
-      "weekly_target_short": 2.3,
-      "monthly_target_swing": 2.5,
-      "long_term_target_asset": 2.9,
+      "optimal_entry_corridor": "\u09f32.4 \u2013 \u09f32.4",
+      "chase_cutoff_price": 2.5,
+      "when_to_wait": "If price opens or rises above \u09f32.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f32.4.",
+      "weekly_target_short": 2.5,
+      "monthly_target_swing": 2.8,
+      "long_term_target_asset": 3.1,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
     "reason": "Fundamental value severely lags stock price (MoS: -50.0%).",
     "is_blacklisted": true,
-    "blacklist_reason": "Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-28 \u2014 Price up +4.35% with poor fundamentals (Negative EPS)]",
-    "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-28 \u2014 Price up +4.35% with poor fundamentals (Negative EPS)]"
+    "blacklist_reason": "Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-11-12 \u2014 Price up +9.09% on untracked / high-risk security without verified earnings]",
+    "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-11-12 \u2014 Price up +9.09% on untracked / high-risk security without verified earnings]"
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 0.0,
+        "return_pct": 9.09,
         "high": 2.4,
         "low": 2.2,
         "range_volatility_pct": 9.09
       },
       "monthly_21d": {
-        "return_pct": -8.33,
+        "return_pct": -4.0,
         "high": 2.6,
         "low": 2.2,
         "range_volatility_pct": 18.18
       },
       "quarterly_63d": {
-        "return_pct": -8.33,
+        "return_pct": 9.09,
         "high": 2.8,
         "low": 1.5,
         "range_volatility_pct": 86.67
       },
       "half_yearly_126d": {
-        "return_pct": -21.43,
+        "return_pct": -20.0,
         "high": 3.3,
         "low": 1.3,
         "range_volatility_pct": 153.85
       },
       "yearly_252d": {
-        "return_pct": -46.34,
+        "return_pct": -46.67,
         "high": 4.9,
         "low": 1.3,
         "range_volatility_pct": 276.92
@@ -66,8 +66,8 @@
       "median_correction_drop_pct": -26.0,
       "avg_wave_duration_bars": 16.0
     },
-    "current_wave_phase": "BOTTOMING_SUPPORT",
-    "phase_guidance": "Drop (-21.4%) matches historical correction depth (-26.0%). Prepare to accumulate.",
+    "current_wave_phase": "MARKDOWN_PULLBACK",
+    "phase_guidance": "Ongoing pullback from peak (-14.3%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Aug",

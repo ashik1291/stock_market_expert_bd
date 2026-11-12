@@ -1,61 +1,61 @@
 {
   "ticker": "PRIMEFIN",
-  "audited_at": "2026-11-11 11:51:19",
+  "audited_at": "2026-11-12 13:09:26",
   "worth_vs_greed": {
-    "current_price": 2.7,
-    "intrinsic_worth": 1.35,
+    "current_price": 2.9,
+    "intrinsic_worth": 1.45,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 70.0,
-    "greed_index": 70.0,
+    "extension_froth_score": 60.0,
+    "greed_index": 60.0,
     "rsi_14": 60.0,
-    "price_vs_ema50_pct": 22.0,
-    "price_vs_ema200_pct": -1.4,
+    "price_vs_ema50_pct": 29.4,
+    "price_vs_ema200_pct": 5.8,
     "merit_status": "SPECULATIVE_JUNK_PUMP",
     "merit_reason": "Price is surging aggressively without positive EPS backing. Pure speculative risk.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f32.6 \u2013 \u09f32.7",
-      "chase_cutoff_price": 2.8,
-      "when_to_wait": "If price opens or rises above \u09f32.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f32.6.",
-      "weekly_target_short": 2.8,
-      "monthly_target_swing": 3.1,
-      "long_term_target_asset": 3.5,
+      "optimal_entry_corridor": "\u09f32.8 \u2013 \u09f32.9",
+      "chase_cutoff_price": 3.0,
+      "when_to_wait": "If price opens or rises above \u09f33.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f32.8.",
+      "weekly_target_short": 3.0,
+      "monthly_target_swing": 3.3,
+      "long_term_target_asset": 3.8,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
-    "status": "OVERVALUED_EUPHORIA",
-    "worth_decision": "SELL_TAKE_PROFIT",
-    "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (70.0/100). Danger of sharp mean reversion.",
+    "status": "SPECULATIVE_GREED",
+    "worth_decision": "DO_NOT_BUY_WAIT_FOR_PULLBACK",
+    "reason": "Extreme short-term greed (60.0/100) or speculative pump without earnings merit. Risk of buying at local peak.",
     "is_blacklisted": true,
-    "blacklist_reason": "Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-25 \u2014 Price up +8.0% with poor fundamentals (Negative EPS)]",
-    "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-25 \u2014 Price up +8.0% with poor fundamentals (Negative EPS)]"
+    "blacklist_reason": "Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-11-12 \u2014 Price up +7.41% on untracked / high-risk security without verified earnings]",
+    "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-11-12 \u2014 Price up +7.41% on untracked / high-risk security without verified earnings]"
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -3.57,
-        "high": 2.8,
+        "return_pct": 3.57,
+        "high": 2.9,
         "low": 2.7,
-        "range_volatility_pct": 3.7
+        "range_volatility_pct": 7.41
       },
       "monthly_21d": {
-        "return_pct": 8.0,
+        "return_pct": 16.0,
         "high": 3.0,
         "low": 2.4,
         "range_volatility_pct": 25.0
       },
       "quarterly_63d": {
-        "return_pct": 50.0,
+        "return_pct": 70.59,
         "high": 3.0,
         "low": 0.73,
         "range_volatility_pct": 310.96
       },
       "half_yearly_126d": {
-        "return_pct": -3.57,
+        "return_pct": 0.0,
         "high": 3.1,
         "low": 0.73,
         "range_volatility_pct": 324.66
       },
       "yearly_252d": {
-        "return_pct": -40.0,
+        "return_pct": -40.82,
         "high": 5.2,
         "low": 0.73,
         "range_volatility_pct": 612.33
@@ -67,7 +67,7 @@
       "avg_wave_duration_bars": 20.0
     },
     "current_wave_phase": "LATE_MARKUP",
-    "phase_guidance": "Approaching historical rally limit (+269.9% vs median +17.9%). Tighten stop.",
+    "phase_guidance": "Approaching historical rally limit (+297.3% vs median +17.9%). Tighten stop.",
     "top_seasonal_months": [
       {
         "month": "Oct",

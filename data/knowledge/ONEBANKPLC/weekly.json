@@ -2,18 +2,18 @@
   "ticker": "ONEBANKPLC",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T05:51:16.526266",
-  "asof_price_date": "2026-11-11",
+  "analyzed_at": "2026-11-12T07:09:23.568108",
+  "asof_price_date": "2026-11-12",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 44.7786,
+    "rsi_14": 44.9908,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 43.98,
+  "confidence": 43.78,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -30,11 +30,11 @@
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+5.9%",
+      "upside_potential_pct": "+7.4%",
       "downside_risk_pct": "-4.4%",
-      "target_price": 7.2,
+      "target_price": 7.3,
       "trailing_stop": 6.5,
-      "risk_reward_ratio": "1.3x"
+      "risk_reward_ratio": "1.7x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 6.8,
-    "stop_loss": 6.53,
-    "target": 7.34
+    "stop_loss": 6.51,
+    "target": 7.38
   },
   "precision": {
     "ticker": "ONEBANKPLC",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 216609,
+      "avg_daily_volume": 205887,
       "daily_turnover_bdt_cr": 0.02,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 10830,
-      "max_daily_accumulation_shares": 32491,
-      "max_order_bdt": 10830.0,
-      "directive": "Max single order: 10,830 shares (Tk 10,830) to prevent >1% execution slippage"
+      "max_single_order_shares": 10294,
+      "max_daily_accumulation_shares": 30883,
+      "max_order_bdt": 10294.0,
+      "directive": "Max single order: 10,294 shares (Tk 10,294) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -103,7 +103,7 @@
   },
   "pattern_dna": {
     "ticker": "ONEBANKPLC",
-    "audited_at": "2026-11-11 11:51:16",
+    "audited_at": "2026-11-12 13:09:23",
     "worth_vs_greed": {
       "current_price": 6.8,
       "intrinsic_worth": 3.4,
@@ -112,7 +112,7 @@
       "greed_index": 20.0,
       "rsi_14": 42.9,
       "price_vs_ema50_pct": -1.9,
-      "price_vs_ema200_pct": -7.4,
+      "price_vs_ema200_pct": -7.3,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -133,19 +133,19 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 1.49,
+          "return_pct": 0.0,
           "high": 6.9,
           "low": 6.6,
           "range_volatility_pct": 4.55
         },
         "monthly_21d": {
-          "return_pct": -2.86,
+          "return_pct": -4.23,
           "high": 7.3,
           "low": 6.6,
           "range_volatility_pct": 10.61
         },
         "quarterly_63d": {
-          "return_pct": -4.23,
+          "return_pct": -2.86,
           "high": 7.4,
           "low": 6.6,
           "range_volatility_pct": 12.12
@@ -157,7 +157,7 @@
           "range_volatility_pct": 26.56
         },
         "yearly_252d": {
-          "return_pct": -22.73,
+          "return_pct": -23.6,
           "high": 9.4,
           "low": 6.3,
           "range_volatility_pct": 49.21
@@ -273,10 +273,10 @@
       "macd": "neutral",
       "sma_trend": "neutral",
       "bb": "inside_bands",
-      "atr": 0.18,
+      "atr": 0.19,
       "rsi_value": 44.8,
       "last_close": 6.8,
-      "sma20": 6.88,
+      "sma20": 6.86,
       "sma50": 6.95,
       "sma200": null,
       "support_resistance": {
@@ -340,26 +340,24 @@
     }
   },
   "manipulation": {
-    "manipulation_score": 15,
+    "manipulation_score": 0,
     "manipulation_risk": "low",
     "block_buy": false,
-    "flags": [
-      "volume_spike: volume_3.7x_avg"
-    ],
+    "flags": [],
     "checks": {
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 1038565,
-        "avg_volume": 290602.0,
+        "last_volume": 30465,
+        "avg_volume": 251806.0,
         "detail": "ok"
       },
       "volume_spike": {
-        "flag": true,
-        "spike_ratio": 3.74,
-        "avg_volume": 277989.0,
-        "today_volume": 1038565,
-        "detail": "volume_3.7x_avg"
+        "flag": false,
+        "spike_ratio": 0.1,
+        "avg_volume": 290602.0,
+        "today_volume": 30465,
+        "detail": "ok"
       },
       "serial_trading": {
         "flag": false,
@@ -384,13 +382,13 @@
     }
   },
   "composite": {
-    "composite_score": 43.98,
+    "composite_score": 43.78,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.68,
-      "technical": 0.2,
-      "governance": 0.12,
+      "fundamental": 0.674,
+      "technical": 0.202,
+      "governance": 0.124,
       "sentiment": 0.0
     }
   }

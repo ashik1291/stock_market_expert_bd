@@ -1,24 +1,24 @@
 {
   "ticker": "ICB3RDNRB",
-  "audited_at": "2026-11-11 11:51:06",
+  "audited_at": "2026-11-12 13:09:15",
   "worth_vs_greed": {
-    "current_price": 5.5,
-    "intrinsic_worth": 2.75,
+    "current_price": 5.6,
+    "intrinsic_worth": 2.8,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 60.0,
-    "greed_index": 60.0,
-    "rsi_14": 33.3,
-    "price_vs_ema50_pct": 7.2,
-    "price_vs_ema200_pct": 17.4,
+    "extension_froth_score": 50.0,
+    "greed_index": 50.0,
+    "rsi_14": 44.4,
+    "price_vs_ema50_pct": 8.7,
+    "price_vs_ema200_pct": 19.3,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f35.4 \u2013 \u09f35.6",
-      "chase_cutoff_price": 5.6,
-      "when_to_wait": "If price opens or rises above \u09f35.6, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f35.4.",
-      "weekly_target_short": 5.7,
-      "monthly_target_swing": 6.3,
-      "long_term_target_asset": 7.2,
+      "optimal_entry_corridor": "\u09f35.5 \u2013 \u09f35.7",
+      "chase_cutoff_price": 5.7,
+      "when_to_wait": "If price opens or rises above \u09f35.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f35.5.",
+      "weekly_target_short": 5.8,
+      "monthly_target_swing": 6.4,
+      "long_term_target_asset": 7.3,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -30,31 +30,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -1.79,
+        "return_pct": 0.0,
         "high": 5.7,
         "low": 5.4,
         "range_volatility_pct": 5.56
       },
       "monthly_21d": {
-        "return_pct": 0.0,
+        "return_pct": -3.45,
         "high": 6.0,
         "low": 5.4,
         "range_volatility_pct": 11.11
       },
       "quarterly_63d": {
-        "return_pct": 37.5,
+        "return_pct": 40.0,
         "high": 6.3,
         "low": 3.8,
         "range_volatility_pct": 65.79
       },
       "half_yearly_126d": {
-        "return_pct": 19.57,
+        "return_pct": 21.74,
         "high": 6.3,
         "low": 3.4,
         "range_volatility_pct": 85.29
       },
       "yearly_252d": {
-        "return_pct": 27.91,
+        "return_pct": 33.33,
         "high": 6.3,
         "low": 3.4,
         "range_volatility_pct": 85.29
@@ -66,7 +66,7 @@
       "avg_wave_duration_bars": 15.0
     },
     "current_wave_phase": "BOTTOMING_SUPPORT",
-    "phase_guidance": "Drop (-12.7%) matches historical correction depth (-12.7%). Prepare to accumulate.",
+    "phase_guidance": "Drop (-11.1%) matches historical correction depth (-12.7%). Prepare to accumulate.",
     "top_seasonal_months": [
       {
         "month": "Jan",

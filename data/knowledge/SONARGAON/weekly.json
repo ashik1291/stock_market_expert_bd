@@ -2,18 +2,18 @@
   "ticker": "SONARGAON",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T05:51:26.749558",
-  "asof_price_date": "2026-11-11",
+  "analyzed_at": "2026-11-12T07:09:31.888753",
+  "asof_price_date": "2026-11-12",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 74.3946,
+    "rsi_14": 75.0648,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 43.98,
+  "confidence": 43.78,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -22,33 +22,33 @@
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+7.2%",
-      "downside_risk_pct": "-4.8%",
-      "target_price": 136.2,
-      "support_price": 120.9,
+      "upside_potential_pct": "+7.3%",
+      "downside_risk_pct": "-4.9%",
+      "target_price": 137.4,
+      "support_price": 121.7,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+12.0%",
+      "upside_potential_pct": "+12.3%",
       "downside_risk_pct": "-10.0%",
-      "target_price": 142.3,
-      "trailing_stop": 114.3,
+      "target_price": 143.7,
+      "trailing_stop": 115.2,
       "risk_reward_ratio": "1.2x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.0%",
       "downside_risk_pct": "-12.0%",
-      "target_price": 165.1,
+      "target_price": 166.4,
       "dividend_cagr": "5%\u20138%",
       "risk_reward_ratio": "2.5x"
     }
   },
   "trade_levels": {
-    "entry": 127.0,
-    "stop_loss": 117.83,
-    "target": 145.34
+    "entry": 128.0,
+    "stop_loss": 118.61,
+    "target": 146.78
   },
   "precision": {
     "ticker": "SONARGAON",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 373590,
+      "avg_daily_volume": 366034,
       "daily_turnover_bdt_cr": 0.04,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 18679,
-      "max_daily_accumulation_shares": 56038,
-      "max_order_bdt": 18679.0,
-      "directive": "Max single order: 18,679 shares (Tk 18,679) to prevent >1% execution slippage"
+      "max_single_order_shares": 18301,
+      "max_daily_accumulation_shares": 54905,
+      "max_order_bdt": 18301.0,
+      "directive": "Max single order: 18,301 shares (Tk 18,301) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -90,43 +90,43 @@
     "range_52w_corridor": {
       "status": "VALID",
       "low_52w": 20.7,
-      "high_52w": 129.3,
-      "range_52w_pct": 97.9,
+      "high_52w": 129.5,
+      "range_52w_pct": 98.6,
       "channel_regime": "OVEREXTENDED_CEILING",
-      "visual_gauge": "[ \u09f320.7 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| \u09f3129.3 ] (97.9% (Truncated))",
+      "visual_gauge": "[ \u09f320.7 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| \u09f3129.5 ] (98.6% (Truncated))",
       "conviction_bonus": -10.0,
       "is_truncated_window": true,
       "bars_evaluated": 100,
-      "signal": "Price is at 97.9% of 52-week high (near \u09f3129.3) \u2014 elevated mean-reversion risk"
+      "signal": "Price is at 98.6% of 52-week high (near \u09f3129.5) \u2014 elevated mean-reversion risk"
     },
     "total_precision_bonus": -10.0
   },
   "pattern_dna": {
     "ticker": "SONARGAON",
-    "audited_at": "2026-11-11 11:51:26",
+    "audited_at": "2026-11-12 13:09:31",
     "worth_vs_greed": {
-      "current_price": 127.0,
-      "intrinsic_worth": 63.5,
+      "current_price": 128.0,
+      "intrinsic_worth": 64.0,
       "margin_of_safety_pct": -50.0,
-      "extension_froth_score": 60.0,
-      "greed_index": 60.0,
-      "rsi_14": 50.8,
-      "price_vs_ema50_pct": 44.6,
-      "price_vs_ema200_pct": 147.6,
+      "extension_froth_score": 70.0,
+      "greed_index": 70.0,
+      "rsi_14": 60.9,
+      "price_vs_ema50_pct": 43.1,
+      "price_vs_ema200_pct": 145.9,
       "merit_status": "SPECULATIVE_JUNK_PUMP",
       "merit_reason": "Price is surging aggressively without positive EPS backing. Pure speculative risk.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f3124.5 \u2013 \u09f3128.3",
-        "chase_cutoff_price": 130.2,
-        "when_to_wait": "If price opens or rises above \u09f3130.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3124.5.",
-        "weekly_target_short": 131.4,
-        "monthly_target_swing": 146.0,
-        "long_term_target_asset": 165.1,
+        "optimal_entry_corridor": "\u09f3125.4 \u2013 \u09f3129.3",
+        "chase_cutoff_price": 131.2,
+        "when_to_wait": "If price opens or rises above \u09f3131.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3125.4.",
+        "weekly_target_short": 132.5,
+        "monthly_target_swing": 147.2,
+        "long_term_target_asset": 166.4,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
-      "status": "SPECULATIVE_GREED",
-      "worth_decision": "DO_NOT_BUY_WAIT_FOR_PULLBACK",
-      "reason": "Extreme short-term greed (60.0/100) or speculative pump without earnings merit. Risk of buying at local peak.",
+      "status": "OVERVALUED_EUPHORIA",
+      "worth_decision": "SELL_TAKE_PROFIT",
+      "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (70.0/100). Danger of sharp mean reversion.",
       "is_blacklisted": true,
       "blacklist_reason": "Blocked by Forensic Surveillance [CRITICAL: ABNORMAL_VOLUME_SURGE on 2026-11-04 \u2014 Mid-tier volume is 3.0x 20-day average (919,862 vs 303,492) | Price up +8.2% on untracked / high-risk security without verified earnings]",
       "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [CRITICAL: ABNORMAL_VOLUME_SURGE on 2026-11-04 \u2014 Mid-tier volume is 3.0x 20-day average (919,862 vs 303,492) | Price up +8.2% on untracked / high-risk security without verified earnings]"
@@ -134,34 +134,34 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 6.9,
-          "high": 129.0,
-          "low": 119.9,
-          "range_volatility_pct": 7.59
+          "return_pct": 6.14,
+          "high": 129.5,
+          "low": 120.8,
+          "range_volatility_pct": 7.2
         },
         "monthly_21d": {
-          "return_pct": 14.0,
-          "high": 129.3,
+          "return_pct": 13.58,
+          "high": 129.5,
           "low": 108.1,
-          "range_volatility_pct": 19.61
+          "range_volatility_pct": 19.8
         },
         "quarterly_63d": {
-          "return_pct": 368.63,
-          "high": 129.3,
+          "return_pct": 383.02,
+          "high": 129.5,
           "low": 25.0,
-          "range_volatility_pct": 417.2
+          "range_volatility_pct": 418.0
         },
         "half_yearly_126d": {
-          "return_pct": 229.02,
-          "high": 129.3,
+          "return_pct": 233.33,
+          "high": 129.5,
           "low": 20.7,
-          "range_volatility_pct": 524.64
+          "range_volatility_pct": 525.6
         },
         "yearly_252d": {
-          "return_pct": 220.71,
-          "high": 129.3,
+          "return_pct": 214.5,
+          "high": 129.5,
           "low": 20.7,
-          "range_volatility_pct": 524.64
+          "range_volatility_pct": 525.6
         }
       },
       "wave_metrics": {
@@ -170,7 +170,7 @@
         "avg_wave_duration_bars": 19.0
       },
       "current_wave_phase": "MARKDOWN_PULLBACK",
-      "phase_guidance": "Ongoing pullback from peak (-1.8%). Wait for stabilizing base.",
+      "phase_guidance": "Ongoing pullback from peak (-1.0%). Wait for stabilizing base.",
       "top_seasonal_months": [
         {
           "month": "Oct",
@@ -274,11 +274,11 @@
       "macd": "neutral",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 6.11,
-      "rsi_value": 74.38,
-      "last_close": 127.0,
-      "sma20": 120.97,
-      "sma50": 76.37,
+      "atr": 6.26,
+      "rsi_value": 74.99,
+      "last_close": 128.0,
+      "sma20": 121.53,
+      "sma50": 78.35,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -301,8 +301,8 @@
       "error": "no_fundamental_data",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 1.8,
-        "high_52w": 129.3,
+        "drawdown_pct": 1.2,
+        "high_52w": 129.5,
         "low_52w": 20.7
       }
     }
@@ -345,15 +345,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 480451,
-        "avg_volume": 359912.0,
+        "last_volume": 443874,
+        "avg_volume": 358570.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.36,
-        "avg_volume": 352535.0,
-        "today_volume": 480451,
+        "spike_ratio": 1.23,
+        "avg_volume": 359912.0,
+        "today_volume": 443874,
         "detail": "ok"
       },
       "serial_trading": {
@@ -372,20 +372,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": 1.68,
+        "price_change_3d": 1.03,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 43.98,
+    "composite_score": 43.78,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.68,
-      "technical": 0.2,
-      "governance": 0.12,
+      "fundamental": 0.674,
+      "technical": 0.202,
+      "governance": 0.124,
       "sentiment": 0.0
     }
   }

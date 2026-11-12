@@ -1,29 +1,29 @@
 {
   "ticker": "RUNNERAUTO",
-  "audited_at": "2026-11-11 11:51:22",
+  "audited_at": "2026-11-12 13:09:28",
   "worth_vs_greed": {
-    "current_price": 52.0,
+    "current_price": 50.6,
     "intrinsic_worth": 1.92,
-    "margin_of_safety_pct": -96.3,
-    "extension_froth_score": 70.0,
-    "greed_index": 70.0,
-    "rsi_14": 71.7,
-    "price_vs_ema50_pct": 13.1,
-    "price_vs_ema200_pct": 23.6,
+    "margin_of_safety_pct": -96.2,
+    "extension_froth_score": 60.0,
+    "greed_index": 60.0,
+    "rsi_14": 70.3,
+    "price_vs_ema50_pct": 9.7,
+    "price_vs_ema200_pct": 20.1,
     "merit_status": "EARNINGS_BACKED_MERIT",
     "merit_reason": "Price supported by solid earnings (EPS: \u09f30.24, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f351.0 \u2013 \u09f352.5",
-      "chase_cutoff_price": 53.3,
-      "when_to_wait": "If price opens or rises above \u09f353.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f351.0.",
-      "weekly_target_short": 53.8,
-      "monthly_target_swing": 59.8,
-      "long_term_target_asset": 67.6,
+      "optimal_entry_corridor": "\u09f349.6 \u2013 \u09f351.1",
+      "chase_cutoff_price": 51.9,
+      "when_to_wait": "If price opens or rises above \u09f351.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f349.6.",
+      "weekly_target_short": 52.4,
+      "monthly_target_swing": 58.2,
+      "long_term_target_asset": 65.8,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
-    "status": "OVERVALUED_EUPHORIA",
-    "worth_decision": "SELL_TAKE_PROFIT",
-    "reason": "Price is 96.3% above intrinsic worth while market greed is euphoric (70.0/100). Danger of sharp mean reversion.",
+    "status": "CHRONIC_OVERVALUATION",
+    "worth_decision": "AVOID",
+    "reason": "Fundamental value severely lags stock price (MoS: -96.2%).",
     "is_blacklisted": true,
     "blacklist_reason": "Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-27 \u2014 Price up +4.86% with poor fundamentals (Negative EPS)]",
     "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-27 \u2014 Price up +4.86% with poor fundamentals (Negative EPS)]"
@@ -31,34 +31,34 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 11.59,
+        "return_pct": 6.98,
         "high": 52.9,
-        "low": 46.6,
-        "range_volatility_pct": 13.52
+        "low": 47.8,
+        "range_volatility_pct": 10.67
       },
       "monthly_21d": {
-        "return_pct": 23.81,
+        "return_pct": 21.05,
         "high": 52.9,
-        "low": 41.2,
-        "range_volatility_pct": 28.4
+        "low": 41.4,
+        "range_volatility_pct": 27.78
       },
       "quarterly_63d": {
-        "return_pct": 10.4,
+        "return_pct": 8.58,
         "high": 54.2,
         "low": 41.2,
         "range_volatility_pct": 31.55
       },
       "half_yearly_126d": {
-        "return_pct": 26.52,
+        "return_pct": 24.32,
         "high": 54.2,
         "low": 36.0,
         "range_volatility_pct": 50.56
       },
       "yearly_252d": {
-        "return_pct": 78.08,
+        "return_pct": 70.95,
         "high": 54.2,
-        "low": 28.9,
-        "range_volatility_pct": 87.54
+        "low": 29.0,
+        "range_volatility_pct": 86.9
       }
     },
     "wave_metrics": {
@@ -67,7 +67,7 @@
       "avg_wave_duration_bars": 24.0
     },
     "current_wave_phase": "LATE_MARKUP",
-    "phase_guidance": "Approaching historical rally limit (+26.2% vs median +21.9%). Tighten stop.",
+    "phase_guidance": "Approaching historical rally limit (+22.8% vs median +21.9%). Tighten stop.",
     "top_seasonal_months": [
       {
         "month": "Nov",

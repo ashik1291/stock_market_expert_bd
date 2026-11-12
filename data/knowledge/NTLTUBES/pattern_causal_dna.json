@@ -1,60 +1,61 @@
 {
   "ticker": "NTLTUBES",
-  "audited_at": "2026-11-11 11:51:15",
+  "audited_at": "2026-11-12 13:09:23",
   "worth_vs_greed": {
-    "current_price": 56.7,
-    "intrinsic_worth": 28.35,
+    "current_price": 60.2,
+    "intrinsic_worth": 30.1,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 20.0,
-    "greed_index": 20.0,
-    "rsi_14": 39.7,
-    "price_vs_ema50_pct": -4.3,
-    "price_vs_ema200_pct": -17.0,
+    "extension_froth_score": 40.0,
+    "greed_index": 40.0,
+    "rsi_14": 63.3,
+    "price_vs_ema50_pct": 1.6,
+    "price_vs_ema200_pct": -11.8,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f355.6 \u2013 \u09f357.3",
-      "chase_cutoff_price": 58.1,
-      "when_to_wait": "If price opens or rises above \u09f358.1, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f355.6.",
-      "weekly_target_short": 58.7,
-      "monthly_target_swing": 65.2,
-      "long_term_target_asset": 73.7,
+      "optimal_entry_corridor": "\u09f359.0 \u2013 \u09f360.8",
+      "chase_cutoff_price": 61.7,
+      "when_to_wait": "If price opens or rises above \u09f361.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f359.0.",
+      "weekly_target_short": 62.3,
+      "monthly_target_swing": 69.2,
+      "long_term_target_asset": 78.3,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
     "reason": "Fundamental value severely lags stock price (MoS: -50.0%).",
-    "is_blacklisted": false,
-    "blacklist_reason": null
+    "is_blacklisted": true,
+    "blacklist_reason": "Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-11-12 \u2014 Low-float spike is 10.9x 20-day average (193,569 vs 17,728) | Price up +6.17% on untracked / high-risk security without verified earnings]",
+    "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-11-12 \u2014 Low-float spike is 10.9x 20-day average (193,569 vs 17,728) | Price up +6.17% on untracked / high-risk security without verified earnings]"
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 2.53,
-        "high": 57.2,
+        "return_pct": 7.5,
+        "high": 61.0,
         "low": 55.9,
-        "range_volatility_pct": 2.33
+        "range_volatility_pct": 9.12
       },
       "monthly_21d": {
-        "return_pct": -3.08,
+        "return_pct": 3.26,
         "high": 61.5,
         "low": 55.0,
         "range_volatility_pct": 11.82
       },
       "quarterly_63d": {
-        "return_pct": -12.09,
-        "high": 66.5,
+        "return_pct": -6.96,
+        "high": 65.7,
         "low": 55.0,
-        "range_volatility_pct": 20.91
+        "range_volatility_pct": 19.45
       },
       "half_yearly_126d": {
-        "return_pct": -31.11,
+        "return_pct": -27.21,
         "high": 88.0,
         "low": 55.0,
         "range_volatility_pct": 60.0
       },
       "yearly_252d": {
-        "return_pct": -27.49,
+        "return_pct": -26.67,
         "high": 91.8,
         "low": 55.0,
         "range_volatility_pct": 66.91
@@ -66,7 +67,7 @@
       "avg_wave_duration_bars": 22.0
     },
     "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-10.1%). Wait for stabilizing base.",
+    "phase_guidance": "Ongoing pullback from peak (-4.6%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Aug",

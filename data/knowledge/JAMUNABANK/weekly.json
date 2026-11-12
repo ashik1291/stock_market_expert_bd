@@ -2,18 +2,18 @@
   "ticker": "JAMUNABANK",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T05:51:08.617278",
-  "asof_price_date": "2026-11-11",
+  "analyzed_at": "2026-11-12T07:09:17.317815",
+  "asof_price_date": "2026-11-12",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 72.8846,
+    "rsi_14": 72.8522,
     "pe_ratio": 3.56,
     "debt_equity": 0.595
   },
   "signal": "HOLD_INELIGIBLE_DEFICIT",
-  "confidence": 65.19,
+  "confidence": 64.82,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 24.1,
-    "stop_loss": 23.61,
-    "target": 25.08
+    "stop_loss": 23.62,
+    "target": 25.06
   },
   "precision": {
     "ticker": "JAMUNABANK",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 934483,
+      "avg_daily_volume": 916650,
       "daily_turnover_bdt_cr": 0.09,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 46724,
-      "max_daily_accumulation_shares": 140172,
-      "max_order_bdt": 46724.0,
-      "directive": "Max single order: 46,724 shares (Tk 46,724) to prevent >1% execution slippage"
+      "max_single_order_shares": 45832,
+      "max_daily_accumulation_shares": 137497,
+      "max_order_bdt": 45832.0,
+      "directive": "Max single order: 45,832 shares (Tk 45,832) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -103,16 +103,16 @@
   },
   "pattern_dna": {
     "ticker": "JAMUNABANK",
-    "audited_at": "2026-11-11 11:51:08",
+    "audited_at": "2026-11-12 13:09:17",
     "worth_vs_greed": {
       "current_price": 24.1,
       "intrinsic_worth": 10.48,
       "margin_of_safety_pct": -56.5,
       "extension_froth_score": 20.0,
       "greed_index": 20.0,
-      "rsi_14": 69.6,
-      "price_vs_ema50_pct": 5.8,
-      "price_vs_ema200_pct": 14.9,
+      "rsi_14": 61.1,
+      "price_vs_ema50_pct": 5.5,
+      "price_vs_ema200_pct": 14.7,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f31.31, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
@@ -133,31 +133,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 2.99,
+          "return_pct": 2.55,
           "high": 24.2,
-          "low": 23.4,
-          "range_volatility_pct": 3.42
+          "low": 23.9,
+          "range_volatility_pct": 1.26
         },
         "monthly_21d": {
-          "return_pct": 5.24,
+          "return_pct": 4.78,
           "high": 24.2,
           "low": 22.9,
           "range_volatility_pct": 5.68
         },
         "quarterly_63d": {
-          "return_pct": 13.68,
+          "return_pct": 15.31,
           "high": 24.2,
-          "low": 20.7,
-          "range_volatility_pct": 16.91
+          "low": 20.8,
+          "range_volatility_pct": 16.35
         },
         "half_yearly_126d": {
-          "return_pct": 14.22,
+          "return_pct": 13.15,
           "high": 24.2,
           "low": 19.9,
           "range_volatility_pct": 21.61
         },
         "yearly_252d": {
-          "return_pct": 36.52,
+          "return_pct": 34.38,
           "high": 24.2,
           "low": 15.6,
           "range_volatility_pct": 55.13
@@ -273,11 +273,11 @@
       "macd": "bullish_crossover",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 0.33,
-      "rsi_value": 72.82,
+      "atr": 0.32,
+      "rsi_value": 72.83,
       "last_close": 24.1,
-      "sma20": 23.46,
-      "sma50": 22.62,
+      "sma20": 23.52,
+      "sma50": 22.68,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -357,15 +357,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 854092,
-        "avg_volume": 918984.0,
+        "last_volume": 113238,
+        "avg_volume": 863897.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.84,
-        "avg_volume": 1013407.0,
-        "today_volume": 854092,
+        "spike_ratio": 0.12,
+        "avg_volume": 918984.0,
+        "today_volume": 113238,
         "detail": "ok"
       },
       "serial_trading": {
@@ -391,13 +391,13 @@
     }
   },
   "composite": {
-    "composite_score": 65.19,
+    "composite_score": 64.82,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.68,
-      "technical": 0.2,
-      "governance": 0.12,
+      "fundamental": 0.674,
+      "technical": 0.202,
+      "governance": 0.124,
       "sentiment": 0.0
     }
   }

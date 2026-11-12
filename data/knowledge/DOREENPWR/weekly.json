@@ -2,7 +2,7 @@
   "ticker": "DOREENPWR",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T05:50:59.161651",
+  "analyzed_at": "2026-11-12T07:09:09.790857",
   "asof_price_date": "2026-11-11",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
@@ -13,7 +13,7 @@
     "debt_equity": 1.483
   },
   "signal": "HOLD",
-  "confidence": 54.61,
+  "confidence": 54.33,
   "trajectory": {
     "direction": "FALL_RISK",
     "direction_icon": "\ud83d\udd34",
@@ -103,7 +103,7 @@
   },
   "pattern_dna": {
     "ticker": "DOREENPWR",
-    "audited_at": "2026-11-11 11:50:59",
+    "audited_at": "2026-11-12 13:09:09",
     "worth_vs_greed": {
       "current_price": 38.8,
       "intrinsic_worth": 8.88,
@@ -359,12 +359,11 @@
     }
   },
   "manipulation": {
-    "manipulation_score": 25,
+    "manipulation_score": 15,
     "manipulation_risk": "low",
     "block_buy": false,
     "flags": [
-      "volume_spike: volume_3.2x_avg",
-      "price_surge_no_news: price_11.8pct_zero_news"
+      "volume_spike: volume_3.2x_avg"
     ],
     "checks": {
       "volume_price_divergence": {
@@ -396,21 +395,21 @@
         "detail": "sponsor_holding_not_available"
       },
       "price_surge_no_news": {
-        "flag": true,
-        "price_change_3d": 11.82,
+        "flag": false,
+        "price_change_3d": 1.84,
         "news_count_3d": 0,
-        "detail": "price_11.8pct_zero_news"
+        "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 54.61,
+    "composite_score": 54.33,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.68,
-      "technical": 0.2,
-      "governance": 0.12,
+      "fundamental": 0.674,
+      "technical": 0.202,
+      "governance": 0.124,
       "sentiment": 0.0
     }
   }

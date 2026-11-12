@@ -2,18 +2,18 @@
   "ticker": "QUEENSOUTH",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T05:51:20.812694",
-  "asof_price_date": "2026-11-11",
+  "analyzed_at": "2026-11-12T07:09:27.075341",
+  "asof_price_date": "2026-11-12",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 67.4394,
+    "rsi_14": 69.58,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 46.98,
+  "confidence": 46.81,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -24,31 +24,31 @@
       "predicted_path": "Upward momentum swing",
       "upside_potential_pct": "+5.8%",
       "downside_risk_pct": "-3.6%",
-      "target_price": 14.5,
-      "support_price": 13.2,
+      "target_price": 14.7,
+      "support_price": 13.4,
       "risk_reward_ratio": "1.6x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+9.5%",
-      "downside_risk_pct": "-10.2%",
-      "target_price": 15.0,
-      "trailing_stop": 12.3,
+      "upside_potential_pct": "+9.4%",
+      "downside_risk_pct": "-10.1%",
+      "target_price": 15.2,
+      "trailing_stop": 12.5,
       "risk_reward_ratio": "0.9x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-      "upside_potential_pct": "+29.9%",
+      "upside_potential_pct": "+30.2%",
       "downside_risk_pct": "-12.0%",
-      "target_price": 17.8,
+      "target_price": 18.1,
       "dividend_cagr": "5%\u20138%",
       "risk_reward_ratio": "2.5x"
     }
   },
   "trade_levels": {
-    "entry": 13.7,
-    "stop_loss": 12.92,
-    "target": 15.26
+    "entry": 13.9,
+    "stop_loss": 13.13,
+    "target": 15.44
   },
   "precision": {
     "ticker": "QUEENSOUTH",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 792997,
+      "avg_daily_volume": 800768,
       "daily_turnover_bdt_cr": 0.08,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 39649,
-      "max_daily_accumulation_shares": 118949,
-      "max_order_bdt": 39649.0,
-      "directive": "Max single order: 39,649 shares (Tk 39,649) to prevent >1% execution slippage"
+      "max_single_order_shares": 40038,
+      "max_daily_accumulation_shares": 120115,
+      "max_order_bdt": 40038.0,
+      "directive": "Max single order: 40,038 shares (Tk 40,038) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -90,43 +90,43 @@
     "range_52w_corridor": {
       "status": "VALID",
       "low_52w": 8.5,
-      "high_52w": 13.9,
-      "range_52w_pct": 96.3,
+      "high_52w": 14.1,
+      "range_52w_pct": 96.4,
       "channel_regime": "OVEREXTENDED_CEILING",
-      "visual_gauge": "[ \u09f38.5 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| \u09f313.9 ] (96.3% (Truncated))",
+      "visual_gauge": "[ \u09f38.5 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| \u09f314.1 ] (96.4% (Truncated))",
       "conviction_bonus": -10.0,
       "is_truncated_window": true,
       "bars_evaluated": 100,
-      "signal": "Price is at 96.3% of 52-week high (near \u09f313.9) \u2014 elevated mean-reversion risk"
+      "signal": "Price is at 96.4% of 52-week high (near \u09f314.1) \u2014 elevated mean-reversion risk"
     },
     "total_precision_bonus": -10.0
   },
   "pattern_dna": {
     "ticker": "QUEENSOUTH",
-    "audited_at": "2026-11-11 11:51:20",
+    "audited_at": "2026-11-12 13:09:27",
     "worth_vs_greed": {
-      "current_price": 13.7,
-      "intrinsic_worth": 6.85,
+      "current_price": 13.9,
+      "intrinsic_worth": 6.95,
       "margin_of_safety_pct": -50.0,
-      "extension_froth_score": 70.0,
-      "greed_index": 70.0,
-      "rsi_14": 65.0,
-      "price_vs_ema50_pct": 11.2,
-      "price_vs_ema200_pct": 10.5,
+      "extension_froth_score": 60.0,
+      "greed_index": 60.0,
+      "rsi_14": 80.0,
+      "price_vs_ema50_pct": 12.3,
+      "price_vs_ema200_pct": 12.0,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f313.4 \u2013 \u09f313.8",
-        "chase_cutoff_price": 14.0,
-        "when_to_wait": "If price opens or rises above \u09f314.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f313.4.",
-        "weekly_target_short": 14.2,
-        "monthly_target_swing": 15.8,
-        "long_term_target_asset": 17.8,
+        "optimal_entry_corridor": "\u09f313.6 \u2013 \u09f314.0",
+        "chase_cutoff_price": 14.2,
+        "when_to_wait": "If price opens or rises above \u09f314.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f313.6.",
+        "weekly_target_short": 14.4,
+        "monthly_target_swing": 16.0,
+        "long_term_target_asset": 18.1,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
-      "status": "OVERVALUED_EUPHORIA",
-      "worth_decision": "SELL_TAKE_PROFIT",
-      "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (70.0/100). Danger of sharp mean reversion.",
+      "status": "CHRONIC_OVERVALUATION",
+      "worth_decision": "AVOID",
+      "reason": "Fundamental value severely lags stock price (MoS: -50.0%).",
       "is_blacklisted": true,
       "blacklist_reason": "Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-28 \u2014 Price up +9.82% with poor fundamentals (Negative EPS)]",
       "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-28 \u2014 Price up +9.82% with poor fundamentals (Negative EPS)]"
@@ -134,31 +134,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 5.38,
-          "high": 13.7,
+          "return_pct": 6.11,
+          "high": 14.1,
           "low": 12.8,
-          "range_volatility_pct": 7.03
+          "range_volatility_pct": 10.16
         },
         "monthly_21d": {
-          "return_pct": 7.87,
-          "high": 13.7,
+          "return_pct": 7.75,
+          "high": 14.1,
           "low": 10.9,
-          "range_volatility_pct": 25.69
+          "range_volatility_pct": 29.36
         },
         "quarterly_63d": {
-          "return_pct": 26.85,
-          "high": 13.9,
+          "return_pct": 31.13,
+          "high": 14.1,
           "low": 10.3,
-          "range_volatility_pct": 34.95
+          "range_volatility_pct": 36.89
         },
         "half_yearly_126d": {
-          "return_pct": -3.52,
+          "return_pct": -3.47,
           "high": 14.8,
           "low": 8.5,
           "range_volatility_pct": 74.12
         },
         "yearly_252d": {
-          "return_pct": -2.84,
+          "return_pct": -2.11,
           "high": 15.0,
           "low": 8.5,
           "range_volatility_pct": 76.47
@@ -170,7 +170,7 @@
         "avg_wave_duration_bars": 37.0
       },
       "current_wave_phase": "MARKDOWN_PULLBACK",
-      "phase_guidance": "Ongoing pullback from peak (-1.4%). Wait for stabilizing base.",
+      "phase_guidance": "Ongoing pullback from peak (0.0%). Wait for stabilizing base.",
       "top_seasonal_months": [
         {
           "month": "Feb",
@@ -274,11 +274,11 @@
       "macd": "bullish_crossover",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 0.52,
-      "rsi_value": 67.19,
-      "last_close": 13.7,
-      "sma20": 12.67,
-      "sma50": 12.15,
+      "atr": 0.51,
+      "rsi_value": 69.2,
+      "last_close": 13.9,
+      "sma20": 12.73,
+      "sma50": 12.19,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -310,7 +310,7 @@
       "downturn_resilience": {
         "status": "normal",
         "drawdown_pct": 1.4,
-        "high_52w": 13.9,
+        "high_52w": 14.1,
         "low_52w": 8.5
       }
     }
@@ -353,15 +353,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 1122413,
-        "avg_volume": 676401.0,
+        "last_volume": 662452,
+        "avg_volume": 685941.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.75,
-        "avg_volume": 642538.0,
-        "today_volume": 1122413,
+        "spike_ratio": 0.98,
+        "avg_volume": 676401.0,
+        "today_volume": 662452,
         "detail": "ok"
       },
       "serial_trading": {
@@ -380,20 +380,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": 2.24,
+        "price_change_3d": 3.73,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 46.98,
+    "composite_score": 46.81,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.68,
-      "technical": 0.2,
-      "governance": 0.12,
+      "fundamental": 0.674,
+      "technical": 0.202,
+      "governance": 0.124,
       "sentiment": 0.0
     }
   }

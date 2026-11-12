@@ -2,18 +2,18 @@
   "ticker": "CNATEX",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T05:50:57.445725",
-  "asof_price_date": "2026-11-11",
+  "analyzed_at": "2026-11-12T07:09:08.216782",
+  "asof_price_date": "2026-11-12",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 49.1476,
+    "rsi_14": 49.5661,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 44.98,
+  "confidence": 44.79,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 356295,
-      "daily_turnover_bdt_cr": 0.04,
+      "avg_daily_volume": 340627,
+      "daily_turnover_bdt_cr": 0.03,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 17814,
-      "max_daily_accumulation_shares": 53444,
-      "max_order_bdt": 17814.0,
-      "directive": "Max single order: 17,814 shares (Tk 17,814) to prevent >1% execution slippage"
+      "max_single_order_shares": 17031,
+      "max_daily_accumulation_shares": 51094,
+      "max_order_bdt": 17031.0,
+      "directive": "Max single order: 17,031 shares (Tk 17,031) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -103,16 +103,16 @@
   },
   "pattern_dna": {
     "ticker": "CNATEX",
-    "audited_at": "2026-11-11 11:50:57",
+    "audited_at": "2026-11-12 13:09:08",
     "worth_vs_greed": {
       "current_price": 2.5,
       "intrinsic_worth": 1.25,
       "margin_of_safety_pct": -50.0,
-      "extension_froth_score": 50.0,
-      "greed_index": 50.0,
-      "rsi_14": 33.3,
-      "price_vs_ema50_pct": 0.6,
-      "price_vs_ema200_pct": -15.6,
+      "extension_froth_score": 40.0,
+      "greed_index": 40.0,
+      "rsi_14": 50.0,
+      "price_vs_ema50_pct": 0.5,
+      "price_vs_ema200_pct": -15.5,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -140,25 +140,25 @@
           "range_volatility_pct": 8.33
         },
         "monthly_21d": {
-          "return_pct": -10.71,
+          "return_pct": -7.41,
           "high": 2.8,
           "low": 2.4,
           "range_volatility_pct": 16.67
         },
         "quarterly_63d": {
-          "return_pct": -3.85,
+          "return_pct": 0.0,
           "high": 3.0,
           "low": 2.1,
           "range_volatility_pct": 42.86
         },
         "half_yearly_126d": {
-          "return_pct": -16.67,
+          "return_pct": -19.35,
           "high": 3.4,
           "low": 1.7,
           "range_volatility_pct": 100.0
         },
         "yearly_252d": {
-          "return_pct": -41.86,
+          "return_pct": -44.44,
           "high": 4.8,
           "low": 1.7,
           "range_volatility_pct": 182.35
@@ -275,7 +275,7 @@
       "sma_trend": "bullish",
       "bb": "inside_bands",
       "atr": 0.15,
-      "rsi_value": 49.09,
+      "rsi_value": 49.07,
       "last_close": 2.5,
       "sma20": 2.54,
       "sma50": 2.44,
@@ -351,15 +351,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 382676,
-        "avg_volume": 376733.0,
+        "last_volume": 67330,
+        "avg_volume": 372725.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.04,
-        "avg_volume": 368337.0,
-        "today_volume": 382676,
+        "spike_ratio": 0.18,
+        "avg_volume": 376733.0,
+        "today_volume": 67330,
         "detail": "ok"
       },
       "serial_trading": {
@@ -385,13 +385,13 @@
     }
   },
   "composite": {
-    "composite_score": 44.98,
+    "composite_score": 44.79,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.68,
-      "technical": 0.2,
-      "governance": 0.12,
+      "fundamental": 0.674,
+      "technical": 0.202,
+      "governance": 0.124,
       "sentiment": 0.0
     }
   }

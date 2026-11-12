@@ -1,60 +1,61 @@
 {
   "ticker": "SSSTEEL",
-  "audited_at": "2026-11-11 11:51:27",
+  "audited_at": "2026-11-12 13:09:32",
   "worth_vs_greed": {
-    "current_price": 5.0,
-    "intrinsic_worth": 2.5,
+    "current_price": 5.4,
+    "intrinsic_worth": 2.7,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 30.0,
-    "greed_index": 30.0,
-    "rsi_14": 33.3,
-    "price_vs_ema50_pct": 5.8,
-    "price_vs_ema200_pct": -6.9,
+    "extension_froth_score": 40.0,
+    "greed_index": 40.0,
+    "rsi_14": 58.3,
+    "price_vs_ema50_pct": 13.7,
+    "price_vs_ema200_pct": 0.6,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f34.9 \u2013 \u09f35.0",
-      "chase_cutoff_price": 5.1,
-      "when_to_wait": "If price opens or rises above \u09f35.1, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f34.9.",
-      "weekly_target_short": 5.2,
-      "monthly_target_swing": 5.8,
-      "long_term_target_asset": 6.5,
+      "optimal_entry_corridor": "\u09f35.3 \u2013 \u09f35.5",
+      "chase_cutoff_price": 5.5,
+      "when_to_wait": "If price opens or rises above \u09f35.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f35.3.",
+      "weekly_target_short": 5.6,
+      "monthly_target_swing": 6.2,
+      "long_term_target_asset": 7.0,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
     "reason": "Fundamental value severely lags stock price (MoS: -50.0%).",
-    "is_blacklisted": false,
-    "blacklist_reason": null
+    "is_blacklisted": true,
+    "blacklist_reason": "Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-11-12 \u2014 Price up +8.0% on untracked / high-risk security without verified earnings]",
+    "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-11-12 \u2014 Price up +8.0% on untracked / high-risk security without verified earnings]"
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 2.04,
-        "high": 5.0,
+        "return_pct": 8.0,
+        "high": 5.5,
         "low": 4.8,
-        "range_volatility_pct": 4.17
+        "range_volatility_pct": 14.58
       },
       "monthly_21d": {
-        "return_pct": -5.66,
-        "high": 5.6,
+        "return_pct": 3.85,
+        "high": 5.5,
         "low": 4.7,
-        "range_volatility_pct": 19.15
+        "range_volatility_pct": 17.02
       },
       "quarterly_63d": {
-        "return_pct": 16.28,
+        "return_pct": 25.58,
         "high": 5.9,
         "low": 3.7,
         "range_volatility_pct": 59.46
       },
       "half_yearly_126d": {
-        "return_pct": -7.41,
+        "return_pct": -1.82,
         "high": 6.2,
         "low": 3.1,
         "range_volatility_pct": 100.0
       },
       "yearly_252d": {
-        "return_pct": -43.82,
+        "return_pct": -37.21,
         "high": 9.1,
         "low": 3.1,
         "range_volatility_pct": 193.55
@@ -66,7 +67,7 @@
       "avg_wave_duration_bars": 17.0
     },
     "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-15.3%). Wait for stabilizing base.",
+    "phase_guidance": "Ongoing pullback from peak (-8.5%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Aug",

@@ -1,60 +1,61 @@
 {
   "ticker": "PRAGATILIF",
-  "audited_at": "2026-11-11 11:51:18",
+  "audited_at": "2026-11-12 13:09:25",
   "worth_vs_greed": {
-    "current_price": 134.0,
-    "intrinsic_worth": 67.0,
+    "current_price": 144.8,
+    "intrinsic_worth": 72.4,
     "margin_of_safety_pct": -50.0,
     "extension_froth_score": 20.0,
     "greed_index": 20.0,
-    "rsi_14": 47.4,
-    "price_vs_ema50_pct": -7.7,
-    "price_vs_ema200_pct": -12.8,
+    "rsi_14": 66.9,
+    "price_vs_ema50_pct": -0.2,
+    "price_vs_ema200_pct": -5.7,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f3131.3 \u2013 \u09f3135.3",
-      "chase_cutoff_price": 137.3,
-      "when_to_wait": "If price opens or rises above \u09f3137.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3131.3.",
-      "weekly_target_short": 138.7,
-      "monthly_target_swing": 154.1,
-      "long_term_target_asset": 174.2,
+      "optimal_entry_corridor": "\u09f3141.9 \u2013 \u09f3146.2",
+      "chase_cutoff_price": 148.4,
+      "when_to_wait": "If price opens or rises above \u09f3148.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3141.9.",
+      "weekly_target_short": 149.9,
+      "monthly_target_swing": 166.5,
+      "long_term_target_asset": 188.2,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
     "reason": "Fundamental value severely lags stock price (MoS: -50.0%).",
-    "is_blacklisted": false,
-    "blacklist_reason": null
+    "is_blacklisted": true,
+    "blacklist_reason": "Blocked by Forensic Surveillance [CRITICAL: ABNORMAL_VOLUME_SURGE on 2026-11-12 \u2014 Low-float surge is 4.2x 20-day average (155,626 vs 36,814) | Price up +8.06% on untracked / high-risk security without verified earnings]",
+    "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [CRITICAL: ABNORMAL_VOLUME_SURGE on 2026-11-12 \u2014 Low-float surge is 4.2x 20-day average (155,626 vs 36,814) | Price up +8.06% on untracked / high-risk security without verified earnings]"
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 1.82,
-        "high": 135.0,
+        "return_pct": 9.7,
+        "high": 146.9,
         "low": 130.3,
-        "range_volatility_pct": 3.61
+        "range_volatility_pct": 12.74
       },
       "monthly_21d": {
-        "return_pct": 0.37,
-        "high": 137.5,
+        "return_pct": 7.18,
+        "high": 146.9,
         "low": 128.0,
-        "range_volatility_pct": 7.42
+        "range_volatility_pct": 14.77
       },
       "quarterly_63d": {
-        "return_pct": -19.37,
+        "return_pct": -12.03,
         "high": 188.0,
         "low": 128.0,
         "range_volatility_pct": 46.88
       },
       "half_yearly_126d": {
-        "return_pct": -18.04,
+        "return_pct": -13.09,
         "high": 283.9,
         "low": 127.3,
         "range_volatility_pct": 123.02
       },
       "yearly_252d": {
-        "return_pct": 22.94,
+        "return_pct": 30.8,
         "high": 283.9,
         "low": 75.1,
         "range_volatility_pct": 278.03
@@ -66,7 +67,7 @@
       "avg_wave_duration_bars": 24.0
     },
     "current_wave_phase": "BOTTOMING_SUPPORT",
-    "phase_guidance": "Drop (-28.7%) matches historical correction depth (-22.6%). Prepare to accumulate.",
+    "phase_guidance": "Drop (-23.0%) matches historical correction depth (-22.6%). Prepare to accumulate.",
     "top_seasonal_months": [
       {
         "month": "Sep",

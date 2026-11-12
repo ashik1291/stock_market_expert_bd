@@ -2,18 +2,18 @@
   "ticker": "SONARBAINS",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T05:51:26.616986",
-  "asof_price_date": "2026-11-11",
+  "analyzed_at": "2026-11-12T07:09:31.788647",
+  "asof_price_date": "2026-11-12",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 60.4667,
+    "rsi_14": 60.5538,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 44.98,
+  "confidence": 44.79,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -22,17 +22,17 @@
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+5.6%",
-      "downside_risk_pct": "-3.8%",
-      "target_price": 41.7,
-      "support_price": 38.0,
+      "upside_potential_pct": "+5.3%",
+      "downside_risk_pct": "-3.5%",
+      "target_price": 41.6,
+      "support_price": 38.1,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+9.4%",
+      "upside_potential_pct": "+9.1%",
       "downside_risk_pct": "-9.9%",
-      "target_price": 43.2,
+      "target_price": 43.1,
       "trailing_stop": 35.6,
       "risk_reward_ratio": "0.9x"
     },
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 39.5,
-    "stop_loss": 37.3,
-    "target": 43.9
+    "stop_loss": 37.35,
+    "target": 43.8
   },
   "precision": {
     "ticker": "SONARBAINS",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 173126,
+      "avg_daily_volume": 164884,
       "daily_turnover_bdt_cr": 0.02,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 8656,
-      "max_daily_accumulation_shares": 25969,
-      "max_order_bdt": 8656.0,
-      "directive": "Max single order: 8,656 shares (Tk 8,656) to prevent >1% execution slippage"
+      "max_single_order_shares": 8244,
+      "max_daily_accumulation_shares": 24732,
+      "max_order_bdt": 8244.0,
+      "directive": "Max single order: 8,244 shares (Tk 8,244) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -103,16 +103,16 @@
   },
   "pattern_dna": {
     "ticker": "SONARBAINS",
-    "audited_at": "2026-11-11 11:51:26",
+    "audited_at": "2026-11-12 13:09:31",
     "worth_vs_greed": {
       "current_price": 39.5,
       "intrinsic_worth": 19.75,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 40.0,
       "greed_index": 40.0,
-      "rsi_14": 44.8,
-      "price_vs_ema50_pct": 13.0,
-      "price_vs_ema200_pct": 34.9,
+      "rsi_14": 51.7,
+      "price_vs_ema50_pct": 12.5,
+      "price_vs_ema200_pct": 34.5,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -133,31 +133,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -0.25,
+          "return_pct": -1.25,
           "high": 40.3,
           "low": 39.0,
           "range_volatility_pct": 3.33
         },
         "monthly_21d": {
-          "return_pct": 4.5,
+          "return_pct": 4.22,
           "high": 41.7,
-          "low": 36.6,
-          "range_volatility_pct": 13.93
+          "low": 37.7,
+          "range_volatility_pct": 10.61
         },
         "quarterly_63d": {
-          "return_pct": 53.7,
+          "return_pct": 56.13,
           "high": 42.8,
           "low": 22.6,
           "range_volatility_pct": 89.38
         },
         "half_yearly_126d": {
-          "return_pct": 36.21,
+          "return_pct": 33.9,
           "high": 42.8,
           "low": 21.4,
           "range_volatility_pct": 100.0
         },
         "yearly_252d": {
-          "return_pct": 71.74,
+          "return_pct": 72.49,
           "high": 42.8,
           "low": 19.4,
           "range_volatility_pct": 120.62
@@ -273,11 +273,11 @@
       "macd": "neutral",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 1.47,
+      "atr": 1.43,
       "rsi_value": 60.31,
       "last_close": 39.5,
-      "sma20": 39.87,
-      "sma50": 33.13,
+      "sma20": 39.92,
+      "sma50": 33.43,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -346,15 +346,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 115766,
-        "avg_volume": 262799.0,
+        "last_volume": 52596,
+        "avg_volume": 249258.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.42,
-        "avg_volume": 273009.0,
-        "today_volume": 115766,
+        "spike_ratio": 0.2,
+        "avg_volume": 262799.0,
+        "today_volume": 52596,
         "detail": "ok"
       },
       "serial_trading": {
@@ -373,20 +373,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": -0.5,
+        "price_change_3d": 0.51,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 44.98,
+    "composite_score": 44.79,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.68,
-      "technical": 0.2,
-      "governance": 0.12,
+      "fundamental": 0.674,
+      "technical": 0.202,
+      "governance": 0.124,
       "sentiment": 0.0
     }
   }

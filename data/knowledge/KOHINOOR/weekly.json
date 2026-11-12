@@ -2,18 +2,18 @@
   "ticker": "KOHINOOR",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-11T05:51:09.829912",
-  "asof_price_date": "2026-11-11",
+  "analyzed_at": "2026-11-12T07:09:18.225259",
+  "asof_price_date": "2026-11-12",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 53.54,
+    "rsi_14": 54.1901,
     "pe_ratio": 29.33,
     "debt_equity": 0.123
   },
   "signal": "HOLD",
-  "confidence": 53.97,
+  "confidence": 53.71,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -22,33 +22,33 @@
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+2.1%",
-      "downside_risk_pct": "-1.4%",
-      "target_price": 519.3,
-      "support_price": 501.3,
+      "upside_potential_pct": "+2.0%",
+      "downside_risk_pct": "-1.3%",
+      "target_price": 519.1,
+      "support_price": 502.1,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+3.5%",
-      "downside_risk_pct": "-3.3%",
-      "target_price": 526.4,
+      "upside_potential_pct": "+3.3%",
+      "downside_risk_pct": "-3.4%",
+      "target_price": 525.9,
       "trailing_stop": 491.7,
-      "risk_reward_ratio": "1.1x"
+      "risk_reward_ratio": "1.0x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.0%",
-      "downside_risk_pct": "-5.9%",
-      "target_price": 661.1,
+      "downside_risk_pct": "-6.1%",
+      "target_price": 661.6,
       "dividend_cagr": "moderate (1.3%)",
-      "risk_reward_ratio": "5.1x"
+      "risk_reward_ratio": "4.9x"
     }
   },
   "trade_levels": {
-    "entry": 508.5,
-    "stop_loss": 497.75,
-    "target": 530.0
+    "entry": 508.9,
+    "stop_loss": 498.67,
+    "target": 529.36
   },
   "precision": {
     "ticker": "KOHINOOR",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 5060,
+      "avg_daily_volume": 5095,
       "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 253,
-      "max_daily_accumulation_shares": 759,
-      "max_order_bdt": 253.0,
-      "directive": "Max single order: 253 shares (Tk 253) to prevent >1% execution slippage"
+      "max_single_order_shares": 254,
+      "max_daily_accumulation_shares": 764,
+      "max_order_bdt": 254.0,
+      "directive": "Max single order: 254 shares (Tk 254) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,37 +91,37 @@
       "status": "VALID",
       "low_52w": 448.64,
       "high_52w": 543.64,
-      "range_52w_pct": 63.0,
+      "range_52w_pct": 63.4,
       "channel_regime": "EQUILIBRIUM_CHANNEL",
-      "visual_gauge": "[ \u09f3448.6 |\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591| \u09f3543.6 ] (63.0% (Truncated))",
+      "visual_gauge": "[ \u09f3448.6 |\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591| \u09f3543.6 ] (63.4% (Truncated))",
       "conviction_bonus": 0.0,
       "is_truncated_window": true,
       "bars_evaluated": 100,
-      "signal": "Price is in mid-channel (63.0% between \u09f3448.6 and \u09f3543.6)"
+      "signal": "Price is in mid-channel (63.4% between \u09f3448.6 and \u09f3543.6)"
     },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "KOHINOOR",
-    "audited_at": "2026-11-11 11:51:09",
+    "audited_at": "2026-11-12 13:09:18",
     "worth_vs_greed": {
-      "current_price": 508.5,
+      "current_price": 508.9,
       "intrinsic_worth": 33.44,
       "margin_of_safety_pct": -93.4,
       "extension_froth_score": 10.0,
       "greed_index": 10.0,
-      "rsi_14": 53.4,
-      "price_vs_ema50_pct": -0.1,
-      "price_vs_ema200_pct": -1.8,
+      "rsi_14": 51.6,
+      "price_vs_ema50_pct": -0.0,
+      "price_vs_ema200_pct": -1.7,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f34.18, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f3498.3 \u2013 \u09f3513.6",
-        "chase_cutoff_price": 521.2,
-        "when_to_wait": "If price opens or rises above \u09f3521.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3498.3.",
-        "weekly_target_short": 526.3,
-        "monthly_target_swing": 584.8,
-        "long_term_target_asset": 661.1,
+        "optimal_entry_corridor": "\u09f3498.7 \u2013 \u09f3514.0",
+        "chase_cutoff_price": 521.6,
+        "when_to_wait": "If price opens or rises above \u09f3521.6, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3498.7.",
+        "weekly_target_short": 526.7,
+        "monthly_target_swing": 585.2,
+        "long_term_target_asset": 661.6,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
@@ -133,31 +133,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 0.63,
+          "return_pct": 0.18,
           "high": 511.0,
-          "low": 504.0,
-          "range_volatility_pct": 1.39
+          "low": 506.8,
+          "range_volatility_pct": 0.83
         },
         "monthly_21d": {
-          "return_pct": -0.33,
+          "return_pct": -0.2,
           "high": 522.0,
           "low": 496.1,
           "range_volatility_pct": 5.22
         },
         "quarterly_63d": {
-          "return_pct": 0.1,
+          "return_pct": 0.63,
           "high": 526.1,
           "low": 490.2,
           "range_volatility_pct": 7.32
         },
         "half_yearly_126d": {
-          "return_pct": -6.99,
+          "return_pct": -7.52,
           "high": 598.0,
           "low": 490.2,
           "range_volatility_pct": 21.99
         },
         "yearly_252d": {
-          "return_pct": -7.6,
+          "return_pct": -5.51,
           "high": 598.0,
           "low": 465.0,
           "range_volatility_pct": 28.6
@@ -273,11 +273,11 @@
       "macd": "neutral",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 7.17,
-      "rsi_value": 51.33,
-      "last_close": 508.5,
-      "sma20": 508.42,
-      "sma50": 503.46,
+      "atr": 6.82,
+      "rsi_value": 51.81,
+      "last_close": 508.9,
+      "sma20": 508.38,
+      "sma50": 503.59,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -311,11 +311,10 @@
       "accrual_ratio": 0.544,
       "earnings_quality": "moderate_accrual_drag",
       "downturn_resilience": {
-        "status": "growth_at_discount",
-        "drawdown_pct": 15.0,
+        "status": "normal",
+        "drawdown_pct": 14.9,
         "high_52w": 598.0,
-        "low_52w": 490.2,
-        "note": "Share price down 15.0% from 52w peak, yet earnings positive/steady (Conviction discount)"
+        "low_52w": 490.2
       }
     }
   },
@@ -357,15 +356,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 3217,
-        "avg_volume": 5159.0,
+        "last_volume": 1115,
+        "avg_volume": 4944.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.62,
-        "avg_volume": 5189.0,
-        "today_volume": 3217,
+        "spike_ratio": 0.22,
+        "avg_volume": 5159.0,
+        "today_volume": 1115,
         "detail": "ok"
       },
       "serial_trading": {
@@ -384,20 +383,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": 0.06,
+        "price_change_3d": 0.1,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 53.97,
+    "composite_score": 53.71,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.68,
-      "technical": 0.2,
-      "governance": 0.12,
+      "fundamental": 0.674,
+      "technical": 0.202,
+      "governance": 0.124,
       "sentiment": 0.0
     }
   }

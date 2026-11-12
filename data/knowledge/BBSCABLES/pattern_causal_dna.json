@@ -1,29 +1,29 @@
 {
   "ticker": "BBSCABLES",
-  "audited_at": "2026-11-11 11:50:54",
+  "audited_at": "2026-11-12 13:09:05",
   "worth_vs_greed": {
-    "current_price": 17.2,
-    "intrinsic_worth": 8.6,
+    "current_price": 16.8,
+    "intrinsic_worth": 8.4,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 80.0,
-    "greed_index": 80.0,
-    "rsi_14": 76.6,
-    "price_vs_ema50_pct": 11.5,
-    "price_vs_ema200_pct": 5.2,
+    "extension_froth_score": 70.0,
+    "greed_index": 70.0,
+    "rsi_14": 78.3,
+    "price_vs_ema50_pct": 8.5,
+    "price_vs_ema200_pct": 2.8,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f316.9 \u2013 \u09f317.4",
-      "chase_cutoff_price": 17.6,
-      "when_to_wait": "If price opens or rises above \u09f317.6, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f316.9.",
-      "weekly_target_short": 17.8,
-      "monthly_target_swing": 19.8,
-      "long_term_target_asset": 22.4,
+      "optimal_entry_corridor": "\u09f316.5 \u2013 \u09f317.0",
+      "chase_cutoff_price": 17.2,
+      "when_to_wait": "If price opens or rises above \u09f317.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f316.5.",
+      "weekly_target_short": 17.4,
+      "monthly_target_swing": 19.3,
+      "long_term_target_asset": 21.8,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "OVERVALUED_EUPHORIA",
     "worth_decision": "SELL_TAKE_PROFIT",
-    "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (80.0/100). Danger of sharp mean reversion.",
+    "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (70.0/100). Danger of sharp mean reversion.",
     "is_blacklisted": true,
     "blacklist_reason": "Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-10-28 \u2014 Volume is 5.8x 20-day average (2,023,271 vs 351,747) | Price up +9.86% with poor fundamentals (Negative EPS)]",
     "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-10-28 \u2014 Volume is 5.8x 20-day average (2,023,271 vs 351,747) | Price up +9.86% with poor fundamentals (Negative EPS)]"
@@ -31,31 +31,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 1.78,
+        "return_pct": 0.0,
         "high": 17.4,
         "low": 16.5,
         "range_volatility_pct": 5.45
       },
       "monthly_21d": {
-        "return_pct": 18.62,
+        "return_pct": 17.48,
         "high": 17.4,
         "low": 14.0,
         "range_volatility_pct": 24.29
       },
       "quarterly_63d": {
-        "return_pct": 18.62,
+        "return_pct": 18.31,
         "high": 17.4,
         "low": 14.0,
         "range_volatility_pct": 24.29
       },
       "half_yearly_126d": {
-        "return_pct": 2.99,
+        "return_pct": -3.45,
         "high": 24.0,
         "low": 11.6,
         "range_volatility_pct": 106.9
       },
       "yearly_252d": {
-        "return_pct": 0.58,
+        "return_pct": -2.89,
         "high": 24.0,
         "low": 11.6,
         "range_volatility_pct": 106.9
@@ -67,7 +67,7 @@
       "avg_wave_duration_bars": 21.0
     },
     "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (6.2%). Wait for stabilizing base.",
+    "phase_guidance": "Ongoing pullback from peak (3.7%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Aug",
