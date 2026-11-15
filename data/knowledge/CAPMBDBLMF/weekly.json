@@ -2,18 +2,18 @@
   "ticker": "CAPMBDBLMF",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-12T07:09:07.627853",
-  "asof_price_date": "2026-11-11",
+  "analyzed_at": "2026-11-15T13:27:53.869178",
+  "asof_price_date": "2026-11-15",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 19.136,
+    "rsi_14": 19.7247,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "HOLD",
-  "confidence": 46.56,
+  "confidence": 46.48,
   "trajectory": {
     "direction": "RISE_PREDICTED",
     "direction_icon": "\ud83d\udfe2",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 7.2,
-    "stop_loss": 7.07,
-    "target": 7.46
+    "stop_loss": 7.08,
+    "target": 7.44
   },
   "precision": {
     "ticker": "CAPMBDBLMF",
@@ -96,14 +96,14 @@
       "visual_gauge": "[ \u09f37.2 |\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f312.4 ] (0.0% (Truncated))",
       "conviction_bonus": 10.0,
       "is_truncated_window": true,
-      "bars_evaluated": 101,
+      "bars_evaluated": 99,
       "signal": "Price is at the bottom 0.0% of 52-week channel (near \u09f37.2 floor) \u2014 high margin of safety"
     },
     "total_precision_bonus": 10.0
   },
   "pattern_dna": {
     "ticker": "CAPMBDBLMF",
-    "audited_at": "2026-11-12 13:09:07",
+    "audited_at": "2026-11-15 19:27:53",
     "worth_vs_greed": {
       "current_price": 7.2,
       "intrinsic_worth": 3.6,
@@ -111,8 +111,8 @@
       "extension_froth_score": 10.0,
       "greed_index": 10.0,
       "rsi_14": 100.0,
-      "price_vs_ema50_pct": -12.6,
-      "price_vs_ema200_pct": -21.0,
+      "price_vs_ema50_pct": -12.1,
+      "price_vs_ema200_pct": -20.8,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -145,13 +145,13 @@
           "range_volatility_pct": 0.0
         },
         "quarterly_63d": {
-          "return_pct": -30.1,
+          "return_pct": -30.77,
           "high": 11.6,
           "low": 7.2,
           "range_volatility_pct": 61.11
         },
         "half_yearly_126d": {
-          "return_pct": -16.28,
+          "return_pct": -15.29,
           "high": 13.3,
           "low": 7.2,
           "range_volatility_pct": 84.72
@@ -159,8 +159,8 @@
         "yearly_252d": {
           "return_pct": 1.41,
           "high": 13.3,
-          "low": 6.9,
-          "range_volatility_pct": 92.75
+          "low": 7.0,
+          "range_volatility_pct": 90.0
         }
       },
       "wave_metrics": {
@@ -273,19 +273,18 @@
       "macd": "neutral",
       "sma_trend": "neutral",
       "bb": "at_lower_band_bullish",
-      "atr": 0.09,
+      "atr": 0.08,
       "rsi_value": 18.07,
       "last_close": 7.2,
       "sma20": 7.2,
-      "sma50": 8.5,
+      "sma50": 8.41,
       "sma200": null,
       "support_resistance": {
         "supports": [
           7.2
         ],
         "resistances": [
-          11.3,
-          12.1
+          11.3
         ]
       },
       "data_gap_warning": "unannounced_gap_256d"
@@ -295,8 +294,7 @@
         7.2
       ],
       "resistances": [
-        11.3,
-        12.1
+        11.3
       ]
     }
   },
@@ -351,13 +349,13 @@
         "flag": false,
         "price_chg": 0,
         "last_volume": 0,
-        "avg_volume": 124437.0,
+        "avg_volume": 88224.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
         "spike_ratio": 0.0,
-        "avg_volume": 145385.0,
+        "avg_volume": 124437.0,
         "today_volume": 0,
         "detail": "ok"
       },
@@ -384,13 +382,13 @@
     }
   },
   "composite": {
-    "composite_score": 46.56,
+    "composite_score": 46.48,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.674,
-      "technical": 0.202,
-      "governance": 0.124,
+      "fundamental": 0.671,
+      "technical": 0.203,
+      "governance": 0.126,
       "sentiment": 0.0
     }
   }

@@ -2,53 +2,53 @@
   "ticker": "EXIMBANK",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-12T07:09:11.557870",
-  "asof_price_date": "2026-11-11",
+  "analyzed_at": "2026-11-15T13:27:58.153473",
+  "asof_price_date": "2026-11-15",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 38.9168,
+    "rsi_14": 39.8717,
     "pe_ratio": null,
     "debt_equity": null
   },
-  "signal": "HOLD",
-  "confidence": 46.56,
+  "signal": "SELL",
+  "confidence": 44.96,
   "trajectory": {
-    "direction": "RISE_PREDICTED",
-    "direction_icon": "\ud83d\udfe2",
-    "heuristic_momentum_bias": 61.7,
+    "direction": "CONSOLIDATION_RANGE",
+    "direction_icon": "\ud83d\udfe1",
+    "heuristic_momentum_bias": 58.3,
     "rise_probability_pct": null,
-    "momentum_status": "Bullish Momentum / Upward Bias",
+    "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Oversold bounce to 20-DMA",
-      "upside_potential_pct": "+3.3%",
+      "upside_potential_pct": "+0.0%",
       "downside_risk_pct": "-0.0%",
-      "target_price": 3.1,
+      "target_price": 3.0,
       "support_price": 3.0,
-      "risk_reward_ratio": "33.0x"
+      "risk_reward_ratio": "0.0x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
       "upside_potential_pct": "+26.7%",
-      "downside_risk_pct": "-3.3%",
+      "downside_risk_pct": "-0.0%",
       "target_price": 3.8,
-      "trailing_stop": 2.9,
-      "risk_reward_ratio": "8.1x"
+      "trailing_stop": 3.0,
+      "risk_reward_ratio": "267.0x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.0%",
-      "downside_risk_pct": "-5.9%",
+      "downside_risk_pct": "-0.0%",
       "target_price": 3.9,
       "dividend_cagr": "5%\u20138%",
-      "risk_reward_ratio": "5.1x"
+      "risk_reward_ratio": "300.0x"
     }
   },
   "trade_levels": {
     "entry": 3.0,
-    "stop_loss": 2.94,
-    "target": 3.12
+    "stop_loss": 2.96,
+    "target": 3.08
   },
   "precision": {
     "ticker": "EXIMBANK",
@@ -90,20 +90,20 @@
     "range_52w_corridor": {
       "status": "VALID",
       "low_52w": 3.0,
-      "high_52w": 5.2,
+      "high_52w": 4.1,
       "range_52w_pct": 0.0,
       "channel_regime": "DEEP_ACCUMULATION_BASE",
-      "visual_gauge": "[ \u09f33.0 |\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f35.2 ] (0.0% (Truncated))",
+      "visual_gauge": "[ \u09f33.0 |\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f34.1 ] (0.0% (Truncated))",
       "conviction_bonus": 10.0,
       "is_truncated_window": true,
-      "bars_evaluated": 48,
+      "bars_evaluated": 46,
       "signal": "Price is at the bottom 0.0% of 52-week channel (near \u09f33.0 floor) \u2014 high margin of safety"
     },
     "total_precision_bonus": 10.0
   },
   "pattern_dna": {
     "ticker": "EXIMBANK",
-    "audited_at": "2026-11-12 13:09:11",
+    "audited_at": "2026-11-15 19:27:58",
     "worth_vs_greed": {
       "current_price": 3.0,
       "intrinsic_worth": 1.5,
@@ -111,8 +111,8 @@
       "extension_froth_score": 10.0,
       "greed_index": 10.0,
       "rsi_14": 100.0,
-      "price_vs_ema50_pct": -9.4,
-      "price_vs_ema200_pct": -38.5,
+      "price_vs_ema50_pct": -9.1,
+      "price_vs_ema200_pct": -38.3,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -145,19 +145,19 @@
           "range_volatility_pct": 0.0
         },
         "quarterly_63d": {
-          "return_pct": -31.82,
+          "return_pct": -28.57,
           "high": 5.2,
           "low": 2.8,
           "range_volatility_pct": 85.71
         },
         "half_yearly_126d": {
-          "return_pct": -43.4,
+          "return_pct": -44.44,
           "high": 6.7,
           "low": 2.8,
           "range_volatility_pct": 139.29
         },
         "yearly_252d": {
-          "return_pct": -55.88,
+          "return_pct": -55.22,
           "high": 7.6,
           "low": 2.8,
           "range_volatility_pct": 171.43
@@ -267,14 +267,14 @@
     ]
   },
   "technical": {
-    "score": 63.75,
+    "score": 56.25,
     "signals": {
-      "rsi": "oversold_bullish",
+      "rsi": "neutral",
       "macd": "neutral",
       "sma_trend": "neutral",
       "bb": "at_lower_band_bullish",
-      "atr": 0.04,
-      "rsi_value": 23.46,
+      "atr": 0.03,
+      "rsi_value": 35.68,
       "last_close": 3.0,
       "sma20": 3.0,
       "sma50": null,
@@ -300,8 +300,8 @@
       "error": "no_fundamental_data",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 42.3,
-        "high_52w": 5.2,
+        "drawdown_pct": 26.8,
+        "high_52w": 4.1,
         "low_52w": 3.0
       }
     }
@@ -345,13 +345,13 @@
         "flag": false,
         "price_chg": 0,
         "last_volume": 0,
-        "avg_volume": 161985.0,
+        "avg_volume": 115539.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
         "spike_ratio": 0.0,
-        "avg_volume": 235931.0,
+        "avg_volume": 161985.0,
         "today_volume": 0,
         "detail": "ok"
       },
@@ -378,13 +378,13 @@
     }
   },
   "composite": {
-    "composite_score": 46.56,
+    "composite_score": 44.96,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.674,
-      "technical": 0.202,
-      "governance": 0.124,
+      "fundamental": 0.671,
+      "technical": 0.203,
+      "governance": 0.126,
       "sentiment": 0.0
     }
   }

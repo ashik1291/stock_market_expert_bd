@@ -1,61 +1,61 @@
 {
   "ticker": "SKTRIMS",
-  "audited_at": "2026-11-12 13:09:31",
+  "audited_at": "2026-11-15 19:28:17",
   "worth_vs_greed": {
-    "current_price": 12.5,
-    "intrinsic_worth": 6.25,
+    "current_price": 14.0,
+    "intrinsic_worth": 7.0,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 60.0,
-    "greed_index": 60.0,
-    "rsi_14": 42.9,
-    "price_vs_ema50_pct": 12.8,
-    "price_vs_ema200_pct": 19.1,
-    "merit_status": "NEUTRAL_MERIT",
-    "merit_reason": "Valuation is within normal historical ranges.",
+    "extension_froth_score": 80.0,
+    "greed_index": 80.0,
+    "rsi_14": 59.2,
+    "price_vs_ema50_pct": 25.1,
+    "price_vs_ema200_pct": 33.0,
+    "merit_status": "SPECULATIVE_JUNK_PUMP",
+    "merit_reason": "Price is surging aggressively without positive EPS backing. Pure speculative risk.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f312.2 \u2013 \u09f312.6",
-      "chase_cutoff_price": 12.8,
-      "when_to_wait": "If price opens or rises above \u09f312.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f312.2.",
-      "weekly_target_short": 12.9,
-      "monthly_target_swing": 14.4,
-      "long_term_target_asset": 16.2,
+      "optimal_entry_corridor": "\u09f313.7 \u2013 \u09f314.1",
+      "chase_cutoff_price": 14.3,
+      "when_to_wait": "If price opens or rises above \u09f314.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f313.7.",
+      "weekly_target_short": 14.5,
+      "monthly_target_swing": 16.1,
+      "long_term_target_asset": 18.2,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
-    "status": "CHRONIC_OVERVALUATION",
-    "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -50.0%).",
+    "status": "OVERVALUED_EUPHORIA",
+    "worth_decision": "SELL_TAKE_PROFIT",
+    "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (80.0/100). Danger of sharp mean reversion.",
     "is_blacklisted": true,
-    "blacklist_reason": "Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-11-04 \u2014 Price up +8.55% on untracked / high-risk security without verified earnings]",
-    "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-11-04 \u2014 Price up +8.55% on untracked / high-risk security without verified earnings]"
+    "blacklist_reason": "Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-11-15 \u2014 Low-float spike is 17.8x 20-day average (439,367 vs 24,646) | Price up +12.0% on untracked / high-risk security without verified earnings]",
+    "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-11-15 \u2014 Low-float spike is 17.8x 20-day average (439,367 vs 24,646) | Price up +12.0% on untracked / high-risk security without verified earnings]"
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -3.85,
-        "high": 12.7,
+        "return_pct": 12.9,
+        "high": 14.0,
         "low": 12.1,
-        "range_volatility_pct": 4.96
+        "range_volatility_pct": 15.7
       },
       "monthly_21d": {
-        "return_pct": -5.3,
+        "return_pct": 7.69,
         "high": 14.2,
         "low": 11.5,
         "range_volatility_pct": 23.48
       },
       "quarterly_63d": {
-        "return_pct": 66.67,
+        "return_pct": 89.19,
         "high": 14.2,
         "low": 7.0,
         "range_volatility_pct": 102.86
       },
       "half_yearly_126d": {
-        "return_pct": 32.98,
+        "return_pct": 45.83,
         "high": 14.2,
         "low": 6.0,
         "range_volatility_pct": 136.67
       },
       "yearly_252d": {
-        "return_pct": -10.07,
+        "return_pct": 2.19,
         "high": 15.5,
         "low": 6.0,
         "range_volatility_pct": 158.33
@@ -67,7 +67,7 @@
       "avg_wave_duration_bars": 19.0
     },
     "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-12.0%). Wait for stabilizing base.",
+    "phase_guidance": "Ongoing pullback from peak (-1.4%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Dec",

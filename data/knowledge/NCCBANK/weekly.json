@@ -2,18 +2,18 @@
   "ticker": "NCCBANK",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-12T07:09:22.011735",
-  "asof_price_date": "2026-11-12",
+  "analyzed_at": "2026-11-15T13:28:08.968826",
+  "asof_price_date": "2026-11-15",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 63.5671,
+    "rsi_14": 65.5398,
     "pe_ratio": 3.403263403263403,
     "debt_equity": 0.986
   },
-  "signal": "HOLD",
-  "confidence": 59.94,
+  "signal": "HOLD_INELIGIBLE_DEFICIT",
+  "confidence": 61.33,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -22,33 +22,33 @@
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+2.7%",
+      "upside_potential_pct": "+2.6%",
       "downside_risk_pct": "-2.0%",
-      "target_price": 15.4,
-      "support_price": 14.7,
-      "risk_reward_ratio": "1.4x"
+      "target_price": 15.5,
+      "support_price": 14.8,
+      "risk_reward_ratio": "1.3x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+5.3%",
-      "downside_risk_pct": "-10.0%",
+      "upside_potential_pct": "+4.6%",
+      "downside_risk_pct": "-9.9%",
       "target_price": 15.8,
-      "trailing_stop": 13.5,
+      "trailing_stop": 13.6,
       "risk_reward_ratio": "0.5x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-      "upside_potential_pct": "+30.0%",
+      "upside_potential_pct": "+29.8%",
       "downside_risk_pct": "-12.0%",
-      "target_price": 19.5,
+      "target_price": 19.6,
       "dividend_cagr": "strong (13.93%)",
       "risk_reward_ratio": "2.5x"
     }
   },
   "trade_levels": {
-    "entry": 15.0,
-    "stop_loss": 14.55,
-    "target": 15.9
+    "entry": 15.1,
+    "stop_loss": 14.66,
+    "target": 15.98
   },
   "precision": {
     "ticker": "NCCBANK",
@@ -72,7 +72,7 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 1668795,
+      "avg_daily_volume": 1670045,
       "daily_turnover_bdt_cr": 0.17,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
@@ -91,42 +91,42 @@
       "status": "VALID",
       "low_52w": 10.19,
       "high_52w": 15.5,
-      "range_52w_pct": 90.6,
+      "range_52w_pct": 92.5,
       "channel_regime": "OVEREXTENDED_CEILING",
-      "visual_gauge": "[ \u09f310.2 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591| \u09f315.5 ] (90.6% (Truncated))",
+      "visual_gauge": "[ \u09f310.2 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591| \u09f315.5 ] (92.5% (Truncated))",
       "conviction_bonus": -10.0,
       "is_truncated_window": true,
-      "bars_evaluated": 101,
-      "signal": "Price is at 90.6% of 52-week high (near \u09f315.5) \u2014 elevated mean-reversion risk"
+      "bars_evaluated": 100,
+      "signal": "Price is at 92.5% of 52-week high (near \u09f315.5) \u2014 elevated mean-reversion risk"
     },
     "total_precision_bonus": -10.0
   },
   "pattern_dna": {
     "ticker": "NCCBANK",
-    "audited_at": "2026-11-12 13:09:21",
+    "audited_at": "2026-11-15 19:28:08",
     "worth_vs_greed": {
-      "current_price": 15.0,
+      "current_price": 15.1,
       "intrinsic_worth": 7.44,
-      "margin_of_safety_pct": -50.4,
+      "margin_of_safety_pct": -50.7,
       "extension_froth_score": 30.0,
       "greed_index": 30.0,
-      "rsi_14": 52.6,
-      "price_vs_ema50_pct": 8.1,
-      "price_vs_ema200_pct": 21.6,
+      "rsi_14": 55.0,
+      "price_vs_ema50_pct": 8.4,
+      "price_vs_ema200_pct": 22.2,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f30.93, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f314.7 \u2013 \u09f315.2",
-        "chase_cutoff_price": 15.4,
-        "when_to_wait": "If price opens or rises above \u09f315.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f314.7.",
-        "weekly_target_short": 15.5,
-        "monthly_target_swing": 17.2,
-        "long_term_target_asset": 19.5,
+        "optimal_entry_corridor": "\u09f314.8 \u2013 \u09f315.3",
+        "chase_cutoff_price": 15.5,
+        "when_to_wait": "If price opens or rises above \u09f315.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f314.8.",
+        "weekly_target_short": 15.6,
+        "monthly_target_swing": 17.4,
+        "long_term_target_asset": 19.6,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
       "worth_decision": "AVOID",
-      "reason": "Fundamental value severely lags stock price (MoS: -50.4%).",
+      "reason": "Fundamental value severely lags stock price (MoS: -50.7%).",
       "is_blacklisted": false,
       "blacklist_reason": null
     },
@@ -139,25 +139,25 @@
           "range_volatility_pct": 2.01
         },
         "monthly_21d": {
-          "return_pct": 3.45,
+          "return_pct": 3.42,
           "high": 15.5,
           "low": 14.3,
           "range_volatility_pct": 8.39
         },
         "quarterly_63d": {
-          "return_pct": 29.31,
+          "return_pct": 31.3,
           "high": 15.5,
           "low": 11.5,
           "range_volatility_pct": 34.78
         },
         "half_yearly_126d": {
-          "return_pct": 23.97,
+          "return_pct": 25.83,
           "high": 15.5,
           "low": 10.5,
           "range_volatility_pct": 47.62
         },
         "yearly_252d": {
-          "return_pct": 45.63,
+          "return_pct": 46.6,
           "high": 15.5,
           "low": 9.6,
           "range_volatility_pct": 61.46
@@ -169,7 +169,7 @@
         "avg_wave_duration_bars": 19.0
       },
       "current_wave_phase": "LATE_MARKUP",
-      "phase_guidance": "Approaching historical rally limit (+42.9% vs median +11.2%). Tighten stop.",
+      "phase_guidance": "Approaching historical rally limit (+43.8% vs median +11.2%). Tighten stop.",
       "top_seasonal_months": [
         {
           "month": "Aug",
@@ -267,17 +267,17 @@
     ]
   },
   "technical": {
-    "score": 50.0,
+    "score": 57.5,
     "signals": {
       "rsi": "neutral",
-      "macd": "bearish_crossover",
+      "macd": "neutral",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 0.3,
-      "rsi_value": 63.51,
-      "last_close": 15.0,
-      "sma20": 14.89,
-      "sma50": 13.64,
+      "atr": 0.29,
+      "rsi_value": 65.47,
+      "last_close": 15.1,
+      "sma20": 14.92,
+      "sma50": 13.7,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -309,7 +309,7 @@
       "earnings_quality": "financial_asset_quality_mode",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 3.2,
+        "drawdown_pct": 2.6,
         "high_52w": 15.5,
         "low_52w": 10.5
       }
@@ -353,15 +353,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 706190,
-        "avg_volume": 1523910.0,
+        "last_volume": 1552458,
+        "avg_volume": 1554147.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.46,
-        "avg_volume": 1534658.0,
-        "today_volume": 706190,
+        "spike_ratio": 1.02,
+        "avg_volume": 1523910.0,
+        "today_volume": 1552458,
         "detail": "ok"
       },
       "serial_trading": {
@@ -380,20 +380,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": 0.0,
+        "price_change_3d": 0.67,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 59.94,
+    "composite_score": 61.33,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.674,
-      "technical": 0.202,
-      "governance": 0.124,
+      "fundamental": 0.671,
+      "technical": 0.203,
+      "governance": 0.126,
       "sentiment": 0.0
     }
   }

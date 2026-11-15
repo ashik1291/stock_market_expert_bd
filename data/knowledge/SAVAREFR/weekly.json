@@ -2,18 +2,18 @@
   "ticker": "SAVAREFR",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-12T07:09:29.644429",
-  "asof_price_date": "2026-11-11",
+  "analyzed_at": "2026-11-15T13:28:16.482894",
+  "asof_price_date": "2026-11-15",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 3.3611,
+    "rsi_14": 3.2167,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 43.78,
+  "confidence": 43.7,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -96,14 +96,14 @@
       "visual_gauge": "[ \u09f3215.5 |\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591| \u09f3215.5 ] (50.0% (Truncated))",
       "conviction_bonus": 0.0,
       "is_truncated_window": true,
-      "bars_evaluated": 26,
+      "bars_evaluated": 27,
       "signal": "Price is in mid-channel (50.0% between \u09f3215.5 and \u09f3215.5)"
     },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "SAVAREFR",
-    "audited_at": "2026-11-12 13:09:29",
+    "audited_at": "2026-11-15 19:28:16",
     "worth_vs_greed": {
       "current_price": 215.5,
       "intrinsic_worth": 107.75,
@@ -111,8 +111,8 @@
       "extension_froth_score": 10.0,
       "greed_index": 10.0,
       "rsi_14": 100.0,
-      "price_vs_ema50_pct": -2.7,
-      "price_vs_ema200_pct": -4.8,
+      "price_vs_ema50_pct": -2.6,
+      "price_vs_ema200_pct": -4.7,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -151,16 +151,16 @@
           "range_volatility_pct": 21.72
         },
         "half_yearly_126d": {
-          "return_pct": 1.99,
+          "return_pct": 3.11,
           "high": 294.5,
           "low": 203.0,
           "range_volatility_pct": 45.07
         },
         "yearly_252d": {
-          "return_pct": 27.89,
+          "return_pct": 29.2,
           "high": 294.5,
-          "low": 165.1,
-          "range_volatility_pct": 78.38
+          "low": 167.2,
+          "range_volatility_pct": 76.14
         }
       },
       "wave_metrics": {
@@ -306,13 +306,13 @@
     }
   },
   "composite": {
-    "composite_score": 43.78,
+    "composite_score": 43.7,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.674,
-      "technical": 0.202,
-      "governance": 0.124,
+      "fundamental": 0.671,
+      "technical": 0.203,
+      "governance": 0.126,
       "sentiment": 0.0
     }
   }

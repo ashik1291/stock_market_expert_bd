@@ -3944,6 +3944,133 @@
         "eligible_count": 5
       },
       "block_hash": "c018e98b35930be758d515f65d77f5361647467dc77f93920b3da903a9edd000"
+    },
+    {
+      "block_index": 26,
+      "timestamp": "2026-11-15T13:27:33.841331+00:00",
+      "prev_hash": "c018e98b35930be758d515f65d77f5361647467dc77f93920b3da903a9edd000",
+      "data": {
+        "epoch": "EPOCH-3-REGIME-ADAPTIVE-2026",
+        "registered_at": "2026-11-11T05:08:13.106048+00:00",
+        "prior_epoch_killed_at_block": 22,
+        "model_id": "frozen_epoch2_pit_v2",
+        "initial_cash": 1000000.0,
+        "current_cash": 605982.88,
+        "portfolio_nav": 996461.28,
+        "benchmark": "EQUAL_WEIGHTED_CATEGORY_A_PRICE",
+        "nav_history": [
+          1000000.0,
+          995393.79,
+          996461.28
+        ],
+        "strategy_status": "ACTIVE",
+        "regime_mode": "REGIME_ADAPTIVE_DEFENSIVE",
+        "rules": {
+          "hold_buffer_top_pct": 30.0,
+          "rebalance_min_bars": 21,
+          "execution_fill": "NEXT_SESSION_OPEN_PLUS_10BPS",
+          "round_trip_fee_pct": 0.88,
+          "kill_excess_pct": -3.0,
+          "kill_max_dd_pct": -25.0,
+          "regime_cash_floor_pct": 40.0,
+          "liquidity_guard": "TURNOVER_GTE_15LAKH_VOL_GTE_15K"
+        },
+        "positions": [
+          {
+            "ticker": "JAMUNAOIL",
+            "sector": "Fuel_Power",
+            "entry_date": "2026-11-11",
+            "signal_date": "2026-11-11",
+            "execution_price": 171.28,
+            "fill_source": "CLOSE_PROXY",
+            "shares": 581,
+            "invested_equity": 99513.68,
+            "buy_fee_deducted": 412.98,
+            "pe": 3.0647359454855194,
+            "yield": 9.87,
+            "entry_score": 42.1429,
+            "model_id": "frozen_epoch2_pit_v2",
+            "last_mark_price": 169.4,
+            "last_mark_date": "2026-11-15",
+            "mark_equity": 98421.4
+          },
+          {
+            "ticker": "PADMAOIL",
+            "sector": "Fuel_Power",
+            "entry_date": "2026-11-11",
+            "signal_date": "2026-11-11",
+            "execution_price": 197.99,
+            "fill_source": "CLOSE_PROXY",
+            "shares": 502,
+            "invested_equity": 99390.98,
+            "buy_fee_deducted": 412.47,
+            "pe": 3.19,
+            "yield": 8.75,
+            "entry_score": 39.715,
+            "model_id": "frozen_epoch2_pit_v2",
+            "last_mark_price": 196.1,
+            "last_mark_date": "2026-11-15",
+            "mark_equity": 98442.2
+          },
+          {
+            "ticker": "BSRMLTD",
+            "sector": "Engineering",
+            "entry_date": "2026-11-11",
+            "signal_date": "2026-11-11",
+            "execution_price": 97.19,
+            "fill_source": "CLOSE_PROXY",
+            "shares": 1024,
+            "invested_equity": 99522.56,
+            "buy_fee_deducted": 413.02,
+            "pe": 4.720466699076324,
+            "yield": 6.61,
+            "entry_score": 33.1393,
+            "model_id": "frozen_epoch2_pit_v2",
+            "last_mark_price": 97.4,
+            "last_mark_date": "2026-11-15",
+            "mark_equity": 99737.6,
+            "total_dividends_credited": 5068.8
+          },
+          {
+            "ticker": "CONFIDCEM",
+            "sector": "Cement",
+            "entry_date": "2026-11-11",
+            "signal_date": "2026-11-11",
+            "execution_price": 62.15,
+            "fill_source": "CLOSE_PROXY",
+            "shares": 1602,
+            "invested_equity": 99564.3,
+            "buy_fee_deducted": 413.19,
+            "pe": 5.209260908281389,
+            "yield": 2.01,
+            "entry_score": 23.2061,
+            "model_id": "frozen_epoch2_pit_v2",
+            "last_mark_price": 58.6,
+            "last_mark_date": "2026-11-15",
+            "mark_equity": 93877.2
+          }
+        ],
+        "last_rebalance_date": "2026-11-11",
+        "asof_price_date": "2026-11-15",
+        "updated_at": "2026-11-15T13:27:33.841331+00:00",
+        "feature_build": {
+          "ok": true,
+          "date": "2026-11-15",
+          "rows": 374,
+          "eligible": 5,
+          "model_id": "frozen_epoch2_pit_v2",
+          "parameter_hash": "acf502bc65914c48"
+        },
+        "max_drawdown_pct": -0.46,
+        "strat_return_pct": -0.35,
+        "eqw_return_pct": 0.2797,
+        "excess_vs_eqw_pct": -0.63,
+        "kill_reason": null,
+        "last_trades": [],
+        "daily_ic": null,
+        "eligible_count": 5
+      },
+      "block_hash": "05d57c117ee7a8f9c18fed77c245b62e48128160bcb1f65d44696e8d532813bb"
     }
   ]
 }

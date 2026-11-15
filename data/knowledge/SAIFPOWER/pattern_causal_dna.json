@@ -1,29 +1,29 @@
 {
   "ticker": "SAIFPOWER",
-  "audited_at": "2026-11-12 13:09:28",
+  "audited_at": "2026-11-15 19:28:15",
   "worth_vs_greed": {
-    "current_price": 6.7,
+    "current_price": 6.4,
     "intrinsic_worth": 10.98,
-    "margin_of_safety_pct": 63.9,
+    "margin_of_safety_pct": 71.6,
     "extension_froth_score": 30.0,
     "greed_index": 30.0,
-    "rsi_14": 66.7,
-    "price_vs_ema50_pct": -6.2,
-    "price_vs_ema200_pct": -12.7,
+    "rsi_14": 50.0,
+    "price_vs_ema50_pct": -10.0,
+    "price_vs_ema200_pct": -16.4,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f36.6 \u2013 \u09f36.8",
-      "chase_cutoff_price": 6.9,
-      "when_to_wait": "If price opens or rises above \u09f36.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f36.6.",
-      "weekly_target_short": 6.9,
-      "monthly_target_swing": 7.7,
-      "long_term_target_asset": 8.7,
+      "optimal_entry_corridor": "\u09f36.3 \u2013 \u09f36.5",
+      "chase_cutoff_price": 6.6,
+      "when_to_wait": "If price opens or rises above \u09f36.6, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f36.3.",
+      "weekly_target_short": 6.6,
+      "monthly_target_swing": 7.4,
+      "long_term_target_asset": 8.3,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "UNDERVALUED_FEAR",
     "worth_decision": "HIGH_CONVICTION_BUY",
-    "reason": "High Margin of Safety (+63.9%) with depressed market greed (30.0/100) and NEUTRAL_MERIT. Ideal entry.",
+    "reason": "High Margin of Safety (+71.6%) with depressed market greed (30.0/100) and NEUTRAL_MERIT. Ideal entry.",
     "is_blacklisted": true,
     "blacklist_reason": "Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-29 \u2014 Price up +4.84% with poor fundamentals (Negative EPS)]",
     "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-29 \u2014 Price up +4.84% with poor fundamentals (Negative EPS)]"
@@ -31,31 +31,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 1.52,
+        "return_pct": -1.54,
         "high": 6.9,
-        "low": 6.4,
-        "range_volatility_pct": 7.81
+        "low": 6.3,
+        "range_volatility_pct": 9.52
       },
       "monthly_21d": {
-        "return_pct": 4.69,
+        "return_pct": 1.59,
         "high": 6.9,
         "low": 5.8,
         "range_volatility_pct": 18.97
       },
       "quarterly_63d": {
-        "return_pct": -35.58,
+        "return_pct": -39.05,
         "high": 10.8,
         "low": 5.8,
         "range_volatility_pct": 86.21
       },
       "half_yearly_126d": {
-        "return_pct": 11.67,
+        "return_pct": 8.47,
         "high": 11.5,
         "low": 5.8,
         "range_volatility_pct": 98.28
       },
       "yearly_252d": {
-        "return_pct": 26.42,
+        "return_pct": 25.49,
         "high": 11.5,
         "low": 3.8,
         "range_volatility_pct": 202.63
@@ -63,11 +63,11 @@
     },
     "wave_metrics": {
       "median_rally_gain_pct": 25.1,
-      "median_correction_drop_pct": -23.0,
+      "median_correction_drop_pct": -23.3,
       "avg_wave_duration_bars": 20.0
     },
-    "current_wave_phase": "BOTTOMING_SUPPORT",
-    "phase_guidance": "Drop (-39.6%) matches historical correction depth (-23.0%). Prepare to accumulate.",
+    "current_wave_phase": "MARKUP_RALLY_MID",
+    "phase_guidance": "Midway through rally wave (+10.3% from base, historical target ~+25.1%).",
     "top_seasonal_months": [
       {
         "month": "Jan",

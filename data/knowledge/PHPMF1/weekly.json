@@ -2,18 +2,18 @@
   "ticker": "PHPMF1",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-12T07:09:24.896156",
-  "asof_price_date": "2026-11-12",
+  "analyzed_at": "2026-11-15T13:28:11.775423",
+  "asof_price_date": "2026-11-15",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 56.5958,
+    "rsi_14": 56.5469,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 44.79,
+  "confidence": 44.71,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 3.3,
-    "stop_loss": 3.07,
-    "target": 3.76
+    "stop_loss": 3.06,
+    "target": 3.78
   },
   "precision": {
     "ticker": "PHPMF1",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 233318,
+      "avg_daily_volume": 239298,
       "daily_turnover_bdt_cr": 0.02,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 11665,
-      "max_daily_accumulation_shares": 34997,
-      "max_order_bdt": 11665.0,
-      "directive": "Max single order: 11,665 shares (Tk 11,665) to prevent >1% execution slippage"
+      "max_single_order_shares": 11964,
+      "max_daily_accumulation_shares": 35894,
+      "max_order_bdt": 11964.0,
+      "directive": "Max single order: 11,964 shares (Tk 11,964) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -96,23 +96,23 @@
       "visual_gauge": "[ \u09f32.1 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591| \u09f33.6 ] (80.0% (Truncated))",
       "conviction_bonus": 5.0,
       "is_truncated_window": true,
-      "bars_evaluated": 101,
+      "bars_evaluated": 100,
       "signal": "Price is in upper channel (80.0%) \u2014 upward breakout momentum"
     },
     "total_precision_bonus": 5.0
   },
   "pattern_dna": {
     "ticker": "PHPMF1",
-    "audited_at": "2026-11-12 13:09:24",
+    "audited_at": "2026-11-15 19:28:11",
     "worth_vs_greed": {
       "current_price": 3.3,
       "intrinsic_worth": 1.65,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 50.0,
       "greed_index": 50.0,
-      "rsi_14": 42.9,
-      "price_vs_ema50_pct": 7.9,
-      "price_vs_ema200_pct": 8.8,
+      "rsi_14": 50.0,
+      "price_vs_ema50_pct": 7.6,
+      "price_vs_ema200_pct": 8.7,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -140,7 +140,7 @@
           "range_volatility_pct": 6.25
         },
         "monthly_21d": {
-          "return_pct": -5.71,
+          "return_pct": -2.94,
           "high": 3.5,
           "low": 3.2,
           "range_volatility_pct": 9.37
@@ -152,7 +152,7 @@
           "range_volatility_pct": 63.64
         },
         "half_yearly_126d": {
-          "return_pct": 0.0,
+          "return_pct": 6.45,
           "high": 3.6,
           "low": 2.1,
           "range_volatility_pct": 71.43
@@ -274,11 +274,11 @@
       "macd": "neutral",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 0.15,
-      "rsi_value": 56.5,
+      "atr": 0.16,
+      "rsi_value": 56.49,
       "last_close": 3.3,
       "sma20": 3.33,
-      "sma50": 2.9,
+      "sma50": 2.92,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -351,15 +351,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 177022,
-        "avg_volume": 268818.0,
+        "last_volume": 275091,
+        "avg_volume": 277329.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.59,
-        "avg_volume": 299691.0,
-        "today_volume": 177022,
+        "spike_ratio": 1.02,
+        "avg_volume": 268818.0,
+        "today_volume": 275091,
         "detail": "ok"
       },
       "serial_trading": {
@@ -385,13 +385,13 @@
     }
   },
   "composite": {
-    "composite_score": 44.79,
+    "composite_score": 44.71,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.674,
-      "technical": 0.202,
-      "governance": 0.124,
+      "fundamental": 0.671,
+      "technical": 0.203,
+      "governance": 0.126,
       "sentiment": 0.0
     }
   }

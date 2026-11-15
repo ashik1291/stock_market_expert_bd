@@ -2,18 +2,18 @@
   "ticker": "KAY&QUE",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-12T07:09:17.881464",
-  "asof_price_date": "2026-11-12",
+  "analyzed_at": "2026-11-15T13:28:05.000282",
+  "asof_price_date": "2026-11-15",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 45.5657,
+    "rsi_14": 42.9336,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 43.78,
+  "confidence": 43.7,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -22,33 +22,33 @@
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+5.4%",
+      "upside_potential_pct": "+5.3%",
       "downside_risk_pct": "-3.6%",
-      "target_price": 384.2,
-      "support_price": 351.4,
+      "target_price": 378.4,
+      "support_price": 346.4,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+15.3%",
-      "downside_risk_pct": "-5.4%",
+      "upside_potential_pct": "+17.0%",
+      "downside_risk_pct": "-5.3%",
       "target_price": 420.3,
-      "trailing_stop": 344.8,
-      "risk_reward_ratio": "2.8x"
+      "trailing_stop": 340.0,
+      "risk_reward_ratio": "3.2x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.0%",
-      "downside_risk_pct": "-9.7%",
-      "target_price": 473.9,
+      "downside_risk_pct": "-9.5%",
+      "target_price": 467.0,
       "dividend_cagr": "5%\u20138%",
-      "risk_reward_ratio": "3.1x"
+      "risk_reward_ratio": "3.2x"
     }
   },
   "trade_levels": {
-    "entry": 364.5,
-    "stop_loss": 344.82,
-    "target": 403.86
+    "entry": 359.2,
+    "stop_loss": 339.97,
+    "target": 397.66
   },
   "precision": {
     "ticker": "KAY&QUE",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 30510,
+      "avg_daily_volume": 30759,
       "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 1525,
-      "max_daily_accumulation_shares": 4576,
-      "max_order_bdt": 1525.0,
-      "directive": "Max single order: 1,525 shares (Tk 1,525) to prevent >1% execution slippage"
+      "max_single_order_shares": 1537,
+      "max_daily_accumulation_shares": 4613,
+      "max_order_bdt": 1537.0,
+      "directive": "Max single order: 1,537 shares (Tk 1,537) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,37 +91,37 @@
       "status": "VALID",
       "low_52w": 339.0,
       "high_52w": 498.2,
-      "range_52w_pct": 16.0,
+      "range_52w_pct": 12.7,
       "channel_regime": "DEEP_ACCUMULATION_BASE",
-      "visual_gauge": "[ \u09f3339.0 |\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f3498.2 ] (16.0% (Truncated))",
+      "visual_gauge": "[ \u09f3339.0 |\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f3498.2 ] (12.7% (Truncated))",
       "conviction_bonus": 10.0,
       "is_truncated_window": true,
-      "bars_evaluated": 100,
-      "signal": "Price is at the bottom 16.0% of 52-week channel (near \u09f3339.0 floor) \u2014 high margin of safety"
+      "bars_evaluated": 99,
+      "signal": "Price is at the bottom 12.7% of 52-week channel (near \u09f3339.0 floor) \u2014 high margin of safety"
     },
     "total_precision_bonus": 10.0
   },
   "pattern_dna": {
     "ticker": "KAY&QUE",
-    "audited_at": "2026-11-12 13:09:17",
+    "audited_at": "2026-11-15 19:28:04",
     "worth_vs_greed": {
-      "current_price": 364.5,
-      "intrinsic_worth": 182.25,
+      "current_price": 359.2,
+      "intrinsic_worth": 179.6,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 20.0,
       "greed_index": 20.0,
-      "rsi_14": 28.6,
-      "price_vs_ema50_pct": -3.5,
-      "price_vs_ema200_pct": 6.9,
+      "rsi_14": 31.8,
+      "price_vs_ema50_pct": -4.8,
+      "price_vs_ema200_pct": 5.3,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f3357.2 \u2013 \u09f3368.1",
-        "chase_cutoff_price": 373.6,
-        "when_to_wait": "If price opens or rises above \u09f3373.6, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3357.2.",
-        "weekly_target_short": 377.3,
-        "monthly_target_swing": 419.2,
-        "long_term_target_asset": 473.9,
+        "optimal_entry_corridor": "\u09f3352.0 \u2013 \u09f3362.8",
+        "chase_cutoff_price": 368.2,
+        "when_to_wait": "If price opens or rises above \u09f3368.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3352.0.",
+        "weekly_target_short": 371.8,
+        "monthly_target_swing": 413.1,
+        "long_term_target_asset": 467.0,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
@@ -133,31 +133,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 1.25,
-          "high": 374.9,
+          "return_pct": -0.88,
+          "high": 370.0,
           "low": 350.0,
-          "range_volatility_pct": 7.11
+          "range_volatility_pct": 5.71
         },
         "monthly_21d": {
-          "return_pct": -9.69,
+          "return_pct": -10.29,
           "high": 416.7,
           "low": 342.3,
           "range_volatility_pct": 21.74
         },
         "quarterly_63d": {
-          "return_pct": -4.76,
+          "return_pct": -3.65,
           "high": 425.9,
           "low": 342.3,
           "range_volatility_pct": 24.42
         },
         "half_yearly_126d": {
-          "return_pct": 3.85,
+          "return_pct": -2.68,
           "high": 498.2,
           "low": 339.0,
           "range_volatility_pct": 46.96
         },
         "yearly_252d": {
-          "return_pct": 82.52,
+          "return_pct": 79.51,
           "high": 498.2,
           "low": 182.1,
           "range_volatility_pct": 173.59
@@ -169,7 +169,7 @@
         "avg_wave_duration_bars": 18.0
       },
       "current_wave_phase": "MARKDOWN_PULLBACK",
-      "phase_guidance": "Ongoing pullback from peak (-14.4%). Wait for stabilizing base.",
+      "phase_guidance": "Ongoing pullback from peak (-15.7%). Wait for stabilizing base.",
       "top_seasonal_months": [
         {
           "month": "Sep",
@@ -273,11 +273,11 @@
       "macd": "neutral",
       "sma_trend": "neutral",
       "bb": "inside_bands",
-      "atr": 13.12,
-      "rsi_value": 45.17,
-      "last_close": 364.5,
-      "sma20": 374.22,
-      "sma50": 381.75,
+      "atr": 12.82,
+      "rsi_value": 42.59,
+      "last_close": 359.2,
+      "sma20": 372.15,
+      "sma50": 381.32,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -306,7 +306,7 @@
       "error": "no_fundamental_data",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 26.8,
+        "drawdown_pct": 27.9,
         "high_52w": 498.2,
         "low_52w": 339.0
       }
@@ -350,15 +350,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 9132,
-        "avg_volume": 38437.0,
+        "last_volume": 23738,
+        "avg_volume": 35686.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.22,
-        "avg_volume": 41138.0,
-        "today_volume": 9132,
+        "spike_ratio": 0.62,
+        "avg_volume": 38437.0,
+        "today_volume": 23738,
         "detail": "ok"
       },
       "serial_trading": {
@@ -377,20 +377,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": 1.45,
+        "price_change_3d": -1.45,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 43.78,
+    "composite_score": 43.7,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.674,
-      "technical": 0.202,
-      "governance": 0.124,
+      "fundamental": 0.671,
+      "technical": 0.203,
+      "governance": 0.126,
       "sentiment": 0.0
     }
   }

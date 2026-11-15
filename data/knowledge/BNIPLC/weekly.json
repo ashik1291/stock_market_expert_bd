@@ -2,18 +2,18 @@
   "ticker": "BNIPLC",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-12T07:09:06.833282",
-  "asof_price_date": "2026-11-12",
+  "analyzed_at": "2026-11-15T13:27:53.052006",
+  "asof_price_date": "2026-11-15",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 41.0515,
+    "rsi_14": 41.7242,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 43.78,
+  "confidence": 43.7,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -24,31 +24,31 @@
       "predicted_path": "Upward momentum swing",
       "upside_potential_pct": "+3.0%",
       "downside_risk_pct": "-2.0%",
-      "target_price": 150.9,
-      "support_price": 143.6,
+      "target_price": 151.3,
+      "support_price": 144.0,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+14.9%",
+      "upside_potential_pct": "+14.6%",
       "downside_risk_pct": "-3.0%",
       "target_price": 168.3,
-      "trailing_stop": 142.1,
-      "risk_reward_ratio": "5.0x"
+      "trailing_stop": 142.5,
+      "risk_reward_ratio": "4.9x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.0%",
       "downside_risk_pct": "-5.4%",
-      "target_price": 190.5,
+      "target_price": 191.0,
       "dividend_cagr": "5%\u20138%",
       "risk_reward_ratio": "5.6x"
     }
   },
   "trade_levels": {
-    "entry": 146.5,
-    "stop_loss": 142.1,
-    "target": 155.3
+    "entry": 146.9,
+    "stop_loss": 142.49,
+    "target": 155.72
   },
   "precision": {
     "ticker": "BNIPLC",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 139922,
+      "avg_daily_volume": 147545,
       "daily_turnover_bdt_cr": 0.01,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 6996,
-      "max_daily_accumulation_shares": 20988,
-      "max_order_bdt": 6996.0,
-      "directive": "Max single order: 6,996 shares (Tk 6,996) to prevent >1% execution slippage"
+      "max_single_order_shares": 7377,
+      "max_daily_accumulation_shares": 22131,
+      "max_order_bdt": 7377.0,
+      "directive": "Max single order: 7,377 shares (Tk 7,377) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,37 +91,37 @@
       "status": "VALID",
       "low_52w": 140.0,
       "high_52w": 172.8,
-      "range_52w_pct": 19.8,
+      "range_52w_pct": 21.0,
       "channel_regime": "DEEP_ACCUMULATION_BASE",
-      "visual_gauge": "[ \u09f3140.0 |\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f3172.8 ] (19.8% (Truncated))",
+      "visual_gauge": "[ \u09f3140.0 |\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f3172.8 ] (21.0% (Truncated))",
       "conviction_bonus": 10.0,
       "is_truncated_window": true,
-      "bars_evaluated": 23,
-      "signal": "Price is at the bottom 19.8% of 52-week channel (near \u09f3140.0 floor) \u2014 high margin of safety"
+      "bars_evaluated": 24,
+      "signal": "Price is at the bottom 21.0% of 52-week channel (near \u09f3140.0 floor) \u2014 high margin of safety"
     },
     "total_precision_bonus": 10.0
   },
   "pattern_dna": {
     "ticker": "BNIPLC",
-    "audited_at": "2026-11-12 13:09:06",
+    "audited_at": "2026-11-15 19:27:53",
     "worth_vs_greed": {
-      "current_price": 146.5,
-      "intrinsic_worth": 73.25,
+      "current_price": 146.9,
+      "intrinsic_worth": 73.45,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 40.0,
       "greed_index": 40.0,
-      "rsi_14": 22.6,
+      "rsi_14": 24.5,
       "price_vs_ema50_pct": 0.0,
       "price_vs_ema200_pct": 0.0,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f3143.6 \u2013 \u09f3148.0",
-        "chase_cutoff_price": 150.2,
-        "when_to_wait": "If price opens or rises above \u09f3150.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3143.6.",
-        "weekly_target_short": 151.6,
-        "monthly_target_swing": 168.5,
-        "long_term_target_asset": 190.5,
+        "optimal_entry_corridor": "\u09f3144.0 \u2013 \u09f3148.4",
+        "chase_cutoff_price": 150.6,
+        "when_to_wait": "If price opens or rises above \u09f3150.6, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3144.0.",
+        "weekly_target_short": 152.0,
+        "monthly_target_swing": 168.9,
+        "long_term_target_asset": 191.0,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
@@ -149,7 +149,7 @@
       "error": "no_fundamental_data",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 15.2,
+        "drawdown_pct": 15.0,
         "high_52w": 172.8,
         "low_52w": 140.0
       }
@@ -214,20 +214,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": 0.83,
+        "price_change_3d": 0.27,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 43.78,
+    "composite_score": 43.7,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.674,
-      "technical": 0.202,
-      "governance": 0.124,
+      "fundamental": 0.671,
+      "technical": 0.203,
+      "governance": 0.126,
       "sentiment": 0.0
     }
   }

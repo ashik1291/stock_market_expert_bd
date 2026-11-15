@@ -2,18 +2,18 @@
   "ticker": "ALIF",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-12T07:09:03.133239",
-  "asof_price_date": "2026-11-12",
+  "analyzed_at": "2026-11-15T13:27:49.562097",
+  "asof_price_date": "2026-11-15",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 54.9649,
+    "rsi_14": 54.9418,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 46.81,
+  "confidence": 46.74,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 97910,
+      "avg_daily_volume": 88880,
       "daily_turnover_bdt_cr": 0.01,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 4895,
-      "max_daily_accumulation_shares": 14686,
-      "max_order_bdt": 4895.0,
-      "directive": "Max single order: 4,895 shares (Tk 4,895) to prevent >1% execution slippage"
+      "max_single_order_shares": 4444,
+      "max_daily_accumulation_shares": 13332,
+      "max_order_bdt": 4444.0,
+      "directive": "Max single order: 4,444 shares (Tk 4,444) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -96,23 +96,23 @@
       "visual_gauge": "[ \u09f33.2 |\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591| \u09f35.4 ] (54.5% (Truncated))",
       "conviction_bonus": 0.0,
       "is_truncated_window": true,
-      "bars_evaluated": 101,
+      "bars_evaluated": 100,
       "signal": "Price is in mid-channel (54.5% between \u09f33.2 and \u09f35.4)"
     },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "ALIF",
-    "audited_at": "2026-11-12 13:09:03",
+    "audited_at": "2026-11-15 19:27:49",
     "worth_vs_greed": {
       "current_price": 4.4,
       "intrinsic_worth": 2.2,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 30.0,
       "greed_index": 30.0,
-      "rsi_14": 60.0,
-      "price_vs_ema50_pct": 2.5,
-      "price_vs_ema200_pct": -13.2,
+      "rsi_14": 55.6,
+      "price_vs_ema50_pct": 2.4,
+      "price_vs_ema200_pct": -13.1,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -146,7 +146,7 @@
           "range_volatility_pct": 12.2
         },
         "quarterly_63d": {
-          "return_pct": 2.33,
+          "return_pct": 7.32,
           "high": 5.1,
           "low": 3.7,
           "range_volatility_pct": 37.84
@@ -158,7 +158,7 @@
           "range_volatility_pct": 90.62
         },
         "yearly_252d": {
-          "return_pct": -45.0,
+          "return_pct": -44.3,
           "high": 8.2,
           "low": 3.2,
           "range_volatility_pct": 156.25
@@ -351,15 +351,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 40287,
-        "avg_volume": 117192.0,
+        "last_volume": 69564,
+        "avg_volume": 114210.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.33,
-        "avg_volume": 122750.0,
-        "today_volume": 40287,
+        "spike_ratio": 0.59,
+        "avg_volume": 117192.0,
+        "today_volume": 69564,
         "detail": "ok"
       },
       "serial_trading": {
@@ -378,20 +378,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": 2.33,
+        "price_change_3d": 0.0,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 46.81,
+    "composite_score": 46.74,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.674,
-      "technical": 0.202,
-      "governance": 0.124,
+      "fundamental": 0.671,
+      "technical": 0.203,
+      "governance": 0.126,
       "sentiment": 0.0
     }
   }

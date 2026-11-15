@@ -2,18 +2,18 @@
   "ticker": "UCB",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-12T07:09:34.111907",
-  "asof_price_date": "2026-11-12",
+  "analyzed_at": "2026-11-15T13:28:20.261115",
+  "asof_price_date": "2026-11-15",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 55.9343,
+    "rsi_14": 55.9097,
     "pe_ratio": 67.67,
     "debt_equity": 1.08
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 45.18,
+  "confidence": 45.11,
   "trajectory": {
     "direction": "FALL_RISK",
     "direction_icon": "\ud83d\udd34",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 8.9,
-    "stop_loss": 8.42,
-    "target": 9.86
+    "stop_loss": 8.44,
+    "target": 9.82
   },
   "precision": {
     "ticker": "UCB",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 572815,
+      "avg_daily_volume": 588238,
       "daily_turnover_bdt_cr": 0.06,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 28640,
-      "max_daily_accumulation_shares": 85922,
-      "max_order_bdt": 28640.0,
-      "directive": "Max single order: 28,640 shares (Tk 28,640) to prevent >1% execution slippage"
+      "max_single_order_shares": 29411,
+      "max_daily_accumulation_shares": 88235,
+      "max_order_bdt": 29411.0,
+      "directive": "Max single order: 29,411 shares (Tk 29,411) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -103,14 +103,14 @@
   },
   "pattern_dna": {
     "ticker": "UCB",
-    "audited_at": "2026-11-12 13:09:34",
+    "audited_at": "2026-11-15 19:28:20",
     "worth_vs_greed": {
       "current_price": 8.9,
       "intrinsic_worth": 0.32,
       "margin_of_safety_pct": -96.4,
       "extension_froth_score": 50.0,
       "greed_index": 50.0,
-      "rsi_14": 56.0,
+      "rsi_14": 58.3,
       "price_vs_ema50_pct": 1.6,
       "price_vs_ema200_pct": -3.3,
       "merit_status": "EARNINGS_BACKED_MERIT",
@@ -134,13 +134,13 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 3.49,
+          "return_pct": 2.3,
           "high": 9.0,
           "low": 8.5,
           "range_volatility_pct": 5.88
         },
         "monthly_21d": {
-          "return_pct": 11.25,
+          "return_pct": 8.54,
           "high": 9.6,
           "low": 8.0,
           "range_volatility_pct": 20.0
@@ -152,7 +152,7 @@
           "range_volatility_pct": 23.75
         },
         "half_yearly_126d": {
-          "return_pct": -1.11,
+          "return_pct": -2.2,
           "high": 10.2,
           "low": 8.0,
           "range_volatility_pct": 27.5
@@ -274,12 +274,12 @@
       "macd": "bullish_crossover",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 0.32,
+      "atr": 0.31,
       "rsi_value": 55.94,
       "last_close": 8.9,
-      "sma20": 8.58,
+      "sma20": 8.61,
       "sma50": 8.76,
-      "sma200": 9.23,
+      "sma200": 9.22,
       "support_resistance": {
         "supports": [
           8.0,
@@ -365,15 +365,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 149515,
-        "avg_volume": 474765.0,
+        "last_volume": 631461,
+        "avg_volume": 492195.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.31,
-        "avg_volume": 477058.0,
-        "today_volume": 149515,
+        "spike_ratio": 1.33,
+        "avg_volume": 474765.0,
+        "today_volume": 631461,
         "detail": "ok"
       },
       "serial_trading": {
@@ -392,20 +392,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": 3.49,
+        "price_change_3d": 0.0,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 45.18,
+    "composite_score": 45.11,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.674,
-      "technical": 0.202,
-      "governance": 0.124,
+      "fundamental": 0.671,
+      "technical": 0.203,
+      "governance": 0.126,
       "sentiment": 0.0
     }
   }

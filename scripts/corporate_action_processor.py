@@ -499,17 +499,22 @@ def process_portfolio_dividends(
                 "notes": notes
             })
 
-    # If any dividend was credited, update portfolio cash balance
+    # If any dividend was credited, update portfolio cash balance & total capital
     if total_net_cash > 0:
         current_cash = float(port.get("cash_balance_bdt") or 0.0)
         new_cash = round(current_cash + total_net_cash, 2)
         port["cash_balance_bdt"] = new_cash
+
+        current_cap = float(port.get("total_capital_bdt") or 0.0)
+        port["total_capital_bdt"] = round(current_cap + total_net_cash, 2)
 
         # Update summary
         if "summary" in port:
             port["summary"]["cash_balance_bdt"] = new_cash
             total_mkt = float(port["summary"].get("total_market_value_bdt") or 0.0)
             port["summary"]["total_market_value_bdt"] = round(total_mkt + total_net_cash, 2)
+            tot_cost = float(port["summary"].get("total_cost_basis_bdt") or 0.0)
+            port["summary"]["total_cost_basis_bdt"] = round(tot_cost + total_net_cash, 2)
 
         # Track in portfolio history
         div_hist = port.setdefault("dividend_distribution_history", [])

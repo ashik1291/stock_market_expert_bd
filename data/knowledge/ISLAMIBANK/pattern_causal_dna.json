@@ -1,61 +1,61 @@
 {
   "ticker": "ISLAMIBANK",
-  "audited_at": "2026-11-12 13:09:16",
+  "audited_at": "2026-11-15 19:28:03",
   "worth_vs_greed": {
-    "current_price": 21.3,
-    "intrinsic_worth": 10.65,
+    "current_price": 23.4,
+    "intrinsic_worth": 11.7,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 60.0,
-    "greed_index": 60.0,
-    "rsi_14": 34.9,
-    "price_vs_ema50_pct": -13.2,
-    "price_vs_ema200_pct": -31.1,
+    "extension_froth_score": 70.0,
+    "greed_index": 70.0,
+    "rsi_14": 50.5,
+    "price_vs_ema50_pct": -4.5,
+    "price_vs_ema200_pct": -24.2,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f320.9 \u2013 \u09f321.5",
-      "chase_cutoff_price": 21.8,
-      "when_to_wait": "If price opens or rises above \u09f321.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f320.9.",
-      "weekly_target_short": 22.0,
-      "monthly_target_swing": 24.5,
-      "long_term_target_asset": 27.7,
+      "optimal_entry_corridor": "\u09f322.9 \u2013 \u09f323.6",
+      "chase_cutoff_price": 24.0,
+      "when_to_wait": "If price opens or rises above \u09f324.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f322.9.",
+      "weekly_target_short": 24.2,
+      "monthly_target_swing": 26.9,
+      "long_term_target_asset": 30.4,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
-    "status": "CHRONIC_OVERVALUATION",
-    "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -50.0%).",
+    "status": "OVERVALUED_EUPHORIA",
+    "worth_decision": "SELL_TAKE_PROFIT",
+    "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (70.0/100). Danger of sharp mean reversion.",
     "is_blacklisted": true,
-    "blacklist_reason": "Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-11-03 \u2014 Mid-tier volume is 7.0x 20-day average (505,997 vs 71,873) | Promoters hold only 0.2% (< 30% legal threshold) during price run-up]",
-    "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-11-03 \u2014 Mid-tier volume is 7.0x 20-day average (505,997 vs 71,873) | Promoters hold only 0.2% (< 30% legal threshold) during price run-up]"
+    "blacklist_reason": "Blocked by Forensic Surveillance [HIGH: ABNORMAL_VOLUME_SURGE on 2026-11-15 \u2014 Mid-tier volume is 4.3x 20-day average (278,408 vs 65,275) | Promoters hold only 0.2% (< 30% legal threshold) during price run-up]",
+    "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [HIGH: ABNORMAL_VOLUME_SURGE on 2026-11-15 \u2014 Mid-tier volume is 4.3x 20-day average (278,408 vs 65,275) | Promoters hold only 0.2% (< 30% legal threshold) during price run-up]"
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 0.47,
-        "high": 22.0,
+        "return_pct": 15.84,
+        "high": 23.4,
         "low": 20.0,
-        "range_volatility_pct": 10.0
+        "range_volatility_pct": 17.0
       },
       "monthly_21d": {
-        "return_pct": -15.14,
-        "high": 25.4,
+        "return_pct": -6.77,
+        "high": 25.3,
         "low": 19.5,
-        "range_volatility_pct": 30.26
+        "range_volatility_pct": 29.74
       },
       "quarterly_63d": {
-        "return_pct": -28.76,
+        "return_pct": -20.68,
         "high": 29.9,
         "low": 19.5,
         "range_volatility_pct": 53.33
       },
       "half_yearly_126d": {
-        "return_pct": -34.66,
+        "return_pct": -28.22,
         "high": 38.7,
         "low": 19.5,
         "range_volatility_pct": 98.46
       },
       "yearly_252d": {
-        "return_pct": -44.53,
+        "return_pct": -36.76,
         "high": 56.2,
         "low": 19.5,
         "range_volatility_pct": 188.21
@@ -67,7 +67,7 @@
       "avg_wave_duration_bars": 22.0
     },
     "current_wave_phase": "BOTTOMING_SUPPORT",
-    "phase_guidance": "Drop (-45.0%) matches historical correction depth (-13.2%). Prepare to accumulate.",
+    "phase_guidance": "Drop (-39.5%) matches historical correction depth (-13.2%). Prepare to accumulate.",
     "top_seasonal_months": [
       {
         "month": "Aug",

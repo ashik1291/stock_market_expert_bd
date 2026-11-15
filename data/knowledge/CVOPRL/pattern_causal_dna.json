@@ -1,24 +1,24 @@
 {
   "ticker": "CVOPRL",
-  "audited_at": "2026-11-12 13:09:08",
+  "audited_at": "2026-11-15 19:27:54",
   "worth_vs_greed": {
-    "current_price": 141.0,
-    "intrinsic_worth": 70.5,
+    "current_price": 133.0,
+    "intrinsic_worth": 66.5,
     "margin_of_safety_pct": -50.0,
     "extension_froth_score": 20.0,
     "greed_index": 20.0,
-    "rsi_14": 38.4,
-    "price_vs_ema50_pct": -6.6,
-    "price_vs_ema200_pct": -8.0,
+    "rsi_14": 37.7,
+    "price_vs_ema50_pct": -11.5,
+    "price_vs_ema200_pct": -13.1,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f3138.2 \u2013 \u09f3142.4",
-      "chase_cutoff_price": 144.5,
-      "when_to_wait": "If price opens or rises above \u09f3144.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3138.2.",
-      "weekly_target_short": 145.9,
-      "monthly_target_swing": 162.1,
-      "long_term_target_asset": 183.3,
+      "optimal_entry_corridor": "\u09f3130.3 \u2013 \u09f3134.3",
+      "chase_cutoff_price": 136.3,
+      "when_to_wait": "If price opens or rises above \u09f3136.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3130.3.",
+      "weekly_target_short": 137.7,
+      "monthly_target_swing": 152.9,
+      "long_term_target_asset": 172.9,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -30,31 +30,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 2.25,
-        "high": 144.5,
-        "low": 138.8,
-        "range_volatility_pct": 4.11
+        "return_pct": -6.67,
+        "high": 144.0,
+        "low": 131.0,
+        "range_volatility_pct": 9.92
       },
       "monthly_21d": {
-        "return_pct": -14.86,
-        "high": 167.4,
-        "low": 133.6,
-        "range_volatility_pct": 25.3
+        "return_pct": -18.1,
+        "high": 165.7,
+        "low": 131.0,
+        "range_volatility_pct": 26.49
       },
       "quarterly_63d": {
-        "return_pct": -13.71,
+        "return_pct": -21.16,
         "high": 174.3,
-        "low": 133.6,
-        "range_volatility_pct": 30.46
+        "low": 131.0,
+        "range_volatility_pct": 33.05
       },
       "half_yearly_126d": {
-        "return_pct": -15.42,
+        "return_pct": -19.3,
         "high": 216.8,
-        "low": 133.6,
-        "range_volatility_pct": 62.28
+        "low": 131.0,
+        "range_volatility_pct": 65.5
       },
       "yearly_252d": {
-        "return_pct": 4.14,
+        "return_pct": -0.67,
         "high": 216.8,
         "low": 119.5,
         "range_volatility_pct": 81.42
@@ -65,8 +65,8 @@
       "median_correction_drop_pct": -22.6,
       "avg_wave_duration_bars": 19.0
     },
-    "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-16.0%). Wait for stabilizing base.",
+    "current_wave_phase": "BOTTOMING_SUPPORT",
+    "phase_guidance": "Drop (-20.8%) matches historical correction depth (-22.6%). Prepare to accumulate.",
     "top_seasonal_months": [
       {
         "month": "May",

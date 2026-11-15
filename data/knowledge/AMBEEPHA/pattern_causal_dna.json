@@ -1,60 +1,60 @@
 {
   "ticker": "AMBEEPHA",
-  "audited_at": "2026-11-12 13:09:03",
+  "audited_at": "2026-11-15 19:27:49",
   "worth_vs_greed": {
-    "current_price": 730.0,
+    "current_price": 703.1,
     "intrinsic_worth": 3.2,
-    "margin_of_safety_pct": -99.6,
-    "extension_froth_score": 10.0,
-    "greed_index": 10.0,
-    "rsi_14": 48.0,
-    "price_vs_ema50_pct": -0.0,
-    "price_vs_ema200_pct": -4.1,
+    "margin_of_safety_pct": -99.5,
+    "extension_froth_score": 30.0,
+    "greed_index": 30.0,
+    "rsi_14": 38.5,
+    "price_vs_ema50_pct": -3.6,
+    "price_vs_ema200_pct": -7.5,
     "merit_status": "EARNINGS_BACKED_MERIT",
     "merit_reason": "Price supported by solid earnings (EPS: \u09f30.40, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f3715.4 \u2013 \u09f3737.3",
-      "chase_cutoff_price": 748.2,
-      "when_to_wait": "If price opens or rises above \u09f3748.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3715.4.",
-      "weekly_target_short": 755.5,
-      "monthly_target_swing": 839.5,
-      "long_term_target_asset": 949.0,
+      "optimal_entry_corridor": "\u09f3689.0 \u2013 \u09f3710.1",
+      "chase_cutoff_price": 720.7,
+      "when_to_wait": "If price opens or rises above \u09f3720.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3689.0.",
+      "weekly_target_short": 727.7,
+      "monthly_target_swing": 808.6,
+      "long_term_target_asset": 914.0,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -99.6%).",
+    "reason": "Fundamental value severely lags stock price (MoS: -99.5%).",
     "is_blacklisted": false,
     "blacklist_reason": null
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 1.18,
+        "return_pct": -2.18,
         "high": 738.0,
-        "low": 718.0,
-        "range_volatility_pct": 2.79
+        "low": 700.0,
+        "range_volatility_pct": 5.43
       },
       "monthly_21d": {
-        "return_pct": -0.65,
+        "return_pct": -4.95,
         "high": 756.6,
-        "low": 700.5,
-        "range_volatility_pct": 8.01
+        "low": 700.0,
+        "range_volatility_pct": 8.09
       },
       "quarterly_63d": {
-        "return_pct": -5.57,
-        "high": 782.7,
+        "return_pct": -8.12,
+        "high": 774.0,
         "low": 681.0,
-        "range_volatility_pct": 14.93
+        "range_volatility_pct": 13.66
       },
       "half_yearly_126d": {
-        "return_pct": -15.75,
-        "high": 884.0,
+        "return_pct": -17.98,
+        "high": 869.0,
         "low": 681.0,
-        "range_volatility_pct": 29.81
+        "range_volatility_pct": 27.61
       },
       "yearly_252d": {
-        "return_pct": -4.2,
+        "return_pct": -7.66,
         "high": 947.9,
         "low": 681.0,
         "range_volatility_pct": 39.19
@@ -65,8 +65,8 @@
       "median_correction_drop_pct": -18.5,
       "avg_wave_duration_bars": 23.0
     },
-    "current_wave_phase": "MARKUP_RALLY_MID",
-    "phase_guidance": "Midway through rally wave (+5.7% from base, historical target ~+20.4%).",
+    "current_wave_phase": "ACCUMULATION_TROUGH",
+    "phase_guidance": "Near local cyclical trough base. Maximum reward/risk entry point.",
     "top_seasonal_months": [
       {
         "month": "Aug",

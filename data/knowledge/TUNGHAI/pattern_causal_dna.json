@@ -1,60 +1,60 @@
 {
   "ticker": "TUNGHAI",
-  "audited_at": "2026-11-12 13:09:33",
+  "audited_at": "2026-11-15 19:28:20",
   "worth_vs_greed": {
-    "current_price": 4.7,
-    "intrinsic_worth": 2.35,
+    "current_price": 4.6,
+    "intrinsic_worth": 2.3,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 90.0,
-    "greed_index": 90.0,
+    "extension_froth_score": 80.0,
+    "greed_index": 80.0,
     "rsi_14": 28.6,
-    "price_vs_ema50_pct": 24.9,
-    "price_vs_ema200_pct": 67.3,
+    "price_vs_ema50_pct": 21.2,
+    "price_vs_ema200_pct": 62.7,
     "merit_status": "SPECULATIVE_JUNK_PUMP",
     "merit_reason": "Price is surging aggressively without positive EPS backing. Pure speculative risk.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f34.6 \u2013 \u09f34.7",
-      "chase_cutoff_price": 4.8,
-      "when_to_wait": "If price opens or rises above \u09f34.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f34.6.",
-      "weekly_target_short": 4.9,
-      "monthly_target_swing": 5.4,
-      "long_term_target_asset": 6.1,
+      "optimal_entry_corridor": "\u09f34.5 \u2013 \u09f34.6",
+      "chase_cutoff_price": 4.7,
+      "when_to_wait": "If price opens or rises above \u09f34.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f34.5.",
+      "weekly_target_short": 4.8,
+      "monthly_target_swing": 5.3,
+      "long_term_target_asset": 6.0,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "OVERVALUED_EUPHORIA",
     "worth_decision": "SELL_TAKE_PROFIT",
-    "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (90.0/100). Danger of sharp mean reversion.",
+    "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (80.0/100). Danger of sharp mean reversion.",
     "is_blacklisted": false,
     "blacklist_reason": null
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 0.0,
-        "high": 4.9,
+        "return_pct": -2.13,
+        "high": 4.8,
         "low": 4.5,
-        "range_volatility_pct": 8.89
+        "range_volatility_pct": 6.67
       },
       "monthly_21d": {
-        "return_pct": -4.08,
+        "return_pct": -6.12,
         "high": 5.5,
         "low": 4.4,
         "range_volatility_pct": 25.0
       },
       "quarterly_63d": {
-        "return_pct": 161.11,
+        "return_pct": 170.59,
         "high": 5.5,
         "low": 1.4,
         "range_volatility_pct": 292.86
       },
       "half_yearly_126d": {
-        "return_pct": 95.83,
+        "return_pct": 91.67,
         "high": 5.5,
         "low": 1.1,
         "range_volatility_pct": 400.0
       },
       "yearly_252d": {
-        "return_pct": 42.42,
+        "return_pct": 27.78,
         "high": 5.5,
         "low": 1.1,
         "range_volatility_pct": 400.0
@@ -66,7 +66,7 @@
       "avg_wave_duration_bars": 23.0
     },
     "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-14.5%). Wait for stabilizing base.",
+    "phase_guidance": "Ongoing pullback from peak (-16.4%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Oct",

@@ -2,53 +2,53 @@
   "ticker": "PHARMAID",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-12T07:09:24.560281",
-  "asof_price_date": "2026-11-12",
+  "analyzed_at": "2026-11-15T13:28:11.465701",
+  "asof_price_date": "2026-11-15",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 42.1594,
+    "rsi_14": 30.5474,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 44.28,
+  "confidence": 43.95,
   "trajectory": {
-    "direction": "CONSOLIDATION_RANGE",
-    "direction_icon": "\ud83d\udfe1",
-    "heuristic_momentum_bias": 58.3,
+    "direction": "RISE_PREDICTED",
+    "direction_icon": "\ud83d\udfe2",
+    "heuristic_momentum_bias": 61.7,
     "rise_probability_pct": null,
-    "momentum_status": "Neutral Range Consolidation",
+    "momentum_status": "Bullish Momentum / Upward Bias",
     "short_term": {
-      "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+4.5%",
-      "downside_risk_pct": "-3.0%",
-      "target_price": 534.6,
-      "support_price": 496.6,
+      "predicted_path": "Oversold bounce to 20-DMA",
+      "upside_potential_pct": "+5.3%",
+      "downside_risk_pct": "-3.5%",
+      "target_price": 502.9,
+      "support_price": 461.1,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+12.5%",
-      "downside_risk_pct": "-6.4%",
+      "upside_potential_pct": "+20.5%",
+      "downside_risk_pct": "-5.3%",
       "target_price": 575.9,
-      "trailing_stop": 479.1,
-      "risk_reward_ratio": "2.0x"
+      "trailing_stop": 452.7,
+      "risk_reward_ratio": "3.9x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.0%",
-      "downside_risk_pct": "-11.5%",
-      "target_price": 665.3,
+      "downside_risk_pct": "-9.5%",
+      "target_price": 621.1,
       "dividend_cagr": "5%\u20138%",
-      "risk_reward_ratio": "2.6x"
+      "risk_reward_ratio": "3.2x"
     }
   },
   "trade_levels": {
-    "entry": 511.8,
-    "stop_loss": 489.0,
-    "target": 557.4
+    "entry": 477.8,
+    "stop_loss": 452.74,
+    "target": 527.92
   },
   "precision": {
     "ticker": "PHARMAID",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 8895,
+      "avg_daily_volume": 9919,
       "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 444,
-      "max_daily_accumulation_shares": 1334,
-      "max_order_bdt": 444.0,
-      "directive": "Max single order: 444 shares (Tk 444) to prevent >1% execution slippage"
+      "max_single_order_shares": 495,
+      "max_daily_accumulation_shares": 1487,
+      "max_order_bdt": 495.0,
+      "directive": "Max single order: 495 shares (Tk 495) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,37 +91,37 @@
       "status": "VALID",
       "low_52w": 452.7,
       "high_52w": 615.0,
-      "range_52w_pct": 36.4,
-      "channel_regime": "EQUILIBRIUM_CHANNEL",
-      "visual_gauge": "[ \u09f3452.7 |\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591| \u09f3615.0 ] (36.4% (Truncated))",
-      "conviction_bonus": 0.0,
+      "range_52w_pct": 15.5,
+      "channel_regime": "DEEP_ACCUMULATION_BASE",
+      "visual_gauge": "[ \u09f3452.7 |\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f3615.0 ] (15.5% (Truncated))",
+      "conviction_bonus": 10.0,
       "is_truncated_window": true,
-      "bars_evaluated": 100,
-      "signal": "Price is in mid-channel (36.4% between \u09f3452.7 and \u09f3615.0)"
+      "bars_evaluated": 99,
+      "signal": "Price is at the bottom 15.5% of 52-week channel (near \u09f3452.7 floor) \u2014 high margin of safety"
     },
-    "total_precision_bonus": 0.0
+    "total_precision_bonus": 10.0
   },
   "pattern_dna": {
     "ticker": "PHARMAID",
-    "audited_at": "2026-11-12 13:09:24",
+    "audited_at": "2026-11-15 19:28:11",
     "worth_vs_greed": {
-      "current_price": 511.8,
-      "intrinsic_worth": 255.9,
+      "current_price": 477.8,
+      "intrinsic_worth": 238.9,
       "margin_of_safety_pct": -50.0,
-      "extension_froth_score": 30.0,
-      "greed_index": 30.0,
-      "rsi_14": 36.9,
-      "price_vs_ema50_pct": -2.8,
-      "price_vs_ema200_pct": -6.2,
+      "extension_froth_score": 40.0,
+      "greed_index": 40.0,
+      "rsi_14": 27.8,
+      "price_vs_ema50_pct": -8.9,
+      "price_vs_ema200_pct": -12.3,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f3501.6 \u2013 \u09f3516.9",
-        "chase_cutoff_price": 524.6,
-        "when_to_wait": "If price opens or rises above \u09f3524.6, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3501.6.",
-        "weekly_target_short": 529.7,
-        "monthly_target_swing": 588.6,
-        "long_term_target_asset": 665.3,
+        "optimal_entry_corridor": "\u09f3468.2 \u2013 \u09f3482.6",
+        "chase_cutoff_price": 489.7,
+        "when_to_wait": "If price opens or rises above \u09f3489.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3468.2.",
+        "weekly_target_short": 494.5,
+        "monthly_target_swing": 549.5,
+        "long_term_target_asset": 621.1,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
@@ -133,31 +133,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -1.5,
-          "high": 524.5,
-          "low": 497.2,
-          "range_volatility_pct": 5.49
+          "return_pct": -5.72,
+          "high": 521.0,
+          "low": 475.5,
+          "range_volatility_pct": 9.57
         },
         "monthly_21d": {
-          "return_pct": -8.36,
+          "return_pct": -14.19,
           "high": 569.7,
-          "low": 497.2,
-          "range_volatility_pct": 14.58
+          "low": 475.5,
+          "range_volatility_pct": 19.81
         },
         "quarterly_63d": {
-          "return_pct": -5.38,
+          "return_pct": -10.72,
           "high": 585.0,
           "low": 470.0,
           "range_volatility_pct": 24.47
         },
         "half_yearly_126d": {
-          "return_pct": -18.79,
-          "high": 639.0,
+          "return_pct": -23.03,
+          "high": 630.0,
           "low": 452.7,
-          "range_volatility_pct": 41.15
+          "range_volatility_pct": 39.17
         },
         "yearly_252d": {
-          "return_pct": -2.9,
+          "return_pct": -9.63,
           "high": 677.8,
           "low": 452.7,
           "range_volatility_pct": 49.72
@@ -169,7 +169,7 @@
         "avg_wave_duration_bars": 23.0
       },
       "current_wave_phase": "MARKDOWN_PULLBACK",
-      "phase_guidance": "Ongoing pullback from peak (-12.5%). Wait for stabilizing base.",
+      "phase_guidance": "Ongoing pullback from peak (-18.3%). Wait for stabilizing base.",
       "top_seasonal_months": [
         {
           "month": "Feb",
@@ -267,17 +267,17 @@
     ]
   },
   "technical": {
-    "score": 52.5,
+    "score": 51.25,
     "signals": {
       "rsi": "neutral",
-      "macd": "neutral",
+      "macd": "bearish_crossover",
       "sma_trend": "neutral",
-      "bb": "inside_bands",
-      "atr": 15.2,
-      "rsi_value": 42.19,
-      "last_close": 511.8,
-      "sma20": 531.9,
-      "sma50": 519.28,
+      "bb": "at_lower_band_bullish",
+      "atr": 16.71,
+      "rsi_value": 30.72,
+      "last_close": 477.8,
+      "sma20": 528.13,
+      "sma50": 519.03,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -306,7 +306,7 @@
       "error": "no_fundamental_data",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 16.8,
+        "drawdown_pct": 22.3,
         "high_52w": 615.0,
         "low_52w": 452.7
       }
@@ -342,24 +342,27 @@
     }
   },
   "manipulation": {
-    "manipulation_score": 0,
+    "manipulation_score": 25,
     "manipulation_risk": "low",
     "block_buy": false,
-    "flags": [],
+    "flags": [
+      "volume_spike: volume_3.7x_avg",
+      "price_surge_no_news: price_-6.6pct_zero_news"
+    ],
     "checks": {
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 3343,
-        "avg_volume": 9555.0,
+        "last_volume": 35546,
+        "avg_volume": 10603.0,
         "detail": "ok"
       },
       "volume_spike": {
-        "flag": false,
-        "spike_ratio": 0.35,
-        "avg_volume": 9655.0,
-        "today_volume": 3343,
-        "detail": "ok"
+        "flag": true,
+        "spike_ratio": 3.72,
+        "avg_volume": 9555.0,
+        "today_volume": 35546,
+        "detail": "volume_3.7x_avg"
       },
       "serial_trading": {
         "flag": false,
@@ -376,21 +379,21 @@
         "detail": "insufficient_fundamental_history"
       },
       "price_surge_no_news": {
-        "flag": false,
-        "price_change_3d": 2.52,
+        "flag": true,
+        "price_change_3d": -6.64,
         "news_count_3d": 0,
-        "detail": "ok"
+        "detail": "price_-6.6pct_zero_news"
       }
     }
   },
   "composite": {
-    "composite_score": 44.28,
+    "composite_score": 43.95,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.674,
-      "technical": 0.202,
-      "governance": 0.124,
+      "fundamental": 0.671,
+      "technical": 0.203,
+      "governance": 0.126,
       "sentiment": 0.0
     }
   }

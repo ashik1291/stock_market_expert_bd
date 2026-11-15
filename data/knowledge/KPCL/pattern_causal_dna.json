@@ -1,60 +1,60 @@
 {
   "ticker": "KPCL",
-  "audited_at": "2026-11-12 13:09:18",
+  "audited_at": "2026-11-15 19:28:05",
   "worth_vs_greed": {
-    "current_price": 11.4,
+    "current_price": 10.6,
     "intrinsic_worth": 1.76,
-    "margin_of_safety_pct": -84.6,
-    "extension_froth_score": 50.0,
-    "greed_index": 50.0,
-    "rsi_14": 77.4,
-    "price_vs_ema50_pct": 9.2,
-    "price_vs_ema200_pct": 2.3,
+    "margin_of_safety_pct": -83.4,
+    "extension_froth_score": 60.0,
+    "greed_index": 60.0,
+    "rsi_14": 51.6,
+    "price_vs_ema50_pct": 1.5,
+    "price_vs_ema200_pct": -4.8,
     "merit_status": "EARNINGS_BACKED_MERIT",
     "merit_reason": "Price supported by solid earnings (EPS: \u09f30.22, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f311.2 \u2013 \u09f311.5",
-      "chase_cutoff_price": 11.7,
-      "when_to_wait": "If price opens or rises above \u09f311.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f311.2.",
-      "weekly_target_short": 11.8,
-      "monthly_target_swing": 13.1,
-      "long_term_target_asset": 14.8,
+      "optimal_entry_corridor": "\u09f310.4 \u2013 \u09f310.7",
+      "chase_cutoff_price": 10.9,
+      "when_to_wait": "If price opens or rises above \u09f310.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f310.4.",
+      "weekly_target_short": 11.0,
+      "monthly_target_swing": 12.2,
+      "long_term_target_asset": 13.8,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -84.6%).",
+    "reason": "Fundamental value severely lags stock price (MoS: -83.4%).",
     "is_blacklisted": false,
     "blacklist_reason": null
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 3.64,
+        "return_pct": -1.85,
         "high": 11.6,
-        "low": 10.6,
-        "range_volatility_pct": 9.43
+        "low": 10.4,
+        "range_volatility_pct": 11.54
       },
       "monthly_21d": {
-        "return_pct": 15.15,
+        "return_pct": 6.0,
         "high": 11.6,
         "low": 9.7,
         "range_volatility_pct": 19.59
       },
       "quarterly_63d": {
-        "return_pct": 4.59,
+        "return_pct": 1.92,
         "high": 11.6,
         "low": 9.4,
         "range_volatility_pct": 23.4
       },
       "half_yearly_126d": {
-        "return_pct": 7.55,
+        "return_pct": -6.19,
         "high": 12.5,
         "low": 9.1,
         "range_volatility_pct": 37.36
       },
       "yearly_252d": {
-        "return_pct": -26.92,
+        "return_pct": -30.72,
         "high": 15.5,
         "low": 9.0,
         "range_volatility_pct": 72.22
@@ -65,8 +65,8 @@
       "median_correction_drop_pct": -22.5,
       "avg_wave_duration_bars": 21.0
     },
-    "current_wave_phase": "LATE_MARKUP",
-    "phase_guidance": "Approaching historical rally limit (+21.3% vs median +18.6%). Tighten stop.",
+    "current_wave_phase": "MARKUP_RALLY_MID",
+    "phase_guidance": "Midway through rally wave (+12.8% from base, historical target ~+18.6%).",
     "top_seasonal_months": [
       {
         "month": "Jan",

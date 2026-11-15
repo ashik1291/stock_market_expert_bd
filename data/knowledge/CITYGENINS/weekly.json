@@ -2,18 +2,18 @@
   "ticker": "CITYGENINS",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-12T07:09:08.052797",
-  "asof_price_date": "2026-11-12",
+  "analyzed_at": "2026-11-15T13:27:54.296054",
+  "asof_price_date": "2026-11-15",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 65.4443,
+    "rsi_14": 65.6262,
     "pe_ratio": 39.05882352941177,
     "debt_equity": 0.0
   },
   "signal": "HOLD",
-  "confidence": 52.79,
+  "confidence": 52.69,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -22,33 +22,33 @@
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+2.4%",
-      "downside_risk_pct": "-1.6%",
+      "upside_potential_pct": "+2.3%",
+      "downside_risk_pct": "-1.5%",
       "target_price": 140.4,
-      "support_price": 134.9,
+      "support_price": 135.1,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+4.0%",
-      "downside_risk_pct": "-8.5%",
-      "target_price": 142.6,
-      "trailing_stop": 125.4,
+      "upside_potential_pct": "+3.9%",
+      "downside_risk_pct": "-8.0%",
+      "target_price": 142.5,
+      "trailing_stop": 126.2,
       "risk_reward_ratio": "0.5x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.0%",
       "downside_risk_pct": "-12.0%",
-      "target_price": 178.2,
+      "target_price": 178.4,
       "dividend_cagr": "moderate (1.15%)",
       "risk_reward_ratio": "2.5x"
     }
   },
   "trade_levels": {
-    "entry": 137.1,
-    "stop_loss": 133.8,
-    "target": 143.7
+    "entry": 137.2,
+    "stop_loss": 133.99,
+    "target": 143.62
   },
   "precision": {
     "ticker": "CITYGENINS",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 56350,
+      "avg_daily_volume": 55663,
       "daily_turnover_bdt_cr": 0.01,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 2817,
-      "max_daily_accumulation_shares": 8452,
-      "max_order_bdt": 2817.0,
-      "directive": "Max single order: 2,817 shares (Tk 2,817) to prevent >1% execution slippage"
+      "max_single_order_shares": 2783,
+      "max_daily_accumulation_shares": 8349,
+      "max_order_bdt": 2783.0,
+      "directive": "Max single order: 2,783 shares (Tk 2,783) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,37 +91,37 @@
       "status": "VALID",
       "low_52w": 70.2,
       "high_52w": 140.0,
-      "range_52w_pct": 95.8,
+      "range_52w_pct": 96.0,
       "channel_regime": "OVEREXTENDED_CEILING",
-      "visual_gauge": "[ \u09f370.2 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| \u09f3140.0 ] (95.8%)",
+      "visual_gauge": "[ \u09f370.2 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| \u09f3140.0 ] (96.0%)",
       "conviction_bonus": -10.0,
       "is_truncated_window": false,
       "bars_evaluated": 250,
-      "signal": "Price is at 95.8% of 52-week high (near \u09f3140.0) \u2014 elevated mean-reversion risk"
+      "signal": "Price is at 96.0% of 52-week high (near \u09f3140.0) \u2014 elevated mean-reversion risk"
     },
     "total_precision_bonus": -10.0
   },
   "pattern_dna": {
     "ticker": "CITYGENINS",
-    "audited_at": "2026-11-12 13:09:08",
+    "audited_at": "2026-11-15 19:27:54",
     "worth_vs_greed": {
-      "current_price": 137.1,
+      "current_price": 137.2,
       "intrinsic_worth": 7.6,
       "margin_of_safety_pct": -94.5,
       "extension_froth_score": 30.0,
       "greed_index": 30.0,
-      "rsi_14": 69.3,
-      "price_vs_ema50_pct": 5.6,
-      "price_vs_ema200_pct": 24.1,
+      "rsi_14": 69.5,
+      "price_vs_ema50_pct": 5.4,
+      "price_vs_ema200_pct": 23.9,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f30.95, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f3134.4 \u2013 \u09f3138.5",
-        "chase_cutoff_price": 140.5,
-        "when_to_wait": "If price opens or rises above \u09f3140.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3134.4.",
-        "weekly_target_short": 141.9,
-        "monthly_target_swing": 157.7,
-        "long_term_target_asset": 178.2,
+        "optimal_entry_corridor": "\u09f3134.5 \u2013 \u09f3138.6",
+        "chase_cutoff_price": 140.6,
+        "when_to_wait": "If price opens or rises above \u09f3140.6, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3134.5.",
+        "weekly_target_short": 142.0,
+        "monthly_target_swing": 157.8,
+        "long_term_target_asset": 178.4,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
@@ -133,31 +133,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 5.22,
+          "return_pct": -0.65,
           "high": 140.0,
-          "low": 135.2,
-          "range_volatility_pct": 3.55
+          "low": 136.2,
+          "range_volatility_pct": 2.79
         },
         "monthly_21d": {
-          "return_pct": 5.06,
+          "return_pct": 5.38,
           "high": 140.0,
           "low": 129.7,
           "range_volatility_pct": 7.94
         },
         "quarterly_63d": {
-          "return_pct": 9.77,
+          "return_pct": 10.91,
           "high": 140.0,
           "low": 121.5,
           "range_volatility_pct": 15.23
         },
         "half_yearly_126d": {
-          "return_pct": 31.32,
+          "return_pct": 32.3,
           "high": 140.0,
           "low": 101.9,
           "range_volatility_pct": 37.39
         },
         "yearly_252d": {
-          "return_pct": 86.02,
+          "return_pct": 83.91,
           "high": 140.0,
           "low": 70.2,
           "range_volatility_pct": 99.43
@@ -273,12 +273,12 @@
       "macd": "neutral",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 2.2,
-      "rsi_value": 65.64,
-      "last_close": 137.1,
-      "sma20": 132.71,
-      "sma50": 130.67,
-      "sma200": 109.22,
+      "atr": 2.14,
+      "rsi_value": 65.89,
+      "last_close": 137.2,
+      "sma20": 133.05,
+      "sma50": 130.87,
+      "sma200": 109.49,
       "support_resistance": {
         "supports": [],
         "resistances": [
@@ -308,9 +308,9 @@
       "earnings_quality": "financial_asset_quality_mode",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 2.1,
+        "drawdown_pct": 2.0,
         "high_52w": 140.0,
-        "low_52w": 69.3
+        "low_52w": 69.6
       }
     }
   },
@@ -352,15 +352,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 1800,
-        "avg_volume": 50732.0,
+        "last_volume": 5243,
+        "avg_volume": 49054.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.03,
-        "avg_volume": 52018.0,
-        "today_volume": 1800,
+        "spike_ratio": 0.1,
+        "avg_volume": 50732.0,
+        "today_volume": 5243,
         "detail": "ok"
       },
       "serial_trading": {
@@ -379,20 +379,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": -1.22,
+        "price_change_3d": 0.07,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 52.79,
+    "composite_score": 52.69,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.674,
-      "technical": 0.202,
-      "governance": 0.124,
+      "fundamental": 0.671,
+      "technical": 0.203,
+      "governance": 0.126,
       "sentiment": 0.0
     }
   }

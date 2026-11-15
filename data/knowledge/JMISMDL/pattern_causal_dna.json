@@ -1,24 +1,24 @@
 {
   "ticker": "JMISMDL",
-  "audited_at": "2026-11-12 13:09:17",
+  "audited_at": "2026-11-15 19:28:04",
   "worth_vs_greed": {
-    "current_price": 131.0,
-    "intrinsic_worth": 65.5,
+    "current_price": 136.5,
+    "intrinsic_worth": 68.25,
     "margin_of_safety_pct": -50.0,
     "extension_froth_score": 40.0,
     "greed_index": 40.0,
-    "rsi_14": 72.7,
-    "price_vs_ema50_pct": 5.5,
-    "price_vs_ema200_pct": 0.4,
+    "rsi_14": 70.8,
+    "price_vs_ema50_pct": 9.5,
+    "price_vs_ema200_pct": 4.6,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f3128.4 \u2013 \u09f3132.3",
-      "chase_cutoff_price": 134.3,
-      "when_to_wait": "If price opens or rises above \u09f3134.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3128.4.",
-      "weekly_target_short": 135.6,
-      "monthly_target_swing": 150.6,
-      "long_term_target_asset": 170.3,
+      "optimal_entry_corridor": "\u09f3133.8 \u2013 \u09f3137.9",
+      "chase_cutoff_price": 139.9,
+      "when_to_wait": "If price opens or rises above \u09f3139.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3133.8.",
+      "weekly_target_short": 141.3,
+      "monthly_target_swing": 157.0,
+      "long_term_target_asset": 177.5,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -31,31 +31,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 5.14,
-        "high": 132.4,
-        "low": 126.1,
-        "range_volatility_pct": 5.0
+        "return_pct": 6.39,
+        "high": 138.9,
+        "low": 126.6,
+        "range_volatility_pct": 9.72
       },
       "monthly_21d": {
-        "return_pct": 4.38,
-        "high": 132.4,
+        "return_pct": 7.06,
+        "high": 138.9,
         "low": 115.0,
-        "range_volatility_pct": 15.13
+        "range_volatility_pct": 20.78
       },
       "quarterly_63d": {
-        "return_pct": 7.91,
-        "high": 133.6,
+        "return_pct": 13.0,
+        "high": 138.9,
         "low": 108.2,
-        "range_volatility_pct": 23.48
+        "range_volatility_pct": 28.37
       },
       "half_yearly_126d": {
-        "return_pct": -17.61,
+        "return_pct": -12.89,
         "high": 166.0,
         "low": 105.9,
         "range_volatility_pct": 56.75
       },
       "yearly_252d": {
-        "return_pct": -1.8,
+        "return_pct": 2.63,
         "high": 172.0,
         "low": 105.9,
         "range_volatility_pct": 62.42
@@ -63,11 +63,11 @@
     },
     "wave_metrics": {
       "median_rally_gain_pct": 22.6,
-      "median_correction_drop_pct": -21.1,
+      "median_correction_drop_pct": -20.7,
       "avg_wave_duration_bars": 29.0
     },
-    "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-1.9%). Wait for stabilizing base.",
+    "current_wave_phase": "LATE_MARKUP",
+    "phase_guidance": "Approaching historical rally limit (+18.7% vs median +22.6%). Tighten stop.",
     "top_seasonal_months": [
       {
         "month": "Jul",

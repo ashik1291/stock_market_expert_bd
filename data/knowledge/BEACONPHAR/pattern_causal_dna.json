@@ -1,60 +1,60 @@
 {
   "ticker": "BEACONPHAR",
-  "audited_at": "2026-11-12 13:09:06",
+  "audited_at": "2026-11-15 19:27:52",
   "worth_vs_greed": {
-    "current_price": 91.4,
+    "current_price": 98.3,
     "intrinsic_worth": 9.76,
-    "margin_of_safety_pct": -89.3,
-    "extension_froth_score": 20.0,
-    "greed_index": 20.0,
-    "rsi_14": 40.5,
-    "price_vs_ema50_pct": -6.0,
-    "price_vs_ema200_pct": -12.2,
+    "margin_of_safety_pct": -90.1,
+    "extension_froth_score": 30.0,
+    "greed_index": 30.0,
+    "rsi_14": 62.6,
+    "price_vs_ema50_pct": 1.1,
+    "price_vs_ema200_pct": -5.5,
     "merit_status": "EARNINGS_BACKED_MERIT",
     "merit_reason": "Price supported by solid earnings (EPS: \u09f31.22, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f389.6 \u2013 \u09f392.3",
-      "chase_cutoff_price": 93.7,
-      "when_to_wait": "If price opens or rises above \u09f393.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f389.6.",
-      "weekly_target_short": 94.6,
-      "monthly_target_swing": 105.1,
-      "long_term_target_asset": 118.8,
+      "optimal_entry_corridor": "\u09f396.3 \u2013 \u09f399.3",
+      "chase_cutoff_price": 100.8,
+      "when_to_wait": "If price opens or rises above \u09f3100.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f396.3.",
+      "weekly_target_short": 101.7,
+      "monthly_target_swing": 113.0,
+      "long_term_target_asset": 127.8,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -89.3%).",
+    "reason": "Fundamental value severely lags stock price (MoS: -90.1%).",
     "is_blacklisted": false,
     "blacklist_reason": null
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 1.33,
-        "high": 92.9,
-        "low": 89.0,
-        "range_volatility_pct": 4.38
+        "return_pct": 7.55,
+        "high": 101.4,
+        "low": 89.7,
+        "range_volatility_pct": 13.04
       },
       "monthly_21d": {
-        "return_pct": -8.96,
+        "return_pct": -2.38,
         "high": 102.0,
         "low": 87.6,
         "range_volatility_pct": 16.44
       },
       "quarterly_63d": {
-        "return_pct": -15.6,
+        "return_pct": -8.3,
         "high": 109.0,
         "low": 87.6,
         "range_volatility_pct": 24.43
       },
       "half_yearly_126d": {
-        "return_pct": -11.95,
+        "return_pct": -4.0,
         "high": 117.9,
         "low": 87.6,
         "range_volatility_pct": 34.59
       },
       "yearly_252d": {
-        "return_pct": -14.42,
+        "return_pct": -8.81,
         "high": 117.9,
         "low": 87.6,
         "range_volatility_pct": 34.59
@@ -65,8 +65,8 @@
       "median_correction_drop_pct": -15.3,
       "avg_wave_duration_bars": 24.0
     },
-    "current_wave_phase": "ACCUMULATION_TROUGH",
-    "phase_guidance": "Near local cyclical trough base. Maximum reward/risk entry point.",
+    "current_wave_phase": "MARKUP_RALLY_MID",
+    "phase_guidance": "Midway through rally wave (+5.5% from base, historical target ~+23.1%).",
     "top_seasonal_months": [
       {
         "month": "Aug",
@@ -87,8 +87,8 @@
     "weak_seasonal_months": [
       {
         "month": "Nov",
-        "avg_return": -4.3,
-        "win_rate": 31.0
+        "avg_return": -4.1,
+        "win_rate": 29.0
       },
       {
         "month": "May",

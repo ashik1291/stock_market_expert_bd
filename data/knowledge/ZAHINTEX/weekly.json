@@ -2,18 +2,18 @@
   "ticker": "ZAHINTEX",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-12T07:09:35.777932",
-  "asof_price_date": "2026-11-12",
+  "analyzed_at": "2026-11-15T13:28:21.729924",
+  "asof_price_date": "2026-11-15",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 55.5948,
+    "rsi_14": 55.6117,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 43.27,
+  "confidence": 43.19,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -23,18 +23,18 @@
     "short_term": {
       "predicted_path": "Upward momentum swing",
       "upside_potential_pct": "+6.8%",
-      "downside_risk_pct": "-4.1%",
+      "downside_risk_pct": "-5.4%",
       "target_price": 7.9,
-      "support_price": 7.1,
-      "risk_reward_ratio": "1.7x"
+      "support_price": 7.0,
+      "risk_reward_ratio": "1.3x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+10.8%",
+      "upside_potential_pct": "+12.2%",
       "downside_risk_pct": "-9.5%",
-      "target_price": 8.2,
+      "target_price": 8.3,
       "trailing_stop": 6.7,
-      "risk_reward_ratio": "1.1x"
+      "risk_reward_ratio": "1.3x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 7.4,
-    "stop_loss": 6.89,
-    "target": 8.42
+    "stop_loss": 6.86,
+    "target": 8.48
   },
   "precision": {
     "ticker": "ZAHINTEX",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 27849,
+      "avg_daily_volume": 33295,
       "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 1392,
-      "max_daily_accumulation_shares": 4177,
-      "max_order_bdt": 1392.0,
-      "directive": "Max single order: 1,392 shares (Tk 1,392) to prevent >1% execution slippage"
+      "max_single_order_shares": 1664,
+      "max_daily_accumulation_shares": 4994,
+      "max_order_bdt": 1664.0,
+      "directive": "Max single order: 1,664 shares (Tk 1,664) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -96,23 +96,23 @@
       "visual_gauge": "[ \u09f34.0 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591| \u09f38.1 ] (82.9% (Truncated))",
       "conviction_bonus": 5.0,
       "is_truncated_window": true,
-      "bars_evaluated": 101,
+      "bars_evaluated": 100,
       "signal": "Price is in upper channel (82.9%) \u2014 upward breakout momentum"
     },
     "total_precision_bonus": 5.0
   },
   "pattern_dna": {
     "ticker": "ZAHINTEX",
-    "audited_at": "2026-11-12 13:09:35",
+    "audited_at": "2026-11-15 19:28:21",
     "worth_vs_greed": {
       "current_price": 7.4,
       "intrinsic_worth": 3.7,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 40.0,
       "greed_index": 40.0,
-      "rsi_14": 40.0,
-      "price_vs_ema50_pct": 7.9,
-      "price_vs_ema200_pct": 26.8,
+      "rsi_14": 33.3,
+      "price_vs_ema50_pct": 7.5,
+      "price_vs_ema200_pct": 26.4,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -148,17 +148,17 @@
         "quarterly_63d": {
           "return_pct": 42.31,
           "high": 8.1,
-          "low": 5.1,
-          "range_volatility_pct": 58.82
+          "low": 5.2,
+          "range_volatility_pct": 55.77
         },
         "half_yearly_126d": {
-          "return_pct": 27.59,
+          "return_pct": 32.14,
           "high": 8.1,
           "low": 4.0,
           "range_volatility_pct": 102.5
         },
         "yearly_252d": {
-          "return_pct": 48.0,
+          "return_pct": 42.31,
           "high": 8.1,
           "low": 3.8,
           "range_volatility_pct": 113.16
@@ -274,11 +274,11 @@
       "macd": "bearish_crossover",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 0.34,
-      "rsi_value": 55.51,
+      "atr": 0.36,
+      "rsi_value": 55.53,
       "last_close": 7.4,
-      "sma20": 7.48,
-      "sma50": 6.72,
+      "sma20": 7.47,
+      "sma50": 6.75,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -343,24 +343,26 @@
     }
   },
   "manipulation": {
-    "manipulation_score": 0,
+    "manipulation_score": 15,
     "manipulation_risk": "low",
     "block_buy": false,
-    "flags": [],
+    "flags": [
+      "volume_spike: volume_3.5x_avg"
+    ],
     "checks": {
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 61952,
-        "avg_volume": 37840.0,
+        "last_volume": 132524,
+        "avg_volume": 36654.0,
         "detail": "ok"
       },
       "volume_spike": {
-        "flag": false,
-        "spike_ratio": 1.68,
-        "avg_volume": 36812.0,
-        "today_volume": 61952,
-        "detail": "ok"
+        "flag": true,
+        "spike_ratio": 3.5,
+        "avg_volume": 37840.0,
+        "today_volume": 132524,
+        "detail": "volume_3.5x_avg"
       },
       "serial_trading": {
         "flag": false,
@@ -378,20 +380,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": -2.63,
+        "price_change_3d": 0.0,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 43.27,
+    "composite_score": 43.19,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.674,
-      "technical": 0.202,
-      "governance": 0.124,
+      "fundamental": 0.671,
+      "technical": 0.203,
+      "governance": 0.126,
       "sentiment": 0.0
     }
   }

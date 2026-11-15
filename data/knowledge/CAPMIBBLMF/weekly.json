@@ -2,18 +2,18 @@
   "ticker": "CAPMIBBLMF",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-12T07:09:07.702455",
-  "asof_price_date": "2026-11-12",
+  "analyzed_at": "2026-11-15T13:27:53.948243",
+  "asof_price_date": "2026-11-15",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 48.6543,
+    "rsi_14": 48.6776,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 44.79,
+  "confidence": 44.71,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -22,10 +22,10 @@
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+12.1%",
-      "downside_risk_pct": "-8.3%",
-      "target_price": 14.8,
-      "support_price": 12.1,
+      "upside_potential_pct": "+11.4%",
+      "downside_risk_pct": "-7.6%",
+      "target_price": 14.7,
+      "support_price": 12.2,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 13.2,
-    "stop_loss": 11.61,
-    "target": 16.38
+    "stop_loss": 11.68,
+    "target": 16.24
   },
   "precision": {
     "ticker": "CAPMIBBLMF",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 945651,
-      "daily_turnover_bdt_cr": 0.09,
+      "avg_daily_volume": 981642,
+      "daily_turnover_bdt_cr": 0.1,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 47282,
-      "max_daily_accumulation_shares": 141847,
-      "max_order_bdt": 47282.0,
-      "directive": "Max single order: 47,282 shares (Tk 47,282) to prevent >1% execution slippage"
+      "max_single_order_shares": 49082,
+      "max_daily_accumulation_shares": 147246,
+      "max_order_bdt": 49082.0,
+      "directive": "Max single order: 49,082 shares (Tk 49,082) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -96,23 +96,23 @@
       "visual_gauge": "[ \u09f35.5 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591| \u09f317.2 ] (65.8% (Truncated))",
       "conviction_bonus": 0.0,
       "is_truncated_window": true,
-      "bars_evaluated": 101,
+      "bars_evaluated": 100,
       "signal": "Price is in mid-channel (65.8% between \u09f35.5 and \u09f317.2)"
     },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "CAPMIBBLMF",
-    "audited_at": "2026-11-12 13:09:07",
+    "audited_at": "2026-11-15 19:27:53",
     "worth_vs_greed": {
       "current_price": 13.2,
       "intrinsic_worth": 6.6,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 70.0,
       "greed_index": 70.0,
-      "rsi_14": 30.9,
-      "price_vs_ema50_pct": 7.9,
-      "price_vs_ema200_pct": 36.5,
+      "rsi_14": 24.3,
+      "price_vs_ema50_pct": 7.5,
+      "price_vs_ema200_pct": 36.0,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -134,31 +134,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 3.12,
-          "high": 13.4,
+          "return_pct": 6.45,
+          "high": 13.5,
           "low": 12.0,
-          "range_volatility_pct": 11.67
+          "range_volatility_pct": 12.5
         },
         "monthly_21d": {
-          "return_pct": -14.29,
+          "return_pct": -15.38,
           "high": 17.2,
           "low": 12.0,
           "range_volatility_pct": 43.33
         },
         "quarterly_63d": {
-          "return_pct": 100.0,
+          "return_pct": 106.25,
           "high": 17.2,
-          "low": 6.3,
-          "range_volatility_pct": 173.02
+          "low": 6.4,
+          "range_volatility_pct": 168.75
         },
         "half_yearly_126d": {
-          "return_pct": 65.0,
+          "return_pct": 71.43,
           "high": 17.2,
           "low": 5.5,
           "range_volatility_pct": 212.73
         },
         "yearly_252d": {
-          "return_pct": 55.29,
+          "return_pct": 51.72,
           "high": 17.2,
           "low": 5.5,
           "range_volatility_pct": 212.73
@@ -274,11 +274,11 @@
       "macd": "neutral",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 1.06,
+      "atr": 1.01,
       "rsi_value": 48.5,
       "last_close": 13.2,
-      "sma20": 14.59,
-      "sma50": 11.71,
+      "sma20": 14.46,
+      "sma50": 11.82,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -341,25 +341,23 @@
     }
   },
   "manipulation": {
-    "manipulation_score": 10,
+    "manipulation_score": 0,
     "manipulation_risk": "low",
     "block_buy": false,
-    "flags": [
-      "price_surge_no_news: price_6.5pct_zero_news"
-    ],
+    "flags": [],
     "checks": {
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 438912,
-        "avg_volume": 833033.0,
+        "last_volume": 1264111,
+        "avg_volume": 858146.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.52,
-        "avg_volume": 840254.0,
-        "today_volume": 438912,
+        "spike_ratio": 1.52,
+        "avg_volume": 833033.0,
+        "today_volume": 1264111,
         "detail": "ok"
       },
       "serial_trading": {
@@ -377,21 +375,21 @@
         "detail": "insufficient_fundamental_history"
       },
       "price_surge_no_news": {
-        "flag": true,
-        "price_change_3d": 6.45,
+        "flag": false,
+        "price_change_3d": 0.0,
         "news_count_3d": 0,
-        "detail": "price_6.5pct_zero_news"
+        "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 44.79,
+    "composite_score": 44.71,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.674,
-      "technical": 0.202,
-      "governance": 0.124,
+      "fundamental": 0.671,
+      "technical": 0.203,
+      "governance": 0.126,
       "sentiment": 0.0
     }
   }

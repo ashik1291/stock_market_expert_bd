@@ -2,18 +2,18 @@
   "ticker": "ABBANK",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-12T07:09:01.933514",
-  "asof_price_date": "2026-11-12",
+  "analyzed_at": "2026-11-15T13:27:48.411295",
+  "asof_price_date": "2026-11-15",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 50.185,
+    "rsi_14": 50.1843,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 44.79,
+  "confidence": 44.71,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 4.3,
-    "stop_loss": 4.1,
-    "target": 4.7
+    "stop_loss": 4.09,
+    "target": 4.72
   },
   "precision": {
     "ticker": "ABBANK",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 360117,
+      "avg_daily_volume": 367341,
       "daily_turnover_bdt_cr": 0.04,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 18005,
-      "max_daily_accumulation_shares": 54017,
-      "max_order_bdt": 18005.0,
-      "directive": "Max single order: 18,005 shares (Tk 18,005) to prevent >1% execution slippage"
+      "max_single_order_shares": 18367,
+      "max_daily_accumulation_shares": 55101,
+      "max_order_bdt": 18367.0,
+      "directive": "Max single order: 18,367 shares (Tk 18,367) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -96,23 +96,23 @@
       "visual_gauge": "[ \u09f33.4 |\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591| \u09f35.8 ] (37.5% (Truncated))",
       "conviction_bonus": 0.0,
       "is_truncated_window": true,
-      "bars_evaluated": 101,
+      "bars_evaluated": 100,
       "signal": "Price is in mid-channel (37.5% between \u09f33.4 and \u09f35.8)"
     },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "ABBANK",
-    "audited_at": "2026-11-12 13:09:01",
+    "audited_at": "2026-11-15 19:27:48",
     "worth_vs_greed": {
       "current_price": 4.3,
       "intrinsic_worth": 2.15,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 20.0,
       "greed_index": 20.0,
-      "rsi_14": 44.4,
-      "price_vs_ema50_pct": -1.3,
-      "price_vs_ema200_pct": -18.9,
+      "rsi_14": 50.0,
+      "price_vs_ema50_pct": -1.2,
+      "price_vs_ema200_pct": -18.7,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -139,19 +139,19 @@
           "range_volatility_pct": 4.76
         },
         "monthly_21d": {
-          "return_pct": -2.27,
+          "return_pct": 0.0,
           "high": 4.4,
           "low": 4.2,
           "range_volatility_pct": 4.76
         },
         "quarterly_63d": {
-          "return_pct": -2.27,
+          "return_pct": 2.38,
           "high": 4.7,
           "low": 4.0,
           "range_volatility_pct": 17.5
         },
         "half_yearly_126d": {
-          "return_pct": -27.12,
+          "return_pct": -25.86,
           "high": 6.7,
           "low": 3.4,
           "range_volatility_pct": 97.06
@@ -273,11 +273,11 @@
       "macd": "neutral",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 0.13,
-      "rsi_value": 49.79,
+      "atr": 0.14,
+      "rsi_value": 49.8,
       "last_close": 4.3,
-      "sma20": 4.33,
-      "sma50": 4.29,
+      "sma20": 4.32,
+      "sma50": 4.3,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -285,6 +285,7 @@
           4.1
         ],
         "resistances": [
+          4.4,
           4.5,
           5.2
         ]
@@ -297,6 +298,7 @@
         4.1
       ],
       "resistances": [
+        4.4,
         4.5,
         5.2
       ]
@@ -352,15 +354,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 260163,
-        "avg_volume": 447741.0,
+        "last_volume": 732736,
+        "avg_volume": 460981.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.57,
-        "avg_volume": 456440.0,
-        "today_volume": 260163,
+        "spike_ratio": 1.64,
+        "avg_volume": 447741.0,
+        "today_volume": 732736,
         "detail": "ok"
       },
       "serial_trading": {
@@ -379,20 +381,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": 2.38,
+        "price_change_3d": 0.0,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 44.79,
+    "composite_score": 44.71,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.674,
-      "technical": 0.202,
-      "governance": 0.124,
+      "fundamental": 0.671,
+      "technical": 0.203,
+      "governance": 0.126,
       "sentiment": 0.0
     }
   }

@@ -2,53 +2,53 @@
   "ticker": "SBACBANK",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-12T07:09:29.721336",
-  "asof_price_date": "2026-11-12",
+  "analyzed_at": "2026-11-15T13:28:16.564068",
+  "asof_price_date": "2026-11-15",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 50.5502,
+    "rsi_14": 27.9128,
     "pe_ratio": null,
     "debt_equity": null
   },
-  "signal": "SELL",
-  "confidence": 44.79,
+  "signal": "HOLD",
+  "confidence": 45.47,
   "trajectory": {
-    "direction": "CONSOLIDATION_RANGE",
-    "direction_icon": "\ud83d\udfe1",
-    "heuristic_momentum_bias": 53.3,
+    "direction": "RISE_PREDICTED",
+    "direction_icon": "\ud83d\udfe2",
+    "heuristic_momentum_bias": 61.7,
     "rise_probability_pct": null,
-    "momentum_status": "Neutral Range Consolidation",
+    "momentum_status": "Bullish Momentum / Upward Bias",
     "short_term": {
-      "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+4.5%",
-      "downside_risk_pct": "-3.0%",
-      "target_price": 6.9,
-      "support_price": 6.4,
-      "risk_reward_ratio": "1.5x"
+      "predicted_path": "Oversold bounce to 20-DMA",
+      "upside_potential_pct": "+7.1%",
+      "downside_risk_pct": "-5.4%",
+      "target_price": 6.0,
+      "support_price": 5.3,
+      "risk_reward_ratio": "1.3x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+7.6%",
-      "downside_risk_pct": "-10.6%",
-      "target_price": 7.1,
-      "trailing_stop": 5.9,
-      "risk_reward_ratio": "0.7x"
+      "upside_potential_pct": "+21.4%",
+      "downside_risk_pct": "-7.1%",
+      "target_price": 6.8,
+      "trailing_stop": 5.2,
+      "risk_reward_ratio": "3.0x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-      "upside_potential_pct": "+30.3%",
+      "upside_potential_pct": "+30.4%",
       "downside_risk_pct": "-12.0%",
-      "target_price": 8.6,
+      "target_price": 7.3,
       "dividend_cagr": "5%\u20138%",
       "risk_reward_ratio": "2.5x"
     }
   },
   "trade_levels": {
-    "entry": 6.6,
-    "stop_loss": 6.27,
-    "target": 7.26
+    "entry": 5.6,
+    "stop_loss": 5.18,
+    "target": 6.44
   },
   "precision": {
     "ticker": "SBACBANK",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 36724,
-      "daily_turnover_bdt_cr": 0.0,
+      "avg_daily_volume": 100740,
+      "daily_turnover_bdt_cr": 0.01,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 1836,
-      "max_daily_accumulation_shares": 5508,
-      "max_order_bdt": 1836.0,
-      "directive": "Max single order: 1,836 shares (Tk 1,836) to prevent >1% execution slippage"
+      "max_single_order_shares": 5037,
+      "max_daily_accumulation_shares": 15111,
+      "max_order_bdt": 5037.0,
+      "directive": "Max single order: 5,037 shares (Tk 5,037) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -90,38 +90,38 @@
     "range_52w_corridor": {
       "status": "VALID",
       "low_52w": 5.0,
-      "high_52w": 7.7,
-      "range_52w_pct": 59.3,
-      "channel_regime": "EQUILIBRIUM_CHANNEL",
-      "visual_gauge": "[ \u09f35.0 |\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591| \u09f37.7 ] (59.3% (Truncated))",
-      "conviction_bonus": 0.0,
+      "high_52w": 7.4,
+      "range_52w_pct": 25.0,
+      "channel_regime": "DEEP_ACCUMULATION_BASE",
+      "visual_gauge": "[ \u09f35.0 |\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f37.4 ] (25.0% (Truncated))",
+      "conviction_bonus": 10.0,
       "is_truncated_window": true,
-      "bars_evaluated": 101,
-      "signal": "Price is in mid-channel (59.3% between \u09f35.0 and \u09f37.7)"
+      "bars_evaluated": 100,
+      "signal": "Price is at the bottom 25.0% of 52-week channel (near \u09f35.0 floor) \u2014 high margin of safety"
     },
-    "total_precision_bonus": 0.0
+    "total_precision_bonus": 10.0
   },
   "pattern_dna": {
     "ticker": "SBACBANK",
-    "audited_at": "2026-11-12 13:09:29",
+    "audited_at": "2026-11-15 19:28:16",
     "worth_vs_greed": {
-      "current_price": 6.6,
-      "intrinsic_worth": 3.3,
+      "current_price": 5.6,
+      "intrinsic_worth": 2.8,
       "margin_of_safety_pct": -50.0,
-      "extension_froth_score": 30.0,
-      "greed_index": 30.0,
-      "rsi_14": 46.7,
-      "price_vs_ema50_pct": 1.0,
-      "price_vs_ema200_pct": -5.0,
+      "extension_froth_score": 60.0,
+      "greed_index": 60.0,
+      "rsi_14": 28.0,
+      "price_vs_ema50_pct": -13.8,
+      "price_vs_ema200_pct": -19.3,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f36.5 \u2013 \u09f36.7",
-        "chase_cutoff_price": 6.8,
-        "when_to_wait": "If price opens or rises above \u09f36.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f36.5.",
-        "weekly_target_short": 6.8,
-        "monthly_target_swing": 7.6,
-        "long_term_target_asset": 8.6,
+        "optimal_entry_corridor": "\u09f35.5 \u2013 \u09f35.7",
+        "chase_cutoff_price": 5.7,
+        "when_to_wait": "If price opens or rises above \u09f35.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f35.5.",
+        "weekly_target_short": 5.8,
+        "monthly_target_swing": 6.4,
+        "long_term_target_asset": 7.3,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
@@ -133,31 +133,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -2.94,
+          "return_pct": -13.85,
           "high": 6.8,
-          "low": 6.3,
-          "range_volatility_pct": 7.94
+          "low": 5.6,
+          "range_volatility_pct": 21.43
         },
         "monthly_21d": {
-          "return_pct": 0.0,
+          "return_pct": -17.65,
           "high": 6.9,
-          "low": 6.3,
-          "range_volatility_pct": 9.52
+          "low": 5.6,
+          "range_volatility_pct": 23.21
         },
         "quarterly_63d": {
-          "return_pct": 10.0,
+          "return_pct": -3.45,
           "high": 6.9,
           "low": 5.4,
           "range_volatility_pct": 27.78
         },
         "half_yearly_126d": {
-          "return_pct": -16.46,
+          "return_pct": -27.27,
           "high": 8.0,
           "low": 5.0,
           "range_volatility_pct": 60.0
         },
         "yearly_252d": {
-          "return_pct": -22.35,
+          "return_pct": -39.13,
           "high": 9.8,
           "low": 5.0,
           "range_volatility_pct": 96.0
@@ -168,8 +168,8 @@
         "median_correction_drop_pct": -19.0,
         "avg_wave_duration_bars": 14.0
       },
-      "current_wave_phase": "MARKDOWN_PULLBACK",
-      "phase_guidance": "Ongoing pullback from peak (-4.3%). Wait for stabilizing base.",
+      "current_wave_phase": "BOTTOMING_SUPPORT",
+      "phase_guidance": "Drop (-18.8%) matches historical correction depth (-19.0%). Prepare to accumulate.",
       "top_seasonal_months": [
         {
           "month": "Sep",
@@ -267,16 +267,16 @@
     ]
   },
   "technical": {
-    "score": 55.0,
+    "score": 58.75,
     "signals": {
-      "rsi": "neutral",
-      "macd": "neutral",
-      "sma_trend": "bullish",
-      "bb": "inside_bands",
-      "atr": 0.22,
-      "rsi_value": 50.17,
-      "last_close": 6.6,
-      "sma20": 6.68,
+      "rsi": "oversold_bullish",
+      "macd": "bearish_crossover",
+      "sma_trend": "neutral",
+      "bb": "at_lower_band_bullish",
+      "atr": 0.28,
+      "rsi_value": 27.63,
+      "last_close": 5.6,
+      "sma20": 6.62,
       "sma50": 6.47,
       "sma200": null,
       "support_resistance": {
@@ -306,8 +306,8 @@
       "error": "no_fundamental_data",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 14.3,
-        "high_52w": 7.7,
+        "drawdown_pct": 24.3,
+        "high_52w": 7.4,
         "low_52w": 5.0
       }
     }
@@ -342,26 +342,27 @@
     }
   },
   "manipulation": {
-    "manipulation_score": 15,
+    "manipulation_score": 25,
     "manipulation_risk": "low",
     "block_buy": false,
     "flags": [
-      "volume_spike: volume_5.8x_avg"
+      "volume_spike: volume_32.7x_avg",
+      "price_surge_no_news: price_-15.2pct_zero_news"
     ],
     "checks": {
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 204448,
-        "avg_volume": 39271.0,
+        "last_volume": 1282897,
+        "avg_volume": 77798.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": true,
-        "spike_ratio": 5.84,
-        "avg_volume": 34993.0,
-        "today_volume": 204448,
-        "detail": "volume_5.8x_avg"
+        "spike_ratio": 32.67,
+        "avg_volume": 39271.0,
+        "today_volume": 1282897,
+        "detail": "volume_32.7x_avg"
       },
       "serial_trading": {
         "flag": false,
@@ -378,21 +379,21 @@
         "detail": "insufficient_fundamental_history"
       },
       "price_surge_no_news": {
-        "flag": false,
-        "price_change_3d": 1.54,
+        "flag": true,
+        "price_change_3d": -15.15,
         "news_count_3d": 0,
-        "detail": "ok"
+        "detail": "price_-15.2pct_zero_news"
       }
     }
   },
   "composite": {
-    "composite_score": 44.79,
+    "composite_score": 45.47,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.674,
-      "technical": 0.202,
-      "governance": 0.124,
+      "fundamental": 0.671,
+      "technical": 0.203,
+      "governance": 0.126,
       "sentiment": 0.0
     }
   }

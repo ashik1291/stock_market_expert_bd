@@ -1,60 +1,61 @@
 {
   "ticker": "FINEFOODS",
-  "audited_at": "2026-11-12 13:09:12",
+  "audited_at": "2026-11-15 19:27:58",
   "worth_vs_greed": {
-    "current_price": 437.6,
+    "current_price": 479.4,
     "intrinsic_worth": 20.96,
-    "margin_of_safety_pct": -95.2,
-    "extension_froth_score": 40.0,
-    "greed_index": 40.0,
-    "rsi_14": 41.2,
-    "price_vs_ema50_pct": -2.3,
-    "price_vs_ema200_pct": -1.9,
+    "margin_of_safety_pct": -95.6,
+    "extension_froth_score": 60.0,
+    "greed_index": 60.0,
+    "rsi_14": 81.2,
+    "price_vs_ema50_pct": 6.7,
+    "price_vs_ema200_pct": 7.4,
     "merit_status": "EARNINGS_BACKED_MERIT",
     "merit_reason": "Price supported by solid earnings (EPS: \u09f32.62, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f3428.8 \u2013 \u09f3442.0",
-      "chase_cutoff_price": 448.5,
-      "when_to_wait": "If price opens or rises above \u09f3448.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3428.8.",
-      "weekly_target_short": 452.9,
-      "monthly_target_swing": 503.2,
-      "long_term_target_asset": 568.9,
+      "optimal_entry_corridor": "\u09f3469.8 \u2013 \u09f3484.2",
+      "chase_cutoff_price": 491.4,
+      "when_to_wait": "If price opens or rises above \u09f3491.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3469.8.",
+      "weekly_target_short": 496.2,
+      "monthly_target_swing": 551.3,
+      "long_term_target_asset": 623.2,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -95.2%).",
-    "is_blacklisted": false,
-    "blacklist_reason": null
+    "reason": "Fundamental value severely lags stock price (MoS: -95.6%).",
+    "is_blacklisted": true,
+    "blacklist_reason": "Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-11-15 \u2014 Low-float spike is 18.6x 20-day average (353,669 vs 19,035) | Price up +9.55% with poor fundamentals (Extreme P/E (110.3x)) | Promoters hold only 13.9% (< 30% legal threshold) during price run-up]",
+    "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-11-15 \u2014 Low-float spike is 18.6x 20-day average (353,669 vs 19,035) | Price up +9.55% with poor fundamentals (Extreme P/E (110.3x)) | Promoters hold only 13.9% (< 30% legal threshold) during price run-up]"
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -0.21,
-        "high": 473.0,
+        "return_pct": 9.2,
+        "high": 479.4,
         "low": 427.6,
-        "range_volatility_pct": 10.62
+        "range_volatility_pct": 12.11
       },
       "monthly_21d": {
-        "return_pct": -2.15,
-        "high": 473.0,
+        "return_pct": 7.97,
+        "high": 479.4,
         "low": 427.6,
-        "range_volatility_pct": 10.62
+        "range_volatility_pct": 12.11
       },
       "quarterly_63d": {
-        "return_pct": -4.6,
-        "high": 478.6,
+        "return_pct": 5.97,
+        "high": 479.4,
         "low": 395.7,
-        "range_volatility_pct": 20.95
+        "range_volatility_pct": 21.15
       },
       "half_yearly_126d": {
-        "return_pct": -20.47,
+        "return_pct": -15.85,
         "high": 595.9,
         "low": 395.7,
         "range_volatility_pct": 50.59
       },
       "yearly_252d": {
-        "return_pct": 39.67,
+        "return_pct": 55.05,
         "high": 595.9,
         "low": 270.0,
         "range_volatility_pct": 120.7
@@ -66,7 +67,7 @@
       "avg_wave_duration_bars": 29.0
     },
     "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-8.5%). Wait for stabilizing base.",
+    "phase_guidance": "Ongoing pullback from peak (0.2%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Dec",

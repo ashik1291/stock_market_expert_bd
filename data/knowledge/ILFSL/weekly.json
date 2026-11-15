@@ -2,18 +2,18 @@
   "ticker": "ILFSL",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-12T07:09:16.446040",
-  "asof_price_date": "2026-11-11",
+  "analyzed_at": "2026-11-15T13:28:03.522245",
+  "asof_price_date": "2026-11-15",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 88.6855,
+    "rsi_14": 89.2694,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 43.27,
+  "confidence": 43.19,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -30,11 +30,11 @@
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+4.8%",
+      "upside_potential_pct": "+0.0%",
       "downside_risk_pct": "-9.5%",
-      "target_price": 2.2,
+      "target_price": 2.1,
       "trailing_stop": 1.9,
-      "risk_reward_ratio": "0.5x"
+      "risk_reward_ratio": "0.0x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 2.1,
-    "stop_loss": 2.06,
-    "target": 2.18
+    "stop_loss": 2.07,
+    "target": 2.16
   },
   "precision": {
     "ticker": "ILFSL",
@@ -96,14 +96,14 @@
       "visual_gauge": "[ \u09f30.3 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| \u09f32.1 ] (100.0% (Truncated))",
       "conviction_bonus": -10.0,
       "is_truncated_window": true,
-      "bars_evaluated": 101,
+      "bars_evaluated": 99,
       "signal": "Price is at 100.0% of 52-week high (near \u09f32.1) \u2014 elevated mean-reversion risk"
     },
     "total_precision_bonus": -10.0
   },
   "pattern_dna": {
     "ticker": "ILFSL",
-    "audited_at": "2026-11-12 13:09:16",
+    "audited_at": "2026-11-15 19:28:03",
     "worth_vs_greed": {
       "current_price": 2.1,
       "intrinsic_worth": 1.05,
@@ -111,8 +111,8 @@
       "extension_froth_score": 40.0,
       "greed_index": 40.0,
       "rsi_14": 100.0,
-      "price_vs_ema50_pct": 29.8,
-      "price_vs_ema200_pct": 10.0,
+      "price_vs_ema50_pct": 28.3,
+      "price_vs_ema200_pct": 9.9,
       "merit_status": "SPECULATIVE_JUNK_PUMP",
       "merit_reason": "Price is surging aggressively without positive EPS backing. Pure speculative risk.",
       "timing_directives": {
@@ -145,19 +145,19 @@
           "range_volatility_pct": 0.0
         },
         "quarterly_63d": {
-          "return_pct": 90.91,
+          "return_pct": 110.0,
           "high": 2.1,
           "low": 0.32,
           "range_volatility_pct": 556.25
         },
         "half_yearly_126d": {
-          "return_pct": 10.53,
+          "return_pct": 5.0,
           "high": 2.2,
           "low": 0.32,
           "range_volatility_pct": 587.5
         },
         "yearly_252d": {
-          "return_pct": -43.24,
+          "return_pct": -46.15,
           "high": 4.0,
           "low": 0.32,
           "range_volatility_pct": 1150.0
@@ -273,11 +273,11 @@
       "macd": "neutral",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 0.03,
-      "rsi_value": 87.29,
+      "atr": 0.02,
+      "rsi_value": 87.33,
       "last_close": 2.1,
       "sma20": 2.1,
-      "sma50": 1.36,
+      "sma50": 1.39,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -349,13 +349,13 @@
         "flag": false,
         "price_chg": 0,
         "last_volume": 0,
-        "avg_volume": 190455.0,
+        "avg_volume": 67102.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
         "spike_ratio": 0.0,
-        "avg_volume": 375349.0,
+        "avg_volume": 190455.0,
         "today_volume": 0,
         "detail": "ok"
       },
@@ -382,13 +382,13 @@
     }
   },
   "composite": {
-    "composite_score": 43.27,
+    "composite_score": 43.19,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.674,
-      "technical": 0.202,
-      "governance": 0.124,
+      "fundamental": 0.671,
+      "technical": 0.203,
+      "governance": 0.126,
       "sentiment": 0.0
     }
   }

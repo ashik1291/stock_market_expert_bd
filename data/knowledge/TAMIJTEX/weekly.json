@@ -2,18 +2,18 @@
   "ticker": "TAMIJTEX",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-12T07:09:33.402334",
-  "asof_price_date": "2026-11-12",
+  "analyzed_at": "2026-11-15T13:28:19.643775",
+  "asof_price_date": "2026-11-15",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 39.912,
+    "rsi_14": 38.7405,
     "pe_ratio": 15.63,
     "debt_equity": 1.333
   },
   "signal": "HOLD",
-  "confidence": 47.54,
+  "confidence": 47.45,
   "trajectory": {
     "direction": "FALL_RISK",
     "direction_icon": "\ud83d\udd34",
@@ -22,33 +22,33 @@
     "momentum_status": "Bearish Breakdown / Selling Pressure",
     "short_term": {
       "predicted_path": "Oversold bounce to 20-DMA",
-      "upside_potential_pct": "+5.9%",
-      "downside_risk_pct": "-4.0%",
-      "target_price": 107.0,
-      "support_price": 97.0,
+      "upside_potential_pct": "+5.7%",
+      "downside_risk_pct": "-3.8%",
+      "target_price": 105.9,
+      "support_price": 96.4,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+24.3%",
-      "downside_risk_pct": "-5.9%",
-      "target_price": 125.5,
-      "trailing_stop": 95.0,
-      "risk_reward_ratio": "4.1x"
+      "upside_potential_pct": "+25.0%",
+      "downside_risk_pct": "-5.7%",
+      "target_price": 125.2,
+      "trailing_stop": 94.5,
+      "risk_reward_ratio": "4.4x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.0%",
-      "downside_risk_pct": "-10.6%",
-      "target_price": 131.3,
+      "downside_risk_pct": "-10.3%",
+      "target_price": 130.3,
       "dividend_cagr": "moderate (1.14%)",
-      "risk_reward_ratio": "2.8x"
+      "risk_reward_ratio": "2.9x"
     }
   },
   "trade_levels": {
-    "entry": 101.0,
-    "stop_loss": 95.03,
-    "target": 112.94
+    "entry": 100.2,
+    "stop_loss": 94.48,
+    "target": 111.64
   },
   "precision": {
     "ticker": "TAMIJTEX",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 39335,
+      "avg_daily_volume": 40120,
       "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 1966,
-      "max_daily_accumulation_shares": 5900,
-      "max_order_bdt": 1966.0,
-      "directive": "Max single order: 1,966 shares (Tk 1,966) to prevent >1% execution slippage"
+      "max_single_order_shares": 2006,
+      "max_daily_accumulation_shares": 6018,
+      "max_order_bdt": 2006.0,
+      "directive": "Max single order: 2,006 shares (Tk 2,006) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,73 +91,73 @@
       "status": "VALID",
       "low_52w": 96.1,
       "high_52w": 140.64,
-      "range_52w_pct": 11.0,
+      "range_52w_pct": 9.2,
       "channel_regime": "DEEP_ACCUMULATION_BASE",
-      "visual_gauge": "[ \u09f396.1 |\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f3140.6 ] (11.0% (Truncated))",
+      "visual_gauge": "[ \u09f396.1 |\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f3140.6 ] (9.2% (Truncated))",
       "conviction_bonus": 10.0,
       "is_truncated_window": true,
-      "bars_evaluated": 100,
-      "signal": "Price is at the bottom 11.0% of 52-week channel (near \u09f396.1 floor) \u2014 high margin of safety"
+      "bars_evaluated": 99,
+      "signal": "Price is at the bottom 9.2% of 52-week channel (near \u09f396.1 floor) \u2014 high margin of safety"
     },
     "total_precision_bonus": 10.0
   },
   "pattern_dna": {
     "ticker": "TAMIJTEX",
-    "audited_at": "2026-11-12 13:09:33",
+    "audited_at": "2026-11-15 19:28:19",
     "worth_vs_greed": {
-      "current_price": 101.0,
+      "current_price": 100.2,
       "intrinsic_worth": 12.24,
-      "margin_of_safety_pct": -87.9,
-      "extension_froth_score": 20.0,
-      "greed_index": 20.0,
-      "rsi_14": 37.7,
-      "price_vs_ema50_pct": -9.0,
-      "price_vs_ema200_pct": -15.3,
+      "margin_of_safety_pct": -87.8,
+      "extension_froth_score": 30.0,
+      "greed_index": 30.0,
+      "rsi_14": 38.4,
+      "price_vs_ema50_pct": -9.3,
+      "price_vs_ema200_pct": -15.9,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f31.53, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f399.0 \u2013 \u09f3102.0",
-        "chase_cutoff_price": 103.5,
-        "when_to_wait": "If price opens or rises above \u09f3103.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f399.0.",
-        "weekly_target_short": 104.5,
-        "monthly_target_swing": 116.1,
-        "long_term_target_asset": 131.3,
+        "optimal_entry_corridor": "\u09f398.2 \u2013 \u09f3101.2",
+        "chase_cutoff_price": 102.7,
+        "when_to_wait": "If price opens or rises above \u09f3102.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f398.2.",
+        "weekly_target_short": 103.7,
+        "monthly_target_swing": 115.2,
+        "long_term_target_asset": 130.3,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
       "worth_decision": "AVOID",
-      "reason": "Fundamental value severely lags stock price (MoS: -87.9%).",
+      "reason": "Fundamental value severely lags stock price (MoS: -87.8%).",
       "is_blacklisted": false,
       "blacklist_reason": null
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 1.81,
+          "return_pct": 0.5,
           "high": 105.5,
-          "low": 98.9,
-          "range_volatility_pct": 6.67
+          "low": 99.2,
+          "range_volatility_pct": 6.35
         },
         "monthly_21d": {
-          "return_pct": -9.01,
-          "high": 112.8,
+          "return_pct": -8.33,
+          "high": 111.2,
           "low": 96.1,
-          "range_volatility_pct": 17.38
+          "range_volatility_pct": 15.71
         },
         "quarterly_63d": {
-          "return_pct": -26.38,
-          "high": 142.6,
+          "return_pct": -27.23,
+          "high": 137.6,
           "low": 96.1,
-          "range_volatility_pct": 48.39
+          "range_volatility_pct": 43.18
         },
         "half_yearly_126d": {
-          "return_pct": -25.46,
+          "return_pct": -25.94,
           "high": 169.4,
           "low": 96.1,
           "range_volatility_pct": 76.27
         },
         "yearly_252d": {
-          "return_pct": -8.76,
+          "return_pct": -8.83,
           "high": 169.4,
           "low": 87.0,
           "range_volatility_pct": 94.71
@@ -169,7 +169,7 @@
         "avg_wave_duration_bars": 15.0
       },
       "current_wave_phase": "MARKDOWN_PULLBACK",
-      "phase_guidance": "Ongoing pullback from peak (-22.4%). Wait for stabilizing base.",
+      "phase_guidance": "Ongoing pullback from peak (-23.0%). Wait for stabilizing base.",
       "top_seasonal_months": [
         {
           "month": "Jul",
@@ -273,11 +273,11 @@
       "macd": "bullish_crossover",
       "sma_trend": "neutral",
       "bb": "inside_bands",
-      "atr": 3.98,
-      "rsi_value": 38.71,
-      "last_close": 101.0,
-      "sma20": 103.87,
-      "sma50": 113.08,
+      "atr": 3.81,
+      "rsi_value": 37.36,
+      "last_close": 100.2,
+      "sma20": 103.38,
+      "sma50": 112.71,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -312,10 +312,10 @@
       "earnings_quality": "moderate_accrual_drag",
       "downturn_resilience": {
         "status": "growth_at_discount",
-        "drawdown_pct": 34.7,
+        "drawdown_pct": 35.2,
         "high_52w": 154.7,
         "low_52w": 96.1,
-        "note": "Share price down 34.7% from 52w peak, yet earnings positive/steady (Conviction discount)"
+        "note": "Share price down 35.2% from 52w peak, yet earnings positive/steady (Conviction discount)"
       }
     }
   },
@@ -357,15 +357,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 58780,
-        "avg_volume": 44613.0,
+        "last_volume": 50612,
+        "avg_volume": 44755.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.34,
-        "avg_volume": 43912.0,
-        "today_volume": 58780,
+        "spike_ratio": 1.13,
+        "avg_volume": 44613.0,
+        "today_volume": 50612,
         "detail": "ok"
       },
       "serial_trading": {
@@ -384,20 +384,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": 1.51,
+        "price_change_3d": -0.79,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 47.54,
+    "composite_score": 47.45,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.674,
-      "technical": 0.202,
-      "governance": 0.124,
+      "fundamental": 0.671,
+      "technical": 0.203,
+      "governance": 0.126,
       "sentiment": 0.0
     }
   }
