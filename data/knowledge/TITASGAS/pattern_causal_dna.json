@@ -1,24 +1,24 @@
 {
   "ticker": "TITASGAS",
-  "audited_at": "2026-11-15 19:28:19",
+  "audited_at": "2026-11-16 17:18:28",
   "worth_vs_greed": {
-    "current_price": 21.0,
-    "intrinsic_worth": 10.5,
+    "current_price": 20.6,
+    "intrinsic_worth": 10.3,
     "margin_of_safety_pct": -50.0,
     "extension_froth_score": 60.0,
     "greed_index": 60.0,
-    "rsi_14": 92.3,
-    "price_vs_ema50_pct": 19.9,
-    "price_vs_ema200_pct": 17.3,
+    "rsi_14": 87.3,
+    "price_vs_ema50_pct": 16.8,
+    "price_vs_ema200_pct": 14.9,
     "merit_status": "SPECULATIVE_JUNK_PUMP",
     "merit_reason": "Price is surging aggressively without positive EPS backing. Pure speculative risk.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f320.6 \u2013 \u09f321.2",
-      "chase_cutoff_price": 21.5,
-      "when_to_wait": "If price opens or rises above \u09f321.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f320.6.",
-      "weekly_target_short": 21.7,
-      "monthly_target_swing": 24.1,
-      "long_term_target_asset": 27.3,
+      "optimal_entry_corridor": "\u09f320.2 \u2013 \u09f320.8",
+      "chase_cutoff_price": 21.1,
+      "when_to_wait": "If price opens or rises above \u09f321.1, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f320.2.",
+      "weekly_target_short": 21.3,
+      "monthly_target_swing": 23.7,
+      "long_term_target_asset": 26.8,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "SPECULATIVE_GREED",
@@ -31,31 +31,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 23.53,
+        "return_pct": 19.77,
         "high": 21.5,
         "low": 16.9,
         "range_volatility_pct": 27.22
       },
       "monthly_21d": {
-        "return_pct": 25.75,
+        "return_pct": 21.18,
         "high": 21.5,
         "low": 16.4,
         "range_volatility_pct": 31.1
       },
       "quarterly_63d": {
-        "return_pct": 6.06,
+        "return_pct": 6.19,
         "high": 21.5,
         "low": 16.4,
         "range_volatility_pct": 31.1
       },
       "half_yearly_126d": {
-        "return_pct": 30.43,
+        "return_pct": 27.16,
         "high": 22.2,
         "low": 15.9,
         "range_volatility_pct": 39.62
       },
       "yearly_252d": {
-        "return_pct": 20.0,
+        "return_pct": 17.05,
         "high": 22.2,
         "low": 14.5,
         "range_volatility_pct": 53.1
@@ -66,8 +66,8 @@
       "median_correction_drop_pct": -16.1,
       "avg_wave_duration_bars": 19.0
     },
-    "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (12.3%). Wait for stabilizing base.",
+    "current_wave_phase": "LATE_MARKUP",
+    "phase_guidance": "Approaching historical rally limit (+25.6% vs median +13.3%). Tighten stop.",
     "top_seasonal_months": [
       {
         "month": "Jul",

@@ -2,18 +2,18 @@
   "ticker": "GENEXIL",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-15T13:27:59.542990",
-  "asof_price_date": "2026-11-15",
+  "analyzed_at": "2026-11-16T11:18:09.792029",
+  "asof_price_date": "2026-11-16",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 57.3842,
+    "rsi_14": 56.6218,
     "pe_ratio": 13.133640552995391,
     "debt_equity": 1.312
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 51.09,
+  "confidence": 49.28,
   "trajectory": {
     "direction": "FALL_RISK",
     "direction_icon": "\ud83d\udd34",
@@ -22,33 +22,33 @@
     "momentum_status": "Bearish Breakdown / Selling Pressure",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+5.7%",
-      "downside_risk_pct": "-3.8%",
-      "target_price": 33.2,
+      "upside_potential_pct": "+5.4%",
+      "downside_risk_pct": "-3.5%",
+      "target_price": 33.0,
       "support_price": 30.2,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+22.6%",
+      "upside_potential_pct": "+23.0%",
       "downside_risk_pct": "-9.9%",
       "target_price": 38.5,
-      "trailing_stop": 28.3,
+      "trailing_stop": 28.2,
       "risk_reward_ratio": "2.3x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-      "upside_potential_pct": "+29.9%",
+      "upside_potential_pct": "+30.0%",
       "downside_risk_pct": "-12.0%",
-      "target_price": 40.8,
+      "target_price": 40.7,
       "dividend_cagr": "moderate (0.45%)",
       "risk_reward_ratio": "2.5x"
     }
   },
   "trade_levels": {
-    "entry": 31.4,
-    "stop_loss": 29.61,
-    "target": 34.98
+    "entry": 31.3,
+    "stop_loss": 29.62,
+    "target": 34.66
   },
   "precision": {
     "ticker": "GENEXIL",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 297513,
+      "avg_daily_volume": 295363,
       "daily_turnover_bdt_cr": 0.03,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 14875,
-      "max_daily_accumulation_shares": 44627,
-      "max_order_bdt": 14875.0,
-      "directive": "Max single order: 14,875 shares (Tk 14,875) to prevent >1% execution slippage"
+      "max_single_order_shares": 14768,
+      "max_daily_accumulation_shares": 44304,
+      "max_order_bdt": 14768.0,
+      "directive": "Max single order: 14,768 shares (Tk 14,768) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,37 +91,37 @@
       "status": "VALID",
       "low_52w": 21.0,
       "high_52w": 44.2,
-      "range_52w_pct": 44.8,
+      "range_52w_pct": 44.4,
       "channel_regime": "EQUILIBRIUM_CHANNEL",
-      "visual_gauge": "[ \u09f321.0 |\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591| \u09f344.2 ] (44.8%)",
+      "visual_gauge": "[ \u09f321.0 |\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591| \u09f344.2 ] (44.4%)",
       "conviction_bonus": 0.0,
       "is_truncated_window": false,
       "bars_evaluated": 250,
-      "signal": "Price is in mid-channel (44.8% between \u09f321.0 and \u09f344.2)"
+      "signal": "Price is in mid-channel (44.4% between \u09f321.0 and \u09f344.2)"
     },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "GENEXIL",
-    "audited_at": "2026-11-15 19:27:59",
+    "audited_at": "2026-11-16 17:18:09",
     "worth_vs_greed": {
-      "current_price": 31.4,
+      "current_price": 31.3,
       "intrinsic_worth": 5.36,
       "margin_of_safety_pct": -82.9,
-      "extension_froth_score": 40.0,
-      "greed_index": 40.0,
-      "rsi_14": 68.9,
-      "price_vs_ema50_pct": 0.1,
-      "price_vs_ema200_pct": -1.1,
+      "extension_froth_score": 30.0,
+      "greed_index": 30.0,
+      "rsi_14": 69.7,
+      "price_vs_ema50_pct": -0.2,
+      "price_vs_ema200_pct": -1.4,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f30.67, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f330.8 \u2013 \u09f331.7",
-        "chase_cutoff_price": 32.2,
-        "when_to_wait": "If price opens or rises above \u09f332.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f330.8.",
-        "weekly_target_short": 32.5,
-        "monthly_target_swing": 36.1,
-        "long_term_target_asset": 40.8,
+        "optimal_entry_corridor": "\u09f330.7 \u2013 \u09f331.6",
+        "chase_cutoff_price": 32.1,
+        "when_to_wait": "If price opens or rises above \u09f332.1, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f330.7.",
+        "weekly_target_short": 32.4,
+        "monthly_target_swing": 36.0,
+        "long_term_target_asset": 40.7,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
@@ -134,31 +134,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 11.74,
+          "return_pct": 8.68,
           "high": 32.2,
           "low": 27.9,
           "range_volatility_pct": 15.41
         },
         "monthly_21d": {
-          "return_pct": 8.28,
+          "return_pct": 3.3,
           "high": 32.2,
           "low": 27.3,
           "range_volatility_pct": 17.95
         },
         "quarterly_63d": {
-          "return_pct": -21.11,
-          "high": 40.3,
+          "return_pct": -19.33,
+          "high": 39.8,
           "low": 27.3,
-          "range_volatility_pct": 47.62
+          "range_volatility_pct": 45.79
         },
         "half_yearly_126d": {
-          "return_pct": 18.05,
+          "return_pct": 16.79,
           "high": 44.2,
           "low": 26.2,
           "range_volatility_pct": 68.7
         },
         "yearly_252d": {
-          "return_pct": 18.49,
+          "return_pct": 18.56,
           "high": 44.2,
           "low": 21.0,
           "range_volatility_pct": 110.48
@@ -170,7 +170,7 @@
         "avg_wave_duration_bars": 22.0
       },
       "current_wave_phase": "BOTTOMING_SUPPORT",
-      "phase_guidance": "Drop (-29.0%) matches historical correction depth (-19.2%). Prepare to accumulate.",
+      "phase_guidance": "Drop (-29.2%) matches historical correction depth (-19.2%). Prepare to accumulate.",
       "top_seasonal_months": [
         {
           "month": "May",
@@ -268,18 +268,18 @@
     ]
   },
   "technical": {
-    "score": 60.0,
+    "score": 52.5,
     "signals": {
       "rsi": "neutral",
-      "macd": "bullish_crossover",
+      "macd": "neutral",
       "sma_trend": "neutral",
       "bb": "inside_bands",
-      "atr": 1.19,
-      "rsi_value": 57.57,
-      "last_close": 31.4,
-      "sma20": 29.09,
-      "sma50": 31.67,
-      "sma200": 31.45,
+      "atr": 1.12,
+      "rsi_value": 56.91,
+      "last_close": 31.3,
+      "sma20": 29.17,
+      "sma50": 31.57,
+      "sma200": 31.48,
       "support_resistance": {
         "supports": [
           24.6,
@@ -318,10 +318,10 @@
       "loan_trap_risk": "moderate",
       "downturn_resilience": {
         "status": "growth_at_discount",
-        "drawdown_pct": 29.0,
+        "drawdown_pct": 29.2,
         "high_52w": 44.2,
         "low_52w": 21.0,
-        "note": "Share price down 29.0% from 52w peak, yet earnings positive/steady (Conviction discount)"
+        "note": "Share price down 29.2% from 52w peak, yet earnings positive/steady (Conviction discount)"
       }
     }
   },
@@ -363,15 +363,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 418261,
-        "avg_volume": 311523.0,
+        "last_volume": 72792,
+        "avg_volume": 295297.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.35,
-        "avg_volume": 310569.0,
-        "today_volume": 418261,
+        "spike_ratio": 0.23,
+        "avg_volume": 311523.0,
+        "today_volume": 72792,
         "detail": "ok"
       },
       "serial_trading": {
@@ -390,20 +390,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": -1.88,
+        "price_change_3d": -0.32,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 51.09,
+    "composite_score": 49.28,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.671,
-      "technical": 0.203,
-      "governance": 0.126,
+      "fundamental": 0.665,
+      "technical": 0.204,
+      "governance": 0.131,
       "sentiment": 0.0
     }
   }

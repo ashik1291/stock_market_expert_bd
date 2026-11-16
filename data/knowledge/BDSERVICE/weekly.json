@@ -2,8 +2,8 @@
   "ticker": "BDSERVICE",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-15T13:27:52.155294",
-  "asof_price_date": "2026-11-15",
+  "analyzed_at": "2026-11-16T11:18:03.455981",
+  "asof_price_date": "2026-11-16",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
@@ -13,7 +13,7 @@
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 43.7,
+  "confidence": 43.45,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -96,14 +96,14 @@
       "visual_gauge": "[ \u09f35.2 |\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591| \u09f35.2 ] (50.0% (Truncated))",
       "conviction_bonus": 0.0,
       "is_truncated_window": true,
-      "bars_evaluated": 27,
+      "bars_evaluated": 28,
       "signal": "Price is in mid-channel (50.0% between \u09f35.2 and \u09f35.2)"
     },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "BDSERVICE",
-    "audited_at": "2026-11-15 19:27:52",
+    "audited_at": "2026-11-16 17:18:03",
     "worth_vs_greed": {
       "current_price": 5.2,
       "intrinsic_worth": 2.6,
@@ -220,13 +220,13 @@
     }
   },
   "composite": {
-    "composite_score": 43.7,
+    "composite_score": 43.45,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.671,
-      "technical": 0.203,
-      "governance": 0.126,
+      "fundamental": 0.665,
+      "technical": 0.204,
+      "governance": 0.131,
       "sentiment": 0.0
     }
   }

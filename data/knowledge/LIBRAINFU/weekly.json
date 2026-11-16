@@ -2,18 +2,18 @@
   "ticker": "LIBRAINFU",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-15T13:28:05.907158",
-  "asof_price_date": "2026-11-15",
+  "analyzed_at": "2026-11-16T11:18:15.283953",
+  "asof_price_date": "2026-11-16",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 36.2678,
+    "rsi_14": 37.9289,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 42.18,
+  "confidence": 43.45,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -22,33 +22,33 @@
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Oversold bounce to 20-DMA",
-      "upside_potential_pct": "+5.6%",
-      "downside_risk_pct": "-3.7%",
-      "target_price": 545.3,
-      "support_price": 497.1,
+      "upside_potential_pct": "+5.2%",
+      "downside_risk_pct": "-3.5%",
+      "target_price": 547.3,
+      "support_price": 501.8,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
       "upside_potential_pct": "+25.0%",
-      "downside_risk_pct": "-5.6%",
-      "target_price": 645.5,
-      "trailing_stop": 487.5,
-      "risk_reward_ratio": "4.5x"
+      "downside_risk_pct": "-5.3%",
+      "target_price": 650.0,
+      "trailing_stop": 492.7,
+      "risk_reward_ratio": "4.7x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.0%",
-      "downside_risk_pct": "-10.1%",
-      "target_price": 671.3,
+      "downside_risk_pct": "-9.5%",
+      "target_price": 676.0,
       "dividend_cagr": "5%\u20138%",
-      "risk_reward_ratio": "3.0x"
+      "risk_reward_ratio": "3.2x"
     }
   },
   "trade_levels": {
-    "entry": 516.4,
-    "stop_loss": 487.46,
-    "target": 574.28
+    "entry": 520.0,
+    "stop_loss": 492.75,
+    "target": 574.5
   },
   "precision": {
     "ticker": "LIBRAINFU",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 7038,
+      "avg_daily_volume": 6469,
       "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 351,
-      "max_daily_accumulation_shares": 1055,
-      "max_order_bdt": 351.0,
-      "directive": "Max single order: 351 shares (Tk 351) to prevent >1% execution slippage"
+      "max_single_order_shares": 323,
+      "max_daily_accumulation_shares": 970,
+      "max_order_bdt": 323.0,
+      "directive": "Max single order: 323 shares (Tk 323) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,37 +91,37 @@
       "status": "VALID",
       "low_52w": 498.0,
       "high_52w": 779.0,
-      "range_52w_pct": 6.5,
+      "range_52w_pct": 7.8,
       "channel_regime": "DEEP_ACCUMULATION_BASE",
-      "visual_gauge": "[ \u09f3498.0 |\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f3779.0 ] (6.5% (Truncated))",
+      "visual_gauge": "[ \u09f3498.0 |\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f3779.0 ] (7.8% (Truncated))",
       "conviction_bonus": 10.0,
       "is_truncated_window": true,
-      "bars_evaluated": 100,
-      "signal": "Price is at the bottom 6.5% of 52-week channel (near \u09f3498.0 floor) \u2014 high margin of safety"
+      "bars_evaluated": 101,
+      "signal": "Price is at the bottom 7.8% of 52-week channel (near \u09f3498.0 floor) \u2014 high margin of safety"
     },
     "total_precision_bonus": 10.0
   },
   "pattern_dna": {
     "ticker": "LIBRAINFU",
-    "audited_at": "2026-11-15 19:28:05",
+    "audited_at": "2026-11-16 17:18:15",
     "worth_vs_greed": {
-      "current_price": 516.4,
-      "intrinsic_worth": 258.2,
+      "current_price": 520.0,
+      "intrinsic_worth": 260.0,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 20.0,
       "greed_index": 20.0,
-      "rsi_14": 27.6,
-      "price_vs_ema50_pct": -10.4,
-      "price_vs_ema200_pct": -23.8,
+      "rsi_14": 19.0,
+      "price_vs_ema50_pct": -9.4,
+      "price_vs_ema200_pct": -23.1,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f3506.1 \u2013 \u09f3521.6",
-        "chase_cutoff_price": 529.3,
-        "when_to_wait": "If price opens or rises above \u09f3529.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3506.1.",
-        "weekly_target_short": 534.5,
-        "monthly_target_swing": 593.9,
-        "long_term_target_asset": 671.3,
+        "optimal_entry_corridor": "\u09f3509.6 \u2013 \u09f3525.2",
+        "chase_cutoff_price": 533.0,
+        "when_to_wait": "If price opens or rises above \u09f3533.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3509.6.",
+        "weekly_target_short": 538.2,
+        "monthly_target_swing": 598.0,
+        "long_term_target_asset": 676.0,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
@@ -134,31 +134,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -1.71,
+          "return_pct": -0.19,
           "high": 530.0,
           "low": 510.5,
           "range_volatility_pct": 3.82
         },
         "monthly_21d": {
-          "return_pct": -1.68,
+          "return_pct": -0.38,
           "high": 623.8,
           "low": 498.0,
           "range_volatility_pct": 25.26
         },
         "quarterly_63d": {
-          "return_pct": -21.28,
-          "high": 672.8,
+          "return_pct": -21.65,
+          "high": 669.8,
           "low": 498.0,
-          "range_volatility_pct": 35.1
+          "range_volatility_pct": 34.5
         },
         "half_yearly_126d": {
-          "return_pct": -35.52,
-          "high": 810.0,
+          "return_pct": -34.24,
+          "high": 805.0,
           "low": 498.0,
-          "range_volatility_pct": 62.65
+          "range_volatility_pct": 61.65
         },
         "yearly_252d": {
-          "return_pct": -37.22,
+          "return_pct": -35.91,
           "high": 850.0,
           "low": 498.0,
           "range_volatility_pct": 70.68
@@ -169,8 +169,8 @@
         "median_correction_drop_pct": -22.8,
         "avg_wave_duration_bars": 20.0
       },
-      "current_wave_phase": "ACCUMULATION_TROUGH",
-      "phase_guidance": "Near local cyclical trough base. Maximum reward/risk entry point.",
+      "current_wave_phase": "MARKUP_RALLY_MID",
+      "phase_guidance": "Midway through rally wave (+4.4% from base, historical target ~+20.5%).",
       "top_seasonal_months": [
         {
           "month": "Aug",
@@ -268,17 +268,17 @@
     ]
   },
   "technical": {
-    "score": 42.5,
+    "score": 50.0,
     "signals": {
       "rsi": "neutral",
-      "macd": "bearish_crossover",
+      "macd": "neutral",
       "sma_trend": "neutral",
       "bb": "inside_bands",
-      "atr": 19.29,
-      "rsi_value": 36.25,
-      "last_close": 516.4,
-      "sma20": 540.65,
-      "sma50": 582.1,
+      "atr": 18.17,
+      "rsi_value": 38.02,
+      "last_close": 520.0,
+      "sma20": 541.31,
+      "sma50": 579.79,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -307,7 +307,7 @@
       "error": "no_fundamental_data",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 33.7,
+        "drawdown_pct": 33.2,
         "high_52w": 779.0,
         "low_52w": 498.0
       }
@@ -351,15 +351,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 4682,
-        "avg_volume": 5385.0,
+        "last_volume": 30,
+        "avg_volume": 5234.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.85,
-        "avg_volume": 5520.0,
-        "today_volume": 4682,
+        "spike_ratio": 0.01,
+        "avg_volume": 5385.0,
+        "today_volume": 30,
         "detail": "ok"
       },
       "serial_trading": {
@@ -378,20 +378,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": -0.56,
+        "price_change_3d": 0.7,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 42.18,
+    "composite_score": 43.45,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.671,
-      "technical": 0.203,
-      "governance": 0.126,
+      "fundamental": 0.665,
+      "technical": 0.204,
+      "governance": 0.131,
       "sentiment": 0.0
     }
   }

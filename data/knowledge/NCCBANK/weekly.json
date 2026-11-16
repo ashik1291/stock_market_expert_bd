@@ -2,18 +2,18 @@
   "ticker": "NCCBANK",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-15T13:28:08.968826",
-  "asof_price_date": "2026-11-15",
+  "analyzed_at": "2026-11-16T11:18:18.163106",
+  "asof_price_date": "2026-11-16",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 65.5398,
+    "rsi_14": 65.4798,
     "pe_ratio": 3.403263403263403,
     "debt_equity": 0.986
   },
   "signal": "HOLD_INELIGIBLE_DEFICIT",
-  "confidence": 61.33,
+  "confidence": 60.94,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 15.1,
-    "stop_loss": 14.66,
-    "target": 15.98
+    "stop_loss": 14.68,
+    "target": 15.94
   },
   "precision": {
     "ticker": "NCCBANK",
@@ -72,8 +72,8 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 1670045,
-      "daily_turnover_bdt_cr": 0.17,
+      "avg_daily_volume": 1630485,
+      "daily_turnover_bdt_cr": 0.16,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
       "max_single_order_shares": 50000,
@@ -96,14 +96,14 @@
       "visual_gauge": "[ \u09f310.2 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591| \u09f315.5 ] (92.5% (Truncated))",
       "conviction_bonus": -10.0,
       "is_truncated_window": true,
-      "bars_evaluated": 100,
+      "bars_evaluated": 101,
       "signal": "Price is at 92.5% of 52-week high (near \u09f315.5) \u2014 elevated mean-reversion risk"
     },
     "total_precision_bonus": -10.0
   },
   "pattern_dna": {
     "ticker": "NCCBANK",
-    "audited_at": "2026-11-15 19:28:08",
+    "audited_at": "2026-11-16 17:18:18",
     "worth_vs_greed": {
       "current_price": 15.1,
       "intrinsic_worth": 7.44,
@@ -111,8 +111,8 @@
       "extension_froth_score": 30.0,
       "greed_index": 30.0,
       "rsi_14": 55.0,
-      "price_vs_ema50_pct": 8.4,
-      "price_vs_ema200_pct": 22.2,
+      "price_vs_ema50_pct": 8.0,
+      "price_vs_ema200_pct": 21.9,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f30.93, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
@@ -145,13 +145,13 @@
           "range_volatility_pct": 8.39
         },
         "quarterly_63d": {
-          "return_pct": 31.3,
+          "return_pct": 30.17,
           "high": 15.5,
-          "low": 11.5,
-          "range_volatility_pct": 34.78
+          "low": 11.6,
+          "range_volatility_pct": 33.62
         },
         "half_yearly_126d": {
-          "return_pct": 25.83,
+          "return_pct": 24.79,
           "high": 15.5,
           "low": 10.5,
           "range_volatility_pct": 47.62
@@ -273,11 +273,11 @@
       "macd": "neutral",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 0.29,
+      "atr": 0.28,
       "rsi_value": 65.47,
       "last_close": 15.1,
-      "sma20": 14.92,
-      "sma50": 13.7,
+      "sma20": 14.95,
+      "sma50": 13.77,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -353,15 +353,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 1552458,
-        "avg_volume": 1554147.0,
+        "last_volume": 90839,
+        "avg_volume": 1536863.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.02,
-        "avg_volume": 1523910.0,
-        "today_volume": 1552458,
+        "spike_ratio": 0.06,
+        "avg_volume": 1554147.0,
+        "today_volume": 90839,
         "detail": "ok"
       },
       "serial_trading": {
@@ -380,20 +380,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": 0.67,
+        "price_change_3d": 0.0,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 61.33,
+    "composite_score": 60.94,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.671,
-      "technical": 0.203,
-      "governance": 0.126,
+      "fundamental": 0.665,
+      "technical": 0.204,
+      "governance": 0.131,
       "sentiment": 0.0
     }
   }

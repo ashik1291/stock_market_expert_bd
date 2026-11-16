@@ -1,24 +1,24 @@
 {
   "ticker": "GREENDELT",
-  "audited_at": "2026-11-15 19:28:00",
+  "audited_at": "2026-11-16 17:18:10",
   "worth_vs_greed": {
-    "current_price": 59.2,
-    "intrinsic_worth": 29.6,
+    "current_price": 59.0,
+    "intrinsic_worth": 29.5,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 20.0,
-    "greed_index": 20.0,
-    "rsi_14": 18.7,
-    "price_vs_ema50_pct": 0.1,
-    "price_vs_ema200_pct": 10.8,
+    "extension_froth_score": 10.0,
+    "greed_index": 10.0,
+    "rsi_14": 19.7,
+    "price_vs_ema50_pct": -0.2,
+    "price_vs_ema200_pct": 10.4,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f358.0 \u2013 \u09f359.8",
-      "chase_cutoff_price": 60.7,
-      "when_to_wait": "If price opens or rises above \u09f360.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f358.0.",
-      "weekly_target_short": 61.3,
-      "monthly_target_swing": 68.1,
-      "long_term_target_asset": 77.0,
+      "optimal_entry_corridor": "\u09f357.8 \u2013 \u09f359.6",
+      "chase_cutoff_price": 60.5,
+      "when_to_wait": "If price opens or rises above \u09f360.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f357.8.",
+      "weekly_target_short": 61.1,
+      "monthly_target_swing": 67.8,
+      "long_term_target_asset": 76.7,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -30,31 +30,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -2.47,
+        "return_pct": -1.83,
         "high": 61.8,
         "low": 58.8,
         "range_volatility_pct": 5.1
       },
       "monthly_21d": {
-        "return_pct": -8.5,
-        "high": 66.9,
+        "return_pct": -9.79,
+        "high": 64.6,
         "low": 58.8,
-        "range_volatility_pct": 13.78
+        "range_volatility_pct": 9.86
       },
       "quarterly_63d": {
-        "return_pct": 14.29,
+        "return_pct": 11.95,
         "high": 67.0,
         "low": 50.2,
         "range_volatility_pct": 33.47
       },
       "half_yearly_126d": {
-        "return_pct": 13.41,
+        "return_pct": 13.03,
         "high": 67.0,
         "low": 43.0,
         "range_volatility_pct": 55.81
       },
       "yearly_252d": {
-        "return_pct": 25.69,
+        "return_pct": 24.21,
         "high": 67.0,
         "low": 37.0,
         "range_volatility_pct": 81.08
@@ -66,7 +66,7 @@
       "avg_wave_duration_bars": 17.0
     },
     "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-11.6%). Wait for stabilizing base.",
+    "phase_guidance": "Ongoing pullback from peak (-11.9%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Jun",

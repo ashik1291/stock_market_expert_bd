@@ -1,24 +1,24 @@
 {
   "ticker": "MONNOAGML",
-  "audited_at": "2026-11-15 19:28:08",
+  "audited_at": "2026-11-16 17:18:17",
   "worth_vs_greed": {
-    "current_price": 252.9,
-    "intrinsic_worth": 126.45,
+    "current_price": 253.3,
+    "intrinsic_worth": 126.65,
     "margin_of_safety_pct": -50.0,
     "extension_froth_score": 20.0,
     "greed_index": 20.0,
-    "rsi_14": 28.6,
-    "price_vs_ema50_pct": -13.7,
-    "price_vs_ema200_pct": -22.3,
+    "rsi_14": 29.5,
+    "price_vs_ema50_pct": -13.1,
+    "price_vs_ema200_pct": -22.0,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f3247.8 \u2013 \u09f3255.4",
-      "chase_cutoff_price": 259.2,
-      "when_to_wait": "If price opens or rises above \u09f3259.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3247.8.",
-      "weekly_target_short": 261.8,
-      "monthly_target_swing": 290.8,
-      "long_term_target_asset": 328.8,
+      "optimal_entry_corridor": "\u09f3248.2 \u2013 \u09f3255.8",
+      "chase_cutoff_price": 259.6,
+      "when_to_wait": "If price opens or rises above \u09f3259.6, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3248.2.",
+      "weekly_target_short": 262.2,
+      "monthly_target_swing": 291.3,
+      "long_term_target_asset": 329.3,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -30,31 +30,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 0.8,
+        "return_pct": 0.64,
         "high": 262.5,
         "low": 249.5,
         "range_volatility_pct": 5.21
       },
       "monthly_21d": {
-        "return_pct": -15.53,
-        "high": 304.5,
+        "return_pct": -15.28,
+        "high": 301.9,
         "low": 248.5,
-        "range_volatility_pct": 22.54
+        "range_volatility_pct": 21.49
       },
       "quarterly_63d": {
-        "return_pct": -18.55,
+        "return_pct": -19.59,
         "high": 388.0,
         "low": 248.5,
         "range_volatility_pct": 56.14
       },
       "half_yearly_126d": {
-        "return_pct": -34.43,
+        "return_pct": -35.23,
         "high": 424.9,
         "low": 248.5,
         "range_volatility_pct": 70.99
       },
       "yearly_252d": {
-        "return_pct": -20.27,
+        "return_pct": -20.07,
         "high": 424.9,
         "low": 248.5,
         "range_volatility_pct": 70.99
@@ -66,7 +66,7 @@
       "avg_wave_duration_bars": 30.0
     },
     "current_wave_phase": "BOTTOMING_SUPPORT",
-    "phase_guidance": "Drop (-34.8%) matches historical correction depth (-24.6%). Prepare to accumulate.",
+    "phase_guidance": "Drop (-34.7%) matches historical correction depth (-24.6%). Prepare to accumulate.",
     "top_seasonal_months": [
       {
         "month": "Aug",

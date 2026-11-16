@@ -2,18 +2,18 @@
   "ticker": "EBLNRBMF",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-15T13:27:57.231019",
-  "asof_price_date": "2026-11-15",
+  "analyzed_at": "2026-11-16T11:18:07.877565",
+  "asof_price_date": "2026-11-16",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 59.5707,
+    "rsi_14": 59.499,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 44.71,
+  "confidence": 44.47,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -30,11 +30,11 @@
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+12.5%",
+      "upside_potential_pct": "+9.4%",
       "downside_risk_pct": "-9.4%",
-      "target_price": 3.6,
+      "target_price": 3.5,
       "trailing_stop": 2.9,
-      "risk_reward_ratio": "1.3x"
+      "risk_reward_ratio": "1.0x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 3.2,
-    "stop_loss": 2.99,
-    "target": 3.62
+    "stop_loss": 3.01,
+    "target": 3.58
   },
   "precision": {
     "ticker": "EBLNRBMF",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 354368,
-      "daily_turnover_bdt_cr": 0.04,
+      "avg_daily_volume": 346666,
+      "daily_turnover_bdt_cr": 0.03,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 17718,
-      "max_daily_accumulation_shares": 53155,
-      "max_order_bdt": 17718.0,
-      "directive": "Max single order: 17,718 shares (Tk 17,718) to prevent >1% execution slippage"
+      "max_single_order_shares": 17333,
+      "max_daily_accumulation_shares": 51999,
+      "max_order_bdt": 17333.0,
+      "directive": "Max single order: 17,333 shares (Tk 17,333) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -96,14 +96,14 @@
       "visual_gauge": "[ \u09f32.0 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591| \u09f33.6 ] (75.0% (Truncated))",
       "conviction_bonus": 5.0,
       "is_truncated_window": true,
-      "bars_evaluated": 100,
+      "bars_evaluated": 101,
       "signal": "Price is in upper channel (75.0%) \u2014 upward breakout momentum"
     },
     "total_precision_bonus": 5.0
   },
   "pattern_dna": {
     "ticker": "EBLNRBMF",
-    "audited_at": "2026-11-15 19:27:57",
+    "audited_at": "2026-11-16 17:18:07",
     "worth_vs_greed": {
       "current_price": 3.2,
       "intrinsic_worth": 1.6,
@@ -111,7 +111,7 @@
       "extension_froth_score": 30.0,
       "greed_index": 30.0,
       "rsi_14": 50.0,
-      "price_vs_ema50_pct": 7.6,
+      "price_vs_ema50_pct": 7.3,
       "price_vs_ema200_pct": 4.6,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
@@ -273,11 +273,11 @@
       "macd": "neutral",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 0.14,
+      "atr": 0.13,
       "rsi_value": 59.34,
       "last_close": 3.2,
-      "sma20": 3.23,
-      "sma50": 2.83,
+      "sma20": 3.22,
+      "sma50": 2.85,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -348,15 +348,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 1104769,
-        "avg_volume": 405118.0,
+        "last_volume": 130200,
+        "avg_volume": 361270.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 2.77,
-        "avg_volume": 398329.0,
-        "today_volume": 1104769,
+        "spike_ratio": 0.32,
+        "avg_volume": 405118.0,
+        "today_volume": 130200,
         "detail": "ok"
       },
       "serial_trading": {
@@ -375,20 +375,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": 3.23,
+        "price_change_3d": 0.0,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 44.71,
+    "composite_score": 44.47,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.671,
-      "technical": 0.203,
-      "governance": 0.126,
+      "fundamental": 0.665,
+      "technical": 0.204,
+      "governance": 0.131,
       "sentiment": 0.0
     }
   }

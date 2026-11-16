@@ -2,18 +2,18 @@
   "ticker": "BATBC",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-15T13:27:51.449359",
-  "asof_price_date": "2026-11-15",
+  "analyzed_at": "2026-11-16T11:18:02.852024",
+  "asof_price_date": "2026-11-16",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 22.2093,
+    "rsi_14": 25.8951,
     "pe_ratio": 22.99,
     "debt_equity": 0.0
   },
   "signal": "HOLD_INELIGIBLE_DEFICIT",
-  "confidence": 62.86,
+  "confidence": 63.07,
   "trajectory": {
     "direction": "RISE_PREDICTED",
     "direction_icon": "\ud83d\udfe2",
@@ -22,33 +22,33 @@
     "momentum_status": "Bullish Momentum / Upward Bias",
     "short_term": {
       "predicted_path": "Oversold bounce to 20-DMA",
-      "upside_potential_pct": "+3.7%",
-      "downside_risk_pct": "-2.5%",
-      "target_price": 194.1,
-      "support_price": 182.4,
+      "upside_potential_pct": "+3.6%",
+      "downside_risk_pct": "-2.4%",
+      "target_price": 195.3,
+      "support_price": 184.1,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
       "upside_potential_pct": "+25.0%",
-      "downside_risk_pct": "-3.7%",
-      "target_price": 233.9,
-      "trailing_stop": 180.1,
-      "risk_reward_ratio": "6.8x"
+      "downside_risk_pct": "-3.6%",
+      "target_price": 235.8,
+      "trailing_stop": 181.8,
+      "risk_reward_ratio": "6.9x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.0%",
-      "downside_risk_pct": "-6.7%",
-      "target_price": 243.2,
+      "downside_risk_pct": "-6.5%",
+      "target_price": 245.2,
       "dividend_cagr": "moderate (1.21%)",
-      "risk_reward_ratio": "4.5x"
+      "risk_reward_ratio": "4.6x"
     }
   },
   "trade_levels": {
-    "entry": 187.1,
-    "stop_loss": 180.06,
-    "target": 201.18
+    "entry": 188.6,
+    "stop_loss": 181.85,
+    "target": 202.1
   },
   "precision": {
     "ticker": "BATBC",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 93557,
+      "avg_daily_volume": 91877,
       "daily_turnover_bdt_cr": 0.01,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 4677,
-      "max_daily_accumulation_shares": 14033,
-      "max_order_bdt": 4677.0,
-      "directive": "Max single order: 4,677 shares (Tk 4,677) to prevent >1% execution slippage"
+      "max_single_order_shares": 4593,
+      "max_daily_accumulation_shares": 13781,
+      "max_order_bdt": 4593.0,
+      "directive": "Max single order: 4,593 shares (Tk 4,593) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,73 +91,73 @@
       "status": "VALID",
       "low_52w": 183.9,
       "high_52w": 292.9,
-      "range_52w_pct": 2.9,
+      "range_52w_pct": 4.3,
       "channel_regime": "DEEP_ACCUMULATION_BASE",
-      "visual_gauge": "[ \u09f3183.9 |\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f3292.9 ] (2.9%)",
+      "visual_gauge": "[ \u09f3183.9 |\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f3292.9 ] (4.3%)",
       "conviction_bonus": 10.0,
       "is_truncated_window": false,
       "bars_evaluated": 250,
-      "signal": "Price is at the bottom 2.9% of 52-week channel (near \u09f3183.9 floor) \u2014 high margin of safety"
+      "signal": "Price is at the bottom 4.3% of 52-week channel (near \u09f3183.9 floor) \u2014 high margin of safety"
     },
     "total_precision_bonus": 10.0
   },
   "pattern_dna": {
     "ticker": "BATBC",
-    "audited_at": "2026-11-15 19:27:51",
+    "audited_at": "2026-11-16 17:18:02",
     "worth_vs_greed": {
-      "current_price": 187.1,
+      "current_price": 188.6,
       "intrinsic_worth": 14.8,
-      "margin_of_safety_pct": -92.1,
+      "margin_of_safety_pct": -92.2,
       "extension_froth_score": 30.0,
       "greed_index": 30.0,
-      "rsi_14": 18.3,
-      "price_vs_ema50_pct": -11.7,
-      "price_vs_ema200_pct": -19.2,
+      "rsi_14": 20.3,
+      "price_vs_ema50_pct": -10.6,
+      "price_vs_ema200_pct": -18.4,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f31.85, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f3183.4 \u2013 \u09f3189.0",
-        "chase_cutoff_price": 191.8,
-        "when_to_wait": "If price opens or rises above \u09f3191.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3183.4.",
-        "weekly_target_short": 193.6,
-        "monthly_target_swing": 215.2,
-        "long_term_target_asset": 243.2,
+        "optimal_entry_corridor": "\u09f3184.8 \u2013 \u09f3190.5",
+        "chase_cutoff_price": 193.3,
+        "when_to_wait": "If price opens or rises above \u09f3193.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3184.8.",
+        "weekly_target_short": 195.2,
+        "monthly_target_swing": 216.9,
+        "long_term_target_asset": 245.2,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
       "worth_decision": "AVOID",
-      "reason": "Fundamental value severely lags stock price (MoS: -92.1%).",
+      "reason": "Fundamental value severely lags stock price (MoS: -92.2%).",
       "is_blacklisted": false,
       "blacklist_reason": null
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 0.59,
+          "return_pct": 0.69,
           "high": 191.1,
           "low": 184.5,
           "range_volatility_pct": 3.58
         },
         "monthly_21d": {
-          "return_pct": -14.21,
+          "return_pct": -13.72,
           "high": 221.1,
           "low": 183.9,
           "range_volatility_pct": 20.23
         },
         "quarterly_63d": {
-          "return_pct": -24.25,
-          "high": 251.4,
+          "return_pct": -23.02,
+          "high": 246.9,
           "low": 183.9,
-          "range_volatility_pct": 36.7
+          "range_volatility_pct": 34.26
         },
         "half_yearly_126d": {
-          "return_pct": -14.68,
+          "return_pct": -13.25,
           "high": 256.8,
           "low": 183.9,
           "range_volatility_pct": 39.64
         },
         "yearly_252d": {
-          "return_pct": -27.2,
+          "return_pct": -26.39,
           "high": 292.9,
           "low": 183.9,
           "range_volatility_pct": 59.27
@@ -169,7 +169,7 @@
         "avg_wave_duration_bars": 27.0
       },
       "current_wave_phase": "BOTTOMING_SUPPORT",
-      "phase_guidance": "Drop (-27.1%) matches historical correction depth (-13.8%). Prepare to accumulate.",
+      "phase_guidance": "Drop (-26.6%) matches historical correction depth (-13.8%). Prepare to accumulate.",
       "top_seasonal_months": [
         {
           "month": "Feb",
@@ -273,12 +273,12 @@
       "macd": "neutral",
       "sma_trend": "neutral",
       "bb": "inside_bands",
-      "atr": 4.69,
-      "rsi_value": 22.66,
-      "last_close": 187.1,
-      "sma20": 202.3,
-      "sma50": 216.44,
-      "sma200": 229.34,
+      "atr": 4.5,
+      "rsi_value": 26.35,
+      "last_close": 188.6,
+      "sma20": 200.87,
+      "sma50": 215.46,
+      "sma200": 229.02,
       "support_resistance": {
         "supports": [
           206.2,
@@ -323,10 +323,10 @@
       "earnings_quality": "moderate_accrual_drag",
       "downturn_resilience": {
         "status": "growth_at_discount",
-        "drawdown_pct": 36.1,
+        "drawdown_pct": 35.6,
         "high_52w": 292.9,
         "low_52w": 183.9,
-        "note": "Share price down 36.1% from 52w peak, yet earnings positive/steady (Conviction discount)"
+        "note": "Share price down 35.6% from 52w peak, yet earnings positive/steady (Conviction discount)"
       }
     }
   },
@@ -367,15 +367,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 71063,
-        "avg_volume": 74493.0,
+        "last_volume": 13228,
+        "avg_volume": 73054.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.97,
-        "avg_volume": 73593.0,
-        "today_volume": 71063,
+        "spike_ratio": 0.18,
+        "avg_volume": 74493.0,
+        "today_volume": 13228,
         "detail": "ok"
       },
       "serial_trading": {
@@ -394,20 +394,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": -0.48,
+        "price_change_3d": 0.8,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 62.86,
+    "composite_score": 63.07,
     "governance_score": 100,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.671,
-      "technical": 0.203,
-      "governance": 0.126,
+      "fundamental": 0.665,
+      "technical": 0.204,
+      "governance": 0.131,
       "sentiment": 0.0
     }
   }

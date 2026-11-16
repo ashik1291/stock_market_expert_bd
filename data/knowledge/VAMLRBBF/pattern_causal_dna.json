@@ -1,17 +1,17 @@
 {
   "ticker": "VAMLRBBF",
-  "audited_at": "2026-11-15 19:28:21",
+  "audited_at": "2026-11-16 17:18:30",
   "worth_vs_greed": {
     "current_price": 8.5,
     "intrinsic_worth": 4.25,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 70.0,
-    "greed_index": 70.0,
+    "extension_froth_score": 60.0,
+    "greed_index": 60.0,
     "rsi_14": 52.9,
-    "price_vs_ema50_pct": 15.6,
-    "price_vs_ema200_pct": 37.3,
-    "merit_status": "SPECULATIVE_JUNK_PUMP",
-    "merit_reason": "Price is surging aggressively without positive EPS backing. Pure speculative risk.",
+    "price_vs_ema50_pct": 14.9,
+    "price_vs_ema200_pct": 36.8,
+    "merit_status": "NEUTRAL_MERIT",
+    "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
       "optimal_entry_corridor": "\u09f38.3 \u2013 \u09f38.6",
       "chase_cutoff_price": 8.7,
@@ -21,16 +21,16 @@
       "long_term_target_asset": 11.1,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
-    "status": "OVERVALUED_EUPHORIA",
-    "worth_decision": "SELL_TAKE_PROFIT",
-    "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (70.0/100). Danger of sharp mean reversion.",
+    "status": "CHRONIC_OVERVALUATION",
+    "worth_decision": "AVOID",
+    "reason": "Fundamental value severely lags stock price (MoS: -50.0%).",
     "is_blacklisted": false,
     "blacklist_reason": null
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 4.94,
+        "return_pct": 3.66,
         "high": 8.5,
         "low": 8.2,
         "range_volatility_pct": 3.66
@@ -42,19 +42,19 @@
         "range_volatility_pct": 11.84
       },
       "quarterly_63d": {
-        "return_pct": 63.46,
+        "return_pct": 60.38,
         "high": 8.5,
         "low": 4.8,
         "range_volatility_pct": 77.08
       },
       "half_yearly_126d": {
-        "return_pct": 49.12,
+        "return_pct": 46.55,
         "high": 8.5,
         "low": 4.7,
         "range_volatility_pct": 80.85
       },
       "yearly_252d": {
-        "return_pct": 97.67,
+        "return_pct": 88.89,
         "high": 8.5,
         "low": 4.2,
         "range_volatility_pct": 102.38

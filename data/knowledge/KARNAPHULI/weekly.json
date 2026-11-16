@@ -2,18 +2,18 @@
   "ticker": "KARNAPHULI",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-15T13:28:04.913749",
-  "asof_price_date": "2026-11-15",
+  "analyzed_at": "2026-11-16T11:18:14.332501",
+  "asof_price_date": "2026-11-16",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 64.4765,
+    "rsi_14": 64.4473,
     "pe_ratio": 13.31,
     "debt_equity": 0.0
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 50.97,
+  "confidence": 50.65,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -22,17 +22,17 @@
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+5.6%",
-      "downside_risk_pct": "-3.7%",
-      "target_price": 57.0,
-      "support_price": 52.0,
+      "upside_potential_pct": "+5.4%",
+      "downside_risk_pct": "-3.5%",
+      "target_price": 56.9,
+      "support_price": 52.1,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+9.4%",
+      "upside_potential_pct": "+9.1%",
       "downside_risk_pct": "-10.0%",
-      "target_price": 59.1,
+      "target_price": 58.9,
       "trailing_stop": 48.6,
       "risk_reward_ratio": "0.9x"
     },
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 54.0,
-    "stop_loss": 50.95,
-    "target": 60.1
+    "stop_loss": 51.09,
+    "target": 59.82
   },
   "precision": {
     "ticker": "KARNAPHULI",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 566820,
-      "daily_turnover_bdt_cr": 0.06,
+      "avg_daily_volume": 532371,
+      "daily_turnover_bdt_cr": 0.05,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 28341,
-      "max_daily_accumulation_shares": 85023,
-      "max_order_bdt": 28341.0,
-      "directive": "Max single order: 28,341 shares (Tk 28,341) to prevent >1% execution slippage"
+      "max_single_order_shares": 26618,
+      "max_daily_accumulation_shares": 79855,
+      "max_order_bdt": 26618.0,
+      "directive": "Max single order: 26,618 shares (Tk 26,618) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -96,23 +96,23 @@
       "visual_gauge": "[ \u09f324.8 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591| \u09f358.9 ] (85.6% (Truncated))",
       "conviction_bonus": -10.0,
       "is_truncated_window": true,
-      "bars_evaluated": 100,
+      "bars_evaluated": 101,
       "signal": "Price is at 85.6% of 52-week high (near \u09f358.9) \u2014 elevated mean-reversion risk"
     },
     "total_precision_bonus": -10.0
   },
   "pattern_dna": {
     "ticker": "KARNAPHULI",
-    "audited_at": "2026-11-15 19:28:04",
+    "audited_at": "2026-11-16 17:18:14",
     "worth_vs_greed": {
       "current_price": 54.0,
       "intrinsic_worth": 6.08,
       "margin_of_safety_pct": -88.7,
-      "extension_froth_score": 70.0,
-      "greed_index": 70.0,
-      "rsi_14": 68.8,
-      "price_vs_ema50_pct": 20.6,
-      "price_vs_ema200_pct": 55.1,
+      "extension_froth_score": 60.0,
+      "greed_index": 60.0,
+      "rsi_14": 72.3,
+      "price_vs_ema50_pct": 19.6,
+      "price_vs_ema200_pct": 54.3,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f30.76, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
@@ -124,9 +124,9 @@
         "long_term_target_asset": 70.2,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
-      "status": "OVERVALUED_EUPHORIA",
-      "worth_decision": "SELL_TAKE_PROFIT",
-      "reason": "Price is 88.7% above intrinsic worth while market greed is euphoric (70.0/100). Danger of sharp mean reversion.",
+      "status": "CHRONIC_OVERVALUATION",
+      "worth_decision": "AVOID",
+      "reason": "Fundamental value severely lags stock price (MoS: -88.7%).",
       "is_blacklisted": true,
       "blacklist_reason": "Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-29 \u2014 Price up +4.42% with poor fundamentals (Negative EPS)]",
       "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-29 \u2014 Price up +4.42% with poor fundamentals (Negative EPS)]"
@@ -134,31 +134,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -2.0,
+          "return_pct": -3.05,
           "high": 58.9,
           "low": 53.6,
           "range_volatility_pct": 9.89
         },
         "monthly_21d": {
-          "return_pct": 9.09,
+          "return_pct": 8.87,
           "high": 58.9,
           "low": 48.0,
           "range_volatility_pct": 22.71
         },
         "quarterly_63d": {
-          "return_pct": 97.8,
+          "return_pct": 92.86,
           "high": 58.9,
           "low": 26.9,
           "range_volatility_pct": 118.96
         },
         "half_yearly_126d": {
-          "return_pct": 67.7,
+          "return_pct": 68.22,
           "high": 58.9,
           "low": 24.8,
           "range_volatility_pct": 137.5
         },
         "yearly_252d": {
-          "return_pct": 89.47,
+          "return_pct": 90.81,
           "high": 58.9,
           "low": 23.0,
           "range_volatility_pct": 156.09
@@ -274,11 +274,11 @@
       "macd": "bearish_crossover",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 2.03,
+      "atr": 1.94,
       "rsi_value": 64.32,
       "last_close": 54.0,
-      "sma20": 52.74,
-      "sma50": 41.84,
+      "sma20": 52.81,
+      "sma50": 42.34,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -357,15 +357,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 562603,
-        "avg_volume": 537666.0,
+        "last_volume": 30411,
+        "avg_volume": 518500.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.01,
-        "avg_volume": 556153.0,
-        "today_volume": 562603,
+        "spike_ratio": 0.06,
+        "avg_volume": 537666.0,
+        "today_volume": 30411,
         "detail": "ok"
       },
       "serial_trading": {
@@ -384,20 +384,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": -0.37,
+        "price_change_3d": 0.0,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 50.97,
+    "composite_score": 50.65,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.671,
-      "technical": 0.203,
-      "governance": 0.126,
+      "fundamental": 0.665,
+      "technical": 0.204,
+      "governance": 0.131,
       "sentiment": 0.0
     }
   }

@@ -2,18 +2,18 @@
   "ticker": "CAPMBDBLMF",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-15T13:27:53.869178",
-  "asof_price_date": "2026-11-15",
+  "analyzed_at": "2026-11-16T11:18:05.110867",
+  "asof_price_date": "2026-11-16",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 19.7247,
+    "rsi_14": 19.1198,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "HOLD",
-  "confidence": 46.48,
+  "confidence": 46.25,
   "trajectory": {
     "direction": "RISE_PREDICTED",
     "direction_icon": "\ud83d\udfe2",
@@ -96,14 +96,14 @@
       "visual_gauge": "[ \u09f37.2 |\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f312.4 ] (0.0% (Truncated))",
       "conviction_bonus": 10.0,
       "is_truncated_window": true,
-      "bars_evaluated": 99,
+      "bars_evaluated": 100,
       "signal": "Price is at the bottom 0.0% of 52-week channel (near \u09f37.2 floor) \u2014 high margin of safety"
     },
     "total_precision_bonus": 10.0
   },
   "pattern_dna": {
     "ticker": "CAPMBDBLMF",
-    "audited_at": "2026-11-15 19:27:53",
+    "audited_at": "2026-11-16 17:18:05",
     "worth_vs_greed": {
       "current_price": 7.2,
       "intrinsic_worth": 3.6,
@@ -111,8 +111,8 @@
       "extension_froth_score": 10.0,
       "greed_index": 10.0,
       "rsi_14": 100.0,
-      "price_vs_ema50_pct": -12.1,
-      "price_vs_ema200_pct": -20.8,
+      "price_vs_ema50_pct": -11.7,
+      "price_vs_ema200_pct": -20.7,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -145,19 +145,19 @@
           "range_volatility_pct": 0.0
         },
         "quarterly_63d": {
-          "return_pct": -30.77,
+          "return_pct": -32.08,
           "high": 11.6,
           "low": 7.2,
           "range_volatility_pct": 61.11
         },
         "half_yearly_126d": {
-          "return_pct": -15.29,
+          "return_pct": -18.18,
           "high": 13.3,
           "low": 7.2,
           "range_volatility_pct": 84.72
         },
         "yearly_252d": {
-          "return_pct": 1.41,
+          "return_pct": 0.0,
           "high": 13.3,
           "low": 7.0,
           "range_volatility_pct": 90.0
@@ -277,7 +277,7 @@
       "rsi_value": 18.07,
       "last_close": 7.2,
       "sma20": 7.2,
-      "sma50": 8.41,
+      "sma50": 8.35,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -349,13 +349,13 @@
         "flag": false,
         "price_chg": 0,
         "last_volume": 0,
-        "avg_volume": 88224.0,
+        "avg_volume": 57273.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
         "spike_ratio": 0.0,
-        "avg_volume": 124437.0,
+        "avg_volume": 88224.0,
         "today_volume": 0,
         "detail": "ok"
       },
@@ -382,13 +382,13 @@
     }
   },
   "composite": {
-    "composite_score": 46.48,
+    "composite_score": 46.25,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.671,
-      "technical": 0.203,
-      "governance": 0.126,
+      "fundamental": 0.665,
+      "technical": 0.204,
+      "governance": 0.131,
       "sentiment": 0.0
     }
   }

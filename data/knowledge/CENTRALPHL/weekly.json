@@ -2,18 +2,18 @@
   "ticker": "CENTRALPHL",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-15T13:27:54.117088",
-  "asof_price_date": "2026-11-15",
+  "analyzed_at": "2026-11-16T11:18:05.333801",
+  "asof_price_date": "2026-11-16",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 49.583,
+    "rsi_14": 49.3156,
     "pe_ratio": null,
     "debt_equity": null
   },
-  "signal": "HOLD",
-  "confidence": 45.22,
+  "signal": "SELL",
+  "confidence": 44.97,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -23,10 +23,10 @@
     "short_term": {
       "predicted_path": "Upward momentum swing",
       "upside_potential_pct": "+4.7%",
-      "downside_risk_pct": "-3.5%",
+      "downside_risk_pct": "-2.4%",
       "target_price": 8.9,
-      "support_price": 8.2,
-      "risk_reward_ratio": "1.3x"
+      "support_price": 8.3,
+      "risk_reward_ratio": "2.0x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 8.5,
-    "stop_loss": 8.12,
-    "target": 9.26
+    "stop_loss": 8.14,
+    "target": 9.22
   },
   "precision": {
     "ticker": "CENTRALPHL",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 184524,
+      "avg_daily_volume": 179183,
       "daily_turnover_bdt_cr": 0.02,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 9226,
-      "max_daily_accumulation_shares": 27678,
-      "max_order_bdt": 9226.0,
-      "directive": "Max single order: 9,226 shares (Tk 9,226) to prevent >1% execution slippage"
+      "max_single_order_shares": 8959,
+      "max_daily_accumulation_shares": 26877,
+      "max_order_bdt": 8959.0,
+      "directive": "Max single order: 8,959 shares (Tk 8,959) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -96,23 +96,23 @@
       "visual_gauge": "[ \u09f37.1 |\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591| \u09f310.2 ] (45.2% (Truncated))",
       "conviction_bonus": 0.0,
       "is_truncated_window": true,
-      "bars_evaluated": 99,
+      "bars_evaluated": 100,
       "signal": "Price is in mid-channel (45.2% between \u09f37.1 and \u09f310.2)"
     },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "CENTRALPHL",
-    "audited_at": "2026-11-15 19:27:54",
+    "audited_at": "2026-11-16 17:18:05",
     "worth_vs_greed": {
       "current_price": 8.5,
       "intrinsic_worth": 4.25,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 20.0,
       "greed_index": 20.0,
-      "rsi_14": 63.6,
-      "price_vs_ema50_pct": -0.6,
-      "price_vs_ema200_pct": -11.8,
+      "rsi_14": 60.0,
+      "price_vs_ema50_pct": -0.5,
+      "price_vs_ema200_pct": -11.7,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -133,19 +133,19 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -2.3,
+          "return_pct": -1.16,
           "high": 8.8,
           "low": 8.4,
           "range_volatility_pct": 4.76
         },
         "monthly_21d": {
-          "return_pct": 4.94,
+          "return_pct": 2.41,
           "high": 8.8,
           "low": 8.1,
           "range_volatility_pct": 8.64
         },
         "quarterly_63d": {
-          "return_pct": -11.46,
+          "return_pct": -13.27,
           "high": 10.2,
           "low": 8.0,
           "range_volatility_pct": 27.5
@@ -273,10 +273,10 @@
       "macd": "neutral",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 0.25,
+      "atr": 0.24,
       "rsi_value": 50.35,
       "last_close": 8.5,
-      "sma20": 8.45,
+      "sma20": 8.46,
       "sma50": 8.43,
       "sma200": null,
       "support_resistance": {
@@ -350,15 +350,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 396116,
-        "avg_volume": 189470.0,
+        "last_volume": 17701,
+        "avg_volume": 181436.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 2.16,
-        "avg_volume": 183249.0,
-        "today_volume": 396116,
+        "spike_ratio": 0.09,
+        "avg_volume": 189470.0,
+        "today_volume": 17701,
         "detail": "ok"
       },
       "serial_trading": {
@@ -377,20 +377,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": -2.3,
+        "price_change_3d": 0.0,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 45.22,
+    "composite_score": 44.97,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.671,
-      "technical": 0.203,
-      "governance": 0.126,
+      "fundamental": 0.665,
+      "technical": 0.204,
+      "governance": 0.131,
       "sentiment": 0.0
     }
   }

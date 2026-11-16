@@ -1,24 +1,24 @@
 {
   "ticker": "TILIL",
-  "audited_at": "2026-11-15 19:28:19",
+  "audited_at": "2026-11-16 17:18:28",
   "worth_vs_greed": {
-    "current_price": 42.1,
-    "intrinsic_worth": 21.05,
+    "current_price": 42.3,
+    "intrinsic_worth": 21.15,
     "margin_of_safety_pct": -50.0,
     "extension_froth_score": 20.0,
     "greed_index": 20.0,
-    "rsi_14": 49.5,
-    "price_vs_ema50_pct": -3.6,
-    "price_vs_ema200_pct": -8.3,
+    "rsi_14": 52.1,
+    "price_vs_ema50_pct": -3.0,
+    "price_vs_ema200_pct": -7.8,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f341.3 \u2013 \u09f342.5",
-      "chase_cutoff_price": 43.2,
-      "when_to_wait": "If price opens or rises above \u09f343.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f341.3.",
-      "weekly_target_short": 43.6,
-      "monthly_target_swing": 48.4,
-      "long_term_target_asset": 54.7,
+      "optimal_entry_corridor": "\u09f341.5 \u2013 \u09f342.7",
+      "chase_cutoff_price": 43.4,
+      "when_to_wait": "If price opens or rises above \u09f343.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f341.5.",
+      "weekly_target_short": 43.8,
+      "monthly_target_swing": 48.6,
+      "long_term_target_asset": 55.0,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -30,31 +30,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 0.24,
+        "return_pct": 2.17,
         "high": 44.5,
         "low": 41.0,
         "range_volatility_pct": 8.54
       },
       "monthly_21d": {
-        "return_pct": -5.61,
-        "high": 45.3,
+        "return_pct": -5.58,
+        "high": 44.9,
         "low": 40.5,
-        "range_volatility_pct": 11.85
+        "range_volatility_pct": 10.86
       },
       "quarterly_63d": {
-        "return_pct": 4.73,
+        "return_pct": 3.42,
         "high": 50.4,
         "low": 39.5,
         "range_volatility_pct": 27.59
       },
       "half_yearly_126d": {
-        "return_pct": -49.94,
+        "return_pct": -49.4,
         "high": 95.8,
         "low": 34.3,
         "range_volatility_pct": 179.3
       },
       "yearly_252d": {
-        "return_pct": -1.17,
+        "return_pct": 0.48,
         "high": 95.8,
         "low": 34.3,
         "range_volatility_pct": 179.3
@@ -66,7 +66,7 @@
       "avg_wave_duration_bars": 29
     },
     "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-16.5%). Wait for stabilizing base.",
+    "phase_guidance": "Ongoing pullback from peak (-16.1%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Jun",

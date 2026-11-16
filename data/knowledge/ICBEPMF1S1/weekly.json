@@ -2,18 +2,18 @@
   "ticker": "ICBEPMF1S1",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-15T13:28:02.530624",
-  "asof_price_date": "2026-11-15",
+  "analyzed_at": "2026-11-16T11:18:12.310152",
+  "asof_price_date": "2026-11-16",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 58.7168,
+    "rsi_14": 58.6078,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 44.71,
+  "confidence": 44.47,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 5.8,
-    "stop_loss": 5.39,
-    "target": 6.62
+    "stop_loss": 5.41,
+    "target": 6.58
   },
   "precision": {
     "ticker": "ICBEPMF1S1",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 329189,
+      "avg_daily_volume": 318972,
       "daily_turnover_bdt_cr": 0.03,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 16459,
-      "max_daily_accumulation_shares": 49378,
-      "max_order_bdt": 16459.0,
-      "directive": "Max single order: 16,459 shares (Tk 16,459) to prevent >1% execution slippage"
+      "max_single_order_shares": 15948,
+      "max_daily_accumulation_shares": 47845,
+      "max_order_bdt": 15948.0,
+      "directive": "Max single order: 15,948 shares (Tk 15,948) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -96,23 +96,23 @@
       "visual_gauge": "[ \u09f33.2 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591| \u09f36.5 ] (78.8% (Truncated))",
       "conviction_bonus": 5.0,
       "is_truncated_window": true,
-      "bars_evaluated": 100,
+      "bars_evaluated": 101,
       "signal": "Price is in upper channel (78.8%) \u2014 upward breakout momentum"
     },
     "total_precision_bonus": 5.0
   },
   "pattern_dna": {
     "ticker": "ICBEPMF1S1",
-    "audited_at": "2026-11-15 19:28:02",
+    "audited_at": "2026-11-16 17:18:12",
     "worth_vs_greed": {
       "current_price": 5.8,
       "intrinsic_worth": 2.9,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 60.0,
       "greed_index": 60.0,
-      "rsi_14": 42.9,
-      "price_vs_ema50_pct": 13.2,
-      "price_vs_ema200_pct": 22.6,
+      "rsi_14": 54.5,
+      "price_vs_ema50_pct": 12.6,
+      "price_vs_ema200_pct": 22.4,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -133,13 +133,13 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 1.75,
+          "return_pct": 3.57,
           "high": 5.9,
           "low": 5.5,
           "range_volatility_pct": 7.27
         },
         "monthly_21d": {
-          "return_pct": 0.0,
+          "return_pct": -3.33,
           "high": 6.3,
           "low": 5.5,
           "range_volatility_pct": 14.55
@@ -273,11 +273,11 @@
       "macd": "neutral",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 0.27,
+      "atr": 0.26,
       "rsi_value": 58.61,
       "last_close": 5.8,
-      "sma20": 5.87,
-      "sma50": 4.82,
+      "sma20": 5.86,
+      "sma50": 4.86,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -344,15 +344,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 451268,
-        "avg_volume": 344975.0,
+        "last_volume": 5011,
+        "avg_volume": 337849.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.33,
-        "avg_volume": 338344.0,
-        "today_volume": 451268,
+        "spike_ratio": 0.01,
+        "avg_volume": 344975.0,
+        "today_volume": 5011,
         "detail": "ok"
       },
       "serial_trading": {
@@ -371,20 +371,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": 1.75,
+        "price_change_3d": 0.0,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 44.71,
+    "composite_score": 44.47,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.671,
-      "technical": 0.203,
-      "governance": 0.126,
+      "fundamental": 0.665,
+      "technical": 0.204,
+      "governance": 0.131,
       "sentiment": 0.0
     }
   }

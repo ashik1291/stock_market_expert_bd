@@ -1,24 +1,24 @@
 {
   "ticker": "ALIF",
-  "audited_at": "2026-11-15 19:27:49",
+  "audited_at": "2026-11-16 17:18:00",
   "worth_vs_greed": {
-    "current_price": 4.4,
-    "intrinsic_worth": 2.2,
+    "current_price": 4.3,
+    "intrinsic_worth": 2.15,
     "margin_of_safety_pct": -50.0,
     "extension_froth_score": 30.0,
     "greed_index": 30.0,
     "rsi_14": 55.6,
-    "price_vs_ema50_pct": 2.4,
-    "price_vs_ema200_pct": -13.1,
+    "price_vs_ema50_pct": 0.0,
+    "price_vs_ema200_pct": -14.9,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f34.3 \u2013 \u09f34.4",
-      "chase_cutoff_price": 4.5,
-      "when_to_wait": "If price opens or rises above \u09f34.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f34.3.",
-      "weekly_target_short": 4.6,
-      "monthly_target_swing": 5.1,
-      "long_term_target_asset": 5.7,
+      "optimal_entry_corridor": "\u09f34.2 \u2013 \u09f34.3",
+      "chase_cutoff_price": 4.4,
+      "when_to_wait": "If price opens or rises above \u09f34.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f34.2.",
+      "weekly_target_short": 4.5,
+      "monthly_target_swing": 4.9,
+      "long_term_target_asset": 5.6,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -31,34 +31,34 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 2.33,
+        "return_pct": 0.0,
         "high": 4.6,
         "low": 4.3,
         "range_volatility_pct": 6.98
       },
       "monthly_21d": {
-        "return_pct": -2.22,
+        "return_pct": -4.44,
         "high": 4.6,
         "low": 4.1,
         "range_volatility_pct": 12.2
       },
       "quarterly_63d": {
-        "return_pct": 7.32,
+        "return_pct": 0.0,
         "high": 5.1,
         "low": 3.7,
         "range_volatility_pct": 37.84
       },
       "half_yearly_126d": {
-        "return_pct": -22.81,
+        "return_pct": -25.86,
         "high": 6.1,
         "low": 3.2,
         "range_volatility_pct": 90.62
       },
       "yearly_252d": {
-        "return_pct": -44.3,
-        "high": 8.2,
+        "return_pct": -44.87,
+        "high": 7.9,
         "low": 3.2,
-        "range_volatility_pct": 156.25
+        "range_volatility_pct": 146.88
       }
     },
     "wave_metrics": {
@@ -67,7 +67,7 @@
       "avg_wave_duration_bars": 27.0
     },
     "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-13.7%). Wait for stabilizing base.",
+    "phase_guidance": "Ongoing pullback from peak (-15.7%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Aug",

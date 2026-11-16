@@ -2,18 +2,18 @@
   "ticker": "AOL",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-15T13:27:50.042892",
-  "asof_price_date": "2026-11-15",
+  "analyzed_at": "2026-11-16T11:18:01.301789",
+  "asof_price_date": "2026-11-16",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 44.2769,
+    "rsi_14": 44.2891,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 42.68,
+  "confidence": 42.43,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -23,10 +23,10 @@
     "short_term": {
       "predicted_path": "Upward momentum swing",
       "upside_potential_pct": "+7.1%",
-      "downside_risk_pct": "-5.2%",
+      "downside_risk_pct": "-4.5%",
       "target_price": 16.5,
-      "support_price": 14.6,
-      "risk_reward_ratio": "1.4x"
+      "support_price": 14.7,
+      "risk_reward_ratio": "1.6x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 15.4,
-    "stop_loss": 14.26,
-    "target": 17.68
+    "stop_loss": 14.29,
+    "target": 17.62
   },
   "precision": {
     "ticker": "AOL",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 109295,
+      "avg_daily_volume": 103123,
       "daily_turnover_bdt_cr": 0.01,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 5464,
-      "max_daily_accumulation_shares": 16394,
-      "max_order_bdt": 5464.0,
-      "directive": "Max single order: 5,464 shares (Tk 5,464) to prevent >1% execution slippage"
+      "max_single_order_shares": 5156,
+      "max_daily_accumulation_shares": 15468,
+      "max_order_bdt": 5156.0,
+      "directive": "Max single order: 5,156 shares (Tk 5,156) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -96,21 +96,21 @@
       "visual_gauge": "[ \u09f312.5 |\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591| \u09f318.7 ] (46.8% (Truncated))",
       "conviction_bonus": 0.0,
       "is_truncated_window": true,
-      "bars_evaluated": 100,
+      "bars_evaluated": 101,
       "signal": "Price is in mid-channel (46.8% between \u09f312.5 and \u09f318.7)"
     },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "AOL",
-    "audited_at": "2026-11-15 19:27:50",
+    "audited_at": "2026-11-16 17:18:01",
     "worth_vs_greed": {
       "current_price": 15.4,
       "intrinsic_worth": 7.7,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 30.0,
       "greed_index": 30.0,
-      "rsi_14": 43.3,
+      "rsi_14": 48.1,
       "price_vs_ema50_pct": -2.0,
       "price_vs_ema200_pct": -0.4,
       "merit_status": "NEUTRAL_MERIT",
@@ -134,25 +134,25 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -2.53,
+          "return_pct": -0.65,
           "high": 16.2,
           "low": 15.1,
           "range_volatility_pct": 7.28
         },
         "monthly_21d": {
-          "return_pct": -13.97,
-          "high": 18.1,
+          "return_pct": -12.5,
+          "high": 17.2,
           "low": 15.1,
-          "range_volatility_pct": 19.87
+          "range_volatility_pct": 13.91
         },
         "quarterly_63d": {
-          "return_pct": 7.69,
+          "return_pct": 4.76,
           "high": 18.7,
           "low": 13.5,
           "range_volatility_pct": 38.52
         },
         "half_yearly_126d": {
-          "return_pct": 2.67,
+          "return_pct": 4.05,
           "high": 18.7,
           "low": 12.5,
           "range_volatility_pct": 49.6
@@ -274,11 +274,11 @@
       "macd": "bearish_crossover",
       "sma_trend": "neutral",
       "bb": "inside_bands",
-      "atr": 0.76,
+      "atr": 0.74,
       "rsi_value": 44.33,
       "last_close": 15.4,
-      "sma20": 16.12,
-      "sma50": 15.62,
+      "sma20": 16.05,
+      "sma50": 15.65,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -353,15 +353,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 294742,
-        "avg_volume": 165112.0,
+        "last_volume": 32851,
+        "avg_volume": 160051.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.86,
-        "avg_volume": 158540.0,
-        "today_volume": 294742,
+        "spike_ratio": 0.2,
+        "avg_volume": 165112.0,
+        "today_volume": 32851,
         "detail": "ok"
       },
       "serial_trading": {
@@ -380,20 +380,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": -4.35,
+        "price_change_3d": 0.0,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 42.68,
+    "composite_score": 42.43,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.671,
-      "technical": 0.203,
-      "governance": 0.126,
+      "fundamental": 0.665,
+      "technical": 0.204,
+      "governance": 0.131,
       "sentiment": 0.0
     }
   }

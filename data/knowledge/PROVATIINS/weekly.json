@@ -2,18 +2,18 @@
   "ticker": "PROVATIINS",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-15T13:28:13.563938",
-  "asof_price_date": "2026-11-15",
+  "analyzed_at": "2026-11-16T11:18:22.253224",
+  "asof_price_date": "2026-11-16",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 60.5913,
+    "rsi_14": 60.572,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 43.19,
+  "confidence": 42.94,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -22,19 +22,19 @@
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+5.7%",
+      "upside_potential_pct": "+5.6%",
       "downside_risk_pct": "-3.8%",
-      "target_price": 58.9,
+      "target_price": 58.8,
       "support_price": 53.6,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+9.7%",
+      "upside_potential_pct": "+9.3%",
       "downside_risk_pct": "-10.1%",
-      "target_price": 61.1,
+      "target_price": 60.9,
       "trailing_stop": 50.1,
-      "risk_reward_ratio": "1.0x"
+      "risk_reward_ratio": "0.9x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 55.7,
-    "stop_loss": 52.48,
-    "target": 62.14
+    "stop_loss": 52.61,
+    "target": 61.88
   },
   "precision": {
     "ticker": "PROVATIINS",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 737221,
+      "avg_daily_volume": 689031,
       "daily_turnover_bdt_cr": 0.07,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 36861,
-      "max_daily_accumulation_shares": 110583,
-      "max_order_bdt": 36861.0,
-      "directive": "Max single order: 36,861 shares (Tk 36,861) to prevent >1% execution slippage"
+      "max_single_order_shares": 34451,
+      "max_daily_accumulation_shares": 103354,
+      "max_order_bdt": 34451.0,
+      "directive": "Max single order: 34,451 shares (Tk 34,451) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -96,23 +96,23 @@
       "visual_gauge": "[ \u09f322.9 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591| \u09f361.2 ] (85.6% (Truncated))",
       "conviction_bonus": -10.0,
       "is_truncated_window": true,
-      "bars_evaluated": 100,
+      "bars_evaluated": 101,
       "signal": "Price is at 85.6% of 52-week high (near \u09f361.2) \u2014 elevated mean-reversion risk"
     },
     "total_precision_bonus": -10.0
   },
   "pattern_dna": {
     "ticker": "PROVATIINS",
-    "audited_at": "2026-11-15 19:28:13",
+    "audited_at": "2026-11-16 17:18:22",
     "worth_vs_greed": {
       "current_price": 55.7,
       "intrinsic_worth": 27.85,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 70.0,
       "greed_index": 70.0,
-      "rsi_14": 53.5,
-      "price_vs_ema50_pct": 18.7,
-      "price_vs_ema200_pct": 51.3,
+      "rsi_14": 56.7,
+      "price_vs_ema50_pct": 17.8,
+      "price_vs_ema200_pct": 50.5,
       "merit_status": "SPECULATIVE_JUNK_PUMP",
       "merit_reason": "Price is surging aggressively without positive EPS backing. Pure speculative risk.",
       "timing_directives": {
@@ -134,19 +134,19 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -5.59,
+          "return_pct": -2.45,
           "high": 59.2,
-          "low": 55.2,
-          "range_volatility_pct": 7.25
+          "low": 55.0,
+          "range_volatility_pct": 7.64
         },
         "monthly_21d": {
-          "return_pct": 9.0,
+          "return_pct": 7.53,
           "high": 61.2,
-          "low": 50.3,
-          "range_volatility_pct": 21.67
+          "low": 53.4,
+          "range_volatility_pct": 14.61
         },
         "quarterly_63d": {
-          "return_pct": 105.54,
+          "return_pct": 101.81,
           "high": 61.2,
           "low": 26.2,
           "range_volatility_pct": 133.59
@@ -158,7 +158,7 @@
           "range_volatility_pct": 167.25
         },
         "yearly_252d": {
-          "return_pct": 64.79,
+          "return_pct": 66.77,
           "high": 61.2,
           "low": 22.9,
           "range_volatility_pct": 167.25
@@ -274,11 +274,11 @@
       "macd": "bearish_crossover",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 2.15,
+      "atr": 2.06,
       "rsi_value": 60.43,
       "last_close": 55.7,
-      "sma20": 56.93,
-      "sma50": 43.41,
+      "sma20": 56.88,
+      "sma50": 43.97,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -345,15 +345,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 382378,
-        "avg_volume": 592984.0,
+        "last_volume": 100556,
+        "avg_volume": 582525.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.64,
-        "avg_volume": 595750.0,
-        "today_volume": 382378,
+        "spike_ratio": 0.17,
+        "avg_volume": 592984.0,
+        "today_volume": 100556,
         "detail": "ok"
       },
       "serial_trading": {
@@ -372,20 +372,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": -2.28,
+        "price_change_3d": 0.0,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 43.19,
+    "composite_score": 42.94,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.671,
-      "technical": 0.203,
-      "governance": 0.126,
+      "fundamental": 0.665,
+      "technical": 0.204,
+      "governance": 0.131,
       "sentiment": 0.0
     }
   }

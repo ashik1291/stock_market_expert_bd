@@ -2,18 +2,18 @@
   "ticker": "BDFINANCE",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-15T13:27:52.009643",
-  "asof_price_date": "2026-11-15",
+  "analyzed_at": "2026-11-16T11:18:03.329613",
+  "asof_price_date": "2026-11-16",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 52.7342,
+    "rsi_14": 52.4553,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 44.2,
+  "confidence": 43.96,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 11.5,
-    "stop_loss": 10.88,
-    "target": 12.74
+    "stop_loss": 10.91,
+    "target": 12.68
   },
   "precision": {
     "ticker": "BDFINANCE",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 126341,
+      "avg_daily_volume": 113647,
       "daily_turnover_bdt_cr": 0.01,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 6317,
-      "max_daily_accumulation_shares": 18951,
-      "max_order_bdt": 6317.0,
-      "directive": "Max single order: 6,317 shares (Tk 6,317) to prevent >1% execution slippage"
+      "max_single_order_shares": 5682,
+      "max_daily_accumulation_shares": 17047,
+      "max_order_bdt": 5682.0,
+      "directive": "Max single order: 5,682 shares (Tk 5,682) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -96,22 +96,22 @@
       "visual_gauge": "[ \u09f39.8 |\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f317.9 ] (21.0% (Truncated))",
       "conviction_bonus": 10.0,
       "is_truncated_window": true,
-      "bars_evaluated": 100,
+      "bars_evaluated": 101,
       "signal": "Price is at the bottom 21.0% of 52-week channel (near \u09f39.8 floor) \u2014 high margin of safety"
     },
     "total_precision_bonus": 10.0
   },
   "pattern_dna": {
     "ticker": "BDFINANCE",
-    "audited_at": "2026-11-15 19:27:51",
+    "audited_at": "2026-11-16 17:18:03",
     "worth_vs_greed": {
       "current_price": 11.5,
       "intrinsic_worth": 5.75,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 20.0,
       "greed_index": 20.0,
-      "rsi_14": 62.5,
-      "price_vs_ema50_pct": -2.7,
+      "rsi_14": 71.4,
+      "price_vs_ema50_pct": -2.6,
       "price_vs_ema200_pct": -7.9,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
@@ -145,19 +145,19 @@
           "range_volatility_pct": 19.19
         },
         "quarterly_63d": {
-          "return_pct": -16.06,
+          "return_pct": -17.27,
           "high": 14.8,
           "low": 9.8,
           "range_volatility_pct": 51.02
         },
         "half_yearly_126d": {
-          "return_pct": 18.56,
+          "return_pct": 21.05,
           "high": 17.9,
           "low": 9.3,
           "range_volatility_pct": 92.47
         },
         "yearly_252d": {
-          "return_pct": -8.0,
+          "return_pct": -10.85,
           "high": 17.9,
           "low": 7.0,
           "range_volatility_pct": 155.71
@@ -273,11 +273,11 @@
       "macd": "neutral",
       "sma_trend": "neutral",
       "bb": "inside_bands",
-      "atr": 0.41,
+      "atr": 0.39,
       "rsi_value": 52.67,
       "last_close": 11.5,
-      "sma20": 11.17,
-      "sma50": 11.94,
+      "sma20": 11.19,
+      "sma50": 11.92,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -348,15 +348,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 131991,
-        "avg_volume": 121744.0,
+        "last_volume": 4557,
+        "avg_volume": 118591.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.03,
-        "avg_volume": 128123.0,
-        "today_volume": 131991,
+        "spike_ratio": 0.04,
+        "avg_volume": 121744.0,
+        "today_volume": 4557,
         "detail": "ok"
       },
       "serial_trading": {
@@ -382,13 +382,13 @@
     }
   },
   "composite": {
-    "composite_score": 44.2,
+    "composite_score": 43.96,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.671,
-      "technical": 0.203,
-      "governance": 0.126,
+      "fundamental": 0.665,
+      "technical": 0.204,
+      "governance": 0.131,
       "sentiment": 0.0
     }
   }

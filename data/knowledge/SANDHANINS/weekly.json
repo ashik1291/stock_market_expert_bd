@@ -2,18 +2,18 @@
   "ticker": "SANDHANINS",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-15T13:28:16.302787",
-  "asof_price_date": "2026-11-15",
+  "analyzed_at": "2026-11-16T11:18:25.129305",
+  "asof_price_date": "2026-11-16",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 53.2783,
+    "rsi_14": 53.141,
     "pe_ratio": null,
     "debt_equity": null
   },
-  "signal": "HOLD",
-  "confidence": 45.22,
+  "signal": "SELL",
+  "confidence": 44.97,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -23,10 +23,10 @@
     "short_term": {
       "predicted_path": "Upward momentum swing",
       "upside_potential_pct": "+3.6%",
-      "downside_risk_pct": "-2.7%",
+      "downside_risk_pct": "-2.3%",
       "target_price": 22.8,
-      "support_price": 21.4,
-      "risk_reward_ratio": "1.3x"
+      "support_price": 21.5,
+      "risk_reward_ratio": "1.6x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 22.0,
-    "stop_loss": 21.18,
-    "target": 23.64
+    "stop_loss": 21.2,
+    "target": 23.6
   },
   "precision": {
     "ticker": "SANDHANINS",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 140718,
+      "avg_daily_volume": 137608,
       "daily_turnover_bdt_cr": 0.01,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 7035,
-      "max_daily_accumulation_shares": 21107,
-      "max_order_bdt": 7035.0,
-      "directive": "Max single order: 7,035 shares (Tk 7,035) to prevent >1% execution slippage"
+      "max_single_order_shares": 6880,
+      "max_daily_accumulation_shares": 20641,
+      "max_order_bdt": 6880.0,
+      "directive": "Max single order: 6,880 shares (Tk 6,880) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -96,14 +96,14 @@
       "visual_gauge": "[ \u09f317.1 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591| \u09f324.5 ] (66.2% (Truncated))",
       "conviction_bonus": 0.0,
       "is_truncated_window": true,
-      "bars_evaluated": 100,
+      "bars_evaluated": 101,
       "signal": "Price is in mid-channel (66.2% between \u09f317.1 and \u09f324.5)"
     },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "SANDHANINS",
-    "audited_at": "2026-11-15 19:28:16",
+    "audited_at": "2026-11-16 17:18:25",
     "worth_vs_greed": {
       "current_price": 22.0,
       "intrinsic_worth": 11.0,
@@ -111,8 +111,8 @@
       "extension_froth_score": 30.0,
       "greed_index": 30.0,
       "rsi_14": 50.0,
-      "price_vs_ema50_pct": 2.4,
-      "price_vs_ema200_pct": 4.5,
+      "price_vs_ema50_pct": 2.3,
+      "price_vs_ema200_pct": 4.4,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -133,25 +133,25 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 2.33,
+          "return_pct": 3.29,
           "high": 22.5,
           "low": 21.2,
           "range_volatility_pct": 6.13
         },
         "monthly_21d": {
-          "return_pct": -3.08,
-          "high": 23.0,
+          "return_pct": -3.51,
+          "high": 22.8,
           "low": 21.2,
-          "range_volatility_pct": 8.49
+          "range_volatility_pct": 7.55
         },
         "quarterly_63d": {
-          "return_pct": 13.4,
+          "return_pct": 11.68,
           "high": 24.5,
           "low": 17.8,
           "range_volatility_pct": 37.64
         },
         "half_yearly_126d": {
-          "return_pct": -7.17,
+          "return_pct": -9.47,
           "high": 27.6,
           "low": 17.1,
           "range_volatility_pct": 61.4
@@ -273,11 +273,11 @@
       "macd": "neutral",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 0.55,
+      "atr": 0.53,
       "rsi_value": 52.95,
       "last_close": 22.0,
-      "sma20": 21.99,
-      "sma50": 21.29,
+      "sma20": 21.98,
+      "sma50": 21.34,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -350,15 +350,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 221676,
-        "avg_volume": 192227.0,
+        "last_volume": 19637,
+        "avg_volume": 179749.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.11,
-        "avg_volume": 199902.0,
-        "today_volume": 221676,
+        "spike_ratio": 0.1,
+        "avg_volume": 192227.0,
+        "today_volume": 19637,
         "detail": "ok"
       },
       "serial_trading": {
@@ -377,20 +377,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": -1.35,
+        "price_change_3d": 0.0,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 45.22,
+    "composite_score": 44.97,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.671,
-      "technical": 0.203,
-      "governance": 0.126,
+      "fundamental": 0.665,
+      "technical": 0.204,
+      "governance": 0.131,
       "sentiment": 0.0
     }
   }

@@ -2,40 +2,129 @@
   "ok": true,
   "horizon_bars": 21,
   "stride": 5,
-  "eval_dates": 0,
+  "eval_dates": 34,
   "ema_halflife_periods": 6,
   "weights": {
-    "div": 1.0,
-    "value": 1.0,
-    "rsi": 1.0,
-    "debt": 1.0
+    "div": 1.4,
+    "value": 1.4,
+    "rsi": 0.9932,
+    "debt": 0.0
   },
   "stats": {
     "div": {
-      "n": 0,
-      "ema_ic": 0.0,
-      "mean_ic": 0.0,
-      "t_nw": 0.0
+      "n": 34,
+      "ema_ic": 0.1818,
+      "mean_ic": 0.1381,
+      "se_nw": 0.037,
+      "t_nw": 3.735,
+      "weight": 1.4
     },
     "value": {
-      "n": 0,
-      "ema_ic": 0.0,
-      "mean_ic": 0.0,
-      "t_nw": 0.0
+      "n": 34,
+      "ema_ic": 0.0951,
+      "mean_ic": 0.0814,
+      "se_nw": 0.0531,
+      "t_nw": 1.533,
+      "weight": 1.4
     },
     "rsi": {
-      "n": 0,
-      "ema_ic": 0.0,
-      "mean_ic": 0.0,
-      "t_nw": 0.0
+      "n": 34,
+      "ema_ic": 0.0298,
+      "mean_ic": 0.0403,
+      "se_nw": 0.0559,
+      "t_nw": 0.721,
+      "weight": 0.9932
     },
     "debt": {
-      "n": 0,
-      "ema_ic": 0.0,
-      "mean_ic": 0.0,
-      "t_nw": 0.0
+      "n": 34,
+      "ema_ic": -0.1425,
+      "mean_ic": -0.0619,
+      "se_nw": 0.0469,
+      "t_nw": -1.32,
+      "weight": 0.0
     }
   },
-  "recent_ics": [],
+  "recent_ics": [
+    {
+      "date": "2026-08-09",
+      "n": 30,
+      "ics": {
+        "div": 0.1017,
+        "value": 0.1444,
+        "rsi": -0.0398,
+        "debt": -0.4205
+      }
+    },
+    {
+      "date": "2026-08-16",
+      "n": 30,
+      "ics": {
+        "div": 0.4727,
+        "value": 0.2133,
+        "rsi": 0.2018,
+        "debt": -0.2174
+      }
+    },
+    {
+      "date": "2026-08-23",
+      "n": 30,
+      "ics": {
+        "div": -0.0452,
+        "value": 0.0674,
+        "rsi": 0.1644,
+        "debt": -0.1546
+      }
+    },
+    {
+      "date": "2026-08-31",
+      "n": 30,
+      "ics": {
+        "div": -0.107,
+        "value": -0.2427,
+        "rsi": -0.2845,
+        "debt": 0.0637
+      }
+    },
+    {
+      "date": "2026-09-07",
+      "n": 30,
+      "ics": {
+        "div": 0.1911,
+        "value": 0.0452,
+        "rsi": 0.1221,
+        "debt": -0.0496
+      }
+    },
+    {
+      "date": "2026-09-14",
+      "n": 31,
+      "ics": {
+        "div": 0.0809,
+        "value": 0.0934,
+        "rsi": 0.065,
+        "debt": -0.2687
+      }
+    },
+    {
+      "date": "2026-09-21",
+      "n": 31,
+      "ics": {
+        "div": 0.5714,
+        "value": 0.4367,
+        "rsi": 0.1024,
+        "debt": -0.2219
+      }
+    },
+    {
+      "date": "2026-09-28",
+      "n": 31,
+      "ics": {
+        "div": 0.575,
+        "value": 0.4319,
+        "rsi": 0.0698,
+        "debt": -0.3334
+      }
+    }
+  ],
   "model_note": "weights = max(0, EMA_IC)/0.03 capped 1.4; shrink toward 0"
 }

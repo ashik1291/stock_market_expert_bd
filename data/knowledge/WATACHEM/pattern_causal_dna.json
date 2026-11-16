@@ -1,61 +1,61 @@
 {
   "ticker": "WATACHEM",
-  "audited_at": "2026-11-15 19:28:21",
+  "audited_at": "2026-11-16 17:18:30",
   "worth_vs_greed": {
-    "current_price": 140.0,
-    "intrinsic_worth": 70.0,
+    "current_price": 154.0,
+    "intrinsic_worth": 77.0,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 40.0,
-    "greed_index": 40.0,
-    "rsi_14": 84.3,
-    "price_vs_ema50_pct": 10.3,
-    "price_vs_ema200_pct": 9.9,
-    "merit_status": "NEUTRAL_MERIT",
-    "merit_reason": "Valuation is within normal historical ranges.",
+    "extension_froth_score": 60.0,
+    "greed_index": 60.0,
+    "rsi_14": 90.1,
+    "price_vs_ema50_pct": 20.3,
+    "price_vs_ema200_pct": 20.6,
+    "merit_status": "SPECULATIVE_JUNK_PUMP",
+    "merit_reason": "Price is surging aggressively without positive EPS backing. Pure speculative risk.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f3137.2 \u2013 \u09f3141.4",
-      "chase_cutoff_price": 143.5,
-      "when_to_wait": "If price opens or rises above \u09f3143.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3137.2.",
-      "weekly_target_short": 144.9,
-      "monthly_target_swing": 161.0,
-      "long_term_target_asset": 182.0,
+      "optimal_entry_corridor": "\u09f3150.9 \u2013 \u09f3155.5",
+      "chase_cutoff_price": 157.8,
+      "when_to_wait": "If price opens or rises above \u09f3157.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3150.9.",
+      "weekly_target_short": 159.4,
+      "monthly_target_swing": 177.1,
+      "long_term_target_asset": 200.2,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
-    "status": "CHRONIC_OVERVALUATION",
-    "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -50.0%).",
+    "status": "SPECULATIVE_GREED",
+    "worth_decision": "DO_NOT_BUY_WAIT_FOR_PULLBACK",
+    "reason": "Extreme short-term greed (60.0/100) or speculative pump without earnings merit. Risk of buying at local peak.",
     "is_blacklisted": true,
-    "blacklist_reason": "Blocked by Forensic Surveillance [CRITICAL: ABNORMAL_VOLUME_SURGE on 2026-11-15 \u2014 Low-float surge is 4.1x 20-day average (51,442 vs 12,653) | Price up +9.72% on untracked / high-risk security without verified earnings]",
-    "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [CRITICAL: ABNORMAL_VOLUME_SURGE on 2026-11-15 \u2014 Low-float surge is 4.1x 20-day average (51,442 vs 12,653) | Price up +9.72% on untracked / high-risk security without verified earnings]"
+    "blacklist_reason": "Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-11-16 \u2014 Low-float spike is 21.8x 20-day average (293,728 vs 13,480) | Price up +10.0% on untracked / high-risk security without verified earnings | Consecutive upper circuit limit locks (+9.7%, +10.0%)]",
+    "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-11-16 \u2014 Low-float spike is 21.8x 20-day average (293,728 vs 13,480) | Price up +10.0% on untracked / high-risk security without verified earnings | Consecutive upper circuit limit locks (+9.7%, +10.0%)]"
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 14.19,
-        "high": 140.0,
+        "return_pct": 25.1,
+        "high": 154.0,
         "low": 120.0,
-        "range_volatility_pct": 16.67
+        "range_volatility_pct": 28.33
       },
       "monthly_21d": {
-        "return_pct": 10.94,
-        "high": 140.0,
+        "return_pct": 20.5,
+        "high": 154.0,
         "low": 112.3,
-        "range_volatility_pct": 24.67
+        "range_volatility_pct": 37.13
       },
       "quarterly_63d": {
-        "return_pct": 13.18,
-        "high": 149.9,
+        "return_pct": 26.13,
+        "high": 154.0,
         "low": 112.3,
-        "range_volatility_pct": 33.48
+        "range_volatility_pct": 37.13
       },
       "half_yearly_126d": {
-        "return_pct": -13.63,
+        "return_pct": -3.14,
         "high": 164.7,
         "low": 105.1,
         "range_volatility_pct": 56.71
       },
       "yearly_252d": {
-        "return_pct": 25.34,
+        "return_pct": 39.11,
         "high": 167.0,
         "low": 95.0,
         "range_volatility_pct": 75.79
@@ -67,7 +67,7 @@
       "avg_wave_duration_bars": 23.0
     },
     "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-6.6%). Wait for stabilizing base.",
+    "phase_guidance": "Ongoing pullback from peak (2.7%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Jun",

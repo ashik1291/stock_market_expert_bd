@@ -1,24 +1,24 @@
 {
   "ticker": "ICBIBANK",
-  "audited_at": "2026-11-15 19:28:02",
+  "audited_at": "2026-11-16 17:18:12",
   "worth_vs_greed": {
-    "current_price": 2.5,
-    "intrinsic_worth": 1.25,
+    "current_price": 2.4,
+    "intrinsic_worth": 1.2,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 60.0,
-    "greed_index": 60.0,
-    "rsi_14": 50.0,
-    "price_vs_ema50_pct": 0.1,
-    "price_vs_ema200_pct": -5.2,
+    "extension_froth_score": 50.0,
+    "greed_index": 50.0,
+    "rsi_14": 33.3,
+    "price_vs_ema50_pct": -3.7,
+    "price_vs_ema200_pct": -8.9,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f32.5 \u2013 \u09f32.5",
-      "chase_cutoff_price": 2.6,
-      "when_to_wait": "If price opens or rises above \u09f32.6, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f32.5.",
-      "weekly_target_short": 2.6,
-      "monthly_target_swing": 2.9,
-      "long_term_target_asset": 3.2,
+      "optimal_entry_corridor": "\u09f32.4 \u2013 \u09f32.4",
+      "chase_cutoff_price": 2.5,
+      "when_to_wait": "If price opens or rises above \u09f32.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f32.4.",
+      "weekly_target_short": 2.5,
+      "monthly_target_swing": 2.8,
+      "long_term_target_asset": 3.1,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -31,31 +31,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 0.0,
+        "return_pct": -4.0,
         "high": 2.6,
         "low": 2.4,
         "range_volatility_pct": 8.33
       },
       "monthly_21d": {
-        "return_pct": -3.85,
-        "high": 2.7,
+        "return_pct": -7.69,
+        "high": 2.6,
         "low": 2.4,
-        "range_volatility_pct": 12.5
+        "range_volatility_pct": 8.33
       },
       "quarterly_63d": {
-        "return_pct": -7.41,
+        "return_pct": -11.11,
         "high": 2.8,
         "low": 2.1,
         "range_volatility_pct": 33.33
       },
       "half_yearly_126d": {
-        "return_pct": 0.0,
+        "return_pct": -7.69,
         "high": 2.9,
         "low": 2.1,
         "range_volatility_pct": 38.1
       },
       "yearly_252d": {
-        "return_pct": -16.67,
+        "return_pct": -20.0,
         "high": 3.1,
         "low": 2.1,
         "range_volatility_pct": 47.62
@@ -66,8 +66,8 @@
       "median_correction_drop_pct": -13.3,
       "avg_wave_duration_bars": 13.0
     },
-    "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-7.4%). Wait for stabilizing base.",
+    "current_wave_phase": "BOTTOMING_SUPPORT",
+    "phase_guidance": "Drop (-11.1%) matches historical correction depth (-13.3%). Prepare to accumulate.",
     "top_seasonal_months": [
       {
         "month": "Jul",

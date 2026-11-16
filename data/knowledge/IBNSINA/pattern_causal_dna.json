@@ -1,60 +1,60 @@
 {
   "ticker": "IBNSINA",
-  "audited_at": "2026-11-15 19:28:01",
+  "audited_at": "2026-11-16 17:18:11",
   "worth_vs_greed": {
-    "current_price": 298.2,
+    "current_price": 300.5,
     "intrinsic_worth": 37.36,
-    "margin_of_safety_pct": -87.5,
+    "margin_of_safety_pct": -87.6,
     "extension_froth_score": 10.0,
     "greed_index": 10.0,
-    "rsi_14": 47.0,
-    "price_vs_ema50_pct": -2.4,
-    "price_vs_ema200_pct": -4.4,
+    "rsi_14": 63.3,
+    "price_vs_ema50_pct": -1.6,
+    "price_vs_ema200_pct": -3.6,
     "merit_status": "EARNINGS_BACKED_MERIT",
     "merit_reason": "Price supported by solid earnings (EPS: \u09f34.67, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f3292.2 \u2013 \u09f3301.2",
-      "chase_cutoff_price": 305.7,
-      "when_to_wait": "If price opens or rises above \u09f3305.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3292.2.",
-      "weekly_target_short": 308.6,
-      "monthly_target_swing": 342.9,
-      "long_term_target_asset": 387.7,
+      "optimal_entry_corridor": "\u09f3294.5 \u2013 \u09f3303.5",
+      "chase_cutoff_price": 308.0,
+      "when_to_wait": "If price opens or rises above \u09f3308.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3294.5.",
+      "weekly_target_short": 311.0,
+      "monthly_target_swing": 345.6,
+      "long_term_target_asset": 390.7,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -87.5%).",
+    "reason": "Fundamental value severely lags stock price (MoS: -87.6%).",
     "is_blacklisted": false,
     "blacklist_reason": null
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -0.37,
+        "return_pct": 1.21,
         "high": 301.1,
         "low": 295.0,
         "range_volatility_pct": 2.07
       },
       "monthly_21d": {
-        "return_pct": -3.21,
-        "high": 311.6,
+        "return_pct": -2.94,
+        "high": 307.4,
         "low": 289.6,
-        "range_volatility_pct": 7.6
+        "range_volatility_pct": 6.15
       },
       "quarterly_63d": {
-        "return_pct": -7.51,
+        "return_pct": -6.15,
         "high": 324.0,
         "low": 289.6,
         "range_volatility_pct": 11.88
       },
       "half_yearly_126d": {
-        "return_pct": -2.64,
+        "return_pct": -1.64,
         "high": 345.0,
         "low": 289.6,
         "range_volatility_pct": 19.13
       },
       "yearly_252d": {
-        "return_pct": 2.26,
+        "return_pct": 2.77,
         "high": 371.0,
         "low": 285.0,
         "range_volatility_pct": 30.18
@@ -65,8 +65,8 @@
       "median_correction_drop_pct": -9.8,
       "avg_wave_duration_bars": 22.0
     },
-    "current_wave_phase": "BOTTOMING_SUPPORT",
-    "phase_guidance": "Drop (-8.0%) matches historical correction depth (-9.8%). Prepare to accumulate.",
+    "current_wave_phase": "MARKDOWN_PULLBACK",
+    "phase_guidance": "Ongoing pullback from peak (-7.3%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Aug",

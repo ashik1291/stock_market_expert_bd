@@ -2,18 +2,18 @@
   "ticker": "ABBANK",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-15T13:27:48.411295",
-  "asof_price_date": "2026-11-15",
+  "analyzed_at": "2026-11-16T11:17:59.412404",
+  "asof_price_date": "2026-11-16",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 50.1843,
+    "rsi_14": 50.1837,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 44.71,
+  "confidence": 44.47,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 367341,
+      "avg_daily_volume": 356098,
       "daily_turnover_bdt_cr": 0.04,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 18367,
-      "max_daily_accumulation_shares": 55101,
-      "max_order_bdt": 18367.0,
-      "directive": "Max single order: 18,367 shares (Tk 18,367) to prevent >1% execution slippage"
+      "max_single_order_shares": 17804,
+      "max_daily_accumulation_shares": 53414,
+      "max_order_bdt": 17804.0,
+      "directive": "Max single order: 17,804 shares (Tk 17,804) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -96,14 +96,14 @@
       "visual_gauge": "[ \u09f33.4 |\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591| \u09f35.8 ] (37.5% (Truncated))",
       "conviction_bonus": 0.0,
       "is_truncated_window": true,
-      "bars_evaluated": 100,
+      "bars_evaluated": 101,
       "signal": "Price is in mid-channel (37.5% between \u09f33.4 and \u09f35.8)"
     },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "ABBANK",
-    "audited_at": "2026-11-15 19:27:48",
+    "audited_at": "2026-11-16 17:17:59",
     "worth_vs_greed": {
       "current_price": 4.3,
       "intrinsic_worth": 2.15,
@@ -112,7 +112,7 @@
       "greed_index": 20.0,
       "rsi_14": 50.0,
       "price_vs_ema50_pct": -1.2,
-      "price_vs_ema200_pct": -18.7,
+      "price_vs_ema200_pct": -18.6,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -133,25 +133,25 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 0.0,
+          "return_pct": 2.38,
           "high": 4.4,
           "low": 4.2,
           "range_volatility_pct": 4.76
         },
         "monthly_21d": {
-          "return_pct": 0.0,
+          "return_pct": -2.27,
           "high": 4.4,
           "low": 4.2,
           "range_volatility_pct": 4.76
         },
         "quarterly_63d": {
-          "return_pct": 2.38,
+          "return_pct": 0.0,
           "high": 4.7,
           "low": 4.0,
           "range_volatility_pct": 17.5
         },
         "half_yearly_126d": {
-          "return_pct": -25.86,
+          "return_pct": -27.12,
           "high": 6.7,
           "low": 3.4,
           "range_volatility_pct": 97.06
@@ -276,7 +276,7 @@
       "atr": 0.14,
       "rsi_value": 49.8,
       "last_close": 4.3,
-      "sma20": 4.32,
+      "sma20": 4.31,
       "sma50": 4.3,
       "sma200": null,
       "support_resistance": {
@@ -354,15 +354,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 732736,
-        "avg_volume": 460981.0,
+        "last_volume": 16056,
+        "avg_volume": 433303.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.64,
-        "avg_volume": 447741.0,
-        "today_volume": 732736,
+        "spike_ratio": 0.03,
+        "avg_volume": 460981.0,
+        "today_volume": 16056,
         "detail": "ok"
       },
       "serial_trading": {
@@ -388,13 +388,13 @@
     }
   },
   "composite": {
-    "composite_score": 44.71,
+    "composite_score": 44.47,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.671,
-      "technical": 0.203,
-      "governance": 0.126,
+      "fundamental": 0.665,
+      "technical": 0.204,
+      "governance": 0.131,
       "sentiment": 0.0
     }
   }

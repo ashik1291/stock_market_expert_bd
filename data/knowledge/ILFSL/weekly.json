@@ -2,18 +2,18 @@
   "ticker": "ILFSL",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-15T13:28:03.522245",
-  "asof_price_date": "2026-11-15",
+  "analyzed_at": "2026-11-16T11:18:13.064470",
+  "asof_price_date": "2026-11-16",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 89.2694,
+    "rsi_14": 88.9931,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 43.19,
+  "confidence": 42.94,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -96,14 +96,14 @@
       "visual_gauge": "[ \u09f30.3 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| \u09f32.1 ] (100.0% (Truncated))",
       "conviction_bonus": -10.0,
       "is_truncated_window": true,
-      "bars_evaluated": 99,
+      "bars_evaluated": 100,
       "signal": "Price is at 100.0% of 52-week high (near \u09f32.1) \u2014 elevated mean-reversion risk"
     },
     "total_precision_bonus": -10.0
   },
   "pattern_dna": {
     "ticker": "ILFSL",
-    "audited_at": "2026-11-15 19:28:03",
+    "audited_at": "2026-11-16 17:18:13",
     "worth_vs_greed": {
       "current_price": 2.1,
       "intrinsic_worth": 1.05,
@@ -111,8 +111,8 @@
       "extension_froth_score": 40.0,
       "greed_index": 40.0,
       "rsi_14": 100.0,
-      "price_vs_ema50_pct": 28.3,
-      "price_vs_ema200_pct": 9.9,
+      "price_vs_ema50_pct": 26.9,
+      "price_vs_ema200_pct": 9.8,
       "merit_status": "SPECULATIVE_JUNK_PUMP",
       "merit_reason": "Price is surging aggressively without positive EPS backing. Pure speculative risk.",
       "timing_directives": {
@@ -145,22 +145,22 @@
           "range_volatility_pct": 0.0
         },
         "quarterly_63d": {
-          "return_pct": 110.0,
+          "return_pct": 133.33,
           "high": 2.1,
           "low": 0.32,
           "range_volatility_pct": 556.25
         },
         "half_yearly_126d": {
           "return_pct": 5.0,
-          "high": 2.2,
+          "high": 2.1,
           "low": 0.32,
-          "range_volatility_pct": 587.5
+          "range_volatility_pct": 556.25
         },
         "yearly_252d": {
-          "return_pct": -46.15,
-          "high": 4.0,
+          "return_pct": -44.74,
+          "high": 3.9,
           "low": 0.32,
-          "range_volatility_pct": 1150.0
+          "range_volatility_pct": 1118.75
         }
       },
       "wave_metrics": {
@@ -277,7 +277,7 @@
       "rsi_value": 87.33,
       "last_close": 2.1,
       "sma20": 2.1,
-      "sma50": 1.39,
+      "sma50": 1.41,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -349,13 +349,13 @@
         "flag": false,
         "price_chg": 0,
         "last_volume": 0,
-        "avg_volume": 67102.0,
+        "avg_volume": 43582.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
         "spike_ratio": 0.0,
-        "avg_volume": 190455.0,
+        "avg_volume": 67102.0,
         "today_volume": 0,
         "detail": "ok"
       },
@@ -382,13 +382,13 @@
     }
   },
   "composite": {
-    "composite_score": 43.19,
+    "composite_score": 42.94,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.671,
-      "technical": 0.203,
-      "governance": 0.126,
+      "fundamental": 0.665,
+      "technical": 0.204,
+      "governance": 0.131,
       "sentiment": 0.0
     }
   }

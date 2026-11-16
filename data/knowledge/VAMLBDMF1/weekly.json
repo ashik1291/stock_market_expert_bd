@@ -2,18 +2,18 @@
   "ticker": "VAMLBDMF1",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-15T13:28:21.258825",
-  "asof_price_date": "2026-11-15",
+  "analyzed_at": "2026-11-16T11:18:30.319211",
+  "asof_price_date": "2026-11-16",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 41.501,
+    "rsi_14": 42.561,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 44.2,
+  "confidence": 43.96,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -96,14 +96,14 @@
       "visual_gauge": "[ \u09f36.1 |\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591| \u09f38.0 ] (52.6% (Truncated))",
       "conviction_bonus": 0.0,
       "is_truncated_window": true,
-      "bars_evaluated": 72,
+      "bars_evaluated": 73,
       "signal": "Price is in mid-channel (52.6% between \u09f36.1 and \u09f38.0)"
     },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "VAMLBDMF1",
-    "audited_at": "2026-11-15 19:28:21",
+    "audited_at": "2026-11-16 17:18:30",
     "worth_vs_greed": {
       "current_price": 7.1,
       "intrinsic_worth": 3.55,
@@ -145,19 +145,19 @@
           "range_volatility_pct": 0.0
         },
         "quarterly_63d": {
-          "return_pct": -4.05,
+          "return_pct": -5.33,
           "high": 7.6,
           "low": 6.1,
           "range_volatility_pct": 24.59
         },
         "half_yearly_126d": {
-          "return_pct": -1.39,
+          "return_pct": 0.0,
           "high": 8.0,
           "low": 6.1,
           "range_volatility_pct": 31.15
         },
         "yearly_252d": {
-          "return_pct": 26.79,
+          "return_pct": 29.09,
           "high": 8.0,
           "low": 5.1,
           "range_volatility_pct": 56.86
@@ -349,13 +349,13 @@
         "flag": false,
         "price_chg": 0,
         "last_volume": 0,
-        "avg_volume": 32357.0,
+        "avg_volume": 29852.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
         "spike_ratio": 0.0,
-        "avg_volume": 34729.0,
+        "avg_volume": 32357.0,
         "today_volume": 0,
         "detail": "ok"
       },
@@ -382,13 +382,13 @@
     }
   },
   "composite": {
-    "composite_score": 44.2,
+    "composite_score": 43.96,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.671,
-      "technical": 0.203,
-      "governance": 0.126,
+      "fundamental": 0.665,
+      "technical": 0.204,
+      "governance": 0.131,
       "sentiment": 0.0
     }
   }

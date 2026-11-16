@@ -1,24 +1,24 @@
 {
   "ticker": "EASTRNLUB",
-  "audited_at": "2026-11-15 19:27:56",
+  "audited_at": "2026-11-16 17:18:07",
   "worth_vs_greed": {
-    "current_price": 1502.7,
-    "intrinsic_worth": 751.35,
+    "current_price": 1490.1,
+    "intrinsic_worth": 745.05,
     "margin_of_safety_pct": -50.0,
     "extension_froth_score": 50.0,
     "greed_index": 50.0,
-    "rsi_14": 20.7,
+    "rsi_14": 6.8,
     "price_vs_ema50_pct": -20.7,
-    "price_vs_ema200_pct": -28.9,
+    "price_vs_ema200_pct": -29.3,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f31472.6 \u2013 \u09f31517.7",
-      "chase_cutoff_price": 1540.3,
-      "when_to_wait": "If price opens or rises above \u09f31540.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f31472.6.",
-      "weekly_target_short": 1555.3,
-      "monthly_target_swing": 1728.1,
-      "long_term_target_asset": 1953.5,
+      "optimal_entry_corridor": "\u09f31460.3 \u2013 \u09f31505.0",
+      "chase_cutoff_price": 1527.4,
+      "when_to_wait": "If price opens or rises above \u09f31527.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f31460.3.",
+      "weekly_target_short": 1542.3,
+      "monthly_target_swing": 1713.6,
+      "long_term_target_asset": 1937.1,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -31,34 +31,34 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -4.01,
+        "return_pct": -1.46,
         "high": 1568.0,
-        "low": 1500.5,
-        "range_volatility_pct": 4.5
+        "low": 1486.0,
+        "range_volatility_pct": 5.52
       },
       "monthly_21d": {
-        "return_pct": -25.64,
+        "return_pct": -26.05,
         "high": 2070.0,
-        "low": 1500.5,
-        "range_volatility_pct": 37.95
+        "low": 1486.0,
+        "range_volatility_pct": 39.3
       },
       "quarterly_63d": {
-        "return_pct": -41.4,
+        "return_pct": -41.25,
         "high": 2600.0,
-        "low": 1500.5,
-        "range_volatility_pct": 73.28
+        "low": 1486.0,
+        "range_volatility_pct": 74.97
       },
       "half_yearly_126d": {
-        "return_pct": -42.91,
+        "return_pct": -42.06,
         "high": 2790.0,
-        "low": 1500.5,
-        "range_volatility_pct": 85.94
+        "low": 1486.0,
+        "range_volatility_pct": 87.75
       },
       "yearly_252d": {
-        "return_pct": 11.89,
+        "return_pct": 10.98,
         "high": 3171.2,
-        "low": 1334.9,
-        "range_volatility_pct": 137.56
+        "low": 1335.3,
+        "range_volatility_pct": 137.49
       }
     },
     "wave_metrics": {
@@ -67,7 +67,7 @@
       "avg_wave_duration_bars": 18.0
     },
     "current_wave_phase": "BOTTOMING_SUPPORT",
-    "phase_guidance": "Drop (-28.4%) matches historical correction depth (-19.1%). Prepare to accumulate.",
+    "phase_guidance": "Drop (-29.0%) matches historical correction depth (-19.1%). Prepare to accumulate.",
     "top_seasonal_months": [
       {
         "month": "Jun",
