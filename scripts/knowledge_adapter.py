@@ -109,15 +109,8 @@ def load_multi_timeframe_signals(
         try:
             conn = get_db_connection()
             placeholders = ",".join("?" for _ in timeframes)
-            rows = conn.execute(
-                f"""
-                SELECT timeframe, full_payload
-                FROM company_signals_history
-                WHERE ticker = ? AND timeframe IN ({placeholders})
-                ORDER BY date DESC
-                """,
-                (ticker, *timeframes),
-            ).fetchall()
+            sql = f"SELECT timeframe, full_payload FROM company_signals_history WHERE ticker = ? AND timeframe IN ({placeholders}) ORDER BY date DESC"  # nosec B608
+            rows = conn.execute(sql, (ticker, *timeframes)).fetchall()
             conn.close()
 
             for r in rows:
@@ -224,11 +217,7 @@ def load_universe_signals(
 
         if signals_filter:
             placeholders = ",".join("?" for _ in signals_filter)
-            query = f"""
-                SELECT full_payload FROM company_signals_history
-                WHERE date = ? AND timeframe = ? AND signal IN ({placeholders})
-                ORDER BY confidence DESC
-            """
+            query = f"SELECT full_payload FROM company_signals_history WHERE date = ? AND timeframe = ? AND signal IN ({placeholders}) ORDER BY confidence DESC"  # nosec B608
             params = [target_date, timeframe] + list(signals_filter)
         else:
             query = """

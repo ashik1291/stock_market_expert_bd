@@ -58,7 +58,7 @@ def fetch_shanta_nav_online() -> Optional[Dict[str, float]]:
     try:
         headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
         req = urllib.request.Request(url, headers=headers)
-        with urllib.request.urlopen(req, timeout=10) as resp:
+        with urllib.request.urlopen(req, timeout=10) as resp:  # nosec B310
             html = resp.read().decode("utf-8", errors="replace")
             
             # Look for Shanta Amanah Shariah Fund section

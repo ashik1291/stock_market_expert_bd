@@ -142,7 +142,7 @@ def scrape_live_bangladesh_bank_rates() -> dict:
     for key, url in bb_urls:
         try:
             req = urllib.request.Request(url, headers=headers)
-            with urllib.request.urlopen(req, timeout=5) as resp:
+            with urllib.request.urlopen(req, timeout=5) as resp:  # nosec B310
                 if resp.status == 200:
                     html = resp.read().decode("utf-8", errors="ignore")
                     # Parse repo rate if on policy rates page

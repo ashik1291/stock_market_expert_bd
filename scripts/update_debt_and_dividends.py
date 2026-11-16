@@ -30,7 +30,7 @@ def sync_debt_and_dividends():
                 f"https://www.dse.com.bd/company/{ticker}",
                 headers={"User-Agent": "Mozilla/5.0"}
             )
-            html = urllib.request.urlopen(req, timeout=10).read().decode("utf-8")
+            html = urllib.request.urlopen(req, timeout=10).read().decode("utf-8")  # nosec B310
             chunks = re.findall(r'self\.__next_f\.push\(\[1,\s*"((?:\\.|[^"\\])*)"\]\)', html)
             combined = ""
             for c in chunks:

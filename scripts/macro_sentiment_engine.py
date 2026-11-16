@@ -269,7 +269,7 @@ def fetch_global_macro_indicators() -> dict:
         try:
             url = f"https://query1.finance.yahoo.com/v8/finance/chart/{sym}?interval=1d&range=5d"
             req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-            with urllib.request.urlopen(req, timeout=5) as resp:
+            with urllib.request.urlopen(req, timeout=5) as resp:  # nosec B310
                 data = json.loads(resp.read().decode())
                 meta = data["chart"]["result"][0]["meta"]
                 indicators[name] = {

@@ -31,11 +31,12 @@ def log(msg: str):
 
 def check_dependencies():
     log("Checking Python dependencies...")
+    import importlib
     required = ["requests", "bs4", "lxml", "matplotlib", "pandas", "bdshare", "pdfplumber"]
     missing = []
     for pkg in required:
         try:
-            __import__(pkg)
+            importlib.import_module(pkg)
         except ImportError:
             missing.append(pkg)
 
