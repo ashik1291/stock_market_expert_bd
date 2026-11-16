@@ -126,7 +126,10 @@ def evaluate_user_investment_plan(capital_bdt: float = 50000.0, top_n: int = 3) 
         # Check Shariah / Customization compliance based on active profile
         user_tier = "flexible"
         try:
-            from profile import load_profile
+            try:
+                from scripts.profile import load_profile
+            except ImportError:
+                from profile import load_profile
             user_tier = load_profile().get("halal_tier", "flexible")
         except Exception:
             pass

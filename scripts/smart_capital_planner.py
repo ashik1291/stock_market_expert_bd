@@ -571,10 +571,24 @@ def load_candidate_pool() -> list[str]:
 
     if not candidates:
         try:
-            from five_factor_fundamental_screener import run_5_factor_screener
+            try:
+                from scripts.five_factor_fundamental_screener import run_5_factor_screener
+            except ImportError:
+                from five_factor_fundamental_screener import run_5_factor_screener
+            htier = "flexible"
+            try:
+                try:
+                    from scripts.profile import load_profile
+                except ImportError:
+                    from profile import load_profile
+                htier = load_profile().get("halal_tier", "flexible")
+            except Exception:
+                pass
+            screened = run_5_factor_screener(halal_tier=htier)
             candidates = [
                 row["ticker"]
-                for row in run_5_factor_screener(halal_tier=user_halal_tier)
+                for row in screened
+                if isinstance(row, dict) and "ticker" in row
             ]
         except Exception:
             candidates = []
