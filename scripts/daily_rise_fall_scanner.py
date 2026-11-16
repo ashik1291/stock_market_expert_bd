@@ -408,6 +408,128 @@ def scan_daily_rise_and_fall(timeframe: str = "weekly", user_id: str = "default_
     return result
 
 
+def _format_actionable_radar(res: dict, lang: str = "en") -> list:
+    """Generates an executive What-to-Buy and What-to-Sell actionable radar."""
+    cleared_buys = [r for r in res.get("predicted_to_rise", []) if "BUY" in str(r.get("directive", ""))]
+    danger_sells = res.get("predicted_to_fall", [])
+
+    user_holdings = []
+    try:
+        from portfolio_sentinel import audit_portfolio_sentinel
+        audit = audit_portfolio_sentinel()
+        user_holdings = audit.get("holdings", [])
+    except Exception:
+        user_holdings = []
+
+    out = []
+    if lang == "bn":
+        out.append("## 🎯 আজকের সুনির্দিষ্ট ট্রেড অ্যাকশন রাডার: কী কিনবেন আর কী বিক্রি করবেন\n")
+        out.append("> 💡 **সারসংক্ষেপ নির্দেশিকা**: আজ আপনার কী করা উচিত তার সুস্পষ্ট পরিকল্পনা। নিচের প্রতিটি নির্দেশিকা স্বয়ংক্রিয়ভাবে মেশিন লার্নিং লেজারে (`prediction_ledger.json`) ২১ দিনের জন্য সংরক্ষিত হয় যাতে সিস্টেমের নির্ভুলতা ও পূর্বাভাসের কার্যকারিতা প্রমাণ করা যায়।\n")
+
+        # 1. What to buy
+        if cleared_buys:
+            out.append("### 🟢 ১. আজ কী কিনবেন (সর্বোচ্চ কনভিকশন ক্রয় সংকেত)")
+            out.append("| কোম্পানি | বর্তমান দর | অ্যাকশন | নিরাপদ ক্রয় সীমা | লাভের টার্গেট | স্টপ-লস | প্রস্তাবিত লট | কেন কিনবেন (সহজ কারণ) |")
+            out.append("|---|:---:|:---:|:---:|:---:|:---:|:---:|---|")
+            for b in cleared_buys[:5]:
+                p = b.get("price") or 0.0
+                low = round(p * 0.98, 1)
+                high = round(p * 1.005, 1)
+                tgt = b.get("mid_term_target") or round(p * 1.08, 1)
+                stop = round(p * 0.95, 1)
+                why = b.get("support_note_bn", "কোম্পানির মৌলিক শক্তি ও ম্যাক্রো হার্ডল দুটোই উত্তীর্ণ।")
+                out.append(f"| **{b['ticker']}** | ৳{p:.1f} | **🟢 BUY** | ৳{low} – ৳{high} | ৳{tgt:.1f} (+{((tgt/p)-1)*100:.1f}%) | ৳{stop:.1f} (-5.0%) | ৫–২০ শেয়ার | {why} |")
+            out.append("")
+        else:
+            out.append("### 🟢 ১. আজ কী কিনবেন: `কোনোটি নয় (ক্যাশ সংরক্ষণ করুন)`")
+            out.append("*বর্তমানে কোনো শেয়ারই ১১.৬০% ঝুঁকিমুক্ত ব্যাংক ট্রেজারি বিলের চেয়ে বড় মার্জিন অব সেফটি দিচ্ছে না। ক্যাশ বা মিউচুয়াল ফান্ডে থাকা নিরাপদ।*\n")
+
+        # 2. What to sell / avoid
+        out.append("### 🔴 ২. আজ কী বিক্রি করবেন / প্রস্থান করবেন (মূলধন সুরক্ষা)")
+        out.append("| কোম্পানি | বর্তমান দর | স্ট্যাটাস | সতর্কবার্তা / কারণ | প্রয়োজনীয় অ্যাকশন |")
+        out.append("|---|:---:|:---:|---|---|")
+        for s in danger_sells[:5]:
+            p = s.get("price") or 0.0
+            trig = s.get("primary_fall_trigger", "")
+            if "SPECULATIVE" in trig or "Negative" in trig:
+                msg = "🚨 ভুয়া মূল্যবৃদ্ধি: কোম্পানি লোকসানে (নেগেটিভ প্রফিট)।"
+            elif "EXTREME_VOLUME" in trig or "Promoters" in trig:
+                msg = "🚨 ডাম্পিং ফাঁদ: উদ্যোক্তা শেয়ার ৩০% এর নিচে। ক্রেতাদের কাছে শেয়ার বিক্রি করে পালাচ্ছে।"
+            else:
+                msg = "🚨 মূলধন ক্ষয় ও অতিরিক্ত ঋণ ঝুঁকি।"
+            out.append(f"| **{s['ticker']}** | ৳{p:.1f} | **🔴 প্রস্থান / বর্জন** | {msg} | **বিক্রি করুন / কখনোই কিনবেন না** |")
+        out.append("")
+
+        # 3. User holdings
+        if user_holdings:
+            out.append("### 🛡️ ৩. আপনার পোর্টফোলিও শেয়ারের বর্তমান অবস্থা ও করণীয়")
+            out.append("| শেয়ার | সংখ্যা | কেনা দর | লাইভ দর | লাভ/ক্ষতি (৳) | লাভ/ক্ষতি % | বর্তমান অবস্থা | করণীয় নির্দেশিকা |")
+            out.append("|---|:---:|:---:|:---:|:---:|:---:|:---:|---|")
+            for uh in user_holdings:
+                p = uh.get("live_price", 0.0)
+                cost = uh.get("entry_price", 0.0)
+                pnl_b = uh.get("pnl_bdt", 0.0)
+                pnl_p = uh.get("pnl_pct", 0.0)
+                status = uh.get("action", "HOLD")
+                desc = uh.get("action_desc_bn", "ধৈর্য ধরে হোল্ড করুন।")
+                out.append(f"| **{uh['ticker']}** | {uh['shares']} | ৳{cost:.1f} | ৳{p:.1f} | {pnl_b:+.2f} | {pnl_p:+.1f}% | `{status}` | {desc} |")
+            out.append("")
+    else:
+        out.append("## 🎯 TODAY'S ACTIONABLE TRADE RADAR: WHAT TO BUY & WHAT TO SELL\n")
+        out.append("> 💡 **Executive Summary**: Clear, unambiguous action plan for today. Every recommendation below is cryptographically logged into the machine learning ledger (`prediction_ledger.json`) across 21 trading bars to evaluate prediction accuracy and learn over time.\n")
+
+        # 1. What to buy
+        if cleared_buys:
+            out.append("### 🟢 1. WHAT TO BUY TODAY (Highest Conviction Candidates)")
+            out.append("| Ticker | Current Price | Action | Safe Buying Zone | Profit Target | Stop-Loss | Suggested Lot | Why Buy (Plain Words) |")
+            out.append("|---|:---:|:---:|:---:|:---:|:---:|:---:|---|")
+            for b in cleared_buys[:5]:
+                p = b.get("price") or 0.0
+                low = round(p * 0.98, 1)
+                high = round(p * 1.005, 1)
+                tgt = b.get("mid_term_target") or round(p * 1.08, 1)
+                stop = round(p * 0.95, 1)
+                why = b.get("support_note_en", "Passes business moat and 15.10% macro hurdle.")
+                out.append(f"| **{b['ticker']}** | ৳{p:.1f} | **🟢 BUY** | ৳{low} – ৳{high} | ৳{tgt:.1f} (+{((tgt/p)-1)*100:.1f}%) | ৳{stop:.1f} (-5.0%) | 5–20 shs | {why} |")
+            out.append("")
+        else:
+            out.append("### 🟢 1. WHAT TO BUY TODAY: `NONE (CASH PRESERVATION)`")
+            out.append("*No stocks currently beat the 11.60% Risk-Free Bank T-Bill hurdle with a wide margin of safety. Keep cash safe in mutual funds / liquid buffer.*\n")
+
+        # 2. What to sell / avoid
+        out.append("### 🔴 2. WHAT TO SELL / EXIT TODAY (Capital Protection)")
+        out.append("| Ticker | Price | Status | Trigger / Warning | Required Action |")
+        out.append("|---|:---:|:---:|---|---|")
+        for s in danger_sells[:5]:
+            p = s.get("price") or 0.0
+            trig = s.get("primary_fall_trigger", "")
+            if "SPECULATIVE" in trig or "Negative" in trig:
+                msg = "🚨 FAKE RALLY: Company losing money (Negative Profit)."
+            elif "EXTREME_VOLUME" in trig or "Promoters" in trig:
+                msg = "🚨 DUMP TRAP: Sponsors hold < 30%. Big players dumping shares."
+            else:
+                msg = "🚨 Capital erosion & debt risk."
+            out.append(f"| **{s['ticker']}** | ৳{p:.1f} | **🔴 EXIT / AVOID** | {msg} | **SELL / DO NOT TOUCH** |")
+        out.append("")
+
+        # 3. User holdings
+        if user_holdings:
+            out.append("### 🛡️ 3. YOUR PORTFOLIO HOLDINGS EXECUTION STATUS")
+            out.append("| Holding | Shares | Buy Price | Live Price | P&L (৳) | P&L % | Action Status | Immediate Plan |")
+            out.append("|---|:---:|:---:|:---:|:---:|:---:|:---:|---|")
+            for uh in user_holdings:
+                p = uh.get("live_price", 0.0)
+                cost = uh.get("entry_price", 0.0)
+                pnl_b = uh.get("pnl_bdt", 0.0)
+                pnl_p = uh.get("pnl_pct", 0.0)
+                status = uh.get("action", "HOLD")
+                desc = uh.get("action_desc_bn", "Hold patiently.")
+                out.append(f"| **{uh['ticker']}** | {uh['shares']} | ৳{cost:.1f} | ৳{p:.1f} | {pnl_b:+.2f} | {pnl_p:+.1f}% | `{status}` | {desc} |")
+            out.append("")
+
+    return out
+
+
 def publish_rise_fall_report(res: dict):
     REPORT_DIR.mkdir(parents=True, exist_ok=True)
     today_str = datetime.date.today().isoformat()
@@ -431,6 +553,9 @@ def publish_rise_fall_report(res: dict):
     ht_desc = "Regular Stock Mode — All 19 Sectors Enabled (Banks, FIs, Insurance Active)" if res.get("halal_tier") == "off" else "Shariah-Compliant Only (Advisory exclusion for conventional finance)"
     lines.append(f"**Macro Bias**: `{macro.get('bias_label', 'Neutral')}` (Score: {macro.get('systemic_market_bias', 0)}/100) | **Halal Guard**: `{ht_label}` ({ht_desc})\n")
     lines.append("---\n")
+
+    # Actionable Trade Radar: Exactly What to Buy & What to Sell
+    lines.extend(_format_actionable_radar(res, lang="en"))
 
     # 1. Stocks Predicted to RISE
     lines.append("## 🟢 1. High-Conviction Stocks Screened for Value & Moats (Upside Trajectory)\n")
@@ -526,6 +651,9 @@ def publish_rise_fall_report(res: dict):
     ht_desc_bn = "সাধারণ মোড — ব্যাংক ও আর্থিক খাত সহ সকল ১৯টি খাত সক্রিয়" if res.get("halal_tier") == "off" else "শুধুমাত্র শরীয়াহসম্মত শেয়ার (সুদী আর্থিক খাত পৃথক)"
     bn_lines.append(f"**সার্বিক ম্যাক্রো পূর্বাভাস**: `{bias_lbl_bn}` (স্কোর: {bias_val}/১০০) | **শরীয়াহ ফিল্টার**: `{res.get('halal_tier', 'flexible').upper()}` ({ht_desc_bn})\n")
     bn_lines.append("---\n")
+
+    # Actionable Trade Radar (Bengali)
+    bn_lines.extend(_format_actionable_radar(res, lang="bn"))
 
     # 1. Stocks Predicted to RISE (Bengali)
     bn_lines.append("## 🟢 ১. মৌলিক শক্তি ও পরিখা সম্পন্ন শেয়ার (সম্ভাব্য উত্থান ও মূল্য বৃদ্ধি)\n")

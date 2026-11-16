@@ -339,14 +339,18 @@ class TestQuantEngine(unittest.TestCase):
         self.assertIsNotNone(asof)
 
         uni_before = load_scored_universe(asof)
-        sq_before = [r for r in uni_before if r["ticker"] == "SQURPHARMA"]
-        self.assertTrue(len(sq_before) > 0)
-        score_before = sq_before[0]["score"]
+        self.assertTrue(len(uni_before) > 0, "Scored universe must not be empty on latest price date")
+
+        # Pick SQURPHARMA if actively trading on asof date, else pick first available active ticker
+        sq_candidates = [r for r in uni_before if r["ticker"] == "SQURPHARMA"]
+        target = sq_candidates[0] if sq_candidates else uni_before[0]
+        test_ticker = target["ticker"]
+        score_before = target["score"]
 
         # Simulate a radical price shock record far in the future
         future_dt = "2029-12-31"
         conn = sqlite3.connect(DB_PATH)
-        conn.execute("INSERT OR REPLACE INTO prices (ticker, date, close, volume) VALUES ('SQURPHARMA', ?, 9999.0, 1000000)", (future_dt,))
+        conn.execute("INSERT OR REPLACE INTO prices (ticker, date, close, volume) VALUES (?, ?, 9999.0, 1000000)", (test_ticker, future_dt))
         conn.commit()
         conn.close()
 
@@ -354,8 +358,9 @@ class TestQuantEngine(unittest.TestCase):
             # Re-score asof date T
             build_features_for_date(asof)
             uni_after = load_scored_universe(asof)
-            sq_after = [r for r in uni_after if r["ticker"] == "SQURPHARMA"]
-            score_after = sq_after[0]["score"]
+            target_after = [r for r in uni_after if r["ticker"] == test_ticker]
+            self.assertTrue(len(target_after) > 0)
+            score_after = target_after[0]["score"]
             self.assertEqual(score_before, score_after, "Point-in-time score leaked future data!")
         finally:
             # Cleanup future test record
