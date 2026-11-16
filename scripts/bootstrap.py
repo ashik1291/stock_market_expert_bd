@@ -162,7 +162,7 @@ def verify_user_templates():
     except Exception as e:
         log(f"Preference check note: {e}")
 
-def run_bootstrap():
+def run_bootstrap(skip_sync: bool = False):
     print("=" * 80)
     print("🚀 stock_market_expert_bd — PORTABLE MACHINE BOOTSTRAP ('READY')")
     print("=" * 80)
@@ -182,13 +182,16 @@ def run_bootstrap():
         pass
 
     # 4. Live Market Sync & Missed Date Ingestion
-    log("Synchronizing live market prices & backfilling missed dates...")
-    try:
-        sys.path.insert(0, str(SCRIPTS_DIR))
-        from live_market_sync import sync_live_market
-        sync_live_market(verbose=True)
-    except Exception as e:
-        log(f"Live market sync note: {e}")
+    if not skip_sync:
+        log("Synchronizing live market prices & backfilling missed dates...")
+        try:
+            sys.path.insert(0, str(SCRIPTS_DIR))
+            from live_market_sync import sync_live_market
+            sync_live_market(verbose=True)
+        except Exception as e:
+            log(f"Live market sync note: {e}")
+    else:
+        log("Skipping live market sync (--skip-sync / --ci active).")
 
     print("\n" + "=" * 80)
     if db_ok:
@@ -205,4 +208,5 @@ def run_bootstrap():
     print("  * 'python main.py plan 2000' -> Capital deployment plan\n")
 
 if __name__ == "__main__":
-    run_bootstrap()
+    skip = "--skip-sync" in sys.argv or "--ci" in sys.argv or "--offline" in sys.argv
+    run_bootstrap(skip_sync=skip)

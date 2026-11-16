@@ -32,6 +32,10 @@ jobs:
         pip install -r requirements.txt
         pip install bandit bandit-sarif-formatter pyyaml
 
+    - name: Bootstrap Database & Portable Invariants (INV-8)
+      run: |
+        python scripts/bootstrap.py --ci
+
     - name: Run Secret & Privacy Leak Scanner
       run: |
         python tools/secret_scanner.py

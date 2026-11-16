@@ -17,6 +17,13 @@ import json
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 sys.path.insert(0, os.path.join(ROOT, "scripts"))
+sys.path.insert(0, os.path.join(ROOT, "tests"))
+
+try:
+    from __init__ import ensure_test_environment
+    ensure_test_environment()
+except Exception:
+    pass
 
 
 class TestAuditFixesValidation(unittest.TestCase):

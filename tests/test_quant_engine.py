@@ -19,6 +19,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DB_PATH = BASE_DIR / "data" / "processed" / "dse.db"
 SCRIPTS_DIR = BASE_DIR / "scripts"
 sys.path.insert(0, str(SCRIPTS_DIR))
+sys.path.insert(0, str(BASE_DIR / "tests"))
+
+try:
+    from __init__ import ensure_test_environment
+    ensure_test_environment()
+except Exception:
+    pass
 
 
 class TestQuantEngine(unittest.TestCase):
