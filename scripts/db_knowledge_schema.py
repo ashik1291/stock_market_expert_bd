@@ -100,6 +100,50 @@ def init_knowledge_schema() -> bool:
     cur.execute("CREATE INDEX IF NOT EXISTS idx_dna_ticker_date ON company_pattern_dna_history(ticker, date)")
     cur.execute("CREATE INDEX IF NOT EXISTS idx_dna_date_mos ON company_pattern_dna_history(date, margin_of_safety_pct DESC)")
 
+    log.info("Creating governance_risk_audit table and indexes...")
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS governance_risk_audit (
+            ticker TEXT NOT NULL,
+            assessment_date TEXT NOT NULL,
+            political_exposure_score REAL DEFAULT 0.0,
+            legal_risk_tier TEXT DEFAULT 'LOW',
+            sponsor_legal_issues INTEGER DEFAULT 0,
+            receivership_court_petition INTEGER DEFAULT 0,
+            bank_accounts_frozen INTEGER DEFAULT 0,
+            bsec_investigation INTEGER DEFAULT 0,
+            regulatory_sanctions_count INTEGER DEFAULT 0,
+            active_flags TEXT,
+            governance_notes TEXT,
+            created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+            PRIMARY KEY (ticker, assessment_date)
+        )
+    """)
+    cur.execute("CREATE INDEX IF NOT EXISTS idx_gov_ticker ON governance_risk_audit(ticker)")
+    cur.execute("CREATE INDEX IF NOT EXISTS idx_gov_tier ON governance_risk_audit(legal_risk_tier)")
+
+    log.info("Creating revenue_segment_breakdown table and indexes...")
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS revenue_segment_breakdown (
+            ticker TEXT NOT NULL,
+            fiscal_year INTEGER NOT NULL,
+            total_revenue_cr REAL,
+            domestic_revenue_cr REAL,
+            export_revenue_cr REAL,
+            export_share_pct REAL,
+            us_fda_approved INTEGER DEFAULT 0,
+            uk_mhra_approved INTEGER DEFAULT 0,
+            who_gmp_approved INTEGER DEFAULT 1,
+            tga_australia_approved INTEGER DEFAULT 0,
+            export_destinations_count INTEGER DEFAULT 0,
+            top_export_markets TEXT,
+            currency_sensitivity_score REAL DEFAULT 0.0,
+            created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+            PRIMARY KEY (ticker, fiscal_year)
+        )
+    """)
+    cur.execute("CREATE INDEX IF NOT EXISTS idx_rev_ticker_yr ON revenue_segment_breakdown(ticker, fiscal_year)")
+    cur.execute("CREATE INDEX IF NOT EXISTS idx_rev_export_share ON revenue_segment_breakdown(export_share_pct DESC)")
+
     conn.commit()
     conn.close()
     log.info("✅ SQLite Knowledge Feature Store tables and indexes initialized successfully.")

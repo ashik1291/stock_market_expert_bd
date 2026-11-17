@@ -17,6 +17,9 @@ Commands:
   alpha         Execute automated statistical alpha routine, ledger advance & Bayesian calibration
   pattern [TICKER] Analyze company pattern DNA, multi-interval waves, causal 'WHY', & worth vs greed
   stock [TICKER|--all|--sector|--search] Inspect any stock, filter by sector, or view entire 396 universe
+  compare [TICKERS...] Head-to-Head Peer Moat Matrix & 3-Way DuPont ROE Decomposition
+  gov-risk [TICKER]    Evaluate Political Exposure, Promoter Legal Issues & Receivership Risk
+  exports [TICKER]     Deconstruct Domestic vs US FDA/UK MHRA Regulated Export Revenues
   env              Detect OS, shell, python runtime, encoding, and recommend native commands
   check         Run unified daily portfolio audit & seasonal catalyst check in 5 seconds
   portfolio     Show current portfolio holdings (Mutual Funds + Equities + P&L)
@@ -233,6 +236,18 @@ def cmd_stock(args: list = None):
     run_script("query_stock.py", args or ["ACMELAB"])
 
 
+def cmd_compare(args: list = None):
+    run_script("peer_moat_comparator.py", args or ["BXPHARMA", "SQURPHARMA", "RENATA"])
+
+
+def cmd_governance(args: list = None):
+    run_script("governance_risk_sentinel.py", args or ["BXPHARMA"])
+
+
+def cmd_exports(args: list = None):
+    run_script("revenue_segment_analyzer.py", args or ["BXPHARMA"])
+
+
 def cmd_env():
     run_script("env_detector.py")
 
@@ -346,6 +361,12 @@ def main():
         cmd_pattern(t)
     elif cmd in ("stock", "query", "inspect", "quote"):
         cmd_stock(sys.argv[2:] if len(sys.argv) > 2 else None)
+    elif cmd in ("compare", "peers", "dupont", "vs"):
+        cmd_compare(sys.argv[2:] if len(sys.argv) > 2 else None)
+    elif cmd in ("gov-risk", "governance", "political", "legal"):
+        cmd_governance(sys.argv[2:] if len(sys.argv) > 2 else None)
+    elif cmd in ("exports", "segments", "revenue", "export"):
+        cmd_exports(sys.argv[2:] if len(sys.argv) > 2 else None)
     elif cmd in ("env", "os-info", "system", "diag", "diagnose"):
         cmd_env()
     elif cmd in ("check", "audit", "daily", "daily-check", "review"):
