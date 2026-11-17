@@ -1,0 +1,17 @@
+# Enforce LF endings on shell scripts across all platforms (prevents \r errors on Linux/macOS)
+*.sh text eol=lf
+
+# Enforce CRLF endings on Windows batch files
+*.bat text eol=crlf
+
+# PowerShell scripts
+*.ps1 text eol=crlf
+
+# Python source files (use LF)
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+
+# Large binary files fallback
+*.db filter=lfs diff=lfs merge=lfs -text
+*.zip filter=lfs diff=lfs merge=lfs -text

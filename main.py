@@ -16,6 +16,8 @@ Commands:
   refresh       Execute complete end-to-end knowledge base refresh pipeline
   alpha         Execute automated statistical alpha routine, ledger advance & Bayesian calibration
   pattern [TICKER] Analyze company pattern DNA, multi-interval waves, causal 'WHY', & worth vs greed
+  stock [TICKER]   Inspect prices, fundamentals, corporate actions, and news for any stock
+  env              Detect OS, shell, python runtime, encoding, and recommend native commands
   check         Run unified daily portfolio audit & seasonal catalyst check in 5 seconds
   portfolio     Show current portfolio holdings (Mutual Funds + Equities + P&L)
   plan [BDT]    Generate exact capital deployment plan (default BDT 50,000)
@@ -227,6 +229,14 @@ def cmd_report():
         run_script("generate_reports.py")
 
 
+def cmd_stock(args: list = None):
+    run_script("query_stock.py", args or ["ACMELAB"])
+
+
+def cmd_env():
+    run_script("env_detector.py")
+
+
 def cmd_pattern(ticker: str):
     run_script("pattern_causal_engine.py", [ticker])
 
@@ -334,6 +344,10 @@ def main():
     elif cmd in ("pattern", "cycles", "why", "dna"):
         t = sys.argv[2] if len(sys.argv) > 2 else "SQURPHARMA"
         cmd_pattern(t)
+    elif cmd in ("stock", "query", "inspect", "quote"):
+        cmd_stock(sys.argv[2:] if len(sys.argv) > 2 else None)
+    elif cmd in ("env", "os-info", "system", "diag", "diagnose"):
+        cmd_env()
     elif cmd in ("check", "audit", "daily", "daily-check", "review"):
         cmd_check()
     elif cmd in ("portfolio", "holdings"):

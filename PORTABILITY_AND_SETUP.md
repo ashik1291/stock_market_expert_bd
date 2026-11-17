@@ -81,6 +81,25 @@ python main.py ready
 
 ---
 
+## 💻 Universal Multi-OS Execution Matrix
+
+The repo includes native shell wrappers so you never have to deal with OS-specific quote escaping:
+
+| Operating System | Recommended Launcher | Example Stock Query | Example Health Check |
+|---|---|---|---|
+| **Windows (PowerShell)** | `.\run.ps1` | `.\run.ps1 stock ACMELAB` | `.\run.ps1 status` |
+| **Windows (CMD / Batch)** | `run.bat` | `run.bat stock ACMELAB` | `run.bat status` |
+| **Linux (Ubuntu/Debian/Fedora)** | `./run.sh` | `./run.sh stock ACMELAB` | `./run.sh status` |
+| **macOS (Terminal / Zsh)** | `./run.sh` | `./run.sh stock ACMELAB` | `./run.sh status` |
+| **Any OS (Direct Python)** | `python main.py` | `python main.py stock ACMELAB` | `python main.py env` |
+
+> 💡 **Tip**: To inspect your current OS, shell, and runtime configuration, run:
+> ```bash
+> python main.py env
+> ```
+
+---
+
 ## 🛠️ What `ready` Does Behind the Scenes
 
 ```
