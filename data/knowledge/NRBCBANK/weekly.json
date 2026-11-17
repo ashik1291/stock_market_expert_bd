@@ -2,18 +2,18 @@
   "ticker": "NRBCBANK",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-16T11:18:18.957880",
-  "asof_price_date": "2026-11-16",
+  "analyzed_at": "2026-11-17T09:01:39.778839",
+  "asof_price_date": "2026-11-17",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 64.1645,
+    "rsi_14": 64.1243,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 43.45,
+  "confidence": 43.32,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -23,18 +23,18 @@
     "short_term": {
       "predicted_path": "Upward momentum swing",
       "upside_potential_pct": "+5.4%",
-      "downside_risk_pct": "-4.3%",
+      "downside_risk_pct": "-3.3%",
       "target_price": 9.7,
-      "support_price": 8.8,
-      "risk_reward_ratio": "1.3x"
+      "support_price": 8.9,
+      "risk_reward_ratio": "1.6x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+9.8%",
+      "upside_potential_pct": "+8.7%",
       "downside_risk_pct": "-9.8%",
-      "target_price": 10.1,
+      "target_price": 10.0,
       "trailing_stop": 8.3,
-      "risk_reward_ratio": "1.0x"
+      "risk_reward_ratio": "0.9x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 9.2,
-    "stop_loss": 8.67,
-    "target": 10.26
+    "stop_loss": 8.71,
+    "target": 10.18
   },
   "precision": {
     "ticker": "NRBCBANK",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 172791,
+      "avg_daily_volume": 174049,
       "daily_turnover_bdt_cr": 0.02,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 8639,
-      "max_daily_accumulation_shares": 25918,
-      "max_order_bdt": 8639.0,
-      "directive": "Max single order: 8,639 shares (Tk 8,639) to prevent >1% execution slippage"
+      "max_single_order_shares": 8702,
+      "max_daily_accumulation_shares": 26107,
+      "max_order_bdt": 8702.0,
+      "directive": "Max single order: 8,702 shares (Tk 8,702) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -103,16 +103,16 @@
   },
   "pattern_dna": {
     "ticker": "NRBCBANK",
-    "audited_at": "2026-11-16 17:18:18",
+    "audited_at": "2026-11-17 15:01:39",
     "worth_vs_greed": {
       "current_price": 9.2,
       "intrinsic_worth": 4.6,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 50.0,
       "greed_index": 50.0,
-      "rsi_14": 52.9,
-      "price_vs_ema50_pct": 15.0,
-      "price_vs_ema200_pct": 28.5,
+      "rsi_14": 50.0,
+      "price_vs_ema50_pct": 14.3,
+      "price_vs_ema200_pct": 28.1,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -134,12 +134,12 @@
       "intervals": {
         "weekly_5d": {
           "return_pct": -1.08,
-          "high": 9.7,
-          "low": 9.0,
-          "range_volatility_pct": 7.78
+          "high": 9.5,
+          "low": 9.1,
+          "range_volatility_pct": 4.4
         },
         "monthly_21d": {
-          "return_pct": 1.1,
+          "return_pct": 0.0,
           "high": 9.7,
           "low": 8.8,
           "range_volatility_pct": 10.23
@@ -151,13 +151,13 @@
           "range_volatility_pct": 94.0
         },
         "half_yearly_126d": {
-          "return_pct": 41.54,
+          "return_pct": 37.31,
           "high": 9.7,
           "low": 4.9,
           "range_volatility_pct": 97.96
         },
         "yearly_252d": {
-          "return_pct": 6.98,
+          "return_pct": 5.75,
           "high": 9.7,
           "low": 4.9,
           "range_volatility_pct": 97.96
@@ -273,11 +273,11 @@
       "macd": "bearish_crossover",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 0.35,
-      "rsi_value": 64.16,
+      "atr": 0.33,
+      "rsi_value": 64.17,
       "last_close": 9.2,
-      "sma20": 9.15,
-      "sma50": 7.56,
+      "sma20": 9.16,
+      "sma50": 7.64,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -348,15 +348,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 1123,
-        "avg_volume": 134823.0,
+        "last_volume": 37962,
+        "avg_volume": 130469.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.01,
-        "avg_volume": 145048.0,
-        "today_volume": 1123,
+        "spike_ratio": 0.28,
+        "avg_volume": 134823.0,
+        "today_volume": 37962,
         "detail": "ok"
       },
       "serial_trading": {
@@ -382,13 +382,13 @@
     }
   },
   "composite": {
-    "composite_score": 43.45,
+    "composite_score": 43.32,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.665,
-      "technical": 0.204,
-      "governance": 0.131,
+      "fundamental": 0.662,
+      "technical": 0.205,
+      "governance": 0.134,
       "sentiment": 0.0
     }
   }

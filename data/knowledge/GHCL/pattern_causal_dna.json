@@ -1,24 +1,24 @@
 {
   "ticker": "GHCL",
-  "audited_at": "2026-11-16 17:18:10",
+  "audited_at": "2026-11-17 15:01:29",
   "worth_vs_greed": {
-    "current_price": 20.0,
-    "intrinsic_worth": 10.0,
+    "current_price": 19.5,
+    "intrinsic_worth": 9.75,
     "margin_of_safety_pct": -50.0,
     "extension_froth_score": 30.0,
     "greed_index": 30.0,
-    "rsi_14": 59.1,
-    "price_vs_ema50_pct": 2.3,
-    "price_vs_ema200_pct": -4.0,
+    "rsi_14": 47.7,
+    "price_vs_ema50_pct": -0.3,
+    "price_vs_ema200_pct": -6.4,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f319.6 \u2013 \u09f320.2",
-      "chase_cutoff_price": 20.5,
-      "when_to_wait": "If price opens or rises above \u09f320.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f319.6.",
-      "weekly_target_short": 20.7,
-      "monthly_target_swing": 23.0,
-      "long_term_target_asset": 26.0,
+      "optimal_entry_corridor": "\u09f319.1 \u2013 \u09f319.7",
+      "chase_cutoff_price": 20.0,
+      "when_to_wait": "If price opens or rises above \u09f320.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f319.1.",
+      "weekly_target_short": 20.2,
+      "monthly_target_swing": 22.4,
+      "long_term_target_asset": 25.4,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -30,31 +30,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 6.38,
+        "return_pct": 3.72,
         "high": 20.4,
-        "low": 18.7,
-        "range_volatility_pct": 9.09
+        "low": 18.8,
+        "range_volatility_pct": 8.51
       },
       "monthly_21d": {
-        "return_pct": 6.38,
+        "return_pct": 3.17,
         "high": 20.4,
         "low": 18.7,
         "range_volatility_pct": 9.09
       },
       "quarterly_63d": {
-        "return_pct": -10.71,
+        "return_pct": -14.85,
         "high": 23.8,
         "low": 17.2,
         "range_volatility_pct": 38.37
       },
       "half_yearly_126d": {
-        "return_pct": -13.79,
+        "return_pct": -16.67,
         "high": 25.7,
         "low": 17.2,
         "range_volatility_pct": 49.42
       },
       "yearly_252d": {
-        "return_pct": -12.66,
+        "return_pct": -13.33,
         "high": 25.7,
         "low": 17.2,
         "range_volatility_pct": 49.42
@@ -66,7 +66,7 @@
       "avg_wave_duration_bars": 21.0
     },
     "current_wave_phase": "LATE_MARKUP",
-    "phase_guidance": "Approaching historical rally limit (+16.3% vs median +16.9%). Tighten stop.",
+    "phase_guidance": "Approaching historical rally limit (+13.4% vs median +16.9%). Tighten stop.",
     "top_seasonal_months": [
       {
         "month": "Aug",

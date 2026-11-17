@@ -1,60 +1,61 @@
 {
   "ticker": "BSC",
-  "audited_at": "2026-11-16 17:18:04",
+  "audited_at": "2026-11-17 15:01:23",
   "worth_vs_greed": {
-    "current_price": 104.1,
-    "intrinsic_worth": 52.05,
+    "current_price": 111.9,
+    "intrinsic_worth": 55.95,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 20.0,
-    "greed_index": 20.0,
-    "rsi_14": 58.9,
-    "price_vs_ema50_pct": -1.2,
-    "price_vs_ema200_pct": -0.6,
+    "extension_froth_score": 30.0,
+    "greed_index": 30.0,
+    "rsi_14": 69.1,
+    "price_vs_ema50_pct": 5.9,
+    "price_vs_ema200_pct": 6.7,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f3102.0 \u2013 \u09f3105.1",
-      "chase_cutoff_price": 106.7,
-      "when_to_wait": "If price opens or rises above \u09f3106.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3102.0.",
-      "weekly_target_short": 107.7,
-      "monthly_target_swing": 119.7,
-      "long_term_target_asset": 135.3,
+      "optimal_entry_corridor": "\u09f3109.7 \u2013 \u09f3113.0",
+      "chase_cutoff_price": 114.7,
+      "when_to_wait": "If price opens or rises above \u09f3114.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3109.7.",
+      "weekly_target_short": 115.8,
+      "monthly_target_swing": 128.7,
+      "long_term_target_asset": 145.5,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
     "reason": "Fundamental value severely lags stock price (MoS: -50.0%).",
-    "is_blacklisted": false,
-    "blacklist_reason": null
+    "is_blacklisted": true,
+    "blacklist_reason": "Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-11-17 \u2014 Mid-tier volume is 6.3x 20-day average (966,831 vs 152,768) | Price up +7.49% on untracked / high-risk security without verified earnings]",
+    "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-11-17 \u2014 Mid-tier volume is 6.3x 20-day average (966,831 vs 152,768) | Price up +7.49% on untracked / high-risk security without verified earnings]"
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 1.36,
-        "high": 105.5,
-        "low": 100.3,
-        "range_volatility_pct": 5.18
+        "return_pct": 8.96,
+        "high": 113.7,
+        "low": 102.5,
+        "range_volatility_pct": 10.93
       },
       "monthly_21d": {
-        "return_pct": -3.07,
-        "high": 107.8,
+        "return_pct": 4.87,
+        "high": 113.7,
         "low": 97.5,
-        "range_volatility_pct": 10.56
+        "range_volatility_pct": 16.62
       },
       "quarterly_63d": {
-        "return_pct": -1.33,
+        "return_pct": 5.87,
         "high": 114.5,
         "low": 97.5,
         "range_volatility_pct": 17.44
       },
       "half_yearly_126d": {
-        "return_pct": -11.7,
+        "return_pct": -4.77,
         "high": 122.0,
         "low": 96.6,
         "range_volatility_pct": 26.29
       },
       "yearly_252d": {
-        "return_pct": 17.1,
+        "return_pct": 23.37,
         "high": 127.0,
         "low": 82.6,
         "range_volatility_pct": 53.75
@@ -66,7 +67,7 @@
       "avg_wave_duration_bars": 29.0
     },
     "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-9.1%). Wait for stabilizing base.",
+    "phase_guidance": "Ongoing pullback from peak (-2.3%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Jan",

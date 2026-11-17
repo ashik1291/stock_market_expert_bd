@@ -1,60 +1,60 @@
 {
   "ticker": "STYLECRAFT",
-  "audited_at": "2026-11-16 17:18:28",
+  "audited_at": "2026-11-17 15:01:49",
   "worth_vs_greed": {
-    "current_price": 48.8,
-    "intrinsic_worth": 24.4,
+    "current_price": 46.6,
+    "intrinsic_worth": 23.3,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 70.0,
-    "greed_index": 70.0,
-    "rsi_14": 53.8,
-    "price_vs_ema50_pct": 0.6,
-    "price_vs_ema200_pct": -11.2,
+    "extension_froth_score": 50.0,
+    "greed_index": 50.0,
+    "rsi_14": 42.2,
+    "price_vs_ema50_pct": -3.8,
+    "price_vs_ema200_pct": -15.1,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f347.8 \u2013 \u09f349.3",
-      "chase_cutoff_price": 50.0,
-      "when_to_wait": "If price opens or rises above \u09f350.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f347.8.",
-      "weekly_target_short": 50.5,
-      "monthly_target_swing": 56.1,
-      "long_term_target_asset": 63.4,
+      "optimal_entry_corridor": "\u09f345.7 \u2013 \u09f347.1",
+      "chase_cutoff_price": 47.8,
+      "when_to_wait": "If price opens or rises above \u09f347.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f345.7.",
+      "weekly_target_short": 48.2,
+      "monthly_target_swing": 53.6,
+      "long_term_target_asset": 60.6,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
-    "status": "OVERVALUED_EUPHORIA",
-    "worth_decision": "SELL_TAKE_PROFIT",
-    "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (70.0/100). Danger of sharp mean reversion.",
+    "status": "CHRONIC_OVERVALUATION",
+    "worth_decision": "AVOID",
+    "reason": "Fundamental value severely lags stock price (MoS: -50.0%).",
     "is_blacklisted": false,
     "blacklist_reason": null
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 5.86,
+        "return_pct": 1.08,
         "high": 50.5,
         "low": 45.9,
         "range_volatility_pct": 10.02
       },
       "monthly_21d": {
-        "return_pct": -2.79,
+        "return_pct": -5.28,
         "high": 52.0,
         "low": 44.7,
         "range_volatility_pct": 16.33
       },
       "quarterly_63d": {
-        "return_pct": 0.21,
+        "return_pct": -4.12,
         "high": 54.5,
         "low": 43.0,
         "range_volatility_pct": 26.74
       },
       "half_yearly_126d": {
-        "return_pct": -43.19,
-        "high": 89.2,
+        "return_pct": -45.05,
+        "high": 85.1,
         "low": 40.3,
-        "range_volatility_pct": 121.34
+        "range_volatility_pct": 111.17
       },
       "yearly_252d": {
-        "return_pct": -9.8,
+        "return_pct": -13.86,
         "high": 89.2,
         "low": 40.3,
         "range_volatility_pct": 121.34
@@ -62,11 +62,11 @@
     },
     "wave_metrics": {
       "median_rally_gain_pct": 9.4,
-      "median_correction_drop_pct": -19.8,
+      "median_correction_drop_pct": -19.7,
       "avg_wave_duration_bars": 18.0
     },
-    "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-10.5%). Wait for stabilizing base.",
+    "current_wave_phase": "MARKUP_RALLY_MID",
+    "phase_guidance": "Midway through rally wave (+4.3% from base, historical target ~+9.4%).",
     "top_seasonal_months": [
       {
         "month": "Aug",

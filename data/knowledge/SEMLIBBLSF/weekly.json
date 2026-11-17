@@ -2,18 +2,18 @@
   "ticker": "SEMLIBBLSF",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-16T11:18:25.547126",
-  "asof_price_date": "2026-11-16",
+  "analyzed_at": "2026-11-17T09:01:46.752614",
+  "asof_price_date": "2026-11-17",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 81.3598,
+    "rsi_14": 80.9595,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 44.21,
+  "confidence": 44.09,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -103,7 +103,7 @@
   },
   "pattern_dna": {
     "ticker": "SEMLIBBLSF",
-    "audited_at": "2026-11-16 17:18:25",
+    "audited_at": "2026-11-17 15:01:46",
     "worth_vs_greed": {
       "current_price": 7.8,
       "intrinsic_worth": 3.9,
@@ -111,8 +111,8 @@
       "extension_froth_score": 20.0,
       "greed_index": 20.0,
       "rsi_14": 100.0,
-      "price_vs_ema50_pct": 8.7,
-      "price_vs_ema200_pct": 17.0,
+      "price_vs_ema50_pct": 8.3,
+      "price_vs_ema200_pct": 16.8,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -145,19 +145,19 @@
           "range_volatility_pct": 0.0
         },
         "quarterly_63d": {
-          "return_pct": 36.84,
+          "return_pct": 34.48,
           "high": 7.9,
           "low": 5.6,
           "range_volatility_pct": 41.07
         },
         "half_yearly_126d": {
-          "return_pct": 16.42,
+          "return_pct": 20.0,
           "high": 7.9,
           "low": 5.2,
           "range_volatility_pct": 51.92
         },
         "yearly_252d": {
-          "return_pct": 27.87,
+          "return_pct": 30.0,
           "high": 7.9,
           "low": 5.2,
           "range_volatility_pct": 51.92
@@ -274,10 +274,10 @@
       "sma_trend": "bullish",
       "bb": "at_lower_band_bullish",
       "atr": 0.04,
-      "rsi_value": 80.31,
+      "rsi_value": 80.3,
       "last_close": 7.8,
       "sma20": 7.8,
-      "sma50": 6.91,
+      "sma50": 6.95,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -349,13 +349,13 @@
         "flag": false,
         "price_chg": 0,
         "last_volume": 0,
-        "avg_volume": 49107.0,
+        "avg_volume": 48193.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
         "spike_ratio": 0.0,
-        "avg_volume": 49574.0,
+        "avg_volume": 49107.0,
         "today_volume": 0,
         "detail": "ok"
       },
@@ -382,13 +382,13 @@
     }
   },
   "composite": {
-    "composite_score": 44.21,
+    "composite_score": 44.09,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.665,
-      "technical": 0.204,
-      "governance": 0.131,
+      "fundamental": 0.662,
+      "technical": 0.205,
+      "governance": 0.134,
       "sentiment": 0.0
     }
   }

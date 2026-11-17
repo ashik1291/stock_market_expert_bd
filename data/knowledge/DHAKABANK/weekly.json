@@ -2,18 +2,18 @@
   "ticker": "DHAKABANK",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-16T11:18:06.822514",
-  "asof_price_date": "2026-11-16",
+  "analyzed_at": "2026-11-17T09:01:25.975241",
+  "asof_price_date": "2026-11-17",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 57.4369,
+    "rsi_14": 57.5802,
     "pe_ratio": 4.188679245283019,
     "debt_equity": 1.326
   },
   "signal": "HOLD_INELIGIBLE_DEFICIT",
-  "confidence": 62.63,
+  "confidence": 60.89,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -30,11 +30,11 @@
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+8.0%",
+      "upside_potential_pct": "+7.1%",
       "downside_risk_pct": "-4.4%",
-      "target_price": 12.2,
+      "target_price": 12.1,
       "trailing_stop": 10.8,
-      "risk_reward_ratio": "1.8x"
+      "risk_reward_ratio": "1.6x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 11.3,
-    "stop_loss": 10.97,
-    "target": 11.96
+    "stop_loss": 10.99,
+    "target": 11.92
   },
   "precision": {
     "ticker": "DHAKABANK",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 1032867,
-      "daily_turnover_bdt_cr": 0.1,
+      "avg_daily_volume": 914447,
+      "daily_turnover_bdt_cr": 0.09,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 50000,
-      "max_daily_accumulation_shares": 150000,
-      "max_order_bdt": 50000.0,
-      "directive": "Max single order: 50,000 shares (Tk 50,000) to prevent >1% execution slippage"
+      "max_single_order_shares": 45722,
+      "max_daily_accumulation_shares": 137167,
+      "max_order_bdt": 45722.0,
+      "directive": "Max single order: 45,722 shares (Tk 45,722) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -103,14 +103,14 @@
   },
   "pattern_dna": {
     "ticker": "DHAKABANK",
-    "audited_at": "2026-11-16 17:18:06",
+    "audited_at": "2026-11-17 15:01:25",
     "worth_vs_greed": {
       "current_price": 11.3,
       "intrinsic_worth": 1.36,
       "margin_of_safety_pct": -88.0,
-      "extension_froth_score": 30.0,
-      "greed_index": 30.0,
-      "rsi_14": 55.6,
+      "extension_froth_score": 20.0,
+      "greed_index": 20.0,
+      "rsi_14": 62.5,
       "price_vs_ema50_pct": 0.0,
       "price_vs_ema200_pct": -3.5,
       "merit_status": "EARNINGS_BACKED_MERIT",
@@ -151,13 +151,13 @@
           "range_volatility_pct": 15.74
         },
         "half_yearly_126d": {
-          "return_pct": -6.61,
+          "return_pct": -8.13,
           "high": 12.8,
           "low": 10.8,
           "range_volatility_pct": 18.52
         },
         "yearly_252d": {
-          "return_pct": 1.8,
+          "return_pct": 2.73,
           "high": 16.0,
           "low": 10.2,
           "range_volatility_pct": 56.86
@@ -267,17 +267,17 @@
     ]
   },
   "technical": {
-    "score": 62.5,
+    "score": 55.0,
     "signals": {
       "rsi": "neutral",
-      "macd": "bullish_crossover",
+      "macd": "neutral",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 0.22,
+      "atr": 0.21,
       "rsi_value": 57.7,
       "last_close": 11.3,
-      "sma20": 11.09,
-      "sma50": 11.27,
+      "sma20": 11.11,
+      "sma50": 11.26,
       "sma200": 12.09,
       "support_resistance": {
         "supports": [
@@ -361,15 +361,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 12616,
-        "avg_volume": 1043675.0,
+        "last_volume": 109722,
+        "avg_volume": 957508.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.01,
-        "avg_volume": 1084215.0,
-        "today_volume": 12616,
+        "spike_ratio": 0.11,
+        "avg_volume": 1043675.0,
+        "today_volume": 109722,
         "detail": "ok"
       },
       "serial_trading": {
@@ -395,13 +395,13 @@
     }
   },
   "composite": {
-    "composite_score": 62.63,
+    "composite_score": 60.89,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.665,
-      "technical": 0.204,
-      "governance": 0.131,
+      "fundamental": 0.662,
+      "technical": 0.205,
+      "governance": 0.134,
       "sentiment": 0.0
     }
   }

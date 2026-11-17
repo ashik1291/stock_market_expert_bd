@@ -1,63 +1,63 @@
 {
   "ticker": "ENVOYTEX",
-  "audited_at": "2026-11-16 17:18:08",
+  "audited_at": "2026-11-17 15:01:27",
   "worth_vs_greed": {
-    "current_price": 84.3,
+    "current_price": 86.6,
     "intrinsic_worth": 12.32,
-    "margin_of_safety_pct": -85.4,
-    "extension_froth_score": 70.0,
-    "greed_index": 70.0,
-    "rsi_14": 76.2,
-    "price_vs_ema50_pct": 15.6,
-    "price_vs_ema200_pct": 38.4,
+    "margin_of_safety_pct": -85.8,
+    "extension_froth_score": 50.0,
+    "greed_index": 50.0,
+    "rsi_14": 78.2,
+    "price_vs_ema50_pct": 17.9,
+    "price_vs_ema200_pct": 41.6,
     "merit_status": "EARNINGS_BACKED_MERIT",
     "merit_reason": "Price supported by solid earnings (EPS: \u09f31.54, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f382.6 \u2013 \u09f385.1",
-      "chase_cutoff_price": 86.4,
-      "when_to_wait": "If price opens or rises above \u09f386.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f382.6.",
-      "weekly_target_short": 87.3,
-      "monthly_target_swing": 96.9,
-      "long_term_target_asset": 109.6,
+      "optimal_entry_corridor": "\u09f384.9 \u2013 \u09f387.5",
+      "chase_cutoff_price": 88.8,
+      "when_to_wait": "If price opens or rises above \u09f388.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f384.9.",
+      "weekly_target_short": 89.6,
+      "monthly_target_swing": 99.6,
+      "long_term_target_asset": 112.6,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
-    "status": "OVERVALUED_EUPHORIA",
-    "worth_decision": "SELL_TAKE_PROFIT",
-    "reason": "Price is 85.4% above intrinsic worth while market greed is euphoric (70.0/100). Danger of sharp mean reversion.",
+    "status": "CHRONIC_OVERVALUATION",
+    "worth_decision": "AVOID",
+    "reason": "Fundamental value severely lags stock price (MoS: -85.8%).",
     "is_blacklisted": false,
     "blacklist_reason": null
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 2.93,
-        "high": 85.8,
+        "return_pct": 5.74,
+        "high": 89.4,
         "low": 78.3,
-        "range_volatility_pct": 9.58
+        "range_volatility_pct": 14.18
       },
       "monthly_21d": {
-        "return_pct": 21.29,
-        "high": 87.2,
+        "return_pct": 21.97,
+        "high": 89.4,
         "low": 66.5,
-        "range_volatility_pct": 31.13
+        "range_volatility_pct": 34.44
       },
       "quarterly_63d": {
-        "return_pct": 50.81,
-        "high": 87.2,
-        "low": 55.8,
-        "range_volatility_pct": 56.27
+        "return_pct": 49.05,
+        "high": 89.4,
+        "low": 57.8,
+        "range_volatility_pct": 54.67
       },
       "half_yearly_126d": {
-        "return_pct": 74.17,
-        "high": 87.2,
+        "return_pct": 79.3,
+        "high": 89.4,
         "low": 47.5,
-        "range_volatility_pct": 83.58
+        "range_volatility_pct": 88.21
       },
       "yearly_252d": {
-        "return_pct": 62.74,
-        "high": 87.2,
+        "return_pct": 63.4,
+        "high": 89.4,
         "low": 42.9,
-        "range_volatility_pct": 103.26
+        "range_volatility_pct": 108.39
       }
     },
     "wave_metrics": {
@@ -65,8 +65,8 @@
       "median_correction_drop_pct": -18.3,
       "avg_wave_duration_bars": 28.0
     },
-    "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (10.3%). Wait for stabilizing base.",
+    "current_wave_phase": "LATE_MARKUP",
+    "phase_guidance": "Approaching historical rally limit (+30.2% vs median +18.3%). Tighten stop.",
     "top_seasonal_months": [
       {
         "month": "Aug",

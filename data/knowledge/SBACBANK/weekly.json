@@ -2,18 +2,18 @@
   "ticker": "SBACBANK",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-16T11:18:25.335243",
-  "asof_price_date": "2026-11-16",
+  "analyzed_at": "2026-11-17T09:01:46.503937",
+  "asof_price_date": "2026-11-17",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 36.849,
+    "rsi_14": 36.6726,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 43.7,
+  "confidence": 42.3,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 100811,
+      "avg_daily_volume": 101869,
       "daily_turnover_bdt_cr": 0.01,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 5040,
-      "max_daily_accumulation_shares": 15121,
-      "max_order_bdt": 5040.0,
-      "directive": "Max single order: 5,040 shares (Tk 5,040) to prevent >1% execution slippage"
+      "max_single_order_shares": 5093,
+      "max_daily_accumulation_shares": 15280,
+      "max_order_bdt": 5093.0,
+      "directive": "Max single order: 5,093 shares (Tk 5,093) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -103,16 +103,16 @@
   },
   "pattern_dna": {
     "ticker": "SBACBANK",
-    "audited_at": "2026-11-16 17:18:25",
+    "audited_at": "2026-11-17 15:01:46",
     "worth_vs_greed": {
       "current_price": 5.9,
       "intrinsic_worth": 2.95,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 60.0,
       "greed_index": 60.0,
-      "rsi_14": 37.0,
-      "price_vs_ema50_pct": -8.8,
-      "price_vs_ema200_pct": -14.8,
+      "rsi_14": 32.0,
+      "price_vs_ema50_pct": -8.5,
+      "price_vs_ema200_pct": -14.7,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -139,28 +139,28 @@
           "range_volatility_pct": 21.43
         },
         "monthly_21d": {
-          "return_pct": -11.94,
+          "return_pct": -13.24,
           "high": 6.9,
           "low": 5.6,
           "range_volatility_pct": 23.21
         },
         "quarterly_63d": {
-          "return_pct": -1.67,
+          "return_pct": 0.0,
           "high": 6.9,
           "low": 5.4,
           "range_volatility_pct": 27.78
         },
         "half_yearly_126d": {
-          "return_pct": -23.38,
+          "return_pct": -24.36,
           "high": 8.0,
           "low": 5.0,
           "range_volatility_pct": 60.0
         },
         "yearly_252d": {
-          "return_pct": -35.87,
-          "high": 9.8,
+          "return_pct": -37.89,
+          "high": 9.6,
           "low": 5.0,
-          "range_volatility_pct": 96.0
+          "range_volatility_pct": 92.0
         }
       },
       "wave_metrics": {
@@ -267,16 +267,16 @@
     ]
   },
   "technical": {
-    "score": 51.25,
+    "score": 45.0,
     "signals": {
       "rsi": "neutral",
       "macd": "bearish_crossover",
       "sma_trend": "neutral",
-      "bb": "at_lower_band_bullish",
+      "bb": "inside_bands",
       "atr": 0.29,
       "rsi_value": 36.8,
       "last_close": 5.9,
-      "sma20": 6.58,
+      "sma20": 6.53,
       "sma50": 6.46,
       "sma200": null,
       "support_resistance": {
@@ -352,15 +352,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 22977,
-        "avg_volume": 75693.0,
+        "last_volume": 29542,
+        "avg_volume": 73499.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.3,
-        "avg_volume": 77798.0,
-        "today_volume": 22977,
+        "spike_ratio": 0.39,
+        "avg_volume": 75693.0,
+        "today_volume": 29542,
         "detail": "ok"
       },
       "serial_trading": {
@@ -386,13 +386,13 @@
     }
   },
   "composite": {
-    "composite_score": 43.7,
+    "composite_score": 42.3,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.665,
-      "technical": 0.204,
-      "governance": 0.131,
+      "fundamental": 0.662,
+      "technical": 0.205,
+      "governance": 0.134,
       "sentiment": 0.0
     }
   }

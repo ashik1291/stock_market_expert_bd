@@ -2,18 +2,18 @@
   "ticker": "GREENDELT",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-16T11:18:10.899666",
-  "asof_price_date": "2026-11-16",
+  "analyzed_at": "2026-11-17T09:01:30.799937",
+  "asof_price_date": "2026-11-17",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 40.9222,
+    "rsi_14": 45.29,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 44.47,
+  "confidence": 44.34,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -24,31 +24,31 @@
       "predicted_path": "Upward momentum swing",
       "upside_potential_pct": "+3.7%",
       "downside_risk_pct": "-2.5%",
-      "target_price": 61.2,
-      "support_price": 57.5,
+      "target_price": 61.9,
+      "support_price": 58.2,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+10.8%",
-      "downside_risk_pct": "-10.0%",
+      "upside_potential_pct": "+9.5%",
+      "downside_risk_pct": "-10.1%",
       "target_price": 65.4,
-      "trailing_stop": 53.1,
-      "risk_reward_ratio": "1.1x"
+      "trailing_stop": 53.7,
+      "risk_reward_ratio": "0.9x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.0%",
       "downside_risk_pct": "-12.0%",
-      "target_price": 76.7,
+      "target_price": 77.6,
       "dividend_cagr": "5%\u20138%",
       "risk_reward_ratio": "2.5x"
     }
   },
   "trade_levels": {
-    "entry": 59.0,
-    "stop_loss": 56.81,
-    "target": 63.38
+    "entry": 59.7,
+    "stop_loss": 57.5,
+    "target": 64.1
   },
   "precision": {
     "ticker": "GREENDELT",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 36776,
+      "avg_daily_volume": 38037,
       "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 1838,
-      "max_daily_accumulation_shares": 5516,
-      "max_order_bdt": 1838.0,
-      "directive": "Max single order: 1,838 shares (Tk 1,838) to prevent >1% execution slippage"
+      "max_single_order_shares": 1901,
+      "max_daily_accumulation_shares": 5705,
+      "max_order_bdt": 1901.0,
+      "directive": "Max single order: 1,901 shares (Tk 1,901) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,37 +91,37 @@
       "status": "VALID",
       "low_52w": 43.0,
       "high_52w": 67.0,
-      "range_52w_pct": 66.7,
+      "range_52w_pct": 69.6,
       "channel_regime": "EQUILIBRIUM_CHANNEL",
-      "visual_gauge": "[ \u09f343.0 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591| \u09f367.0 ] (66.7% (Truncated))",
+      "visual_gauge": "[ \u09f343.0 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591| \u09f367.0 ] (69.6% (Truncated))",
       "conviction_bonus": 0.0,
       "is_truncated_window": true,
       "bars_evaluated": 101,
-      "signal": "Price is in mid-channel (66.7% between \u09f343.0 and \u09f367.0)"
+      "signal": "Price is in mid-channel (69.6% between \u09f343.0 and \u09f367.0)"
     },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "GREENDELT",
-    "audited_at": "2026-11-16 17:18:10",
+    "audited_at": "2026-11-17 15:01:30",
     "worth_vs_greed": {
-      "current_price": 59.0,
-      "intrinsic_worth": 29.5,
+      "current_price": 59.7,
+      "intrinsic_worth": 29.85,
       "margin_of_safety_pct": -50.0,
-      "extension_froth_score": 10.0,
-      "greed_index": 10.0,
-      "rsi_14": 19.7,
-      "price_vs_ema50_pct": -0.2,
-      "price_vs_ema200_pct": 10.4,
+      "extension_froth_score": 20.0,
+      "greed_index": 20.0,
+      "rsi_14": 28.4,
+      "price_vs_ema50_pct": 0.9,
+      "price_vs_ema200_pct": 11.5,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f357.8 \u2013 \u09f359.6",
-        "chase_cutoff_price": 60.5,
-        "when_to_wait": "If price opens or rises above \u09f360.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f357.8.",
-        "weekly_target_short": 61.1,
-        "monthly_target_swing": 67.8,
-        "long_term_target_asset": 76.7,
+        "optimal_entry_corridor": "\u09f358.5 \u2013 \u09f360.3",
+        "chase_cutoff_price": 61.2,
+        "when_to_wait": "If price opens or rises above \u09f361.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f358.5.",
+        "weekly_target_short": 61.8,
+        "monthly_target_swing": 68.7,
+        "long_term_target_asset": 77.6,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
@@ -133,31 +133,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -1.83,
+          "return_pct": -0.67,
           "high": 61.8,
-          "low": 58.8,
-          "range_volatility_pct": 5.1
+          "low": 58.0,
+          "range_volatility_pct": 6.55
         },
         "monthly_21d": {
-          "return_pct": -9.79,
+          "return_pct": -4.78,
           "high": 64.6,
-          "low": 58.8,
-          "range_volatility_pct": 9.86
+          "low": 58.0,
+          "range_volatility_pct": 11.38
         },
         "quarterly_63d": {
-          "return_pct": 11.95,
+          "return_pct": 13.71,
           "high": 67.0,
           "low": 50.2,
           "range_volatility_pct": 33.47
         },
         "half_yearly_126d": {
-          "return_pct": 13.03,
+          "return_pct": 13.93,
           "high": 67.0,
           "low": 43.0,
           "range_volatility_pct": 55.81
         },
         "yearly_252d": {
-          "return_pct": 24.21,
+          "return_pct": 25.95,
           "high": 67.0,
           "low": 37.0,
           "range_volatility_pct": 81.08
@@ -169,7 +169,7 @@
         "avg_wave_duration_bars": 17.0
       },
       "current_wave_phase": "MARKDOWN_PULLBACK",
-      "phase_guidance": "Ongoing pullback from peak (-11.9%). Wait for stabilizing base.",
+      "phase_guidance": "Ongoing pullback from peak (-10.9%). Wait for stabilizing base.",
       "top_seasonal_months": [
         {
           "month": "Jun",
@@ -273,11 +273,11 @@
       "macd": "neutral",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 1.46,
-      "rsi_value": 40.89,
-      "last_close": 59.0,
-      "sma20": 61.51,
-      "sma50": 58.96,
+      "atr": 1.47,
+      "rsi_value": 45.53,
+      "last_close": 59.7,
+      "sma20": 61.32,
+      "sma50": 59.1,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -304,7 +304,7 @@
       "error": "no_fundamental_data",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 11.9,
+        "drawdown_pct": 10.9,
         "high_52w": 67.0,
         "low_52w": 43.0
       }
@@ -348,15 +348,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 7201,
-        "avg_volume": 44831.0,
+        "last_volume": 38870,
+        "avg_volume": 42221.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.14,
-        "avg_volume": 49882.0,
-        "today_volume": 7201,
+        "spike_ratio": 0.87,
+        "avg_volume": 44831.0,
+        "today_volume": 38870,
         "detail": "ok"
       },
       "serial_trading": {
@@ -375,20 +375,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": -0.34,
+        "price_change_3d": 0.84,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 44.47,
+    "composite_score": 44.34,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.665,
-      "technical": 0.204,
-      "governance": 0.131,
+      "fundamental": 0.662,
+      "technical": 0.205,
+      "governance": 0.134,
       "sentiment": 0.0
     }
   }

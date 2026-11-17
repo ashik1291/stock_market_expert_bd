@@ -2,18 +2,18 @@
   "ticker": "PLFSL",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-16T11:18:20.849397",
-  "asof_price_date": "2026-11-16",
+  "analyzed_at": "2026-11-17T09:01:41.618777",
+  "asof_price_date": "2026-11-17",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 58.1999,
+    "rsi_14": 58.2276,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 44.97,
+  "confidence": 44.85,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 969569,
-      "daily_turnover_bdt_cr": 0.1,
+      "avg_daily_volume": 926806,
+      "daily_turnover_bdt_cr": 0.09,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 48478,
-      "max_daily_accumulation_shares": 145435,
-      "max_order_bdt": 48478.0,
-      "directive": "Max single order: 48,478 shares (Tk 48,478) to prevent >1% execution slippage"
+      "max_single_order_shares": 46340,
+      "max_daily_accumulation_shares": 139020,
+      "max_order_bdt": 46340.0,
+      "directive": "Max single order: 46,340 shares (Tk 46,340) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -103,16 +103,16 @@
   },
   "pattern_dna": {
     "ticker": "PLFSL",
-    "audited_at": "2026-11-16 17:18:20",
+    "audited_at": "2026-11-17 15:01:41",
     "worth_vs_greed": {
       "current_price": 1.7,
       "intrinsic_worth": 0.85,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 70.0,
       "greed_index": 70.0,
-      "rsi_14": 54.5,
-      "price_vs_ema50_pct": 25.0,
-      "price_vs_ema200_pct": 16.5,
+      "rsi_14": 50.0,
+      "price_vs_ema50_pct": 23.8,
+      "price_vs_ema200_pct": 16.3,
       "merit_status": "SPECULATIVE_JUNK_PUMP",
       "merit_reason": "Price is surging aggressively without positive EPS backing. Pure speculative risk.",
       "timing_directives": {
@@ -146,22 +146,22 @@
           "range_volatility_pct": 18.75
         },
         "quarterly_63d": {
-          "return_pct": 153.73,
+          "return_pct": 183.33,
           "high": 1.9,
           "low": 0.36,
           "range_volatility_pct": 427.78
         },
         "half_yearly_126d": {
-          "return_pct": 21.43,
+          "return_pct": 30.77,
           "high": 1.9,
           "low": 0.36,
           "range_volatility_pct": 427.78
         },
         "yearly_252d": {
-          "return_pct": -37.04,
-          "high": 2.8,
+          "return_pct": -34.62,
+          "high": 2.7,
           "low": 0.36,
-          "range_volatility_pct": 677.78
+          "range_volatility_pct": 650.0
         }
       },
       "wave_metrics": {
@@ -190,14 +190,14 @@
       ],
       "weak_seasonal_months": [
         {
+          "month": "Mar",
+          "avg_return": -10.0,
+          "win_rate": 22.0
+        },
+        {
           "month": "Apr",
           "avg_return": -10.6,
           "win_rate": 0.0
-        },
-        {
-          "month": "Nov",
-          "avg_return": -11.5,
-          "win_rate": 22.0
         }
       ]
     },
@@ -266,10 +266,10 @@
       "sma_trend": "bullish",
       "bb": "inside_bands",
       "atr": 0.13,
-      "rsi_value": 58.06,
+      "rsi_value": 58.05,
       "last_close": 1.7,
-      "sma20": 1.68,
-      "sma50": 1.2,
+      "sma20": 1.69,
+      "sma50": 1.22,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -342,15 +342,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 9517,
-        "avg_volume": 814970.0,
+        "last_volume": 145796,
+        "avg_volume": 773763.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.01,
-        "avg_volume": 962600.0,
-        "today_volume": 9517,
+        "spike_ratio": 0.18,
+        "avg_volume": 814970.0,
+        "today_volume": 145796,
         "detail": "ok"
       },
       "serial_trading": {
@@ -376,13 +376,13 @@
     }
   },
   "composite": {
-    "composite_score": 44.97,
+    "composite_score": 44.85,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.665,
-      "technical": 0.204,
-      "governance": 0.131,
+      "fundamental": 0.662,
+      "technical": 0.205,
+      "governance": 0.134,
       "sentiment": 0.0
     }
   }

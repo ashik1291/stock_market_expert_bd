@@ -2,18 +2,18 @@
   "ticker": "UCB",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-16T11:18:29.307459",
-  "asof_price_date": "2026-11-16",
+  "analyzed_at": "2026-11-17T09:01:50.491010",
+  "asof_price_date": "2026-11-17",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 55.8283,
+    "rsi_14": 55.8328,
     "pe_ratio": 67.67,
     "debt_equity": 1.08
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 43.35,
+  "confidence": 43.24,
   "trajectory": {
     "direction": "FALL_RISK",
     "direction_icon": "\ud83d\udd34",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 580272,
+      "avg_daily_volume": 560935,
       "daily_turnover_bdt_cr": 0.06,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 29013,
-      "max_daily_accumulation_shares": 87040,
-      "max_order_bdt": 29013.0,
-      "directive": "Max single order: 29,013 shares (Tk 29,013) to prevent >1% execution slippage"
+      "max_single_order_shares": 28046,
+      "max_daily_accumulation_shares": 84140,
+      "max_order_bdt": 28046.0,
+      "directive": "Max single order: 28,046 shares (Tk 28,046) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -103,16 +103,16 @@
   },
   "pattern_dna": {
     "ticker": "UCB",
-    "audited_at": "2026-11-16 17:18:29",
+    "audited_at": "2026-11-17 15:01:50",
     "worth_vs_greed": {
       "current_price": 8.9,
       "intrinsic_worth": 0.32,
       "margin_of_safety_pct": -96.4,
       "extension_froth_score": 30.0,
       "greed_index": 30.0,
-      "rsi_14": 60.9,
-      "price_vs_ema50_pct": 1.5,
-      "price_vs_ema200_pct": -3.3,
+      "rsi_14": 40.0,
+      "price_vs_ema50_pct": 1.4,
+      "price_vs_ema200_pct": -3.2,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f30.04, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
@@ -140,19 +140,19 @@
           "range_volatility_pct": 5.88
         },
         "monthly_21d": {
-          "return_pct": 7.23,
+          "return_pct": 9.88,
           "high": 9.6,
           "low": 8.0,
           "range_volatility_pct": 20.0
         },
         "quarterly_63d": {
-          "return_pct": -6.32,
+          "return_pct": -5.32,
           "high": 9.9,
           "low": 8.0,
           "range_volatility_pct": 23.75
         },
         "half_yearly_126d": {
-          "return_pct": -2.2,
+          "return_pct": -1.11,
           "high": 10.2,
           "low": 8.0,
           "range_volatility_pct": 27.5
@@ -277,9 +277,9 @@
       "atr": 0.29,
       "rsi_value": 55.94,
       "last_close": 8.9,
-      "sma20": 8.65,
+      "sma20": 8.69,
       "sma50": 8.75,
-      "sma200": 9.22,
+      "sma200": 9.21,
       "support_resistance": {
         "supports": [
           8.0,
@@ -365,15 +365,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 24652,
-        "avg_volume": 465529.0,
+        "last_volume": 31704,
+        "avg_volume": 458136.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.05,
-        "avg_volume": 492195.0,
-        "today_volume": 24652,
+        "spike_ratio": 0.07,
+        "avg_volume": 465529.0,
+        "today_volume": 31704,
         "detail": "ok"
       },
       "serial_trading": {
@@ -399,13 +399,13 @@
     }
   },
   "composite": {
-    "composite_score": 43.35,
+    "composite_score": 43.24,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.665,
-      "technical": 0.204,
-      "governance": 0.131,
+      "fundamental": 0.662,
+      "technical": 0.205,
+      "governance": 0.134,
       "sentiment": 0.0
     }
   }

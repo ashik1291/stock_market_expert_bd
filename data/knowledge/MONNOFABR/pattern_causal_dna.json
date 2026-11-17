@@ -1,24 +1,24 @@
 {
   "ticker": "MONNOFABR",
-  "audited_at": "2026-11-16 17:18:17",
+  "audited_at": "2026-11-17 15:01:38",
   "worth_vs_greed": {
-    "current_price": 16.9,
-    "intrinsic_worth": 8.45,
+    "current_price": 17.1,
+    "intrinsic_worth": 8.55,
     "margin_of_safety_pct": -50.0,
     "extension_froth_score": 20.0,
     "greed_index": 20.0,
-    "rsi_14": 56.8,
-    "price_vs_ema50_pct": -5.1,
-    "price_vs_ema200_pct": -5.5,
+    "rsi_14": 55.6,
+    "price_vs_ema50_pct": -3.8,
+    "price_vs_ema200_pct": -4.3,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f316.6 \u2013 \u09f317.1",
-      "chase_cutoff_price": 17.3,
-      "when_to_wait": "If price opens or rises above \u09f317.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f316.6.",
-      "weekly_target_short": 17.5,
-      "monthly_target_swing": 19.4,
-      "long_term_target_asset": 22.0,
+      "optimal_entry_corridor": "\u09f316.8 \u2013 \u09f317.3",
+      "chase_cutoff_price": 17.5,
+      "when_to_wait": "If price opens or rises above \u09f317.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f316.8.",
+      "weekly_target_short": 17.7,
+      "monthly_target_swing": 19.7,
+      "long_term_target_asset": 22.2,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -31,31 +31,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 3.05,
+        "return_pct": 4.27,
         "high": 17.9,
-        "low": 16.2,
-        "range_volatility_pct": 10.49
+        "low": 16.5,
+        "range_volatility_pct": 8.48
       },
       "monthly_21d": {
-        "return_pct": -1.17,
+        "return_pct": 3.64,
         "high": 17.9,
         "low": 15.5,
         "range_volatility_pct": 15.48
       },
       "quarterly_63d": {
-        "return_pct": -19.14,
+        "return_pct": -18.18,
         "high": 23.3,
         "low": 15.5,
         "range_volatility_pct": 50.32
       },
       "half_yearly_126d": {
-        "return_pct": -9.14,
+        "return_pct": -16.18,
         "high": 23.8,
         "low": 14.8,
         "range_volatility_pct": 60.81
       },
       "yearly_252d": {
-        "return_pct": 2.42,
+        "return_pct": 3.64,
         "high": 23.8,
         "low": 12.0,
         "range_volatility_pct": 98.33
@@ -66,8 +66,8 @@
       "median_correction_drop_pct": -40.2,
       "avg_wave_duration_bars": 25.0
     },
-    "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-27.5%). Wait for stabilizing base.",
+    "current_wave_phase": "MARKUP_RALLY_MID",
+    "phase_guidance": "Midway through rally wave (+10.3% from base, historical target ~+48.4%).",
     "top_seasonal_months": [
       {
         "month": "Jul",

@@ -1,24 +1,24 @@
 {
   "ticker": "DACCADYE",
-  "audited_at": "2026-11-16 17:18:06",
+  "audited_at": "2026-11-17 15:01:25",
   "worth_vs_greed": {
-    "current_price": 14.7,
-    "intrinsic_worth": 7.35,
+    "current_price": 14.5,
+    "intrinsic_worth": 7.25,
     "margin_of_safety_pct": -50.0,
     "extension_froth_score": 30.0,
     "greed_index": 30.0,
-    "rsi_14": 50.0,
-    "price_vs_ema50_pct": -8.0,
-    "price_vs_ema200_pct": -13.6,
+    "rsi_14": 46.3,
+    "price_vs_ema50_pct": -9.0,
+    "price_vs_ema200_pct": -14.6,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f314.4 \u2013 \u09f314.8",
-      "chase_cutoff_price": 15.1,
-      "when_to_wait": "If price opens or rises above \u09f315.1, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f314.4.",
-      "weekly_target_short": 15.2,
-      "monthly_target_swing": 16.9,
-      "long_term_target_asset": 19.1,
+      "optimal_entry_corridor": "\u09f314.2 \u2013 \u09f314.6",
+      "chase_cutoff_price": 14.9,
+      "when_to_wait": "If price opens or rises above \u09f314.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f314.2.",
+      "weekly_target_short": 15.0,
+      "monthly_target_swing": 16.7,
+      "long_term_target_asset": 18.9,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -31,34 +31,34 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -2.65,
-        "high": 15.3,
-        "low": 14.3,
-        "range_volatility_pct": 6.99
+        "return_pct": -3.97,
+        "high": 15.2,
+        "low": 13.2,
+        "range_volatility_pct": 15.15
       },
       "monthly_21d": {
-        "return_pct": -4.55,
+        "return_pct": -4.61,
         "high": 15.7,
-        "low": 14.3,
-        "range_volatility_pct": 9.79
+        "low": 13.2,
+        "range_volatility_pct": 18.94
       },
       "quarterly_63d": {
-        "return_pct": -16.95,
+        "return_pct": -19.44,
         "high": 19.9,
-        "low": 14.3,
-        "range_volatility_pct": 39.16
+        "low": 13.2,
+        "range_volatility_pct": 50.76
       },
       "half_yearly_126d": {
-        "return_pct": -25.0,
+        "return_pct": -27.5,
         "high": 23.5,
-        "low": 14.3,
-        "range_volatility_pct": 64.34
+        "low": 13.2,
+        "range_volatility_pct": 78.03
       },
       "yearly_252d": {
-        "return_pct": -19.67,
+        "return_pct": -20.77,
         "high": 23.5,
-        "low": 14.3,
-        "range_volatility_pct": 64.34
+        "low": 13.2,
+        "range_volatility_pct": 78.03
       }
     },
     "wave_metrics": {
@@ -67,7 +67,7 @@
       "avg_wave_duration_bars": 20.0
     },
     "current_wave_phase": "BOTTOMING_SUPPORT",
-    "phase_guidance": "Drop (-26.1%) matches historical correction depth (-22.8%). Prepare to accumulate.",
+    "phase_guidance": "Drop (-27.1%) matches historical correction depth (-22.8%). Prepare to accumulate.",
     "top_seasonal_months": [
       {
         "month": "Sep",

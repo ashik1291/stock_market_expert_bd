@@ -1,24 +1,24 @@
 {
   "ticker": "MJLBD",
-  "audited_at": "2026-11-16 17:18:17",
+  "audited_at": "2026-11-17 15:01:37",
   "worth_vs_greed": {
-    "current_price": 91.8,
-    "intrinsic_worth": 45.9,
+    "current_price": 91.2,
+    "intrinsic_worth": 45.6,
     "margin_of_safety_pct": -50.0,
     "extension_froth_score": 20.0,
     "greed_index": 20.0,
-    "rsi_14": 63.7,
-    "price_vs_ema50_pct": 1.0,
-    "price_vs_ema200_pct": -0.3,
+    "rsi_14": 55.7,
+    "price_vs_ema50_pct": 0.4,
+    "price_vs_ema200_pct": -0.9,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f390.0 \u2013 \u09f392.7",
-      "chase_cutoff_price": 94.1,
-      "when_to_wait": "If price opens or rises above \u09f394.1, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f390.0.",
-      "weekly_target_short": 95.0,
-      "monthly_target_swing": 105.6,
-      "long_term_target_asset": 119.3,
+      "optimal_entry_corridor": "\u09f389.4 \u2013 \u09f392.1",
+      "chase_cutoff_price": 93.5,
+      "when_to_wait": "If price opens or rises above \u09f393.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f389.4.",
+      "weekly_target_short": 94.4,
+      "monthly_target_swing": 104.9,
+      "long_term_target_asset": 118.6,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -30,31 +30,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -0.86,
+        "return_pct": -1.51,
         "high": 93.2,
         "low": 90.0,
         "range_volatility_pct": 3.56
       },
       "monthly_21d": {
-        "return_pct": 2.0,
+        "return_pct": 1.56,
         "high": 93.2,
         "low": 88.2,
         "range_volatility_pct": 5.67
       },
       "quarterly_63d": {
-        "return_pct": 3.03,
+        "return_pct": 3.17,
         "high": 94.5,
         "low": 87.0,
         "range_volatility_pct": 8.62
       },
       "half_yearly_126d": {
-        "return_pct": -6.04,
+        "return_pct": -6.17,
         "high": 105.8,
         "low": 86.0,
         "range_volatility_pct": 23.02
       },
       "yearly_252d": {
-        "return_pct": -7.83,
+        "return_pct": -6.08,
         "high": 105.8,
         "low": 86.0,
         "range_volatility_pct": 23.02
@@ -62,11 +62,11 @@
     },
     "wave_metrics": {
       "median_rally_gain_pct": 7.7,
-      "median_correction_drop_pct": -11.4,
+      "median_correction_drop_pct": -11.1,
       "avg_wave_duration_bars": 24.0
     },
-    "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-2.9%). Wait for stabilizing base.",
+    "current_wave_phase": "ACCUMULATION_TROUGH",
+    "phase_guidance": "Near local cyclical trough base. Maximum reward/risk entry point.",
     "top_seasonal_months": [
       {
         "month": "Aug",

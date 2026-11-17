@@ -2,18 +2,18 @@
   "ticker": "SHEPHERD",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-16T11:18:25.810618",
-  "asof_price_date": "2026-11-16",
+  "analyzed_at": "2026-11-17T09:01:47.027713",
+  "asof_price_date": "2026-11-17",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 54.6591,
+    "rsi_14": 54.6947,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 45.48,
+  "confidence": 43.83,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 11.3,
-    "stop_loss": 10.66,
-    "target": 12.58
+    "stop_loss": 10.69,
+    "target": 12.52
   },
   "precision": {
     "ticker": "SHEPHERD",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 517931,
+      "avg_daily_volume": 516259,
       "daily_turnover_bdt_cr": 0.05,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 25896,
-      "max_daily_accumulation_shares": 77689,
-      "max_order_bdt": 25896.0,
-      "directive": "Max single order: 25,896 shares (Tk 25,896) to prevent >1% execution slippage"
+      "max_single_order_shares": 25812,
+      "max_daily_accumulation_shares": 77438,
+      "max_order_bdt": 25812.0,
+      "directive": "Max single order: 25,812 shares (Tk 25,812) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -103,16 +103,16 @@
   },
   "pattern_dna": {
     "ticker": "SHEPHERD",
-    "audited_at": "2026-11-16 17:18:25",
+    "audited_at": "2026-11-17 15:01:47",
     "worth_vs_greed": {
       "current_price": 11.3,
       "intrinsic_worth": 5.65,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 40.0,
       "greed_index": 40.0,
-      "rsi_14": 75.0,
-      "price_vs_ema50_pct": -1.8,
-      "price_vs_ema200_pct": -19.0,
+      "rsi_14": 69.6,
+      "price_vs_ema50_pct": -1.7,
+      "price_vs_ema200_pct": -18.9,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -140,19 +140,19 @@
           "range_volatility_pct": 7.55
         },
         "monthly_21d": {
-          "return_pct": 1.8,
+          "return_pct": 3.67,
           "high": 11.4,
           "low": 9.8,
           "range_volatility_pct": 16.33
         },
         "quarterly_63d": {
-          "return_pct": -3.42,
+          "return_pct": -8.87,
           "high": 14.9,
           "low": 9.8,
           "range_volatility_pct": 52.04
         },
         "half_yearly_126d": {
-          "return_pct": -38.59,
+          "return_pct": -41.15,
           "high": 19.7,
           "low": 9.8,
           "range_volatility_pct": 101.02
@@ -268,17 +268,17 @@
     ]
   },
   "technical": {
-    "score": 60.0,
+    "score": 52.5,
     "signals": {
       "rsi": "neutral",
-      "macd": "bullish_crossover",
+      "macd": "neutral",
       "sma_trend": "neutral",
       "bb": "inside_bands",
-      "atr": 0.43,
-      "rsi_value": 54.96,
+      "atr": 0.41,
+      "rsi_value": 54.95,
       "last_close": 11.3,
-      "sma20": 10.65,
-      "sma50": 11.64,
+      "sma20": 10.67,
+      "sma50": 11.6,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -349,15 +349,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 186988,
-        "avg_volume": 478662.0,
+        "last_volume": 260683,
+        "avg_volume": 483004.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.39,
-        "avg_volume": 478233.0,
-        "today_volume": 186988,
+        "spike_ratio": 0.54,
+        "avg_volume": 478662.0,
+        "today_volume": 260683,
         "detail": "ok"
       },
       "serial_trading": {
@@ -383,13 +383,13 @@
     }
   },
   "composite": {
-    "composite_score": 45.48,
+    "composite_score": 43.83,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.665,
-      "technical": 0.204,
-      "governance": 0.131,
+      "fundamental": 0.662,
+      "technical": 0.205,
+      "governance": 0.134,
       "sentiment": 0.0
     }
   }

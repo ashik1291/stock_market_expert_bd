@@ -1,60 +1,60 @@
 {
   "ticker": "MERCINS",
-  "audited_at": "2026-11-16 17:18:16",
+  "audited_at": "2026-11-17 15:01:37",
   "worth_vs_greed": {
-    "current_price": 42.9,
-    "intrinsic_worth": 21.45,
+    "current_price": 43.2,
+    "intrinsic_worth": 21.6,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 70.0,
-    "greed_index": 70.0,
-    "rsi_14": 62.3,
-    "price_vs_ema50_pct": 15.4,
-    "price_vs_ema200_pct": 45.0,
+    "extension_froth_score": 60.0,
+    "greed_index": 60.0,
+    "rsi_14": 57.9,
+    "price_vs_ema50_pct": 15.5,
+    "price_vs_ema200_pct": 45.4,
     "merit_status": "SPECULATIVE_JUNK_PUMP",
     "merit_reason": "Price is surging aggressively without positive EPS backing. Pure speculative risk.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f342.0 \u2013 \u09f343.3",
-      "chase_cutoff_price": 44.0,
-      "when_to_wait": "If price opens or rises above \u09f344.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f342.0.",
-      "weekly_target_short": 44.4,
-      "monthly_target_swing": 49.3,
-      "long_term_target_asset": 55.8,
+      "optimal_entry_corridor": "\u09f342.3 \u2013 \u09f343.6",
+      "chase_cutoff_price": 44.3,
+      "when_to_wait": "If price opens or rises above \u09f344.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f342.3.",
+      "weekly_target_short": 44.7,
+      "monthly_target_swing": 49.7,
+      "long_term_target_asset": 56.2,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
-    "status": "OVERVALUED_EUPHORIA",
-    "worth_decision": "SELL_TAKE_PROFIT",
-    "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (70.0/100). Danger of sharp mean reversion.",
+    "status": "SPECULATIVE_GREED",
+    "worth_decision": "DO_NOT_BUY_WAIT_FOR_PULLBACK",
+    "reason": "Extreme short-term greed (60.0/100) or speculative pump without earnings merit. Risk of buying at local peak.",
     "is_blacklisted": false,
     "blacklist_reason": null
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 1.9,
+        "return_pct": 2.61,
         "high": 44.6,
         "low": 41.8,
         "range_volatility_pct": 6.7
       },
       "monthly_21d": {
-        "return_pct": -4.03,
-        "high": 44.7,
+        "return_pct": -1.82,
+        "high": 44.6,
         "low": 39.9,
-        "range_volatility_pct": 12.03
+        "range_volatility_pct": 11.78
       },
       "quarterly_63d": {
-        "return_pct": 78.75,
+        "return_pct": 75.61,
         "high": 51.5,
         "low": 22.5,
         "range_volatility_pct": 128.89
       },
       "half_yearly_126d": {
-        "return_pct": 64.37,
+        "return_pct": 64.89,
         "high": 51.5,
         "low": 22.4,
         "range_volatility_pct": 129.91
       },
       "yearly_252d": {
-        "return_pct": 72.29,
+        "return_pct": 81.51,
         "high": 51.5,
         "low": 21.3,
         "range_volatility_pct": 141.78
@@ -66,7 +66,7 @@
       "avg_wave_duration_bars": 21.0
     },
     "current_wave_phase": "BOTTOMING_SUPPORT",
-    "phase_guidance": "Drop (-16.7%) matches historical correction depth (-19.9%). Prepare to accumulate.",
+    "phase_guidance": "Drop (-16.1%) matches historical correction depth (-19.9%). Prepare to accumulate.",
     "top_seasonal_months": [
       {
         "month": "Oct",

@@ -2,18 +2,18 @@
   "ticker": "SIBL",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-16T11:18:26.067646",
-  "asof_price_date": "2026-11-16",
+  "analyzed_at": "2026-11-17T09:01:47.313975",
+  "asof_price_date": "2026-11-17",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 38.3843,
+    "rsi_14": 39.8089,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "HOLD",
-  "confidence": 46.25,
+  "confidence": 46.13,
   "trajectory": {
     "direction": "RISE_PREDICTED",
     "direction_icon": "\ud83d\udfe2",
@@ -103,7 +103,7 @@
   },
   "pattern_dna": {
     "ticker": "SIBL",
-    "audited_at": "2026-11-16 17:18:26",
+    "audited_at": "2026-11-17 15:01:47",
     "worth_vs_greed": {
       "current_price": 3.0,
       "intrinsic_worth": 1.5,
@@ -111,8 +111,8 @@
       "extension_froth_score": 10.0,
       "greed_index": 10.0,
       "rsi_14": 100.0,
-      "price_vs_ema50_pct": -13.9,
-      "price_vs_ema200_pct": -49.5,
+      "price_vs_ema50_pct": -13.4,
+      "price_vs_ema200_pct": -49.3,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -145,13 +145,13 @@
           "range_volatility_pct": 0.0
         },
         "quarterly_63d": {
-          "return_pct": -37.5,
+          "return_pct": -36.17,
           "high": 6.2,
           "low": 3.0,
           "range_volatility_pct": 106.67
         },
         "half_yearly_126d": {
-          "return_pct": -58.33,
+          "return_pct": -59.46,
           "high": 8.7,
           "low": 3.0,
           "range_volatility_pct": 190.0
@@ -274,7 +274,7 @@
       "sma_trend": "neutral",
       "bb": "at_lower_band_bullish",
       "atr": 0.04,
-      "rsi_value": 25.23,
+      "rsi_value": 28.68,
       "last_close": 3.0,
       "sma20": 3.0,
       "sma50": null,
@@ -345,13 +345,13 @@
         "flag": false,
         "price_chg": 0,
         "last_volume": 0,
-        "avg_volume": 60146.0,
+        "avg_volume": 22876.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
         "spike_ratio": 0.0,
-        "avg_volume": 77692.0,
+        "avg_volume": 60146.0,
         "today_volume": 0,
         "detail": "ok"
       },
@@ -378,13 +378,13 @@
     }
   },
   "composite": {
-    "composite_score": 46.25,
+    "composite_score": 46.13,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.665,
-      "technical": 0.204,
-      "governance": 0.131,
+      "fundamental": 0.662,
+      "technical": 0.205,
+      "governance": 0.134,
       "sentiment": 0.0
     }
   }

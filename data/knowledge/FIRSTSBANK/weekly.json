@@ -2,18 +2,18 @@
   "ticker": "FIRSTSBANK",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-16T11:18:09.546106",
-  "asof_price_date": "2026-11-16",
+  "analyzed_at": "2026-11-17T09:01:29.217619",
+  "asof_price_date": "2026-11-17",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 38.1457,
+    "rsi_14": 39.9913,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 43.96,
+  "confidence": 43.83,
   "trajectory": {
     "direction": "RISE_PREDICTED",
     "direction_icon": "\ud83d\udfe2",
@@ -103,7 +103,7 @@
   },
   "pattern_dna": {
     "ticker": "FIRSTSBANK",
-    "audited_at": "2026-11-16 17:18:09",
+    "audited_at": "2026-11-17 15:01:29",
     "worth_vs_greed": {
       "current_price": 1.9,
       "intrinsic_worth": 0.95,
@@ -111,8 +111,8 @@
       "extension_froth_score": 10.0,
       "greed_index": 10.0,
       "rsi_14": 100.0,
-      "price_vs_ema50_pct": -11.9,
-      "price_vs_ema200_pct": -44.2,
+      "price_vs_ema50_pct": -11.5,
+      "price_vs_ema200_pct": -44.0,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -145,19 +145,19 @@
           "range_volatility_pct": 0.0
         },
         "quarterly_63d": {
-          "return_pct": -26.92,
+          "return_pct": -24.0,
           "high": 3.6,
           "low": 1.8,
           "range_volatility_pct": 100.0
         },
         "half_yearly_126d": {
-          "return_pct": -52.5,
+          "return_pct": -51.28,
           "high": 4.7,
           "low": 1.8,
           "range_volatility_pct": 161.11
         },
         "yearly_252d": {
-          "return_pct": -66.67,
+          "return_pct": -67.24,
           "high": 6.2,
           "low": 1.8,
           "range_volatility_pct": 244.44
@@ -274,7 +274,7 @@
       "sma_trend": "neutral",
       "bb": "inside_bands",
       "atr": 0.03,
-      "rsi_value": 30.77,
+      "rsi_value": 32.7,
       "last_close": 1.9,
       "sma20": 1.9,
       "sma50": null,
@@ -345,13 +345,13 @@
         "flag": false,
         "price_chg": 0,
         "last_volume": 0,
-        "avg_volume": 216036.0,
+        "avg_volume": 147381.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
         "spike_ratio": 0.0,
-        "avg_volume": 255461.0,
+        "avg_volume": 216036.0,
         "today_volume": 0,
         "detail": "ok"
       },
@@ -378,13 +378,13 @@
     }
   },
   "composite": {
-    "composite_score": 43.96,
+    "composite_score": 43.83,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.665,
-      "technical": 0.204,
-      "governance": 0.131,
+      "fundamental": 0.662,
+      "technical": 0.205,
+      "governance": 0.134,
       "sentiment": 0.0
     }
   }

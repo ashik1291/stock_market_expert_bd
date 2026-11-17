@@ -2,18 +2,18 @@
   "ticker": "UNIONBANK",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-16T11:18:29.445650",
-  "asof_price_date": "2026-11-16",
+  "analyzed_at": "2026-11-17T09:01:50.670099",
+  "asof_price_date": "2026-11-17",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 37.2119,
+    "rsi_14": 38.9251,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 44.72,
+  "confidence": 44.6,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -103,7 +103,7 @@
   },
   "pattern_dna": {
     "ticker": "UNIONBANK",
-    "audited_at": "2026-11-16 17:18:29",
+    "audited_at": "2026-11-17 15:01:50",
     "worth_vs_greed": {
       "current_price": 1.5,
       "intrinsic_worth": 0.75,
@@ -111,8 +111,8 @@
       "extension_froth_score": 10.0,
       "greed_index": 10.0,
       "rsi_14": 100.0,
-      "price_vs_ema50_pct": -8.8,
-      "price_vs_ema200_pct": -45.3,
+      "price_vs_ema50_pct": -8.5,
+      "price_vs_ema200_pct": -45.1,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -145,19 +145,19 @@
           "range_volatility_pct": 0.0
         },
         "quarterly_63d": {
-          "return_pct": -25.0,
+          "return_pct": -21.05,
           "high": 2.4,
           "low": 1.4,
           "range_volatility_pct": 71.43
         },
         "half_yearly_126d": {
-          "return_pct": -50.0,
+          "return_pct": -51.61,
           "high": 3.1,
           "low": 1.4,
           "range_volatility_pct": 121.43
         },
         "yearly_252d": {
-          "return_pct": -70.59,
+          "return_pct": -71.15,
           "high": 5.3,
           "low": 1.4,
           "range_volatility_pct": 278.57
@@ -274,7 +274,7 @@
       "sma_trend": "neutral",
       "bb": "at_lower_band_bullish",
       "atr": 0.02,
-      "rsi_value": 35.95,
+      "rsi_value": 36.37,
       "last_close": 1.5,
       "sma20": 1.5,
       "sma50": null,
@@ -345,13 +345,13 @@
         "flag": false,
         "price_chg": 0,
         "last_volume": 0,
-        "avg_volume": 15932.0,
+        "avg_volume": 9435.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
         "spike_ratio": 0.0,
-        "avg_volume": 28124.0,
+        "avg_volume": 15932.0,
         "today_volume": 0,
         "detail": "ok"
       },
@@ -378,13 +378,13 @@
     }
   },
   "composite": {
-    "composite_score": 44.72,
+    "composite_score": 44.6,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.665,
-      "technical": 0.204,
-      "governance": 0.131,
+      "fundamental": 0.662,
+      "technical": 0.205,
+      "governance": 0.134,
       "sentiment": 0.0
     }
   }

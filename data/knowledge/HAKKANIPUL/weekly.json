@@ -2,18 +2,18 @@
   "ticker": "HAKKANIPUL",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-16T11:18:11.284187",
-  "asof_price_date": "2026-11-16",
+  "analyzed_at": "2026-11-17T09:01:31.228052",
+  "asof_price_date": "2026-11-17",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 57.5895,
+    "rsi_14": 52.9355,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 45.99,
+  "confidence": 45.37,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -22,33 +22,33 @@
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+4.2%",
-      "downside_risk_pct": "-2.7%",
-      "target_price": 70.1,
-      "support_price": 65.5,
-      "risk_reward_ratio": "1.6x"
+      "upside_potential_pct": "+4.4%",
+      "downside_risk_pct": "-2.9%",
+      "target_price": 69.0,
+      "support_price": 64.2,
+      "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+9.1%",
-      "downside_risk_pct": "-10.0%",
+      "upside_potential_pct": "+11.0%",
+      "downside_risk_pct": "-8.3%",
       "target_price": 73.4,
       "trailing_stop": 60.6,
-      "risk_reward_ratio": "0.9x"
+      "risk_reward_ratio": "1.3x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.0%",
       "downside_risk_pct": "-12.0%",
-      "target_price": 87.5,
+      "target_price": 85.9,
       "dividend_cagr": "5%\u20138%",
       "risk_reward_ratio": "2.5x"
     }
   },
   "trade_levels": {
-    "entry": 67.3,
-    "stop_loss": 64.54,
-    "target": 72.82
+    "entry": 66.1,
+    "stop_loss": 63.23,
+    "target": 71.84
   },
   "precision": {
     "ticker": "HAKKANIPUL",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 73475,
+      "avg_daily_volume": 72741,
       "daily_turnover_bdt_cr": 0.01,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 3673,
-      "max_daily_accumulation_shares": 11021,
-      "max_order_bdt": 3673.0,
-      "directive": "Max single order: 3,673 shares (Tk 3,673) to prevent >1% execution slippage"
+      "max_single_order_shares": 3637,
+      "max_daily_accumulation_shares": 10911,
+      "max_order_bdt": 3637.0,
+      "directive": "Max single order: 3,637 shares (Tk 3,637) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,37 +91,37 @@
       "status": "VALID",
       "low_52w": 51.2,
       "high_52w": 78.6,
-      "range_52w_pct": 58.8,
+      "range_52w_pct": 54.4,
       "channel_regime": "EQUILIBRIUM_CHANNEL",
-      "visual_gauge": "[ \u09f351.2 |\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591| \u09f378.6 ] (58.8% (Truncated))",
+      "visual_gauge": "[ \u09f351.2 |\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591| \u09f378.6 ] (54.4% (Truncated))",
       "conviction_bonus": 0.0,
       "is_truncated_window": true,
       "bars_evaluated": 100,
-      "signal": "Price is in mid-channel (58.8% between \u09f351.2 and \u09f378.6)"
+      "signal": "Price is in mid-channel (54.4% between \u09f351.2 and \u09f378.6)"
     },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "HAKKANIPUL",
-    "audited_at": "2026-11-16 17:18:11",
+    "audited_at": "2026-11-17 15:01:31",
     "worth_vs_greed": {
-      "current_price": 67.3,
-      "intrinsic_worth": 33.65,
+      "current_price": 66.1,
+      "intrinsic_worth": 33.05,
       "margin_of_safety_pct": -50.0,
-      "extension_froth_score": 30.0,
-      "greed_index": 30.0,
-      "rsi_14": 61.2,
-      "price_vs_ema50_pct": 1.6,
-      "price_vs_ema200_pct": 1.1,
+      "extension_froth_score": 20.0,
+      "greed_index": 20.0,
+      "rsi_14": 49.7,
+      "price_vs_ema50_pct": -0.2,
+      "price_vs_ema200_pct": -0.7,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f366.0 \u2013 \u09f368.0",
-        "chase_cutoff_price": 69.0,
-        "when_to_wait": "If price opens or rises above \u09f369.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f366.0.",
-        "weekly_target_short": 69.7,
-        "monthly_target_swing": 77.4,
-        "long_term_target_asset": 87.5,
+        "optimal_entry_corridor": "\u09f364.8 \u2013 \u09f366.8",
+        "chase_cutoff_price": 67.8,
+        "when_to_wait": "If price opens or rises above \u09f367.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f364.8.",
+        "weekly_target_short": 68.4,
+        "monthly_target_swing": 76.0,
+        "long_term_target_asset": 85.9,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
@@ -134,31 +134,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 6.83,
+          "return_pct": 4.92,
           "high": 67.9,
-          "low": 62.3,
-          "range_volatility_pct": 8.99
+          "low": 63.0,
+          "range_volatility_pct": 7.78
         },
         "monthly_21d": {
-          "return_pct": 1.2,
+          "return_pct": 0.3,
           "high": 67.9,
           "low": 60.4,
           "range_volatility_pct": 12.42
         },
         "quarterly_63d": {
-          "return_pct": -5.87,
+          "return_pct": -4.62,
           "high": 74.6,
           "low": 60.4,
           "range_volatility_pct": 23.51
         },
         "half_yearly_126d": {
-          "return_pct": -17.32,
+          "return_pct": -19.68,
           "high": 94.9,
           "low": 51.2,
           "range_volatility_pct": 85.35
         },
         "yearly_252d": {
-          "return_pct": 12.54,
+          "return_pct": 5.76,
           "high": 94.9,
           "low": 51.2,
           "range_volatility_pct": 85.35
@@ -170,7 +170,7 @@
         "avg_wave_duration_bars": 21.0
       },
       "current_wave_phase": "MARKDOWN_PULLBACK",
-      "phase_guidance": "Ongoing pullback from peak (-9.8%). Wait for stabilizing base.",
+      "phase_guidance": "Ongoing pullback from peak (-11.4%). Wait for stabilizing base.",
       "top_seasonal_months": [
         {
           "month": "Sep",
@@ -268,17 +268,17 @@
     ]
   },
   "technical": {
-    "score": 62.5,
+    "score": 60.0,
     "signals": {
       "rsi": "neutral",
       "macd": "bullish_crossover",
-      "sma_trend": "bullish",
+      "sma_trend": "neutral",
       "bb": "inside_bands",
-      "atr": 1.84,
-      "rsi_value": 57.57,
-      "last_close": 67.3,
-      "sma20": 64.06,
-      "sma50": 67.17,
+      "atr": 1.91,
+      "rsi_value": 53.19,
+      "last_close": 66.1,
+      "sma20": 64.07,
+      "sma50": 67.15,
       "sma200": null,
       "support_resistance": {
         "supports": [],
@@ -301,7 +301,7 @@
       "error": "no_fundamental_data",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 14.4,
+        "drawdown_pct": 15.9,
         "high_52w": 78.6,
         "low_52w": 51.2
       }
@@ -345,15 +345,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 54702,
-        "avg_volume": 81304.0,
+        "last_volume": 48827,
+        "avg_volume": 73511.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.61,
-        "avg_volume": 90365.0,
-        "today_volume": 54702,
+        "spike_ratio": 0.6,
+        "avg_volume": 81304.0,
+        "today_volume": 48827,
         "detail": "ok"
       },
       "serial_trading": {
@@ -372,20 +372,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": 1.36,
+        "price_change_3d": -0.45,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 45.99,
+    "composite_score": 45.37,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.665,
-      "technical": 0.204,
-      "governance": 0.131,
+      "fundamental": 0.662,
+      "technical": 0.205,
+      "governance": 0.134,
       "sentiment": 0.0
     }
   }

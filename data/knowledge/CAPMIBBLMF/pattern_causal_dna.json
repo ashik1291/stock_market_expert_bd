@@ -1,29 +1,29 @@
 {
   "ticker": "CAPMIBBLMF",
-  "audited_at": "2026-11-16 17:18:05",
+  "audited_at": "2026-11-17 15:01:24",
   "worth_vs_greed": {
-    "current_price": 13.1,
-    "intrinsic_worth": 6.55,
+    "current_price": 12.7,
+    "intrinsic_worth": 6.35,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 70.0,
-    "greed_index": 70.0,
-    "rsi_14": 29.0,
-    "price_vs_ema50_pct": 6.4,
-    "price_vs_ema200_pct": 34.5,
+    "extension_froth_score": 60.0,
+    "greed_index": 60.0,
+    "rsi_14": 27.3,
+    "price_vs_ema50_pct": 3.1,
+    "price_vs_ema200_pct": 30.0,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f312.8 \u2013 \u09f313.2",
-      "chase_cutoff_price": 13.4,
-      "when_to_wait": "If price opens or rises above \u09f313.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f312.8.",
-      "weekly_target_short": 13.6,
-      "monthly_target_swing": 15.1,
-      "long_term_target_asset": 17.0,
+      "optimal_entry_corridor": "\u09f312.4 \u2013 \u09f312.8",
+      "chase_cutoff_price": 13.0,
+      "when_to_wait": "If price opens or rises above \u09f313.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f312.4.",
+      "weekly_target_short": 13.1,
+      "monthly_target_swing": 14.6,
+      "long_term_target_asset": 16.5,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
-    "status": "OVERVALUED_EUPHORIA",
-    "worth_decision": "SELL_TAKE_PROFIT",
-    "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (70.0/100). Danger of sharp mean reversion.",
+    "status": "CHRONIC_OVERVALUATION",
+    "worth_decision": "AVOID",
+    "reason": "Fundamental value severely lags stock price (MoS: -50.0%).",
     "is_blacklisted": true,
     "blacklist_reason": "Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-29 \u2014 Price up +6.37% with poor fundamentals (Negative EPS)]",
     "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-10-29 \u2014 Price up +6.37% with poor fundamentals (Negative EPS)]"
@@ -31,31 +31,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 5.65,
+        "return_pct": 2.42,
         "high": 13.5,
-        "low": 12.0,
-        "range_volatility_pct": 12.5
+        "low": 12.5,
+        "range_volatility_pct": 8.0
       },
       "monthly_21d": {
-        "return_pct": -17.09,
+        "return_pct": -16.45,
         "high": 17.2,
         "low": 12.0,
         "range_volatility_pct": 43.33
       },
       "quarterly_63d": {
-        "return_pct": 98.48,
+        "return_pct": 92.42,
         "high": 17.2,
         "low": 6.4,
         "range_volatility_pct": 168.75
       },
       "half_yearly_126d": {
-        "return_pct": 70.13,
+        "return_pct": 64.94,
         "high": 17.2,
         "low": 5.5,
         "range_volatility_pct": 212.73
       },
       "yearly_252d": {
-        "return_pct": 52.33,
+        "return_pct": 51.19,
         "high": 17.2,
         "low": 5.5,
         "range_volatility_pct": 212.73
@@ -67,7 +67,7 @@
       "avg_wave_duration_bars": 18.0
     },
     "current_wave_phase": "BOTTOMING_SUPPORT",
-    "phase_guidance": "Drop (-23.8%) matches historical correction depth (-27.3%). Prepare to accumulate.",
+    "phase_guidance": "Drop (-26.2%) matches historical correction depth (-27.3%). Prepare to accumulate.",
     "top_seasonal_months": [
       {
         "month": "Oct",

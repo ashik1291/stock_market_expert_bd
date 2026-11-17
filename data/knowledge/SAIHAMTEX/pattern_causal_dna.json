@@ -1,29 +1,29 @@
 {
   "ticker": "SAIHAMTEX",
-  "audited_at": "2026-11-16 17:18:24",
+  "audited_at": "2026-11-17 15:01:45",
   "worth_vs_greed": {
-    "current_price": 52.9,
+    "current_price": 50.7,
     "intrinsic_worth": 1.76,
-    "margin_of_safety_pct": -96.7,
-    "extension_froth_score": 70.0,
-    "greed_index": 70.0,
-    "rsi_14": 63.6,
-    "price_vs_ema50_pct": 24.9,
-    "price_vs_ema200_pct": 79.9,
+    "margin_of_safety_pct": -96.5,
+    "extension_froth_score": 60.0,
+    "greed_index": 60.0,
+    "rsi_14": 61.3,
+    "price_vs_ema50_pct": 18.8,
+    "price_vs_ema200_pct": 71.2,
     "merit_status": "EARNINGS_BACKED_MERIT",
     "merit_reason": "Price supported by solid earnings (EPS: \u09f30.22, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f351.8 \u2013 \u09f353.4",
-      "chase_cutoff_price": 54.2,
-      "when_to_wait": "If price opens or rises above \u09f354.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f351.8.",
-      "weekly_target_short": 54.8,
-      "monthly_target_swing": 60.8,
-      "long_term_target_asset": 68.8,
+      "optimal_entry_corridor": "\u09f349.7 \u2013 \u09f351.2",
+      "chase_cutoff_price": 52.0,
+      "when_to_wait": "If price opens or rises above \u09f352.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f349.7.",
+      "weekly_target_short": 52.5,
+      "monthly_target_swing": 58.3,
+      "long_term_target_asset": 65.9,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
-    "status": "OVERVALUED_EUPHORIA",
-    "worth_decision": "SELL_TAKE_PROFIT",
-    "reason": "Price is 96.7% above intrinsic worth while market greed is euphoric (70.0/100). Danger of sharp mean reversion.",
+    "status": "CHRONIC_OVERVALUATION",
+    "worth_decision": "AVOID",
+    "reason": "Fundamental value severely lags stock price (MoS: -96.5%).",
     "is_blacklisted": true,
     "blacklist_reason": "Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-11-12 \u2014 Price up +8.04% with poor fundamentals (Extreme P/E (73.1x))]",
     "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-11-12 \u2014 Price up +8.04% with poor fundamentals (Extreme P/E (73.1x))]"
@@ -31,31 +31,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 12.31,
+        "return_pct": 7.64,
         "high": 54.2,
-        "low": 45.6,
-        "range_volatility_pct": 18.86
+        "low": 46.0,
+        "range_volatility_pct": 17.83
       },
       "monthly_21d": {
-        "return_pct": 13.28,
+        "return_pct": 5.85,
         "high": 54.2,
         "low": 40.9,
         "range_volatility_pct": 32.52
       },
       "quarterly_63d": {
-        "return_pct": 74.01,
+        "return_pct": 68.44,
         "high": 54.2,
         "low": 28.0,
         "range_volatility_pct": 93.57
       },
       "half_yearly_126d": {
-        "return_pct": 192.27,
+        "return_pct": 186.44,
         "high": 54.2,
         "low": 16.6,
         "range_volatility_pct": 226.51
       },
       "yearly_252d": {
-        "return_pct": 245.75,
+        "return_pct": 231.37,
         "high": 54.2,
         "low": 13.7,
         "range_volatility_pct": 295.62
@@ -67,7 +67,7 @@
       "avg_wave_duration_bars": 19.0
     },
     "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (9.5%). Wait for stabilizing base.",
+    "phase_guidance": "Ongoing pullback from peak (5.0%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Aug",

@@ -2,18 +2,18 @@
   "ticker": "VAMLRBBF",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-16T11:18:30.403902",
-  "asof_price_date": "2026-11-16",
+  "analyzed_at": "2026-11-17T09:01:51.620825",
+  "asof_price_date": "2026-11-17",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 70.5073,
+    "rsi_14": 70.5041,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 43.45,
+  "confidence": 43.32,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 8.5,
-    "stop_loss": 8.23,
-    "target": 9.04
+    "stop_loss": 8.24,
+    "target": 9.02
   },
   "precision": {
     "ticker": "VAMLRBBF",
@@ -103,7 +103,7 @@
   },
   "pattern_dna": {
     "ticker": "VAMLRBBF",
-    "audited_at": "2026-11-16 17:18:30",
+    "audited_at": "2026-11-17 15:01:51",
     "worth_vs_greed": {
       "current_price": 8.5,
       "intrinsic_worth": 4.25,
@@ -111,8 +111,8 @@
       "extension_froth_score": 60.0,
       "greed_index": 60.0,
       "rsi_14": 52.9,
-      "price_vs_ema50_pct": 14.9,
-      "price_vs_ema200_pct": 36.8,
+      "price_vs_ema50_pct": 14.2,
+      "price_vs_ema200_pct": 36.3,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -133,7 +133,7 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 3.66,
+          "return_pct": 0.0,
           "high": 8.5,
           "low": 8.2,
           "range_volatility_pct": 3.66
@@ -145,7 +145,7 @@
           "range_volatility_pct": 11.84
         },
         "quarterly_63d": {
-          "return_pct": 60.38,
+          "return_pct": 57.41,
           "high": 8.5,
           "low": 4.8,
           "range_volatility_pct": 77.08
@@ -157,7 +157,7 @@
           "range_volatility_pct": 80.85
         },
         "yearly_252d": {
-          "return_pct": 88.89,
+          "return_pct": 93.18,
           "high": 8.5,
           "low": 4.2,
           "range_volatility_pct": 102.38
@@ -273,11 +273,11 @@
       "macd": "neutral",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 0.18,
+      "atr": 0.17,
       "rsi_value": 70.36,
       "last_close": 8.5,
       "sma20": 8.29,
-      "sma50": 7.12,
+      "sma50": 7.19,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -349,13 +349,13 @@
         "flag": false,
         "price_chg": 0,
         "last_volume": 0,
-        "avg_volume": 58236.0,
+        "avg_volume": 55202.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
         "spike_ratio": 0.0,
-        "avg_volume": 59364.0,
+        "avg_volume": 58236.0,
         "today_volume": 0,
         "detail": "ok"
       },
@@ -382,13 +382,13 @@
     }
   },
   "composite": {
-    "composite_score": 43.45,
+    "composite_score": 43.32,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.665,
-      "technical": 0.204,
-      "governance": 0.131,
+      "fundamental": 0.662,
+      "technical": 0.205,
+      "governance": 0.134,
       "sentiment": 0.0
     }
   }

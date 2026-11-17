@@ -2,18 +2,18 @@
   "ticker": "NBL",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-16T11:18:18.059417",
-  "asof_price_date": "2026-11-16",
+  "analyzed_at": "2026-11-17T09:01:38.865918",
+  "asof_price_date": "2026-11-17",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 47.9082,
+    "rsi_14": 47.5895,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 44.47,
+  "confidence": 44.34,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 708692,
-      "daily_turnover_bdt_cr": 0.07,
+      "avg_daily_volume": 625526,
+      "daily_turnover_bdt_cr": 0.06,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 35434,
-      "max_daily_accumulation_shares": 106303,
-      "max_order_bdt": 35434.0,
-      "directive": "Max single order: 35,434 shares (Tk 35,434) to prevent >1% execution slippage"
+      "max_single_order_shares": 31276,
+      "max_daily_accumulation_shares": 93828,
+      "max_order_bdt": 31276.0,
+      "directive": "Max single order: 31,276 shares (Tk 31,276) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -103,14 +103,14 @@
   },
   "pattern_dna": {
     "ticker": "NBL",
-    "audited_at": "2026-11-16 17:18:18",
+    "audited_at": "2026-11-17 15:01:38",
     "worth_vs_greed": {
       "current_price": 3.5,
       "intrinsic_worth": 1.75,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 40.0,
       "greed_index": 40.0,
-      "rsi_14": 50.0,
+      "rsi_14": 40.0,
       "price_vs_ema50_pct": 0.5,
       "price_vs_ema200_pct": -4.2,
       "merit_status": "NEUTRAL_MERIT",
@@ -135,18 +135,18 @@
       "intervals": {
         "weekly_5d": {
           "return_pct": 0.0,
-          "high": 3.7,
+          "high": 3.6,
           "low": 3.4,
-          "range_volatility_pct": 8.82
+          "range_volatility_pct": 5.88
         },
         "monthly_21d": {
-          "return_pct": -10.26,
+          "return_pct": -7.89,
           "high": 3.9,
           "low": 3.4,
           "range_volatility_pct": 14.71
         },
         "quarterly_63d": {
-          "return_pct": 9.37,
+          "return_pct": 12.9,
           "high": 4.2,
           "low": 2.9,
           "range_volatility_pct": 44.83
@@ -158,7 +158,7 @@
           "range_volatility_pct": 100.0
         },
         "yearly_252d": {
-          "return_pct": -25.53,
+          "return_pct": -23.91,
           "high": 4.8,
           "low": 2.1,
           "range_volatility_pct": 128.57
@@ -277,8 +277,8 @@
       "atr": 0.19,
       "rsi_value": 47.97,
       "last_close": 3.5,
-      "sma20": 3.61,
-      "sma50": 3.45,
+      "sma20": 3.6,
+      "sma50": 3.46,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -355,15 +355,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 41935,
-        "avg_volume": 1253692.0,
+        "last_volume": 189248,
+        "avg_volume": 1240259.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.03,
-        "avg_volume": 1263108.0,
-        "today_volume": 41935,
+        "spike_ratio": 0.15,
+        "avg_volume": 1253692.0,
+        "today_volume": 189248,
         "detail": "ok"
       },
       "serial_trading": {
@@ -389,13 +389,13 @@
     }
   },
   "composite": {
-    "composite_score": 44.47,
+    "composite_score": 44.34,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.665,
-      "technical": 0.204,
-      "governance": 0.131,
+      "fundamental": 0.662,
+      "technical": 0.205,
+      "governance": 0.134,
       "sentiment": 0.0
     }
   }

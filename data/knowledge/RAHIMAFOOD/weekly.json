@@ -2,18 +2,18 @@
   "ticker": "RAHIMAFOOD",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-16T11:18:22.844793",
-  "asof_price_date": "2026-11-16",
+  "analyzed_at": "2026-11-17T09:01:43.584521",
+  "asof_price_date": "2026-11-17",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 39.1871,
+    "rsi_14": 40.3603,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 42.68,
+  "confidence": 43.83,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -21,34 +21,34 @@
     "rise_probability_pct": null,
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
-      "predicted_path": "Oversold bounce to 20-DMA",
-      "upside_potential_pct": "+7.7%",
-      "downside_risk_pct": "-5.2%",
-      "target_price": 75.2,
-      "support_price": 66.2,
+      "predicted_path": "Upward momentum swing",
+      "upside_potential_pct": "+7.8%",
+      "downside_risk_pct": "-5.1%",
+      "target_price": 75.8,
+      "support_price": 66.7,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+24.9%",
-      "downside_risk_pct": "-8.5%",
-      "target_price": 87.2,
+      "upside_potential_pct": "+25.0%",
+      "downside_risk_pct": "-9.1%",
+      "target_price": 87.9,
       "trailing_stop": 63.9,
-      "risk_reward_ratio": "2.9x"
+      "risk_reward_ratio": "2.7x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-      "upside_potential_pct": "+29.9%",
+      "upside_potential_pct": "+30.0%",
       "downside_risk_pct": "-12.0%",
-      "target_price": 90.7,
+      "target_price": 91.4,
       "dividend_cagr": "5%\u20138%",
       "risk_reward_ratio": "2.5x"
     }
   },
   "trade_levels": {
-    "entry": 69.8,
-    "stop_loss": 64.41,
-    "target": 80.58
+    "entry": 70.3,
+    "stop_loss": 64.84,
+    "target": 81.22
   },
   "precision": {
     "ticker": "RAHIMAFOOD",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 23006,
+      "avg_daily_volume": 23078,
       "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 1150,
-      "max_daily_accumulation_shares": 3451,
-      "max_order_bdt": 1150.0,
-      "directive": "Max single order: 1,150 shares (Tk 1,150) to prevent >1% execution slippage"
+      "max_single_order_shares": 1153,
+      "max_daily_accumulation_shares": 3461,
+      "max_order_bdt": 1153.0,
+      "directive": "Max single order: 1,153 shares (Tk 1,153) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,74 +91,74 @@
       "status": "VALID",
       "low_52w": 63.5,
       "high_52w": 169.0,
-      "range_52w_pct": 6.0,
+      "range_52w_pct": 6.4,
       "channel_regime": "DEEP_ACCUMULATION_BASE",
-      "visual_gauge": "[ \u09f363.5 |\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f3169.0 ] (6.0% (Truncated))",
+      "visual_gauge": "[ \u09f363.5 |\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f3169.0 ] (6.4% (Truncated))",
       "conviction_bonus": 10.0,
       "is_truncated_window": true,
       "bars_evaluated": 100,
-      "signal": "Price is at the bottom 6.0% of 52-week channel (near \u09f363.5 floor) \u2014 high margin of safety"
+      "signal": "Price is at the bottom 6.4% of 52-week channel (near \u09f363.5 floor) \u2014 high margin of safety"
     },
     "total_precision_bonus": 10.0
   },
   "pattern_dna": {
     "ticker": "RAHIMAFOOD",
-    "audited_at": "2026-11-16 17:18:22",
+    "audited_at": "2026-11-17 15:01:43",
     "worth_vs_greed": {
-      "current_price": 69.8,
-      "intrinsic_worth": 34.9,
+      "current_price": 70.3,
+      "intrinsic_worth": 35.15,
       "margin_of_safety_pct": -50.0,
-      "extension_froth_score": 20.0,
-      "greed_index": 20.0,
-      "rsi_14": 65.5,
-      "price_vs_ema50_pct": -22.2,
-      "price_vs_ema200_pct": -37.0,
+      "extension_froth_score": 30.0,
+      "greed_index": 30.0,
+      "rsi_14": 67.5,
+      "price_vs_ema50_pct": -20.9,
+      "price_vs_ema200_pct": -36.3,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f368.4 \u2013 \u09f370.5",
-        "chase_cutoff_price": 71.5,
-        "when_to_wait": "If price opens or rises above \u09f371.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f368.4.",
-        "weekly_target_short": 72.2,
-        "monthly_target_swing": 80.3,
-        "long_term_target_asset": 90.7,
+        "optimal_entry_corridor": "\u09f368.9 \u2013 \u09f371.0",
+        "chase_cutoff_price": 72.1,
+        "when_to_wait": "If price opens or rises above \u09f372.1, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f368.9.",
+        "weekly_target_short": 72.8,
+        "monthly_target_swing": 80.8,
+        "long_term_target_asset": 91.4,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
       "worth_decision": "AVOID",
       "reason": "Fundamental value severely lags stock price (MoS: -50.0%).",
       "is_blacklisted": true,
-      "blacklist_reason": "Blocked by Forensic Surveillance [HIGH: REGULATORY_PROBE on 2026-11-16 \u2014 BSEC Regulatory Enforcement / Probe: BSEC regulatory enforcement / probe]",
-      "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [HIGH: REGULATORY_PROBE on 2026-11-16 \u2014 BSEC Regulatory Enforcement / Probe: BSEC regulatory enforcement / probe]"
+      "blacklist_reason": "Blocked by Forensic Surveillance [HIGH: REGULATORY_PROBE on 2026-11-17 \u2014 BSEC Regulatory Enforcement / Probe: BSEC regulatory enforcement / probe]",
+      "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [HIGH: REGULATORY_PROBE on 2026-11-17 \u2014 BSEC Regulatory Enforcement / Probe: BSEC regulatory enforcement / probe]"
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 4.18,
+          "return_pct": 4.93,
           "high": 73.5,
           "low": 66.6,
           "range_volatility_pct": 10.36
         },
         "monthly_21d": {
-          "return_pct": 1.6,
+          "return_pct": 5.71,
           "high": 73.5,
           "low": 63.5,
           "range_volatility_pct": 15.75
         },
         "quarterly_63d": {
-          "return_pct": -49.2,
+          "return_pct": -48.16,
           "high": 169.0,
           "low": 63.5,
           "range_volatility_pct": 166.14
         },
         "half_yearly_126d": {
-          "return_pct": -53.87,
+          "return_pct": -51.92,
           "high": 169.0,
           "low": 63.5,
           "range_volatility_pct": 166.14
         },
         "yearly_252d": {
-          "return_pct": -12.86,
+          "return_pct": -14.68,
           "high": 174.0,
           "low": 63.5,
           "range_volatility_pct": 174.02
@@ -170,7 +170,7 @@
         "avg_wave_duration_bars": 20.0
       },
       "current_wave_phase": "BOTTOMING_SUPPORT",
-      "phase_guidance": "Drop (-58.7%) matches historical correction depth (-28.0%). Prepare to accumulate.",
+      "phase_guidance": "Drop (-58.4%) matches historical correction depth (-28.0%). Prepare to accumulate.",
       "top_seasonal_months": [
         {
           "month": "Sep",
@@ -268,17 +268,17 @@
     ]
   },
   "technical": {
-    "score": 46.25,
+    "score": 52.5,
     "signals": {
       "rsi": "neutral",
       "macd": "neutral",
       "sma_trend": "neutral",
-      "bb": "at_upper_band_bearish",
-      "atr": 3.59,
-      "rsi_value": 39.06,
-      "last_close": 69.8,
-      "sma20": 66.51,
-      "sma50": 100.38,
+      "bb": "inside_bands",
+      "atr": 3.64,
+      "rsi_value": 40.18,
+      "last_close": 70.3,
+      "sma20": 66.69,
+      "sma50": 98.77,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -305,7 +305,7 @@
       "error": "no_fundamental_data",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 58.7,
+        "drawdown_pct": 58.4,
         "high_52w": 169.0,
         "low_52w": 63.5
       }
@@ -349,15 +349,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 6040,
-        "avg_volume": 32484.0,
+        "last_volume": 13270,
+        "avg_volume": 21179.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.12,
-        "avg_volume": 48480.0,
-        "today_volume": 6040,
+        "spike_ratio": 0.41,
+        "avg_volume": 32484.0,
+        "today_volume": 13270,
         "detail": "ok"
       },
       "serial_trading": {
@@ -376,20 +376,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": -1.41,
+        "price_change_3d": -0.71,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 42.68,
+    "composite_score": 43.83,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.665,
-      "technical": 0.204,
-      "governance": 0.131,
+      "fundamental": 0.662,
+      "technical": 0.205,
+      "governance": 0.134,
       "sentiment": 0.0
     }
   }

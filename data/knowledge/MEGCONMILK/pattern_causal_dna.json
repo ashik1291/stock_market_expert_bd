@@ -1,64 +1,64 @@
 {
   "ticker": "MEGCONMILK",
-  "audited_at": "2026-11-16 17:18:16",
+  "audited_at": "2026-11-17 15:01:36",
   "worth_vs_greed": {
-    "current_price": 30.8,
-    "intrinsic_worth": 15.4,
+    "current_price": 34.7,
+    "intrinsic_worth": 17.35,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 70.0,
-    "greed_index": 70.0,
-    "rsi_14": 59.6,
-    "price_vs_ema50_pct": 26.5,
-    "price_vs_ema200_pct": 50.9,
+    "extension_froth_score": 80.0,
+    "greed_index": 80.0,
+    "rsi_14": 72.1,
+    "price_vs_ema50_pct": 40.2,
+    "price_vs_ema200_pct": 68.8,
     "merit_status": "SPECULATIVE_JUNK_PUMP",
     "merit_reason": "Price is surging aggressively without positive EPS backing. Pure speculative risk.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f330.2 \u2013 \u09f331.1",
-      "chase_cutoff_price": 31.6,
-      "when_to_wait": "If price opens or rises above \u09f331.6, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f330.2.",
-      "weekly_target_short": 31.9,
-      "monthly_target_swing": 35.4,
-      "long_term_target_asset": 40.0,
+      "optimal_entry_corridor": "\u09f334.0 \u2013 \u09f335.0",
+      "chase_cutoff_price": 35.6,
+      "when_to_wait": "If price opens or rises above \u09f335.6, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f334.0.",
+      "weekly_target_short": 35.9,
+      "monthly_target_swing": 39.9,
+      "long_term_target_asset": 45.1,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "OVERVALUED_EUPHORIA",
     "worth_decision": "SELL_TAKE_PROFIT",
-    "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (70.0/100). Danger of sharp mean reversion.",
+    "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (80.0/100). Danger of sharp mean reversion.",
     "is_blacklisted": true,
-    "blacklist_reason": "Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-11-12 \u2014 Low-float spike is 6.4x 20-day average (99,318 vs 15,535) | Price up +12.41% on untracked / high-risk security without verified earnings]",
-    "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-11-12 \u2014 Low-float spike is 6.4x 20-day average (99,318 vs 15,535) | Price up +12.41% on untracked / high-risk security without verified earnings]"
+    "blacklist_reason": "Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-11-17 \u2014 Low-float spike is 10.8x 20-day average (171,918 vs 15,871) | Price up +12.66% on untracked / high-risk security without verified earnings]",
+    "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-11-17 \u2014 Low-float spike is 10.8x 20-day average (171,918 vs 15,871) | Price up +12.66% on untracked / high-risk security without verified earnings]"
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 12.41,
-        "high": 33.8,
+        "return_pct": 26.64,
+        "high": 34.7,
         "low": 27.1,
-        "range_volatility_pct": 24.72
+        "range_volatility_pct": 28.04
       },
       "monthly_21d": {
-        "return_pct": 6.94,
-        "high": 33.8,
+        "return_pct": 19.66,
+        "high": 34.7,
         "low": 20.5,
-        "range_volatility_pct": 64.88
+        "range_volatility_pct": 69.27
       },
       "quarterly_63d": {
-        "return_pct": 123.19,
-        "high": 33.8,
+        "return_pct": 144.37,
+        "high": 34.7,
         "low": 12.0,
-        "range_volatility_pct": 181.67
+        "range_volatility_pct": 189.17
       },
       "half_yearly_126d": {
-        "return_pct": 65.59,
-        "high": 33.8,
+        "return_pct": 88.59,
+        "high": 34.7,
         "low": 11.5,
-        "range_volatility_pct": 193.91
+        "range_volatility_pct": 201.74
       },
       "yearly_252d": {
-        "return_pct": 15.79,
-        "high": 33.8,
+        "return_pct": 30.94,
+        "high": 34.7,
         "low": 11.5,
-        "range_volatility_pct": 193.91
+        "range_volatility_pct": 201.74
       }
     },
     "wave_metrics": {
@@ -67,7 +67,7 @@
       "avg_wave_duration_bars": 22.0
     },
     "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-2.2%). Wait for stabilizing base.",
+    "phase_guidance": "Ongoing pullback from peak (10.2%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Jan",

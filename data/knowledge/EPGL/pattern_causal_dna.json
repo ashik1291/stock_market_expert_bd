@@ -1,29 +1,29 @@
 {
   "ticker": "EPGL",
-  "audited_at": "2026-11-16 17:18:08",
+  "audited_at": "2026-11-17 15:01:27",
   "worth_vs_greed": {
-    "current_price": 17.3,
-    "intrinsic_worth": 8.65,
+    "current_price": 17.9,
+    "intrinsic_worth": 8.95,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 80.0,
-    "greed_index": 80.0,
-    "rsi_14": 72.4,
-    "price_vs_ema50_pct": 9.9,
-    "price_vs_ema200_pct": 2.9,
+    "extension_froth_score": 90.0,
+    "greed_index": 90.0,
+    "rsi_14": 73.8,
+    "price_vs_ema50_pct": 13.1,
+    "price_vs_ema200_pct": 6.4,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f317.0 \u2013 \u09f317.5",
-      "chase_cutoff_price": 17.7,
-      "when_to_wait": "If price opens or rises above \u09f317.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f317.0.",
-      "weekly_target_short": 17.9,
-      "monthly_target_swing": 19.9,
-      "long_term_target_asset": 22.5,
+      "optimal_entry_corridor": "\u09f317.5 \u2013 \u09f318.1",
+      "chase_cutoff_price": 18.3,
+      "when_to_wait": "If price opens or rises above \u09f318.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f317.5.",
+      "weekly_target_short": 18.5,
+      "monthly_target_swing": 20.6,
+      "long_term_target_asset": 23.3,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "OVERVALUED_EUPHORIA",
     "worth_decision": "SELL_TAKE_PROFIT",
-    "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (80.0/100). Danger of sharp mean reversion.",
+    "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (90.0/100). Danger of sharp mean reversion.",
     "is_blacklisted": true,
     "blacklist_reason": "Blocked by Forensic Surveillance [CRITICAL: ABNORMAL_VOLUME_SURGE on 2026-11-12 \u2014 Mid-tier volume is 4.2x 20-day average (244,472 vs 58,661) | Price up +11.04% on untracked / high-risk security without verified earnings]",
     "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [CRITICAL: ABNORMAL_VOLUME_SURGE on 2026-11-12 \u2014 Mid-tier volume is 4.2x 20-day average (244,472 vs 58,661) | Price up +11.04% on untracked / high-risk security without verified earnings]"
@@ -31,31 +31,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 5.49,
+        "return_pct": 9.15,
         "high": 18.6,
-        "low": 15.1,
-        "range_volatility_pct": 23.18
+        "low": 16.0,
+        "range_volatility_pct": 16.25
       },
       "monthly_21d": {
-        "return_pct": 13.07,
+        "return_pct": 20.13,
         "high": 18.6,
         "low": 14.5,
         "range_volatility_pct": 28.28
       },
       "quarterly_63d": {
-        "return_pct": 8.81,
+        "return_pct": 9.82,
         "high": 18.6,
         "low": 14.3,
         "range_volatility_pct": 30.07
       },
       "half_yearly_126d": {
-        "return_pct": -19.16,
+        "return_pct": -22.51,
         "high": 23.8,
         "low": 14.2,
         "range_volatility_pct": 67.61
       },
       "yearly_252d": {
-        "return_pct": -24.12,
+        "return_pct": -17.89,
         "high": 24.6,
         "low": 14.0,
         "range_volatility_pct": 75.71
@@ -67,7 +67,7 @@
       "avg_wave_duration_bars": 14.0
     },
     "current_wave_phase": "LATE_MARKUP",
-    "phase_guidance": "Approaching historical rally limit (+19.3% vs median +9.9%). Tighten stop.",
+    "phase_guidance": "Approaching historical rally limit (+23.4% vs median +9.9%). Tighten stop.",
     "top_seasonal_months": [
       {
         "month": "Feb",

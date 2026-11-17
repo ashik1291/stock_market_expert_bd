@@ -1,60 +1,60 @@
 {
   "ticker": "AIBL1STIMF",
-  "audited_at": "2026-11-16 17:18:00",
+  "audited_at": "2026-11-17 15:01:18",
   "worth_vs_greed": {
-    "current_price": 5.3,
-    "intrinsic_worth": 2.65,
+    "current_price": 5.1,
+    "intrinsic_worth": 2.55,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 70.0,
-    "greed_index": 70.0,
-    "rsi_14": 53.3,
-    "price_vs_ema50_pct": 12.2,
-    "price_vs_ema200_pct": 9.6,
+    "extension_froth_score": 60.0,
+    "greed_index": 60.0,
+    "rsi_14": 43.8,
+    "price_vs_ema50_pct": 7.7,
+    "price_vs_ema200_pct": 5.4,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f35.2 \u2013 \u09f35.4",
-      "chase_cutoff_price": 5.4,
-      "when_to_wait": "If price opens or rises above \u09f35.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f35.2.",
-      "weekly_target_short": 5.5,
-      "monthly_target_swing": 6.1,
-      "long_term_target_asset": 6.9,
+      "optimal_entry_corridor": "\u09f35.0 \u2013 \u09f35.2",
+      "chase_cutoff_price": 5.2,
+      "when_to_wait": "If price opens or rises above \u09f35.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f35.0.",
+      "weekly_target_short": 5.3,
+      "monthly_target_swing": 5.9,
+      "long_term_target_asset": 6.6,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
-    "status": "OVERVALUED_EUPHORIA",
-    "worth_decision": "SELL_TAKE_PROFIT",
-    "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (70.0/100). Danger of sharp mean reversion.",
+    "status": "CHRONIC_OVERVALUATION",
+    "worth_decision": "AVOID",
+    "reason": "Fundamental value severely lags stock price (MoS: -50.0%).",
     "is_blacklisted": false,
     "blacklist_reason": null
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 6.0,
+        "return_pct": 2.0,
         "high": 5.4,
         "low": 5.0,
         "range_volatility_pct": 8.0
       },
       "monthly_21d": {
-        "return_pct": -5.36,
+        "return_pct": -3.77,
         "high": 5.7,
         "low": 5.0,
         "range_volatility_pct": 14.0
       },
       "quarterly_63d": {
-        "return_pct": 51.43,
+        "return_pct": 50.0,
         "high": 5.9,
         "low": 3.2,
         "range_volatility_pct": 84.38
       },
       "half_yearly_126d": {
-        "return_pct": 29.27,
+        "return_pct": 18.6,
         "high": 5.9,
         "low": 2.8,
         "range_volatility_pct": 110.71
       },
       "yearly_252d": {
-        "return_pct": -25.35,
+        "return_pct": -28.17,
         "high": 7.5,
         "low": 2.8,
         "range_volatility_pct": 167.86
@@ -66,7 +66,7 @@
       "avg_wave_duration_bars": 16.0
     },
     "current_wave_phase": "BOTTOMING_SUPPORT",
-    "phase_guidance": "Drop (-10.2%) matches historical correction depth (-12.5%). Prepare to accumulate.",
+    "phase_guidance": "Drop (-13.6%) matches historical correction depth (-12.5%). Prepare to accumulate.",
     "top_seasonal_months": [
       {
         "month": "Oct",

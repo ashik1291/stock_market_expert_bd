@@ -1,15 +1,15 @@
 {
   "ticker": "FAMILYTEX",
-  "audited_at": "2026-11-16 17:18:08",
+  "audited_at": "2026-11-17 15:01:28",
   "worth_vs_greed": {
     "current_price": 2.0,
     "intrinsic_worth": 1.0,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 70.0,
-    "greed_index": 70.0,
+    "extension_froth_score": 50.0,
+    "greed_index": 50.0,
     "rsi_14": 50.0,
-    "price_vs_ema50_pct": 10.4,
-    "price_vs_ema200_pct": 6.1,
+    "price_vs_ema50_pct": 10.0,
+    "price_vs_ema200_pct": 6.0,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
@@ -21,9 +21,9 @@
       "long_term_target_asset": 2.6,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
-    "status": "OVERVALUED_EUPHORIA",
-    "worth_decision": "SELL_TAKE_PROFIT",
-    "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (70.0/100). Danger of sharp mean reversion.",
+    "status": "CHRONIC_OVERVALUATION",
+    "worth_decision": "AVOID",
+    "reason": "Fundamental value severely lags stock price (MoS: -50.0%).",
     "is_blacklisted": false,
     "blacklist_reason": null
   },
@@ -37,9 +37,9 @@
       },
       "monthly_21d": {
         "return_pct": -9.09,
-        "high": 2.3,
+        "high": 2.2,
         "low": 1.8,
-        "range_volatility_pct": 27.78
+        "range_volatility_pct": 22.22
       },
       "quarterly_63d": {
         "return_pct": 66.67,
@@ -54,7 +54,7 @@
         "range_volatility_pct": 155.56
       },
       "yearly_252d": {
-        "return_pct": -28.57,
+        "return_pct": -31.03,
         "high": 3.0,
         "low": 0.9,
         "range_volatility_pct": 233.33

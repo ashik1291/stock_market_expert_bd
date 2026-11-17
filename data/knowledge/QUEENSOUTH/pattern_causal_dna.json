@@ -1,24 +1,24 @@
 {
   "ticker": "QUEENSOUTH",
-  "audited_at": "2026-11-16 17:18:22",
+  "audited_at": "2026-11-17 15:01:43",
   "worth_vs_greed": {
-    "current_price": 13.7,
-    "intrinsic_worth": 6.85,
+    "current_price": 13.9,
+    "intrinsic_worth": 6.95,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 40.0,
-    "greed_index": 40.0,
-    "rsi_14": 85.7,
-    "price_vs_ema50_pct": 9.8,
-    "price_vs_ema200_pct": 10.2,
+    "extension_froth_score": 50.0,
+    "greed_index": 50.0,
+    "rsi_14": 80.8,
+    "price_vs_ema50_pct": 10.9,
+    "price_vs_ema200_pct": 11.6,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f313.4 \u2013 \u09f313.8",
-      "chase_cutoff_price": 14.0,
-      "when_to_wait": "If price opens or rises above \u09f314.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f313.4.",
-      "weekly_target_short": 14.2,
-      "monthly_target_swing": 15.8,
-      "long_term_target_asset": 17.8,
+      "optimal_entry_corridor": "\u09f313.6 \u2013 \u09f314.0",
+      "chase_cutoff_price": 14.2,
+      "when_to_wait": "If price opens or rises above \u09f314.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f313.6.",
+      "weekly_target_short": 14.4,
+      "monthly_target_swing": 16.0,
+      "long_term_target_asset": 18.1,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -31,31 +31,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 2.24,
+        "return_pct": 3.73,
         "high": 14.1,
         "low": 13.3,
         "range_volatility_pct": 6.02
       },
       "monthly_21d": {
-        "return_pct": 7.03,
+        "return_pct": 11.2,
         "high": 14.1,
         "low": 10.9,
         "range_volatility_pct": 29.36
       },
       "quarterly_63d": {
-        "return_pct": 26.85,
+        "return_pct": 26.36,
         "high": 14.1,
         "low": 10.6,
         "range_volatility_pct": 33.02
       },
       "half_yearly_126d": {
-        "return_pct": -1.44,
+        "return_pct": -2.11,
         "high": 14.8,
         "low": 8.5,
         "range_volatility_pct": 74.12
       },
       "yearly_252d": {
-        "return_pct": -2.84,
+        "return_pct": 0.0,
         "high": 15.0,
         "low": 8.5,
         "range_volatility_pct": 76.47
@@ -63,11 +63,11 @@
     },
     "wave_metrics": {
       "median_rally_gain_pct": 44.6,
-      "median_correction_drop_pct": -21.4,
+      "median_correction_drop_pct": -21.5,
       "avg_wave_duration_bars": 37.0
     },
-    "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-1.4%). Wait for stabilizing base.",
+    "current_wave_phase": "MARKUP_RALLY_MID",
+    "phase_guidance": "Midway through rally wave (+27.5% from base, historical target ~+44.6%).",
     "top_seasonal_months": [
       {
         "month": "Feb",

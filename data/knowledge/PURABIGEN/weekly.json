@@ -2,18 +2,18 @@
   "ticker": "PURABIGEN",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-16T11:18:22.591728",
-  "asof_price_date": "2026-11-16",
+  "analyzed_at": "2026-11-17T09:01:43.334169",
+  "asof_price_date": "2026-11-17",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 63.4271,
+    "rsi_14": 64.5492,
     "pe_ratio": 15.8,
     "debt_equity": 0.0
   },
   "signal": "HOLD",
-  "confidence": 51.21,
+  "confidence": 51.04,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -23,32 +23,32 @@
     "short_term": {
       "predicted_path": "Upward momentum swing",
       "upside_potential_pct": "+6.1%",
-      "downside_risk_pct": "-3.9%",
-      "target_price": 32.9,
-      "support_price": 29.8,
+      "downside_risk_pct": "-3.8%",
+      "target_price": 33.2,
+      "support_price": 30.1,
       "risk_reward_ratio": "1.6x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+10.0%",
-      "downside_risk_pct": "-10.0%",
-      "target_price": 34.1,
-      "trailing_stop": 27.9,
+      "upside_potential_pct": "+9.9%",
+      "downside_risk_pct": "-9.9%",
+      "target_price": 34.4,
+      "trailing_stop": 28.2,
       "risk_reward_ratio": "1.0x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.0%",
       "downside_risk_pct": "-12.0%",
-      "target_price": 40.3,
+      "target_price": 40.7,
       "dividend_cagr": "strong (5.24%)",
       "risk_reward_ratio": "2.5x"
     }
   },
   "trade_levels": {
-    "entry": 31.0,
-    "stop_loss": 29.14,
-    "target": 34.72
+    "entry": 31.3,
+    "stop_loss": 29.43,
+    "target": 35.04
   },
   "precision": {
     "ticker": "PURABIGEN",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 759912,
+      "avg_daily_volume": 759647,
       "daily_turnover_bdt_cr": 0.08,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 37995,
-      "max_daily_accumulation_shares": 113986,
-      "max_order_bdt": 37995.0,
-      "directive": "Max single order: 37,995 shares (Tk 37,995) to prevent >1% execution slippage"
+      "max_single_order_shares": 37982,
+      "max_daily_accumulation_shares": 113947,
+      "max_order_bdt": 37982.0,
+      "directive": "Max single order: 37,982 shares (Tk 37,982) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,73 +91,73 @@
       "status": "VALID",
       "low_52w": 16.5,
       "high_52w": 34.2,
-      "range_52w_pct": 81.9,
+      "range_52w_pct": 83.6,
       "channel_regime": "MOMENTUM_EXPANSION",
-      "visual_gauge": "[ \u09f316.5 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591| \u09f334.2 ] (81.9% (Truncated))",
+      "visual_gauge": "[ \u09f316.5 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591| \u09f334.2 ] (83.6% (Truncated))",
       "conviction_bonus": 5.0,
       "is_truncated_window": true,
       "bars_evaluated": 101,
-      "signal": "Price is in upper channel (81.9%) \u2014 upward breakout momentum"
+      "signal": "Price is in upper channel (83.6%) \u2014 upward breakout momentum"
     },
     "total_precision_bonus": 5.0
   },
   "pattern_dna": {
     "ticker": "PURABIGEN",
-    "audited_at": "2026-11-16 17:18:22",
+    "audited_at": "2026-11-17 15:01:43",
     "worth_vs_greed": {
-      "current_price": 31.0,
+      "current_price": 31.3,
       "intrinsic_worth": 4.96,
-      "margin_of_safety_pct": -84.0,
+      "margin_of_safety_pct": -84.2,
       "extension_froth_score": 80.0,
       "greed_index": 80.0,
-      "rsi_14": 66.7,
-      "price_vs_ema50_pct": 17.7,
-      "price_vs_ema200_pct": 42.1,
+      "rsi_14": 64.9,
+      "price_vs_ema50_pct": 18.0,
+      "price_vs_ema200_pct": 42.9,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f30.62, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f330.4 \u2013 \u09f331.3",
-        "chase_cutoff_price": 31.8,
-        "when_to_wait": "If price opens or rises above \u09f331.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f330.4.",
-        "weekly_target_short": 32.1,
-        "monthly_target_swing": 35.6,
-        "long_term_target_asset": 40.3,
+        "optimal_entry_corridor": "\u09f330.7 \u2013 \u09f331.6",
+        "chase_cutoff_price": 32.1,
+        "when_to_wait": "If price opens or rises above \u09f332.1, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f330.7.",
+        "weekly_target_short": 32.4,
+        "monthly_target_swing": 36.0,
+        "long_term_target_asset": 40.7,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "OVERVALUED_EUPHORIA",
       "worth_decision": "SELL_TAKE_PROFIT",
-      "reason": "Price is 84.0% above intrinsic worth while market greed is euphoric (80.0/100). Danger of sharp mean reversion.",
+      "reason": "Price is 84.2% above intrinsic worth while market greed is euphoric (80.0/100). Danger of sharp mean reversion.",
       "is_blacklisted": false,
       "blacklist_reason": null
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -1.27,
+          "return_pct": -0.32,
           "high": 33.3,
-          "low": 30.5,
-          "range_volatility_pct": 9.18
+          "low": 30.2,
+          "range_volatility_pct": 10.26
         },
         "monthly_21d": {
-          "return_pct": 18.77,
+          "return_pct": 17.23,
           "high": 34.2,
-          "low": 26.2,
-          "range_volatility_pct": 30.53
+          "low": 27.2,
+          "range_volatility_pct": 25.74
         },
         "quarterly_63d": {
-          "return_pct": 62.3,
+          "return_pct": 64.74,
           "high": 34.2,
           "low": 18.3,
           "range_volatility_pct": 86.89
         },
         "half_yearly_126d": {
-          "return_pct": 64.02,
+          "return_pct": 63.87,
           "high": 34.2,
           "low": 16.5,
           "range_volatility_pct": 107.27
         },
         "yearly_252d": {
-          "return_pct": 61.46,
+          "return_pct": 64.74,
           "high": 34.2,
           "low": 15.3,
           "range_volatility_pct": 123.53
@@ -169,7 +169,7 @@
         "avg_wave_duration_bars": 25.0
       },
       "current_wave_phase": "LATE_MARKUP",
-      "phase_guidance": "Approaching historical rally limit (+69.4% vs median +23.3%). Tighten stop.",
+      "phase_guidance": "Approaching historical rally limit (+71.0% vs median +23.3%). Tighten stop.",
       "top_seasonal_months": [
         {
           "month": "May",
@@ -273,11 +273,11 @@
       "macd": "bearish_crossover",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 1.24,
-      "rsi_value": 63.33,
-      "last_close": 31.0,
-      "sma20": 29.85,
-      "sma50": 24.92,
+      "atr": 1.25,
+      "rsi_value": 64.58,
+      "last_close": 31.3,
+      "sma20": 30.01,
+      "sma50": 25.17,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -312,7 +312,7 @@
       "earnings_quality": "moderate_accrual_drag",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 9.4,
+        "drawdown_pct": 8.5,
         "high_52w": 34.2,
         "low_52w": 16.5
       }
@@ -356,15 +356,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 56374,
-        "avg_volume": 570044.0,
+        "last_volume": 386069,
+        "avg_volume": 551597.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.1,
-        "avg_volume": 580181.0,
-        "today_volume": 56374,
+        "spike_ratio": 0.68,
+        "avg_volume": 570044.0,
+        "today_volume": 386069,
         "detail": "ok"
       },
       "serial_trading": {
@@ -383,20 +383,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": 0.65,
+        "price_change_3d": 1.62,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 51.21,
+    "composite_score": 51.04,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.665,
-      "technical": 0.204,
-      "governance": 0.131,
+      "fundamental": 0.662,
+      "technical": 0.205,
+      "governance": 0.134,
       "sentiment": 0.0
     }
   }
