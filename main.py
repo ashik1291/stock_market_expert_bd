@@ -16,7 +16,7 @@ Commands:
   refresh       Execute complete end-to-end knowledge base refresh pipeline
   alpha         Execute automated statistical alpha routine, ledger advance & Bayesian calibration
   pattern [TICKER] Analyze company pattern DNA, multi-interval waves, causal 'WHY', & worth vs greed
-  stock [TICKER]   Inspect prices, fundamentals, corporate actions, and news for any stock
+  stock [TICKER|--all|--sector|--search] Inspect any stock, filter by sector, or view entire 396 universe
   env              Detect OS, shell, python runtime, encoding, and recommend native commands
   check         Run unified daily portfolio audit & seasonal catalyst check in 5 seconds
   portfolio     Show current portfolio holdings (Mutual Funds + Equities + P&L)

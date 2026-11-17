@@ -37,15 +37,32 @@ class TestCrossPlatformCompatibility(unittest.TestCase):
     def test_query_stock_runs_cleanly(self):
         """query_stock.py must execute and return valid data for ACMELAB without throwing exceptions."""
         from scripts.query_stock import inspect_stock
-        import io
-        from contextlib import redirect_stdout
+        res = inspect_stock("ACMELAB", limit=2, quiet=True)
+        self.assertIn("company", res)
+        self.assertEqual(res["company"]["ticker"], "ACMELAB")
+        self.assertEqual(res["company"]["sector"], "Pharmaceuticals")
 
-        buf = io.StringIO()
-        with redirect_stdout(buf):
-            inspect_stock("ACMELAB", limit=2, as_json=True)
-        output = buf.getvalue()
-        self.assertIn("ACMELAB", output)
-        self.assertIn("Pharmaceuticals", output)
+    def test_all_396_stocks_queryable_without_exception(self):
+        """CRITICAL: Every single stock in the 396-stock DSE universe must be queryable without crash."""
+        import sqlite3
+        from scripts.query_stock import inspect_stock, DB_PATH
+
+        conn = sqlite3.connect(str(DB_PATH))
+        conn.row_factory = sqlite3.Row
+        tickers = [r[0] for r in conn.execute("SELECT ticker FROM companies ORDER BY ticker").fetchall()]
+
+        self.assertGreaterEqual(len(tickers), 390, f"Expected ~396 tickers, found {len(tickers)}")
+        failures = []
+        for t in tickers:
+            try:
+                res = inspect_stock(t, limit=1, quiet=True, conn=conn)
+                if "company" not in res or not res["company"]:
+                    failures.append((t, "Missing company data"))
+            except Exception as e:
+                failures.append((t, str(e)))
+
+        conn.close()
+        self.assertEqual(len(failures), 0, f"Failed querying {len(failures)} tickers: {failures[:5]}")
 
     def test_env_detector_runs_cleanly(self):
         """env_detector.py must diagnose system without error."""
