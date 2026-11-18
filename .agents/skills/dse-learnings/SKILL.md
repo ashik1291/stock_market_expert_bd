@@ -140,7 +140,7 @@ Knowledge base of real-world lessons, verified endpoints, and operational guardr
 
 ---
 
-## 5. How to Update This Skill
+## 5. Knowledge Base Maintenance Guidelines
 
 When a new URL changes, an endpoint fails, or a regulatory rule is updated:
 1. Append the incident and solution to Section 2 (Lessons Learned table).

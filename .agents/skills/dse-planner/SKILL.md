@@ -26,7 +26,7 @@ description: >
 ```mermaid
 flowchart TD
     User["👤 User Request / Problem Statement"] --> Plan["📐 dse-planner<br/>(Spec Analysis, Task List & Invariant Review)"]
-    Plan --> Dev["👨‍💻 dse-developer<br/>(Code Implementation & Concurrency)"]
+    Plan --> Dev["💻 dse-developer<br/>(Code Implementation & Concurrency)"]
     Dev --> Test["🧪 dse-tester<br/>(77+ Unit Tests, Regressions & Edges)"]
     Test --> Audit["🔍 dse-auditor<br/>(Institutional Third-Eye & Bias Check)"]
     Audit --> Proxy["👤 dse-user-proxy<br/>(User Simulation, High-Prob Trades & Trade Gates)"]

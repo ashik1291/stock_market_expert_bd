@@ -1,8 +1,8 @@
 ---
 name: dse-daily-alpha
 description: >
-  Automatically executes background statistical alpha improvements, empirical Bayes weight calibration,
-  hash-chained forward ledger tracking, and daily prediction refinement. Triggered whenever user asks
+  Executes statistical alpha improvements, empirical Bayes weight calibration,
+  hash-chained forward ledger tracking, and daily prediction refinement upon user invocation. Triggered whenever user asks
   for daily predictions, stock recommendations, portfolio audits, or types 'alpha', 'alpha update', or 'learn'.
 ---
 

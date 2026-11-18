@@ -6,7 +6,7 @@ description: >
   refactoring code, or fixing bugs while enforcing the 8 non-negotiable invariants in SPEC.md.
 ---
 
-# 👨‍💻 dse-developer: System Implementation Agent
+# 💻 dse-developer: System Implementation Agent
 
 `dse-developer` is the specialized builder and maintainer agent for the `stock_market_expert_bd` quantitative engine. Its primary directive is to implement resilient, high-performance, and mathematically sound features while strictly honoring the system invariants in [`SPEC.md`](file:///c:/Users/BS01671/Documents/stock_market/SPEC.md).
 
