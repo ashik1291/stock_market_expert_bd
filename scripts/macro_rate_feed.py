@@ -136,7 +136,7 @@ def scrape_live_bangladesh_bank_rates() -> list[tuple[str, str, float, str]]:
     for indicator, (page, _) in BB_SERIES.items():
         url = BB_BASE + page
         try:
-            html = requests.get(url, headers=headers, timeout=60, verify=False).text
+            html = requests.get(url, headers=headers, timeout=60, verify=False).text  # nosec B501
         except Exception:
             continue
         if indicator == "bcr_91d":

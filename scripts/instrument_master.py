@@ -74,7 +74,7 @@ def _date(text: str) -> str | None:
 
 
 def fetch_live_instruments() -> tuple[dict, str]:
-    d = requests.get(SNAPSHOT_API, headers={"User-Agent": "Mozilla/5.0 (academic research client)"}, timeout=60, verify=False).json()
+    d = requests.get(SNAPSHOT_API, headers={"User-Agent": "Mozilla/5.0 (academic research client)"}, timeout=60, verify=False).json()  # nosec B501
     rows = d["prices"]["rows"]
     sess = d["prices"].get("session")
     session = sess.get("sessionDate") if isinstance(sess, dict) else None

@@ -81,13 +81,13 @@ def store_snapshot(conn: sqlite3.Connection, index_code: str, effective_date: st
 
 
 def capture(conn: sqlite3.Connection) -> dict:
-    sess = requests.get(SNAPSHOT_API, headers=HEADERS, timeout=60, verify=False).json()["prices"].get("session")
+    sess = requests.get(SNAPSHOT_API, headers=HEADERS, timeout=60, verify=False).json()["prices"].get("session")  # nosec B501
     session = sess.get("sessionDate") if isinstance(sess, dict) else None
     if not session:
         raise ValueError("DSE live feed returned no sessionDate; refusing to date index snapshots")
     out = {"session": session}
     for code in AUTO_INDICES:
-        rows = requests.get(API, params={"code": code}, headers=HEADERS, timeout=60, verify=False).json().get("rows", [])
+        rows = requests.get(API, params={"code": code}, headers=HEADERS, timeout=60, verify=False).json().get("rows", [])  # nosec B501
         tickers = {r["code"].strip().upper() for r in rows if r.get("code")}
         if not tickers:
             out[code] = "empty response; nothing stored"

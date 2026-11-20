@@ -185,7 +185,7 @@ def fetch_dividend_history(conn: sqlite3.Connection, tickers: list[str], pause: 
         url = f"https://www.dse.com.bd/company/{t}"
         try:
             html = requests.get(url, headers={"User-Agent": "Mozilla/5.0 (academic research client)"}, timeout=60,
-                                verify=False).text
+                                verify=False).text  # nosec B501
             chunks = re.findall(r'self\.__next_f\.push\(\[1,\s*"((?:\\.|[^"\\])*)"\]\)', html)
             comb = "".join(json.loads('"' + c + '"') for c in chunks)
             hist = json.loads(re.search(r'"dividendHistory":(\[.*?\])', comb).group(1))

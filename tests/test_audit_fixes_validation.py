@@ -111,6 +111,10 @@ class TestAuditFixesValidation(unittest.TestCase):
         import mutual_fund_tracker as mft
         from _isolation import temp_db_copy
         with temp_db_copy() as db_copy, tempfile.TemporaryDirectory() as tmp:
+            conn = sqlite3.connect(db_copy)
+            conn.execute("DELETE FROM open_end_mutual_funds WHERE fund_name = 'Shanta Amana Shariah Fund'")
+            conn.commit()
+            conn.close()
             ledger = Path(tmp) / "portfolio.json"
             ledger.write_text(json.dumps({"cash_balance_bdt": 0.0, "holdings": [], "mutual_funds": [
                 {"fund_name": "Shanta Amana Shariah Fund", "units": 100, "total_cost_bdt": 1000.0},

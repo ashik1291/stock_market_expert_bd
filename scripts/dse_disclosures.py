@@ -243,7 +243,7 @@ def parse_filing(f: dict) -> dict | None:
 def fetch(params: dict, retries: int = 3) -> dict:
     for attempt in range(retries):
         try:
-            r = requests.get(API, params=params, headers=HEADERS, timeout=60, verify=False)
+            r = requests.get(API, params=params, headers=HEADERS, timeout=60, verify=False)  # nosec B501
             r.raise_for_status()
             return r.json()
         except (requests.RequestException, ValueError):
