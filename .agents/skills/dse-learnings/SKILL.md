@@ -67,6 +67,15 @@ Knowledge base of real-world lessons, verified endpoints, and operational guardr
 | **2026-10-24** | Empty Language Support | `profile.json` had `"language": "bengali"`, but zero Python scripts read this setting; all reports were 100% English | Built native bilingual report generators across screener, liquidity, surveillance, and monthly asset plans |
 | **2026-10-25** | Lack of Full-Universe Anomaly Detection | Manipulation detector only ran per-ticker inside knowledge base generator; no daily full-market surveillance | Built `anti_manipulation_engine.py` scanning all 395 tickers daily for Volume Anomaly Ratio >= 3x-5x, speculative junk pumps, and integrating BSEC regulatory probe flags directly into `is_ticker_blacklisted()` |
 
+| **2026-11-20** | Holiday sessions 10-22/10-24 stored with 395 bars identical to 10-19 | Scraper fell back to a cached snapshot and saved it under today's date | Cache fallback removed; `processor.snapshot_rejection_reason` refuses replayed sessions; DB trigger rejects bars on closed calendar days |
+| **2026-11-20** | Feb–Sep 2026 had 79 tickers/day instead of ~445 | Backfill only fetched ~80 "tracked" tickers and only checked dates after MAX(date) | Coverage-based gap detection over all active tickers (`live_market_sync.find_coverage_gaps`); history repaired from the DSE archive |
+| **2026-11-20** | Live bars scaled by future bonus factors (ASIATICLAB 105.91 vs real 116.7) | `insert_prices` multiplied announced-but-future corporate-action factors into stored OHLC | `prices` is raw only; adjust at read time |
+| **2026-11-20** | Price plugs (`MUTUAL_FUND_NAV_DISCOVERY`, `*_resumption`) and `-11-15/-12-15` bonus dates | Agents "explained" jumps caused by missing data with invented corporate actions | Plugs deleted; bonus dates inferred from the observed ex-date gap or dropped; DB trigger blocks both |
+| **2026-11-20** | "100% verified PIT" while 88% of dates were statutory estimates | Resolver forced `publication_is_estimated=0` to meet the README claim | Flags honest (12% verified); estimated rows still tradable because deadlines are never early; trigger blocks re-forcing |
+| **2026-11-20** | Banks/MNCs given a June fiscal year | Fiscal year hardcoded Jul–Jun | Per-company `fiscal_year_end_month` from interim period ends |
+| **2026-11-20** | Shadow IC never computed; promotion would auto-fire after 12 noisy days | Forward date looked up from "today"; eligible-only IC with ~5 names | Resolve when next session exists; selection IC over the whole universe; Holm step-down; 200 live periods + human `--approve` |
+| **2026-11-20** | A test overwrote the real `portfolio.json` and moved the high-water mark | Tests wrote real files/DB and relied on cleanup | Tests use `tests/_isolation.py`; suite fails if real data changes |
+| **2026-11-20** | Daily pipeline wrote NAV 10.631 dated 2026-11-01 as "official" every run | CLI default and hardcoded fallback NAV | No default NAV; nothing written without an observed or explicitly entered value |
 ---
 
 ## 3. Bangladesh Market Specific Rules

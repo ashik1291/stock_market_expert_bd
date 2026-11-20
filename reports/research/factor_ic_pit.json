@@ -1,0 +1,95 @@
+{
+ "dates": [
+  "2025-04-30",
+  "2026-11-19",
+  206
+ ],
+ "universe": "point-in-time category A equities (features_daily)",
+ "factors": {
+  "earnings_yield": {
+   "5": {
+    "n": 201,
+    "mean_ic": 0.05637,
+    "newey_west_t": 2.892,
+    "hit_rate": 0.617
+   },
+   "21": {
+    "n": 185,
+    "mean_ic": 0.07,
+    "newey_west_t": 1.765,
+    "hit_rate": 0.692
+   }
+  },
+  "dividend_yield": {
+   "5": {
+    "n": 201,
+    "mean_ic": 0.05767,
+    "newey_west_t": 3.805,
+    "hit_rate": 0.716
+   },
+   "21": {
+    "n": 185,
+    "mean_ic": 0.0843,
+    "newey_west_t": 2.906,
+    "hit_rate": 0.73
+   }
+  },
+  "neg_debt_equity": {
+   "5": {
+    "n": 200,
+    "mean_ic": 0.01011,
+    "newey_west_t": 0.486,
+    "hit_rate": 0.51
+   },
+   "21": {
+    "n": 184,
+    "mean_ic": 0.03645,
+    "newey_west_t": 1.814,
+    "hit_rate": 0.636
+   }
+  },
+  "neg_rsi_14": {
+   "5": {
+    "n": 201,
+    "mean_ic": 0.05372,
+    "newey_west_t": 2.688,
+    "hit_rate": 0.617
+   },
+   "21": {
+    "n": 185,
+    "mean_ic": 0.02153,
+    "newey_west_t": 0.624,
+    "hit_rate": 0.519
+   }
+  },
+  "log_traded_value_20d": {
+   "5": {
+    "n": 201,
+    "mean_ic": -0.04936,
+    "newey_west_t": -2.952,
+    "hit_rate": 0.353
+   },
+   "21": {
+    "n": 185,
+    "mean_ic": -0.11403,
+    "newey_west_t": -3.453,
+    "hit_rate": 0.216
+   }
+  },
+  "champion_score": {
+   "5": {
+    "n": 200,
+    "mean_ic": 0.01129,
+    "newey_west_t": 1.045,
+    "hit_rate": 0.52
+   },
+   "21": {
+    "n": 184,
+    "mean_ic": 0.02029,
+    "newey_west_t": 0.905,
+    "hit_rate": 0.565
+   }
+  }
+ },
+ "mean_universe_per_day": 162.8
+}

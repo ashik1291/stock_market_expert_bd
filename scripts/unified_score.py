@@ -14,6 +14,7 @@ Frozen Epoch 2 Contract:
 
 from __future__ import annotations
 
+import functools
 import hashlib
 import json
 import re
@@ -70,6 +71,20 @@ CANONICAL_PARAM_CONTENT_HASH = hashlib.sha256(
 
 _BASE = Path(__file__).resolve().parent.parent
 
+# Source files whose behaviour defines the served score; any edit changes the model content hash.
+SCORING_SOURCE_FILES = ("scripts/unified_score.py", "scripts/feature_store.py")
+
+
+def compute_model_content_hash() -> str:
+    """sha256 over served parameters and LF-normalised scoring source; identical on every OS."""
+    h = hashlib.sha256()
+    h.update(json.dumps({"params": CANONICAL_SERVED_PARAMS, "weights": FROZEN_FACTOR_WEIGHTS},
+                        sort_keys=True).encode("utf-8"))
+    for rel in SCORING_SOURCE_FILES:
+        h.update(rel.encode("utf-8"))
+        h.update((_BASE / rel).read_bytes().replace(b"\r\n", b"\n"))
+    return h.hexdigest()[:16]
+
 
 _SHARIAH_EXCLUDED_SECTOR_NAMES = {
     "bank",
@@ -94,32 +109,56 @@ def is_shariah_excluded_sector(sector: str | None) -> bool:
     return "bank" in normalized or "insurance" in normalized or "financial" in normalized
 
 
+_KNOWN_FINANCIAL_TICKERS = {
+    "ABBANK", "ALARABANK", "BANKASIA", "BRACBANK", "CITYBANK", "DHAKABANK",
+    "DUTCHBANGL", "EBL", "EXIMBANK", "FIRSTSBANK", "GLOBALINS", "ICBIBANK",
+    "IFIC", "ISLAMIBANK", "JAMUNABANK", "MERCANBANK", "MIDASFIN", "MTB",
+    "NBL", "NCCBANK", "NRBBANK", "ONEBANKLTD", "PREMIERBAN", "PRIMEBANK",
+    "PUBALIBANK", "RUPALIBANK", "SBACBANK", "SHAHJABANK", "SIBL", "SOUTHEASTB",
+    "STANDBANKL", "TRUSTBANK", "UFS", "UNIONBANK", "UTTARABANK",
+    "IPDC", "LANKABAFIN", "NHFIL", "UNITEDFIN", "IDLC", "GSPFINANCE", "FASFIN",
+    "PRIMEINSUR", "RUPALIINS", "BGIC", "ISLAMIINS", "KARNAPHULI", "NITOLINS",
+    "PURABIGEN", "RELIANCE1",
+}
+_KNOWN_TOBACCO_TICKERS = {"BATBC"}
+_FINANCIAL_TICKER_HINTS = ("BANK", "FIN", "INSUR", "GENINS", "MF", "MUTUAL")
+
+
+def _sector_is_known(sector: str | None) -> bool:
+    return bool(sector) and sector.strip().lower() not in ("unknown", "none", "n/a", "")
+
+
+def is_financial_company(sector: str | None, ticker: str | None = None) -> bool:
+    """Conventional finance by sector; ticker symbol hints are only a fallback when sector is unknown."""
+    if is_shariah_excluded_sector(sector) and "tobacco" not in (sector or "").lower():
+        return True
+    t_upper = (ticker or "").upper()
+    if t_upper in _KNOWN_FINANCIAL_TICKERS:
+        return True
+    if not _sector_is_known(sector) and t_upper:
+        return any(w in t_upper for w in _FINANCIAL_TICKER_HINTS)
+    return False
+
+
 def is_shariah_excluded_company(sector: str | None, ticker: str | None = None, name: str | None = None) -> bool:
     """Return True if sector, ticker symbol, or company name indicates conventional finance or tobacco."""
-    if is_shariah_excluded_sector(sector):
+    if is_shariah_excluded_sector(sector) or is_financial_company(sector, ticker):
         return True
-    if ticker:
-        t_upper = ticker.upper()
-        if any(w in t_upper for w in ("BANK", "FIN", "INSUR", "GENINS", "MF", "MUTUAL")):
-            return True
-        known_financial_tickers = {
-            "ABBANK", "ALARABANK", "BANKASIA", "BRACBANK", "CITYBANK", "DHAKABANK",
-            "DUTCHBANGL", "EBL", "EXIMBANK", "FIRSTSBANK", "GLOBALINS", "ICBIBANK",
-            "IFIC", "ISLAMIBANK", "JAMUNABANK", "MERCANBANK", "MIDASFIN", "MTB",
-            "NBL", "NCCBANK", "NRBBANK", "ONEBANKLTD", "PREMIERBAN", "PRIMEBANK",
-            "PUBALIBANK", "RUPALIBANK", "SBACBANK", "SHAHJABANK", "SIBL", "SOUTHEASTB",
-            "STANDBANKL", "TRUSTBANK", "UFS", "UNIONBANK", "UTTARABANK",
-            "IPDC", "LANKABAFIN", "NHFIL", "UNITEDFIN", "IDLC", "GSPFINANCE", "FASFIN",
-            "PRIMEINSUR", "RUPALIINS", "BGIC", "ISLAMIINS", "KARNAPHULI", "NITOLINS",
-            "PURABIGEN", "RELIANCE1", "BATBC"
-        }
-        if t_upper in known_financial_tickers:
-            return True
+    if (ticker or "").upper() in _KNOWN_TOBACCO_TICKERS:
+        return True
     if name:
         n_lower = name.lower()
-        if any(w in n_lower for w in ("bank", "finance", "financial", "insurance", "leasing", "tobacco")):
+        if re.search(r"\b(bank|finance|financial|insurance|leasing|tobacco)\b", n_lower):
             return True
     return False
+
+
+@functools.lru_cache(maxsize=8192)
+def equity_hurdle_pct(asof_date: str | None) -> float:
+    """INV-2 hurdle as of the scoring date: observed Bangladesh Bank 91-day rate + 3.5% ERP (point-in-time)."""
+    import datetime as _dt
+    from macro_rate_feed import get_macro_rates_for_date
+    return float(get_macro_rates_for_date(asof_date or _dt.date.today().isoformat())["equity_hurdle_rate_pct"])
 
 
 def load_factor_weights() -> dict:
@@ -173,7 +212,7 @@ def score_features(
 
     max_de = 0.50 if halal_tier == "strict" else (0.80 if halal_tier == "flexible" else 1.00)
 
-    is_financial = is_shariah_excluded_sector(sec) or (ticker and any(w in ticker.upper() for w in ("BANK", "FIN", "INSUR", "GENINS", "MF")))
+    is_financial = is_financial_company(sec, ticker)
 
     if not is_excluded_sector:
         if is_financial:
@@ -188,7 +227,8 @@ def score_features(
             reasons.append("debt_gate")
 
     ey_v = round((100.0 / pe_v), 2) if (pe_v is not None and pe_v > 0) else 0.0
-    passes_macro = (ey_v >= 15.10)
+    hurdle_pct = equity_hurdle_pct(asof_date)
+    passes_macro = (ey_v >= hurdle_pct)
 
     if pe_v is None:
         eligible = False
@@ -289,7 +329,7 @@ def score_features(
                 and de_v <= 0.5
             ),
             "valuation_mos_positive": pe_v is not None and pe_v <= 15.0,
-            "passes_macro": (100.0 / pe_v >= 15.10) if (pe_v is not None and pe_v > 0) else False,
+            "passes_macro": passes_macro,
             "rsi_oversold_triggered": rsi_v is not None and rsi_v < 35.0,
         },
     }

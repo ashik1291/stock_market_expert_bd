@@ -1,24 +1,24 @@
 {
   "ticker": "JMISMDL",
-  "audited_at": "2026-11-17 15:01:34",
+  "audited_at": "2026-11-19 14:54:42",
   "worth_vs_greed": {
-    "current_price": 142.9,
-    "intrinsic_worth": 71.45,
+    "current_price": 141.4,
+    "intrinsic_worth": 70.7,
     "margin_of_safety_pct": -50.0,
     "extension_froth_score": 60.0,
     "greed_index": 60.0,
-    "rsi_14": 77.4,
-    "price_vs_ema50_pct": 13.5,
-    "price_vs_ema200_pct": 9.3,
+    "rsi_14": 68.3,
+    "price_vs_ema50_pct": 11.3,
+    "price_vs_ema200_pct": 8.0,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f3140.0 \u2013 \u09f3144.3",
-      "chase_cutoff_price": 146.5,
-      "when_to_wait": "If price opens or rises above \u09f3146.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3140.0.",
-      "weekly_target_short": 147.9,
-      "monthly_target_swing": 164.3,
-      "long_term_target_asset": 185.8,
+      "optimal_entry_corridor": "\u09f3138.6 \u2013 \u09f3142.8",
+      "chase_cutoff_price": 144.9,
+      "when_to_wait": "If price opens or rises above \u09f3144.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3138.6.",
+      "weekly_target_short": 146.3,
+      "monthly_target_swing": 162.6,
+      "long_term_target_asset": 183.8,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -31,31 +31,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 12.52,
+        "return_pct": 7.94,
         "high": 145.0,
-        "low": 126.6,
-        "range_volatility_pct": 14.53
+        "low": 134.1,
+        "range_volatility_pct": 8.13
       },
       "monthly_21d": {
-        "return_pct": 16.75,
+        "return_pct": 16.09,
         "high": 145.0,
         "low": 115.0,
         "range_volatility_pct": 26.09
       },
       "quarterly_63d": {
-        "return_pct": 18.89,
+        "return_pct": 19.63,
         "high": 145.0,
         "low": 108.2,
         "range_volatility_pct": 34.01
       },
       "half_yearly_126d": {
-        "return_pct": -10.63,
-        "high": 164.0,
+        "return_pct": -10.05,
+        "high": 160.0,
         "low": 105.9,
-        "range_volatility_pct": 54.86
+        "range_volatility_pct": 51.09
       },
       "yearly_252d": {
-        "return_pct": 6.64,
+        "return_pct": 4.82,
         "high": 172.0,
         "low": 105.9,
         "range_volatility_pct": 62.42
@@ -67,7 +67,7 @@
       "avg_wave_duration_bars": 29.0
     },
     "current_wave_phase": "LATE_MARKUP",
-    "phase_guidance": "Approaching historical rally limit (+24.3% vs median +22.6%). Tighten stop.",
+    "phase_guidance": "Approaching historical rally limit (+23.0% vs median +22.6%). Tighten stop.",
     "top_seasonal_months": [
       {
         "month": "Jul",

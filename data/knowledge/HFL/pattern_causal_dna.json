@@ -1,24 +1,24 @@
 {
   "ticker": "HFL",
-  "audited_at": "2026-11-17 15:01:31",
+  "audited_at": "2026-11-19 14:54:39",
   "worth_vs_greed": {
-    "current_price": 10.4,
-    "intrinsic_worth": 5.2,
+    "current_price": 10.0,
+    "intrinsic_worth": 5.0,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 60.0,
-    "greed_index": 60.0,
-    "rsi_14": 31.6,
-    "price_vs_ema50_pct": 11.6,
-    "price_vs_ema200_pct": 24.9,
+    "extension_froth_score": 50.0,
+    "greed_index": 50.0,
+    "rsi_14": 32.4,
+    "price_vs_ema50_pct": 6.6,
+    "price_vs_ema200_pct": 19.6,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f310.2 \u2013 \u09f310.5",
-      "chase_cutoff_price": 10.7,
-      "when_to_wait": "If price opens or rises above \u09f310.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f310.2.",
-      "weekly_target_short": 10.8,
-      "monthly_target_swing": 12.0,
-      "long_term_target_asset": 13.5,
+      "optimal_entry_corridor": "\u09f39.8 \u2013 \u09f310.1",
+      "chase_cutoff_price": 10.2,
+      "when_to_wait": "If price opens or rises above \u09f310.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f39.8.",
+      "weekly_target_short": 10.3,
+      "monthly_target_swing": 11.5,
+      "long_term_target_asset": 13.0,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -31,31 +31,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -9.57,
-        "high": 11.3,
-        "low": 10.3,
-        "range_volatility_pct": 9.71
+        "return_pct": -9.09,
+        "high": 11.1,
+        "low": 10.0,
+        "range_volatility_pct": 11.0
       },
       "monthly_21d": {
-        "return_pct": 6.12,
+        "return_pct": 2.04,
         "high": 11.8,
         "low": 9.5,
         "range_volatility_pct": 24.21
       },
       "quarterly_63d": {
-        "return_pct": 62.5,
+        "return_pct": 66.67,
         "high": 12.2,
         "low": 5.4,
         "range_volatility_pct": 125.93
       },
       "half_yearly_126d": {
-        "return_pct": 25.3,
+        "return_pct": 20.48,
         "high": 12.2,
         "low": 3.8,
         "range_volatility_pct": 221.05
       },
       "yearly_252d": {
-        "return_pct": -7.96,
+        "return_pct": -9.91,
         "high": 14.3,
         "low": 3.8,
         "range_volatility_pct": 276.32
@@ -66,8 +66,8 @@
       "median_correction_drop_pct": -21.6,
       "avg_wave_duration_bars": 26.0
     },
-    "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-14.8%). Wait for stabilizing base.",
+    "current_wave_phase": "BOTTOMING_SUPPORT",
+    "phase_guidance": "Drop (-18.0%) matches historical correction depth (-21.6%). Prepare to accumulate.",
     "top_seasonal_months": [
       {
         "month": "Oct",

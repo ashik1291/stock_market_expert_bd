@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-10T03:53:15.585647+00:00",
-  "trial_count": 52,
+  "updated_at": "2026-11-20T11:13:48.334604+00:00",
+  "trial_count": 53,
   "required_periods": 12,
   "holm_alpha": 0.05,
   "champion": {
@@ -28,7 +28,9 @@
       }
     },
     "promoted_at": "2026-10-11T10:39:34.252678+00:00",
-    "role": "champion"
+    "role": "champion",
+    "frozen_content_hash": "d6924b2c477d0cc2",
+    "frozen_content_at": "2026-11-20T11:13:48.334604+00:00"
   },
   "challengers": [
     {
@@ -101,8 +103,67 @@
       "registered_at": "2026-11-10T03:53:15.585647+00:00",
       "role": "challenger",
       "status": "SHADOW"
+    },
+    {
+      "model_id": "challenger_xsection_rank_v1",
+      "parameter_hash": "5159bfbe4f1cf2a6",
+      "params": {
+        "score": "cross_sectional_rank_v1",
+        "factors": [
+          "div",
+          "value",
+          "rsi"
+        ],
+        "min_factors": 2,
+        "max_debt_equity": 1.0,
+        "gates": [
+          "shariah_sector",
+          "debt_le_1_nonbank",
+          "valid_price"
+        ],
+        "hypothesis": "The macro-hurdle gate discards cross-sectional signal; equal-weight percentile ranks of dividend yield, earnings yield and inverse RSI over the whole PIT universe. Pre-specified on 2026-11-20 from factors already in the system; promotion only via 200 live periods + Holm.",
+        "model_id": "challenger_xsection_rank_v1"
+      },
+      "registered_at": "2026-11-20T10:36:30.365551+00:00",
+      "role": "challenger",
+      "status": "SHADOW"
     }
   ],
   "retired": [],
-  "promotion_log": []
+  "promotion_log": [],
+  "freeze_log": [
+    {
+      "at": "2026-11-20T04:49:58.725383+00:00",
+      "model_id": "frozen_epoch2_pit_v2",
+      "previous_content_hash": null,
+      "content_hash": "08b20128ffdb5c4a",
+      "files": [
+        "scripts/unified_score.py",
+        "scripts/feature_store.py"
+      ],
+      "reason": "Initial content freeze (2026-11-20 audit). Label hash acf502bc65914c48 never covered code; scoring changed in 17 commits after 2026-10-11 and in this audit (sector-first financial matching, conservative-PIT strict gate). Forward results before this freeze were produced by varying code."
+    },
+    {
+      "at": "2026-11-20T10:28:44.414799+00:00",
+      "model_id": "frozen_epoch2_pit_v2",
+      "previous_content_hash": "08b20128ffdb5c4a",
+      "content_hash": "f76578dd214684e2",
+      "files": [
+        "scripts/unified_score.py",
+        "scripts/feature_store.py"
+      ],
+      "reason": "Tier 3 input corrections: P/E = close / published annual EPS (was stored scrape P/E), trailing-year official cash-dividend yield (was stored yield), field-wise PIT D/E, point-in-time category + survivorship-free universe, split/rights price adjustment, liquidity feature stored. Evaluated on 206 dates (reports/research/feature_inputs_v1_vs_v2.json): identical eligible sets and identical selection IC on common tickers at 1/5/21 sessions."
+    },
+    {
+      "at": "2026-11-20T11:13:48.334604+00:00",
+      "model_id": "frozen_epoch2_pit_v2",
+      "previous_content_hash": "f76578dd214684e2",
+      "content_hash": "d6924b2c477d0cc2",
+      "files": [
+        "scripts/unified_score.py",
+        "scripts/feature_store.py"
+      ],
+      "reason": "User policy decision 2026-11-20: INV-2 hurdle follows Bangladesh Bank (risk-free = freshest observed 91-day rate: T-bill cut-off yield or 91-day BCR, point-in-time; + 3.5% ERP) instead of the fixed 11.60%/15.10% floor. Effect: hurdle 12.00% from 2026-11-08 (BCR 8.50-8.60%); SQURPHARMA and BXPHARMA become eligible (5 -> 7); earlier dates unchanged (15.10% in force)."
+    }
+  ]
 }

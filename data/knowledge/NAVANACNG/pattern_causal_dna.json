@@ -1,61 +1,61 @@
 {
   "ticker": "NAVANACNG",
-  "audited_at": "2026-11-17 15:01:38",
+  "audited_at": "2026-11-19 14:54:46",
   "worth_vs_greed": {
-    "current_price": 20.6,
-    "intrinsic_worth": 10.3,
+    "current_price": 21.8,
+    "intrinsic_worth": 10.9,
     "margin_of_safety_pct": -50.0,
     "extension_froth_score": 80.0,
     "greed_index": 80.0,
-    "rsi_14": 70.0,
-    "price_vs_ema50_pct": 8.4,
-    "price_vs_ema200_pct": 0.7,
+    "rsi_14": 88.7,
+    "price_vs_ema50_pct": 13.4,
+    "price_vs_ema200_pct": 6.4,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f320.2 \u2013 \u09f320.8",
-      "chase_cutoff_price": 21.1,
-      "when_to_wait": "If price opens or rises above \u09f321.1, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f320.2.",
-      "weekly_target_short": 21.3,
-      "monthly_target_swing": 23.7,
-      "long_term_target_asset": 26.8,
+      "optimal_entry_corridor": "\u09f321.4 \u2013 \u09f322.0",
+      "chase_cutoff_price": 22.3,
+      "when_to_wait": "If price opens or rises above \u09f322.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f321.4.",
+      "weekly_target_short": 22.6,
+      "monthly_target_swing": 25.1,
+      "long_term_target_asset": 28.3,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "OVERVALUED_EUPHORIA",
     "worth_decision": "SELL_TAKE_PROFIT",
     "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (80.0/100). Danger of sharp mean reversion.",
     "is_blacklisted": true,
-    "blacklist_reason": "Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-11-17 \u2014 Low-float spike is 26.4x 20-day average (1,155,838 vs 43,814) | Price up +8.99% with poor fundamentals (Extreme P/E (193.0x))]",
-    "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-11-17 \u2014 Low-float spike is 26.4x 20-day average (1,155,838 vs 43,814) | Price up +8.99% with poor fundamentals (Extreme P/E (193.0x))]"
+    "blacklist_reason": "Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-11-18 \u2014 Mid-tier volume is 16.5x 20-day average (1,230,362 vs 74,409) | Price up +6.31% with poor fundamentals (Extreme P/E (193.0x))]",
+    "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-11-18 \u2014 Mid-tier volume is 16.5x 20-day average (1,230,362 vs 74,409) | Price up +6.31% with poor fundamentals (Extreme P/E (193.0x))]"
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 15.73,
-        "high": 20.6,
-        "low": 17.4,
-        "range_volatility_pct": 18.39
+        "return_pct": 20.44,
+        "high": 22.5,
+        "low": 17.9,
+        "range_volatility_pct": 25.7
       },
       "monthly_21d": {
-        "return_pct": 11.35,
-        "high": 20.6,
+        "return_pct": 16.58,
+        "high": 22.5,
         "low": 16.4,
-        "range_volatility_pct": 25.61
+        "range_volatility_pct": 37.2
       },
       "quarterly_63d": {
-        "return_pct": -5.5,
-        "high": 22.1,
+        "return_pct": 1.87,
+        "high": 22.5,
         "low": 16.4,
-        "range_volatility_pct": 34.76
+        "range_volatility_pct": 37.2
       },
       "half_yearly_126d": {
-        "return_pct": 0.49,
+        "return_pct": 6.34,
         "high": 23.8,
         "low": 16.4,
         "range_volatility_pct": 45.12
       },
       "yearly_252d": {
-        "return_pct": -8.04,
+        "return_pct": -3.54,
         "high": 23.8,
         "low": 16.4,
         "range_volatility_pct": 45.12
@@ -66,8 +66,8 @@
       "median_correction_drop_pct": -15.5,
       "avg_wave_duration_bars": 17.0
     },
-    "current_wave_phase": "MARKUP_RALLY_MID",
-    "phase_guidance": "Midway through rally wave (+10.8% from base, historical target ~+19.6%).",
+    "current_wave_phase": "LATE_MARKUP",
+    "phase_guidance": "Approaching historical rally limit (+17.2% vs median +19.6%). Tighten stop.",
     "top_seasonal_months": [
       {
         "month": "Aug",

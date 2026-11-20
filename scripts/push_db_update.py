@@ -30,6 +30,10 @@ PROC_DIR = BASE_DIR / "data" / "processed"
 DB_PATH = PROC_DIR / "dse.db"
 GZ_PATH = PROC_DIR / "dse.db.gz"
 GZ_TMP = PROC_DIR / "dse.db.gz.tmp"
+SNAP_TMP = PROC_DIR / "dse.db.push_snapshot.tmp"
+GZ_PREV = PROC_DIR / "dse.db.gz.prev.tmp"
+
+sys.path.insert(0, str(BASE_DIR / "scripts"))
 
 
 def log(msg: str):
@@ -66,45 +70,60 @@ def push_db_update(dry_run: bool = False) -> bool:
     log(f"Listed Companies: {total_co}")
     log(f"Verified PIT Disclosures: {total_pit:,}")
 
-    # Step 2: Optimal Gzip Compression
-    log("Compressing active database into dse.db.gz (gzip level 9)...")
+    # Never publish a baseline that fails the data invariants: every fresh clone would inherit it.
+    gate = subprocess.run([sys.executable, str(BASE_DIR / "scripts" / "integrity_harness.py"), "--data-gate"], cwd=str(BASE_DIR))
+    if gate.returncode != 0:
+        log("❌ Data integrity gate failed; dse.db.gz NOT regenerated.")
+        return False
+
+    # Backup API gives a transactionally consistent copy even if another process writes meanwhile.
+    log("Snapshotting database and compressing (gzip level 9)...")
     try:
-        with open(DB_PATH, "rb") as f_in, gzip.open(GZ_TMP, "wb", compresslevel=9) as f_out:
+        if SNAP_TMP.exists():
+            SNAP_TMP.unlink()
+        src = sqlite3.connect(DB_PATH, timeout=30.0)
+        src.execute("PRAGMA busy_timeout = 30000;")
+        dst = sqlite3.connect(SNAP_TMP)
+        src.backup(dst)
+        src.close()
+        dst.execute("PRAGMA journal_mode = DELETE;")
+        ok = dst.execute("PRAGMA integrity_check").fetchone()[0]
+        from db_guards import missing_data_guards
+        missing = missing_data_guards(dst)
+        dst.close()
+        if ok != "ok" or missing:
+            log(f"❌ Snapshot invalid (integrity={ok}, missing guards={missing}); dse.db.gz NOT regenerated.")
+            return False
+        with open(SNAP_TMP, "rb") as f_in, open(GZ_TMP, "wb") as raw, \
+                gzip.GzipFile(filename="dse.db", mode="wb", compresslevel=9, fileobj=raw, mtime=0) as f_out:
             shutil.copyfileobj(f_in, f_out)
-        
-        # Atomic rename
+        with gzip.open(GZ_TMP, "rb") as f_test:
+            if not f_test.read(100).startswith(b"SQLite format 3"):
+                raise ValueError("compressed archive does not hold a SQLite database")
         if GZ_PATH.exists():
-            GZ_PATH.unlink()
-        GZ_TMP.rename(GZ_PATH)
+            os.replace(GZ_PATH, GZ_PREV)
+        os.replace(GZ_TMP, GZ_PATH)
     except Exception as e:
-        log(f"❌ Compression failed: {e}")
+        log(f"❌ Snapshot/compression failed: {e}")
         if GZ_TMP.exists():
             GZ_TMP.unlink()
         return False
+    finally:
+        if SNAP_TMP.exists():
+            SNAP_TMP.unlink()
 
     gz_size_mb = GZ_PATH.stat().st_size / (1024 * 1024)
-    compression_ratio = (1.0 - (GZ_PATH.stat().st_size / DB_PATH.stat().st_size)) * 100
+    compression_ratio = (1.0 - (GZ_PATH.stat().st_size / (raw_size_mb * 1024 * 1024))) * 100
     log(f"Compressed Archive: {gz_size_mb:.2f} MB (Saved {compression_ratio:.1f}% space)")
 
-    # Step 3: Verify compressed archive integrity
-    log("Verifying compressed archive integrity...")
-    try:
-        with gzip.open(GZ_PATH, "rb") as f_test:
-            header = f_test.read(100)
-            if not header.startswith(b"SQLite format 3"):
-                log("❌ Header check failed: Not a valid SQLite database header.")
-                return False
-        log("✅ Archive integrity verified (valid SQLite format 3).")
-    except Exception as e:
-        log(f"❌ Archive verification failed: {e}")
+    log("Running Spec Conformance Guard (INV-1 through INV-8) on the rebuilt archive...")
+    if subprocess.run([sys.executable, str(BASE_DIR / "scripts" / "spec_guard.py")], cwd=str(BASE_DIR)).returncode != 0:
+        if GZ_PREV.exists():
+            os.replace(GZ_PREV, GZ_PATH)
+        log("❌ Spec Conformance Guard failed; previous dse.db.gz restored, nothing committed.")
         return False
-
-    # Step 4: Run SPEC invariants guard
-    log("Running Spec Conformance Guard (INV-1 through INV-8)...")
-    res_guard = subprocess.run([sys.executable, str(BASE_DIR / "scripts" / "spec_guard.py")], cwd=str(BASE_DIR))
-    if res_guard.returncode != 0:
-        log("❌ Spec Conformance Guard failed. Aborting push to prevent broken state.")
-        return False
+    if GZ_PREV.exists():
+        GZ_PREV.unlink()
 
     # Step 5: Check Git Status
     log("Checking Git status for dse.db.gz...")
@@ -118,6 +137,11 @@ def push_db_update(dry_run: bool = False) -> bool:
         log(f"🏁 [DRY-RUN] dse.db.gz successfully rebuilt ({gz_size_mb:.2f} MB). Skipping Git commit & push.")
         return True
 
+    branch = subprocess.run(["git", "branch", "--show-current"], cwd=str(BASE_DIR), capture_output=True, text=True).stdout.strip()
+    if branch != "master":
+        log(f"❌ On branch '{branch}', not master; archive rebuilt but not committed.")
+        return False
+
     # Step 6: Commit and Push to GitHub
     commit_msg = f"chore(data): refresh master database baseline archive (as of {max_date}, {total_bars:,} bars)"
     log(f"Staging and committing: '{commit_msg}'...")
@@ -126,7 +150,7 @@ def push_db_update(dry_run: bool = False) -> bool:
         subprocess.run(["git", "add", str(GZ_PATH)], cwd=str(BASE_DIR), check=True)
         subprocess.run(["git", "config", "user.name", "Ashikur Rahman Bhuiyan"], cwd=str(BASE_DIR), check=True)
         subprocess.run(["git", "config", "user.email", "ashik1291@yahoo.com"], cwd=str(BASE_DIR), check=True)
-        subprocess.run(["git", "commit", "-m", commit_msg], cwd=str(BASE_DIR), check=True)
+        subprocess.run(["git", "commit", "-m", commit_msg, "--", str(GZ_PATH)], cwd=str(BASE_DIR), check=True)
         
         log("Pushing to origin/master...")
         push_res = subprocess.run(["git", "push", "origin", "master"], cwd=str(BASE_DIR), capture_output=True, text=True)

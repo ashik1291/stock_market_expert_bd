@@ -1,14 +1,14 @@
 {
   "ticker": "PREMIERLEA",
-  "audited_at": "2026-11-17 15:01:42",
+  "audited_at": "2026-11-19 14:54:50",
   "worth_vs_greed": {
     "current_price": 1.8,
     "intrinsic_worth": 0.9,
     "margin_of_safety_pct": -50.0,
     "extension_froth_score": 60.0,
     "greed_index": 60.0,
-    "rsi_14": 44.4,
-    "price_vs_ema50_pct": 19.8,
+    "rsi_14": 50.0,
+    "price_vs_ema50_pct": 18.0,
     "price_vs_ema200_pct": -0.5,
     "merit_status": "SPECULATIVE_JUNK_PUMP",
     "merit_reason": "Price is surging aggressively without positive EPS backing. Pure speculative risk.",
@@ -31,43 +31,43 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 0.0,
+        "return_pct": -5.26,
         "high": 2.0,
         "low": 1.7,
         "range_volatility_pct": 17.65
       },
       "monthly_21d": {
-        "return_pct": 0.0,
+        "return_pct": 5.88,
         "high": 2.1,
         "low": 1.7,
         "range_volatility_pct": 23.53
       },
       "quarterly_63d": {
-        "return_pct": 160.87,
+        "return_pct": 168.66,
         "high": 2.1,
         "low": 0.3,
         "range_volatility_pct": 600.0
       },
       "half_yearly_126d": {
-        "return_pct": -5.26,
+        "return_pct": 0.0,
         "high": 2.1,
         "low": 0.3,
         "range_volatility_pct": 600.0
       },
       "yearly_252d": {
-        "return_pct": -51.35,
-        "high": 3.9,
+        "return_pct": -50.0,
+        "high": 3.7,
         "low": 0.3,
-        "range_volatility_pct": 1200.0
+        "range_volatility_pct": 1133.33
       }
     },
     "wave_metrics": {
-      "median_rally_gain_pct": 13.8,
+      "median_rally_gain_pct": 13.9,
       "median_correction_drop_pct": -15.5,
-      "avg_wave_duration_bars": 18.0
+      "avg_wave_duration_bars": 18
     },
-    "current_wave_phase": "LATE_MARKUP",
-    "phase_guidance": "Approaching historical rally limit (+500.0% vs median +13.8%). Tighten stop.",
+    "current_wave_phase": "BOTTOMING_SUPPORT",
+    "phase_guidance": "Drop (-14.3%) matches historical correction depth (-15.5%). Prepare to accumulate.",
     "top_seasonal_months": [
       {
         "month": "Oct",
@@ -87,14 +87,14 @@
     ],
     "weak_seasonal_months": [
       {
+        "month": "Nov",
+        "avg_return": -7.0,
+        "win_rate": 8.0
+      },
+      {
         "month": "Apr",
         "avg_return": -7.8,
         "win_rate": 18.0
-      },
-      {
-        "month": "Nov",
-        "avg_return": -8.1,
-        "win_rate": 0.0
       }
     ]
   },

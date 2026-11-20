@@ -2,22 +2,22 @@
   "ticker": "SAVAREFR",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-17T09:01:46.356503",
-  "asof_price_date": "2026-11-17",
+  "analyzed_at": "2026-11-19T08:54:53.923978",
+  "asof_price_date": "2026-11-19",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 3.2393,
+    "rsi_14": 3.2511,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 43.32,
+  "confidence": 42.89,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
-    "heuristic_momentum_bias": 58.3,
+    "heuristic_momentum_bias": 48.6,
     "rise_probability_pct": null,
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
@@ -96,14 +96,14 @@
       "visual_gauge": "[ \u09f3215.5 |\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591| \u09f3215.5 ] (50.0% (Truncated))",
       "conviction_bonus": 0.0,
       "is_truncated_window": true,
-      "bars_evaluated": 29,
+      "bars_evaluated": 30,
       "signal": "Price is in mid-channel (50.0% between \u09f3215.5 and \u09f3215.5)"
     },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "SAVAREFR",
-    "audited_at": "2026-11-17 15:01:46",
+    "audited_at": "2026-11-19 14:54:53",
     "worth_vs_greed": {
       "current_price": 215.5,
       "intrinsic_worth": 107.75,
@@ -111,8 +111,8 @@
       "extension_froth_score": 10.0,
       "greed_index": 10.0,
       "rsi_14": 100.0,
-      "price_vs_ema50_pct": -2.4,
-      "price_vs_ema200_pct": -4.7,
+      "price_vs_ema50_pct": -2.3,
+      "price_vs_ema200_pct": -4.6,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -151,13 +151,13 @@
           "range_volatility_pct": 21.72
         },
         "half_yearly_126d": {
-          "return_pct": 1.51,
+          "return_pct": 3.36,
           "high": 294.5,
           "low": 203.0,
           "range_volatility_pct": 45.07
         },
         "yearly_252d": {
-          "return_pct": 19.99,
+          "return_pct": 14.81,
           "high": 294.5,
           "low": 167.2,
           "range_volatility_pct": 76.14
@@ -222,11 +222,26 @@
     ]
   },
   "technical": {
-    "score": null,
+    "score": 48.33,
     "signals": {
-      "error": "insufficient_data_lt_30_bars"
+      "rsi": "overbought_bearish",
+      "sma_trend": "neutral",
+      "bb": "at_lower_band_bullish",
+      "atr": 0.0,
+      "rsi_value": 100.0,
+      "last_close": 215.5,
+      "sma20": 215.5,
+      "sma50": null,
+      "sma200": null,
+      "support_resistance": {
+        "supports": [],
+        "resistances": []
+      }
     },
-    "sr": {}
+    "sr": {
+      "supports": [],
+      "resistances": []
+    }
   },
   "fundamental": {
     "score": null,
@@ -277,11 +292,17 @@
     "checks": {
       "volume_price_divergence": {
         "flag": false,
-        "detail": "insufficient_data"
+        "price_chg": 0,
+        "last_volume": 0,
+        "avg_volume": 14.0,
+        "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "detail": "insufficient_data"
+        "spike_ratio": 0.0,
+        "avg_volume": 15.0,
+        "today_volume": 0,
+        "detail": "ok"
       },
       "serial_trading": {
         "flag": false,
@@ -306,13 +327,13 @@
     }
   },
   "composite": {
-    "composite_score": 43.32,
+    "composite_score": 42.89,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.662,
+      "fundamental": 0.66,
       "technical": 0.205,
-      "governance": 0.134,
+      "governance": 0.135,
       "sentiment": 0.0
     }
   }

@@ -20,6 +20,9 @@ PROC_DIR = BASE_DIR / "data" / "processed"
 CONFIG_DIR = BASE_DIR / "config"
 DB_PATH = PROC_DIR / "dse.db"
 
+sys.path.insert(0, str(BASE_DIR / "scripts"))
+from processor import stale_snapshot_reason  # noqa: E402
+
 SCHEMA = """
 -- 1. Core Reference Tables
 CREATE TABLE IF NOT EXISTS companies (
@@ -73,6 +76,11 @@ CREATE TABLE IF NOT EXISTS fundamentals_pit (
     cash_flow_ops     REAL,
     source_hash       TEXT,
     created_at        TEXT,
+    tradable_date     TEXT,
+    filing_type       TEXT,
+    publication_is_estimated INTEGER DEFAULT 0,
+    publication_source TEXT,
+    ingest_id         TEXT,
     UNIQUE(ticker, snapshot_date)
 );
 
@@ -298,6 +306,10 @@ def rebuild_database(db_file: Path = DB_PATH):
         if p_path.exists():
             with open(p_path, encoding="utf-8") as f:
                 all_p = json.load(f)
+            stale = stale_snapshot_reason(conn, dt_str, all_p) if isinstance(all_p, list) else None
+            if stale:
+                print(f"[REBUILD] Skipping price snapshot {dt_str}: {stale}")
+                all_p = None
             if isinstance(all_p, list):
                 all_trading_dates.add(dt_str)
                 for rec in all_p:
@@ -311,8 +323,8 @@ def rebuild_database(db_file: Path = DB_PATH):
                     o_val = _to_float(rec.get("open") or rec.get("openprice") or c_val)
                     h_val = _to_float(rec.get("high") or rec.get("highprice") or c_val)
                     l_val = _to_float(rec.get("low") or rec.get("lowprice") or c_val)
-                    v_val = _to_int(rec.get("volume") or rec.get("ycp") or 0)
-                    val_val = _to_float(rec.get("value") or rec.get("trade") or 0)
+                    v_val = (_to_int(rec.get("volume")) or 0)
+                    val_val = (_to_float(rec.get("value")) or 0.0)
 
                     if h_val is not None and l_val is not None and h_val < l_val:
                         continue
@@ -338,8 +350,8 @@ def rebuild_database(db_file: Path = DB_PATH):
                         o_val = _to_float(rec.get("open") or rec.get("openprice") or c_val)
                         h_val = _to_float(rec.get("high") or rec.get("highprice") or c_val)
                         l_val = _to_float(rec.get("low") or rec.get("lowprice") or c_val)
-                        v_val = _to_int(rec.get("volume") or rec.get("ycp") or 0)
-                        val_val = _to_float(rec.get("value") or rec.get("trade") or 0)
+                        v_val = (_to_int(rec.get("volume")) or 0)
+                        val_val = (_to_float(rec.get("value")) or 0.0)
 
                         if h_val is not None and l_val is not None and h_val < l_val:
                             continue
@@ -399,10 +411,11 @@ def rebuild_database(db_file: Path = DB_PATH):
                     hash_val = hashlib.sha256(content_str.encode("utf-8")).hexdigest()[:16]
                     conn.execute("""
                         INSERT INTO fundamentals_pit
-                            (ticker, snapshot_date, publication_date, fiscal_year, fiscal_quarter,
+                            (ticker, snapshot_date, publication_date, publication_source, publication_is_estimated,
+                             fiscal_year, fiscal_quarter,
                              eps, nav, pe_ratio, debt_equity, dividend_yield, roe, roa,
                              current_ratio, revenue_cr, net_profit_cr, cash_flow_ops, source_hash, created_at)
-                        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+                        VALUES (?,?,?,'live_scrape',0,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
                         ON CONFLICT(ticker, snapshot_date) DO UPDATE SET
                             eps = excluded.eps, nav = excluded.nav, pe_ratio = excluded.pe_ratio,
                             debt_equity = excluded.debt_equity, dividend_yield = excluded.dividend_yield,
@@ -426,13 +439,7 @@ def rebuild_database(db_file: Path = DB_PATH):
         ("CITYBANK", "2025-05-24", "bonus_dividend", 0.15, 1.0 / 1.15, "15% Stock Dividend declared"),
         ("PUBALIBANK", "2025-05-24", "bonus_dividend", 0.125, 1.0 / 1.125, "12.5% Stock Dividend declared"),
         ("BANKASIA", "2025-05-27", "bonus_dividend", 0.15, 1.0 / 1.15, "15% Stock Dividend declared"),
-        ("POWERGRID", "2025-01-19", "cash_bonus_adjustment", 0.10, 0.84, "Post-record date dividend adjustment"),
         ("SAIFPOWER", "2024-10-27", "bonus_dividend", 0.10, 1.0 / 1.10, "10% Stock Dividend adjustment"),
-        ("APEXFOODS", "2026-10-05", "dividend_resumption", 0.20, 1.20, "Resumption of trading post-AGM/record"),
-        ("SONALILIFE", "2026-05-11", "trading_resumption", 0.30, 1.30, "Trading resumption post suspension"),
-        ("ANWARGALV", "2025-10-27", "trading_resumption", 0.20, 1.20, "Post-record date adjustment"),
-        ("BDCOM", "2024-10-29", "trading_resumption", 0.18, 1.18, "Post-record date adjustment"),
-        ("MATINSPINN", "2024-10-29", "trading_resumption", 0.20, 1.20, "Post-record date adjustment"),
     ]
     for act in verified_actions:
         conn.execute("""
@@ -468,6 +475,12 @@ def rebuild_database(db_file: Path = DB_PATH):
         except Exception as e:
             pass
     conn.commit()
+    from provenance import classify_corporate_action_sources, new_ingest, stamp_unattributed
+    stamp_unattributed(conn, new_ingest(conn, "raw_snapshot_rebuild", str(RAW_DIR)), "raw_snapshot_rebuild")
+    classify_corporate_action_sources(conn)
+    conn.commit()
+    from db_guards import install_data_guards
+    install_data_guards(conn)
 
     print("[REBUILD] Rebuild completed successfully. Running rigorous computed audits...")
     return run_dynamic_audit(conn)

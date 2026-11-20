@@ -2,18 +2,18 @@
   "ticker": "ANLIMAYARN",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-17T09:01:19.281967",
-  "asof_price_date": "2026-11-17",
+  "analyzed_at": "2026-11-19T08:54:29.322936",
+  "asof_price_date": "2026-11-19",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 61.896,
+    "rsi_14": 60.5495,
     "pe_ratio": 0.0,
     "debt_equity": 1.595
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 25.0,
+  "confidence": 23.43,
   "trajectory": {
     "direction": "FALL_RISK",
     "direction_icon": "\ud83d\udd34",
@@ -22,33 +22,33 @@
     "momentum_status": "Bearish Breakdown / Selling Pressure",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+7.9%",
-      "downside_risk_pct": "-5.3%",
-      "target_price": 32.6,
+      "upside_potential_pct": "+7.6%",
+      "downside_risk_pct": "-5.0%",
+      "target_price": 32.4,
       "support_price": 28.6,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+13.2%",
-      "downside_risk_pct": "-9.9%",
-      "target_price": 34.2,
-      "trailing_stop": 27.2,
+      "upside_potential_pct": "+12.6%",
+      "downside_risk_pct": "-10.0%",
+      "target_price": 33.9,
+      "trailing_stop": 27.1,
       "risk_reward_ratio": "1.3x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-      "upside_potential_pct": "+30.1%",
+      "upside_potential_pct": "+29.9%",
       "downside_risk_pct": "-12.0%",
-      "target_price": 39.3,
+      "target_price": 39.1,
       "dividend_cagr": "no_dividend",
       "risk_reward_ratio": "2.5x"
     }
   },
   "trade_levels": {
-    "entry": 30.2,
-    "stop_loss": 27.79,
-    "target": 35.02
+    "entry": 30.1,
+    "stop_loss": 27.8,
+    "target": 34.7
   },
   "precision": {
     "ticker": "ANLIMAYARN",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 22146,
+      "avg_daily_volume": 15809,
       "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 1107,
-      "max_daily_accumulation_shares": 3321,
-      "max_order_bdt": 1107.0,
-      "directive": "Max single order: 1,107 shares (Tk 1,107) to prevent >1% execution slippage"
+      "max_single_order_shares": 790,
+      "max_daily_accumulation_shares": 2371,
+      "max_order_bdt": 790.0,
+      "directive": "Max single order: 790 shares (Tk 790) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,37 +91,37 @@
       "status": "VALID",
       "low_52w": 15.1,
       "high_52w": 32.2,
-      "range_52w_pct": 88.3,
+      "range_52w_pct": 87.7,
       "channel_regime": "OVEREXTENDED_CEILING",
-      "visual_gauge": "[ \u09f315.1 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591| \u09f332.2 ] (88.3% (Truncated))",
+      "visual_gauge": "[ \u09f315.1 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591| \u09f332.2 ] (87.7% (Truncated))",
       "conviction_bonus": -10.0,
       "is_truncated_window": true,
       "bars_evaluated": 100,
-      "signal": "Price is at 88.3% of 52-week high (near \u09f332.2) \u2014 elevated mean-reversion risk"
+      "signal": "Price is at 87.7% of 52-week high (near \u09f332.2) \u2014 elevated mean-reversion risk"
     },
     "total_precision_bonus": -10.0
   },
   "pattern_dna": {
     "ticker": "ANLIMAYARN",
-    "audited_at": "2026-11-17 15:01:19",
+    "audited_at": "2026-11-19 14:54:29",
     "worth_vs_greed": {
-      "current_price": 30.2,
-      "intrinsic_worth": 15.1,
+      "current_price": 30.1,
+      "intrinsic_worth": 15.05,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 70.0,
       "greed_index": 70.0,
-      "rsi_14": 56.3,
-      "price_vs_ema50_pct": 15.9,
-      "price_vs_ema200_pct": 30.1,
-      "merit_status": "SPECULATIVE_JUNK_PUMP",
-      "merit_reason": "Price is surging aggressively without positive EPS backing. Pure speculative risk.",
+      "rsi_14": 65.2,
+      "price_vs_ema50_pct": 14.1,
+      "price_vs_ema200_pct": 28.9,
+      "merit_status": "NEUTRAL_MERIT",
+      "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f329.6 \u2013 \u09f330.5",
-        "chase_cutoff_price": 31.0,
-        "when_to_wait": "If price opens or rises above \u09f331.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f329.6.",
-        "weekly_target_short": 31.3,
-        "monthly_target_swing": 34.7,
-        "long_term_target_asset": 39.3,
+        "optimal_entry_corridor": "\u09f329.5 \u2013 \u09f330.4",
+        "chase_cutoff_price": 30.9,
+        "when_to_wait": "If price opens or rises above \u09f330.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f329.5.",
+        "weekly_target_short": 31.2,
+        "monthly_target_swing": 34.6,
+        "long_term_target_asset": 39.1,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "OVERVALUED_EUPHORIA",
@@ -134,31 +134,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 7.86,
+          "return_pct": 2.03,
           "high": 31.7,
-          "low": 28.3,
-          "range_volatility_pct": 12.01
+          "low": 29.1,
+          "range_volatility_pct": 8.93
         },
         "monthly_21d": {
-          "return_pct": -3.21,
+          "return_pct": -4.14,
           "high": 32.0,
           "low": 26.5,
           "range_volatility_pct": 20.75
         },
         "quarterly_63d": {
-          "return_pct": 61.5,
+          "return_pct": 53.57,
           "high": 32.2,
           "low": 18.0,
           "range_volatility_pct": 78.89
         },
         "half_yearly_126d": {
-          "return_pct": 25.31,
+          "return_pct": 27.54,
           "high": 32.2,
           "low": 15.1,
           "range_volatility_pct": 113.25
         },
         "yearly_252d": {
-          "return_pct": 25.83,
+          "return_pct": 23.36,
           "high": 32.2,
           "low": 15.1,
           "range_volatility_pct": 113.25
@@ -170,7 +170,7 @@
         "avg_wave_duration_bars": 25.0
       },
       "current_wave_phase": "MARKDOWN_PULLBACK",
-      "phase_guidance": "Ongoing pullback from peak (-6.2%). Wait for stabilizing base.",
+      "phase_guidance": "Ongoing pullback from peak (-6.5%). Wait for stabilizing base.",
       "top_seasonal_months": [
         {
           "month": "Feb",
@@ -268,17 +268,17 @@
     ]
   },
   "technical": {
-    "score": 57.5,
+    "score": 50.0,
     "signals": {
       "rsi": "neutral",
-      "macd": "neutral",
+      "macd": "bearish_crossover",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 1.61,
-      "rsi_value": 62.16,
-      "last_close": 30.2,
-      "sma20": 28.98,
-      "sma50": 24.89,
+      "atr": 1.53,
+      "rsi_value": 60.86,
+      "last_close": 30.1,
+      "sma20": 28.87,
+      "sma50": 25.32,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -313,7 +313,7 @@
       "loan_trap_risk": "high",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 6.2,
+        "drawdown_pct": 6.5,
         "high_52w": 32.2,
         "low_52w": 15.1
       }
@@ -357,15 +357,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 5674,
-        "avg_volume": 27061.0,
+        "last_volume": 3378,
+        "avg_volume": 26432.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.21,
-        "avg_volume": 27519.0,
-        "today_volume": 5674,
+        "spike_ratio": 0.13,
+        "avg_volume": 26817.0,
+        "today_volume": 3378,
         "detail": "ok"
       },
       "serial_trading": {
@@ -384,20 +384,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": -2.58,
+        "price_change_3d": -2.9,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 25.0,
+    "composite_score": 23.43,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.662,
+      "fundamental": 0.66,
       "technical": 0.205,
-      "governance": 0.134,
+      "governance": 0.135,
       "sentiment": 0.0
     }
   }

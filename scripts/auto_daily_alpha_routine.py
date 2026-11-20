@@ -40,6 +40,11 @@ def execute_daily_alpha_cycle():
     # Step 1: Scrape & process latest prices into PIT database
     run_step("1. Scrape Daily Price Snapshots", "scraper.py", ["price"])
     run_step("2. Ingest PIT Snapshots & Audits", "processor.py", [])
+    run_step("2b. Reconcile Last 5 Sessions With Official DSE Day-End Archive", "repair_price_history.py", ["--recent", "5"])
+    run_step("2c. Sync Official DSE Financial Disclosures Into PIT Dates & Values", "dse_disclosures.py", ["daily"])
+    run_step("2d. Sync Official DSE Dividends, Bonus & Rights Into Corporate Actions", "official_corporate_actions.py", ["--apply"])
+    run_step("2e. Refresh Instrument Master & Point-in-Time Category History", "instrument_master.py", [])
+    run_step("2f. Capture Point-in-Time Index Membership (DSEX, DS30)", "index_membership.py", ["capture"])
 
     # Step 2: Ingest Bangladesh Bank Macro Benchmark Rates
     run_step("3. Sync Bangladesh Bank Macro Rates & Hurdle Engine", "macro_rate_feed.py", [])
@@ -50,6 +55,12 @@ def execute_daily_alpha_cycle():
     # Step 4: Audit Footnotes & Regulatory Disclosures
     run_step("5. Parse Auditor Disclosures & Regulatory Risk Flags", "auditor_footnote_parser.py", [])
     run_step("5b. Full Market Surveillance & Anti-Manipulation Scanner", "anti_manipulation_engine.py", [])
+
+    # Data gate: nothing below may write ledgers, labels or learned weights on corrupt inputs.
+    if not run_step("5c. Data Integrity Gate (blocks all downstream writes on failure)", "integrity_harness.py", ["--data-gate"]):
+        print("\n[AUTO-ALPHA] ⛔ DATA GATE FAILED: ledger, labels, learning and reports were NOT advanced. "
+              "Fix the reported data issue, then rerun.", flush=True)
+        sys.exit(1)
 
     # Step 5: Advance V2 Hash-Chained Forward Ledger
     run_step("6. Advance V2 Hash-Chained Forward Ledger & Log Full Universe", "forward_test_ledger_v2.py", [])

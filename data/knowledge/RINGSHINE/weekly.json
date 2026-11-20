@@ -2,18 +2,18 @@
   "ticker": "RINGSHINE",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-17T09:01:44.761358",
-  "asof_price_date": "2026-11-17",
+  "analyzed_at": "2026-11-19T08:54:52.520021",
+  "asof_price_date": "2026-11-19",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 58.0734,
+    "rsi_14": 56.0294,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 44.85,
+  "confidence": 44.77,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 330543,
+      "avg_daily_volume": 321752,
       "daily_turnover_bdt_cr": 0.03,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 16527,
-      "max_daily_accumulation_shares": 49581,
-      "max_order_bdt": 16527.0,
-      "directive": "Max single order: 16,527 shares (Tk 16,527) to prevent >1% execution slippage"
+      "max_single_order_shares": 16087,
+      "max_daily_accumulation_shares": 48262,
+      "max_order_bdt": 16087.0,
+      "directive": "Max single order: 16,087 shares (Tk 16,087) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -103,15 +103,15 @@
   },
   "pattern_dna": {
     "ticker": "RINGSHINE",
-    "audited_at": "2026-11-17 15:01:44",
+    "audited_at": "2026-11-19 14:54:52",
     "worth_vs_greed": {
       "current_price": 3.4,
       "intrinsic_worth": 1.7,
       "margin_of_safety_pct": -50.0,
-      "extension_froth_score": 50.0,
-      "greed_index": 50.0,
+      "extension_froth_score": 60.0,
+      "greed_index": 60.0,
       "rsi_14": 50.0,
-      "price_vs_ema50_pct": 4.8,
+      "price_vs_ema50_pct": 4.5,
       "price_vs_ema200_pct": 5.3,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
@@ -157,10 +157,10 @@
           "range_volatility_pct": 100.0
         },
         "yearly_252d": {
-          "return_pct": -24.44,
-          "high": 4.6,
+          "return_pct": -19.05,
+          "high": 4.5,
           "low": 1.9,
-          "range_volatility_pct": 142.11
+          "range_volatility_pct": 136.84
         }
       },
       "wave_metrics": {
@@ -274,10 +274,10 @@
       "sma_trend": "bullish",
       "bb": "inside_bands",
       "atr": 0.15,
-      "rsi_value": 58.84,
+      "rsi_value": 56.32,
       "last_close": 3.4,
-      "sma20": 3.37,
-      "sma50": 3.18,
+      "sma20": 3.38,
+      "sma50": 3.19,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -352,15 +352,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 694768,
-        "avg_volume": 313741.0,
+        "last_volume": 45851,
+        "avg_volume": 309327.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 2.33,
-        "avg_volume": 297731.0,
-        "today_volume": 694768,
+        "spike_ratio": 0.15,
+        "avg_volume": 311960.0,
+        "today_volume": 45851,
         "detail": "ok"
       },
       "serial_trading": {
@@ -386,13 +386,13 @@
     }
   },
   "composite": {
-    "composite_score": 44.85,
+    "composite_score": 44.77,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.662,
+      "fundamental": 0.66,
       "technical": 0.205,
-      "governance": 0.134,
+      "governance": 0.135,
       "sentiment": 0.0
     }
   }

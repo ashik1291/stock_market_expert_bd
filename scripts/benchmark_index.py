@@ -270,8 +270,9 @@ def get_multi_asset_benchmark_suite(start_date: str, end_date: str | None = None
             
         # 3. 91-Day T-Bill Compounding
         sessions = tr_res.get("sessions", 1)
-        # Daily compounding at 11.60% APR (assuming 250 trading days/year)
-        tbill_daily_rate = 0.1160 / 250.0
+        # Daily compounding at the Bangladesh Bank 91-day rate in force at the start (250 trading days/year)
+        from macro_rate_feed import get_macro_rates_for_date
+        tbill_daily_rate = get_macro_rates_for_date(start_date)["risk_free_rate_pct"] / 100.0 / 250.0
         tbill_ret = round(((1.0 + tbill_daily_rate) ** sessions - 1.0) * 100.0, 2)
         
         return {

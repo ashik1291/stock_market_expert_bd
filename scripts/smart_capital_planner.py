@@ -189,17 +189,10 @@ def get_market_regime() -> dict:
 
     asof_date = asof_row[0] if asof_row and asof_row[0] else None
 
-    macro_row = cur.execute(
-
-        "SELECT value FROM macro_indicators WHERE indicator='t_bill_91d' ORDER BY date DESC LIMIT 1"
-
-    ).fetchone()
-
-    if macro_row:
-
-        t_bill = macro_row[0]
-
-        macro_hurdle = t_bill + 3.5
+    from macro_rate_feed import get_macro_rates_for_date
+    rates = get_macro_rates_for_date(asof_date or date.today().isoformat())
+    t_bill = rates["risk_free_rate_pct"]
+    macro_hurdle = rates["equity_hurdle_rate_pct"]
 
         
 

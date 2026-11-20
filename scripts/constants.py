@@ -45,6 +45,14 @@ MAX_STRICT_DEBT_TO_EQUITY: float = 0.50
 
 
 # ------------------------------------------------------------------------------
+# Point-in-Time disclosure deadlines (INV-1)
+# ------------------------------------------------------------------------------
+# Latest publication allowed by the listing regulations, in calendar days after period end:
+# audited annual 120, half-yearly 60, Q1/Q3 45. An unknown quarter is treated as annual.
+STATUTORY_LAG_DAYS: dict = {1: 45, 2: 60, 3: 45, 4: 120, None: 120}
+
+
+# ------------------------------------------------------------------------------
 # 4. Exchange Timezone & Operating Hours (DSE / Asia/Dhaka UTC+6)
 # ------------------------------------------------------------------------------
 import datetime

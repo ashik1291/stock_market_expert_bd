@@ -246,7 +246,6 @@ def scrape_all_prices() -> list[dict]:
     Priority 1: bdshare.get_current_trade_data()
     Priority 2: Modern DSE JSON API (https://dsebd.org/api/live/prices)
     Priority 3: Legacy DSE table (https://old.dsebd.org/latest_share_price_scroll_l.php)
-    Priority 4: Cached raw snapshot in data/raw/
     """
     if BDSHARE_OK:
         try:
@@ -256,8 +255,6 @@ def scrape_all_prices() -> list[dict]:
                 for r in records:
                     if "symbol" in r and "ticker" not in r:
                         r["ticker"] = r["symbol"]
-                    if "category" not in r:
-                        r["category"] = "A"
                 log.info(f"bdshare: fetched {len(records)} live prices")
                 return records
         except Exception as e:
@@ -336,19 +333,8 @@ def scrape_all_prices() -> list[dict]:
         except Exception as e:
             log.warning(f"HTML price scrape failed on {scroll_url}: {e}")
 
-    # Fallback 3: Latest cached raw snapshot in data/raw/
-    try:
-        raw_dirs = sorted([d for d in RAW_DIR.iterdir() if d.is_dir() and (d / "all_prices.json").exists()], reverse=True)
-        if raw_dirs:
-            cached_file = raw_dirs[0] / "all_prices.json"
-            with open(cached_file, "r", encoding="utf-8") as f:
-                cached = json.load(f)
-            if isinstance(cached, list) and len(cached) >= 50:
-                log.warning(f"Network offline: using cached prices from {cached_file} ({len(cached)} records)")
-                return cached
-    except Exception as e:
-        log.error(f"Failed to read cached prices: {e}")
-
+    # No cached-snapshot fallback: an old snapshot saved under today's date fabricates a session.
+    log.error("All live price sources failed; no snapshot produced.")
     return []
 
 

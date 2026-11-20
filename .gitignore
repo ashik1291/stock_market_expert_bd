@@ -97,3 +97,10 @@ reports/*.json
 reports/*.md
 reports/business/
 !reports/.gitkeep
+
+# Versioned dataset exports (regenerate with scripts/dataset_release.py)
+data/releases/
+
+# Backups
+*.bak
+*.bak-*

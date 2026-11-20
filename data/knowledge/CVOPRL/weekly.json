@@ -2,53 +2,53 @@
   "ticker": "CVOPRL",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-17T09:01:25.127542",
-  "asof_price_date": "2026-11-17",
+  "analyzed_at": "2026-11-19T08:54:34.288554",
+  "asof_price_date": "2026-11-19",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 34.7919,
+    "rsi_14": 43.4975,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 41.78,
+  "confidence": 43.23,
   "trajectory": {
-    "direction": "RISE_PREDICTED",
-    "direction_icon": "\ud83d\udfe2",
-    "heuristic_momentum_bias": 61.7,
+    "direction": "CONSOLIDATION_RANGE",
+    "direction_icon": "\ud83d\udfe1",
+    "heuristic_momentum_bias": 58.3,
     "rise_probability_pct": null,
-    "momentum_status": "Bullish Momentum / Upward Bias",
+    "momentum_status": "Neutral Range Consolidation",
     "short_term": {
-      "predicted_path": "Oversold bounce to 20-DMA",
-      "upside_potential_pct": "+5.5%",
-      "downside_risk_pct": "-3.6%",
-      "target_price": 139.5,
-      "support_price": 127.4,
+      "predicted_path": "Upward momentum swing",
+      "upside_potential_pct": "+5.3%",
+      "downside_risk_pct": "-3.5%",
+      "target_price": 145.8,
+      "support_price": 133.5,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+25.0%",
-      "downside_risk_pct": "-5.5%",
-      "target_price": 165.2,
-      "trailing_stop": 124.9,
+      "upside_potential_pct": "+24.0%",
+      "downside_risk_pct": "-5.3%",
+      "target_price": 171.6,
+      "trailing_stop": 131.0,
       "risk_reward_ratio": "4.5x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.0%",
-      "downside_risk_pct": "-9.9%",
-      "target_price": 171.9,
+      "downside_risk_pct": "-9.5%",
+      "target_price": 179.9,
       "dividend_cagr": "5%\u20138%",
-      "risk_reward_ratio": "3.0x"
+      "risk_reward_ratio": "3.2x"
     }
   },
   "trade_levels": {
-    "entry": 132.2,
-    "stop_loss": 124.94,
-    "target": 146.72
+    "entry": 138.4,
+    "stop_loss": 131.0,
+    "target": 153.2
   },
   "precision": {
     "ticker": "CVOPRL",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 106468,
+      "avg_daily_volume": 96768,
       "daily_turnover_bdt_cr": 0.01,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 5323,
-      "max_daily_accumulation_shares": 15970,
-      "max_order_bdt": 5323.0,
-      "directive": "Max single order: 5,323 shares (Tk 5,323) to prevent >1% execution slippage"
+      "max_single_order_shares": 4838,
+      "max_daily_accumulation_shares": 14515,
+      "max_order_bdt": 4838.0,
+      "directive": "Max single order: 4,838 shares (Tk 4,838) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -90,38 +90,38 @@
     "range_52w_corridor": {
       "status": "VALID",
       "low_52w": 131.0,
-      "high_52w": 207.8,
-      "range_52w_pct": 1.6,
+      "high_52w": 204.5,
+      "range_52w_pct": 10.1,
       "channel_regime": "DEEP_ACCUMULATION_BASE",
-      "visual_gauge": "[ \u09f3131.0 |\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f3207.8 ] (1.6% (Truncated))",
+      "visual_gauge": "[ \u09f3131.0 |\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f3204.5 ] (10.1% (Truncated))",
       "conviction_bonus": 10.0,
       "is_truncated_window": true,
       "bars_evaluated": 99,
-      "signal": "Price is at the bottom 1.6% of 52-week channel (near \u09f3131.0 floor) \u2014 high margin of safety"
+      "signal": "Price is at the bottom 10.1% of 52-week channel (near \u09f3131.0 floor) \u2014 high margin of safety"
     },
     "total_precision_bonus": 10.0
   },
   "pattern_dna": {
     "ticker": "CVOPRL",
-    "audited_at": "2026-11-17 15:01:25",
+    "audited_at": "2026-11-19 14:54:34",
     "worth_vs_greed": {
-      "current_price": 132.2,
-      "intrinsic_worth": 66.1,
+      "current_price": 138.4,
+      "intrinsic_worth": 69.2,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 20.0,
       "greed_index": 20.0,
-      "rsi_14": 32.6,
-      "price_vs_ema50_pct": -11.3,
-      "price_vs_ema200_pct": -13.4,
+      "rsi_14": 45.5,
+      "price_vs_ema50_pct": -6.5,
+      "price_vs_ema200_pct": -9.1,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f3129.6 \u2013 \u09f3133.5",
-        "chase_cutoff_price": 135.5,
-        "when_to_wait": "If price opens or rises above \u09f3135.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3129.6.",
-        "weekly_target_short": 136.8,
-        "monthly_target_swing": 152.0,
-        "long_term_target_asset": 171.9,
+        "optimal_entry_corridor": "\u09f3135.6 \u2013 \u09f3139.8",
+        "chase_cutoff_price": 141.9,
+        "when_to_wait": "If price opens or rises above \u09f3141.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3135.6.",
+        "weekly_target_short": 143.2,
+        "monthly_target_swing": 159.2,
+        "long_term_target_asset": 179.9,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
@@ -133,31 +133,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -5.1,
-          "high": 144.0,
+          "return_pct": -1.84,
+          "high": 142.0,
           "low": 131.0,
-          "range_volatility_pct": 9.92
+          "range_volatility_pct": 8.4
         },
         "monthly_21d": {
-          "return_pct": -19.14,
+          "return_pct": -13.98,
           "high": 165.7,
           "low": 131.0,
           "range_volatility_pct": 26.49
         },
         "quarterly_63d": {
-          "return_pct": -20.93,
+          "return_pct": -13.23,
           "high": 174.3,
           "low": 131.0,
           "range_volatility_pct": 33.05
         },
         "half_yearly_126d": {
-          "return_pct": -21.26,
+          "return_pct": -16.17,
           "high": 216.8,
           "low": 131.0,
           "range_volatility_pct": 65.5
         },
         "yearly_252d": {
-          "return_pct": -2.79,
+          "return_pct": 1.02,
           "high": 216.8,
           "low": 119.5,
           "range_volatility_pct": 81.42
@@ -168,8 +168,8 @@
         "median_correction_drop_pct": -22.6,
         "avg_wave_duration_bars": 19.0
       },
-      "current_wave_phase": "BOTTOMING_SUPPORT",
-      "phase_guidance": "Drop (-21.3%) matches historical correction depth (-22.6%). Prepare to accumulate.",
+      "current_wave_phase": "MARKDOWN_PULLBACK",
+      "phase_guidance": "Ongoing pullback from peak (-17.6%). Wait for stabilizing base.",
       "top_seasonal_months": [
         {
           "month": "May",
@@ -267,17 +267,17 @@
     ]
   },
   "technical": {
-    "score": 42.5,
+    "score": 50.0,
     "signals": {
       "rsi": "neutral",
-      "macd": "bearish_crossover",
+      "macd": "neutral",
       "sma_trend": "neutral",
       "bb": "inside_bands",
-      "atr": 4.84,
-      "rsi_value": 34.94,
-      "last_close": 132.2,
-      "sma20": 142.71,
-      "sma50": 149.55,
+      "atr": 4.93,
+      "rsi_value": 43.93,
+      "last_close": 138.4,
+      "sma20": 140.32,
+      "sma50": 149.09,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -308,8 +308,8 @@
       "error": "no_fundamental_data",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 36.4,
-        "high_52w": 207.8,
+        "drawdown_pct": 32.3,
+        "high_52w": 204.5,
         "low_52w": 131.0
       }
     }
@@ -352,15 +352,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 0,
-        "avg_volume": 120834.0,
+        "last_volume": 115436,
+        "avg_volume": 120618.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.0,
-        "avg_volume": 129877.0,
-        "today_volume": 0,
+        "spike_ratio": 0.97,
+        "avg_volume": 119467.0,
+        "today_volume": 115436,
         "detail": "ok"
       },
       "serial_trading": {
@@ -379,20 +379,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": -0.6,
+        "price_change_3d": 2.67,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 41.78,
+    "composite_score": 43.23,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.662,
+      "fundamental": 0.66,
       "technical": 0.205,
-      "governance": 0.134,
+      "governance": 0.135,
       "sentiment": 0.0
     }
   }

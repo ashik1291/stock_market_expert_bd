@@ -15,6 +15,9 @@ import logging
 import sqlite3
 import datetime
 from pathlib import Path
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).resolve().parent))
+from constants import STATUTORY_LAG_DAYS  # noqa: E402
 
 BASE_DIR   = Path(__file__).resolve().parent.parent
 RAW_DIR    = BASE_DIR / "data" / "raw"
@@ -235,6 +238,8 @@ def get_db() -> sqlite3.Connection:
         conn.commit()
     except Exception:
         pass
+    from db_guards import install_data_guards
+    install_data_guards(conn)
     # Backfill legacy rows where disclosure-lag columns are NULL/placeholder:
     # publication_source IS NULL means row predates PIT lag model; recompute
     # annual (Q4) -> snapshot+75d next trading day; interim (Q1-3) -> +45d next trading day
@@ -252,7 +257,7 @@ def get_db() -> sqlite3.Connection:
                     base = datetime.date.fromisoformat(str(snap)[:10])
                 except Exception:
                     continue
-                lag = 75 if (fq == 4 or fq is None) else 45
+                lag = STATUTORY_LAG_DAYS.get(fq, STATUTORY_LAG_DAYS[4])
                 filing = "annual" if (fq == 4 or fq is None) else "interim"
                 pub_raw = (base + datetime.timedelta(days=lag)).isoformat()
                 pub = _next_trading_day_for_migration(conn, pub_raw)
@@ -307,7 +312,7 @@ def get_db() -> sqlite3.Connection:
                     (pub, trad, rid),
                 )
             else:
-                lag = 75 if (fq == 4 or fq is None) else 45
+                lag = STATUTORY_LAG_DAYS.get(fq, STATUTORY_LAG_DAYS[4])
                 pub_raw = (base + datetime.timedelta(days=lag)).isoformat()
                 pub = _next_trading_day_for_migration(conn, pub_raw)
                 trad = _next_trading_day_for_migration(
@@ -368,46 +373,26 @@ def _normalize_key(k: str) -> str:
     )
 
 
-def _detect_fiscal_period(raw: dict) -> tuple[int, int]:
-    """
-    Extract year/quarter from raw scraped data.
-    Authoritative source: multi_year_financials[-1]['year']
-    Falls back to current year/quarter with strict sanity bounds (2015 <= year <= current_year + 1).
-    """
-    import re
-    today = datetime.date.today()
-    default_year = today.year
-    default_q = (today.month - 1) // 3 + 1
-
-    # Authoritative: latest audited year from multi_year_financials
+def _detect_fiscal_period(raw: dict) -> tuple[int, int] | None:
+    """Latest audited fiscal year from multi_year_financials, or None when the payload names no period."""
     my = raw.get("multi_year_financials")
     if isinstance(my, list) and my:
-        latest = my[-1].get("year")
-        if latest and 2015 <= int(latest) <= default_year + 1:
-            return int(latest), 4
+        try:
+            return int(float(my[-1].get("year"))), 4
+        except (TypeError, ValueError):
+            pass
+    return None
 
-    for k, v in raw.items():
-        if not isinstance(v, str):
-            continue
-        # Pattern: exact 4-digit year bounded by word boundaries
-        year_match = re.search(r"\b20([1-3]\d)\b", v)
-        if year_match:
-            cand_year = int("20" + year_match.group(1))
-            if 2015 <= cand_year <= default_year + 1:
-                q_match = re.search(r"Q([1-4])", v, re.I)
-                if q_match:
-                    return cand_year, int(q_match.group(1))
-                # Fiscal year end month → Q4
-                month_map = {
-                    "jan": 2, "feb": 2, "mar": 4, "apr": 1, "may": 1, "jun": 4,
-                    "jul": 1, "aug": 2, "sep": 3, "oct": 2, "nov": 3, "dec": 4,
-                }
-                for mon, q in month_map.items():
-                    if mon in v.lower():
-                        return cand_year, q
-                return cand_year, default_q
 
-    return default_year, default_q
+def latest_ended_quarter(observed_date: str, fye_month: int) -> tuple[int, int]:
+    """(fiscal_year, quarter) of the last fiscal quarter that ended on or before observed_date."""
+    d = datetime.date.fromisoformat(observed_date)
+    y, m = d.year, d.month
+    while True:
+        if (m - fye_month) % 3 == 0 and _month_end(y, m) <= observed_date:
+            end = _month_end(y, m)
+            return fiscal_year_of(end, fye_month), 4 - ((fye_month - m) % 12) // 3
+        y, m = (y, m - 1) if m > 1 else (y - 1, 12)
 
 
 def parse_fundamentals_row(ticker: str, raw: dict) -> dict:
@@ -509,8 +494,59 @@ def upsert_company(conn: sqlite3.Connection, ticker: str, sector: str,
     ))
 
 
-def upsert_fundamentals(conn: sqlite3.Connection, parsed: dict, raw: dict):
-    year, quarter = _detect_fiscal_period(raw)
+# Income year is July-June by law except banks, insurers, financial institutions and
+# multinational subsidiaries. Used only when the company's own interim period ends are unknown.
+FISCAL_YEAR_END_OVERRIDES = {"RECKITTBEN": 12, "UNILEVERCL": 12}
+CALENDAR_YEAR_SECTORS = {"Banking", "Insurance", "Financial Institutions"}
+
+
+def _month_end(year: int, month: int) -> str:
+    import calendar
+    return f"{year}-{month:02d}-{calendar.monthrange(year, month)[1]:02d}"
+
+
+def fiscal_year_end_month(conn: sqlite3.Connection, ticker: str, raw: dict | None = None) -> int:
+    """
+    Fiscal year-end month for ticker. Derived from the company's own Q1 period end
+    (FYE = Q1 end - 3 months) when the scraped payload has it, and persisted on companies.
+    """
+    cols = {r[1] for r in conn.execute("PRAGMA table_info(companies)")}
+    if "fiscal_year_end_month" not in cols:
+        conn.execute("ALTER TABLE companies ADD COLUMN fiscal_year_end_month INTEGER")
+    q1 = (((raw or {}).get("interim_financials") or {}).get("periodEnds") or {}).get("q1")
+    if q1 and len(str(q1)) >= 6 and str(q1)[4:6].isdigit():
+        month = (int(str(q1)[4:6]) - 4) % 12 + 1
+        conn.execute("UPDATE companies SET fiscal_year_end_month = ? WHERE ticker = ?", (month, ticker))
+        return month
+    row = conn.execute("SELECT fiscal_year_end_month, sector FROM companies WHERE ticker = ?", (ticker,)).fetchone()
+    if row and row[0]:
+        return int(row[0])
+    if ticker in FISCAL_YEAR_END_OVERRIDES:
+        return FISCAL_YEAR_END_OVERRIDES[ticker]
+    sector = (row[1] if row else None) or (raw or {}).get("sector")
+    return 12 if sector in CALENDAR_YEAR_SECTORS else 6
+
+
+def fiscal_quarter_end(fy: int, q: int, fye_month: int) -> str:
+    """Quarter-end date of quarter q of the fiscal year that ends in calendar year fy."""
+    months_back = 3 * (4 - q)
+    total = fy * 12 + (fye_month - 1) - months_back
+    return _month_end(total // 12, total % 12 + 1)
+
+
+def fiscal_year_of(period_end: str, fye_month: int) -> int:
+    """Fiscal year label (calendar year in which the fiscal year ends) for a period-end date."""
+    y, m = int(period_end[:4]), int(period_end[5:7])
+    return y if m <= fye_month else y + 1
+
+
+def upsert_fundamentals(conn: sqlite3.Connection, parsed: dict, raw: dict, observed_date: str | None = None):
+    observed_date = observed_date or datetime.date.today().isoformat()
+    fye_month = fiscal_year_end_month(conn, parsed["ticker"], raw)
+    period = _detect_fiscal_period(raw)
+    if period and fiscal_quarter_end(period[0], period[1], fye_month) > observed_date:
+        period = None
+    year, quarter = period or latest_ended_quarter(observed_date, fye_month)
     conn.execute("""
         INSERT INTO fundamentals
             (ticker, year, quarter, eps, nav, pe_ratio, debt_equity,
@@ -580,75 +616,67 @@ def upsert_fundamentals(conn: sqlite3.Connection, parsed: dict, raw: dict):
     raw_str = json.dumps(raw, sort_keys=True)
     hash_val = hashlib.sha256(raw_str.encode("utf-8")).hexdigest()[:16]
     ingest_id = _uuid.uuid4().hex[:12]
-    # Detect fiscal period end as snapshot_date (YYYY-MM-DD)
-    # For scraped current snapshot with no multi_year/interim, quarter end is derived from year/quarter
-    def _quarter_end_dates(fy: int, q: int) -> str:
-        # Bangladesh fiscal year = Jul 1 – Jun 30
-        # Q1: Sep 30, Q2: Dec 31, Q3: Mar 31, Q4: Jun 30
-        if q == 1:
-            return f"{fy - 1}-09-30"
-        elif q == 2:
-            return f"{fy - 1}-12-31"
-        elif q == 3:
-            return f"{fy}-03-31"
+    # A company-page snapshot that names no ended fiscal period is not a filing: no PIT row.
+    if period:
+        pit_snapshot = fiscal_quarter_end(year, quarter, fye_month)
+        psi_pub = _psi_publication_date(raw)
+        if psi_pub and psi_pub < pit_snapshot:
+            psi_pub = None  # a release cannot precede its own period end
+        if psi_pub:
+            pub_date_raw = psi_pub
+            pub_is_est = 0
+            pub_source = "psi"
         else:
-            return f"{fy}-06-30"
-    pit_snapshot = _quarter_end_dates(year, quarter)
-    psi_pub = _psi_publication_date(raw)
-    if psi_pub:
-        pub_date_raw = psi_pub
-        pub_is_est = 0
-        pub_source = "psi"
-    else:
-        lag_days = 75 if quarter == 4 else 45
-        try:
-            base = datetime.date.fromisoformat(pit_snapshot)
-            pub_date_raw = (base + datetime.timedelta(days=lag_days)).isoformat()
-        except Exception:
-            pub_date_raw = pit_snapshot
-        pub_is_est = 1
-        pub_source = "estimated"
-    publication_date = _next_trading_day(conn, pub_date_raw)
-    tradable_date = _next_trading_day(conn, (datetime.date.fromisoformat(publication_date) + datetime.timedelta(days=1)).isoformat())
-    filing_type = "annual" if quarter == 4 else "interim"
-    conn.execute("""
-        INSERT INTO fundamentals_pit
-            (ticker, snapshot_date, publication_date, tradable_date, filing_type,
-             publication_is_estimated, publication_source, ingest_id,
-             fiscal_year, fiscal_quarter,
-             eps, nav, pe_ratio, debt_equity, dividend_yield, roe, roa,
-             current_ratio, revenue_cr, net_profit_cr, cash_flow_ops, source_hash, created_at)
-        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
-        ON CONFLICT(ticker, snapshot_date) DO UPDATE SET
-            publication_date         = excluded.publication_date,
-            tradable_date            = excluded.tradable_date,
-            filing_type              = excluded.filing_type,
-            publication_is_estimated = excluded.publication_is_estimated,
-            publication_source       = excluded.publication_source,
-            ingest_id                = excluded.ingest_id,
-            eps           = excluded.eps,
-            nav           = excluded.nav,
-            pe_ratio      = excluded.pe_ratio,
-            debt_equity   = excluded.debt_equity,
-            dividend_yield= excluded.dividend_yield,
-            roe           = excluded.roe,
-            roa           = excluded.roa,
-            current_ratio = excluded.current_ratio,
-            revenue_cr    = excluded.revenue_cr,
-            net_profit_cr = excluded.net_profit_cr,
-            cash_flow_ops = excluded.cash_flow_ops,
-            source_hash   = excluded.source_hash
-    """, (
-        parsed["ticker"], pit_snapshot, publication_date, tradable_date, filing_type,
-        pub_is_est, pub_source, ingest_id,
-        year, quarter,
-        parsed.get("eps"), parsed.get("nav"), parsed.get("pe_ratio"),
-        parsed.get("debt_equity"), parsed.get("dividend_yield"),
-        parsed.get("roe"), parsed.get("roa"), parsed.get("current_ratio"),
-        parsed.get("revenue_cr"), parsed.get("net_profit_cr"),
-        parsed.get("cash_flow_ops"),
-        hash_val, datetime.datetime.utcnow().isoformat(),
-    ))
+            lag_days = STATUTORY_LAG_DAYS.get(quarter, STATUTORY_LAG_DAYS[4])
+            try:
+                base = datetime.date.fromisoformat(pit_snapshot)
+                pub_date_raw = (base + datetime.timedelta(days=lag_days)).isoformat()
+            except Exception:
+                pub_date_raw = pit_snapshot
+            pub_is_est = 1
+            pub_source = "estimated"
+        publication_date = _next_trading_day(conn, pub_date_raw)
+        tradable_date = _next_trading_day(conn, (datetime.date.fromisoformat(publication_date) + datetime.timedelta(days=1)).isoformat())
+        filing_type = "annual" if quarter == 4 else "interim"
+        conn.execute("""
+            INSERT INTO fundamentals_pit
+                (ticker, snapshot_date, publication_date, tradable_date, filing_type,
+                 publication_is_estimated, publication_source, ingest_id,
+                 fiscal_year, fiscal_quarter,
+                 eps, nav, pe_ratio, debt_equity, dividend_yield, roe, roa,
+                 current_ratio, revenue_cr, net_profit_cr, cash_flow_ops, source_hash, created_at)
+            VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+            ON CONFLICT(ticker, snapshot_date) DO UPDATE SET
+                publication_date         = excluded.publication_date,
+                tradable_date            = excluded.tradable_date,
+                filing_type              = excluded.filing_type,
+                publication_is_estimated = excluded.publication_is_estimated,
+                publication_source       = excluded.publication_source,
+                ingest_id                = excluded.ingest_id,
+                eps           = excluded.eps,
+                nav           = excluded.nav,
+                pe_ratio      = excluded.pe_ratio,
+                debt_equity   = excluded.debt_equity,
+                dividend_yield= excluded.dividend_yield,
+                roe           = excluded.roe,
+                roa           = excluded.roa,
+                current_ratio = excluded.current_ratio,
+                revenue_cr    = excluded.revenue_cr,
+                net_profit_cr = excluded.net_profit_cr,
+                cash_flow_ops = excluded.cash_flow_ops,
+                source_hash   = excluded.source_hash
+            WHERE COALESCE(fundamentals_pit.publication_source, '') != 'dse_disclosure'
+        """, (
+            parsed["ticker"], pit_snapshot, publication_date, tradable_date, filing_type,
+            pub_is_est, pub_source, ingest_id,
+            year, quarter,
+            parsed.get("eps"), parsed.get("nav"), parsed.get("pe_ratio"),
+            parsed.get("debt_equity"), parsed.get("dividend_yield"),
+            parsed.get("roe"), parsed.get("roa"), parsed.get("current_ratio"),
+            parsed.get("revenue_cr"), parsed.get("net_profit_cr"),
+            parsed.get("cash_flow_ops"),
+            hash_val, datetime.datetime.utcnow().isoformat(),
+        ))
 
     # ── Ingest Multi-Year Audited Financials if available ──
     multi_year = raw.get("multi_year_financials")
@@ -692,12 +720,17 @@ def upsert_fundamentals(conn: sqlite3.Connection, parsed: dict, raw: dict):
             ))
 
             # Ingest into fundamentals_pit (snapshot_date at fiscal year end, disclosure-lag publication/tradable)
-            my_snap = f"{my_year}-06-30"
-            my_pub_raw = _psi_publication_date(my_item) or (datetime.date.fromisoformat(my_snap) + datetime.timedelta(days=75)).isoformat()
+            my_snap = fiscal_quarter_end(my_year, 4, fye_month)
+            if my_snap > observed_date:
+                continue
+            my_psi = _psi_publication_date(my_item)
+            if my_psi and my_psi < my_snap:
+                my_psi = None
+            my_pub_raw = my_psi or (datetime.date.fromisoformat(my_snap) + datetime.timedelta(days=STATUTORY_LAG_DAYS[4])).isoformat()
             my_pub = _next_trading_day(conn, my_pub_raw)
             my_trad = _next_trading_day(conn, (datetime.date.fromisoformat(my_pub) + datetime.timedelta(days=1)).isoformat())
-            my_pub_is_est = 0 if _psi_publication_date(my_item) else 1
-            my_pub_src = "psi" if _psi_publication_date(my_item) else "estimated"
+            my_pub_is_est = 0 if my_psi else 1
+            my_pub_src = "psi" if my_psi else "estimated"
             my_ingest = _uuid.uuid4().hex[:12]
             conn.execute("""
                 INSERT INTO fundamentals_pit
@@ -719,6 +752,7 @@ def upsert_fundamentals(conn: sqlite3.Connection, parsed: dict, raw: dict):
                     dividend_yield= COALESCE(excluded.dividend_yield, fundamentals_pit.dividend_yield),
                     net_profit_cr = COALESCE(excluded.net_profit_cr, fundamentals_pit.net_profit_cr),
                     source_hash   = excluded.source_hash
+                WHERE COALESCE(fundamentals_pit.publication_source, '') != 'dse_disclosure'
             """, (
                 parsed["ticker"], my_snap, my_pub, my_trad, "annual",
                 my_pub_is_est, my_pub_src, my_ingest,
@@ -741,21 +775,24 @@ def upsert_fundamentals(conn: sqlite3.Connection, parsed: dict, raw: dict):
                         pend_str = str(pend)
                         pyear = int(pend_str[:4])
                         pmonth = int(pend_str[4:6])
-                        last_day = 31 if pmonth in [1, 3, 5, 7, 8, 10, 12] else (28 if pmonth == 2 else 30)
-                        snap_date = f"{pyear}-{pmonth:02d}-{last_day:02d}"
+                        snap_date = _month_end(pyear, pmonth)
+                        if snap_date > observed_date:
+                            continue
                         q_num = int(qk[1])
-                        fiscal_yr = pyear if pmonth <= 6 else pyear + 1
+                        fiscal_yr = fiscal_year_of(snap_date, fye_month)
                         int_raw_str = json.dumps({"metric": metric_name, "period": pend_str, "eps": q_eps}, ensure_ascii=False)
                         int_hash = hashlib.sha256(int_raw_str.encode("utf-8")).hexdigest()[:16]
                         # Interim: pub = disclosure or snap + 45d (next trading day), tradable = next trading day after pub
                         int_disc = _psi_publication_date(interim) or _psi_publication_date(row)
+                        if int_disc and int_disc < snap_date:
+                            int_disc = None
                         if int_disc:
                             int_pub_raw = int_disc
                             int_pub_is_est = 0
                             int_pub_src = "psi"
                         else:
                             try:
-                                int_pub_raw = (datetime.date.fromisoformat(snap_date) + datetime.timedelta(days=45)).isoformat()
+                                int_pub_raw = (datetime.date.fromisoformat(snap_date) + datetime.timedelta(days=STATUTORY_LAG_DAYS.get(q_num, 45))).isoformat()
                             except Exception:
                                 int_pub_raw = snap_date
                             int_pub_is_est = 1
@@ -794,6 +831,7 @@ def upsert_fundamentals(conn: sqlite3.Connection, parsed: dict, raw: dict):
                                 fiscal_year = excluded.fiscal_year,
                                 fiscal_quarter = excluded.fiscal_quarter,
                                 source_hash = excluded.source_hash
+                            WHERE COALESCE(fundamentals_pit.publication_source, '') != 'dse_disclosure'
                         """, (
                             parsed["ticker"], snap_date, int_pub, int_trad, "interim",
                             int_pub_is_est, int_pub_src, int_ingest,
@@ -814,44 +852,15 @@ def insert_prices(conn: sqlite3.Connection, ticker: str, records: list[dict],
         high_val  = _to_float(rec.get("high") or rec.get("highprice") or close_val)
         low_val   = _to_float(rec.get("low") or rec.get("lowprice") or close_val)
         open_val  = _to_float(rec.get("open") or rec.get("openprice") or close_val)
-        vol_val   = _to_int(rec.get("volume") or rec.get("ycp") or 0)
-        val_val   = _to_float(rec.get("value") or rec.get("trade") or 0)
+        vol_val   = _to_int(rec.get("volume")) or 0
+        val_val   = _to_float(rec.get("value")) or 0.0
 
         if high_val is not None and low_val is not None and high_val < low_val:
             log.warning(f"Data error {ticker} {date_val}: high({high_val}) < low({low_val}). Skipping.")
             continue
 
-        # Corporate action adjustment — compounding path across all subsequent corporate actions.
-        # Factor = 1/(1+ratio) < 1 for splits/bonus (e.g. 0.869 for 15% bonus).
-        # Only adjust historical bars (date < record_date). Guard factor < 1.
-        ca_rows = conn.execute("""
-            SELECT adjustment_factor, ratio, action_type FROM corporate_actions
-            WHERE ticker = ? AND record_date > ? AND adjustment_factor IS NOT NULL
-            ORDER BY record_date ASC
-        """, (ticker, date_val)).fetchall()
-        
-        compound_factor = 1.0
-        for ca_row in ca_rows:
-            try:
-                factor = float(ca_row[0])
-            except Exception:
-                continue
-            is_bonus_split = ("bonus" in str(ca_row[2]).lower() or "split" in str(ca_row[2]).lower() or str(ca_row[2]).lower() == "rights_split")
-            if 0 < factor < 1.0:
-                try:
-                    ratio = float(ca_row[1]) if ca_row[1] is not None else None
-                except Exception:
-                    ratio = None
-                expected = 1.0 / (1.0 + ratio) if ratio is not None and ratio >= 0 else None
-                if expected is None or abs(factor - expected) < 1e-6 or not is_bonus_split:
-                    compound_factor *= factor
-
-        if 0 < compound_factor < 1.0:
-            open_val = round(open_val * compound_factor, 2)
-            high_val = round(high_val * compound_factor, 2)
-            low_val = round(low_val * compound_factor, 2)
-            close_val = round(close_val * compound_factor, 2)
-
+        # prices stores raw traded bars; corporate-action adjustment is applied at read time
+        # (feature_store, precision_engine, backtester) so it must not be baked in here.
         conn.execute("""
             INSERT OR IGNORE INTO prices
                 (ticker, date, open, high, low, close, volume, value)
@@ -962,12 +971,59 @@ def _ensure_company_master_record(conn: sqlite3.Connection, ticker: str, rec: di
     existing = conn.execute("SELECT ticker FROM companies WHERE ticker=?", (ticker,)).fetchone()
     if not existing:
         sec = _infer_instrument_sector(ticker, ticker_sector)
-        cat = str(rec.get("category") or "A").strip()
+        cat = str(rec.get("category") or "").strip() or None
         name = str(rec.get("name") or ticker).strip()
         conn.execute("""
             INSERT OR IGNORE INTO companies (ticker, name, sector, category, updated_at)
             VALUES (?, ?, ?, ?, ?)
         """, (ticker, name, sec, cat, datetime.datetime.utcnow().isoformat()))
+
+STALE_SNAPSHOT_MATCH_RATIO = 0.9
+
+
+def stale_snapshot_reason(conn: sqlite3.Connection, date_str: str, records: list) -> str | None:
+    """
+    Non-None when a full-market snapshot repeats the previous stored session bar-for-bar
+    (feeds and caches replay the last session on holidays), i.e. no real session happened.
+    """
+    prev = conn.execute("SELECT MAX(date) FROM prices WHERE date < ?", (date_str,)).fetchone()[0]
+    if prev:
+        prev_bars = {r[0]: (r[1], r[2]) for r in conn.execute(
+            "SELECT ticker, close, volume FROM prices WHERE date = ?", (prev,))}
+        same = total = 0
+        for rec in records:
+            t = str(rec.get("ticker") or rec.get("symbol") or rec.get("code") or "").strip()
+            if t not in prev_bars:
+                continue
+            total += 1
+            close = _to_float(rec.get("close") or rec.get("ltp"))
+            vol = _to_int(rec.get("volume")) or 0
+            pc, pv = prev_bars[t]
+            if close is not None and pc is not None and abs(close - pc) < 1e-9 and vol == (pv or 0):
+                same += 1
+        if total >= 50 and same / total >= STALE_SNAPSHOT_MATCH_RATIO:
+            return f"stale snapshot: {same}/{total} bars identical to previous session {prev}"
+    return None
+
+
+def snapshot_rejection_reason(conn: sqlite3.Connection, date_str: str, records: list) -> str | None:
+    """
+    Reason to refuse a live snapshot for date_str, or None to accept it. A fresh snapshot on a day
+    the calendar marks closed is accepted and the calendar corrected: only a real session prints new bars.
+    """
+    stale = stale_snapshot_reason(conn, date_str, records)
+    if stale:
+        return stale
+    cal = conn.execute("SELECT is_trading_day FROM trading_calendar WHERE date = ?", (date_str,)).fetchone()
+    if cal is not None and cal[0] == 0:
+        log.warning(f"{date_str} is marked closed in trading_calendar but has fresh prints; marking it a trading day.")
+        conn.execute("""UPDATE trading_calendar SET is_trading_day = 1, session_type = 'makeup_session',
+                        notes = 'Corrected: fresh exchange prints observed' WHERE date = ?""", (date_str,))
+    elif cal is None:
+        conn.execute("""INSERT OR IGNORE INTO trading_calendar (date, is_trading_day, session_type, notes)
+                        VALUES (?, 1, 'regular', 'Added from observed exchange prints')""", (date_str,))
+    return None
+
 
 def process_date(date_str: str = None):
     if date_str is None:
@@ -991,6 +1047,11 @@ def process_date(date_str: str = None):
 
     # All prices (today snapshot) — read category from price data itself
     all_prices = load_raw("all_prices", date_str)
+    if isinstance(all_prices, list) and all_prices:
+        reject = snapshot_rejection_reason(conn, date_str, all_prices)
+        if reject:
+            log.error(f"Refusing price snapshot for {date_str}: {reject}")
+            all_prices = []
     if all_prices:
         if isinstance(all_prices, list):
             for rec in all_prices:
@@ -999,6 +1060,10 @@ def process_date(date_str: str = None):
                     continue
                 insert_prices(conn, ticker, [rec], date_str)
                 _ensure_company_master_record(conn, ticker, rec, ticker_sector)
+        from provenance import new_ingest, stamp_unattributed
+        raw_path = RAW_DIR / date_str / "all_prices.json"
+        if conn.execute("SELECT 1 FROM prices WHERE source IS NULL LIMIT 1").fetchone():
+            stamp_unattributed(conn, new_ingest(conn, "dse_live_snapshot", str(raw_path), raw=raw_path), "dse_live_snapshot", date_str)
         conn.commit()
         log.info(f"Inserted {len(all_prices) if isinstance(all_prices, list) else '?'} price snapshots")
 
@@ -1007,6 +1072,10 @@ def process_date(date_str: str = None):
     if historical:
         for ticker, records in historical.items():
             insert_prices(conn, ticker, records, date_str)
+        from provenance import new_ingest, stamp_unattributed
+        raw_path = RAW_DIR / date_str / "historical_prices.json"
+        if conn.execute("SELECT 1 FROM prices WHERE source IS NULL LIMIT 1").fetchone():
+            stamp_unattributed(conn, new_ingest(conn, "dse_historical_scrape", str(raw_path), raw=raw_path), "dse_historical_scrape")
         conn.commit()
         log.info("Historical prices inserted")
 
@@ -1018,16 +1087,16 @@ def process_date(date_str: str = None):
         if isinstance(all_prices, list):
             for rec in all_prices:
                 t = str(rec.get("ticker") or rec.get("symbol") or "").strip()
-                c = str(rec.get("category") or "A").strip()
-                if t:
+                c = str(rec.get("category") or "").strip()
+                if t and c:
                     cat_map[t] = c
 
         for ticker, raw_fund in fundamentals.items():
             parsed = parse_fundamentals_row(ticker, raw_fund)
             sector = ticker_sector.get(ticker, "Unknown")
-            category = cat_map.get(ticker, "A")
+            category = cat_map.get(ticker)
             upsert_company(conn, ticker, sector, category, parsed)
-            upsert_fundamentals(conn, parsed, raw_fund)
+            upsert_fundamentals(conn, parsed, raw_fund, date_str)
         conn.commit()
         log.info(f"Fundamentals inserted for {len(fundamentals)} tickers")
 

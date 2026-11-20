@@ -348,20 +348,8 @@ def sync_corporate_actions_from_fundamentals(conn: Optional[sqlite3.Connection] 
                 cash_pct = float(item.get("cash") or 0.0)
                 stock_pct = float(item.get("stock") or 0.0)
                 est_record_date = f"{d_year}-12-15"
-
-                # Check if real notice already exists for this year in real_dates_recorded or DB
-                existing_in_db = conn.execute(
-                    "SELECT 1 FROM corporate_actions WHERE ticker = ? AND action_type = 'cash_dividend' AND SUBSTR(record_date, 1, 4) = ? AND notes NOT LIKE '%Historical estimated%'",
-                    (ticker, str(d_year))
-                ).fetchone()
-
-                if cash_pct > 0 and (ticker, "cash_dividend", str(d_year)) not in real_dates_recorded and not existing_in_db:
-                    cash_per_share = round((cash_pct / 100.0) * 10.0, 2)
-                    conn.execute("""
-                        INSERT OR IGNORE INTO corporate_actions (ticker, record_date, action_type, ratio, cash_amount, adjustment_factor, notes)
-                        VALUES (?, ?, 'cash_dividend', 0.0, ?, 1.0, ?)
-                    """, (ticker, est_record_date, cash_per_share, f"{cash_pct:.1f}% Cash Dividend (Historical estimated)"))
-                    inserted_cash += 1
+                # Cash dividends come only from dated sources (official_corporate_actions, real notices);
+                # a placeholder record date would be a guess.
 
                 existing_bonus_in_db = conn.execute(
                     "SELECT 1 FROM corporate_actions WHERE ticker = ? AND action_type = 'bonus_dividend' AND SUBSTR(record_date, 1, 4) = ? AND notes NOT LIKE '%Historical estimated%'",
@@ -371,11 +359,16 @@ def sync_corporate_actions_from_fundamentals(conn: Optional[sqlite3.Connection] 
                 if stock_pct > 0 and (ticker, "bonus_dividend", str(d_year)) not in real_dates_recorded and not existing_bonus_in_db:
                     bonus_ratio = round(stock_pct / 100.0, 4)
                     adj_factor = round(1.0 / (1.0 + bonus_ratio), 6)
-                    conn.execute("""
-                        INSERT OR IGNORE INTO corporate_actions (ticker, record_date, action_type, ratio, cash_amount, adjustment_factor, notes)
-                        VALUES (?, ?, 'bonus_dividend', ?, 0.0, ?, ?)
-                    """, (ticker, est_record_date, bonus_ratio, adj_factor, f"{stock_pct:.1f}% Stock Dividend (Historical estimated)"))
-                    inserted_bonus += 1
+                    # A bonus moves prices, so its date must come from the observed ex-date gap, never a guess.
+                    ex_date = infer_bonus_ex_date(conn, ticker, adj_factor, est_record_date,
+                                                  cash_per_share=round((cash_pct / 100.0) * 10.0, 2),
+                                                  fiscal_year=d_year)
+                    if ex_date:
+                        conn.execute("""
+                            INSERT OR IGNORE INTO corporate_actions (ticker, record_date, action_type, ratio, cash_amount, adjustment_factor, notes)
+                            VALUES (?, ?, 'bonus_dividend', ?, 0.0, ?, ?)
+                        """, (ticker, ex_date, bonus_ratio, adj_factor, f"{stock_pct:.1f}% Stock Dividend (ex-date inferred from price gap)"))
+                        inserted_bonus += 1
 
         except Exception:
             continue
@@ -384,6 +377,8 @@ def sync_corporate_actions_from_fundamentals(conn: Optional[sqlite3.Connection] 
     psi_res = parse_and_record_dse_psi(conn=conn)
     inserted_cash += psi_res.get("cash_recorded", 0)
     inserted_bonus += psi_res.get("bonus_recorded", 0)
+    from provenance import classify_corporate_action_sources
+    classify_corporate_action_sources(conn)
 
     conn.commit()
     if should_close:
@@ -395,6 +390,134 @@ def sync_corporate_actions_from_fundamentals(conn: Optional[sqlite3.Connection] 
         "bonus_dividends_indexed": inserted_bonus,
         "dse_psi_announcements_parsed": psi_res.get("total_parsed", 0)
     }
+
+
+BONUS_GAP_TOLERANCE = 0.035
+MIN_DETECTABLE_BONUS_DROP = 0.04
+MARKET_CALM_BAND = 0.03
+# A day when this share of the market fell > 5% is a market event (e.g. floor-price removal), not an ex-date.
+MAX_BROAD_DROP_SHARE = 0.10
+# Bonuses go ex after the AGM: between 45 and 300 days after the fiscal year end they belong to.
+EX_DATE_AFTER_FYE_DAYS = (45, 300)
+
+
+def fiscal_year_end_date(conn: sqlite3.Connection, ticker: str, fiscal_year: int) -> str:
+    import calendar
+    row = None
+    cols = {r[1] for r in conn.execute("PRAGMA table_info(companies)")}
+    if "fiscal_year_end_month" in cols:
+        row = conn.execute("SELECT fiscal_year_end_month, sector FROM companies WHERE ticker = ?", (ticker,)).fetchone()
+    month = int(row[0]) if row and row[0] else None
+    if month is None:
+        sec = conn.execute("SELECT sector FROM companies WHERE ticker = ?", (ticker,)).fetchone()
+        month = 12 if sec and sec[0] in ("Banking", "Insurance", "Financial Institutions") else 6
+    return f"{fiscal_year}-{month:02d}-{calendar.monthrange(fiscal_year, month)[1]:02d}"
+
+
+def infer_bonus_ex_date(conn: sqlite3.Connection, ticker: str, factor: float, around_date: str,
+                        days_before: int = 150, days_after: int = 240, cash_per_share: float = 0.0,
+                        fiscal_year: int | None = None) -> str | None:
+    """
+    First diluted session for a bonus/split with price factor `factor`, found as the unique
+    overnight gap (open, else close, vs previous close) within BONUS_GAP_TOLERANCE of the expected
+    ratio factor * (1 - cash/prev_close) (a same-year cash dividend usually goes ex the same day)
+    on a day the market median move stays inside MARKET_CALM_BAND. None when the bonus is too
+    small to separate from noise or the gap is absent/ambiguous: an unknown date is safer than a
+    wrong one, which would inject a fake gap and leave the real one unadjusted.
+    """
+    if not (0 < factor <= 1.0 - MIN_DETECTABLE_BONUS_DROP):
+        return None
+    if fiscal_year:
+        fye = datetime.date.fromisoformat(fiscal_year_end_date(conn, ticker, int(fiscal_year)))
+        lo = (fye + datetime.timedelta(days=EX_DATE_AFTER_FYE_DAYS[0])).isoformat()
+        hi = (fye + datetime.timedelta(days=EX_DATE_AFTER_FYE_DAYS[1])).isoformat()
+    else:
+        base = datetime.date.fromisoformat(around_date[:10])
+        lo = (base - datetime.timedelta(days=days_before)).isoformat()
+        hi = (base + datetime.timedelta(days=days_after)).isoformat()
+    bars = conn.execute(
+        "SELECT date, open, close FROM prices WHERE ticker = ? AND date BETWEEN ? AND ? ORDER BY date",
+        (ticker, lo, hi),
+    ).fetchall()
+    candidates = []
+    for (d0, _, c0), (d1, o1, c1) in zip(bars, bars[1:]):
+        if not c0 or c0 <= 0:
+            continue
+        px = o1 if (o1 and o1 > 0) else c1
+        if not px:
+            continue
+        ratio = px / c0
+        expected = factor * (1.0 - cash_per_share / c0) if cash_per_share else factor
+        if abs(ratio - expected) <= BONUS_GAP_TOLERANCE:
+            candidates.append((abs(ratio - expected), d1))
+    calm = []
+    for err, d in candidates:
+        moves = [r[0] for r in conn.execute("""
+            SELECT p1.close / p0.close FROM prices p1
+            JOIN prices p0 ON p0.ticker = p1.ticker
+             AND p0.date = (SELECT MAX(date) FROM prices WHERE date < ?)
+            WHERE p1.date = ? AND p0.close > 0 AND p1.close > 0
+        """, (d, d)).fetchall()]
+        if len(moves) >= 30:
+            moves.sort()
+            median = moves[len(moves) // 2]
+            if abs(median - 1.0) > MARKET_CALM_BAND:
+                continue
+            if sum(1 for m in moves if m < 0.95) / len(moves) > MAX_BROAD_DROP_SHARE:
+                continue
+        calm.append((err, d))
+    if len(calm) != 1:
+        return None
+    return calm[0][1]
+
+
+def settlement_date(conn: sqlite3.Connection, trade_date: str, days: int) -> str:
+    """Trade date plus `days` DSE trading sessions (calendar table, Sun-Thu fallback beyond it)."""
+    rows = conn.execute(
+        "SELECT date FROM trading_calendar WHERE date > ? AND is_trading_day = 1 ORDER BY date LIMIT ?",
+        (trade_date, days),
+    ).fetchall()
+    if len(rows) == days:
+        return rows[-1][0]
+    d = datetime.date.fromisoformat(rows[-1][0] if rows else trade_date)
+    remaining = days - len(rows)
+    while remaining > 0:
+        d += datetime.timedelta(days=1)
+        if d.weekday() not in (4, 5):
+            remaining -= 1
+    return d.isoformat()
+
+
+def entitled_shares(port: dict, ticker: str, record_date: str, conn: sqlite3.Connection) -> int:
+    """
+    Shares on the register at record_date: trades count only once settled (T+2, Z category T+3).
+    Shares in the current holding not explained by the trade journal are an opening balance
+    dated at the holding's bought_at.
+    """
+    sym = ticker.upper()
+    cat_row = conn.execute("SELECT category FROM companies WHERE ticker = ?", (sym,)).fetchone()
+    days = 3 if (cat_row and str(cat_row[0]).upper() == "Z") else 2
+
+    net_all, net_settled = 0, 0
+    for tr in port.get("history", []):
+        if str(tr.get("ticker", "")).upper() != sym or tr.get("asset_type") == "mutual_fund":
+            continue
+        action = str(tr.get("action", "")).upper()
+        if action not in ("BUY", "SELL") or not tr.get("date"):
+            continue
+        qty = int(tr.get("shares") or 0) * (1 if action == "BUY" else -1)
+        net_all += qty
+        if settlement_date(conn, tr["date"], days) <= record_date:
+            net_settled += qty
+
+    holding = next((h for h in port.get("holdings", []) if str(h.get("ticker", "")).upper() == sym), None)
+    current = int(holding.get("shares") or 0) if holding else 0
+    opening = current - net_all
+    opened = holding.get("bought_at") if holding else None
+    if opening > 0 and opened:
+        if settlement_date(conn, opened, days) <= record_date:
+            net_settled += opening
+    return max(0, net_settled)
 
 
 def process_portfolio_dividends(
@@ -428,8 +551,11 @@ def process_portfolio_dividends(
     else:
         port = load_user_portfolio(user_id)
 
-    holdings = port.get("holdings", [])
-    if not holdings:
+    tickers = {str(h.get("ticker", "")).upper() for h in port.get("holdings", []) if h.get("ticker")}
+    tickers |= {str(tr.get("ticker", "")).upper() for tr in port.get("history", [])
+                if tr.get("ticker") and tr.get("asset_type") != "mutual_fund"
+                and str(tr.get("action", "")).upper() in ("BUY", "SELL")}
+    if not tickers:
         if should_close:
             conn.close()
         return {"user_id": user_id, "credited_count": 0, "net_cash_credited": 0.0, "details": []}
@@ -438,27 +564,19 @@ def process_portfolio_dividends(
     total_net_cash = 0.0
     now_iso = datetime.datetime.utcnow().isoformat()
 
-    for h in holdings:
-        ticker = h.get("ticker")
-        shares = int(h.get("shares") or 0)
-        bought_at = h.get("bought_at") or "2000-01-01"
-
-        if not ticker or shares <= 0:
-            continue
-
-        # Look for cash dividend actions where:
-        # 1. Action is 'cash_dividend'
-        # 2. record_date >= bought_at (holding was established before record date)
-        # 3. record_date <= asof_date (record date has been reached)
+    for ticker in sorted(tickers):
         actions = conn.execute("""
             SELECT record_date, cash_amount, notes
             FROM corporate_actions
             WHERE ticker = ? AND action_type = 'cash_dividend'
-              AND record_date >= ? AND record_date <= ?
-        """, (ticker, bought_at, asof_date)).fetchall()
+              AND record_date <= ?
+        """, (ticker, asof_date)).fetchall()
 
         for rec_date, cash_per_sh, notes in actions:
             if not cash_per_sh or cash_per_sh <= 0:
+                continue
+            shares = entitled_shares(port, ticker, rec_date, conn)
+            if shares <= 0:
                 continue
 
             # Check idempotency: already credited?
@@ -505,8 +623,6 @@ def process_portfolio_dividends(
         new_cash = round(current_cash + total_net_cash, 2)
         port["cash_balance_bdt"] = new_cash
 
-        current_cap = float(port.get("total_capital_bdt") or 0.0)
-        port["total_capital_bdt"] = round(current_cap + total_net_cash, 2)
 
         # Update summary
         if "summary" in port:

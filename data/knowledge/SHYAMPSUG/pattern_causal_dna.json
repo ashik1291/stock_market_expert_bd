@@ -1,72 +1,72 @@
 {
   "ticker": "SHYAMPSUG",
-  "audited_at": "2026-11-17 15:01:47",
+  "audited_at": "2026-11-19 14:54:54",
   "worth_vs_greed": {
-    "current_price": 295.6,
-    "intrinsic_worth": 147.8,
+    "current_price": 290.5,
+    "intrinsic_worth": 145.25,
     "margin_of_safety_pct": -50.0,
     "extension_froth_score": 50.0,
     "greed_index": 50.0,
-    "rsi_14": 55.2,
-    "price_vs_ema50_pct": 17.2,
-    "price_vs_ema200_pct": 54.1,
-    "merit_status": "SPECULATIVE_JUNK_PUMP",
-    "merit_reason": "Price is surging aggressively without positive EPS backing. Pure speculative risk.",
+    "rsi_14": 47.6,
+    "price_vs_ema50_pct": 14.5,
+    "price_vs_ema200_pct": 50.6,
+    "merit_status": "NEUTRAL_MERIT",
+    "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f3289.7 \u2013 \u09f3298.6",
-      "chase_cutoff_price": 303.0,
-      "when_to_wait": "If price opens or rises above \u09f3303.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3289.7.",
-      "weekly_target_short": 305.9,
-      "monthly_target_swing": 339.9,
-      "long_term_target_asset": 384.3,
+      "optimal_entry_corridor": "\u09f3284.7 \u2013 \u09f3293.4",
+      "chase_cutoff_price": 297.8,
+      "when_to_wait": "If price opens or rises above \u09f3297.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3284.7.",
+      "weekly_target_short": 300.7,
+      "monthly_target_swing": 334.1,
+      "long_term_target_asset": 377.7,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
-    "status": "SPECULATIVE_GREED",
-    "worth_decision": "DO_NOT_BUY_WAIT_FOR_PULLBACK",
-    "reason": "Extreme short-term greed (50.0/100) or speculative pump without earnings merit. Risk of buying at local peak.",
+    "status": "CHRONIC_OVERVALUATION",
+    "worth_decision": "AVOID",
+    "reason": "Fundamental value severely lags stock price (MoS: -50.0%).",
     "is_blacklisted": false,
     "blacklist_reason": null
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 2.96,
-        "high": 298.9,
+        "return_pct": -0.17,
+        "high": 309.7,
         "low": 284.3,
-        "range_volatility_pct": 5.14
+        "range_volatility_pct": 8.93
       },
       "monthly_21d": {
-        "return_pct": -0.67,
+        "return_pct": -3.71,
         "high": 362.6,
         "low": 265.0,
         "range_volatility_pct": 36.83
       },
       "quarterly_63d": {
-        "return_pct": 63.68,
+        "return_pct": 59.62,
         "high": 362.6,
         "low": 115.0,
         "range_volatility_pct": 215.3
       },
       "half_yearly_126d": {
-        "return_pct": 64.4,
+        "return_pct": 68.21,
         "high": 362.6,
         "low": 115.0,
         "range_volatility_pct": 215.3
       },
       "yearly_252d": {
-        "return_pct": 193.55,
+        "return_pct": 191.37,
         "high": 362.6,
         "low": 92.4,
         "range_volatility_pct": 292.42
       }
     },
     "wave_metrics": {
-      "median_rally_gain_pct": 41.9,
+      "median_rally_gain_pct": 42.2,
       "median_correction_drop_pct": -30.1,
       "avg_wave_duration_bars": 25.0
     },
-    "current_wave_phase": "LATE_MARKUP",
-    "phase_guidance": "Approaching historical rally limit (+157.0% vs median +41.9%). Tighten stop.",
+    "current_wave_phase": "MARKDOWN_PULLBACK",
+    "phase_guidance": "Ongoing pullback from peak (-19.9%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Sep",

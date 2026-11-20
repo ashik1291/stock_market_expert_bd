@@ -2,18 +2,18 @@
   "ticker": "JAMUNABANK",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-17T09:01:34.118780",
-  "asof_price_date": "2026-11-17",
+  "analyzed_at": "2026-11-19T08:54:42.328983",
+  "asof_price_date": "2026-11-19",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 78.5705,
+    "rsi_14": 81.1276,
     "pe_ratio": 3.56,
     "debt_equity": 0.595
   },
   "signal": "HOLD_INELIGIBLE_DEFICIT",
-  "confidence": 62.77,
+  "confidence": 63.91,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -24,31 +24,31 @@
       "predicted_path": "Upward momentum swing",
       "upside_potential_pct": "+2.0%",
       "downside_risk_pct": "-1.2%",
-      "target_price": 25.0,
-      "support_price": 24.2,
+      "target_price": 25.2,
+      "support_price": 24.4,
       "risk_reward_ratio": "1.7x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+3.3%",
-      "downside_risk_pct": "-9.8%",
-      "target_price": 25.3,
-      "trailing_stop": 22.1,
+      "upside_potential_pct": "+3.2%",
+      "downside_risk_pct": "-10.1%",
+      "target_price": 25.5,
+      "trailing_stop": 22.2,
       "risk_reward_ratio": "0.3x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-      "upside_potential_pct": "+30.2%",
+      "upside_potential_pct": "+30.0%",
       "downside_risk_pct": "-12.0%",
-      "target_price": 31.9,
+      "target_price": 32.1,
       "dividend_cagr": "strong (13.74%)",
       "risk_reward_ratio": "2.5x"
     }
   },
   "trade_levels": {
-    "entry": 24.5,
-    "stop_loss": 24.04,
-    "target": 25.42
+    "entry": 24.7,
+    "stop_loss": 24.2,
+    "target": 25.7
   },
   "precision": {
     "ticker": "JAMUNABANK",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 865502,
-      "daily_turnover_bdt_cr": 0.09,
+      "avg_daily_volume": 696598,
+      "daily_turnover_bdt_cr": 0.07,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 43275,
-      "max_daily_accumulation_shares": 129825,
-      "max_order_bdt": 43275.0,
-      "directive": "Max single order: 43,275 shares (Tk 43,275) to prevent >1% execution slippage"
+      "max_single_order_shares": 34829,
+      "max_daily_accumulation_shares": 104489,
+      "max_order_bdt": 34829.0,
+      "directive": "Max single order: 34,829 shares (Tk 34,829) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -90,77 +90,77 @@
     "range_52w_corridor": {
       "status": "VALID",
       "low_52w": 19.9,
-      "high_52w": 24.6,
-      "range_52w_pct": 97.9,
+      "high_52w": 24.8,
+      "range_52w_pct": 98.0,
       "channel_regime": "OVEREXTENDED_CEILING",
-      "visual_gauge": "[ \u09f319.9 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| \u09f324.6 ] (97.9% (Truncated))",
+      "visual_gauge": "[ \u09f319.9 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| \u09f324.8 ] (98.0% (Truncated))",
       "conviction_bonus": -10.0,
       "is_truncated_window": true,
       "bars_evaluated": 101,
-      "signal": "Price is at 97.9% of 52-week high (near \u09f324.6) \u2014 elevated mean-reversion risk"
+      "signal": "Price is at 98.0% of 52-week high (near \u09f324.8) \u2014 elevated mean-reversion risk"
     },
     "total_precision_bonus": -10.0
   },
   "pattern_dna": {
     "ticker": "JAMUNABANK",
-    "audited_at": "2026-11-17 15:01:34",
+    "audited_at": "2026-11-19 14:54:42",
     "worth_vs_greed": {
-      "current_price": 24.5,
+      "current_price": 24.7,
       "intrinsic_worth": 10.48,
-      "margin_of_safety_pct": -57.2,
+      "margin_of_safety_pct": -57.6,
       "extension_froth_score": 20.0,
       "greed_index": 20.0,
-      "rsi_14": 78.9,
-      "price_vs_ema50_pct": 6.5,
-      "price_vs_ema200_pct": 16.1,
+      "rsi_14": 84.2,
+      "price_vs_ema50_pct": 6.8,
+      "price_vs_ema200_pct": 16.7,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f31.31, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f324.0 \u2013 \u09f324.7",
-        "chase_cutoff_price": 25.1,
-        "when_to_wait": "If price opens or rises above \u09f325.1, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f324.0.",
-        "weekly_target_short": 25.4,
-        "monthly_target_swing": 28.2,
-        "long_term_target_asset": 31.9,
+        "optimal_entry_corridor": "\u09f324.2 \u2013 \u09f324.9",
+        "chase_cutoff_price": 25.3,
+        "when_to_wait": "If price opens or rises above \u09f325.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f324.2.",
+        "weekly_target_short": 25.6,
+        "monthly_target_swing": 28.4,
+        "long_term_target_asset": 32.1,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
       "worth_decision": "AVOID",
-      "reason": "Fundamental value severely lags stock price (MoS: -57.2%).",
+      "reason": "Fundamental value severely lags stock price (MoS: -57.6%).",
       "is_blacklisted": false,
       "blacklist_reason": null
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 2.08,
-          "high": 24.6,
-          "low": 23.9,
-          "range_volatility_pct": 2.93
+          "return_pct": 2.49,
+          "high": 24.8,
+          "low": 24.0,
+          "range_volatility_pct": 3.33
         },
         "monthly_21d": {
-          "return_pct": 5.6,
-          "high": 24.6,
+          "return_pct": 6.47,
+          "high": 24.8,
           "low": 22.9,
-          "range_volatility_pct": 7.42
+          "range_volatility_pct": 8.3
         },
         "quarterly_63d": {
-          "return_pct": 16.67,
-          "high": 24.6,
+          "return_pct": 18.18,
+          "high": 24.8,
           "low": 20.8,
-          "range_volatility_pct": 18.27
+          "range_volatility_pct": 19.23
         },
         "half_yearly_126d": {
-          "return_pct": 9.38,
-          "high": 24.6,
+          "return_pct": 12.27,
+          "high": 24.8,
           "low": 19.9,
-          "range_volatility_pct": 23.62
+          "range_volatility_pct": 24.62
         },
         "yearly_252d": {
-          "return_pct": 35.9,
-          "high": 24.6,
+          "return_pct": 37.01,
+          "high": 24.8,
           "low": 15.6,
-          "range_volatility_pct": 57.69
+          "range_volatility_pct": 58.97
         }
       },
       "wave_metrics": {
@@ -169,7 +169,7 @@
         "avg_wave_duration_bars": 22.0
       },
       "current_wave_phase": "BOTTOMING_SUPPORT",
-      "phase_guidance": "Drop (15.0%) matches historical correction depth (-11.0%). Prepare to accumulate.",
+      "phase_guidance": "Drop (16.0%) matches historical correction depth (-11.0%). Prepare to accumulate.",
       "top_seasonal_months": [
         {
           "month": "Aug",
@@ -267,17 +267,17 @@
     ]
   },
   "technical": {
-    "score": 51.25,
+    "score": 57.5,
     "signals": {
       "rsi": "overbought_bearish",
       "macd": "bullish_crossover",
       "sma_trend": "bullish",
-      "bb": "at_upper_band_bearish",
-      "atr": 0.31,
-      "rsi_value": 78.59,
-      "last_close": 24.5,
-      "sma20": 23.69,
-      "sma50": 22.88,
+      "bb": "inside_bands",
+      "atr": 0.33,
+      "rsi_value": 80.84,
+      "last_close": 24.7,
+      "sma20": 23.84,
+      "sma50": 23.03,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -314,7 +314,7 @@
       "downturn_resilience": {
         "status": "normal",
         "drawdown_pct": 0.4,
-        "high_52w": 24.6,
+        "high_52w": 24.8,
         "low_52w": 19.9
       }
     }
@@ -357,15 +357,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 1962388,
-        "avg_volume": 764255.0,
+        "last_volume": 1432747,
+        "avg_volume": 796581.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 2.68,
-        "avg_volume": 731523.0,
-        "today_volume": 1962388,
+        "spike_ratio": 1.87,
+        "avg_volume": 766041.0,
+        "today_volume": 1432747,
         "detail": "ok"
       },
       "serial_trading": {
@@ -384,20 +384,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": 1.24,
+        "price_change_3d": 2.07,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 62.77,
+    "composite_score": 63.91,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.662,
+      "fundamental": 0.66,
       "technical": 0.205,
-      "governance": 0.134,
+      "governance": 0.135,
       "sentiment": 0.0
     }
   }

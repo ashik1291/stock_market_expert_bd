@@ -69,29 +69,40 @@ def verify_and_restore_database():
 
     if not needs_restore:
         # Check SQLite readability
+        conn = None
         try:
             conn = sqlite3.connect(DB_PATH, timeout=30.0)
             conn.execute("PRAGMA busy_timeout = 30000;")
             cur = conn.cursor()
             p_count = cur.execute("SELECT COUNT(*) FROM prices").fetchone()[0]
             f_count = cur.execute("SELECT COUNT(*) FROM fundamentals").fetchone()[0]
-            conn.close()
             log(f"Database valid. Found {p_count:,} price bars, {f_count} fundamental records.")
             return True
         except Exception as e:
             log(f"Database corrupted or unreadable ({e}). Triggering restore...")
             needs_restore = True
+        finally:
+            if conn is not None:
+                conn.close()
 
     # Restoration Attempt 1: Decompress dse.db.gz
     if DB_GZ_PATH.exists() and DB_GZ_PATH.stat().st_size > 10000:
         log(f"Restoring database from compressed archive ({DB_GZ_PATH.name})...")
+        tmp = DB_PATH.with_suffix(".db.restore.tmp")
         try:
-            with gzip.open(DB_GZ_PATH, "rb") as f_in, open(DB_PATH, "wb") as f_out:
+            with gzip.open(DB_GZ_PATH, "rb") as f_in, open(tmp, "wb") as f_out:
                 shutil.copyfileobj(f_in, f_out)
+            # A WAL left by the old file would be replayed onto the restored one and corrupt it.
+            for side in (DB_PATH.with_name(DB_PATH.name + "-wal"), DB_PATH.with_name(DB_PATH.name + "-shm")):
+                if side.exists():
+                    side.unlink()
+            os.replace(tmp, DB_PATH)
             log("Database successfully decompressed and restored.")
             return True
         except Exception as e:
             log(f"Gzip restore failed: {e}")
+            if tmp.exists():
+                tmp.unlink()
 
     # Restoration Attempt 2: Git LFS pull
     log("Attempting Git LFS pull...")
@@ -172,6 +183,16 @@ def run_bootstrap(skip_sync: bool = False):
 
     # 2. Check/Restore database
     db_ok = verify_and_restore_database()
+    if db_ok:
+        try:
+            sys.path.insert(0, str(SCRIPTS_DIR))
+            from db import get_db_connection
+            from db_guards import install_data_guards
+            _gc = get_db_connection(DB_PATH)
+            log(f"Data write guards active: {len(install_data_guards(_gc))}")
+            _gc.close()
+        except Exception as e:
+            log(f"WARNING: could not install data write guards: {e}")
 
     # 3. Verify configs & user templates
     verify_configs()

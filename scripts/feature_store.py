@@ -86,6 +86,9 @@ def ensure_schema(conn: sqlite3.Connection) -> None:
         if "pit_tradable_date" not in cols:
             conn.execute("ALTER TABLE features_daily ADD COLUMN pit_tradable_date TEXT")
             conn.commit()
+        if "traded_value_20d" not in cols:
+            conn.execute("ALTER TABLE features_daily ADD COLUMN traded_value_20d REAL")
+            conn.commit()
     except Exception:
         pass
     conn.commit()
@@ -94,6 +97,65 @@ def ensure_schema(conn: sqlite3.Connection) -> None:
 def latest_price_date(conn: sqlite3.Connection) -> str | None:
     row = conn.execute("SELECT MAX(date) FROM prices").fetchone()
     return row[0] if row and row[0] else None
+
+
+CONSERVATIVE_PIT_SOURCES = ("bsec_statutory_filing", "dse_corporate_action")
+PRICE_ACTION_TYPES = ("bonus_dividend", "split", "rights_split")
+TTM_DAYS = 365
+
+
+def universe_asof(conn: sqlite3.Connection, asof: str, category: str | None) -> list[tuple[str, str | None]]:
+    """
+    (ticker, sector) of equities that printed a bar on asof and were in `category` on that date.
+    Category is point-in-time from category_history; before its first interval the earliest known category is used.
+    Names that later stopped trading stay in historical universes (no survivorship filter).
+    """
+    have = {r[0] for r in conn.execute("SELECT name FROM sqlite_master WHERE type = 'table'")}
+    if not {"instruments", "category_history"} <= have:
+        return [(r[0], r[1]) for r in conn.execute(
+            "SELECT ticker, sector FROM companies WHERE category = ? ORDER BY ticker", (category,))]
+    rows = conn.execute("""
+        SELECT p.ticker, COALESCE(c.sector, i.sector),
+               (SELECT h.category FROM category_history h WHERE h.ticker = p.ticker AND h.valid_from <= p.date
+                  AND (h.valid_to IS NULL OR h.valid_to > p.date) ORDER BY h.valid_from DESC LIMIT 1),
+               (SELECT h.category FROM category_history h WHERE h.ticker = p.ticker ORDER BY h.valid_from LIMIT 1),
+               c.category
+        FROM prices p JOIN instruments i ON i.ticker = p.ticker AND i.instrument_type = 'equity'
+        LEFT JOIN companies c ON c.ticker = p.ticker
+        WHERE p.date = ? ORDER BY p.ticker""", (asof,)).fetchall()
+    return [(t, sec) for t, sec, cat_pit, cat_first, cat_now in rows
+            if not category or (cat_pit or cat_first or cat_now) == category]
+
+
+def fundamentals_asof(conn: sqlite3.Connection, ticker: str, asof: str, close: float) -> dict:
+    """
+    Each input from its own latest published source as of asof: annual EPS/NAV, D/E, P/E = close / annual EPS,
+    dividend yield = official cash dividends with record date in the trailing year / close.
+    """
+    ann = conn.execute("""
+        SELECT snapshot_date, tradable_date, publication_date, publication_is_estimated, publication_source, eps, nav
+        FROM fundamentals_pit
+        WHERE ticker = ? AND filing_type = 'annual' AND eps IS NOT NULL AND tradable_date <= ? AND publication_date <= ?
+        ORDER BY tradable_date DESC, snapshot_date DESC LIMIT 1""", (ticker, asof, asof)).fetchone()
+    de = conn.execute("""
+        SELECT debt_equity FROM fundamentals_pit
+        WHERE ticker = ? AND debt_equity IS NOT NULL AND tradable_date <= ? AND publication_date <= ?
+        ORDER BY tradable_date DESC, snapshot_date DESC LIMIT 1""", (ticker, asof, asof)).fetchone()
+    import datetime as _dt
+    start = (_dt.date.fromisoformat(asof) - _dt.timedelta(days=TTM_DAYS)).isoformat()
+    cash = conn.execute("""
+        SELECT COALESCE(SUM(cash_amount), 0) FROM corporate_actions
+        WHERE ticker = ? AND action_type = 'cash_dividend' AND record_date > ? AND record_date <= ?""",
+                        (ticker, start, asof)).fetchone()[0]
+    eps = ann["eps"] if ann else None
+    return {
+        "row": ann,
+        "eps": eps,
+        "nav": ann["nav"] if ann else None,
+        "pe": round(close / eps, 4) if (eps is not None and eps > 0 and close > 0) else None,
+        "debt_equity": de[0] if de else None,
+        "dividend_yield": round(100.0 * cash / close, 4) if close > 0 else None,
+    }
 
 
 def build_features_for_date(asof: str | None = None, category: str = "A") -> dict:
@@ -108,22 +170,13 @@ def build_features_for_date(asof: str | None = None, category: str = "A") -> dic
         conn.close()
         return {"ok": False, "reason": "no prices", "rows": 0}
 
-    tickers = [
-        r["ticker"]
-        for r in conn.execute(
-            "SELECT ticker FROM companies WHERE category = ? ORDER BY ticker",
-            (category,),
-        )
-    ]
+    members = universe_asof(conn, asof, category)
+    tickers = [t for t, _ in members]
+    sector_of = dict(members)
 
     if category:
-        conn.execute(
-            """
-            DELETE FROM features_daily
-            WHERE date = ? AND ticker NOT IN (SELECT ticker FROM companies WHERE category = ?)
-            """,
-            (asof, category),
-        )
+        conn.execute(f"DELETE FROM features_daily WHERE date = ? AND ticker NOT IN ({','.join('?' * len(tickers)) or 'NULL'})",
+                     (asof, *tickers))
 
     upserted = 0
     eligible = 0
@@ -135,32 +188,9 @@ def build_features_for_date(asof: str | None = None, category: str = "A") -> dic
         if not px or px["close"] is None:
             continue
 
-        company = conn.execute(
-            "SELECT sector FROM companies WHERE ticker=?", (ticker,)
-        ).fetchone()
-        sector = company["sector"] if company else None
-
-        pit = conn.execute(
-            """
-            SELECT snapshot_date, tradable_date, publication_date, publication_is_estimated,
-                   eps, nav, pe_ratio, debt_equity, dividend_yield
-            FROM fundamentals_pit
-            WHERE ticker=? AND tradable_date <= ? AND publication_date <= ? AND pe_ratio IS NOT NULL
-            ORDER BY tradable_date DESC, snapshot_date DESC LIMIT 1
-            """,
-            (ticker, asof, asof),
-        ).fetchone()
-        if pit is None:
-            pit = conn.execute(
-                """
-                SELECT snapshot_date, tradable_date, publication_date, publication_is_estimated,
-                       eps, nav, pe_ratio, debt_equity, dividend_yield
-                FROM fundamentals_pit
-                WHERE ticker=? AND tradable_date <= ? AND publication_date <= ?
-                ORDER BY tradable_date DESC, snapshot_date DESC LIMIT 1
-                """,
-                (ticker, asof, asof),
-            ).fetchone()
+        sector = sector_of.get(ticker)
+        fa = fundamentals_asof(conn, ticker, asof, float(px["close"]))
+        pit = fa["row"]
         # Strong PIT assert: snapshot may equal or precede tradable; tradable/publication must be <= asof
         if pit is not None:
             assert pit["tradable_date"] is not None and pit["tradable_date"] <= asof, \
@@ -185,7 +215,7 @@ def build_features_for_date(asof: str | None = None, category: str = "A") -> dic
             ca_rows = conn.execute(
                 """
                 SELECT record_date, adjustment_factor FROM corporate_actions
-                WHERE ticker=? AND action_type='bonus_dividend'
+                WHERE ticker=? AND action_type IN ('bonus_dividend', 'split', 'rights_split')
                   AND record_date > ? AND record_date <= ?
                   AND adjustment_factor IS NOT NULL AND adjustment_factor > 0
                 ORDER BY record_date ASC
@@ -206,11 +236,13 @@ def build_features_for_date(asof: str | None = None, category: str = "A") -> dic
         else:
             closes = []
 
-        pe = pit["pe_ratio"] if pit else None
-        de = pit["debt_equity"] if pit else None
-        div_y = pit["dividend_yield"] if pit else None
-        eps = pit["eps"] if pit else None
-        nav = pit["nav"] if pit else None
+        pe = fa["pe"]
+        de = fa["debt_equity"]
+        div_y = fa["dividend_yield"]
+        eps = fa["eps"]
+        nav = fa["nav"]
+        tv = conn.execute("""SELECT AVG(value) FROM (SELECT value FROM prices WHERE ticker = ? AND date <= ? AND value IS NOT NULL
+                             ORDER BY date DESC LIMIT 20)""", (ticker, asof)).fetchone()[0]
         pit_date = pit["snapshot_date"] if pit else None
         pit_trad = pit["tradable_date"] if pit else None
 
@@ -218,7 +250,11 @@ def build_features_for_date(asof: str | None = None, category: str = "A") -> dic
         sma20 = _sma(closes, 20)
         sma50 = _sma(closes, 50)
 
-        pub_est = int(pit["publication_is_estimated"] or 0) if pit else 0
+        # Statutory-deadline and board-declaration estimates are latest-possible dates (never early),
+        # so only other estimates carry look-ahead risk under the strict PIT gate.
+        pub_est = 0
+        if pit and int(pit["publication_is_estimated"] or 0) == 1:
+            pub_est = 0 if pit["publication_source"] in CONSERVATIVE_PIT_SOURCES else 1
         scored = score_features(
             pe=pe,
             debt_equity=de,
@@ -244,8 +280,8 @@ def build_features_for_date(asof: str | None = None, category: str = "A") -> dic
                 rsi_14, sma_20, sma_50,
                 score, is_eligible, model_id,
                 debt_clean, valuation_mos_positive, rsi_oversold_triggered,
-                pit_snapshot_date, pit_tradable_date
-            ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+                pit_snapshot_date, pit_tradable_date, traded_value_20d
+            ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
             """,
             (
                 ticker,
@@ -269,6 +305,7 @@ def build_features_for_date(asof: str | None = None, category: str = "A") -> dic
                 1 if sig["rsi_oversold_triggered"] else 0,
                 pit_date,
                 pit_trad,
+                tv,
             ),
         )
         upserted += 1

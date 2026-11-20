@@ -2,18 +2,18 @@
   "ticker": "AIBL1STIMF",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-17T09:01:18.534030",
-  "asof_price_date": "2026-11-17",
+  "analyzed_at": "2026-11-19T08:54:28.714302",
+  "asof_price_date": "2026-11-19",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 51.5666,
+    "rsi_14": 51.0793,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 42.81,
+  "confidence": 42.72,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -22,11 +22,11 @@
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+7.8%",
-      "downside_risk_pct": "-5.9%",
-      "target_price": 5.5,
-      "support_price": 4.8,
-      "risk_reward_ratio": "1.3x"
+      "upside_potential_pct": "+5.9%",
+      "downside_risk_pct": "-3.9%",
+      "target_price": 5.4,
+      "support_price": 4.9,
+      "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 5.1,
-    "stop_loss": 4.72,
-    "target": 5.86
+    "stop_loss": 4.75,
+    "target": 5.8
   },
   "precision": {
     "ticker": "AIBL1STIMF",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 678268,
-      "daily_turnover_bdt_cr": 0.07,
+      "avg_daily_volume": 611021,
+      "daily_turnover_bdt_cr": 0.06,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 33913,
-      "max_daily_accumulation_shares": 101740,
-      "max_order_bdt": 33913.0,
-      "directive": "Max single order: 33,913 shares (Tk 33,913) to prevent >1% execution slippage"
+      "max_single_order_shares": 30551,
+      "max_daily_accumulation_shares": 91653,
+      "max_order_bdt": 30551.0,
+      "directive": "Max single order: 30,551 shares (Tk 30,551) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -103,16 +103,16 @@
   },
   "pattern_dna": {
     "ticker": "AIBL1STIMF",
-    "audited_at": "2026-11-17 15:01:18",
+    "audited_at": "2026-11-19 14:54:28",
     "worth_vs_greed": {
       "current_price": 5.1,
       "intrinsic_worth": 2.55,
       "margin_of_safety_pct": -50.0,
-      "extension_froth_score": 60.0,
-      "greed_index": 60.0,
-      "rsi_14": 43.8,
-      "price_vs_ema50_pct": 7.7,
-      "price_vs_ema200_pct": 5.4,
+      "extension_froth_score": 70.0,
+      "greed_index": 70.0,
+      "rsi_14": 37.5,
+      "price_vs_ema50_pct": 6.9,
+      "price_vs_ema200_pct": 5.3,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -124,40 +124,40 @@
         "long_term_target_asset": 6.6,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
-      "status": "CHRONIC_OVERVALUATION",
-      "worth_decision": "AVOID",
-      "reason": "Fundamental value severely lags stock price (MoS: -50.0%).",
+      "status": "OVERVALUED_EUPHORIA",
+      "worth_decision": "SELL_TAKE_PROFIT",
+      "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (70.0/100). Danger of sharp mean reversion.",
       "is_blacklisted": false,
       "blacklist_reason": null
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 2.0,
+          "return_pct": -1.92,
           "high": 5.4,
           "low": 5.0,
           "range_volatility_pct": 8.0
         },
         "monthly_21d": {
-          "return_pct": -3.77,
+          "return_pct": -5.56,
           "high": 5.7,
           "low": 5.0,
           "range_volatility_pct": 14.0
         },
         "quarterly_63d": {
-          "return_pct": 50.0,
+          "return_pct": 54.55,
           "high": 5.9,
           "low": 3.2,
           "range_volatility_pct": 84.38
         },
         "half_yearly_126d": {
-          "return_pct": 18.6,
+          "return_pct": 8.51,
           "high": 5.9,
           "low": 2.8,
           "range_volatility_pct": 110.71
         },
         "yearly_252d": {
-          "return_pct": -28.17,
+          "return_pct": -27.14,
           "high": 7.5,
           "low": 2.8,
           "range_volatility_pct": 167.86
@@ -273,11 +273,11 @@
       "macd": "bearish_crossover",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 0.25,
-      "rsi_value": 51.5,
+      "atr": 0.23,
+      "rsi_value": 51.12,
       "last_close": 5.1,
-      "sma20": 5.26,
-      "sma50": 4.53,
+      "sma20": 5.24,
+      "sma50": 4.6,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -350,15 +350,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 223004,
-        "avg_volume": 866995.0,
+        "last_volume": 179876,
+        "avg_volume": 754278.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.26,
-        "avg_volume": 864414.0,
-        "today_volume": 223004,
+        "spike_ratio": 0.22,
+        "avg_volume": 802309.0,
+        "today_volume": 179876,
         "detail": "ok"
       },
       "serial_trading": {
@@ -377,20 +377,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": -1.92,
+        "price_change_3d": -3.77,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 42.81,
+    "composite_score": 42.72,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.662,
+      "fundamental": 0.66,
       "technical": 0.205,
-      "governance": 0.134,
+      "governance": 0.135,
       "sentiment": 0.0
     }
   }

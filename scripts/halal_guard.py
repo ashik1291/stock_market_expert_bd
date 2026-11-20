@@ -7,7 +7,7 @@ is additive-only filtering *after* ranking, before top-N display / deployment.
 Tiers: strict / flexible / off  (from config/halal_policy.json)
   L1 sector exclusion: universal_haram + halal_sensitive + sector_map (BATBC->Tobacco)
   L2 debt gates: strict 0.5 LT0.2, flexible 0.8, off 1.0
-  L5 DSES membership: strict required, others advisory
+  L5 DSES membership: not used (the guard is defined by haram activity and interest exposure)
 
 BATBC is Tobacco via sector_map; blocked in strict+flexible (L1).
 Custom exclusions merge additive-only on top of tier gates.
@@ -60,6 +60,49 @@ def _extract_debt(pit_row: Any) -> tuple[float | None, float | None]:
     de = _get(["debt_equity", "debt_equity_val", "de", "debtEquity"])
     lt = _get(["long_term_debt_equity", "long_term_debt_equity_val", "lt_de", "ltDebtEquity"])
     return de, lt
+
+
+def _lookup_pit_row(ticker: str, asof: str | None) -> dict | None:
+    """Sector and the latest debt/equity that was publicly tradable as of `asof` (latest price date if None)."""
+    import sqlite3
+    db_path = BASE / "data" / "processed" / "dse.db"
+    if not db_path.exists():
+        return None
+    conn = sqlite3.connect(db_path, timeout=30.0)
+    conn.execute("PRAGMA busy_timeout = 30000;")
+    try:
+        if not asof:
+            asof = conn.execute("SELECT MAX(date) FROM prices").fetchone()[0]
+        sec = conn.execute("SELECT sector FROM companies WHERE ticker = ?", (ticker,)).fetchone()
+        de = conn.execute("""
+            SELECT debt_equity FROM fundamentals_pit
+            WHERE ticker = ? AND debt_equity IS NOT NULL AND tradable_date <= ? AND publication_date <= ?
+            ORDER BY tradable_date DESC, snapshot_date DESC LIMIT 1
+        """, (ticker, asof, asof)).fetchone()
+        return {"sector": sec[0] if sec else None, "debt_equity": de[0] if de else None}
+    except sqlite3.Error:
+        return None
+    finally:
+        conn.close()
+
+
+def _lookup_dses_row(ticker: str, asof: str | None) -> dict | None:
+    """{'dses': bool} from the official DSES list effective on/before `asof`; None when no list is on record."""
+    import sqlite3
+    from index_membership import member_asof
+    db_path = BASE / "data" / "processed" / "dse.db"
+    if not db_path.exists():
+        return None
+    conn = sqlite3.connect(f"file:{db_path}?mode=ro", uri=True, timeout=30.0)
+    try:
+        if not asof:
+            asof = conn.execute("SELECT MAX(date) FROM prices").fetchone()[0]
+        member = member_asof(conn, "DSES", ticker, asof)
+        return None if member is None else {"dses": member}
+    except sqlite3.Error:
+        return None
+    finally:
+        conn.close()
 
 
 def _resolve_sector(ticker: str, pit_row: Any, policy: dict) -> str:
@@ -148,7 +191,7 @@ class HalalGuard:
             "L1_sectors_excluded": tier_cfg.get("L1_sectors_excluded", d["L1_sectors_excluded"]),
             "L2_debt_equity_max": tier_cfg.get("L2_debt_equity_max", d["L2_debt_equity_max"]),
             "L2_long_term_debt_equity_max": tier_cfg.get("L2_long_term_debt_equity_max", d["L2_long_term_debt_equity_max"]),
-            "L5_dses_required": tier_cfg.get("L5_dses_required", False if t != "strict" else True),
+            "L5_dses_required": tier_cfg.get("L5_dses_required", False),
         }
 
     def _load_custom_exclusions(self) -> dict:
@@ -190,6 +233,10 @@ class HalalGuard:
 
         # Resolve tier for subsequent checks
         ticker_u = (ticker or "").strip().upper()
+        if pit_row is None:
+            pit_row = _lookup_pit_row(ticker_u, asof)
+        if dses_row is None and gates["L5_dses_required"]:
+            dses_row = _lookup_dses_row(ticker_u, asof)
 
         # Custom exclusions (additive-only)
         ce = self._load_custom_exclusions()
@@ -217,12 +264,15 @@ class HalalGuard:
         max_lt = float(gates["L2_long_term_debt_equity_max"])
         if de is None:
             data_gaps.append("debt_equity_missing")
+            reasons.append("L2_debt_unverified")
         elif de > max_de:
             reasons.append(f"L2_debt:{de:.3f}>{max_de:.2f}")
         if t == "strict":
             if lt is None:
                 data_gaps.append("lt_debt_missing")
-            elif lt > max_lt:
+                # Total D/E bounds long-term D/E from above, so it is a conservative stand-in.
+                lt = de
+            if lt is not None and lt > max_lt:
                 reasons.append(f"L2_lt_debt:{lt:.3f}>{max_lt:.2f}")
 
         # L5 DSES
@@ -244,9 +294,8 @@ class HalalGuard:
                 # No dses_row supplied -> treat as gap; strictly need membership but allow data_gaps signal
                 # If asof provided, caller can supply dses_row; without it we flag gap not block silently
                 data_gaps.append("dses_membership_missing")
-            if not has_dses and "dses_membership_missing" not in data_gaps:
-                # explicit non-member
-                reasons.append("L5_dses_not_member")
+            if not has_dses:
+                reasons.append("L5_dses_not_member" if dses_row is not None else "L5_dses_unverified")
 
         # Purification rate: proportional to debt pressure, capped 0.05
         purification_rate = 0.0

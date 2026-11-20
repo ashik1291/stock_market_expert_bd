@@ -2,18 +2,18 @@
   "ticker": "TRUSTB1MF",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-17T09:01:50.209993",
-  "asof_price_date": "2026-11-17",
+  "analyzed_at": "2026-11-19T08:54:57.526771",
+  "asof_price_date": "2026-11-19",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 55.3927,
+    "rsi_14": 55.3122,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 44.34,
+  "confidence": 44.26,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -23,18 +23,18 @@
     "short_term": {
       "predicted_path": "Upward momentum swing",
       "upside_potential_pct": "+6.1%",
-      "downside_risk_pct": "-6.1%",
+      "downside_risk_pct": "-3.0%",
       "target_price": 3.5,
-      "support_price": 3.1,
-      "risk_reward_ratio": "1.0x"
+      "support_price": 3.2,
+      "risk_reward_ratio": "2.0x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+12.1%",
+      "upside_potential_pct": "+9.1%",
       "downside_risk_pct": "-9.1%",
-      "target_price": 3.7,
+      "target_price": 3.6,
       "trailing_stop": 3.0,
-      "risk_reward_ratio": "1.3x"
+      "risk_reward_ratio": "1.0x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 3.3,
-    "stop_loss": 3.07,
-    "target": 3.76
+    "stop_loss": 3.09,
+    "target": 3.72
   },
   "precision": {
     "ticker": "TRUSTB1MF",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 440135,
+      "avg_daily_volume": 440756,
       "daily_turnover_bdt_cr": 0.04,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 22006,
-      "max_daily_accumulation_shares": 66020,
-      "max_order_bdt": 22006.0,
-      "directive": "Max single order: 22,006 shares (Tk 22,006) to prevent >1% execution slippage"
+      "max_single_order_shares": 22037,
+      "max_daily_accumulation_shares": 66113,
+      "max_order_bdt": 22037.0,
+      "directive": "Max single order: 22,037 shares (Tk 22,037) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -103,16 +103,16 @@
   },
   "pattern_dna": {
     "ticker": "TRUSTB1MF",
-    "audited_at": "2026-11-17 15:01:50",
+    "audited_at": "2026-11-19 14:54:57",
     "worth_vs_greed": {
       "current_price": 3.3,
       "intrinsic_worth": 1.65,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 50.0,
       "greed_index": 50.0,
-      "rsi_14": 50.0,
-      "price_vs_ema50_pct": 6.5,
-      "price_vs_ema200_pct": 4.5,
+      "rsi_14": 40.0,
+      "price_vs_ema50_pct": 6.0,
+      "price_vs_ema200_pct": 4.4,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -139,7 +139,7 @@
           "range_volatility_pct": 6.25
         },
         "monthly_21d": {
-          "return_pct": -2.94,
+          "return_pct": -5.71,
           "high": 3.5,
           "low": 3.2,
           "range_volatility_pct": 9.37
@@ -157,7 +157,7 @@
           "range_volatility_pct": 68.18
         },
         "yearly_252d": {
-          "return_pct": -5.71,
+          "return_pct": -2.94,
           "high": 4.3,
           "low": 2.2,
           "range_volatility_pct": 95.45
@@ -168,8 +168,8 @@
         "median_correction_drop_pct": -11.7,
         "avg_wave_duration_bars": 14.0
       },
-      "current_wave_phase": "BOTTOMING_SUPPORT",
-      "phase_guidance": "Drop (-10.8%) matches historical correction depth (-11.7%). Prepare to accumulate.",
+      "current_wave_phase": "ACCUMULATION_TROUGH",
+      "phase_guidance": "Near local cyclical trough base. Maximum reward/risk entry point.",
       "top_seasonal_months": [
         {
           "month": "Oct",
@@ -273,11 +273,11 @@
       "macd": "neutral",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 0.15,
-      "rsi_value": 55.39,
+      "atr": 0.14,
+      "rsi_value": 55.38,
       "last_close": 3.3,
-      "sma20": 3.32,
-      "sma50": 2.97,
+      "sma20": 3.3,
+      "sma50": 3.0,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -352,15 +352,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 476124,
-        "avg_volume": 491060.0,
+        "last_volume": 150654,
+        "avg_volume": 464028.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.92,
-        "avg_volume": 519255.0,
-        "today_volume": 476124,
+        "spike_ratio": 0.31,
+        "avg_volume": 482918.0,
+        "today_volume": 150654,
         "detail": "ok"
       },
       "serial_trading": {
@@ -379,20 +379,20 @@
       },
       "price_surge_no_news": {
         "flag": false,
-        "price_change_3d": 0.0,
+        "price_change_3d": -2.94,
         "news_count_3d": 0,
         "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 44.34,
+    "composite_score": 44.26,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.662,
+      "fundamental": 0.66,
       "technical": 0.205,
-      "governance": 0.134,
+      "governance": 0.135,
       "sentiment": 0.0
     }
   }

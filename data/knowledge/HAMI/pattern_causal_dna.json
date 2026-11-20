@@ -1,24 +1,24 @@
 {
   "ticker": "HAMI",
-  "audited_at": "2026-11-17 15:01:31",
+  "audited_at": "2026-11-19 14:54:39",
   "worth_vs_greed": {
-    "current_price": 139.7,
-    "intrinsic_worth": 69.85,
+    "current_price": 137.5,
+    "intrinsic_worth": 68.75,
     "margin_of_safety_pct": -50.0,
     "extension_froth_score": 30.0,
     "greed_index": 30.0,
-    "rsi_14": 50.3,
-    "price_vs_ema50_pct": 5.7,
-    "price_vs_ema200_pct": 17.9,
+    "rsi_14": 46.3,
+    "price_vs_ema50_pct": 3.6,
+    "price_vs_ema200_pct": 15.6,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f3136.9 \u2013 \u09f3141.1",
-      "chase_cutoff_price": 143.2,
-      "when_to_wait": "If price opens or rises above \u09f3143.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3136.9.",
-      "weekly_target_short": 144.6,
-      "monthly_target_swing": 160.7,
-      "long_term_target_asset": 181.6,
+      "optimal_entry_corridor": "\u09f3134.8 \u2013 \u09f3138.9",
+      "chase_cutoff_price": 140.9,
+      "when_to_wait": "If price opens or rises above \u09f3140.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3134.8.",
+      "weekly_target_short": 142.3,
+      "monthly_target_swing": 158.1,
+      "long_term_target_asset": 178.8,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -30,31 +30,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -0.57,
-        "high": 144.7,
-        "low": 136.0,
-        "range_volatility_pct": 6.4
+        "return_pct": -2.48,
+        "high": 141.0,
+        "low": 137.1,
+        "range_volatility_pct": 2.84
       },
       "monthly_21d": {
-        "return_pct": -1.62,
+        "return_pct": -2.96,
         "high": 148.5,
         "low": 135.0,
         "range_volatility_pct": 10.0
       },
       "quarterly_63d": {
-        "return_pct": 24.07,
+        "return_pct": 19.57,
         "high": 154.0,
         "low": 104.2,
         "range_volatility_pct": 47.79
       },
       "half_yearly_126d": {
-        "return_pct": 36.16,
+        "return_pct": 35.33,
         "high": 154.0,
         "low": 93.0,
         "range_volatility_pct": 65.59
       },
       "yearly_252d": {
-        "return_pct": 28.52,
+        "return_pct": 21.57,
         "high": 154.0,
         "low": 92.3,
         "range_volatility_pct": 66.85
@@ -62,11 +62,11 @@
     },
     "wave_metrics": {
       "median_rally_gain_pct": 41.9,
-      "median_correction_drop_pct": -33.0,
+      "median_correction_drop_pct": -32.9,
       "avg_wave_duration_bars": 28.0
     },
-    "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-9.3%). Wait for stabilizing base.",
+    "current_wave_phase": "ACCUMULATION_TROUGH",
+    "phase_guidance": "Near local cyclical trough base. Maximum reward/risk entry point.",
     "top_seasonal_months": [
       {
         "month": "Aug",

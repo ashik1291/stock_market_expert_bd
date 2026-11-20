@@ -33,7 +33,8 @@ IC_DAILY_LOG = PORT_DIR / "daily_rank_ic.jsonl"
 SCRIPTS = Path(__file__).resolve().parent
 sys.path.insert(0, str(SCRIPTS))
 
-from unified_score import MODEL_ID, ROUND_TRIP_COST_PCT
+from unified_score import MODEL_ID, ROUND_TRIP_COST_PCT, compute_model_content_hash
+from dataset_release import dataset_fingerprint
 from feature_store import build_features_for_date, load_scored_universe
 from benchmark_index import equal_weight_category_a_nav
 from rank_ic_newey_west import spearman_rank_correlation
@@ -170,11 +171,13 @@ def _mark_to_market(
     updated = []
     equity = 0.0
 
-    # Credit risk-free Central Bank 91-day T-Bill interest (11.60% annualized) on uninvested cash buffer
+    # Credit risk-free interest on uninvested cash at the Bangladesh Bank 91-day rate in force at prev_asof
     if prev_asof and cash > 0 and asof > prev_asof:
         bars = _trading_bars_between(conn, prev_asof, asof)
         if bars > 0:
-            tbill_yield = round(cash * (0.1160 / 250.0) * bars, 2)
+            from macro_rate_feed import get_macro_rates_for_date
+            rf = get_macro_rates_for_date(prev_asof, conn=conn)["risk_free_rate_pct"] / 100.0
+            tbill_yield = round(cash * (rf / 250.0) * bars, 2)
             cash = round(cash + tbill_yield, 2)
 
     for p in positions:
@@ -270,29 +273,41 @@ def _compute_max_dd(nav_history: list[float]) -> float:
 
 
 def _daily_ic(conn: sqlite3.Connection, asof: str, scored: list[dict]) -> dict | None:
-    """IC of today's score vs next-session return (1-bar) when next date exists."""
-    next_dates = conn.execute(
-        "SELECT DISTINCT date FROM prices WHERE date > ? ORDER BY date ASC LIMIT 1",
-        (asof,),
-    ).fetchone()
-    if not next_dates:
+    """IC of a day's eligible scores vs return to the next trading session, once that session has prices."""
+    row = conn.execute("""
+        SELECT MIN(p.date) FROM prices p
+        JOIN trading_calendar t ON t.date = p.date AND t.is_trading_day = 1
+        WHERE p.date > ?
+    """, (asof,)).fetchone()
+    if not row or not row[0]:
         return None
-    d1 = next_dates[0]
+    d1 = row[0]
+    excluded = {r[0] for r in conn.execute("""
+        SELECT DISTINCT ticker FROM corporate_actions
+        WHERE record_date BETWEEN ? AND ?
+          AND action_type IN ('bonus_dividend', 'split', 'rights_split', 'rights', 'cash_bonus_adjustment')
+    """, (asof, d1))}
+    base = {r[0]: r[1] for r in conn.execute("SELECT ticker, close FROM prices WHERE date = ?", (asof,))}
+    # Whole scored universe: gated names tie below every eligible name (selection IC).
+    elig_scores = [float(r["score"]) for r in scored if r.get("is_eligible") and r.get("score") is not None]
+    if not elig_scores:
+        return None
+    floor = min(elig_scores) - 1.0
     scores, rets = [], []
     for r in scored:
-        if not r.get("is_eligible"):
+        if r["ticker"] in excluded:
             continue
         t = r["ticker"]
-        px0 = r.get("close")
+        px0 = base.get(t) or r.get("close", r.get("price"))
         px1 = conn.execute(
             "SELECT close FROM prices WHERE ticker=? AND date=?", (t, d1)
         ).fetchone()
         if px0 and px1 and px1[0] and float(px0) > 0:
-            scores.append(float(r["score"]))
+            scores.append(float(r["score"]) if r.get("is_eligible") and r.get("score") is not None else floor)
             div_row = conn.execute("""
                 SELECT cash_amount FROM corporate_actions
-                WHERE ticker=? AND action_type='cash_dividend' AND record_date=?
-            """, (t, d1)).fetchone()
+                WHERE ticker=? AND action_type='cash_dividend' AND record_date BETWEEN ? AND ?
+            """, (t, asof, d1)).fetchone()
             div_val = float(div_row[0]) if (div_row and div_row[0]) else 0.0
             adj_px1 = float(px1[0]) + div_val
             rets.append(adj_px1 / float(px0) - 1.0)
@@ -308,6 +323,35 @@ def _daily_ic(conn: sqlite3.Connection, asof: str, scored: list[dict]) -> dict |
     }
 
 
+def _resolve_daily_ic(conn: sqlite3.Connection) -> int:
+    """Resolve forward IC for every logged universe ranking whose next session is now available."""
+    if not FULL_UNIVERSE_LOG.exists():
+        return 0
+    done = set()
+    if IC_DAILY_LOG.exists():
+        for line in IC_DAILY_LOG.read_text(encoding="utf-8").splitlines():
+            if line.strip():
+                done.add(json.loads(line)["date"])
+    trading = {r[0] for r in conn.execute("SELECT date FROM trading_calendar WHERE is_trading_day = 1")}
+    new_rows = []
+    for line in FULL_UNIVERSE_LOG.read_text(encoding="utf-8").splitlines():
+        if not line.strip():
+            continue
+        o = json.loads(line)
+        d = o.get("date")
+        if not d or d in done or d not in trading:
+            continue
+        ic_row = _daily_ic(conn, d, o.get("ranks") or [])
+        if ic_row:
+            new_rows.append(ic_row)
+    if new_rows:
+        with open(IC_DAILY_LOG, "a", encoding="utf-8") as f:
+            for r in new_rows:
+                f.write(json.dumps(r) + "\n")
+        _dedupe_jsonl(IC_DAILY_LOG)
+    return len(new_rows)
+
+
 def _rebalance(
     conn: sqlite3.Connection,
     positions: list,
@@ -318,15 +362,20 @@ def _rebalance(
     safety_only: bool = False,
     is_epoch_3: bool = False,
 ) -> tuple[list, float, list]:
-    """Hold-buffer rebalance. Returns (positions, cash, trade_log)."""
+    """
+    Hold-buffer rebalance. Returns (positions, cash, trade_log).
+    Scheduled: sell names outside the top HOLD_TOP_PCT, then fill to target.
+    Safety (between schedules): sell only names that are no longer eligible, then refill the
+    freed slots from the eligible ranking unless the strategy is killed.
+    """
     trades = []
     if killed and not safety_only:
         return positions, cash, [{"action": "SKIP_REBALANCE", "reason": "STRATEGY_KILLED"}]
 
-    keep_set = _top_pct_tickers(elig, HOLD_TOP_PCT)
+    keep_set = {r["ticker"] for r in elig} if safety_only else _top_pct_tickers(elig, HOLD_TOP_PCT)
     score_map = {r["ticker"]: r for r in elig}
+    sell_reason = "NO_LONGER_ELIGIBLE" if safety_only else "OUTSIDE_TOP_30PCT"
 
-    # Sell names outside top 30%
     kept = []
     for p in positions:
         if p["ticker"] in keep_set:
@@ -353,12 +402,12 @@ def _rebalance(
             "action": "SELL",
             "ticker": p["ticker"],
             "shares": p["shares"],
-            "reason": "OUTSIDE_TOP_30PCT",
+            "reason": sell_reason,
             **fill,
             "proceeds": proceeds,
         })
 
-    if safety_only:
+    if safety_only and killed:
         return kept, cash, trades
 
     # Sector counts among kept
@@ -404,7 +453,8 @@ def _rebalance(
             trades.append({"action": "SKIP_REBALANCE", "ticker": t, "reason": "FLOOR_LOCKED_CENSORED", **fill})
             continue
         eff = fill["price"] * (1.0 + FEE_BUY_PCT)
-        shares = int(target_alloc / eff) if eff > 0 else 0
+        alloc = min(target_alloc, cash - 5.0)
+        shares = int(alloc / eff) if (eff > 0 and alloc > 0) else 0
         gross_buy = shares * fill["price"]
         buy_comm = max(round(gross_buy * FEE_BUY_PCT, 2), 5.0) if gross_buy > 0 else 0.0
         cost = round(gross_buy + buy_comm, 2)
@@ -571,12 +621,12 @@ def init_or_update_v2_forward_ledger(force_reinit: bool = False, start_epoch_3: 
         }, ensure_ascii=False) + "\n")
     _dedupe_jsonl(FULL_UNIVERSE_LOG)
 
-    # Daily IC (1-bar forward when available)
-    ic_row = _daily_ic(conn, latest_date, scored)
-    if ic_row:
-        with open(IC_DAILY_LOG, "a", encoding="utf-8") as f:
-            f.write(json.dumps(ic_row) + "\n")
-        _dedupe_jsonl(IC_DAILY_LOG)
+    # Daily IC: resolve every earlier ranking whose next session is now priced
+    _resolve_daily_ic(conn)
+    ic_row = None
+    if IC_DAILY_LOG.exists():
+        ic_lines = [ln for ln in IC_DAILY_LOG.read_text(encoding="utf-8").splitlines() if ln.strip()]
+        ic_row = json.loads(ic_lines[-1]) if ic_lines else None
 
     positions = list(b_data.get("positions") or [])
     cash = float(b_data.get("current_cash", INITIAL_CAPITAL))
@@ -591,7 +641,10 @@ def init_or_update_v2_forward_ledger(force_reinit: bool = False, start_epoch_3: 
     deploy = b_data.get("last_rebalance_date") or (positions[0].get("entry_date") if positions else baseline)
 
     nav, positions, cash = _mark_to_market(conn, positions, cash, latest_date, prev_asof=b_data.get("asof_price_date"))
-    if not nav_history or nav_history[-1] != nav:
+    # One NAV point per session: re-marking an already-recorded as-of date replaces its point.
+    if nav_history and b_data.get("asof_price_date") == latest_date:
+        nav_history[-1] = nav
+    else:
         nav_history.append(nav)
     max_dd = _compute_max_dd(nav_history)
 
@@ -625,20 +678,22 @@ def init_or_update_v2_forward_ledger(force_reinit: bool = False, start_epoch_3: 
     elif (safety_rebalance or _should_rebalance(conn, b_data, latest_date)) and (
         safety_rebalance or b_data.get("asof_price_date") != latest_date
     ):
+        scheduled = not safety_rebalance or _should_rebalance(conn, b_data, latest_date)
         positions, cash, trades = _rebalance(
             conn,
             positions,
             cash,
             elig,
             latest_date,
-            killed and not safety_rebalance,
-            safety_only=safety_rebalance,
+            killed,
+            safety_only=not scheduled,
             is_epoch_3=is_epoch_3,
         )
         rebalanced = True
-        b_data["last_rebalance_date"] = latest_date
+        if scheduled:
+            b_data["last_rebalance_date"] = latest_date
         nav, positions, cash = _mark_to_market(conn, positions, cash, latest_date)
-        reason = "SAFETY_CLEANUP" if safety_rebalance else "SCHEDULED"
+        reason = "SCHEDULED" if scheduled else "SAFETY_CLEANUP"
         print(f"{epoch_tag} Rebalance asof={latest_date} reason={reason} trades={len(trades)} killed={killed}")
 
     # Skip duplicate block same asof with no change
@@ -667,8 +722,10 @@ def init_or_update_v2_forward_ledger(force_reinit: bool = False, start_epoch_3: 
         "last_trades": trades,
         "daily_ic": ic_row,
         "eligible_count": len(elig),
+        "model_content_hash": compute_model_content_hash(),
+        "dataset_fingerprint": dataset_fingerprint(conn),
     })
-    if rebalanced:
+    if rebalanced and b_data.get("last_rebalance_date") == latest_date:
         new_data["last_rebalance_date"] = latest_date
 
     prev_hash = latest_block["block_hash"]

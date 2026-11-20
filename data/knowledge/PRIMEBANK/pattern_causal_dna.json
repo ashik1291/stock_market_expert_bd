@@ -1,63 +1,63 @@
 {
   "ticker": "PRIMEBANK",
-  "audited_at": "2026-11-17 15:01:42",
+  "audited_at": "2026-11-19 14:54:50",
   "worth_vs_greed": {
-    "current_price": 29.9,
+    "current_price": 31.5,
     "intrinsic_worth": 16.56,
-    "margin_of_safety_pct": -44.6,
-    "extension_froth_score": 40.0,
-    "greed_index": 40.0,
-    "rsi_14": 50.0,
-    "price_vs_ema50_pct": 2.2,
-    "price_vs_ema200_pct": 8.7,
+    "margin_of_safety_pct": -47.4,
+    "extension_froth_score": 50.0,
+    "greed_index": 50.0,
+    "rsi_14": 72.5,
+    "price_vs_ema50_pct": 7.2,
+    "price_vs_ema200_pct": 14.2,
     "merit_status": "EARNINGS_BACKED_MERIT",
     "merit_reason": "Price supported by solid earnings (EPS: \u09f32.07, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f329.3 \u2013 \u09f330.2",
-      "chase_cutoff_price": 30.6,
-      "when_to_wait": "If price opens or rises above \u09f330.6, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f329.3.",
-      "weekly_target_short": 30.9,
-      "monthly_target_swing": 34.4,
-      "long_term_target_asset": 38.9,
+      "optimal_entry_corridor": "\u09f330.9 \u2013 \u09f331.8",
+      "chase_cutoff_price": 32.3,
+      "when_to_wait": "If price opens or rises above \u09f332.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f330.9.",
+      "weekly_target_short": 32.6,
+      "monthly_target_swing": 36.2,
+      "long_term_target_asset": 41.0,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -44.6%).",
+    "reason": "Fundamental value severely lags stock price (MoS: -47.4%).",
     "is_blacklisted": false,
     "blacklist_reason": null
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 1.01,
-        "high": 30.4,
-        "low": 28.8,
-        "range_volatility_pct": 5.56
+        "return_pct": 9.0,
+        "high": 31.7,
+        "low": 28.9,
+        "range_volatility_pct": 9.69
       },
       "monthly_21d": {
-        "return_pct": 5.65,
-        "high": 30.9,
+        "return_pct": 6.78,
+        "high": 31.7,
         "low": 28.2,
-        "range_volatility_pct": 9.57
+        "range_volatility_pct": 12.41
       },
       "quarterly_63d": {
-        "return_pct": 4.55,
-        "high": 31.5,
+        "return_pct": 9.37,
+        "high": 31.7,
         "low": 27.9,
-        "range_volatility_pct": 12.9
+        "range_volatility_pct": 13.62
       },
       "half_yearly_126d": {
-        "return_pct": -0.99,
-        "high": 31.5,
+        "return_pct": 6.06,
+        "high": 31.7,
         "low": 25.8,
-        "range_volatility_pct": 22.09
+        "range_volatility_pct": 22.87
       },
       "yearly_252d": {
-        "return_pct": 22.59,
-        "high": 31.5,
+        "return_pct": 30.19,
+        "high": 31.7,
         "low": 21.2,
-        "range_volatility_pct": 48.58
+        "range_volatility_pct": 49.53
       }
     },
     "wave_metrics": {
@@ -65,8 +65,8 @@
       "median_correction_drop_pct": -13.7,
       "avg_wave_duration_bars": 23.0
     },
-    "current_wave_phase": "MARKUP_RALLY_MID",
-    "phase_guidance": "Midway through rally wave (+7.2% from base, historical target ~+13.8%).",
+    "current_wave_phase": "LATE_MARKUP",
+    "phase_guidance": "Approaching historical rally limit (+12.9% vs median +13.8%). Tighten stop.",
     "top_seasonal_months": [
       {
         "month": "May",

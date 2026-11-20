@@ -41,11 +41,50 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(me
 log = logging.getLogger("multi_horizon_evaluator")
 
 
-def evaluate_predictions(target_horizon_bars: int = 10, min_bars_required: int = 5) -> dict:
+LABEL_FIELDS = ("evaluated_at", "actual_outcome", "stock_return_pct", "eqw_return_pct", "net_excess_pct",
+                "realized_return_pct", "reward_score", "eval_end_date", "horizon_bars_used",
+                "eval_horizon_target", "mistake_analysis")
+
+
+def _priced_sessions(conn: sqlite3.Connection) -> list[str]:
+    return [r[0] for r in conn.execute("""
+        SELECT t.date FROM trading_calendar t
+        WHERE t.is_trading_day = 1 AND t.date IN (SELECT DISTINCT date FROM prices)
+        ORDER BY t.date
+    """)]
+
+
+def horizon_end_date(sessions: list[str], pred_date: str, horizon: int) -> str | None:
+    """The horizon-th priced trading session strictly after pred_date, or None if not yet reached."""
+    import bisect
+    i = bisect.bisect_right(sessions, pred_date) + horizon - 1
+    return sessions[i] if i < len(sessions) else None
+
+
+def reopen_partial_horizon_labels(ledger: list[dict], default_horizon: int) -> int:
+    """Return EVALUATED items scored on fewer bars than their declared horizon to PENDING."""
+    reopened = 0
+    for item in ledger:
+        if item.get("status") != "EVALUATED":
+            continue
+        if not item.get("horizon_bars"):
+            continue  # no declared horizon, so a label cannot be "partial"
+        h = int(item["horizon_bars"])
+        used = item.get("horizon_bars_used")
+        if used is None or int(used) < h:
+            for k in LABEL_FIELDS:
+                item.pop(k, None)
+            item["status"] = "PENDING"
+            item["relabel_reason"] = f"previously scored on {used} bars < declared horizon {h}"
+            reopened += 1
+    return reopened
+
+
+def evaluate_predictions(target_horizon_bars: int = 10, min_bars_required: int | None = None) -> dict:
     """
-    Evaluates pending predictions using available forward bars.
-    Prioritizes predictions that have reached target_horizon_bars,
-    or at least min_bars_required if target_horizon_bars not yet reached.
+    Evaluates pending predictions once their full declared horizon (item horizon_bars, else
+    target_horizon_bars) of trading sessions has elapsed. Partial horizons are never scored;
+    min_bars_required is accepted for backward compatibility and ignored.
     """
     if not LEDGER_PATH.exists():
         log.error(f"Ledger not found at {LEDGER_PATH}")
@@ -56,6 +95,11 @@ def evaluate_predictions(target_horizon_bars: int = 10, min_bars_required: int =
 
     conn = sqlite3.connect(DB_PATH, timeout=30.0)
     conn.execute("PRAGMA busy_timeout = 30000;")
+    sessions = _priced_sessions(conn)
+    session_set = set(sessions)
+    reopened = reopen_partial_horizon_labels(ledger, target_horizon_bars)
+    if reopened:
+        log.info(f"Reopened {reopened} predictions previously scored on a partial horizon.")
 
     # Cache benchmark intervals (pred_date, end_date) -> eqw_return_pct
     benchmark_cache = {}
@@ -92,23 +136,37 @@ def evaluate_predictions(target_horizon_bars: int = 10, min_bars_required: int =
         if entry <= 0:
             continue
 
-        # Fetch forward price bars
-        rows = conn.execute(
-            """
-            SELECT date, close FROM prices
-            WHERE ticker = ? AND date > ? AND close IS NOT NULL
-            ORDER BY date ASC LIMIT ?
-            """,
-            (ticker, pred_date, target_horizon_bars),
-        ).fetchall()
-
-        n_bars = len(rows)
-        if n_bars < min_bars_required:
-            # Not enough forward trading history yet
+        if pred_date not in session_set:
+            item["status"] = "INVALID_NON_TRADING_DAY"
             continue
-
-        end_date = rows[-1][0]
-        end_close = float(rows[-1][1])
+        base_row = conn.execute("SELECT close FROM prices WHERE ticker = ? AND date = ?", (ticker, pred_date)).fetchone()
+        if base_row and base_row[0]:
+            entry = float(base_row[0])
+        horizon = int(item.get("horizon_bars") or target_horizon_bars)
+        end_date = horizon_end_date(sessions, pred_date, horizon)
+        if end_date is None:
+            continue
+        # A suspended stock cannot be exited, so its last traded close stands at the horizon.
+        end_row = conn.execute(
+            "SELECT close FROM prices WHERE ticker = ? AND date > ? AND date <= ? AND close IS NOT NULL "
+            "ORDER BY date DESC LIMIT 1",
+            (ticker, pred_date, end_date),
+        ).fetchone()
+        if not end_row:
+            continue
+        n_bars = horizon
+        end_close = float(end_row[0])
+        # Bonus / split in the window dilutes the raw close; restore per-original-share value.
+        for (fac,) in conn.execute(
+            """
+            SELECT adjustment_factor FROM corporate_actions
+            WHERE ticker = ? AND record_date > ? AND record_date <= ?
+              AND action_type IN ('bonus_dividend', 'split', 'rights_split')
+              AND adjustment_factor > 0 AND adjustment_factor < 1
+            """,
+            (ticker, pred_date, end_date),
+        ).fetchall():
+            end_close /= float(fac)
 
         # Adjust for cash dividends received in window
         div_row = conn.execute(
@@ -163,7 +221,8 @@ def evaluate_predictions(target_horizon_bars: int = 10, min_bars_required: int =
         item["reward_score"] = reward
         item["eval_end_date"] = end_date
         item["horizon_bars_used"] = n_bars
-        item["eval_horizon_target"] = target_horizon_bars
+        item["eval_horizon_target"] = horizon
+        item.pop("relabel_reason", None)
 
         evaluated_count += 1
         if win:
@@ -226,4 +285,4 @@ if __name__ == "__main__":
             h = int(sys.argv[1])
         except ValueError:
             pass
-    evaluate_predictions(target_horizon_bars=h, min_bars_required=5)
+    evaluate_predictions(target_horizon_bars=h)

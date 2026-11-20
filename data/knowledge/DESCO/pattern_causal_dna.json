@@ -1,24 +1,24 @@
 {
   "ticker": "DESCO",
-  "audited_at": "2026-11-17 15:01:25",
+  "audited_at": "2026-11-19 14:54:34",
   "worth_vs_greed": {
-    "current_price": 25.8,
-    "intrinsic_worth": 12.9,
+    "current_price": 26.1,
+    "intrinsic_worth": 13.05,
     "margin_of_safety_pct": -50.0,
     "extension_froth_score": 60.0,
     "greed_index": 60.0,
-    "rsi_14": 83.9,
-    "price_vs_ema50_pct": 8.7,
-    "price_vs_ema200_pct": 9.9,
+    "rsi_14": 83.0,
+    "price_vs_ema50_pct": 9.1,
+    "price_vs_ema200_pct": 10.9,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f325.3 \u2013 \u09f326.1",
-      "chase_cutoff_price": 26.4,
-      "when_to_wait": "If price opens or rises above \u09f326.4, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f325.3.",
-      "weekly_target_short": 26.7,
-      "monthly_target_swing": 29.7,
-      "long_term_target_asset": 33.5,
+      "optimal_entry_corridor": "\u09f325.6 \u2013 \u09f326.4",
+      "chase_cutoff_price": 26.8,
+      "when_to_wait": "If price opens or rises above \u09f326.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f325.6.",
+      "weekly_target_short": 27.0,
+      "monthly_target_swing": 30.0,
+      "long_term_target_asset": 33.9,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -31,31 +31,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 3.61,
+        "return_pct": -0.38,
         "high": 26.6,
-        "low": 24.8,
-        "range_volatility_pct": 7.26
+        "low": 25.3,
+        "range_volatility_pct": 5.14
       },
       "monthly_21d": {
-        "return_pct": 12.17,
+        "return_pct": 13.48,
         "high": 26.6,
         "low": 21.8,
         "range_volatility_pct": 22.02
       },
       "quarterly_63d": {
-        "return_pct": 3.2,
+        "return_pct": 5.24,
         "high": 26.6,
         "low": 21.4,
         "range_volatility_pct": 24.3
       },
       "half_yearly_126d": {
-        "return_pct": 21.13,
+        "return_pct": 20.28,
         "high": 27.8,
         "low": 21.1,
         "range_volatility_pct": 31.75
       },
       "yearly_252d": {
-        "return_pct": 30.96,
+        "return_pct": 31.82,
         "high": 27.8,
         "low": 18.1,
         "range_volatility_pct": 53.59
@@ -67,7 +67,7 @@
       "avg_wave_duration_bars": 28.0
     },
     "current_wave_phase": "LATE_MARKUP",
-    "phase_guidance": "Approaching historical rally limit (+18.3% vs median +20.8%). Tighten stop.",
+    "phase_guidance": "Approaching historical rally limit (+19.7% vs median +20.8%). Tighten stop.",
     "top_seasonal_months": [
       {
         "month": "Jul",
@@ -87,14 +87,14 @@
     ],
     "weak_seasonal_months": [
       {
+        "month": "Mar",
+        "avg_return": -3.3,
+        "win_rate": 23.0
+      },
+      {
         "month": "May",
         "avg_return": -3.3,
         "win_rate": 45.0
-      },
-      {
-        "month": "Nov",
-        "avg_return": -3.6,
-        "win_rate": 15.0
       }
     ]
   },

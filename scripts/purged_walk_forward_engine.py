@@ -27,6 +27,7 @@ SCRIPTS_DIR = BASE_DIR / "scripts"
 if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 from macro_rate_feed import get_macro_rates_for_date
+from feature_store import universe_asof
 DATA_DIR = BASE_DIR / "data"
 PROC_DIR = DATA_DIR / "processed"
 DB_PATH = PROC_DIR / "dse.db"
@@ -186,6 +187,7 @@ def run_purged_walk_forward_evaluation(
             tbill_ann_yield = macro_info["risk_free_rate_pct"]
             min_equity_hurdle = macro_info["equity_hurdle_rate_pct"]
             tbill_period_yield = (tbill_ann_yield / 250.0) * horizon_bars
+            cat_a_tickers = {t for t, _ in universe_asof(conn, start_date, "A")} - excluded_tickers
 
             # 1. Screen candidates strictly using PIT fundamentals published and tradable by start_date
             # Select top fundamental candidates (low PE, positive earnings yield, low debt, verified PIT)

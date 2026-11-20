@@ -1,29 +1,29 @@
 {
   "ticker": "BARKAPOWER",
-  "audited_at": "2026-11-17 15:01:20",
+  "audited_at": "2026-11-19 14:54:30",
   "worth_vs_greed": {
-    "current_price": 11.5,
+    "current_price": 11.2,
     "intrinsic_worth": 6.08,
-    "margin_of_safety_pct": -47.1,
+    "margin_of_safety_pct": -45.7,
     "extension_froth_score": 70.0,
     "greed_index": 70.0,
-    "rsi_14": 80.0,
-    "price_vs_ema50_pct": 16.6,
-    "price_vs_ema200_pct": 25.2,
+    "rsi_14": 70.6,
+    "price_vs_ema50_pct": 12.4,
+    "price_vs_ema200_pct": 21.4,
     "merit_status": "EARNINGS_BACKED_MERIT",
     "merit_reason": "Price supported by solid earnings (EPS: \u09f30.76, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f311.3 \u2013 \u09f311.6",
-      "chase_cutoff_price": 11.8,
-      "when_to_wait": "If price opens or rises above \u09f311.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f311.3.",
-      "weekly_target_short": 11.9,
-      "monthly_target_swing": 13.2,
-      "long_term_target_asset": 15.0,
+      "optimal_entry_corridor": "\u09f311.0 \u2013 \u09f311.3",
+      "chase_cutoff_price": 11.5,
+      "when_to_wait": "If price opens or rises above \u09f311.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f311.0.",
+      "weekly_target_short": 11.6,
+      "monthly_target_swing": 12.9,
+      "long_term_target_asset": 14.6,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "OVERVALUED_EUPHORIA",
     "worth_decision": "SELL_TAKE_PROFIT",
-    "reason": "Price is 47.1% above intrinsic worth while market greed is euphoric (70.0/100). Danger of sharp mean reversion.",
+    "reason": "Price is 45.7% above intrinsic worth while market greed is euphoric (70.0/100). Danger of sharp mean reversion.",
     "is_blacklisted": true,
     "blacklist_reason": "Blocked by Forensic Surveillance [HIGH: ABNORMAL_VOLUME_SURGE on 2026-11-17 \u2014 Mid-tier volume is 3.3x 20-day average (1,362,954 vs 407,757) | Promoters hold only 22.6% (< 30% legal threshold) during price run-up]",
     "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [HIGH: ABNORMAL_VOLUME_SURGE on 2026-11-17 \u2014 Mid-tier volume is 3.3x 20-day average (1,362,954 vs 407,757) | Promoters hold only 22.6% (< 30% legal threshold) during price run-up]"
@@ -31,31 +31,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 16.16,
+        "return_pct": 8.74,
         "high": 11.7,
-        "low": 9.9,
-        "range_volatility_pct": 18.18
+        "low": 10.6,
+        "range_volatility_pct": 10.38
       },
       "monthly_21d": {
-        "return_pct": 19.79,
+        "return_pct": 19.15,
         "high": 11.7,
         "low": 9.3,
         "range_volatility_pct": 25.81
       },
       "quarterly_63d": {
-        "return_pct": 3.6,
-        "high": 11.8,
+        "return_pct": 1.82,
+        "high": 11.7,
         "low": 8.9,
-        "range_volatility_pct": 32.58
+        "range_volatility_pct": 31.46
       },
       "half_yearly_126d": {
-        "return_pct": 47.44,
+        "return_pct": 41.77,
         "high": 12.2,
         "low": 7.8,
         "range_volatility_pct": 56.41
       },
       "yearly_252d": {
-        "return_pct": 79.69,
+        "return_pct": 69.7,
         "high": 12.2,
         "low": 5.2,
         "range_volatility_pct": 134.62
@@ -67,7 +67,7 @@
       "avg_wave_duration_bars": 24.0
     },
     "current_wave_phase": "LATE_MARKUP",
-    "phase_guidance": "Approaching historical rally limit (+29.2% vs median +22.7%). Tighten stop.",
+    "phase_guidance": "Approaching historical rally limit (+25.8% vs median +22.7%). Tighten stop.",
     "top_seasonal_months": [
       {
         "month": "Jan",

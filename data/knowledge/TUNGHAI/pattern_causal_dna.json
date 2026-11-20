@@ -1,60 +1,61 @@
 {
   "ticker": "TUNGHAI",
-  "audited_at": "2026-11-17 15:01:50",
+  "audited_at": "2026-11-19 14:54:57",
   "worth_vs_greed": {
-    "current_price": 4.6,
-    "intrinsic_worth": 2.3,
+    "current_price": 5.0,
+    "intrinsic_worth": 2.5,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 60.0,
-    "greed_index": 60.0,
-    "rsi_14": 33.3,
-    "price_vs_ema50_pct": 19.2,
-    "price_vs_ema200_pct": 60.7,
+    "extension_froth_score": 80.0,
+    "greed_index": 80.0,
+    "rsi_14": 50.0,
+    "price_vs_ema50_pct": 27.1,
+    "price_vs_ema200_pct": 72.3,
     "merit_status": "SPECULATIVE_JUNK_PUMP",
     "merit_reason": "Price is surging aggressively without positive EPS backing. Pure speculative risk.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f34.5 \u2013 \u09f34.6",
-      "chase_cutoff_price": 4.7,
-      "when_to_wait": "If price opens or rises above \u09f34.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f34.5.",
-      "weekly_target_short": 4.8,
-      "monthly_target_swing": 5.3,
-      "long_term_target_asset": 6.0,
+      "optimal_entry_corridor": "\u09f34.9 \u2013 \u09f35.0",
+      "chase_cutoff_price": 5.1,
+      "when_to_wait": "If price opens or rises above \u09f35.1, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f34.9.",
+      "weekly_target_short": 5.2,
+      "monthly_target_swing": 5.8,
+      "long_term_target_asset": 6.5,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
-    "status": "SPECULATIVE_GREED",
-    "worth_decision": "DO_NOT_BUY_WAIT_FOR_PULLBACK",
-    "reason": "Extreme short-term greed (60.0/100) or speculative pump without earnings merit. Risk of buying at local peak.",
-    "is_blacklisted": false,
-    "blacklist_reason": null
+    "status": "OVERVALUED_EUPHORIA",
+    "worth_decision": "SELL_TAKE_PROFIT",
+    "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (80.0/100). Danger of sharp mean reversion.",
+    "is_blacklisted": true,
+    "blacklist_reason": "Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-11-19 \u2014 Mid-tier volume is 9.6x 20-day average (2,480,950 vs 259,331) | Price up +6.38% on untracked / high-risk security without verified earnings]",
+    "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-11-19 \u2014 Mid-tier volume is 9.6x 20-day average (2,480,950 vs 259,331) | Price up +6.38% on untracked / high-risk security without verified earnings]"
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 0.0,
-        "high": 4.7,
+        "return_pct": 6.38,
+        "high": 5.1,
         "low": 4.5,
-        "range_volatility_pct": 4.44
+        "range_volatility_pct": 13.33
       },
       "monthly_21d": {
-        "return_pct": -13.21,
+        "return_pct": -1.96,
         "high": 5.4,
         "low": 4.4,
         "range_volatility_pct": 22.73
       },
       "quarterly_63d": {
-        "return_pct": 187.5,
+        "return_pct": 233.33,
         "high": 5.5,
         "low": 1.4,
         "range_volatility_pct": 292.86
       },
       "half_yearly_126d": {
-        "return_pct": 100.0,
+        "return_pct": 117.39,
         "high": 5.5,
         "low": 1.1,
         "range_volatility_pct": 400.0
       },
       "yearly_252d": {
-        "return_pct": 35.29,
+        "return_pct": 56.25,
         "high": 5.5,
         "low": 1.1,
         "range_volatility_pct": 400.0
@@ -66,7 +67,7 @@
       "avg_wave_duration_bars": 23.0
     },
     "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-16.4%). Wait for stabilizing base.",
+    "phase_guidance": "Ongoing pullback from peak (-9.1%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Oct",

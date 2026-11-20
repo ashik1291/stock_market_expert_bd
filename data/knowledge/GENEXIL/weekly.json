@@ -2,18 +2,18 @@
   "ticker": "GENEXIL",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-17T09:01:29.460131",
-  "asof_price_date": "2026-11-17",
+  "analyzed_at": "2026-11-19T08:54:38.136391",
+  "asof_price_date": "2026-11-19",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 65.0225,
+    "rsi_14": 65.3867,
     "pe_ratio": 13.133640552995391,
     "debt_equity": 1.312
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 50.66,
+  "confidence": 50.56,
   "trajectory": {
     "direction": "FALL_RISK",
     "direction_icon": "\ud83d\udd34",
@@ -22,33 +22,33 @@
     "momentum_status": "Bearish Breakdown / Selling Pressure",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+5.7%",
-      "downside_risk_pct": "-3.6%",
-      "target_price": 35.1,
-      "support_price": 32.0,
-      "risk_reward_ratio": "1.6x"
+      "upside_potential_pct": "+5.6%",
+      "downside_risk_pct": "-3.9%",
+      "target_price": 35.6,
+      "support_price": 32.4,
+      "risk_reward_ratio": "1.4x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+13.3%",
-      "downside_risk_pct": "-9.9%",
-      "target_price": 37.6,
-      "trailing_stop": 29.9,
-      "risk_reward_ratio": "1.3x"
+      "upside_potential_pct": "+9.5%",
+      "downside_risk_pct": "-10.1%",
+      "target_price": 36.9,
+      "trailing_stop": 30.3,
+      "risk_reward_ratio": "0.9x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
-      "upside_potential_pct": "+30.1%",
+      "upside_potential_pct": "+30.0%",
       "downside_risk_pct": "-12.0%",
-      "target_price": 43.2,
+      "target_price": 43.8,
       "dividend_cagr": "moderate (0.45%)",
       "risk_reward_ratio": "2.5x"
     }
   },
   "trade_levels": {
-    "entry": 33.2,
-    "stop_loss": 31.34,
-    "target": 36.92
+    "entry": 33.7,
+    "stop_loss": 31.8,
+    "target": 37.5
   },
   "precision": {
     "ticker": "GENEXIL",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 350716,
+      "avg_daily_volume": 390150,
       "daily_turnover_bdt_cr": 0.04,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 17535,
-      "max_daily_accumulation_shares": 52607,
-      "max_order_bdt": 17535.0,
-      "directive": "Max single order: 17,535 shares (Tk 17,535) to prevent >1% execution slippage"
+      "max_single_order_shares": 19507,
+      "max_daily_accumulation_shares": 58522,
+      "max_order_bdt": 19507.0,
+      "directive": "Max single order: 19,507 shares (Tk 19,507) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,42 +91,42 @@
       "status": "VALID",
       "low_52w": 21.0,
       "high_52w": 44.2,
-      "range_52w_pct": 52.6,
+      "range_52w_pct": 54.7,
       "channel_regime": "EQUILIBRIUM_CHANNEL",
-      "visual_gauge": "[ \u09f321.0 |\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591| \u09f344.2 ] (52.6%)",
+      "visual_gauge": "[ \u09f321.0 |\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591| \u09f344.2 ] (54.7%)",
       "conviction_bonus": 0.0,
       "is_truncated_window": false,
       "bars_evaluated": 250,
-      "signal": "Price is in mid-channel (52.6% between \u09f321.0 and \u09f344.2)"
+      "signal": "Price is in mid-channel (54.7% between \u09f321.0 and \u09f344.2)"
     },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "GENEXIL",
-    "audited_at": "2026-11-17 15:01:29",
+    "audited_at": "2026-11-19 14:54:38",
     "worth_vs_greed": {
-      "current_price": 33.2,
+      "current_price": 33.7,
       "intrinsic_worth": 5.36,
-      "margin_of_safety_pct": -83.9,
-      "extension_froth_score": 40.0,
-      "greed_index": 40.0,
-      "rsi_14": 72.7,
-      "price_vs_ema50_pct": 5.6,
-      "price_vs_ema200_pct": 4.6,
+      "margin_of_safety_pct": -84.1,
+      "extension_froth_score": 50.0,
+      "greed_index": 50.0,
+      "rsi_14": 75.7,
+      "price_vs_ema50_pct": 6.7,
+      "price_vs_ema200_pct": 6.1,
       "merit_status": "EARNINGS_BACKED_MERIT",
       "merit_reason": "Price supported by solid earnings (EPS: \u09f30.67, P/E: 0.0). Growth is fundamentally justified.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f332.5 \u2013 \u09f333.5",
-        "chase_cutoff_price": 34.0,
-        "when_to_wait": "If price opens or rises above \u09f334.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f332.5.",
-        "weekly_target_short": 34.4,
-        "monthly_target_swing": 38.2,
-        "long_term_target_asset": 43.2,
+        "optimal_entry_corridor": "\u09f333.0 \u2013 \u09f334.0",
+        "chase_cutoff_price": 34.5,
+        "when_to_wait": "If price opens or rises above \u09f334.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f333.0.",
+        "weekly_target_short": 34.9,
+        "monthly_target_swing": 38.8,
+        "long_term_target_asset": 43.8,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
       "worth_decision": "AVOID",
-      "reason": "Fundamental value severely lags stock price (MoS: -83.9%).",
+      "reason": "Fundamental value severely lags stock price (MoS: -84.1%).",
       "is_blacklisted": true,
       "blacklist_reason": "Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-11-17 \u2014 Mid-tier volume is 5.7x 20-day average (1,175,178 vs 208,017) | Promoters hold only 26.1% (< 30% legal threshold) during price run-up]",
       "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-11-17 \u2014 Mid-tier volume is 5.7x 20-day average (1,175,178 vs 208,017) | Promoters hold only 26.1% (< 30% legal threshold) during price run-up]"
@@ -134,31 +134,31 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 15.28,
+          "return_pct": 5.31,
           "high": 34.1,
-          "low": 29.0,
-          "range_volatility_pct": 17.59
+          "low": 31.1,
+          "range_volatility_pct": 9.65
         },
         "monthly_21d": {
-          "return_pct": 11.04,
+          "return_pct": 13.09,
           "high": 34.1,
           "low": 27.3,
           "range_volatility_pct": 24.91
         },
         "quarterly_63d": {
-          "return_pct": -11.47,
-          "high": 39.8,
+          "return_pct": -11.78,
+          "high": 39.0,
           "low": 27.3,
-          "range_volatility_pct": 45.79
+          "range_volatility_pct": 42.86
         },
         "half_yearly_126d": {
-          "return_pct": 20.73,
+          "return_pct": 22.99,
           "high": 44.2,
           "low": 26.2,
           "range_volatility_pct": 68.7
         },
         "yearly_252d": {
-          "return_pct": 19.0,
+          "return_pct": 22.99,
           "high": 44.2,
           "low": 21.0,
           "range_volatility_pct": 110.48
@@ -170,7 +170,7 @@
         "avg_wave_duration_bars": 22.0
       },
       "current_wave_phase": "BOTTOMING_SUPPORT",
-      "phase_guidance": "Drop (-24.9%) matches historical correction depth (-19.2%). Prepare to accumulate.",
+      "phase_guidance": "Drop (-23.8%) matches historical correction depth (-19.2%). Prepare to accumulate.",
       "top_seasonal_months": [
         {
           "month": "May",
@@ -274,12 +274,12 @@
       "macd": "bullish_crossover",
       "sma_trend": "bullish",
       "bb": "at_upper_band_bearish",
-      "atr": 1.24,
-      "rsi_value": 65.1,
-      "last_close": 33.2,
-      "sma20": 29.34,
-      "sma50": 31.53,
-      "sma200": 31.52,
+      "atr": 1.27,
+      "rsi_value": 65.3,
+      "last_close": 33.7,
+      "sma20": 29.67,
+      "sma50": 31.43,
+      "sma200": 31.6,
       "support_resistance": {
         "supports": [
           24.6,
@@ -318,10 +318,10 @@
       "loan_trap_risk": "moderate",
       "downturn_resilience": {
         "status": "growth_at_discount",
-        "drawdown_pct": 24.9,
+        "drawdown_pct": 23.8,
         "high_52w": 44.2,
         "low_52w": 21.0,
-        "note": "Share price down 24.9% from 52w peak, yet earnings positive/steady (Conviction discount)"
+        "note": "Share price down 23.8% from 52w peak, yet earnings positive/steady (Conviction discount)"
       }
     }
   },
@@ -355,27 +355,26 @@
     }
   },
   "manipulation": {
-    "manipulation_score": 25,
+    "manipulation_score": 10,
     "manipulation_risk": "low",
     "block_buy": false,
     "flags": [
-      "volume_spike: volume_4.0x_avg",
-      "price_surge_no_news: price_5.7pct_zero_news"
+      "price_surge_no_news: price_7.7pct_zero_news"
     ],
     "checks": {
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 1175178,
-        "avg_volume": 317710.0,
+        "last_volume": 697800,
+        "avg_volume": 316067.0,
         "detail": "ok"
       },
       "volume_spike": {
-        "flag": true,
-        "spike_ratio": 3.98,
-        "avg_volume": 295297.0,
-        "today_volume": 1175178,
-        "detail": "volume_4.0x_avg"
+        "flag": false,
+        "spike_ratio": 2.28,
+        "avg_volume": 305803.0,
+        "today_volume": 697800,
+        "detail": "ok"
       },
       "serial_trading": {
         "flag": false,
@@ -393,20 +392,20 @@
       },
       "price_surge_no_news": {
         "flag": true,
-        "price_change_3d": 5.73,
+        "price_change_3d": 7.67,
         "news_count_3d": 0,
-        "detail": "price_5.7pct_zero_news"
+        "detail": "price_7.7pct_zero_news"
       }
     }
   },
   "composite": {
-    "composite_score": 50.66,
+    "composite_score": 50.56,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.662,
+      "fundamental": 0.66,
       "technical": 0.205,
-      "governance": 0.134,
+      "governance": 0.135,
       "sentiment": 0.0
     }
   }

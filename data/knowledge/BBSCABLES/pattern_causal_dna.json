@@ -1,24 +1,24 @@
 {
   "ticker": "BBSCABLES",
-  "audited_at": "2026-11-17 15:01:21",
+  "audited_at": "2026-11-19 14:54:31",
   "worth_vs_greed": {
-    "current_price": 16.2,
-    "intrinsic_worth": 8.1,
+    "current_price": 16.6,
+    "intrinsic_worth": 8.3,
     "margin_of_safety_pct": -50.0,
     "extension_froth_score": 50.0,
     "greed_index": 50.0,
-    "rsi_14": 57.1,
-    "price_vs_ema50_pct": 4.1,
-    "price_vs_ema200_pct": -0.9,
+    "rsi_14": 56.4,
+    "price_vs_ema50_pct": 6.2,
+    "price_vs_ema200_pct": 1.5,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f315.9 \u2013 \u09f316.4",
-      "chase_cutoff_price": 16.6,
-      "when_to_wait": "If price opens or rises above \u09f316.6, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f315.9.",
-      "weekly_target_short": 16.8,
-      "monthly_target_swing": 18.6,
-      "long_term_target_asset": 21.1,
+      "optimal_entry_corridor": "\u09f316.3 \u2013 \u09f316.8",
+      "chase_cutoff_price": 17.0,
+      "when_to_wait": "If price opens or rises above \u09f317.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f316.3.",
+      "weekly_target_short": 17.2,
+      "monthly_target_swing": 19.1,
+      "long_term_target_asset": 21.6,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -31,31 +31,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -5.26,
-        "high": 17.4,
+        "return_pct": -1.19,
+        "high": 16.7,
         "low": 16.1,
-        "range_volatility_pct": 8.07
+        "range_volatility_pct": 3.73
       },
       "monthly_21d": {
-        "return_pct": 8.72,
+        "return_pct": 12.93,
         "high": 17.4,
         "low": 14.0,
         "range_volatility_pct": 24.29
       },
       "quarterly_63d": {
-        "return_pct": 7.28,
+        "return_pct": 15.28,
         "high": 17.4,
         "low": 14.0,
         "range_volatility_pct": 24.29
       },
       "half_yearly_126d": {
-        "return_pct": -11.48,
+        "return_pct": -19.81,
         "high": 24.0,
         "low": 11.6,
         "range_volatility_pct": 106.9
       },
       "yearly_252d": {
-        "return_pct": -5.26,
+        "return_pct": -3.49,
         "high": 24.0,
         "low": 11.6,
         "range_volatility_pct": 106.9
@@ -67,7 +67,7 @@
       "avg_wave_duration_bars": 21.0
     },
     "current_wave_phase": "LATE_MARKUP",
-    "phase_guidance": "Approaching historical rally limit (+15.7% vs median +20.0%). Tighten stop.",
+    "phase_guidance": "Approaching historical rally limit (+18.6% vs median +20.0%). Tighten stop.",
     "top_seasonal_months": [
       {
         "month": "Aug",

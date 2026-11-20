@@ -78,8 +78,12 @@ class TestInstitutionalFixes(unittest.TestCase):
 
     def test_rl_engine_harmonized_accuracy_accounting(self):
         """Verify learning engine accounts for long rise wins and risk avoidances."""
+        import os as _os, sys as _sys
+        _sys.path.insert(0, _os.path.dirname(__file__))
+        from _isolation import isolated_learning_files
         from reinforcement_learning_engine import evaluate_pending_predictions
-        res = evaluate_pending_predictions()
+        with isolated_learning_files():
+            res = evaluate_pending_predictions()
         self.assertIn("evaluated_in_run", res)
 
 

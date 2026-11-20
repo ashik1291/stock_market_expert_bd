@@ -2,18 +2,18 @@
   "ticker": "1JANATAMF",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-17T09:01:17.122076",
-  "asof_price_date": "2026-11-17",
+  "analyzed_at": "2026-11-19T08:54:27.541195",
+  "asof_price_date": "2026-11-19",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 49.5167,
+    "rsi_14": 48.9744,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 42.81,
+  "confidence": 44.26,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 438601,
+      "avg_daily_volume": 416874,
       "daily_turnover_bdt_cr": 0.04,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 21930,
-      "max_daily_accumulation_shares": 65790,
-      "max_order_bdt": 21930.0,
-      "directive": "Max single order: 21,930 shares (Tk 21,930) to prevent >1% execution slippage"
+      "max_single_order_shares": 20843,
+      "max_daily_accumulation_shares": 62531,
+      "max_order_bdt": 20843.0,
+      "directive": "Max single order: 20,843 shares (Tk 20,843) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -103,16 +103,16 @@
   },
   "pattern_dna": {
     "ticker": "1JANATAMF",
-    "audited_at": "2026-11-17 15:01:17",
+    "audited_at": "2026-11-19 14:54:27",
     "worth_vs_greed": {
       "current_price": 3.2,
       "intrinsic_worth": 1.6,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 40.0,
       "greed_index": 40.0,
-      "rsi_14": 42.9,
-      "price_vs_ema50_pct": 3.5,
-      "price_vs_ema200_pct": 3.8,
+      "rsi_14": 20.0,
+      "price_vs_ema50_pct": 3.2,
+      "price_vs_ema200_pct": 3.7,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -136,23 +136,23 @@
         "weekly_5d": {
           "return_pct": 0.0,
           "high": 3.4,
-          "low": 3.2,
-          "range_volatility_pct": 6.25
+          "low": 3.1,
+          "range_volatility_pct": 9.68
         },
         "monthly_21d": {
           "return_pct": -5.88,
           "high": 3.5,
-          "low": 3.2,
-          "range_volatility_pct": 9.37
+          "low": 3.1,
+          "range_volatility_pct": 12.9
         },
         "quarterly_63d": {
-          "return_pct": 23.08,
+          "return_pct": 28.0,
           "high": 3.6,
           "low": 2.3,
           "range_volatility_pct": 56.52
         },
         "half_yearly_126d": {
-          "return_pct": -3.03,
+          "return_pct": -5.88,
           "high": 3.6,
           "low": 2.1,
           "range_volatility_pct": 71.43
@@ -166,11 +166,11 @@
       },
       "wave_metrics": {
         "median_rally_gain_pct": 15.2,
-        "median_correction_drop_pct": -9.5,
+        "median_correction_drop_pct": -9.6,
         "avg_wave_duration_bars": 14.0
       },
-      "current_wave_phase": "BOTTOMING_SUPPORT",
-      "phase_guidance": "Drop (-11.1%) matches historical correction depth (-9.5%). Prepare to accumulate.",
+      "current_wave_phase": "ACCUMULATION_TROUGH",
+      "phase_guidance": "Near local cyclical trough base. Maximum reward/risk entry point.",
       "top_seasonal_months": [
         {
           "month": "Jan",
@@ -268,17 +268,17 @@
     ]
   },
   "technical": {
-    "score": 47.5,
+    "score": 55.0,
     "signals": {
       "rsi": "neutral",
-      "macd": "bearish_crossover",
+      "macd": "neutral",
       "sma_trend": "bullish",
       "bb": "inside_bands",
       "atr": 0.15,
       "rsi_value": 49.42,
       "last_close": 3.2,
-      "sma20": 3.3,
-      "sma50": 2.99,
+      "sma20": 3.28,
+      "sma50": 3.02,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -353,15 +353,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 436986,
-        "avg_volume": 507051.0,
+        "last_volume": 321790,
+        "avg_volume": 453343.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.87,
-        "avg_volume": 503126.0,
-        "today_volume": 436986,
+        "spike_ratio": 0.64,
+        "avg_volume": 500380.0,
+        "today_volume": 321790,
         "detail": "ok"
       },
       "serial_trading": {
@@ -387,13 +387,13 @@
     }
   },
   "composite": {
-    "composite_score": 42.81,
+    "composite_score": 44.26,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.662,
+      "fundamental": 0.66,
       "technical": 0.205,
-      "governance": 0.134,
+      "governance": 0.135,
       "sentiment": 0.0
     }
   }

@@ -21,6 +21,11 @@ import datetime
 from pathlib import Path
 from typing import Optional, Dict, Any, List, Tuple
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from constants import STATUTORY_LAG_DAYS  # noqa: E402
+
+PSI_LATE_FILING_GRACE_DAYS = 60
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 DB_PATH = BASE_DIR / "data" / "processed" / "dse.db"
 RAW_DIR = BASE_DIR / "data" / "raw"
@@ -187,8 +192,11 @@ def resolve_pit_disclosures(conn: Optional[sqlite3.Connection] = None, force_all
                fiscal_year, fiscal_quarter, publication_is_estimated, publication_source
         FROM fundamentals_pit
     """
+    # live_scrape rows were observed on the exchange on snapshot_date itself and dse_disclosure rows carry
+    # the date of the official filing; never re-date either.
+    query += " WHERE COALESCE(publication_source, '') NOT IN ('live_scrape', 'dse_disclosure')"
     if not force_all:
-        query += " WHERE publication_is_estimated = 1"
+        query += " AND publication_is_estimated = 1"
 
     records = conn.execute(query).fetchall()
 
@@ -211,34 +219,46 @@ def resolve_pit_disclosures(conn: Optional[sqlite3.Connection] = None, force_all
 
         resolved_pub = None
         resolved_src = None
+        estimated = 1
 
         # ── Tier 1: Official DSE PSI News Match ──
-        psi_candidates = [p for p in psi_records if p["ticker"] == ticker and (p["fiscal_year"] == fy or p["fiscal_year"] is None)]
-        if psi_candidates:
-            # Match quarterly period if possible
-            q_candidates = [p for p in psi_candidates if p["fiscal_quarter"] == fq]
-            chosen = q_candidates[0] if q_candidates else psi_candidates[0]
-            if chosen["date"] >= snap_iso:
-                resolved_pub = chosen["date"]
-                resolved_src = "dse_psi"
+        # The release is the earliest matching disclosure on/after period end. Only an exact
+        # fiscal-year match is a verified date; a PSI without a year is a best guess.
+        # A disclosure can only be this period's release if it falls inside the legal filing window.
+        try:
+            window_end = (datetime.date.fromisoformat(snap_iso) + datetime.timedelta(
+                days=STATUTORY_LAG_DAYS.get(fq, STATUTORY_LAG_DAYS[4]) + PSI_LATE_FILING_GRACE_DAYS)).isoformat()
+        except ValueError:
+            window_end = snap_iso
+        in_window = [p for p in psi_records if p["ticker"] == ticker and snap_iso <= p["date"] <= window_end]
+        exact = [p for p in in_window if p["fiscal_year"] == fy]
+        loose = [p for p in in_window if p["fiscal_year"] is None]
+        for pool, is_exact in ((exact, True), (loose, False)):
+            if not pool:
+                continue
+            q_match = [p for p in pool if p["fiscal_quarter"] == fq]
+            resolved_pub = min(p["date"] for p in (q_match or pool))
+            resolved_src = "dse_psi"
+            estimated = 0 if (is_exact and q_match) else 1
+            break
 
         # ── Tier 2: Official Corporate Action Board Declaration ──
         if not resolved_pub and (ticker, fy) in ca_map and fq == 4:
             cas = ca_map[(ticker, fy)]
             rec_d = cas[0]["record_date"]
             try:
-                # Under BSEC Listing Regs, Board meeting disclosure occurs >= 14 working days (21 cal days) before record_date
+                # Board declaration precedes record date by >= 21 calendar days, so this bound is never early.
                 est_ann = (datetime.date.fromisoformat(rec_d) - datetime.timedelta(days=21)).isoformat()
                 if est_ann >= snap_iso:
                     resolved_pub = est_ann
                     resolved_src = "dse_corporate_action"
+                    estimated = 1
             except Exception:
                 pass
 
-        # ── Tier 3: BSEC Statutory Compliance Schedule (Listing Reg 19(1) & 16(1)) ──
+        # ── Tier 3: BSEC statutory deadline (latest legal publication date, so never early) ──
         if not resolved_pub:
-            # 120-day statutory audit deadline for annual (Q4); 45-day deadline for interim (Q1-3)
-            lag_days = 75 if (fq == 4 or fq is None) else 45
+            lag_days = STATUTORY_LAG_DAYS.get(fq, STATUTORY_LAG_DAYS[4])
             try:
                 stat_date = (datetime.date.fromisoformat(snap_iso) + datetime.timedelta(days=lag_days)).isoformat()
                 resolved_pub = stat_date
@@ -246,6 +266,7 @@ def resolve_pit_disclosures(conn: Optional[sqlite3.Connection] = None, force_all
             except Exception:
                 resolved_pub = old_pub or snap_iso
                 resolved_src = old_src or "bsec_statutory_filing"
+            estimated = 1
 
         # Trading calendar enforcement
         pub_final = get_next_trading_day(conn, resolved_pub)
@@ -269,7 +290,7 @@ def resolve_pit_disclosures(conn: Optional[sqlite3.Connection] = None, force_all
         elif resolved_src == "bsec_statutory_filing":
             stats["resolved_bsec_statutory"] += 1
 
-        updates.append((pub_final, trad_final, resolved_src, 0, pid))
+        updates.append((pub_final, trad_final, resolved_src, estimated, pid))
 
     # Batch update database
     if updates:

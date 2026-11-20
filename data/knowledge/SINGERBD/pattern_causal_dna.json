@@ -1,24 +1,24 @@
 {
   "ticker": "SINGERBD",
-  "audited_at": "2026-11-17 15:01:47",
+  "audited_at": "2026-11-19 14:54:55",
   "worth_vs_greed": {
-    "current_price": 60.1,
-    "intrinsic_worth": 30.05,
+    "current_price": 61.8,
+    "intrinsic_worth": 30.9,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 20.0,
-    "greed_index": 20.0,
-    "rsi_14": 7.1,
-    "price_vs_ema50_pct": -13.7,
-    "price_vs_ema200_pct": -24.5,
+    "extension_froth_score": 10.0,
+    "greed_index": 10.0,
+    "rsi_14": 34.3,
+    "price_vs_ema50_pct": -10.4,
+    "price_vs_ema200_pct": -22.0,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f358.9 \u2013 \u09f360.7",
-      "chase_cutoff_price": 61.6,
-      "when_to_wait": "If price opens or rises above \u09f361.6, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f358.9.",
-      "weekly_target_short": 62.2,
-      "monthly_target_swing": 69.1,
-      "long_term_target_asset": 78.1,
+      "optimal_entry_corridor": "\u09f360.6 \u2013 \u09f362.4",
+      "chase_cutoff_price": 63.3,
+      "when_to_wait": "If price opens or rises above \u09f363.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f360.6.",
+      "weekly_target_short": 64.0,
+      "monthly_target_swing": 71.1,
+      "long_term_target_asset": 80.3,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -30,34 +30,34 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -0.17,
-        "high": 60.9,
-        "low": 59.8,
-        "range_volatility_pct": 1.84
+        "return_pct": 2.32,
+        "high": 62.7,
+        "low": 59.9,
+        "range_volatility_pct": 4.67
       },
       "monthly_21d": {
-        "return_pct": -20.5,
+        "return_pct": -19.0,
         "high": 77.2,
         "low": 59.7,
         "range_volatility_pct": 29.31
       },
       "quarterly_63d": {
-        "return_pct": -19.22,
+        "return_pct": -17.49,
         "high": 82.9,
         "low": 59.7,
         "range_volatility_pct": 38.86
       },
       "half_yearly_126d": {
-        "return_pct": -25.16,
+        "return_pct": -22.36,
         "high": 87.0,
         "low": 59.7,
         "range_volatility_pct": 45.73
       },
       "yearly_252d": {
-        "return_pct": -39.66,
-        "high": 100.9,
+        "return_pct": -38.01,
+        "high": 99.9,
         "low": 59.7,
-        "range_volatility_pct": 69.01
+        "range_volatility_pct": 67.34
       }
     },
     "wave_metrics": {
@@ -66,7 +66,7 @@
       "avg_wave_duration_bars": 27.0
     },
     "current_wave_phase": "BOTTOMING_SUPPORT",
-    "phase_guidance": "Drop (-27.5%) matches historical correction depth (-15.0%). Prepare to accumulate.",
+    "phase_guidance": "Drop (-25.5%) matches historical correction depth (-15.0%). Prepare to accumulate.",
     "top_seasonal_months": [
       {
         "month": "Jul",
@@ -92,8 +92,8 @@
       },
       {
         "month": "Nov",
-        "avg_return": -4.5,
-        "win_rate": 14.0
+        "avg_return": -5.6,
+        "win_rate": 13.0
       }
     ]
   },

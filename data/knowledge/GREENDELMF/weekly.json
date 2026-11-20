@@ -2,18 +2,18 @@
   "ticker": "GREENDELMF",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-17T09:01:30.681414",
-  "asof_price_date": "2026-11-17",
+  "analyzed_at": "2026-11-19T08:54:39.160722",
+  "asof_price_date": "2026-11-19",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 49.3364,
+    "rsi_14": 49.1726,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 42.81,
+  "confidence": 44.26,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -30,11 +30,11 @@
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+14.0%",
+      "upside_potential_pct": "+11.6%",
       "downside_risk_pct": "-9.3%",
-      "target_price": 4.9,
+      "target_price": 4.8,
       "trailing_stop": 3.9,
-      "risk_reward_ratio": "1.5x"
+      "risk_reward_ratio": "1.2x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 4.3,
-    "stop_loss": 3.95,
-    "target": 5.0
+    "stop_loss": 3.97,
+    "target": 4.96
   },
   "precision": {
     "ticker": "GREENDELMF",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 760480,
-      "daily_turnover_bdt_cr": 0.08,
+      "avg_daily_volume": 683787,
+      "daily_turnover_bdt_cr": 0.07,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 38024,
-      "max_daily_accumulation_shares": 114072,
-      "max_order_bdt": 38024.0,
-      "directive": "Max single order: 38,024 shares (Tk 38,024) to prevent >1% execution slippage"
+      "max_single_order_shares": 34189,
+      "max_daily_accumulation_shares": 102568,
+      "max_order_bdt": 34189.0,
+      "directive": "Max single order: 34,189 shares (Tk 34,189) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -103,16 +103,16 @@
   },
   "pattern_dna": {
     "ticker": "GREENDELMF",
-    "audited_at": "2026-11-17 15:01:30",
+    "audited_at": "2026-11-19 14:54:39",
     "worth_vs_greed": {
       "current_price": 4.3,
       "intrinsic_worth": 2.15,
       "margin_of_safety_pct": -50.0,
-      "extension_froth_score": 80.0,
-      "greed_index": 80.0,
-      "rsi_14": 38.5,
-      "price_vs_ema50_pct": 6.0,
-      "price_vs_ema200_pct": 15.6,
+      "extension_froth_score": 70.0,
+      "greed_index": 70.0,
+      "rsi_14": 30.0,
+      "price_vs_ema50_pct": 5.5,
+      "price_vs_ema200_pct": 15.2,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -126,7 +126,7 @@
       },
       "status": "OVERVALUED_EUPHORIA",
       "worth_decision": "SELL_TAKE_PROFIT",
-      "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (80.0/100). Danger of sharp mean reversion.",
+      "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (70.0/100). Danger of sharp mean reversion.",
       "is_blacklisted": true,
       "blacklist_reason": "Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-11-01 \u2014 Price up +4.44% with poor fundamentals (Negative EPS)]",
       "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-11-01 \u2014 Price up +4.44% with poor fundamentals (Negative EPS)]"
@@ -134,7 +134,7 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": -2.27,
+          "return_pct": 0.0,
           "high": 4.6,
           "low": 4.2,
           "range_volatility_pct": 9.52
@@ -152,13 +152,13 @@
           "range_volatility_pct": 71.43
         },
         "half_yearly_126d": {
-          "return_pct": 16.22,
+          "return_pct": 10.26,
           "high": 4.8,
           "low": 2.5,
           "range_volatility_pct": 92.0
         },
         "yearly_252d": {
-          "return_pct": 30.3,
+          "return_pct": 26.47,
           "high": 4.8,
           "low": 2.5,
           "range_volatility_pct": 92.0
@@ -268,17 +268,17 @@
     ]
   },
   "technical": {
-    "score": 47.5,
+    "score": 55.0,
     "signals": {
       "rsi": "neutral",
-      "macd": "bearish_crossover",
+      "macd": "neutral",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 0.23,
-      "rsi_value": 49.28,
+      "atr": 0.22,
+      "rsi_value": 49.29,
       "last_close": 4.3,
-      "sma20": 4.51,
-      "sma50": 3.89,
+      "sma20": 4.48,
+      "sma50": 3.94,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -353,15 +353,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 780626,
-        "avg_volume": 781419.0,
+        "last_volume": 256088,
+        "avg_volume": 738859.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 1.03,
-        "avg_volume": 755960.0,
-        "today_volume": 780626,
+        "spike_ratio": 0.34,
+        "avg_volume": 753066.0,
+        "today_volume": 256088,
         "detail": "ok"
       },
       "serial_trading": {
@@ -387,13 +387,13 @@
     }
   },
   "composite": {
-    "composite_score": 42.81,
+    "composite_score": 44.26,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.662,
+      "fundamental": 0.66,
       "technical": 0.205,
-      "governance": 0.134,
+      "governance": 0.135,
       "sentiment": 0.0
     }
   }

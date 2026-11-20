@@ -1,24 +1,24 @@
 {
   "ticker": "BDFINANCE",
-  "audited_at": "2026-11-17 15:01:21",
+  "audited_at": "2026-11-19 14:54:31",
   "worth_vs_greed": {
-    "current_price": 11.5,
-    "intrinsic_worth": 5.75,
+    "current_price": 11.0,
+    "intrinsic_worth": 5.5,
     "margin_of_safety_pct": -50.0,
     "extension_froth_score": 20.0,
     "greed_index": 20.0,
-    "rsi_14": 63.6,
-    "price_vs_ema50_pct": -2.5,
-    "price_vs_ema200_pct": -7.8,
+    "rsi_14": 50.0,
+    "price_vs_ema50_pct": -6.4,
+    "price_vs_ema200_pct": -11.6,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f311.3 \u2013 \u09f311.6",
-      "chase_cutoff_price": 11.8,
-      "when_to_wait": "If price opens or rises above \u09f311.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f311.3.",
-      "weekly_target_short": 11.9,
-      "monthly_target_swing": 13.2,
-      "long_term_target_asset": 15.0,
+      "optimal_entry_corridor": "\u09f310.8 \u2013 \u09f311.1",
+      "chase_cutoff_price": 11.3,
+      "when_to_wait": "If price opens or rises above \u09f311.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f310.8.",
+      "weekly_target_short": 11.4,
+      "monthly_target_swing": 12.6,
+      "long_term_target_asset": 14.3,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -30,31 +30,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 1.77,
-        "high": 11.8,
-        "low": 11.2,
-        "range_volatility_pct": 5.36
+        "return_pct": -4.35,
+        "high": 11.6,
+        "low": 10.8,
+        "range_volatility_pct": 7.41
       },
       "monthly_21d": {
-        "return_pct": 3.6,
+        "return_pct": -1.79,
         "high": 11.8,
         "low": 9.9,
         "range_volatility_pct": 19.19
       },
       "quarterly_63d": {
-        "return_pct": -15.44,
+        "return_pct": -17.91,
         "high": 14.8,
         "low": 9.8,
         "range_volatility_pct": 51.02
       },
       "half_yearly_126d": {
-        "return_pct": 21.05,
+        "return_pct": 11.11,
         "high": 17.9,
-        "low": 9.3,
-        "range_volatility_pct": 92.47
+        "low": 9.8,
+        "range_volatility_pct": 82.65
       },
       "yearly_252d": {
-        "return_pct": -8.73,
+        "return_pct": -11.29,
         "high": 17.9,
         "low": 7.0,
         "range_volatility_pct": 155.71
@@ -66,7 +66,7 @@
       "avg_wave_duration_bars": 29.0
     },
     "current_wave_phase": "MARKUP_RALLY_MID",
-    "phase_guidance": "Midway through rally wave (+17.3% from base, historical target ~+27.0%).",
+    "phase_guidance": "Midway through rally wave (+12.2% from base, historical target ~+27.0%).",
     "top_seasonal_months": [
       {
         "month": "Sep",

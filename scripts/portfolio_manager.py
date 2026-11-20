@@ -58,18 +58,30 @@ def save_portfolio(p: dict, user_id: str = "default_user"):
         from user_manager import save_user_portfolio
         save_user_portfolio(user_id, p)
     except Exception:
+        p["total_capital_bdt"] = invested_capital(p)
         path = get_portfolio_path()
         with open(path, "w", encoding="utf-8") as f:
             json.dump(p, f, indent=2)
 
 
+def invested_capital(p: dict) -> float:
+    """Money actually invested: share cost basis (incl. buy fees) + mutual fund cost. Cash is not capital."""
+    eq = sum(float(h.get("cost_basis", 0.0)) for h in p.get("holdings", []))
+    mf = sum(float(m.get("total_cost_bdt", 0.0)) for m in p.get("mutual_funds", []))
+    return round(eq + mf, 2)
+
+
 def set_capital(amount_bdt: float):
+    """Set total account size (invested + cash) by depositing or withdrawing cash."""
     p = load_portfolio()
-    diff = amount_bdt - p["total_capital_bdt"]
-    p["total_capital_bdt"] = amount_bdt
-    p["cash_balance_bdt"] += diff
+    diff = round(amount_bdt - (invested_capital(p) + float(p.get("cash_balance_bdt", 0.0))), 2)
+    p["cash_balance_bdt"] = round(float(p.get("cash_balance_bdt", 0.0)) + diff, 2)
+    p["total_capital_bdt"] = invested_capital(p)
+    # External cash flows are not performance; shift the high-water mark with them.
+    if "high_water_mark_bdt" in p:
+        p["high_water_mark_bdt"] = round(max(0.0, float(p["high_water_mark_bdt"]) + diff), 2)
     save_portfolio(p)
-    print(f"Total Investable Capital set to: ৳{amount_bdt:,.2f} (Available Cash: ৳{p['cash_balance_bdt']:,.2f})")
+    print(f"Account size set to: ৳{amount_bdt:,.2f} (Invested: ৳{p['total_capital_bdt']:,.2f}, Cash: ৳{p['cash_balance_bdt']:,.2f})")
 
 
 def get_latest_weekly_report() -> dict | None:
@@ -290,6 +302,43 @@ def check_reversal_confirmation(ticker: str, conn) -> bool:
     return latest_close >= ema
 
 
+def compute_mark_to_market_net_worth(p: dict, conn=None) -> float:
+    """Cash + equities at latest close (cost basis only when no price exists) + mutual funds at market value."""
+    import sqlite3
+    own_conn = conn is None
+    db_path = BASE_DIR / "data" / "processed" / "dse.db"
+    if own_conn and db_path.exists():
+        conn = sqlite3.connect(db_path, timeout=30.0)
+        conn.execute("PRAGMA busy_timeout = 30000;")
+    try:
+        equity = 0.0
+        for h in p.get("holdings", []):
+            row = conn.execute(
+                "SELECT close FROM prices WHERE ticker = ? ORDER BY date DESC LIMIT 1",
+                (h.get("ticker", "").upper(),),
+            ).fetchone() if conn else None
+            if row and row[0]:
+                equity += float(row[0]) * float(h.get("shares", 0))
+            else:
+                equity += float(h.get("cost_basis", 0.0))
+        mf = sum(float(m.get("market_value_bdt") or m.get("total_cost_bdt", 0.0)) for m in p.get("mutual_funds", []))
+        return round(float(p.get("cash_balance_bdt", 0.0)) + equity + mf, 2)
+    finally:
+        if own_conn and conn is not None:
+            conn.close()
+
+
+def reconcile_ledger(p: dict) -> dict:
+    """total_capital_bdt must equal money invested: share cost basis + mutual fund cost (cash excluded)."""
+    cash = round(float(p.get("cash_balance_bdt", 0.0)), 2)
+    eq = round(sum(float(h.get("cost_basis", 0.0)) for h in p.get("holdings", [])), 2)
+    mf = round(sum(float(m.get("total_cost_bdt", 0.0)) for m in p.get("mutual_funds", [])), 2)
+    expected = round(eq + mf, 2)
+    recorded = round(float(p.get("total_capital_bdt", 0.0)), 2)
+    return {"cash": cash, "equity_cost": eq, "fund_cost": mf, "expected": expected,
+            "recorded": recorded, "diff": round(recorded - expected, 2), "ok": abs(recorded - expected) <= 0.01}
+
+
 def check_portfolio_drawdown_kill(p: dict, current_net_worth: float) -> tuple[bool, float, float]:
     """Calculates drawdown from high-water mark; returns (is_killed, dd_pct, hwm)."""
     hwm = float(p.get("high_water_mark_bdt", p.get("total_capital_bdt", current_net_worth)))
@@ -327,8 +376,7 @@ def record_buy(ticker: str, shares: int, price: float, horizon: str = "long_term
     p = load_portfolio()
     
     # Portfolio-Level Drawdown Kill Rule (-10% from high-water mark halts new buying)
-    mf_val = sum(float(m.get("market_value_bdt") or m.get("total_cost_bdt", 0.0)) for m in p.get("mutual_funds", []))
-    current_nw = p.get("cash_balance_bdt", 0.0) + sum(h.get("cost_basis", 0.0) for h in p.get("holdings", [])) + mf_val
+    current_nw = compute_mark_to_market_net_worth(p)
     is_killed, dd_pct, hwm = check_portfolio_drawdown_kill(p, current_nw)
     if is_killed:
         print(f"⛔ PORTFOLIO DRAWDOWN KILL RULE BREACHED: Drawdown -{dd_pct:.1f}% exceeds 10% limit from HWM ৳{hwm:,.2f}. All new BUY orders are FROZEN.")
@@ -341,7 +389,7 @@ def record_buy(ticker: str, shares: int, price: float, horizon: str = "long_term
     round_trip_be = calculate_round_trip_break_even(price, shares=shares, min_fee=min_ticket_fee)
     effective_entry = round(net_cost / shares, 2) if shares > 0 else price
 
-    min_cash_buffer = p.get("total_capital_bdt", 0) * 0.10
+    min_cash_buffer = (invested_capital(p) + float(p.get("cash_balance_bdt", 0.0))) * 0.10
     remaining_cash = p["cash_balance_bdt"] - net_cost
     if net_cost > p["cash_balance_bdt"]:
         print(f"⚠️ CRITICAL DEFICIT: Buy cost ৳{net_cost:,.2f} exceeds available cash ৳{p['cash_balance_bdt']:,.2f}.")
@@ -375,7 +423,7 @@ def record_buy(ticker: str, shares: int, price: float, horizon: str = "long_term
         existing_holding["cost_basis"] = total_cost
         existing_holding["effective_entry"] = eff_entry
         existing_holding["break_even_price"] = merged_be
-        existing_holding["bought_at"] = datetime.date.today().isoformat()
+        existing_holding.setdefault("bought_at", datetime.date.today().isoformat())
     else:
         p["holdings"].append({
             "ticker":          ticker.upper(),
@@ -399,6 +447,7 @@ def record_buy(ticker: str, shares: int, price: float, horizon: str = "long_term
         "total_cost": net_cost,
         "date":       datetime.date.today().isoformat()
     })
+    p["total_capital_bdt"] = invested_capital(p)
     save_portfolio(p)
     print(f"Recorded BUY: {shares} shares of {ticker.upper()} @ ৳{price:.1f} + ৳{comm:.2f} comm (Total: ৳{net_cost:,.2f}). Remaining Cash: ৳{p['cash_balance_bdt']:,.2f}")
     return True
@@ -459,7 +508,7 @@ def record_sell(
     else:
         holding["shares"] = current_shares - shares
         holding["gross_cost"] = round(holding.get("entry_price", 0.0) * holding["shares"], 2)
-        holding["cost_basis"] = round(cost_basis_per_share * holding["shares"], 2)
+        holding["cost_basis"] = round(float(holding.get("cost_basis", 0.0)) - sold_cost_basis, 2)
         holding["commission_bdt"] = round(holding.get("commission_bdt", 0.0) * (holding["shares"] / current_shares), 2)
 
     trade_date = date or datetime.date.today().isoformat()
@@ -478,6 +527,7 @@ def record_sell(
         "date": trade_date
     }
     p["history"].append(history_entry)
+    p["total_capital_bdt"] = invested_capital(p)
     save_portfolio(p, user_id=user_id)
 
     print(f"Recorded SELL: {shares} shares of {sym} @ ৳{price:.1f} - ৳{comm:.2f} fee (Net Proceeds: ৳{net_proceeds:,.2f} | Realized P&L: ৳{realized_pnl_bdt:+,.2f} / {realized_pnl_pct:+.2f}%). Cash Balance: ৳{p['cash_balance_bdt']:,.2f}")
@@ -494,7 +544,8 @@ def show_status():
     holdings = p.get("holdings", [])
     
     conn = sqlite3.connect(DB_PATH, timeout=30.0) if DB_PATH.exists() else None
-    conn.execute("PRAGMA busy_timeout = 30000;")
+    if conn:
+        conn.execute("PRAGMA busy_timeout = 30000;")
 
     # Check and credit any due cash dividends from corporate actions
     if conn:
@@ -507,6 +558,11 @@ def show_status():
                 holdings = p.get("holdings", [])
         except Exception:
             pass
+        update_portfolio_hwm(compute_mark_to_market_net_worth(p, conn), user_id=p.get("user_id", "default_user"))
+    recon = reconcile_ledger(p)
+    if not recon["ok"]:
+        print(f"⚠️ LEDGER OUT OF BALANCE: equity cost ৳{recon['equity_cost']:,.2f} + fund cost ৳{recon['fund_cost']:,.2f} "
+              f"= ৳{recon['expected']:,.2f} ≠ recorded invested capital ৳{recon['recorded']:,.2f} (diff ৳{recon['diff']:+,.2f}).")
 
     stock_invested = sum(h.get("cost_basis", 0) for h in holdings)
     total_comm = sum(h.get("commission_bdt", 0) for h in holdings)

@@ -2,18 +2,18 @@
   "ticker": "IFIC1STMF",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-17T09:01:32.982976",
-  "asof_price_date": "2026-11-17",
+  "analyzed_at": "2026-11-19T08:54:41.284200",
+  "asof_price_date": "2026-11-19",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 48.67,
+    "rsi_14": 48.3565,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 42.81,
+  "confidence": 42.72,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 416443,
+      "avg_daily_volume": 377211,
       "daily_turnover_bdt_cr": 0.04,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 20822,
-      "max_daily_accumulation_shares": 62466,
-      "max_order_bdt": 20822.0,
-      "directive": "Max single order: 20,822 shares (Tk 20,822) to prevent >1% execution slippage"
+      "max_single_order_shares": 18860,
+      "max_daily_accumulation_shares": 56581,
+      "max_order_bdt": 18860.0,
+      "directive": "Max single order: 18,860 shares (Tk 18,860) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -103,16 +103,16 @@
   },
   "pattern_dna": {
     "ticker": "IFIC1STMF",
-    "audited_at": "2026-11-17 15:01:32",
+    "audited_at": "2026-11-19 14:54:41",
     "worth_vs_greed": {
       "current_price": 3.4,
       "intrinsic_worth": 1.7,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 40.0,
       "greed_index": 40.0,
-      "rsi_14": 40.0,
-      "price_vs_ema50_pct": 3.8,
-      "price_vs_ema200_pct": 5.5,
+      "rsi_14": 30.0,
+      "price_vs_ema50_pct": 3.3,
+      "price_vs_ema200_pct": 5.3,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -134,7 +134,7 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 0.0,
+          "return_pct": -2.86,
           "high": 3.6,
           "low": 3.4,
           "range_volatility_pct": 5.88
@@ -146,13 +146,13 @@
           "range_volatility_pct": 11.76
         },
         "quarterly_63d": {
-          "return_pct": 25.93,
+          "return_pct": 30.77,
           "high": 3.9,
           "low": 2.3,
           "range_volatility_pct": 69.57
         },
         "half_yearly_126d": {
-          "return_pct": 0.0,
+          "return_pct": -5.56,
           "high": 3.9,
           "low": 2.3,
           "range_volatility_pct": 69.57
@@ -275,10 +275,10 @@
       "sma_trend": "bullish",
       "bb": "inside_bands",
       "atr": 0.15,
-      "rsi_value": 48.72,
+      "rsi_value": 48.61,
       "last_close": 3.4,
-      "sma20": 3.55,
-      "sma50": 3.14,
+      "sma20": 3.52,
+      "sma50": 3.18,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -343,25 +343,23 @@
     }
   },
   "manipulation": {
-    "manipulation_score": 10,
+    "manipulation_score": 0,
     "manipulation_risk": "low",
     "block_buy": false,
-    "flags": [
-      "price_surge_no_news: price_-5.6pct_zero_news"
-    ],
+    "flags": [],
     "checks": {
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 87178,
-        "avg_volume": 508116.0,
+        "last_volume": 262124,
+        "avg_volume": 486395.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.17,
-        "avg_volume": 515403.0,
-        "today_volume": 87178,
+        "spike_ratio": 0.53,
+        "avg_volume": 497595.0,
+        "today_volume": 262124,
         "detail": "ok"
       },
       "serial_trading": {
@@ -379,21 +377,21 @@
         "detail": "insufficient_fundamental_history"
       },
       "price_surge_no_news": {
-        "flag": true,
-        "price_change_3d": -5.56,
+        "flag": false,
+        "price_change_3d": -2.86,
         "news_count_3d": 0,
-        "detail": "price_-5.6pct_zero_news"
+        "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 42.81,
+    "composite_score": 42.72,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.662,
+      "fundamental": 0.66,
       "technical": 0.205,
-      "governance": 0.134,
+      "governance": 0.135,
       "sentiment": 0.0
     }
   }

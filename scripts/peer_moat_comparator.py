@@ -87,7 +87,8 @@ def get_peer_metrics(ticker: str) -> dict | None:
 
     # Earnings Yield & Macro Hurdle Spread
     earnings_yield = round((eps / px * 100.0), 2) if px and px > 0 else 0.0
-    macro_erp = round(earnings_yield - MACRO_91D_TBILL_RATE, 2)
+    from macro_rate_feed import get_latest_macro_rates
+    macro_erp = round(earnings_yield - get_latest_macro_rates()["risk_free_rate_pct"], 2)
 
     # DuPont 3-Way Decomposition:
     # ROE = Net Profit Margin * Asset Turnover * Equity Multiplier

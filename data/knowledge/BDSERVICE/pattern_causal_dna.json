@@ -1,6 +1,6 @@
 {
   "ticker": "BDSERVICE",
-  "audited_at": "2026-11-17 15:01:21",
+  "audited_at": "2026-11-19 14:54:31",
   "worth_vs_greed": {
     "current_price": 5.2,
     "intrinsic_worth": 2.6,
@@ -28,7 +28,38 @@
     "blacklist_reason": null
   },
   "multi_interval_wave": {
-    "status": "INSUFFICIENT_HISTORY"
+    "intervals": {
+      "weekly_5d": {
+        "return_pct": 0.0,
+        "high": 5.2,
+        "low": 5.2,
+        "range_volatility_pct": 0.0
+      },
+      "monthly_21d": {
+        "return_pct": 0.0,
+        "high": 5.2,
+        "low": 5.2,
+        "range_volatility_pct": 0.0
+      },
+      "quarterly_63d": null,
+      "half_yearly_126d": null,
+      "yearly_252d": null
+    },
+    "wave_metrics": {
+      "median_rally_gain_pct": 12.5,
+      "median_correction_drop_pct": -9.0,
+      "avg_wave_duration_bars": 35.0
+    },
+    "current_wave_phase": "INDETERMINATE",
+    "phase_guidance": "Consolidating in long-term channel.",
+    "top_seasonal_months": [
+      {
+        "month": "Nov",
+        "avg_return": 0.0,
+        "win_rate": 0.0
+      }
+    ],
+    "weak_seasonal_months": []
   },
   "causal_attributions": []
 }

@@ -1,20 +1,32 @@
 {
   "version": "1.0",
-  "description": "Generic halal guard policy — single invariant ranking halal-blind, view-only filter at S6 advisory. Tiers strict/flexible/off.",
+  "description": "Halal guard (optional, user-selected tier): excludes haram businesses and businesses tied directly to interest. Ranking stays halal-blind; the guard filters after ranking.",
   "tiers": {
     "strict": {
-      "L1_sectors_excluded": ["Banking", "Insurance", "Financial Institutions", "Mutual Funds", "Tobacco"],
+      "L1_sectors_excluded": [
+        "Banking",
+        "Insurance",
+        "Financial Institutions",
+        "Mutual Funds",
+        "Tobacco"
+      ],
       "L2_debt_equity_max": 0.5,
       "L2_long_term_debt_equity_max": 0.2,
-      "L5_dses_required": true,
-      "note": "Strict: L1 universal_haram + tobacco, L2 D/E<=0.5 LT<=0.2, L5 DSES membership required"
+      "L5_dses_required": false,
+      "note": "Strict: haram/interest-based sectors + tobacco excluded, interest-bearing D/E<=0.5, long-term D/E<=0.2"
     },
     "flexible": {
-      "L1_sectors_excluded": ["Banking", "Insurance", "Financial Institutions", "Mutual Funds", "Tobacco"],
+      "L1_sectors_excluded": [
+        "Banking",
+        "Insurance",
+        "Financial Institutions",
+        "Mutual Funds",
+        "Tobacco"
+      ],
       "L2_debt_equity_max": 0.8,
       "L2_long_term_debt_equity_max": 1.0,
       "L5_dses_required": false,
-      "note": "Flexible: L1 universal + tobacco, L2 D/E<=0.8, L5 advisory only"
+      "note": "Flexible: haram/interest-based sectors + tobacco excluded, interest-bearing D/E<=0.8"
     },
     "off": {
       "L1_sectors_excluded": [],
@@ -25,12 +37,21 @@
     }
   },
   "L1": {
-    "universal_haram": ["Banking", "Insurance", "Financial Institutions", "Mutual Funds"],
-    "halal_sensitive": ["Tobacco"],
+    "universal_haram": [
+      "Banking",
+      "Insurance",
+      "Financial Institutions",
+      "Mutual Funds"
+    ],
+    "halal_sensitive": [
+      "Tobacco"
+    ],
     "sector_map": {
       "BATBC": "Tobacco"
     },
-    "tobacco_tickers": ["BATBC"],
+    "tobacco_tickers": [
+      "BATBC"
+    ],
     "note": "sector_map overrides Food_Beverage for BATBC to Tobacco; universal_haram + halal_sensitive merged per tier"
   },
   "L2": {
@@ -40,15 +61,20 @@
       "flexible": 0.8,
       "off": 1.0
     },
-    "fields": ["debt_equity", "debt_equity_val", "long_term_debt_equity", "long_term_debt_equity_val"]
+    "fields": [
+      "debt_equity",
+      "debt_equity_val",
+      "long_term_debt_equity",
+      "long_term_debt_equity_val"
+    ]
   },
   "L5": {
     "dses": {
-      "strict_requires_membership": true,
+      "strict_requires_membership": false,
       "flexible_requires_membership": false,
       "off_requires_membership": false,
       "source": "market_summary.dses or dses_row membership flag",
-      "note": "DSES Shariah index membership checked as-of; data_gaps if unavailable"
+      "note": "Not used: the guard is defined by business activity and interest exposure, not by index membership"
     }
   },
   "candidate_universe": {

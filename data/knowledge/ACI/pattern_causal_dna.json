@@ -1,60 +1,61 @@
 {
   "ticker": "ACI",
-  "audited_at": "2026-11-17 15:01:17",
+  "audited_at": "2026-11-19 14:54:28",
   "worth_vs_greed": {
-    "current_price": 171.43,
-    "intrinsic_worth": 85.72,
+    "current_price": 180.4,
+    "intrinsic_worth": 90.2,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 10.0,
-    "greed_index": 10.0,
-    "rsi_14": 39.2,
-    "price_vs_ema50_pct": -4.4,
-    "price_vs_ema200_pct": -9.0,
+    "extension_froth_score": 20.0,
+    "greed_index": 20.0,
+    "rsi_14": 53.5,
+    "price_vs_ema50_pct": 0.7,
+    "price_vs_ema200_pct": -4.1,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f3168.0 \u2013 \u09f3173.1",
-      "chase_cutoff_price": 175.7,
-      "when_to_wait": "If price opens or rises above \u09f3175.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3168.0.",
-      "weekly_target_short": 177.4,
-      "monthly_target_swing": 197.1,
-      "long_term_target_asset": 222.9,
+      "optimal_entry_corridor": "\u09f3176.8 \u2013 \u09f3182.2",
+      "chase_cutoff_price": 184.9,
+      "when_to_wait": "If price opens or rises above \u09f3184.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3176.8.",
+      "weekly_target_short": 186.7,
+      "monthly_target_swing": 207.5,
+      "long_term_target_asset": 234.5,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
     "reason": "Fundamental value severely lags stock price (MoS: -50.0%).",
-    "is_blacklisted": false,
-    "blacklist_reason": null
+    "is_blacklisted": true,
+    "blacklist_reason": "Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-11-19 \u2014 Price up +5.18% with poor fundamentals (Negative EPS)]",
+    "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [HIGH: SPECULATIVE_JUNK_PUMP on 2026-11-19 \u2014 Price up +5.18% with poor fundamentals (Negative EPS)]"
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 0.11,
-        "high": 175.24,
+        "return_pct": 5.23,
+        "high": 180.4,
         "low": 168.57,
-        "range_volatility_pct": 3.96
+        "range_volatility_pct": 7.02
       },
       "monthly_21d": {
-        "return_pct": -4.76,
+        "return_pct": 0.22,
         "high": 180.8,
         "low": 167.0,
         "range_volatility_pct": 8.26
       },
       "quarterly_63d": {
-        "return_pct": -12.54,
-        "high": 198.9,
+        "return_pct": -8.01,
+        "high": 197.9,
         "low": 167.0,
-        "range_volatility_pct": 19.1
+        "range_volatility_pct": 18.5
       },
       "half_yearly_126d": {
-        "return_pct": -12.09,
+        "return_pct": -5.25,
         "high": 211.4,
         "low": 167.0,
         "range_volatility_pct": 26.59
       },
       "yearly_252d": {
-        "return_pct": 0.43,
+        "return_pct": -1.96,
         "high": 231.0,
         "low": 167.0,
         "range_volatility_pct": 38.32
@@ -62,11 +63,11 @@
     },
     "wave_metrics": {
       "median_rally_gain_pct": 17.5,
-      "median_correction_drop_pct": -19.0,
+      "median_correction_drop_pct": -18.8,
       "avg_wave_duration_bars": 22.0
     },
-    "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-11.4%). Wait for stabilizing base.",
+    "current_wave_phase": "MARKUP_RALLY_MID",
+    "phase_guidance": "Midway through rally wave (+8.0% from base, historical target ~+17.5%).",
     "top_seasonal_months": [
       {
         "month": "Aug",

@@ -418,26 +418,21 @@ def compute_fundamental_score(fund_list: list[dict], thresholds: dict) -> dict:
 
     # Sector & Bank NPL Audit
     ticker = f.get("ticker", "")
-    reg_path = CONFIG_DIR / "company_registry_12factor.json"
-    is_bank = False
-    bank_npl = None
-    if reg_path.exists():
-        try:
-            with open(reg_path, encoding="utf-8") as rf:
-                reg_data = json.load(rf)
-                c_info = reg_data.get(ticker, {})
-                bank_npl = c_info.get("bank_npl_pct")
-                is_bank = (bank_npl is not None)
-        except Exception:
-            pass
+    from bank_asset_quality import lookup as bank_lookup
+    is_bank, aq = bank_lookup(ticker)
+    bank_npl = aq["npl_pct"] if aq else None
 
     safe_de = t.get("safe_debt_equity", 0.5)
     max_de  = t.get("max_debt_equity", 1.0)
 
     if is_bank:
-        # Commercial banks operate on deposits; evaluate on Non-Performing Loans (NPL)
+        # Commercial banks operate on deposits; evaluate on sourced Non-Performing Loans (NPL), never on D/E
         signals["bank_npl_pct"] = bank_npl
-        if bank_npl is not None and bank_npl <= 4.0:
+        if bank_npl is None:
+            score_parts.append(50)
+            signals["debt_equity"] = "bank_npl_unverified (no sourced NPL on record)"
+            signals["loan_trap_risk"] = "unknown"
+        elif bank_npl <= 4.0:
             score_parts.append(95)
             signals["debt_equity"] = f"bank_pristine_npl ({bank_npl}%)"
             signals["loan_trap_risk"] = "none"

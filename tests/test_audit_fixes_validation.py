@@ -106,12 +106,31 @@ class TestAuditFixesValidation(unittest.TestCase):
         self.assertEqual(be, 100.88)
 
     def test_mutual_fund_tracker_nav_sync(self):
-        from mutual_fund_tracker import sync_portfolio_mutual_fund_nav, get_latest_nav_from_db
-        res = sync_portfolio_mutual_fund_nav(latest_redemption_px=10.631, asof_date="2026-11-01")
-        self.assertEqual(res["status"], "success")
-        db_nav = get_latest_nav_from_db("Shanta Amana Shariah Fund")
-        self.assertIsNotNone(db_nav)
-        self.assertEqual(db_nav["nav_redemption"], 10.631)
+        import tempfile
+        from pathlib import Path
+        import mutual_fund_tracker as mft
+        from _isolation import temp_db_copy
+        with temp_db_copy() as db_copy, tempfile.TemporaryDirectory() as tmp:
+            ledger = Path(tmp) / "portfolio.json"
+            ledger.write_text(json.dumps({"cash_balance_bdt": 0.0, "holdings": [], "mutual_funds": [
+                {"fund_name": "Shanta Amana Shariah Fund", "units": 100, "total_cost_bdt": 1000.0},
+                {"fund_name": "Other Fund", "units": 50, "total_cost_bdt": 500.0, "market_value_bdt": 510.0}]}))
+            orig_db, orig_fetch = mft.DB_PATH, mft.fetch_shanta_nav_online
+            mft.DB_PATH = db_copy
+            mft.fetch_shanta_nav_online = lambda *a, **k: None
+            try:
+                res = mft.sync_portfolio_mutual_fund_nav(latest_redemption_px=10.5, asof_date="2026-11-19",
+                                                         target_files=[ledger])
+                self.assertEqual(res["status"], "success")
+                nav = mft.get_latest_nav_from_db("Shanta Amana Shariah Fund")
+                self.assertEqual(nav["nav_redemption"], 10.5)
+                funds = json.loads(ledger.read_text())["mutual_funds"]
+                self.assertEqual(funds[0]["market_value_bdt"], 1050.0)
+                self.assertEqual(funds[1]["market_value_bdt"], 510.0, "another fund must never take this NAV")
+                gone = mft.sync_portfolio_mutual_fund_nav(fund_name="Unknown Fund", target_files=[ledger])
+                self.assertEqual(gone["status"], "no_nav")
+            finally:
+                mft.DB_PATH, mft.fetch_shanta_nav_online = orig_db, orig_fetch
 
     def test_layer7_pit_live_scrape_not_lagged(self):
         """Verify Layer 7 fix: live scrape fundamentals are not lagged 75 days into future."""
@@ -237,7 +256,9 @@ class TestAuditFixesValidation(unittest.TestCase):
         first = prices[0]
         self.assertIn("ticker", first)
         self.assertIn("close", first)
-        self.assertIn("category", first)
+        self.assertTrue("category" not in first or first["category"] in ("A", "B", "N", "Z", "G"))
+        import inspect, scraper
+        self.assertNotIn('r["category"] = "A"', inspect.getsource(scraper.scrape_all_prices))
 
     def test_layer7_dse_psi_corporate_action_parsing(self):
         """Verify Layer 7 fix: official DSE PSI multi-part disclosure regex parser and database synchronization."""
@@ -256,8 +277,10 @@ class TestAuditFixesValidation(unittest.TestCase):
                 "date": "02 Nov 2026"
             }
         ]
-        db_path = os.path.join(ROOT, "data", "processed", "dse.db")
-        con = sqlite3.connect(db_path)
+        from _isolation import temp_db_copy
+        _db_ctx = temp_db_copy()
+        con = sqlite3.connect(_db_ctx.__enter__())
+        self.addCleanup(_db_ctx.__exit__, None, None, None)
         res = parse_and_record_dse_psi(news_items=mock_psi_news, conn=con)
         self.assertTrue(res.get("ok"))
         self.assertGreaterEqual(res.get("total_parsed"), 2)
@@ -285,13 +308,11 @@ class TestAuditFixesValidation(unittest.TestCase):
     # --- LAYER 8 ADVERSARIAL AUDIT FIXES VALIDATION ---
 
     def test_layer8_macro_tbill_hurdle_rate(self):
-        """Verify 91-day T-Bill benchmark is 11.60% (avoiding inverted spread against 10% repo rate)."""
+        """The hurdle follows the observed Bangladesh Bank 91-day rate (+3.5% ERP), never a fixed floor."""
         from macro_rate_feed import get_latest_macro_rates
         rates = get_latest_macro_rates()
-        self.assertGreaterEqual(rates["risk_free_rate_pct"], 11.60)
-        self.assertGreaterEqual(rates["t_bill_91d_pct"], 11.60)
-        # Policy repo is 10.00%, T-Bill (11.60%) must exceed repo rate (normal upward-sloping spread)
-        self.assertGreater(rates["t_bill_91d_pct"], rates["policy_repo_rate_pct"])
+        self.assertFalse(rates["risk_free_source"].startswith("policy default"))
+        self.assertAlmostEqual(rates["equity_hurdle_rate_pct"], rates["risk_free_rate_pct"] + 3.5, places=2)
 
     def test_layer8_corporate_actions_cleaned(self):
         """Verify synthetic dilution rows from circuit breach scripts are purged from corporate_actions."""
@@ -305,8 +326,12 @@ class TestAuditFixesValidation(unittest.TestCase):
 
     def test_layer8_rl_engine_outcome_matching(self):
         """Verify RL engine handles outcome matching without corrupting data or faking accuracy."""
+        import os as _os, sys as _sys
+        _sys.path.insert(0, _os.path.dirname(__file__))
+        from _isolation import isolated_learning_files
         from reinforcement_learning_engine import evaluate_pending_predictions
-        res = evaluate_pending_predictions()
+        with isolated_learning_files():
+            res = evaluate_pending_predictions()
         self.assertIn("lifetime_accuracy_pct", res)
         if res["lifetime_accuracy_pct"] is not None:
             self.assertGreaterEqual(res["lifetime_accuracy_pct"], 0.0)
@@ -315,40 +340,30 @@ class TestAuditFixesValidation(unittest.TestCase):
     def test_layer8_sentinel_take_profit_directives(self):
         """Verify portfolio sentinel issues TAKE_PROFIT_ALL and TAKE_PROFIT_HALF directives."""
         from portfolio_sentinel import audit_portfolio_sentinel
-        # Mock portfolio with profit holdings
-        p_path = os.path.join(ROOT, "data", "portfolio", "portfolio.json")
-        with open(p_path, encoding="utf-8") as f:
-            orig_p = json.load(f)
-        try:
-            mock_p = dict(orig_p)
-            mock_p["holdings"] = [
-                {
-                    "ticker": "GP",
-                    "shares": 100,
-                    "entry_price": 100.0,
-                    "target_price": 150.0,
-                    "stop_loss": 90.0,
-                    "horizon": "mid_term"
-                }
-            ]
-            with open(p_path, "w", encoding="utf-8") as f:
-                json.dump(mock_p, f, indent=2)
-
-            # GP live price ~ 235 BDT > target 150 BDT and P&L > +30%
-            audit = audit_portfolio_sentinel()
-            holding_actions = [h["action"] for h in audit["holdings"]]
-            self.assertIn("TAKE_PROFIT_ALL", holding_actions)
-        finally:
-            with open(p_path, "w", encoding="utf-8") as f:
-                json.dump(orig_p, f, indent=2)
+        ledger = os.path.join(ROOT, "data", "users", "default_user", "portfolio.json")
+        before = open(ledger, encoding="utf-8").read() if os.path.exists(ledger) else None
+        mock_p = {
+            "cash_balance_bdt": 0.0,
+            "mutual_funds": [],
+            "holdings": [{
+                "ticker": "GP", "shares": 100, "entry_price": 100.0,
+                "target_price": 150.0, "stop_loss": 90.0, "horizon": "mid_term",
+            }],
+        }
+        # GP live price is far above the 150 target, so P&L > +30%
+        audit = audit_portfolio_sentinel(portfolio=mock_p)
+        holding_actions = [h["action"] for h in audit["holdings"]]
+        self.assertIn("TAKE_PROFIT_ALL", holding_actions)
+        after = open(ledger, encoding="utf-8").read() if os.path.exists(ledger) else None
+        self.assertEqual(before, after, "sentinel what-if run must not write the real ledger")
 
     def test_layer8_screener_pit_tradable_date(self):
         """Verify five_factor_fundamental_screener uses PIT date filter and asof_date blacklist check."""
         with open(os.path.join(ROOT, "scripts", "five_factor_fundamental_screener.py"), "r", encoding="utf-8") as f:
             code = f.read()
-        self.assertIn("tradable_date <= ?", code)
-        self.assertIn("publication_date <= ?", code)
-        self.assertNotIn("tradable_date <= ? OR publication_date <= ?", code)
+        self.assertIn("tradable_date <= :asof", code)
+        self.assertIn("publication_date <= :asof", code)
+        self.assertNotIn("tradable_date <= :asof OR publication_date <= :asof", code)
         self.assertIn("is_ticker_blacklisted(ticker, asof_date=latest_date)", code)
 
     def test_layer8_recommender_sector_concentration_cap(self):
@@ -391,26 +406,60 @@ class TestAuditFixesValidation(unittest.TestCase):
         self.assertGreaterEqual(res["total_dividends_bdt"], 0.0)
         self.assertTrue(res["adaptive_hold"])
 
-    def test_layer9_processor_compounding_corporate_actions(self):
-        """Verify processor compounds multiple sequential dilution factors backwards."""
-        with open(os.path.join(ROOT, "scripts", "processor.py"), "r", encoding="utf-8") as f:
-            code = f.read()
-        self.assertIn("compound_factor = 1.0", code)
-        self.assertIn("compound_factor *= factor", code)
-        idx = code.find("SELECT adjustment_factor, ratio, action_type FROM corporate_actions")
-        self.assertNotIn("LIMIT 1", code[idx:idx + 250])
+    def test_layer9_processor_stores_raw_bars(self):
+        """insert_prices must store raw traded prices; adjustment happens at read time."""
+        import sqlite3
+        from processor import insert_prices
+        conn = sqlite3.connect(":memory:")
+        conn.execute("""CREATE TABLE prices (ticker TEXT, date TEXT, open REAL, high REAL, low REAL,
+                        close REAL, volume INTEGER, value REAL, UNIQUE(ticker, date))""")
+        conn.execute("""CREATE TABLE corporate_actions (ticker TEXT, record_date TEXT, action_type TEXT,
+                        ratio REAL, adjustment_factor REAL)""")
+        conn.execute("INSERT INTO corporate_actions VALUES ('TST', '2026-12-01', 'bonus_dividend', 0.10, 0.909091)")
+        insert_prices(conn, "TST", [
+            {"date": "2026-11-01", "open": 100.0, "high": 101.0, "low": 99.0, "close": 100.5,
+             "ycp": 99.8, "trade": 12, "value": 1.5, "volume": 15000},
+            {"date": "2026-11-02", "open": 0, "high": 0, "low": 0, "close": 100.5,
+             "ycp": 100.5, "trade": 0, "value": 0, "volume": 0},
+        ], fallback_date="2026-11-01")
+        rows = conn.execute("SELECT date, close, volume, value FROM prices ORDER BY date").fetchall()
+        conn.close()
+        self.assertEqual(rows[0], ("2026-11-01", 100.5, 15000, 1.5))
+        self.assertEqual(rows[1], ("2026-11-02", 100.5, 0, 0.0))
 
     def test_layer9_temporal_price_discontinuity_detection(self):
-        """Verify smart_capital_planner flags unannounced gaps > 25 calendar days (e.g. MARICO 256d gap)."""
+        """Verify smart_capital_planner flags unannounced gaps > 25 calendar days in a price series."""
         import sqlite3
+        import datetime as dt
         from smart_capital_planner import compute_dynamic_stock_metrics
-        conn = sqlite3.connect(os.path.join(ROOT, "data", "processed", "dse.db"), timeout=30.0)
-        m_marico = compute_dynamic_stock_metrics("MARICO", conn)
-        m_gp = compute_dynamic_stock_metrics("GP", conn)
+        conn = sqlite3.connect(":memory:")
+        conn.executescript("""
+            CREATE TABLE prices (ticker TEXT, date TEXT, open REAL, high REAL, low REAL, close REAL, volume INTEGER, value REAL);
+            CREATE TABLE companies (ticker TEXT, sector TEXT, category TEXT);
+            CREATE TABLE fundamentals_pit (ticker TEXT, snapshot_date TEXT, publication_date TEXT, tradable_date TEXT,
+                eps REAL, nav REAL, pe_ratio REAL, dividend_yield REAL, debt_equity REAL, cash_flow_ops REAL);
+            CREATE TABLE fundamentals (ticker TEXT, year INTEGER, quarter INTEGER, eps REAL, nav REAL, pe_ratio REAL,
+                dividend_yield REAL, debt_equity REAL, cash_flow_ops REAL, raw_data TEXT);
+            CREATE TABLE corporate_actions (ticker TEXT, record_date TEXT, action_type TEXT, ratio REAL,
+                cash_amount REAL, adjustment_factor REAL, notes TEXT);
+        """)
+        d = dt.date(2026, 6, 1)
+        while d <= dt.date(2026, 11, 19):
+            if d.weekday() not in (4, 5):
+                ds = d.isoformat()
+                conn.execute("INSERT INTO prices VALUES ('CONT', ?, 100, 101, 99, 100, 10000, 1.0)", (ds,))
+                if not ("2026-09-01" <= ds <= "2026-10-10"):
+                    conn.execute("INSERT INTO prices VALUES ('GAPPY', ?, 100, 101, 99, 100, 10000, 1.0)", (ds,))
+            d += dt.timedelta(days=1)
+        for t in ("CONT", "GAPPY"):
+            conn.execute("INSERT INTO companies VALUES (?, 'Pharmaceuticals', 'A')", (t,))
+            conn.execute("INSERT INTO fundamentals_pit VALUES (?, '2025-06-30', '2025-10-28', '2025-10-29', 10, 80, 10, 5, 0.1, 9)", (t,))
+        m_gap = compute_dynamic_stock_metrics("GAPPY", conn)
+        m_ok = compute_dynamic_stock_metrics("CONT", conn)
         conn.close()
-        self.assertTrue(m_marico.get("has_data_gap"))
-        self.assertGreater(m_marico.get("max_gap_days", 0), 25)
-        self.assertFalse(m_gp.get("has_data_gap"))
+        self.assertTrue(m_gap.get("has_data_gap"))
+        self.assertGreater(m_gap.get("max_gap_days", 0), 25)
+        self.assertFalse(m_ok.get("has_data_gap"))
 
     def test_layer9_sqlite_concurrency_busy_timeout(self):
         """Verify database helper connections set busy_timeout = 30000."""

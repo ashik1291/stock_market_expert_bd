@@ -38,13 +38,19 @@ DB_PATH = ROOT_DIR / "data" / "processed" / "dse.db"
 REPORTS_DIR = ROOT_DIR / "reports" / "portfolio"
 
 
-def audit_portfolio_sentinel(asof_date: str | None = None) -> dict:
-    """Performs deep institutional audit on user's portfolio and holdings."""
-    if not PORTFOLIO_PATH.exists():
-        return {"error": "portfolio.json not found"}
-        
-    with open(PORTFOLIO_PATH, "r", encoding="utf-8") as f:
-        port = json.load(f)
+def audit_portfolio_sentinel(asof_date: str | None = None, portfolio: dict | None = None) -> dict:
+    """
+    Performs deep institutional audit on user's portfolio and holdings. With `portfolio` given the
+    audit runs on that dict only and never writes the real ledger (used by tests and what-if runs).
+    """
+    is_live_ledger = portfolio is None
+    if is_live_ledger:
+        from portfolio_manager import load_portfolio
+        port = load_portfolio()
+        if not port.get("holdings") and not port.get("mutual_funds") and not PORTFOLIO_PATH.exists():
+            return {"error": "portfolio.json not found"}
+    else:
+        port = portfolio
 
     conn = sqlite3.connect(DB_PATH, timeout=30.0)
     conn.execute('PRAGMA busy_timeout = 30000;')
@@ -229,11 +235,12 @@ def audit_portfolio_sentinel(asof_date: str | None = None) -> dict:
     cash_deficit = max(0.0, round(target_10pct_cash - cash_bal, 2))
 
     # Dynamically track High-Water Mark for portfolio drawdown defense
-    try:
-        from portfolio_manager import update_portfolio_hwm
-        update_portfolio_hwm(total_net_worth)
-    except Exception:
-        pass
+    if is_live_ledger:
+        try:
+            from portfolio_manager import update_portfolio_hwm
+            update_portfolio_hwm(total_net_worth)
+        except Exception:
+            pass
 
     # Nano-Diversification & Ticket Drag Audit
     nano_holdings = [h for h in holdings_audit if h["current_value"] < 500.0 or h["shares"] <= 2]

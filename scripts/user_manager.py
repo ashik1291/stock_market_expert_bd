@@ -245,6 +245,10 @@ def save_user_portfolio(user_id: str, portfolio: dict) -> None:
     portfolio_path = user_dir / "portfolio.json"
     portfolio["user_id"] = user_id
     portfolio["updated_at"] = datetime.datetime.utcnow().isoformat()
+    # Invested capital is always derived: share cost basis + mutual fund cost (cash excluded).
+    portfolio["total_capital_bdt"] = round(
+        sum(float(h.get("cost_basis", 0.0)) for h in portfolio.get("holdings", []))
+        + sum(float(m.get("total_cost_bdt", 0.0)) for m in portfolio.get("mutual_funds", [])), 2)
 
     with open(portfolio_path, "w", encoding="utf-8") as f:
         json.dump(portfolio, f, indent=2, ensure_ascii=False)

@@ -8,7 +8,7 @@
 
 ## 1. System Identity & Core Purpose
 
-`stock_market_expert_bd` is an institutional-grade quantitative alpha generation, automated forensic risk surveillance, and algorithmic capital allocation engine built specifically for the frontier Dhaka Stock Exchange (DSE).
+`stock_market_expert_bd` is a non-commercial, research-grade quantitative screening, forensic risk surveillance, and personal portfolio decision-support system for academic and research use, built specifically for the frontier Dhaka Stock Exchange (DSE).
 
 ### 🏛️ The Subtractive Edge Mandate
 In emerging equity markets, alpha is primarily subtractive. The system's primary directive is to eliminate the 90% toxic companies on the exchange:
@@ -28,10 +28,10 @@ Any agent, developer, or pull request modifying this codebase MUST respect these
 | Invariant ID | Name | Mandatory Rule & Verification Standard |
 | :--- | :--- | :--- |
 | **INV-1** | **Strict Point-in-Time (PIT) Isolation** | Financial statement data must NEVER be accessible prior to `tradable_date <= asof` AND `publication_date <= asof`. Future price perturbation must NEVER alter historical features or scores. |
-| **INV-2** | **Central Bank Macro Hurdle Rate** | Minimum Equity Hurdle = 91-Day T-Bill Yield (**11.60%**) + 3.50% Equity Risk Premium (ERP) = **15.10%**. Uncompetitive stocks yielding below T-Bills are penalized. |
-| **INV-3** | **100% Shariah / Halal & Zero-Bank Shield** | Banking stocks and conventional financial institutions are strictly blocked. Debt/Equity must be $\le 0.80$ (or $\le 0.50$ for strict tier). Zero exposure to debt default traps. |
+| **INV-2** | **Central Bank Macro Hurdle Rate** | Minimum Equity Hurdle = observed Bangladesh Bank 91-day rate (freshest of T-bill cut-off yield and 91-day BCR, point-in-time) + 3.50% ERP — 12.00% on 2026-11-20 (BCR 8.50%). Uncompetitive stocks yielding below T-Bills are penalized. |
+| **INV-3** | **Halal Guard (optional, Islamic perspective)** | When the user selects the `strict` or `flexible` halal tier, haram and interest-based businesses (conventional banks, insurance, financial institutions, conventional mutual funds, tobacco) are excluded and interest-bearing Debt/Equity must be $\le 0.80$ ($\le 0.50$ strict). Tier `off` disables the filter. No index-membership requirement. |
 | **INV-4** | **Frontier Microstructure Realism** | Lower circuit locks (-10% or -3%) have zero bid volume; exit execution MUST be deferred to liquid sessions. Next-session open fills, dynamic slippage (10–150 bps), and statutory fees (0.415% buy, 0.465% sell including Section 53BBB 0.05% AIT) must be enforced. |
-| **INV-5** | **Frozen Champion Registry & Multi-Testing Deflation** | The serving model parameter hash is strictly locked to `acf502bc65914c48` (`frozen_epoch2_pit_v2`). Challengers must beat champion under Holm-Bonferroni family-wise error deflation and Newey-West $t > 2.0$. |
+| **INV-5** | **Frozen Champion Registry & Multi-Testing Deflation** | The serving model is `frozen_epoch2_pit_v2` (label hash `acf502bc65914c48`) **and** its frozen content hash over the served parameters plus `unified_score.py` and `feature_store.py`; any drift fails INV-5 and requires `model_registry.py freeze --reason`. Challengers need ≥ 200 live daily selection-IC periods and must pass Holm step-down (one-sided Newey-West p-values); promotion requires explicit human `--approve`. |
 | **INV-6** | **Cryptographic Forward Test Ledger V2** | Real out-of-sample performance is tracked via SHA-256 block-chained forward test ledger (`forward_test_ledger_v2.json`). No hindsight alterations permitted. |
 | **INV-7** | **Universal SQLite WAL & Concurrency Hardening** | Every SQLite database connection must pass `timeout=30.0` and execute `PRAGMA busy_timeout = 30000;` to prevent database locks in concurrent execution. |
 | **INV-8** | **Zero-Broken Portable Bootstrap** | Any user on Windows, Linux, or macOS must be able to clone the repository (~35 MB) and bootstrap to a 100% operational state via `ready.bat` or `python scripts/bootstrap.py` in under 5 seconds. |
@@ -44,7 +44,7 @@ Any agent, developer, or pull request modifying this codebase MUST respect these
 flowchart TD
     A["Raw Scraper Failover<br/>(DSE PSI, bdshare, Prices)"] --> B["PIT Database Ingestion<br/>(dse.db: 1.09M bars, 5,570 days)"]
     B --> C["Forensic Surveillance<br/>(VAR >= 3x, BSEC probes)"]
-    B --> D["Macro Hurdle Feed<br/>(11.60% T-Bill, 10% Repo)"]
+    B --> D["Macro Hurdle Feed<br/>(BB 91-day rate + 3.5% ERP)"]
     C & D --> E["5-Factor Screener & Unified Scorer<br/>(Graham Fair Value, MoS, Dividend)"]
     E --> F["Tri-Horizon Allocator<br/>(60% Moats, 30% Swings, 10% Cash)"]
     E --> G["Portfolio Sentinel<br/>(Break-even, Take-Profit, Trailing Stops)"]
@@ -53,7 +53,7 @@ flowchart TD
 ```
 
 ### 3.1 Scraping & Failover Subsystem ([`scripts/scraper.py`](file:///c:/Users/BS01671/Documents/stock_market/scripts/scraper.py))
-- Multi-source fallback: `bdshare` $\rightarrow$ Next.js JSON API $\rightarrow$ Legacy HTML scraper $\rightarrow$ Local PIT snapshot.
+- Multi-source fallback: `bdshare` $\rightarrow$ Next.js JSON API $\rightarrow$ Legacy HTML scraper. If every live source fails, no snapshot is produced (a cached snapshot is never saved under a new date); snapshots that replay the previous session are rejected.
 - Price count gatekeeper: Requires $\ge 300$ active quotes to accept live session.
 
 ### 3.2 Point-in-Time Database Engine ([`scripts/processor.py`](file:///c:/Users/BS01671/Documents/stock_market/scripts/processor.py))

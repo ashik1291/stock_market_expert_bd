@@ -1,24 +1,24 @@
 {
   "ticker": "SAPORTL",
-  "audited_at": "2026-11-17 15:01:46",
+  "audited_at": "2026-11-19 14:54:53",
   "worth_vs_greed": {
-    "current_price": 62.1,
-    "intrinsic_worth": 31.05,
+    "current_price": 61.1,
+    "intrinsic_worth": 30.55,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 30.0,
-    "greed_index": 30.0,
-    "rsi_14": 54.9,
-    "price_vs_ema50_pct": 14.1,
-    "price_vs_ema200_pct": 49.8,
+    "extension_froth_score": 40.0,
+    "greed_index": 40.0,
+    "rsi_14": 60.2,
+    "price_vs_ema50_pct": 11.7,
+    "price_vs_ema200_pct": 46.7,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f360.9 \u2013 \u09f362.7",
-      "chase_cutoff_price": 63.7,
-      "when_to_wait": "If price opens or rises above \u09f363.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f360.9.",
-      "weekly_target_short": 64.3,
-      "monthly_target_swing": 71.4,
-      "long_term_target_asset": 80.7,
+      "optimal_entry_corridor": "\u09f359.9 \u2013 \u09f361.7",
+      "chase_cutoff_price": 62.6,
+      "when_to_wait": "If price opens or rises above \u09f362.6, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f359.9.",
+      "weekly_target_short": 63.2,
+      "monthly_target_swing": 70.3,
+      "long_term_target_asset": 79.4,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -30,31 +30,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 2.31,
+        "return_pct": 0.49,
         "high": 63.0,
         "low": 60.1,
         "range_volatility_pct": 4.83
       },
       "monthly_21d": {
-        "return_pct": 7.81,
+        "return_pct": 5.16,
         "high": 63.0,
         "low": 57.0,
         "range_volatility_pct": 10.53
       },
       "quarterly_63d": {
-        "return_pct": 46.81,
+        "return_pct": 59.95,
         "high": 63.0,
-        "low": 38.1,
-        "range_volatility_pct": 65.35
+        "low": 38.3,
+        "range_volatility_pct": 64.49
       },
       "half_yearly_126d": {
-        "return_pct": 99.04,
+        "return_pct": 96.46,
         "high": 63.0,
         "low": 30.2,
         "range_volatility_pct": 108.61
       },
       "yearly_252d": {
-        "return_pct": 174.78,
+        "return_pct": 175.23,
         "high": 63.0,
         "low": 20.2,
         "range_volatility_pct": 211.88
@@ -66,7 +66,7 @@
       "avg_wave_duration_bars": 22.0
     },
     "current_wave_phase": "LATE_MARKUP",
-    "phase_guidance": "Approaching historical rally limit (+63.0% vs median +21.6%). Tighten stop.",
+    "phase_guidance": "Approaching historical rally limit (+60.4% vs median +21.6%). Tighten stop.",
     "top_seasonal_months": [
       {
         "month": "Sep",

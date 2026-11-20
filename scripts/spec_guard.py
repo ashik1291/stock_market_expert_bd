@@ -86,27 +86,29 @@ def check_inv2_macro_hurdle() -> Tuple[bool, str]:
     except Exception as e:
         return False, f"Failed to load macro rates: {e}"
     
-    t_bill = rates.get("t_bill_91d_pct", 0.0)
-    hurdle = rates.get("equity_hurdle_rate_pct", 0.0)
-    
-    if t_bill < 11.60:
-        return False, f"91-day T-Bill rate {t_bill:.2f}% below institutional floor (11.60%)"
-    if hurdle < 15.10:
-        return False, f"Equity hurdle rate {hurdle:.2f}% below institutional baseline (15.10%)"
+    rf = rates.get("risk_free_rate_pct")
+    hurdle = rates.get("equity_hurdle_rate_pct")
+    source = rates.get("risk_free_source", "")
+    if rf is None or hurdle is None:
+        return False, "macro rates missing risk_free_rate_pct / equity_hurdle_rate_pct"
+    if source.startswith("policy default"):
+        return False, "risk-free rate is a policy default, not an observed Bangladesh Bank rate"
+    if abs(hurdle - (rf + 3.50)) > 0.011:
+        return False, f"Equity hurdle {hurdle:.2f}% != observed risk-free {rf:.2f}% + 3.50% ERP"
 
-    # Enforce programmatic hurdle check: earnings yield < 15.10% must FAIL, >= 15.10% must PASS
+    # Programmatic enforcement around the live hurdle: just below must FAIL, just above must PASS
     try:
         from scripts.macro_rate_feed import macro_hurdle_ok
-        fail_check, _ = macro_hurdle_ok(14.0, risk_free_rate=11.60)
-        pass_check, _ = macro_hurdle_ok(15.2, risk_free_rate=11.60)
+        fail_check, _ = macro_hurdle_ok(rf + 3.40, risk_free_rate=rf)
+        pass_check, _ = macro_hurdle_ok(rf + 3.60, risk_free_rate=rf)
         if fail_check:
-            return False, "macro_hurdle_ok allowed 14.0% yield when minimum hurdle is 15.10%"
+            return False, f"macro_hurdle_ok allowed {rf + 3.40:.2f}% yield below the {hurdle:.2f}% hurdle"
         if not pass_check:
-            return False, "macro_hurdle_ok rejected 15.2% yield when minimum hurdle is 15.10%"
+            return False, f"macro_hurdle_ok rejected {rf + 3.60:.2f}% yield above the {hurdle:.2f}% hurdle"
     except Exception as e:
         return False, f"macro_hurdle_ok programmatic check failed: {e}"
-    
-    return True, f"Macro hurdle anchored: 91d T-Bill={t_bill:.2f}%, Minimum Equity Hurdle={hurdle:.2f}% (Enforced)"
+
+    return True, f"Macro hurdle follows Bangladesh Bank: risk-free {rf:.2f}% ({source}) + 3.50% ERP = {hurdle:.2f}%"
 
 
 def check_inv3_shariah_zero_bank() -> Tuple[bool, str]:
@@ -160,8 +162,20 @@ def check_inv5_champion_registry() -> Tuple[bool, str]:
         return False, f"Champion model ID is '{model_id}', expected 'frozen_epoch2_pit_v2'"
     if param_hash != "acf502bc65914c48":
         return False, f"Champion hash is '{param_hash}', expected 'acf502bc65914c48'"
-    
-    return True, f"Champion verified: id='{model_id}', parameter_hash='{param_hash}'"
+
+    frozen_content = champion.get("frozen_content_hash")
+    if not frozen_content:
+        return False, "Champion has no frozen_content_hash; run 'python scripts/model_registry.py freeze --reason <text>'"
+    try:
+        from unified_score import compute_model_content_hash
+        current_content = compute_model_content_hash()
+    except Exception as e:
+        return False, f"Failed to compute scoring content hash: {e}"
+    if current_content != frozen_content:
+        return False, (f"Scoring code/params changed since freeze (frozen {frozen_content}, now {current_content}); "
+                       "this is a new model: re-freeze with a reason and start a new epoch")
+
+    return True, f"Champion verified: id='{model_id}', parameter_hash='{param_hash}', content_hash='{current_content}'"
 
 
 def check_inv6_cryptographic_ledger() -> Tuple[bool, str]:

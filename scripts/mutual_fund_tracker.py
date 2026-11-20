@@ -1,7 +1,7 @@
 """
 scripts/mutual_fund_tracker.py
 ------------------------------
-Tracks, stores, and updates Net Asset Value (NAV) and Redemption Prices for 
+Tracks, stores, and updates Net Asset Value (NAV) and Redemption Prices for
 Open-End Mutual Funds (e.g. Shanta Amanah Shariah Fund).
 
 Features:
@@ -49,10 +49,14 @@ def init_db(conn: sqlite3.Connection):
     conn.commit()
 
 
-def fetch_shanta_nav_online() -> Optional[Dict[str, float]]:
+MAX_NAV_MOVE_PCT = 10.0
+
+
+def fetch_shanta_nav_online(fund_name: str = "Shanta Amanah Shariah Fund") -> Optional[Dict[str, float]]:
     """
-    Attempts to scrape latest NAV from Shanta Asset Management website.
-    Returns dict with keys: 'nav_sale', 'nav_redemption', 'asof_date'.
+    Reads the NAV the AMC homepage shows for `fund_name` ("NAV <value> <fund name>" in the rendered
+    text). The page carries no NAV date, so the fetch date is used and the source says so.
+    Returns None when the exact pattern is absent: no number near the name is ever guessed.
     """
     url = "https://www.shanta-aml.com/"
     try:
@@ -60,20 +64,23 @@ def fetch_shanta_nav_online() -> Optional[Dict[str, float]]:
         req = urllib.request.Request(url, headers=headers)
         with urllib.request.urlopen(req, timeout=10) as resp:  # nosec B310
             html = resp.read().decode("utf-8", errors="replace")
-            
-            # Look for Shanta Amanah Shariah Fund section
-            # Typical text: Shanta Amanah Shariah Fund ... NAV ... Redemption
-            match = re.search(r"Shanta\s+Amanah\s+Shariah\s+Fund.*?([\d]{1,2}\.[\d]{2,4})", html, re.DOTALL | re.IGNORECASE)
-            if match:
-                price = float(match.group(1))
-                return {
-                    "nav_sale": price,
-                    "nav_redemption": price,
-                    "asof_date": datetime.date.today().isoformat()
-                }
     except Exception:
-        pass
-    return None
+        return None
+    text = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", html))
+    name = r"\s+".join(re.escape(w) for w in fund_name.split())
+    match = re.search(r"NAV\s+(\d{1,3}\.\d{2,4})\s+" + name + r"\b", text, re.IGNORECASE)
+    if not match:
+        return None
+    price = float(match.group(1))
+    return {"nav_sale": price, "nav_redemption": price, "asof_date": datetime.date.today().isoformat()}
+
+
+def nav_is_plausible(fund_name: str, nav: float) -> bool:
+    """An open-end fund NAV cannot move more than MAX_NAV_MOVE_PCT between updates; a bigger jump is a parse error."""
+    last = get_latest_nav_from_db(fund_name)
+    if not last or not last.get("nav_redemption"):
+        return True
+    return abs(nav / float(last["nav_redemption"]) - 1.0) * 100.0 <= MAX_NAV_MOVE_PCT
 
 
 def record_nav_to_db(
@@ -89,9 +96,9 @@ def record_nav_to_db(
     init_db(conn)
     if nav_sale is None:
         nav_sale = nav_redemption
-        
+
     conn.execute("""
-        INSERT INTO open_end_mutual_funds 
+        INSERT INTO open_end_mutual_funds
         (fund_name, asof_date, nav_sale, nav_redemption, repurchase_price, asset_manager, source, updated_at)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?)
         ON CONFLICT(fund_name, asof_date) DO UPDATE SET
@@ -126,7 +133,7 @@ def get_latest_nav_from_db(fund_name: str) -> Optional[Dict[str, Any]]:
         ORDER BY asof_date DESC LIMIT 1
     """, (fund_name,)).fetchone()
     conn.close()
-    
+
     if row:
         return {
             "fund_name": row[0],
@@ -144,46 +151,46 @@ def get_latest_nav_from_db(fund_name: str) -> Optional[Dict[str, Any]]:
 def sync_portfolio_mutual_fund_nav(
     fund_name: str = "Shanta Amana Shariah Fund",
     latest_redemption_px: Optional[float] = None,
-    asof_date: Optional[str] = None
+    asof_date: Optional[str] = None,
+    target_files: Optional[list] = None,
 ) -> Dict[str, Any]:
     """
-    Updates the user's portfolio.json with the latest mark-to-market redemption price.
-    Syncs both data/portfolio/portfolio.json and all data/users/*/portfolio.json.
+    Updates portfolio ledgers with the latest mark-to-market redemption price of `fund_name`.
+    Price sources, in order: explicit argument (recorded as manual_entry), online AMC fetch,
+    latest stored NAV. With none available nothing is written: a guessed NAV is never used.
     """
-    target_files = []
-    if (PORTFOLIO_DIR / "portfolio.json").exists():
-        target_files.append(PORTFOLIO_DIR / "portfolio.json")
-        
-    users_dir = BASE_DIR / "data" / "users"
-    if users_dir.exists():
-        for u_port in users_dir.glob("*/portfolio.json"):
-            target_files.append(u_port)
+    if target_files is None:
+        target_files = []
+        if (PORTFOLIO_DIR / "portfolio.json").exists():
+            target_files.append(PORTFOLIO_DIR / "portfolio.json")
+        users_dir = BASE_DIR / "data" / "users"
+        if users_dir.exists():
+            for u_port in users_dir.glob("*/portfolio.json"):
+                target_files.append(u_port)
 
     if not target_files:
         return {"status": "error", "message": "no portfolio.json files found"}
 
-    # Determine date and price
-    if asof_date is None:
-        asof_date = datetime.date.today().isoformat()
-
-    if latest_redemption_px is None:
-        # Try database cache first
-        db_nav = get_latest_nav_from_db(fund_name)
-        if db_nav and db_nav["nav_redemption"]:
+    if latest_redemption_px is not None:
+        if not asof_date:
+            return {"status": "error", "message": "an explicit NAV needs its asof_date"}
+        record_nav_to_db(fund_name, asof_date, float(latest_redemption_px), source="manual_entry")
+    else:
+        online_nav = fetch_shanta_nav_online(fund_name.replace("Amana ", "Amanah "))
+        if online_nav and not nav_is_plausible(fund_name, online_nav["nav_redemption"]):
+            print(f"[MF] Rejected implausible online NAV {online_nav['nav_redemption']} for {fund_name}")
+            online_nav = None
+        if online_nav:
+            latest_redemption_px = online_nav["nav_redemption"]
+            asof_date = online_nav["asof_date"]
+            record_nav_to_db(fund_name, asof_date, latest_redemption_px, source="shanta_aml_website (NAV shown on fetch date)")
+        else:
+            db_nav = get_latest_nav_from_db(fund_name)
+            if not (db_nav and db_nav["nav_redemption"]):
+                return {"status": "no_nav", "fund_name": fund_name,
+                        "message": "no NAV online or stored; ledgers left unchanged"}
             latest_redemption_px = db_nav["nav_redemption"]
             asof_date = db_nav["asof_date"]
-        else:
-            # Try online fetch
-            online_nav = fetch_shanta_nav_online()
-            if online_nav:
-                latest_redemption_px = online_nav["nav_redemption"]
-                asof_date = online_nav["asof_date"]
-            else:
-                # Fallback to verified official Nov 1, 2026 SAML disclosure
-                latest_redemption_px = 10.631
-
-    # Record to DB for audit history
-    record_nav_to_db(fund_name, asof_date, latest_redemption_px, source="shanta_aml_official")
 
     last_summary = {}
     for portfolio_file in target_files:
@@ -214,20 +221,8 @@ def sync_portfolio_mutual_fund_nav(
                 total_mf_market_val += float(mf.get("market_value_bdt", 0.0))
                 total_mf_cost += float(mf.get("total_cost_bdt", 0.0))
 
-            if not updated and mf_list:
-                units = float(mf_list[0].get("units", 0))
-                cost = float(mf_list[0].get("total_cost_bdt", 0))
-                mkt_val = round(units * latest_redemption_px, 2)
-                pnl_bdt = round(mkt_val - cost, 2)
-                pnl_pct = round((pnl_bdt / cost) * 100.0, 2) if cost > 0 else 0.0
-
-                mf_list[0]["redemption_price_bdt"] = latest_redemption_px
-                mf_list[0]["market_value_bdt"] = mkt_val
-                mf_list[0]["unrealized_pnl_bdt"] = pnl_bdt
-                mf_list[0]["unrealized_pnl_pct"] = pnl_pct
-                mf_list[0]["asof_date"] = asof_date
-                total_mf_market_val = mkt_val
-                total_mf_cost = cost
+            if not updated:
+                continue  # this ledger does not hold the fund; never price another fund with its NAV
 
             # Update summary in portfolio
             summary = port.get("summary", {})
@@ -270,7 +265,12 @@ def sync_portfolio_mutual_fund_nav(
 
 
 if __name__ == "__main__":
-    redemption_px = float(sys.argv[1]) if len(sys.argv) > 1 else 10.631
-    asof = sys.argv[2] if len(sys.argv) > 2 else "2026-11-01"
-    res = sync_portfolio_mutual_fund_nav(latest_redemption_px=redemption_px, asof_date=asof)
+    # Manual entry: python scripts/mutual_fund_tracker.py <redemption_nav> <YYYY-MM-DD>
+    # No arguments: online fetch, else the latest stored NAV; nothing is written when neither exists.
+    if len(sys.argv) > 1:
+        if len(sys.argv) < 3:
+            sys.exit("usage: mutual_fund_tracker.py [<redemption_nav> <asof YYYY-MM-DD>]")
+        res = sync_portfolio_mutual_fund_nav(latest_redemption_px=float(sys.argv[1]), asof_date=sys.argv[2])
+    else:
+        res = sync_portfolio_mutual_fund_nav()
     print(json.dumps(res, indent=2))

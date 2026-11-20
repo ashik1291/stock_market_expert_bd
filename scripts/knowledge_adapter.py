@@ -251,8 +251,10 @@ def save_signal_to_db_and_disk(ticker: str, timeframe: str, payload: Dict[str, A
     date_str = payload.get("asof_price_date") or payload.get("date")
     if not date_str:
         conn = get_db_connection()
-        date_str = conn.execute("SELECT MAX(date) FROM prices").fetchone()[0] or "2026-11-11"
+        date_str = conn.execute("SELECT MAX(date) FROM prices").fetchone()[0]
         conn.close()
+    if not date_str:
+        return False
 
     # 1. Write to SQLite
     try:
@@ -324,7 +326,16 @@ def save_dna_to_db_and_disk(ticker: str, payload: Dict[str, Any]) -> bool:
     """
     ticker = ticker.strip().upper()
     audited_at = payload.get("audited_at")
-    date_str = audited_at.split()[0] if audited_at and " " in audited_at else "2026-11-11"
+    audit_day = audited_at.split()[0] if audited_at and " " in audited_at else None
+    # Rows are keyed by the price session the analysis used, never a holiday or wall-clock date.
+    _c = get_db_connection()
+    try:
+        row = _c.execute("SELECT MAX(date) FROM prices WHERE date <= ?", (audit_day or "9999-12-31",)).fetchone()
+    finally:
+        _c.close()
+    date_str = row[0] if row and row[0] else None
+    if not date_str:
+        return False
 
     try:
         conn = get_db_connection()

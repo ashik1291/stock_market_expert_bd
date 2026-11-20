@@ -1,24 +1,24 @@
 {
   "ticker": "MITHUNKNIT",
-  "audited_at": "2026-11-17 15:01:37",
+  "audited_at": "2026-11-19 14:54:45",
   "worth_vs_greed": {
-    "current_price": 13.2,
-    "intrinsic_worth": 6.6,
+    "current_price": 12.6,
+    "intrinsic_worth": 6.3,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 40.0,
-    "greed_index": 40.0,
-    "rsi_14": 63.2,
-    "price_vs_ema50_pct": 0.1,
-    "price_vs_ema200_pct": -9.2,
+    "extension_froth_score": 50.0,
+    "greed_index": 50.0,
+    "rsi_14": 50.0,
+    "price_vs_ema50_pct": -4.2,
+    "price_vs_ema200_pct": -13.1,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f312.9 \u2013 \u09f313.3",
-      "chase_cutoff_price": 13.5,
-      "when_to_wait": "If price opens or rises above \u09f313.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f312.9.",
-      "weekly_target_short": 13.7,
-      "monthly_target_swing": 15.2,
-      "long_term_target_asset": 17.2,
+      "optimal_entry_corridor": "\u09f312.3 \u2013 \u09f312.7",
+      "chase_cutoff_price": 12.9,
+      "when_to_wait": "If price opens or rises above \u09f312.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f312.3.",
+      "weekly_target_short": 13.0,
+      "monthly_target_swing": 14.5,
+      "long_term_target_asset": 16.4,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -31,43 +31,43 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 3.12,
-        "high": 13.3,
-        "low": 12.3,
-        "range_volatility_pct": 8.13
+        "return_pct": -2.33,
+        "high": 13.4,
+        "low": 12.6,
+        "range_volatility_pct": 6.35
       },
       "monthly_21d": {
-        "return_pct": 4.76,
+        "return_pct": -1.56,
         "high": 13.5,
         "low": 12.0,
         "range_volatility_pct": 12.5
       },
       "quarterly_63d": {
-        "return_pct": -7.69,
+        "return_pct": -7.35,
         "high": 16.9,
         "low": 12.0,
         "range_volatility_pct": 40.83
       },
       "half_yearly_126d": {
-        "return_pct": -31.25,
-        "high": 19.7,
+        "return_pct": -32.98,
+        "high": 19.0,
         "low": 11.0,
-        "range_volatility_pct": 79.09
+        "range_volatility_pct": 72.73
       },
       "yearly_252d": {
-        "return_pct": -12.0,
+        "return_pct": -15.44,
         "high": 21.9,
         "low": 11.0,
         "range_volatility_pct": 99.09
       }
     },
     "wave_metrics": {
-      "median_rally_gain_pct": 24.1,
+      "median_rally_gain_pct": 23.8,
       "median_correction_drop_pct": -20.6,
       "avg_wave_duration_bars": 17.0
     },
-    "current_wave_phase": "MARKUP_RALLY_MID",
-    "phase_guidance": "Midway through rally wave (+10.0% from base, historical target ~+24.1%).",
+    "current_wave_phase": "MARKDOWN_PULLBACK",
+    "phase_guidance": "Ongoing pullback from peak (-6.7%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Aug",

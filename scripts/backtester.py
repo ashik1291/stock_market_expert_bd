@@ -23,6 +23,7 @@ import pandas as pd
 import numpy as np
 from macro_rate_feed import get_macro_rates_for_date
 from unified_score import is_shariah_excluded_company
+from instrument_master import member_on
 
 BASE_DIR   = Path(__file__).resolve().parent.parent
 SCRIPTS_DIR = Path(__file__).resolve().parent
@@ -35,6 +36,14 @@ DB_PATH    = PROC_DIR / "dse.db"
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 log = logging.getLogger("dse_backtester")
+
+
+def pit_universe(conn, top_n: int, exclude=None):
+    """Point-in-time monthly liquidity universe over the whole price history: (schedule, union of members)."""
+    from instrument_master import liquidity_schedule
+    start, end = conn.execute("SELECT MIN(date), MAX(date) FROM prices").fetchone()
+    schedule = liquidity_schedule(conn, start, end, top_n=top_n, exclude=exclude)
+    return schedule, sorted({t for _, m in schedule for t in m})
 
 
 def get_db():
@@ -233,9 +242,9 @@ def run_full_backtest(tickers: list[str] = None) -> dict:
     Runs 1,000-block Monte Carlo permutation test for statistical significance.
     """
     conn = get_db()
+    schedule = None
     if tickers is None:
-        rows = conn.execute("SELECT ticker FROM companies WHERE category='A' ORDER BY market_cap_cr DESC LIMIT 25").fetchall()
-        tickers = [r[0] for r in rows] if rows else ["SQURPHARMA", "GP", "BATBC", "PUBALIBANK", "BRACBANK"]
+        schedule, tickers = pit_universe(conn, 25)
 
     scalp_results = []
     swing_results = []
@@ -247,6 +256,9 @@ def run_full_backtest(tickers: list[str] = None) -> dict:
 
         t_scalp = simulate_trades(df, t, strategy="scalp", rsi_buy=35.0)
         t_swing = simulate_trades(df, t, strategy="swing", rsi_buy=32.0)
+        if schedule is not None:
+            t_scalp = [x for x in t_scalp if t in member_on(schedule, str(x["entry_date"])[:10])]
+            t_swing = [x for x in t_swing if t in member_on(schedule, str(x["entry_date"])[:10])]
 
         scalp_results.extend(t_scalp)
         swing_results.extend(t_swing)
@@ -468,10 +480,11 @@ def simulate_portfolio_backtest(
     - Enforces exact statutory trading friction (0.415% buy, 0.465% sell incl Sec 53BBB AIT).
     - Generates continuous mark-to-market daily equity curve and drawdown metrics.
     """
+    schedule = None
     if tickers is None:
         conn = get_db()
-        rows = conn.execute("SELECT ticker FROM companies WHERE category='A' ORDER BY market_cap_cr DESC LIMIT 20").fetchall()
-        tickers = [r[0] for r in rows] if rows else ["SQURPHARMA", "GP", "BATBC", "PUBALIBANK", "BRACBANK"]
+        schedule, tickers = pit_universe(conn, 20)
+        conn.close()
 
     # 1. Load price data & precompute indicator signals
     price_dfs = {}
@@ -652,8 +665,9 @@ def simulate_portfolio_backtest(
         available_slots = max_positions - len(active_positions)
         if available_slots > 0 and cash_balance >= 2000.0:
             signals_today = []
+            members = member_on(schedule, d_str) if schedule is not None else None
             for t in tickers:
-                if t in active_positions:
+                if t in active_positions or (members is not None and t not in members):
                     continue
                 bar = date_ticker_bar.get((t, d_str))
                 if bar is None:
@@ -732,9 +746,9 @@ def simulate_portfolio_backtest(
     drawdowns = (pd.Series([e["equity"] for e in equity_curve]) - peaks) / peaks
     max_drawdown_pct = round(abs(float(drawdowns.min())) * 100.0, 2) if not drawdowns.empty else 0.0
 
-    # Sharpe ratio (Using 11.60% Bangladesh 91-day T-Bill rate)
+    # Sharpe ratio against the Bangladesh Bank 91-day rate in force at the start of the curve
     daily_returns = pd.Series([e["equity"] for e in equity_curve]).pct_change().dropna()
-    rf_daily = (0.1160 / 250.0)
+    rf_daily = get_macro_rates_for_date(equity_curve[0]["date"])["risk_free_rate_pct"] / 100.0 / 250.0 if equity_curve else 0.0
     excess_returns = daily_returns - rf_daily
     sharpe = float((excess_returns.mean() / excess_returns.std()) * np.sqrt(250)) if excess_returns.std() > 0 else 0.0
 
@@ -806,21 +820,13 @@ def simulate_institutional_backtest(
         except Exception:
             halal_tier = "flexible"
 
+    schedule = None
     if tickers is None:
-        rows = conn.execute("""
-            SELECT ticker, sector FROM companies 
-            WHERE category='A' AND ticker NOT LIKE '%BOND%'
-            ORDER BY market_cap_cr DESC
-        """).fetchall()
-        candidates = []
-        for r in rows:
-            t, sec = r[0], r[1]
-            if halal_tier in ("strict", "flexible"):
-                if not is_shariah_excluded_company(sec, ticker=t):
-                    candidates.append(t)
-            else:
-                candidates.append(t)
-        tickers = candidates[:20]
+        sector_of = dict(conn.execute("SELECT ticker, sector FROM instruments"))
+        sector_of.update(dict(conn.execute("SELECT ticker, sector FROM companies")))
+        excl = ((lambda t: is_shariah_excluded_company(sector_of.get(t), ticker=t))
+                if halal_tier in ("strict", "flexible") else None)
+        schedule, tickers = pit_universe(conn, 20, exclude=excl)
 
     price_dfs = {}
     for t in tickers:
@@ -953,8 +959,9 @@ def simulate_institutional_backtest(
         open_slots = max_positions - len(active_positions)
         if open_slots > 0 and cash >= 5000.0:
             cands_today = []
+            members = member_on(schedule, d_str) if schedule is not None else None
             for t in tickers:
-                if t in active_positions:
+                if t in active_positions or (members is not None and t not in members):
                     continue
                 bar = bars.get((t, d_str))
                 if bar is None:

@@ -119,105 +119,74 @@ def init_macro_schema(conn: sqlite3.Connection) -> None:
     conn.commit()
 
 
-def scrape_live_bangladesh_bank_rates() -> dict:
-    """
-    Automated scraper for Bangladesh Bank live auction results & policy rates.
-    Handles network timeouts and WAF/firewall blocks with graceful degradation.
-    """
-    import urllib.request
-    results = {}
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-        "Accept-Language": "en-US,en;q=0.9",
-    }
+BB_BASE = "https://www.bb.org.bd/en/index.php/monetaryactivity/"
+BB_SERIES = {
+    "bcr_91d": ("bcr_rate", "91 Days BCR: Bangladesh Bank's compounded reference rate from the 91-day T-bill cut-off yield"),
+    "dommr_overnight": ("money_market_ref_rate", "Dhaka Overnight Money Market Rate (DOMMR), overnight tenor"),
+}
 
-    # Bangladesh Bank endpoints
-    bb_urls = [
-        ("policy_rates", "https://www.bb.org.bd/en/index.php/monetaryactivity/policyrates"),
-        ("treasury_auction", "https://www.bb.org.bd/en/index.php/monetaryactivity/auc_result"),
-        ("call_money", "https://www.bb.org.bd/en/index.php/monetaryactivity/callmoney")
-    ]
 
-    for key, url in bb_urls:
+def scrape_live_bangladesh_bank_rates() -> list[tuple[str, str, float, str]]:
+    """(indicator, observation_date, value_pct, source_url) rows exactly as Bangladesh Bank publishes them."""
+    import requests
+    import urllib3
+    urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+    headers = {"User-Agent": "Mozilla/5.0 (academic research client)"}
+    out = []
+    for indicator, (page, _) in BB_SERIES.items():
+        url = BB_BASE + page
         try:
-            req = urllib.request.Request(url, headers=headers)
-            with urllib.request.urlopen(req, timeout=5) as resp:  # nosec B310
-                if resp.status == 200:
-                    html = resp.read().decode("utf-8", errors="ignore")
-                    # Parse repo rate if on policy rates page
-                    if key == "policy_rates":
-                        m_repo = re.search(r"Repo\s*(?:Rate)?\s*[:\-\s]+([\d\.]+)\s*%", html, re.IGNORECASE)
-                        if m_repo:
-                            results["policy_repo_rate"] = float(m_repo.group(1))
-                    elif key == "treasury_auction":
-                        m_91d = re.search(r"91\s*[-–]?\s*Day[^\d]+([\d\.]+)\s*%", html, re.IGNORECASE)
-                        if m_91d:
-                            results["t_bill_91d"] = float(m_91d.group(1))
-        except Exception as e:
-            # Network block / 403 / Cloudflare: log silently for fallback
+            html = requests.get(url, headers=headers, timeout=60, verify=False).text
+        except Exception:
             continue
-
-    return results
+        if indicator == "bcr_91d":
+            rows = re.findall(r'<div class="column">\s*\d+\s*</div>\s*<div class="column">\s*([^<]+?)\s*</div>\s*'
+                              r'<div class="column">\s*([\d.]+)%', html)
+        else:
+            rows, section, day = [], None, None
+            for tr in re.findall(r"<tr[^>]*>(.*?)</tr>", html, re.S):
+                cells = [re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", c)).strip()
+                         for c in re.findall(r"<t[dh][^>]*>(.*?)</t[dh]>", tr, re.S)]
+                if any("DOMMR" in c for c in cells):
+                    section = "DOMMR"
+                elif any(re.fullmatch(r"[A-Z]{3,6} \(%\)", c) for c in cells):
+                    section = None
+                elif len(cells) == 1 and re.fullmatch(r"\d{1,2} [A-Za-z]+, \d{4}", cells[0]):
+                    day = cells[0]
+                elif section == "DOMMR" and day and cells and cells[0] == "Overnight" and len(cells) >= 3:
+                    rows.append((day, cells[2]))
+        for d, v in rows:
+            try:
+                iso = datetime.datetime.strptime(d.strip(), "%d %B, %Y").date().isoformat()
+            except ValueError:
+                continue
+            out.append((indicator, iso, float(v), url))
+    return out
 
 
 def sync_macro_indicators(
     asof_date: Optional[str] = None,
     live_scrape: bool = True
 ) -> dict:
-    """
-    Ingests and synchronizes the latest central bank macro series.
-    Tries live automated scraper first; falls back smoothly to verified benchmarks.
-    """
+    """Store Bangladesh Bank's published rates at their own publication dates. Nothing else is written."""
     conn = sqlite3.connect(DB_PATH, timeout=30.0)
     conn.execute("PRAGMA busy_timeout = 30000;")
     init_macro_schema(conn)
-
-    if not asof_date:
-        row = conn.execute("SELECT MAX(date) FROM prices").fetchone()
-        asof_date = row[0] if (row and row[0]) else datetime.date.today().isoformat()
-
     now_utc = datetime.datetime.utcnow().isoformat()
-    scraped_rates = {}
-    if live_scrape:
-        try:
-            scraped_rates = scrape_live_bangladesh_bank_rates()
-            if scraped_rates:
-                print(f"[MACRO SCRAPER] Live extracted from Bangladesh Bank: {scraped_rates}")
-            else:
-                print("[MACRO SCRAPER] Notice: Live BB endpoint protected by WAF/Firewall (HTTP 403). Using verified Central Bank primary auction benchmarks.")
-        except Exception as ex:
-            print(f"[MACRO SCRAPER] Live scrape notice: {ex}. Using verified benchmarks.")
-
-    inserted = 0
-    for item in CURRENT_MACRO_BENCHMARKS:
-        indicator = item["indicator"]
-        val = scraped_rates.get(indicator, float(item["value"]))
-        src = "Bangladesh Bank Live Scraper" if indicator in scraped_rates else item["source"]
-        
+    rows = scrape_live_bangladesh_bank_rates() if live_scrape else []
+    if not rows:
+        print("[MACRO SCRAPER] Bangladesh Bank pages returned no rates; nothing written.")
+    for indicator, d, val, url in rows:
         conn.execute("""
             INSERT INTO macro_indicators (date, indicator, value, unit, source, notes, created_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?)
-            ON CONFLICT(date, indicator) DO UPDATE SET
-                value = excluded.value,
-                unit = excluded.unit,
-                source = excluded.source,
-                notes = excluded.notes,
-                created_at = excluded.created_at
-        """, (
-            asof_date,
-            indicator,
-            val,
-            item["unit"],
-            src,
-            item["notes"],
-            now_utc
-        ))
-        inserted += 1
-
+            VALUES (?, ?, ?, 'percent', ?, ?, ?)
+            ON CONFLICT(date, indicator) DO UPDATE SET value = excluded.value, source = excluded.source,
+                notes = excluded.notes
+        """, (d, indicator, val, f"Bangladesh Bank {url}", BB_SERIES[indicator][1], now_utc))
     conn.commit()
     conn.close()
-    return {"ok": True, "date": asof_date, "records_synced": inserted, "live_scraped": bool(scraped_rates)}
+    return {"ok": True, "records_synced": len(rows), "live_scraped": bool(rows),
+            "latest": {i: max((r[1] for r in rows if r[0] == i), default=None) for i in BB_SERIES}}
 
 
 def update_macro_indicator(
@@ -256,114 +225,75 @@ def update_macro_indicator(
     return {"ok": True, "indicator": indicator, "value": value, "date": asof_date}
 
 
+POLICY_DEFAULTS = {"t_bill_91d": 11.60, "policy_repo_rate": 10.00, "cpi_inflation": 9.92, "call_money_rate": 9.75,
+                   "fx_reserves_usd_bn": 19.82}
+STALE_AFTER_DAYS = 45
+RISK_FREE_SERIES = ("t_bill_91d", "bcr_91d")
+
+
+def _observations_asof(conn: sqlite3.Connection, asof_date: str) -> dict:
+    """{indicator: (value, observation_date)} — each indicator's own latest observation on or before asof_date."""
+    rows = conn.execute("""
+        SELECT m.indicator, m.value, m.date FROM macro_indicators m
+        JOIN (SELECT indicator, MAX(date) AS d FROM macro_indicators WHERE date <= ? GROUP BY indicator) last
+          ON last.indicator = m.indicator AND last.d = m.date
+    """, (asof_date,)).fetchall()
+    return {r[0]: (float(r[1]), r[2]) for r in rows}
+
+
 def get_macro_rates_for_date(asof_date: str, conn: Optional[sqlite3.Connection] = None) -> dict:
     """
-    Returns point-in-time macro rates active on or immediately before asof_date.
-    Prevents lookahead bias while respecting historical interest rate regimes.
+    Point-in-time macro rates: each indicator's latest observation on or before asof_date (never a later one).
+    An indicator with no observation falls back to its policy default and is reported as such.
     """
     should_close = False
     if conn is None:
         conn = sqlite3.connect(DB_PATH, timeout=30.0)
         conn.execute("PRAGMA busy_timeout = 30000;")
         should_close = True
-
     init_macro_schema(conn)
-    row = conn.execute("SELECT MAX(date) FROM macro_indicators WHERE date <= ?", (asof_date,)).fetchone()
-    target_date = row[0] if (row and row[0]) else None
-    if not target_date:
-        row = conn.execute("SELECT MIN(date) FROM macro_indicators").fetchone()
-        target_date = row[0] if (row and row[0]) else asof_date
-
-    rows = conn.execute("""
-        SELECT indicator, value, date
-        FROM macro_indicators
-        WHERE date = ?
-    """, (target_date,)).fetchall()
-
-    data = {r[0]: float(r[1]) for r in rows}
-
+    obs = _observations_asof(conn, asof_date)
     if should_close:
         conn.close()
 
-    rf_rate = data.get("t_bill_91d", 11.60)
-    repo_rate = data.get("policy_repo_rate", 10.00)
-    inflation = data.get("cpi_inflation", 9.92)
-    call_money = data.get("call_money_rate", 9.75)
-    real_rate = round(rf_rate - inflation, 2)
-    min_equity_risk_premium = 3.50
-    equity_hurdle_rate = round(rf_rate + min_equity_risk_premium, 2)
+    def val(ind):
+        return obs[ind][0] if ind in obs else POLICY_DEFAULTS.get(ind)
 
+    # Risk-free rate follows Bangladesh Bank: the freshest 91-day observation (T-bill cut-off yield or 91-day BCR).
+    rf_series = max((i for i in RISK_FREE_SERIES if i in obs), key=lambda i: obs[i][1], default=None)
+    rf_rate = obs[rf_series][0] if rf_series else POLICY_DEFAULTS["t_bill_91d"]
+    rf_date = obs[rf_series][1] if rf_series else None
+    inflation = val("cpi_inflation")
+    min_equity_risk_premium = 3.50
+    try:
+        staleness_days = (datetime.date.fromisoformat(asof_date[:10]) - datetime.date.fromisoformat(rf_date)).days if rf_date else None
+    except ValueError:
+        staleness_days = None
     return {
-        "as_of_date": target_date,
+        "as_of_date": max((d for _, d in obs.values()), default=asof_date),
         "risk_free_rate_pct": rf_rate,
-        "t_bill_91d_pct": rf_rate,
-        "t_bill_182d_pct": data.get("t_bill_182d", round(rf_rate + 0.25, 2)),
-        "t_bill_364d_pct": data.get("t_bill_364d", round(rf_rate + 0.40, 2)),
-        "policy_repo_rate_pct": repo_rate,
+        "risk_free_source": f"{rf_series} observed {rf_date}" if rf_date else "policy default (no observation)",
+        "staleness_days": staleness_days,
+        "is_stale": staleness_days is None or staleness_days > STALE_AFTER_DAYS,
+        "t_bill_91d_pct": val("t_bill_91d"),
+        "t_bill_182d_pct": val("t_bill_182d") or round(rf_rate + 0.25, 2),
+        "t_bill_364d_pct": val("t_bill_364d") or round(rf_rate + 0.40, 2),
+        "bcr_91d_pct": obs["bcr_91d"][0] if "bcr_91d" in obs else None,
+        "bcr_91d_observed": obs["bcr_91d"][1] if "bcr_91d" in obs else None,
+        "dommr_overnight_pct": obs["dommr_overnight"][0] if "dommr_overnight" in obs else None,
+        "policy_repo_rate_pct": val("policy_repo_rate"),
         "cpi_inflation_pct": inflation,
-        "real_interest_rate_pct": real_rate,
-        "call_money_rate_pct": call_money,
+        "real_interest_rate_pct": round(rf_rate - inflation, 2),
+        "call_money_rate_pct": val("call_money_rate"),
         "min_equity_risk_premium_pct": min_equity_risk_premium,
-        "equity_hurdle_rate_pct": equity_hurdle_rate,
-        "fx_reserves_usd_bn": data.get("fx_reserves_usd_bn", 19.82)
+        "equity_hurdle_rate_pct": round(rf_rate + min_equity_risk_premium, 2),
+        "fx_reserves_usd_bn": val("fx_reserves_usd_bn"),
     }
 
 
 def get_latest_macro_rates(conn: Optional[sqlite3.Connection] = None) -> dict:
-    """
-    Returns latest macro rates dictionary from SQLite or hard benchmark fallback.
-    """
-    should_close = False
-    if conn is None:
-        conn = sqlite3.connect(DB_PATH, timeout=30.0)
-        conn.execute("PRAGMA busy_timeout = 30000;")
-        should_close = True
-
-    init_macro_schema(conn)
-    rows = conn.execute("""
-        SELECT indicator, value, date
-        FROM macro_indicators
-        WHERE date = (SELECT MAX(date) FROM macro_indicators)
-    """).fetchall()
-
-    data = {r[0]: float(r[1]) for r in rows}
-    latest_date = rows[0][2] if rows else datetime.date.today().isoformat()
-
-    if should_close:
-        conn.close()
-
-    # Core indicators with fail-safe defaults if table empty
-    rf_rate = data.get("t_bill_91d", 11.60)
-    repo_rate = data.get("policy_repo_rate", 10.00)
-    inflation = data.get("cpi_inflation", 9.92)
-    call_money = data.get("call_money_rate", 9.75)
-    real_rate = round(rf_rate - inflation, 2)
-    min_equity_risk_premium = 3.50  # 350 bps minimum required equity spread
-    equity_hurdle_rate = round(rf_rate + min_equity_risk_premium, 2)
-
-    try:
-        latest_dt = datetime.datetime.strptime(latest_date[:10], "%Y-%m-%d").date()
-        staleness_days = max(0, (datetime.date.today() - latest_dt).days)
-    except Exception:
-        staleness_days = 0
-    is_stale = staleness_days > 14
-
-    return {
-        "as_of_date": latest_date,
-        "staleness_days": staleness_days,
-        "is_stale": is_stale,
-        "risk_free_rate_pct": rf_rate,
-        "t_bill_91d_pct": rf_rate,
-        "t_bill_182d_pct": data.get("t_bill_182d", 11.85),
-        "t_bill_364d_pct": data.get("t_bill_364d", 12.00),
-        "policy_repo_rate_pct": repo_rate,
-        "cpi_inflation_pct": inflation,
-        "real_interest_rate_pct": real_rate,
-        "call_money_rate_pct": call_money,
-        "min_equity_risk_premium_pct": min_equity_risk_premium,
-        "equity_hurdle_rate_pct": equity_hurdle_rate,
-        "fx_reserves_usd_bn": data.get("fx_reserves_usd_bn", 19.82)
-    }
+    """Macro rates as of today (each indicator's latest observation)."""
+    return get_macro_rates_for_date(datetime.date.today().isoformat(), conn=conn)
 
 
 def calculate_equity_risk_premium(
@@ -417,13 +347,12 @@ def calculate_equity_risk_premium(
 def macro_hurdle_ok(earnings_yield: float, risk_free_rate: float | None = None) -> tuple[bool, float]:
     """
     Central macro hurdle validation enforcing SPEC.md INV-2:
-    Requires earnings_yield >= risk_free_rate (11.60%) + 3.50% ERP = 15.10%
+    earnings_yield >= observed Bangladesh Bank 91-day risk-free rate + 3.50% ERP
     """
     if earnings_yield <= 0:
         return False, 0.0
     if risk_free_rate is None:
-        rates = get_latest_macro_rates()
-        rf = float(rates.get("t_bill_91d_pct", 11.60))
+        rf = float(get_latest_macro_rates()["risk_free_rate_pct"])
     else:
         rf = float(risk_free_rate)
     erp = round(earnings_yield - rf, 2)
@@ -433,12 +362,14 @@ def macro_hurdle_ok(earnings_yield: float, risk_free_rate: float | None = None) 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Bangladesh Bank Macro Rates Feed & Scraper")
     parser.add_argument("--sync", action="store_true", help="Sync latest macro rates with live scraper")
-    parser.add_argument("--update", nargs=2, metavar=("INDICATOR", "VALUE"), help="Update specific indicator (e.g. --update t_bill_91d 8.84)")
+    parser.add_argument("--update", nargs=3, metavar=("INDICATOR", "VALUE", "DATE"),
+                        help="Record an observed value with its observation date (e.g. --update t_bill_91d 8.84 2026-11-18)")
     args = parser.parse_args()
 
     if args.update:
-        ind, val = args.update[0], float(args.update[1])
-        res = update_macro_indicator(ind, val)
+        ind, val, obs_date = args.update[0], float(args.update[1]), args.update[2]
+        datetime.date.fromisoformat(obs_date)
+        res = update_macro_indicator(ind, val, asof_date=obs_date)
         print(f"[MACRO FEED] Updated: {res}")
     else:
         res = sync_macro_indicators(live_scrape=True)

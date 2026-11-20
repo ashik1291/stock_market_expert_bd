@@ -140,11 +140,12 @@ class TestPeerMoatComparator(unittest.TestCase):
         self.assertGreater(bx["metrics"]["political_score"], 50)
 
     def test_macro_erp_calculation(self):
-        """Equity Risk Premium (ERP) must accurately compute Earnings Yield minus 91-Day T-Bill (11.60%)."""
+        """Equity Risk Premium (ERP) = Earnings Yield minus the observed Bangladesh Bank 91-day rate."""
+        from macro_rate_feed import get_latest_macro_rates
         metrics = get_peer_metrics("BXPHARMA")
         ey = metrics["earnings_yield"]
         erp = metrics["macro_erp_vs_tbill"]
-        rf = 11.60
+        rf = get_latest_macro_rates()["risk_free_rate_pct"]
         self.assertAlmostEqual(erp, ey - rf, delta=0.05)
 
 

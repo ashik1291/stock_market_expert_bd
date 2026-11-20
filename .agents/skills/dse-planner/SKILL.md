@@ -42,7 +42,7 @@ Whenever a task or feature request is received, `dse-planner` executes the follo
 ### Phase 1: Invariant Impact Assessment
 Review [`SPEC.md`](file:///c:/Users/BS01671/Documents/stock_market/SPEC.md) and explicitly determine which of the 8 Non-Negotiable Invariants are affected:
 - `INV-1`: Point-in-Time (PIT) Isolation (`tradable_date <= asof`)
-- `INV-2`: Central Bank Macro Hurdle (11.60% T-Bill + 3.50% ERP = 15.10%)
+- `INV-2`: Central Bank Macro Hurdle (observed BB 91-day rate + 3.50% ERP; 12.00% on 2026-11-20)
 - `INV-3`: 100% Shariah / Halal & Zero-Bank Shield (Debt/Equity $\le 0.80$, zero banks)
 - `INV-4`: Frontier Microstructure Realism (0.415% buy, 0.465% sell fee w/ Sec 53BBB AIT, circuit lockouts)
 - `INV-5`: Frozen Champion Registry (`acf502bc65914c48`)

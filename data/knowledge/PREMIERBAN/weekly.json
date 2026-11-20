@@ -2,18 +2,18 @@
   "ticker": "PREMIERBAN",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-17T09:01:42.175740",
-  "asof_price_date": "2026-11-17",
+  "analyzed_at": "2026-11-19T08:54:50.088706",
+  "asof_price_date": "2026-11-19",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 67.2601,
+    "rsi_14": 61.155,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 43.32,
+  "confidence": 43.23,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 5.8,
-    "stop_loss": 5.54,
-    "target": 6.32
+    "stop_loss": 5.53,
+    "target": 6.34
   },
   "precision": {
     "ticker": "PREMIERBAN",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 456852,
-      "daily_turnover_bdt_cr": 0.05,
+      "avg_daily_volume": 449635,
+      "daily_turnover_bdt_cr": 0.04,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 22842,
-      "max_daily_accumulation_shares": 68527,
-      "max_order_bdt": 22842.0,
-      "directive": "Max single order: 22,842 shares (Tk 22,842) to prevent >1% execution slippage"
+      "max_single_order_shares": 22481,
+      "max_daily_accumulation_shares": 67445,
+      "max_order_bdt": 22481.0,
+      "directive": "Max single order: 22,481 shares (Tk 22,481) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -90,29 +90,29 @@
     "range_52w_corridor": {
       "status": "VALID",
       "low_52w": 3.9,
-      "high_52w": 6.3,
-      "range_52w_pct": 79.2,
-      "channel_regime": "MOMENTUM_EXPANSION",
-      "visual_gauge": "[ \u09f33.9 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591| \u09f36.3 ] (79.2% (Truncated))",
-      "conviction_bonus": 5.0,
+      "high_52w": 6.1,
+      "range_52w_pct": 86.4,
+      "channel_regime": "OVEREXTENDED_CEILING",
+      "visual_gauge": "[ \u09f33.9 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591| \u09f36.1 ] (86.4% (Truncated))",
+      "conviction_bonus": -10.0,
       "is_truncated_window": true,
       "bars_evaluated": 101,
-      "signal": "Price is in upper channel (79.2%) \u2014 upward breakout momentum"
+      "signal": "Price is at 86.4% of 52-week high (near \u09f36.1) \u2014 elevated mean-reversion risk"
     },
-    "total_precision_bonus": 5.0
+    "total_precision_bonus": -10.0
   },
   "pattern_dna": {
     "ticker": "PREMIERBAN",
-    "audited_at": "2026-11-17 15:01:42",
+    "audited_at": "2026-11-19 14:54:50",
     "worth_vs_greed": {
       "current_price": 5.8,
       "intrinsic_worth": 2.9,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 40.0,
       "greed_index": 40.0,
-      "rsi_14": 66.7,
-      "price_vs_ema50_pct": 9.9,
-      "price_vs_ema200_pct": -4.2,
+      "rsi_14": 63.6,
+      "price_vs_ema50_pct": 8.9,
+      "price_vs_ema200_pct": -4.1,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -133,10 +133,10 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 1.75,
+          "return_pct": 0.0,
           "high": 6.0,
-          "low": 5.6,
-          "range_volatility_pct": 7.14
+          "low": 5.8,
+          "range_volatility_pct": 3.45
         },
         "monthly_21d": {
           "return_pct": 3.57,
@@ -145,13 +145,13 @@
           "range_volatility_pct": 13.21
         },
         "quarterly_63d": {
-          "return_pct": 26.09,
+          "return_pct": 31.82,
           "high": 6.0,
           "low": 3.9,
           "range_volatility_pct": 53.85
         },
         "half_yearly_126d": {
-          "return_pct": -12.12,
+          "return_pct": -13.43,
           "high": 6.8,
           "low": 3.9,
           "range_volatility_pct": 74.36
@@ -165,11 +165,11 @@
       },
       "wave_metrics": {
         "median_rally_gain_pct": 11.1,
-        "median_correction_drop_pct": -11.9,
+        "median_correction_drop_pct": -11.0,
         "avg_wave_duration_bars": 20.0
       },
-      "current_wave_phase": "MARKDOWN_PULLBACK",
-      "phase_guidance": "Ongoing pullback from peak (0.0%). Wait for stabilizing base.",
+      "current_wave_phase": "LATE_MARKUP",
+      "phase_guidance": "Approaching historical rally limit (+9.4% vs median +11.1%). Tighten stop.",
       "top_seasonal_months": [
         {
           "month": "Oct",
@@ -273,11 +273,11 @@
       "macd": "bearish_crossover",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 0.17,
-      "rsi_value": 67.19,
+      "atr": 0.18,
+      "rsi_value": 61.06,
       "last_close": 5.8,
-      "sma20": 5.62,
-      "sma50": 5.0,
+      "sma20": 5.65,
+      "sma50": 5.08,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -304,8 +304,8 @@
       "error": "no_fundamental_data",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 7.9,
-        "high_52w": 6.3,
+        "drawdown_pct": 4.9,
+        "high_52w": 6.1,
         "low_52w": 3.9
       }
     }
@@ -348,15 +348,15 @@
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 38883,
-        "avg_volume": 378322.0,
+        "last_volume": 26824,
+        "avg_volume": 367371.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.1,
-        "avg_volume": 383315.0,
-        "today_volume": 38883,
+        "spike_ratio": 0.07,
+        "avg_volume": 375065.0,
+        "today_volume": 26824,
         "detail": "ok"
       },
       "serial_trading": {
@@ -382,13 +382,13 @@
     }
   },
   "composite": {
-    "composite_score": 43.32,
+    "composite_score": 43.23,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.662,
+      "fundamental": 0.66,
       "technical": 0.205,
-      "governance": 0.134,
+      "governance": 0.135,
       "sentiment": 0.0
     }
   }

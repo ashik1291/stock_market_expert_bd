@@ -2,26 +2,26 @@
   "ticker": "GIB",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-17T09:01:29.811643",
-  "asof_price_date": "2026-11-17",
+  "analyzed_at": "2026-11-19T08:54:38.462361",
+  "asof_price_date": "2026-11-19",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 47.3402,
+    "rsi_14": 49.815,
     "pe_ratio": null,
     "debt_equity": null
   },
-  "signal": "SELL",
-  "confidence": 43.83,
+  "signal": "HOLD",
+  "confidence": 45.28,
   "trajectory": {
-    "direction": "CONSOLIDATION_RANGE",
-    "direction_icon": "\ud83d\udfe1",
-    "heuristic_momentum_bias": 58.3,
+    "direction": "RISE_PREDICTED",
+    "direction_icon": "\ud83d\udfe2",
+    "heuristic_momentum_bias": 61.7,
     "rise_probability_pct": null,
-    "momentum_status": "Neutral Range Consolidation",
+    "momentum_status": "Bullish Momentum / Upward Bias",
     "short_term": {
-      "predicted_path": "Upward momentum swing",
+      "predicted_path": "Oversold bounce to 20-DMA",
       "upside_potential_pct": "+0.0%",
       "downside_risk_pct": "-0.0%",
       "target_price": 1.7,
@@ -96,14 +96,14 @@
       "visual_gauge": "[ \u09f31.6 |\u2588\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f32.2 ] (16.7% (Truncated))",
       "conviction_bonus": 10.0,
       "is_truncated_window": true,
-      "bars_evaluated": 47,
+      "bars_evaluated": 46,
       "signal": "Price is at the bottom 16.7% of 52-week channel (near \u09f31.6 floor) \u2014 high margin of safety"
     },
     "total_precision_bonus": 10.0
   },
   "pattern_dna": {
     "ticker": "GIB",
-    "audited_at": "2026-11-17 15:01:29",
+    "audited_at": "2026-11-19 14:54:38",
     "worth_vs_greed": {
       "current_price": 1.7,
       "intrinsic_worth": 0.85,
@@ -111,8 +111,8 @@
       "extension_froth_score": 10.0,
       "greed_index": 10.0,
       "rsi_14": 100.0,
-      "price_vs_ema50_pct": -5.6,
-      "price_vs_ema200_pct": -40.1,
+      "price_vs_ema50_pct": -5.4,
+      "price_vs_ema200_pct": -39.9,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -145,19 +145,19 @@
           "range_volatility_pct": 0.0
         },
         "quarterly_63d": {
-          "return_pct": -15.0,
+          "return_pct": -10.53,
           "high": 2.4,
           "low": 1.3,
           "range_volatility_pct": 84.62
         },
         "half_yearly_126d": {
-          "return_pct": -45.16,
+          "return_pct": -46.88,
           "high": 3.3,
           "low": 1.3,
           "range_volatility_pct": 153.85
         },
         "yearly_252d": {
-          "return_pct": -67.92,
+          "return_pct": -67.31,
           "high": 5.5,
           "low": 1.3,
           "range_volatility_pct": 323.08
@@ -267,14 +267,14 @@
     ]
   },
   "technical": {
-    "score": 52.5,
+    "score": 60.0,
     "signals": {
-      "rsi": "neutral",
+      "rsi": "oversold_bullish",
       "macd": "neutral",
       "sma_trend": "neutral",
       "bb": "inside_bands",
       "atr": 0.02,
-      "rsi_value": 42.86,
+      "rsi_value": 20.0,
       "last_close": 1.7,
       "sma20": 1.7,
       "sma50": null,
@@ -345,13 +345,13 @@
         "flag": false,
         "price_chg": 0,
         "last_volume": 0,
-        "avg_volume": 11297.0,
+        "avg_volume": 0.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
         "spike_ratio": 0.0,
-        "avg_volume": 16577.0,
+        "avg_volume": 11297.0,
         "today_volume": 0,
         "detail": "ok"
       },
@@ -378,13 +378,13 @@
     }
   },
   "composite": {
-    "composite_score": 43.83,
+    "composite_score": 45.28,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.662,
+      "fundamental": 0.66,
       "technical": 0.205,
-      "governance": 0.134,
+      "governance": 0.135,
       "sentiment": 0.0
     }
   }

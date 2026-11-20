@@ -1,24 +1,24 @@
 {
   "ticker": "SILCOPHL",
-  "audited_at": "2026-11-17 15:01:47",
+  "audited_at": "2026-11-19 14:54:54",
   "worth_vs_greed": {
-    "current_price": 15.9,
+    "current_price": 16.1,
     "intrinsic_worth": 0.4,
     "margin_of_safety_pct": -97.5,
-    "extension_froth_score": 40.0,
-    "greed_index": 40.0,
-    "rsi_14": 66.7,
-    "price_vs_ema50_pct": -0.6,
-    "price_vs_ema200_pct": -5.0,
+    "extension_froth_score": 50.0,
+    "greed_index": 50.0,
+    "rsi_14": 73.5,
+    "price_vs_ema50_pct": 0.6,
+    "price_vs_ema200_pct": -3.7,
     "merit_status": "EARNINGS_BACKED_MERIT",
     "merit_reason": "Price supported by solid earnings (EPS: \u09f30.05, P/E: 0.0). Growth is fundamentally justified.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f315.6 \u2013 \u09f316.1",
-      "chase_cutoff_price": 16.3,
-      "when_to_wait": "If price opens or rises above \u09f316.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f315.6.",
-      "weekly_target_short": 16.5,
-      "monthly_target_swing": 18.3,
-      "long_term_target_asset": 20.7,
+      "optimal_entry_corridor": "\u09f315.8 \u2013 \u09f316.3",
+      "chase_cutoff_price": 16.5,
+      "when_to_wait": "If price opens or rises above \u09f316.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f315.8.",
+      "weekly_target_short": 16.7,
+      "monthly_target_swing": 18.5,
+      "long_term_target_asset": 20.9,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -31,31 +31,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 0.0,
-        "high": 16.3,
+        "return_pct": 3.87,
+        "high": 16.4,
         "low": 15.0,
-        "range_volatility_pct": 8.67
+        "range_volatility_pct": 9.33
       },
       "monthly_21d": {
-        "return_pct": 8.16,
-        "high": 16.3,
+        "return_pct": 8.05,
+        "high": 16.4,
         "low": 14.0,
-        "range_volatility_pct": 16.43
+        "range_volatility_pct": 17.14
       },
       "quarterly_63d": {
-        "return_pct": -16.75,
-        "high": 19.8,
+        "return_pct": -14.36,
+        "high": 19.3,
         "low": 14.0,
-        "range_volatility_pct": 41.43
+        "range_volatility_pct": 37.86
       },
       "half_yearly_126d": {
-        "return_pct": -3.05,
+        "return_pct": -1.83,
         "high": 23.3,
         "low": 14.0,
         "range_volatility_pct": 66.43
       },
       "yearly_252d": {
-        "return_pct": 14.39,
+        "return_pct": 13.38,
         "high": 23.3,
         "low": 11.1,
         "range_volatility_pct": 109.91
@@ -67,7 +67,7 @@
       "avg_wave_duration_bars": 22.0
     },
     "current_wave_phase": "LATE_MARKUP",
-    "phase_guidance": "Approaching historical rally limit (+13.6% vs median +9.4%). Tighten stop.",
+    "phase_guidance": "Approaching historical rally limit (+15.0% vs median +9.4%). Tighten stop.",
     "top_seasonal_months": [
       {
         "month": "Jul",

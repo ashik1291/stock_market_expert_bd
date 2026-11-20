@@ -1,61 +1,61 @@
 {
   "ticker": "MONNOFABR",
-  "audited_at": "2026-11-17 15:01:38",
+  "audited_at": "2026-11-19 14:54:46",
   "worth_vs_greed": {
-    "current_price": 17.1,
-    "intrinsic_worth": 8.55,
+    "current_price": 19.2,
+    "intrinsic_worth": 9.6,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 20.0,
-    "greed_index": 20.0,
-    "rsi_14": 55.6,
-    "price_vs_ema50_pct": -3.8,
-    "price_vs_ema200_pct": -4.3,
+    "extension_froth_score": 40.0,
+    "greed_index": 40.0,
+    "rsi_14": 75.9,
+    "price_vs_ema50_pct": 7.7,
+    "price_vs_ema200_pct": 7.4,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f316.8 \u2013 \u09f317.3",
-      "chase_cutoff_price": 17.5,
-      "when_to_wait": "If price opens or rises above \u09f317.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f316.8.",
-      "weekly_target_short": 17.7,
-      "monthly_target_swing": 19.7,
-      "long_term_target_asset": 22.2,
+      "optimal_entry_corridor": "\u09f318.8 \u2013 \u09f319.4",
+      "chase_cutoff_price": 19.7,
+      "when_to_wait": "If price opens or rises above \u09f319.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f318.8.",
+      "weekly_target_short": 19.9,
+      "monthly_target_swing": 22.1,
+      "long_term_target_asset": 25.0,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
     "worth_decision": "AVOID",
     "reason": "Fundamental value severely lags stock price (MoS: -50.0%).",
     "is_blacklisted": true,
-    "blacklist_reason": "Blocked by Forensic Surveillance [CRITICAL: ABNORMAL_VOLUME_SURGE on 2026-11-11 \u2014 Mid-tier volume is 4.9x 20-day average (1,931,036 vs 392,946) | Price up +8.54% on untracked / high-risk security without verified earnings]",
-    "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [CRITICAL: ABNORMAL_VOLUME_SURGE on 2026-11-11 \u2014 Mid-tier volume is 4.9x 20-day average (1,931,036 vs 392,946) | Price up +8.54% on untracked / high-risk security without verified earnings]"
+    "blacklist_reason": "Blocked by Forensic Surveillance [CRITICAL: ABNORMAL_VOLUME_SURGE on 2026-11-19 \u2014 Mid-tier volume is 3.5x 20-day average (1,368,868 vs 392,946) | Price up +9.09% on untracked / high-risk security without verified earnings]",
+    "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [CRITICAL: ABNORMAL_VOLUME_SURGE on 2026-11-19 \u2014 Mid-tier volume is 3.5x 20-day average (1,368,868 vs 392,946) | Price up +9.09% on untracked / high-risk security without verified earnings]"
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 4.27,
-        "high": 17.9,
-        "low": 16.5,
-        "range_volatility_pct": 8.48
+        "return_pct": 9.71,
+        "high": 19.5,
+        "low": 16.7,
+        "range_volatility_pct": 16.77
       },
       "monthly_21d": {
-        "return_pct": 3.64,
-        "high": 17.9,
+        "return_pct": 17.07,
+        "high": 19.5,
         "low": 15.5,
-        "range_volatility_pct": 15.48
+        "range_volatility_pct": 25.81
       },
       "quarterly_63d": {
-        "return_pct": -18.18,
+        "return_pct": -4.48,
         "high": 23.3,
         "low": 15.5,
         "range_volatility_pct": 50.32
       },
       "half_yearly_126d": {
-        "return_pct": -16.18,
+        "return_pct": -7.69,
         "high": 23.8,
         "low": 14.8,
         "range_volatility_pct": 60.81
       },
       "yearly_252d": {
-        "return_pct": 3.64,
+        "return_pct": 14.97,
         "high": 23.8,
         "low": 12.0,
         "range_volatility_pct": 98.33
@@ -67,7 +67,7 @@
       "avg_wave_duration_bars": 25.0
     },
     "current_wave_phase": "MARKUP_RALLY_MID",
-    "phase_guidance": "Midway through rally wave (+10.3% from base, historical target ~+48.4%).",
+    "phase_guidance": "Midway through rally wave (+23.9% from base, historical target ~+48.4%).",
     "top_seasonal_months": [
       {
         "month": "Jul",

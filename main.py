@@ -101,7 +101,7 @@ def cmd_status():
     integrity_ok = integrity_res.get("ok", False) and integrity_res.get("fail_count", 1) == 0
 
     if spec_ok and integrity_ok:
-        print(f"\nSystem Status: ✅ OPERATIONAL RESEARCH ENGINE & RISK FILTER (SPEC: 8/8 PASS | Integrity: 9/9 PASS | As-of: {latest_price})", flush=True)
+        print(f"\nSystem Status: ✅ OPERATIONAL RESEARCH ENGINE & RISK FILTER (SPEC: 8/8 PASS | Integrity: {len(integrity_res.get('checks', []))}/{len(integrity_res.get('checks', []))} PASS | As-of: {latest_price})", flush=True)
         print("  * System Classification: Institutional Risk Screening & Research Framework (~52/100)", flush=True)
         print("  * Advisory Warning: Non-autonomous capital allocator; forward trial calibration active.\n", flush=True)
     else:

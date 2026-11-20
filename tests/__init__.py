@@ -39,3 +39,10 @@ def ensure_test_environment():
         shutil.copyfile(PROF_TMPL, PROF_FILE)
 
 ensure_test_environment()
+
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _isolation import real_data_fingerprint as _fp  # noqa: E402
+
+# Compared by tests/test_zzz_real_data_untouched.py, which discover runs last.
+REAL_DATA_FINGERPRINT_AT_START = _fp()

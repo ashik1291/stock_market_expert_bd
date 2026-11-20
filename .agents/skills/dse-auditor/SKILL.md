@@ -26,7 +26,7 @@ description: >
 | :--- | :--- | :--- | :--- |
 | **Point-in-Time & Leakage** | 20 pts | Financial publication dates, no future indicators, unadjusted vs total return splits. | Zero lookahead bias. `tradable_date <= asof` verified everywhere. |
 | **Frontier Microstructure** | 20 pts | Circuit breaker lockup handling, realistic order fills, bid-ask spread slippage, statutory fees. | Lower circuit zero-bid locks deferred; 0.415% buy, 0.465% sell (incl. Sec 53BBB AIT) enforced. |
-| **Macro & Hurdle Rigor** | 15 pts | Central bank interest rate regime, risk-free rate hurdle, equity risk premium calibration. | Dynamic hurdle $\ge$ 11.60% T-Bill + 3.5% ERP = 15.10%. Low-yielding stocks penalized. |
+| **Macro & Hurdle Rigor** | 15 pts | Central bank interest rate regime, risk-free rate hurdle, equity risk premium calibration. | Dynamic hurdle = observed BB 91-day rate + 3.5% ERP; T-Bill + 3.5% ERP = 15.10%. Low-yielding stocks penalized. |
 | **Forensic Manipulation Guard** | 15 pts | Volume Anomaly Ratio (VAR), promoter float cornering, circular trading, regulatory probe blacklist. | Automatic exclusion of stocks with VAR $\ge 3\times$ or active BSEC inquiry. |
 | **Model Validation & Overfitting**| 15 pts | Out-of-sample forward ledger, Holm-Bonferroni deflation, Newey-West standard errors. | Immutable champion hash `acf502bc65914c48`, SHA-256 forward ledger chain. |
 | **Code Architecture & Speed** | 15 pts | SQLite WAL timeout, test coverage, self-healing bootstrap, execution speed (<5s). | 68/68 unit tests, 9/9 integrity checks, zero DB locking. |

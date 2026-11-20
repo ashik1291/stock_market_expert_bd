@@ -2,8 +2,8 @@
   "ticker": "BDSERVICE",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-17T09:01:21.965637",
-  "asof_price_date": "2026-11-17",
+  "analyzed_at": "2026-11-19T08:54:31.426669",
+  "asof_price_date": "2026-11-19",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
@@ -13,11 +13,11 @@
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 43.32,
+  "confidence": 41.19,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
-    "heuristic_momentum_bias": 58.3,
+    "heuristic_momentum_bias": 48.6,
     "rise_probability_pct": null,
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
@@ -96,14 +96,14 @@
       "visual_gauge": "[ \u09f35.2 |\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591\u2591| \u09f35.2 ] (50.0% (Truncated))",
       "conviction_bonus": 0.0,
       "is_truncated_window": true,
-      "bars_evaluated": 29,
+      "bars_evaluated": 30,
       "signal": "Price is in mid-channel (50.0% between \u09f35.2 and \u09f35.2)"
     },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "BDSERVICE",
-    "audited_at": "2026-11-17 15:01:21",
+    "audited_at": "2026-11-19 14:54:31",
     "worth_vs_greed": {
       "current_price": 5.2,
       "intrinsic_worth": 2.6,
@@ -131,16 +131,62 @@
       "blacklist_reason": null
     },
     "multi_interval_wave": {
-      "status": "INSUFFICIENT_HISTORY"
+      "intervals": {
+        "weekly_5d": {
+          "return_pct": 0.0,
+          "high": 5.2,
+          "low": 5.2,
+          "range_volatility_pct": 0.0
+        },
+        "monthly_21d": {
+          "return_pct": 0.0,
+          "high": 5.2,
+          "low": 5.2,
+          "range_volatility_pct": 0.0
+        },
+        "quarterly_63d": null,
+        "half_yearly_126d": null,
+        "yearly_252d": null
+      },
+      "wave_metrics": {
+        "median_rally_gain_pct": 12.5,
+        "median_correction_drop_pct": -9.0,
+        "avg_wave_duration_bars": 35.0
+      },
+      "current_wave_phase": "INDETERMINATE",
+      "phase_guidance": "Consolidating in long-term channel.",
+      "top_seasonal_months": [
+        {
+          "month": "Nov",
+          "avg_return": 0.0,
+          "win_rate": 0.0
+        }
+      ],
+      "weak_seasonal_months": []
     },
     "causal_attributions": []
   },
   "technical": {
-    "score": null,
+    "score": 40.0,
     "signals": {
-      "error": "insufficient_data_lt_30_bars"
+      "rsi": "overbought_bearish",
+      "sma_trend": "neutral",
+      "bb": "inside_bands",
+      "atr": 0.0,
+      "rsi_value": 100.0,
+      "last_close": 5.2,
+      "sma20": 5.2,
+      "sma50": null,
+      "sma200": null,
+      "support_resistance": {
+        "supports": [],
+        "resistances": []
+      }
     },
-    "sr": {}
+    "sr": {
+      "supports": [],
+      "resistances": []
+    }
   },
   "fundamental": {
     "score": null,
@@ -191,11 +237,17 @@
     "checks": {
       "volume_price_divergence": {
         "flag": false,
-        "detail": "insufficient_data"
+        "price_chg": 0,
+        "last_volume": 0,
+        "avg_volume": 0.0,
+        "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "detail": "insufficient_data"
+        "spike_ratio": 0.0,
+        "avg_volume": 0.0,
+        "today_volume": 0,
+        "detail": "ok"
       },
       "serial_trading": {
         "flag": false,
@@ -220,13 +272,13 @@
     }
   },
   "composite": {
-    "composite_score": 43.32,
+    "composite_score": 41.19,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.662,
+      "fundamental": 0.66,
       "technical": 0.205,
-      "governance": 0.134,
+      "governance": 0.135,
       "sentiment": 0.0
     }
   }

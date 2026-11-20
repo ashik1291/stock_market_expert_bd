@@ -33,8 +33,169 @@ FORBIDDEN_REPORT_DEFAULTS = [
 ]
 
 
-def _check(name: str, ok: bool, detail: str) -> dict:
-    return {"check": name, "status": "PASS" if ok else "FAIL", "detail": detail}
+def _check(name: str, ok: bool, detail: str, critical: bool = True) -> dict:
+    status = "PASS" if ok else ("FAIL" if critical else "WARN")
+    return {"check": name, "status": status, "detail": detail, "critical": critical}
+
+
+USER_LEDGER = BASE_DIR / "data" / "users" / "default_user" / "portfolio.json"
+PREDICTION_LEDGER = LEARN_DIR / "prediction_ledger.json"
+SHADOW_IC_LOG = PORT_DIR / "shadow_model_ic.jsonl"
+
+
+def run_data_checks(conn: sqlite3.Connection) -> list[dict]:
+    """Data-state invariants established by the 2026-11-20 audit. Critical failures gate the daily runs."""
+    checks = []
+
+    def guarded(name, fn, critical=True):
+        try:
+            ok, detail = fn()
+        except Exception as e:  # a check that cannot run is a failure, never a silent pass
+            ok, detail = False, f"check error: {e}"
+        checks.append(_check(name, ok, detail, critical))
+
+    def write_guards():
+        from db_guards import missing_data_guards
+        missing = missing_data_guards(conn)
+        return not missing, f"missing={missing}" if missing else "all write guards installed"
+    guarded("write_guards_installed", write_guards)
+
+    def closed_day_bars():
+        n = conn.execute("""SELECT COUNT(*) FROM prices p JOIN trading_calendar t
+                            ON t.date = p.date AND t.is_trading_day = 0""").fetchone()[0]
+        return n == 0, f"{n} bars on calendar-closed days"
+    guarded("no_bars_on_closed_days", closed_day_bars)
+
+    def latest_session():
+        from processor import stale_snapshot_reason
+        from live_market_sync import find_coverage_gaps
+        last = conn.execute("SELECT MAX(date) FROM prices").fetchone()[0]
+        recs = [{"ticker": t, "close": c, "volume": v} for t, c, v in conn.execute(
+            "SELECT ticker, close, volume FROM prices WHERE date = ?", (last,))]
+        stale = stale_snapshot_reason(conn, last, recs)
+        nxt = (datetime.fromisoformat(last).date().toordinal() + 1)
+        _, threshold = find_coverage_gaps(conn, datetime.fromordinal(nxt).date().isoformat())
+        ok = stale is None and len(recs) >= threshold
+        return ok, f"{last}: {len(recs)} tickers (min {threshold}){'; ' + stale if stale else ''}"
+    guarded("latest_session_real_and_covered", latest_session)
+
+    def coverage_history():
+        from live_market_sync import COVERAGE_LOOKBACK_DAYS, COVERAGE_MIN_RATIO
+        today = datetime.now().date().isoformat()
+        rows = conn.execute("""
+            SELECT t.date, COUNT(DISTINCT p.ticker) FROM trading_calendar t
+            LEFT JOIN prices p ON p.date = t.date
+            WHERE t.is_trading_day = 1 AND t.date >= date(?, ?) AND t.date < ?
+            GROUP BY t.date
+        """, (today, f"-{COVERAGE_LOOKBACK_DAYS} days", today)).fetchall()
+        counts = sorted(c for _, c in rows if c > 0)
+        if len(counts) < 10:
+            return False, "not enough sessions to judge coverage"
+        thr = int(counts[int(0.9 * (len(counts) - 1))] * COVERAGE_MIN_RATIO)
+        gaps = [d for d, c in rows if c < thr]
+        return not gaps, f"{len(gaps)} under-covered sessions (min {thr}){': ' + ', '.join(gaps[:8]) if gaps else ''}"
+    guarded("price_coverage_history", coverage_history, critical=False)
+
+    def pit_integrity():
+        order = conn.execute("""SELECT COUNT(*) FROM fundamentals_pit WHERE publication_date < snapshot_date
+                                OR tradable_date < publication_date""").fetchone()[0]
+        dishonest = conn.execute("""SELECT COUNT(*) FROM fundamentals_pit
+            WHERE publication_source IN ('bsec_statutory_filing', 'dse_corporate_action', 'estimated')
+              AND COALESCE(publication_is_estimated, 0) = 0""").fetchone()[0]
+        future = conn.execute("""SELECT COUNT(*) FROM fundamentals_pit
+            WHERE snapshot_date > date('now', 'localtime')""").fetchone()[0]
+        return (order == 0 and dishonest == 0 and future == 0,
+                f"order_violations={order} estimated_marked_verified={dishonest} unended_periods={future}")
+    guarded("pit_dates_ordered_and_flags_honest", pit_integrity)
+
+    def price_provenance():
+        cols = {r[1] for r in conn.execute("PRAGMA table_info(prices)")}
+        if "source" not in cols:
+            return False, "prices.source column missing (run scripts/provenance.py backfill)"
+        n = conn.execute("SELECT COUNT(*) FROM prices WHERE source IS NULL").fetchone()[0]
+        return n == 0, f"{n} price bars without a recorded source"
+    guarded("price_rows_attributed", price_provenance)
+
+    def corporate_actions():
+        plugs = conn.execute("""SELECT COUNT(*) FROM corporate_actions WHERE action_type NOT IN
+            ('cash_dividend', 'bonus_dividend', 'split', 'rights_split', 'rights')""").fetchone()[0]
+        invented = conn.execute("""SELECT COUNT(*) FROM corporate_actions
+            WHERE action_type IN ('bonus_dividend', 'split', 'rights_split')
+              AND (notes LIKE '%Historical estimated%' OR NOT (adjustment_factor > 0 AND adjustment_factor < 1))""").fetchone()[0]
+        return plugs == 0 and invented == 0, f"plug_rows={plugs} invalid_price_actions={invented}"
+    guarded("corporate_actions_clean", corporate_actions)
+
+    def ledger():
+        if not USER_LEDGER.exists():
+            return True, "no local user ledger"
+        import portfolio_manager as pm
+        p = json.loads(USER_LEDGER.read_text(encoding="utf-8"))
+        recon = pm.reconcile_ledger(p)
+        nw = pm.compute_mark_to_market_net_worth(p, conn)
+        hwm = float(p.get("high_water_mark_bdt") or nw)
+        hwm_ok = hwm <= max(nw, 1.0) * 1.5
+        undated = [h.get("ticker") for h in p.get("holdings", []) if not h.get("bought_at")]
+        ok = recon["ok"] and hwm_ok and not undated
+        return ok, (f"invested={recon['recorded']} expected={recon['expected']} hwm={hwm} nw={nw}"
+                    f"{' undated=' + str(undated) if undated else ''}")
+    guarded("portfolio_ledger_consistent", ledger)
+
+    def labels():
+        if not PREDICTION_LEDGER.exists():
+            return True, "no prediction ledger"
+        items = json.loads(PREDICTION_LEDGER.read_text(encoding="utf-8"))
+        bad = [i.get("prediction_id") for i in items if i.get("status") == "EVALUATED"
+               and i.get("horizon_bars") and int(i.get("horizon_bars_used") or 0) < int(i["horizon_bars"])]
+        return not bad, f"{len(bad)} labels scored on a partial horizon"
+    guarded("prediction_labels_full_horizon", labels)
+
+    def shadow_ic():
+        if not SHADOW_IC_LOG.exists():
+            return False, "shadow IC log missing"
+        last = conn.execute("SELECT MAX(date) FROM prices").fetchone()[0]
+        stuck = []
+        for line in SHADOW_IC_LOG.read_text(encoding="utf-8").splitlines():
+            if line.strip():
+                o = json.loads(line)
+                if o.get("date", "") < last and not o.get("forward_date"):
+                    stuck.append(o["date"])
+        return not stuck, f"{len(stuck)} past dates without forward IC{': ' + ', '.join(stuck[:5]) if stuck else ''}"
+    guarded("shadow_ic_resolving", shadow_ic, critical=False)
+
+    def macro_fresh():
+        # Only the risk-free rate feeds a decision (hurdle, cash yield, benchmarks); repo/CPI are informational.
+        from macro_rate_feed import get_macro_rates_for_date
+        last = conn.execute("SELECT MAX(date) FROM prices").fetchone()[0]
+        r = get_macro_rates_for_date(last, conn=conn)
+        return not r["is_stale"], f"risk-free {r['risk_free_rate_pct']}% ({r['risk_free_source']}), {r['staleness_days']} days old"
+    guarded("macro_rates_observed_recently", macro_fresh, critical=False)
+
+    def champion():
+        from spec_guard import check_inv5_champion_registry
+        return check_inv5_champion_registry()
+    guarded("champion_content_frozen", champion)
+
+    return checks
+
+
+def run_data_gate() -> int:
+    """Exit code for pipelines: 1 when a critical data check fails, so no downstream write runs on bad data."""
+    if not DB_PATH.exists():
+        print("[DATA-GATE] FAIL dse.db missing")
+        return 2
+    conn = sqlite3.connect(DB_PATH, timeout=30.0)
+    conn.execute("PRAGMA busy_timeout = 30000;")
+    try:
+        checks = run_data_checks(conn)
+        from data_quality import record
+        record(conn, checks)
+    finally:
+        conn.close()
+    fails = [c for c in checks if c["status"] == "FAIL"]
+    print(f"[DATA-GATE] {'PASS' if not fails else 'FAIL'} critical_fails={len(fails)}")
+    for c in checks:
+        print(f"  [{c['status']}] {c['check']}: {c['detail']}")
+    return 1 if fails else 0
 
 
 def run_integrity() -> dict:
@@ -180,6 +341,8 @@ def run_integrity() -> dict:
     except Exception as e:
         checks.append(_check("data_freshness", False, str(e)))
 
+    checks.extend(run_data_checks(conn))
+
     conn.close()
 
     fails = [c for c in checks if c["status"] == "FAIL"]
@@ -214,5 +377,7 @@ def run_integrity() -> dict:
 
 
 if __name__ == "__main__":
+    if "--data-gate" in sys.argv:
+        sys.exit(run_data_gate())
     res = run_integrity()
     sys.exit(res["exit_code"])

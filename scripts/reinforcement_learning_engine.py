@@ -216,107 +216,18 @@ def evaluate_pending_predictions(eval_window_days: int | None = None) -> dict:
     archive_epoch1_invalid()
     init_learning_storage()
     horizon = eval_window_days or DEFAULT_HORIZON_BARS
-    conn = sqlite3.connect(DB_PATH, timeout=30.0)
-    conn.execute("PRAGMA busy_timeout = 30000;")
+    # Labels come from the single evaluator (declared horizon in trading sessions, repaired entry close,
+    # bonus-adjusted, phantom days invalidated); this engine only learns from them.
+    from multi_horizon_evaluator import evaluate_predictions
+    before = {i.get("prediction_id"): i.get("status") for i in load_ledger()}
+    # Each prediction is scored on its own declared horizon; undeclared legacy rows keep the evaluator default.
+    evaluate_predictions()
     ledger = load_ledger()
     weights = load_weights()
-
-    evaluated_count = 0
-    correct_count = 0
-    incorrect_count = 0
-
-    for item in ledger:
-        if item.get("status") != "PENDING":
-            continue
-        # Never evaluate leaked bootstrap rows if any slipped in
-        if item.get("timeframe") == "historical_bootstrap":
-            item["status"] = "INVALID_BOOTSTRAP"
-            item["mistake_analysis"] = "Epoch-1 bootstrap discarded"
-            continue
-
-        ticker = item["ticker"]
-        pred_date = item["date"]
-        direction = item["predicted_direction"]
-        entry = float(item["entry_price"] or 0)
-        if entry <= 0:
-            continue
-
-        end_date, end_close, n_bars = _forward_close(conn, ticker, pred_date, horizon)
-        if end_close is None:
-            continue
-
-        # Adjust for cash dividends received during the prediction horizon
-        div_row = conn.execute("""
-            SELECT SUM(cash_amount) FROM corporate_actions
-            WHERE ticker = ? AND action_type = 'cash_dividend'
-              AND record_date > ? AND record_date <= ?
-              AND cash_amount IS NOT NULL AND cash_amount > 0
-        """, (ticker, pred_date, end_date)).fetchone()
-        cash_div_total = float(div_row[0]) if (div_row and div_row[0] is not None) else 0.0
-        effective_end_val = end_close + (cash_div_total * 0.90)  # Net of 10% AIT tax
-        stock_ret_pct = ((effective_end_val / entry) - 1.0) * 100.0
-        eqw = equal_weight_category_a_nav(pred_date, end_date)
-        eqw_ret = eqw.get("return_pct") if eqw.get("ok") else 0.0
-        if eqw_ret is None:
-            eqw_ret = 0.0
-
-        # Directional net excess and absolute cash return
-        net_cash_return = stock_ret_pct - ROUND_TRIP_COST_PCT
-        if direction == "RISE":
-            # Long: Must make positive absolute cash return to be marked a profitable win!
-            net_excess = stock_ret_pct - eqw_ret - ROUND_TRIP_COST_PCT
-            is_cash_win = net_cash_return > 0
-            is_relative_win = net_excess > 0
-            if is_cash_win:
-                outcome = "CORRECT_PROFIT"
-                reward = 1.0
-                win = True
-            elif is_relative_win:
-                outcome = "RELATIVE_ALPHA_CASH_LOSS"
-                reward = -0.5  # Penalize losing cash even if beat falling benchmark
-                win = False
-            else:
-                outcome = "INCORRECT"
-                reward = -1.0
-                win = False
-        elif direction == "FALL":
-            # Bear call: DSE retail has no shorting; this is capital preservation / risk avoidance
-            net_excess = eqw_ret - stock_ret_pct
-            win = net_excess > 0
-            outcome = "AVOIDANCE_SUCCESS" if win else "AVOIDANCE_FAIL"
-            reward = 0.5 if win else -0.5
-        else:
-            net_excess = stock_ret_pct - eqw_ret - ROUND_TRIP_COST_PCT
-            win = abs(net_excess) < 1.0
-            outcome = "CORRECT" if win else "INCORRECT"
-            reward = 1.0 if win else -1.0
-
-        mistake = None
-        if not win:
-            mistake = (
-                f"outcome={outcome} net_cash={net_cash_return:+.2f}% stock={stock_ret_pct:+.2f}% "
-                f"eqw={eqw_ret:+.2f}% cost={ROUND_TRIP_COST_PCT}% H={n_bars}"
-            )
-
-        item["status"] = "EVALUATED"
-        item["evaluated_at"] = datetime.now().isoformat()
-        item["actual_outcome"] = outcome
-        item["stock_return_pct"] = round(stock_ret_pct, 4)
-        item["eqw_return_pct"] = round(eqw_ret, 4)
-        item["net_excess_pct"] = round(net_excess, 4)
-        item["realized_return_pct"] = round(stock_ret_pct, 4)
-        item["reward_score"] = reward
-        item["mistake_analysis"] = mistake
-        item["eval_end_date"] = end_date
-        item["horizon_bars_used"] = n_bars
-
-        evaluated_count += 1
-        if win:
-            correct_count += 1
-        else:
-            incorrect_count += 1
-
-    conn.close()
+    newly = [i for i in ledger if i.get("status") == "EVALUATED" and before.get(i.get("prediction_id")) != "EVALUATED"]
+    evaluated_count = len(newly)
+    correct_count = sum(1 for i in newly if i.get("actual_outcome") in ("CORRECT", "CORRECT_PROFIT", "AVOIDANCE_SUCCESS"))
+    incorrect_count = evaluated_count - correct_count
 
     # Factor weight update from real active_signals only (Phase-2 rows)
     total_evaluated = [
@@ -360,7 +271,6 @@ def evaluate_pending_predictions(eval_window_days: int | None = None) -> dict:
         # Robust empirical Bayes prior: pseudo-sample count 50 prevents overfitting on small sample sizes
         prior_a, prior_b = 25.0, 25.0
         prior_mean = 0.5
-        lr = float(weights.get("learning_rate", 0.02))
 
         for w_key, sig_key in factors_map.items():
             factor_preds = [
@@ -369,13 +279,13 @@ def evaluate_pending_predictions(eval_window_days: int | None = None) -> dict:
             ]
             n_f = len(factor_preds)
             k_f = sum(1 for i in factor_preds if i.get("actual_outcome") in ("CORRECT", "CORRECT_PROFIT", "AVOIDANCE_SUCCESS"))
+            # Deterministic in the current labels (re-running the same day gives the same weights);
+            # below 15 observations the factor stays at the neutral prior.
             if n_f >= 15:
                 shrunk_p = (k_f + prior_a) / (n_f + prior_a + prior_b)
-                target_w = max(0.0, min(1.40, shrunk_p / prior_mean))
-                # Floor at 0: negative-IC factors can shut off
-                old_w = float(weights.get(w_key, 1.0))
-                weights[w_key] = round((1.0 - lr) * old_w + lr * target_w, 3)
-            # else keep prior
+                weights[w_key] = round(max(0.0, min(1.40, shrunk_p / prior_mean)), 3)
+            else:
+                weights[w_key] = 1.0
 
         # Brier on reported probs (only meaningful if probs vary)
         brier_sum = 0.0
@@ -398,6 +308,10 @@ def evaluate_pending_predictions(eval_window_days: int | None = None) -> dict:
         weights["brier_score"] = brier_score
         weights["horizon_bars"] = horizon
         weights["round_trip_cost_pct"] = ROUND_TRIP_COST_PCT
+
+    else:
+        for w_key in ("debt_npl_weight", "valuation_mos_weight", "rsi_momentum_weight", "smart_money_weight"):
+            weights[w_key] = 1.0
 
     save_ledger(ledger)
     save_weights(weights)

@@ -31,6 +31,15 @@ from rank_ic_newey_west import spearman_rank_correlation, newey_west_t_stat
 # Pre-registered promotion gate (Epoch 2 power math: ~44 periods @ 14d; use 21-bar IC stride)
 REQUIRED_PERIODS = 12  # minimum independent IC observations before promote attempt
 ALPHA_FAMILY = 0.05    # family-wise error rate for Holm
+# Hard floor on live (non-backfilled) daily IC observations, regardless of registry config.
+MIN_PROMOTION_PERIODS = 200
+STATIC_SCORE_MODES = {"frozen_epoch2_pit_formula", "equal_weight_heuristic", "cross_sectional_rank_v1"}
+CROSS_SECTIONAL_FACTORS = {
+    "div": lambda r: r.get("dividend_yield"),
+    "value": lambda r: (100.0 / r["pe_ratio"]) if r.get("pe_ratio") and r["pe_ratio"] > 0 else None,
+    "rsi": lambda r: -r["rsi_14"] if r.get("rsi_14") is not None else None,
+}
+CA_PRICE_EVENTS = ("bonus_dividend", "split", "rights_split", "rights", "cash_bonus_adjustment")
 
 
 def _param_hash(payload: dict) -> str:
@@ -178,6 +187,53 @@ def champion_hash() -> str:
     return load_registry()["champion"]["parameter_hash"]
 
 
+def freeze_champion_content(reason: str) -> dict:
+    """Record the current scoring content hash as the champion's frozen content (a governance event)."""
+    from unified_score import compute_model_content_hash, SCORING_SOURCE_FILES
+    if not reason or not reason.strip():
+        raise ValueError("a reason is required to freeze champion content")
+    reg = load_registry()
+    champ = reg["champion"]
+    new_hash = compute_model_content_hash()
+    entry = {
+        "at": datetime.now(timezone.utc).isoformat(),
+        "model_id": champ["model_id"],
+        "previous_content_hash": champ.get("frozen_content_hash"),
+        "content_hash": new_hash,
+        "files": list(SCORING_SOURCE_FILES),
+        "reason": reason.strip(),
+    }
+    champ["frozen_content_hash"] = new_hash
+    champ["frozen_content_at"] = entry["at"]
+    reg["freeze_log"] = list(reg.get("freeze_log") or []) + [entry]
+    save_registry(reg)
+    return entry
+
+
+def _cross_sectional_scores(rows: list[dict], params: dict) -> dict:
+    """
+    Whole-universe score: mean percentile rank of the declared factors among names passing the Shariah-sector,
+    price and debt gates (D/E <= max_debt_equity for non-banks; missing D/E is gated). No macro-hurdle gate.
+    """
+    from unified_score import is_shariah_excluded_company
+    max_de = float(params.get("max_debt_equity", 1.0))
+    passed = [r for r in rows if (r.get("close") or 0) > 0
+              and not is_shariah_excluded_company(r.get("sector"), ticker=r.get("ticker"))
+              and r.get("debt_equity") is not None and float(r["debt_equity"]) <= max_de]
+    pct = {}
+    for f in params.get("factors", list(CROSS_SECTIONAL_FACTORS)):
+        vals = sorted((CROSS_SECTIONAL_FACTORS[f](r), r["ticker"]) for r in passed if CROSS_SECTIONAL_FACTORS[f](r) is not None)
+        n = len(vals)
+        for i, (_, t) in enumerate(vals):
+            pct.setdefault(t, []).append((i + 0.5) / n)
+    need = int(params.get("min_factors", 2))
+    scores = {r["ticker"]: None for r in rows}
+    for t, ps in pct.items():
+        if len(ps) >= need:
+            scores[t] = round(sum(ps) / len(ps), 6)
+    return scores
+
+
 def _score_with_params(row: dict, params: dict) -> dict:
     fw = None
     score_mode = params.get("score")
@@ -242,80 +298,161 @@ def shadow_score_universe(asof: str | None = None) -> dict:
     rows = [dict(r) for r in conn.execute(
         "SELECT * FROM features_daily WHERE date=?", (asof,)
     ).fetchall()]
-    next_d = conn.execute(
-        "SELECT MIN(date) FROM prices WHERE date > ?", (asof,)
-    ).fetchone()[0]
+    conn.close()
 
     models = [reg["champion"]] + list(reg.get("challengers", []))
-    results = {}
-
-    for m in models:
-        mid = m["model_id"]
-        scored = []
-        for r in rows:
-            s = _score_with_params(r, m.get("params") or {})
-            scored.append({
-                "ticker": r["ticker"],
-                "score": s["score"],
-                "is_eligible": s["is_eligible"],
-                "close": r.get("close"),
-            })
-        ic = None
-        n = 0
-        if next_d:
-            xs, ys = [], []
-            for s in scored:
-                if not s["is_eligible"]:
-                    continue
-                px1 = conn.execute(
-                    "SELECT close FROM prices WHERE ticker=? AND date=?",
-                    (s["ticker"], next_d),
-                ).fetchone()
-                if s["close"] and px1 and px1[0] and float(s["close"]) > 0:
-                    xs.append(float(s["score"]))
-                    ys.append(float(px1[0]) / float(s["close"]) - 1.0)
-            n = len(xs)
-            if n >= 15:
-                ic = round(spearman_rank_correlation(xs, ys), 4)
-        results[mid] = {
-            "parameter_hash": m["parameter_hash"],
-            "role": m.get("role"),
-            "ic": ic,
-            "n": n,
-            "eligible": sum(1 for s in scored if s["is_eligible"]),
-            "top5": sorted(
-                [s for s in scored if s["is_eligible"]],
-                key=lambda x: x["score"],
-                reverse=True,
-            )[:5],
-        }
-
-    conn.close()
     entry = {
         "date": asof,
-        "forward_date": next_d,
+        "forward_date": None,
         "timestamp": datetime.now(timezone.utc).isoformat(),
         "champion_id": reg["champion"]["model_id"],
-        "models": {
-            mid: {
-                "parameter_hash": v["parameter_hash"],
-                "role": v["role"],
-                "rank_ic": v["ic"],
-                "n": v["n"],
-                "eligible": v["eligible"],
-                "top5": [{"ticker": t["ticker"], "score": t["score"]} for t in v["top5"]],
-            }
-            for mid, v in results.items()
-        },
+        "closes": {r["ticker"]: r.get("close") for r in rows if r.get("close")},
+        "scores_universe": "full",
+        "models": {},
     }
+    for m in models:
+        scores = {}
+        if (m.get("params") or {}).get("score") == "cross_sectional_rank_v1":
+            scores = _cross_sectional_scores(rows, m["params"])
+        for r in rows if not scores else []:
+            sc = _score_with_params(r, m.get("params") or {})
+            scores[r["ticker"]] = float(sc["score"]) if sc["is_eligible"] else None
+        ranked = sorted(((t, v) for t, v in scores.items() if v is not None), key=lambda x: x[1], reverse=True)
+        entry["models"][m["model_id"]] = {
+            "parameter_hash": m["parameter_hash"],
+            "role": m.get("role"),
+            "rank_ic": None,
+            "n": 0,
+            "eligible": len(ranked),
+            "scores": scores,
+            "top5": [{"ticker": t, "score": v} for t, v in ranked[:5]],
+        }
+
     with open(SHADOW_IC_LOG, "a", encoding="utf-8") as f:
         f.write(json.dumps(entry, ensure_ascii=False) + "\n")
-    # dedupe by date
     _dedupe_shadow()
-    print(f"[SHADOW] asof={asof} forward={next_d}")
-    for mid, v in results.items():
-        print(f"  {v['role']}: {mid} ic={v['ic']} n={v['n']} hash={v['parameter_hash']}")
-    return {"ok": True, "entry": entry}
+    resolved = resolve_shadow_ic()
+    print(f"[SHADOW] asof={asof} scored; resolved {resolved} pending forward IC entries")
+    return {"ok": True, "entry": {k: v for k, v in entry.items() if k != "closes"}}
+
+
+def _next_session(conn: sqlite3.Connection, d: str) -> str | None:
+    row = conn.execute("""
+        SELECT MIN(p.date) FROM prices p
+        JOIN trading_calendar t ON t.date = p.date AND t.is_trading_day = 1
+        WHERE p.date > ?
+    """, (d,)).fetchone()
+    return row[0] if row and row[0] else None
+
+
+def _forward_ic(conn: sqlite3.Connection, d: str, nd: str, scores: dict, closes: dict) -> tuple[float | None, int]:
+    """
+    1-session forward Spearman IC over the whole scored universe: eligible names by score, gated
+    (None) names tied below every eligible name, so the IC measures selection, not just ordering
+    within a handful of picks. Tickers with a price-altering corporate action in [d, nd] are excluded.
+    """
+    live = [v for v in scores.values() if v is not None]
+    if not live:
+        return None, 0
+    floor = min(live) - 1.0
+    scores = {t: (v if v is not None else floor) for t, v in scores.items()}
+    ph = ",".join("?" * len(CA_PRICE_EVENTS))
+    excluded = {r[0] for r in conn.execute(
+        f"SELECT DISTINCT ticker FROM corporate_actions WHERE record_date BETWEEN ? AND ? AND action_type IN ({ph})",
+        (d, nd, *CA_PRICE_EVENTS),
+    )}
+    fwd = {r[0]: r[1] for r in conn.execute("SELECT ticker, close FROM prices WHERE date = ?", (nd,))}
+    base = {r[0]: r[1] for r in conn.execute("SELECT ticker, close FROM prices WHERE date = ?", (d,))}
+    xs, ys = [], []
+    for t, sc in scores.items():
+        c0, c1 = base.get(t) or closes.get(t), fwd.get(t)
+        if t in excluded or not c0 or not c1 or float(c0) <= 0:
+            continue
+        xs.append(float(sc))
+        ys.append(float(c1) / float(c0) - 1.0)
+    if len(xs) < 15:
+        return None, len(xs)
+    return round(spearman_rank_correlation(xs, ys), 4), len(xs)
+
+
+def _rescore_static(conn: sqlite3.Connection, d: str, model: dict) -> tuple[dict, dict] | None:
+    """Re-score a past date from stored PIT features; only valid for models whose parameters never change."""
+    if (model.get("params") or {}).get("score") not in STATIC_SCORE_MODES:
+        return None
+    conn.row_factory = sqlite3.Row
+    rows = [dict(r) for r in conn.execute("SELECT * FROM features_daily WHERE date = ?", (d,))]
+    conn.row_factory = None
+    if model["params"].get("score") == "cross_sectional_rank_v1":
+        return _cross_sectional_scores(rows, model["params"]), {r["ticker"]: r.get("close") for r in rows if r.get("close")}
+    scores = {}
+    for r in rows:
+        sc = _score_with_params(r, model.get("params") or {})
+        scores[r["ticker"]] = float(sc["score"]) if sc["is_eligible"] else None
+    closes = {r["ticker"]: r.get("close") for r in rows if r.get("close")}
+    return scores, closes
+
+
+def resolve_shadow_ic(backfill: bool = True) -> int:
+    """
+    Fill forward IC for every logged date whose next trading session now has prices.
+    With backfill=True, also create entries for features_daily dates never logged, re-scored
+    for static-parameter models only and flagged backfilled (excluded from promotion).
+    """
+    reg = load_registry()
+    models = [reg["champion"]] + list(reg.get("challengers", []))
+    entries = {}
+    if SHADOW_IC_LOG.exists():
+        for line in SHADOW_IC_LOG.read_text(encoding="utf-8").splitlines():
+            if line.strip():
+                o = json.loads(line)
+                entries[o["date"]] = o
+
+    conn = sqlite3.connect(DB_PATH, timeout=30.0)
+    conn.execute("PRAGMA busy_timeout = 30000;")
+    resolved = 0
+    try:
+        if backfill:
+            for (d,) in conn.execute("""
+                SELECT DISTINCT f.date FROM features_daily f
+                JOIN trading_calendar t ON t.date = f.date AND t.is_trading_day = 1
+            """).fetchall():
+                if d not in entries:
+                    entries[d] = {"date": d, "forward_date": None, "backfilled": True,
+                                  "champion_id": reg["champion"]["model_id"], "models": {}}
+
+        for d, e in sorted(entries.items()):
+            nd = _next_session(conn, d)
+            if not nd:
+                continue
+            changed = False
+            for m in models:
+                mid = m["model_id"]
+                me = e["models"].setdefault(mid, {"parameter_hash": m["parameter_hash"], "role": m.get("role"),
+                                                  "rank_ic": None, "n": 0})
+                if me.get("rank_ic") is not None:
+                    continue
+                # Entries logged before scores covered the whole universe are rescored when possible.
+                if me.get("scores") and e.get("closes") and e.get("scores_universe") == "full":
+                    ic, n = _forward_ic(conn, d, nd, me["scores"], e["closes"])
+                else:
+                    rs = _rescore_static(conn, d, m)
+                    if rs is None:
+                        me["backfill_skipped"] = "adaptive_params_would_leak_future"
+                        continue
+                    ic, n = _forward_ic(conn, d, nd, rs[0], rs[1])
+                    me["backfilled"] = True
+                me["rank_ic"], me["n"] = ic, n
+                changed = True
+            if changed or e.get("forward_date") != nd:
+                e["forward_date"] = nd
+                resolved += 1
+    finally:
+        conn.close()
+
+    with open(SHADOW_IC_LOG, "w", encoding="utf-8") as f:
+        for d in sorted(entries):
+            f.write(json.dumps(entries[d], ensure_ascii=False) + "\n")
+    return resolved
 
 
 def _dedupe_shadow() -> None:
@@ -336,17 +473,21 @@ def _dedupe_shadow() -> None:
             f.write(json.dumps(kept[d], ensure_ascii=False) + "\n")
 
 
-def _load_shadow_ic_series(model_id: str) -> list[float]:
+def _load_shadow_ic_series(model_id: str, live_only: bool = True) -> dict:
+    """date -> IC. live_only drops backfilled observations, which never count toward promotion."""
     if not SHADOW_IC_LOG.exists():
-        return []
-    series = []
+        return {}
+    series = {}
     for line in SHADOW_IC_LOG.read_text(encoding="utf-8").splitlines():
         if not line.strip():
             continue
         o = json.loads(line)
         m = (o.get("models") or {}).get(model_id) or {}
-        if m.get("rank_ic") is not None:
-            series.append(float(m["rank_ic"]))
+        if m.get("rank_ic") is None:
+            continue
+        if live_only and (o.get("backfilled") or m.get("backfilled")):
+            continue
+        series[o["date"]] = float(m["rank_ic"])
     return series
 
 
@@ -355,13 +496,18 @@ def holm_critical(alpha: float, m: int, rank: int) -> float:
     return alpha / max(1, (m - rank + 1))
 
 
-def promote_challenger(challenger_id: str | None = None, force: bool = False) -> dict:
+def _one_sided_p(t: float) -> float:
+    """P(Z >= t) under the standard normal (Newey-West t is asymptotically normal)."""
+    return 0.5 * math.erfc(t / math.sqrt(2.0))
+
+
+def promote_challenger(challenger_id: str | None = None, force: bool = False, approve: bool = False) -> dict:
     """
-    Promote challenger if:
-      1. >= REQUIRED_PERIODS IC observations for both
-      2. challenger mean IC > champion mean IC
-      3. Newey-West t on (challenger_ic - champion_ic) exceeds Holm-adjusted threshold
-         among active trial_count hypotheses
+    Evaluate challengers against the champion on date-aligned live daily IC:
+      1. >= max(registry required_periods, MIN_PROMOTION_PERIODS) shared live observations
+      2. Newey-West t on (challenger_ic - champion_ic), one-sided p-value
+      3. Holm step-down over m = max(trial_count, candidates) hypotheses; stops at first failure
+    The registry is changed only when approve=True (a human decision); otherwise this is a dry run.
     """
     reg = load_registry()
     champ = reg["champion"]
@@ -377,64 +523,72 @@ def promote_challenger(challenger_id: str | None = None, force: bool = False) ->
     else:
         candidates = [c for c in challengers if c.get("status") == "SHADOW"]
 
-    required = int(reg.get("required_periods", REQUIRED_PERIODS))
+    required = max(int(reg.get("required_periods", REQUIRED_PERIODS)), MIN_PROMOTION_PERIODS)
     alpha = float(reg.get("holm_alpha", ALPHA_FAMILY))
-    m_trials = max(1, int(reg.get("trial_count", len(candidates))))
+    m_trials = max(1, int(reg.get("trial_count", 0)), len(candidates))
 
     champ_ic = _load_shadow_ic_series(champ["model_id"])
     decisions = []
-
-    # Score each candidate by excess IC t-stat for Holm ordering
     scored = []
     for c in candidates:
         c_ic = _load_shadow_ic_series(c["model_id"])
-        n = min(len(champ_ic), len(c_ic))
+        dates = sorted(set(champ_ic) & set(c_ic))
+        n = len(dates)
         if n < required and not force:
             decisions.append({
                 "model_id": c["model_id"],
                 "promoted": False,
-                "reason": f"need>={required} IC periods, have {n}",
+                "reason": f"need>={required} live IC periods, have {n}",
             })
             continue
-        # Align last n
-        diff = [c_ic[-n + i] - champ_ic[-n + i] for i in range(n)]
+        if n < 3:
+            decisions.append({"model_id": c["model_id"], "promoted": False, "reason": f"only {n} periods"})
+            continue
+        diff = [c_ic[d] - champ_ic[d] for d in dates]
         mean_d, se, t = newey_west_t_stat(diff, max_lags=max(1, int(math.ceil(DEFAULT_HORIZON_BARS / 5))))
         scored.append({
             "challenger": c,
             "n": n,
             "mean_excess_ic": mean_d,
             "t_nw": t,
-            "champ_mean": sum(champ_ic[-n:]) / n,
-            "chall_mean": sum(c_ic[-n:]) / n,
+            "p_one_sided": _one_sided_p(t),
+            "champ_mean": sum(champ_ic[d] for d in dates) / n,
+            "chall_mean": sum(c_ic[d] for d in dates) / n,
         })
 
-    # Holm: sort by |t| descending
-    scored.sort(key=lambda x: abs(x["t_nw"]), reverse=True)
+    scored.sort(key=lambda x: x["p_one_sided"])
     promoted = None
-    for rank_i, s in enumerate(scored, start=1):
+    rejecting = True
+    for rank_i, sc in enumerate(scored, start=1):
         crit = holm_critical(alpha, m_trials, rank_i)
-        # one-sided: challenger better → t>0; approx z crit for alpha
-        # use normal approx: t > Φ^{-1}(1-crit)
-        z_crit = _norm_isf(crit)
-        ok = s["mean_excess_ic"] > 0 and s["t_nw"] > z_crit
+        ok = rejecting and sc["mean_excess_ic"] > 0 and sc["p_one_sided"] <= crit
         if force:
-            ok = s["mean_excess_ic"] > 0
-        decision = {
-            "model_id": s["challenger"]["model_id"],
-            "promoted": ok,
-            "n": s["n"],
-            "mean_excess_ic": round(s["mean_excess_ic"], 4),
-            "t_nw": round(s["t_nw"], 3),
-            "z_crit_holm": round(z_crit, 3),
+            ok = sc["mean_excess_ic"] > 0
+        if not ok:
+            rejecting = False
+        decisions.append({
+            "model_id": sc["challenger"]["model_id"],
+            "promoted": False,
+            "passes_gate": ok,
+            "n": sc["n"],
+            "mean_excess_ic": round(sc["mean_excess_ic"], 4),
+            "t_nw": round(sc["t_nw"], 3),
+            "p_one_sided": round(sc["p_one_sided"], 6),
+            "holm_alpha_crit": round(crit, 6),
+            "z_crit_holm": round(_norm_isf(crit), 3),
             "holm_rank": rank_i,
             "m_trials": m_trials,
-            "champ_mean_ic": round(s["champ_mean"], 4),
-            "chall_mean_ic": round(s["chall_mean"], 4),
+            "champ_mean_ic": round(sc["champ_mean"], 4),
+            "chall_mean_ic": round(sc["chall_mean"], 4),
             "reason": "PASS" if ok else "fail_holm_or_sign",
-        }
-        decisions.append(decision)
+        })
         if ok and promoted is None:
-            promoted = s
+            promoted = sc
+
+    if promoted and not approve:
+        return {"ok": False, "promoted": None, "pending_approval": promoted["challenger"]["model_id"],
+                "decisions": decisions,
+                "reason": "gate passed; rerun with 'promote <id> --approve' to change the champion"}
 
     if promoted:
         old_champ = reg["champion"]
@@ -449,6 +603,9 @@ def promote_challenger(challenger_id: str | None = None, force: bool = False) ->
         reg["challengers"] = [
             c for c in challengers if c["model_id"] != new_champ["model_id"]
         ]
+        for dcs in decisions:
+            if dcs["model_id"] == new_champ["model_id"]:
+                dcs["promoted"] = True
         reg["promotion_log"] = list(reg.get("promotion_log") or []) + [{
             "at": new_champ["promoted_at"],
             "from": old_champ["model_id"],
@@ -463,30 +620,11 @@ def promote_challenger(challenger_id: str | None = None, force: bool = False) ->
 
 
 def _norm_isf(p: float) -> float:
-    """Inverse survival function approx for standard normal (Acklam)."""
+    """Inverse survival function of the standard normal."""
+    from statistics import NormalDist
     if p <= 0 or p >= 1:
-        return 3.0
-    # rough: for small p use erfcinv-like approximation
-    # common critical values
-    table = {
-        0.05: 1.64485,
-        0.025: 1.95996,
-        0.01: 2.32635,
-        0.005: 2.57583,
-        0.001: 3.09023,
-    }
-    best = 1.96
-    best_dp = 999.0
-    for k, v in table.items():
-        if abs(k - p) < best_dp:
-            best_dp = abs(k - p)
-            best = v
-    # interpolate in log space for holm-adjusted alphas
-    if p < 0.001:
-        return 3.1 + math.log10(0.001 / p) * 0.5
-    if p > 0.05:
-        return 1.64 * (0.05 / p) ** 0.2
-    return best
+        return float("inf") if p <= 0 else float("-inf")
+    return NormalDist().inv_cdf(1.0 - p)
 
 
 if __name__ == "__main__":
@@ -496,7 +634,13 @@ if __name__ == "__main__":
     elif cmd == "shadow":
         print(json.dumps(shadow_score_universe(), indent=2, default=str)[:2000])
     elif cmd == "promote":
-        cid = sys.argv[2] if len(sys.argv) > 2 else None
-        print(json.dumps(promote_challenger(cid), indent=2))
+        args = [x for x in sys.argv[2:] if not x.startswith("--")]
+        cid = args[0] if args else None
+        print(json.dumps(promote_challenger(cid, approve="--approve" in sys.argv), indent=2))
+    elif cmd == "freeze":
+        reason = " ".join(x for x in sys.argv[2:] if x != "--reason")
+        print(json.dumps(freeze_champion_content(reason), indent=2))
+    elif cmd == "resolve":
+        print(json.dumps({"resolved": resolve_shadow_ic()}, indent=2))
     else:
-        print("usage: model_registry.py [init|shadow|promote]")
+        print("usage: model_registry.py [init|shadow|resolve|promote [id] [--approve]|freeze --reason <text>]")

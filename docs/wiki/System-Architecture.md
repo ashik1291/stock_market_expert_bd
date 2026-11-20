@@ -60,4 +60,4 @@ The system relies on an embedded SQLite database (`data/processed/dse.db`) optim
    PRAGMA busy_timeout = 30000;
    ```
 2. **30-Second Busy Timeout**: Prevents multi-process crashes when background scrapers write while analysis scripts read.
-3. **Compressed Distribution**: The full database is committed as a compressed archive `data/processed/dse.db.gz` (30.8 MB) containing 1,093,326 continuous price bars and 1,707 PIT filing records. On initialization, `bootstrap.py` decompresses it in ~2 seconds.
+3. **Compressed Distribution**: The full database is committed as a compressed archive `data/processed/dse.db.gz` (~41 MB) containing 1,172,000+ daily price bars and 1,707 PIT filing records. On initialization, `bootstrap.py` decompresses it in ~2 seconds.

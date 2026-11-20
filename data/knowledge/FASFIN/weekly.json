@@ -2,18 +2,18 @@
   "ticker": "FASFIN",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-17T09:01:28.642522",
-  "asof_price_date": "2026-11-17",
+  "analyzed_at": "2026-11-19T08:54:37.318921",
+  "asof_price_date": "2026-11-19",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 89.9797,
+    "rsi_14": 89.67,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 44.09,
+  "confidence": 44.0,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -96,14 +96,14 @@
       "visual_gauge": "[ \u09f30.4 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| \u09f32.5 ] (100.0% (Truncated))",
       "conviction_bonus": -10.0,
       "is_truncated_window": true,
-      "bars_evaluated": 100,
+      "bars_evaluated": 99,
       "signal": "Price is at 100.0% of 52-week high (near \u09f32.5) \u2014 elevated mean-reversion risk"
     },
     "total_precision_bonus": -10.0
   },
   "pattern_dna": {
     "ticker": "FASFIN",
-    "audited_at": "2026-11-17 15:01:28",
+    "audited_at": "2026-11-19 14:54:37",
     "worth_vs_greed": {
       "current_price": 2.5,
       "intrinsic_worth": 1.25,
@@ -111,8 +111,8 @@
       "extension_froth_score": 40.0,
       "greed_index": 40.0,
       "rsi_14": 100.0,
-      "price_vs_ema50_pct": 26.7,
-      "price_vs_ema200_pct": 25.9,
+      "price_vs_ema50_pct": 25.4,
+      "price_vs_ema200_pct": 25.6,
       "merit_status": "SPECULATIVE_JUNK_PUMP",
       "merit_reason": "Price is surging aggressively without positive EPS backing. Pure speculative risk.",
       "timing_directives": {
@@ -145,13 +145,13 @@
           "range_volatility_pct": 0.0
         },
         "quarterly_63d": {
-          "return_pct": 127.27,
+          "return_pct": 150.0,
           "high": 2.5,
           "low": 0.41,
           "range_volatility_pct": 509.76
         },
         "half_yearly_126d": {
-          "return_pct": 47.06,
+          "return_pct": 56.25,
           "high": 2.5,
           "low": 0.41,
           "range_volatility_pct": 509.76
@@ -274,15 +274,14 @@
       "sma_trend": "bullish",
       "bb": "at_lower_band_bullish",
       "atr": 0.02,
-      "rsi_value": 88.39,
+      "rsi_value": 88.42,
       "last_close": 2.5,
       "sma20": 2.5,
-      "sma50": 1.72,
+      "sma50": 1.75,
       "sma200": null,
       "support_resistance": {
         "supports": [
-          0.42,
-          0.73
+          0.42
         ],
         "resistances": [
           2.5
@@ -292,8 +291,7 @@
     },
     "sr": {
       "supports": [
-        0.42,
-        0.73
+        0.42
       ],
       "resistances": [
         2.5
@@ -351,13 +349,13 @@
         "flag": false,
         "price_chg": 0,
         "last_volume": 0,
-        "avg_volume": 4861.0,
+        "avg_volume": 0.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
         "spike_ratio": 0.0,
-        "avg_volume": 33771.0,
+        "avg_volume": 4861.0,
         "today_volume": 0,
         "detail": "ok"
       },
@@ -384,13 +382,13 @@
     }
   },
   "composite": {
-    "composite_score": 44.09,
+    "composite_score": 44.0,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.662,
+      "fundamental": 0.66,
       "technical": 0.205,
-      "governance": 0.134,
+      "governance": 0.135,
       "sentiment": 0.0
     }
   }

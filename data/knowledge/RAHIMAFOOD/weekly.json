@@ -2,53 +2,53 @@
   "ticker": "RAHIMAFOOD",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-17T09:01:43.584521",
-  "asof_price_date": "2026-11-17",
+  "analyzed_at": "2026-11-19T08:54:51.451417",
+  "asof_price_date": "2026-11-19",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 40.3603,
+    "rsi_14": 52.7857,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 43.83,
+  "confidence": 44.0,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
-    "heuristic_momentum_bias": 58.3,
+    "heuristic_momentum_bias": 53.3,
     "rise_probability_pct": null,
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+7.8%",
+      "upside_potential_pct": "+7.7%",
       "downside_risk_pct": "-5.1%",
-      "target_price": 75.8,
-      "support_price": 66.7,
+      "target_price": 82.8,
+      "support_price": 73.0,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
       "upside_potential_pct": "+25.0%",
-      "downside_risk_pct": "-9.1%",
-      "target_price": 87.9,
-      "trailing_stop": 63.9,
-      "risk_reward_ratio": "2.7x"
+      "downside_risk_pct": "-10.0%",
+      "target_price": 96.1,
+      "trailing_stop": 69.2,
+      "risk_reward_ratio": "2.5x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.0%",
       "downside_risk_pct": "-12.0%",
-      "target_price": 91.4,
+      "target_price": 100.0,
       "dividend_cagr": "5%\u20138%",
       "risk_reward_ratio": "2.5x"
     }
   },
   "trade_levels": {
-    "entry": 70.3,
-    "stop_loss": 64.84,
-    "target": 81.22
+    "entry": 76.9,
+    "stop_loss": 71.01,
+    "target": 88.68
   },
   "precision": {
     "ticker": "RAHIMAFOOD",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 23078,
+      "avg_daily_volume": 35718,
       "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 1153,
-      "max_daily_accumulation_shares": 3461,
-      "max_order_bdt": 1153.0,
-      "directive": "Max single order: 1,153 shares (Tk 1,153) to prevent >1% execution slippage"
+      "max_single_order_shares": 1785,
+      "max_daily_accumulation_shares": 5357,
+      "max_order_bdt": 1785.0,
+      "directive": "Max single order: 1,785 shares (Tk 1,785) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,74 +91,74 @@
       "status": "VALID",
       "low_52w": 63.5,
       "high_52w": 169.0,
-      "range_52w_pct": 6.4,
+      "range_52w_pct": 12.7,
       "channel_regime": "DEEP_ACCUMULATION_BASE",
-      "visual_gauge": "[ \u09f363.5 |\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f3169.0 ] (6.4% (Truncated))",
+      "visual_gauge": "[ \u09f363.5 |\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591| \u09f3169.0 ] (12.7% (Truncated))",
       "conviction_bonus": 10.0,
       "is_truncated_window": true,
-      "bars_evaluated": 100,
-      "signal": "Price is at the bottom 6.4% of 52-week channel (near \u09f363.5 floor) \u2014 high margin of safety"
+      "bars_evaluated": 99,
+      "signal": "Price is at the bottom 12.7% of 52-week channel (near \u09f363.5 floor) \u2014 high margin of safety"
     },
     "total_precision_bonus": 10.0
   },
   "pattern_dna": {
     "ticker": "RAHIMAFOOD",
-    "audited_at": "2026-11-17 15:01:43",
+    "audited_at": "2026-11-19 14:54:51",
     "worth_vs_greed": {
-      "current_price": 70.3,
-      "intrinsic_worth": 35.15,
+      "current_price": 76.9,
+      "intrinsic_worth": 38.45,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 30.0,
       "greed_index": 30.0,
-      "rsi_14": 67.5,
-      "price_vs_ema50_pct": -20.9,
-      "price_vs_ema200_pct": -36.3,
+      "rsi_14": 76.6,
+      "price_vs_ema50_pct": -13.1,
+      "price_vs_ema200_pct": -30.1,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f368.9 \u2013 \u09f371.0",
-        "chase_cutoff_price": 72.1,
-        "when_to_wait": "If price opens or rises above \u09f372.1, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f368.9.",
-        "weekly_target_short": 72.8,
-        "monthly_target_swing": 80.8,
-        "long_term_target_asset": 91.4,
+        "optimal_entry_corridor": "\u09f375.4 \u2013 \u09f377.7",
+        "chase_cutoff_price": 78.8,
+        "when_to_wait": "If price opens or rises above \u09f378.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f375.4.",
+        "weekly_target_short": 79.6,
+        "monthly_target_swing": 88.4,
+        "long_term_target_asset": 100.0,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "CHRONIC_OVERVALUATION",
       "worth_decision": "AVOID",
       "reason": "Fundamental value severely lags stock price (MoS: -50.0%).",
       "is_blacklisted": true,
-      "blacklist_reason": "Blocked by Forensic Surveillance [HIGH: REGULATORY_PROBE on 2026-11-17 \u2014 BSEC Regulatory Enforcement / Probe: BSEC regulatory enforcement / probe]",
-      "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [HIGH: REGULATORY_PROBE on 2026-11-17 \u2014 BSEC Regulatory Enforcement / Probe: BSEC regulatory enforcement / probe]"
+      "blacklist_reason": "Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-11-19 \u2014 Low-float spike is 19.0x 20-day average (264,651 vs 13,943) | Price up +9.39% on untracked / high-risk security without verified earnings | BSEC Regulatory Enforcement / Probe: BSEC regulatory enforcement / probe]",
+      "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-11-19 \u2014 Low-float spike is 19.0x 20-day average (264,651 vs 13,943) | Price up +9.39% on untracked / high-risk security without verified earnings | BSEC Regulatory Enforcement / Probe: BSEC regulatory enforcement / probe]"
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 4.93,
-          "high": 73.5,
+          "return_pct": 14.61,
+          "high": 77.4,
           "low": 66.6,
-          "range_volatility_pct": 10.36
+          "range_volatility_pct": 16.22
         },
         "monthly_21d": {
-          "return_pct": 5.71,
-          "high": 73.5,
+          "return_pct": 15.47,
+          "high": 77.4,
           "low": 63.5,
-          "range_volatility_pct": 15.75
+          "range_volatility_pct": 21.89
         },
         "quarterly_63d": {
-          "return_pct": -48.16,
+          "return_pct": -39.4,
           "high": 169.0,
           "low": 63.5,
           "range_volatility_pct": 166.14
         },
         "half_yearly_126d": {
-          "return_pct": -51.92,
+          "return_pct": -48.46,
           "high": 169.0,
           "low": 63.5,
           "range_volatility_pct": 166.14
         },
         "yearly_252d": {
-          "return_pct": -14.68,
+          "return_pct": -6.79,
           "high": 174.0,
           "low": 63.5,
           "range_volatility_pct": 174.02
@@ -170,7 +170,7 @@
         "avg_wave_duration_bars": 20.0
       },
       "current_wave_phase": "BOTTOMING_SUPPORT",
-      "phase_guidance": "Drop (-58.4%) matches historical correction depth (-28.0%). Prepare to accumulate.",
+      "phase_guidance": "Drop (-54.5%) matches historical correction depth (-28.0%). Prepare to accumulate.",
       "top_seasonal_months": [
         {
           "month": "Sep",
@@ -268,17 +268,17 @@
     ]
   },
   "technical": {
-    "score": 52.5,
+    "score": 53.75,
     "signals": {
       "rsi": "neutral",
-      "macd": "neutral",
+      "macd": "bullish_crossover",
       "sma_trend": "neutral",
-      "bb": "inside_bands",
-      "atr": 3.64,
-      "rsi_value": 40.18,
-      "last_close": 70.3,
-      "sma20": 66.69,
-      "sma50": 98.77,
+      "bb": "at_upper_band_bearish",
+      "atr": 3.93,
+      "rsi_value": 52.35,
+      "last_close": 76.9,
+      "sma20": 67.21,
+      "sma50": 97.1,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -305,7 +305,7 @@
       "error": "no_fundamental_data",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 58.4,
+        "drawdown_pct": 54.5,
         "high_52w": 169.0,
         "low_52w": 63.5
       }
@@ -341,24 +341,27 @@
     }
   },
   "manipulation": {
-    "manipulation_score": 0,
+    "manipulation_score": 25,
     "manipulation_risk": "low",
     "block_buy": false,
-    "flags": [],
+    "flags": [
+      "volume_spike: volume_12.5x_avg",
+      "price_surge_no_news: price_10.2pct_zero_news"
+    ],
     "checks": {
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 13270,
-        "avg_volume": 21179.0,
+        "last_volume": 264651,
+        "avg_volume": 29534.0,
         "detail": "ok"
       },
       "volume_spike": {
-        "flag": false,
-        "spike_ratio": 0.41,
-        "avg_volume": 32484.0,
-        "today_volume": 13270,
-        "detail": "ok"
+        "flag": true,
+        "spike_ratio": 12.5,
+        "avg_volume": 21179.0,
+        "today_volume": 264651,
+        "detail": "volume_12.5x_avg"
       },
       "serial_trading": {
         "flag": false,
@@ -375,21 +378,21 @@
         "detail": "insufficient_fundamental_history"
       },
       "price_surge_no_news": {
-        "flag": false,
-        "price_change_3d": -0.71,
+        "flag": true,
+        "price_change_3d": 10.17,
         "news_count_3d": 0,
-        "detail": "ok"
+        "detail": "price_10.2pct_zero_news"
       }
     }
   },
   "composite": {
-    "composite_score": 43.83,
+    "composite_score": 44.0,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.662,
+      "fundamental": 0.66,
       "technical": 0.205,
-      "governance": 0.134,
+      "governance": 0.135,
       "sentiment": 0.0
     }
   }

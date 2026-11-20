@@ -96,9 +96,21 @@ def run_5_factor_screener(halal_tier: str = "flexible") -> list[dict]:
         p.close AS price,
         pit.eps,
         pit.nav,
-        pit.pe_ratio,
-        pit.debt_equity,
-        pit.dividend_yield,
+        (
+            SELECT pe_ratio FROM fundamentals_pit
+            WHERE ticker = c.ticker AND pe_ratio IS NOT NULL AND tradable_date <= :asof AND publication_date <= :asof
+            ORDER BY tradable_date DESC, publication_date DESC, snapshot_date DESC LIMIT 1
+        ) AS pe_ratio,
+        (
+            SELECT debt_equity FROM fundamentals_pit
+            WHERE ticker = c.ticker AND debt_equity IS NOT NULL AND tradable_date <= :asof AND publication_date <= :asof
+            ORDER BY tradable_date DESC, publication_date DESC, snapshot_date DESC LIMIT 1
+        ) AS debt_equity,
+        (
+            SELECT dividend_yield FROM fundamentals_pit
+            WHERE ticker = c.ticker AND dividend_yield IS NOT NULL AND tradable_date <= :asof AND publication_date <= :asof
+            ORDER BY tradable_date DESC, publication_date DESC, snapshot_date DESC LIMIT 1
+        ) AS dividend_yield,
         pit.cash_flow_ops,
         (
             SELECT COUNT(DISTINCT substr(ca.record_date, 1, 4))
@@ -106,22 +118,22 @@ def run_5_factor_screener(halal_tier: str = "flexible") -> list[dict]:
             WHERE ca.ticker = c.ticker
               AND ca.action_type = 'cash_dividend'
               AND ca.cash_amount > 0
-              AND ca.record_date <= ?
+              AND ca.record_date <= :asof
         ) AS cash_div_years
     FROM companies c
-    JOIN prices p ON c.ticker = p.ticker AND p.date = ?
+    JOIN prices p ON c.ticker = p.ticker AND p.date = :asof
     LEFT JOIN fundamentals_pit pit ON c.ticker = pit.ticker AND pit.id = (
         SELECT id FROM fundamentals_pit
         WHERE ticker = c.ticker
-          AND tradable_date <= ?
-          AND publication_date <= ?
+          AND tradable_date <= :asof
+          AND publication_date <= :asof
           AND cash_flow_ops IS NOT NULL
         ORDER BY tradable_date DESC, publication_date DESC, snapshot_date DESC LIMIT 1
     )
     WHERE c.category = 'A' AND p.close IS NOT NULL AND p.close > 0
     """
 
-    rows = conn.execute(query, (latest_date, latest_date, latest_date, latest_date)).fetchall()
+    rows = conn.execute(query, {"asof": latest_date}).fetchall()
     conn.close()
 
     screened = []
@@ -146,8 +158,14 @@ def run_5_factor_screener(halal_tier: str = "flexible") -> list[dict]:
         # Shariah / Halal Classification via HalalGuard
         guard = HalalGuard()
         pit_data = {"sector": sec, "debt_equity": r["debt_equity"]}
-        is_halal = guard.is_eligible(ticker, tier="flexible", pit_row=pit_data)["eligible"]
-        shariah_status = "HALAL" if is_halal else "CONVENTIONAL"
+        flex_res = guard.is_eligible(ticker, tier="flexible", pit_row=pit_data)
+        is_halal = flex_res["eligible"]
+        if is_halal:
+            shariah_status = "HALAL"
+        elif flex_res["reasons"] == ["L2_debt_unverified"]:
+            shariah_status = "UNVERIFIED"
+        else:
+            shariah_status = "CONVENTIONAL"
 
         # If a specific strict or flexible halal tier is requested, apply filter
         if halal_tier in ("strict", "flexible"):
@@ -159,7 +177,7 @@ def run_5_factor_screener(halal_tier: str = "flexible") -> list[dict]:
         eps = float(r["eps"]) if r["eps"] is not None else 0.0
         nav = float(r["nav"]) if r["nav"] is not None else 0.0
         pe = float(r["pe_ratio"]) if r["pe_ratio"] is not None else 0.0
-        de = float(r["debt_equity"]) if r["debt_equity"] is not None else 0.0
+        de = float(r["debt_equity"]) if r["debt_equity"] is not None else None
         div_y = float(r["dividend_yield"]) if r["dividend_yield"] is not None else 0.0
 
         # Positive earning & positive equity baseline
@@ -174,8 +192,8 @@ def run_5_factor_screener(halal_tier: str = "flexible") -> list[dict]:
         if promoter_block < 30.0:
             continue
 
-        # Filter 3: Solvency & Low Debt: Audited D/E <= 0.80
-        if de > 0.80:
+        # Filter 3: Solvency & Low Debt: Audited D/E <= 0.80 (unreported D/E fails)
+        if de is None or de > 0.80:
             continue
 
         # Filter 2: Cash dividend history from dated corporate actions only.
@@ -272,6 +290,7 @@ def generate_5_factor_reports():
     REPORTS_DIR.mkdir(parents=True, exist_ok=True)
     screened = run_5_factor_screener()
     latest_date = screened[0]["date"] if screened else datetime.date.today().isoformat()
+    rf_rate = screened[0]["t_bill_rf_pct"] if screened else get_latest_macro_rates()["risk_free_rate_pct"]
 
     json_path = REPORTS_DIR / "five_factor_screened_universe.json"
     with open(json_path, "w", encoding="utf-8") as f:
@@ -317,16 +336,16 @@ def generate_5_factor_reports():
 
     for u in undervalued:
         lines.append(
-            f"| **{u['ticker']}** | {u['sector']} | `{'HALAL' if u.get('is_halal') else 'CONVENTIONAL'}` | ৳{u['price']:.2f} | ৳{u['graham_value']:.2f} | **+{u['margin_of_safety_pct']:.1f}%** | {u['pe']:.1f} | **{u['yield']:.2f}%** | **{u['earnings_yield_pct']:.1f}%** | **{u['equity_risk_premium_pct']:+.1f}%** ({'PRIME' if u['equity_risk_premium_pct']>=5.0 else ('COMPETITIVE' if u['equity_risk_premium_pct']>=0.0 else 'UNCOMPETITIVE')}) | {u['de']:.2f} | {u['promoter_block_pct']:.1f}% | {u['cfo_status']} |"
+            f"| **{u['ticker']}** | {u['sector']} | `{u.get('shariah_status', 'CONVENTIONAL')}` | ৳{u['price']:.2f} | ৳{u['graham_value']:.2f} | **+{u['margin_of_safety_pct']:.1f}%** | {u['pe']:.1f} | **{u['yield']:.2f}%** | **{u['earnings_yield_pct']:.1f}%** | **{u['equity_risk_premium_pct']:+.1f}%** ({'PRIME' if u['equity_risk_premium_pct']>=5.0 else ('COMPETITIVE' if u['equity_risk_premium_pct']>=0.0 else 'UNCOMPETITIVE')}) | {u['de']:.2f} | {u['promoter_block_pct']:.1f}% | {u['cfo_status']} |"
         )
 
     if macro_hurdle_fails:
         lines.extend([
             "",
-            f"## 2. Macro Hurdle Deficit: Positive MoS But Fails Central Bank 15.10% Hurdle ({len(macro_hurdle_fails)} Stocks)",
-            "> **Action Rule**: DO NOT deploy fresh cash. While accounting Graham MoS is positive, Earnings Yield fails to beat 91-day T-Bill (11.60%) + 3.50% ERP = 15.10% Minimum Equity Hurdle.",
+            f"## 2. Macro Hurdle Deficit: Positive MoS But Fails the {rf_rate + 3.5:.2f}% Hurdle ({len(macro_hurdle_fails)} Stocks)",
+            f"> **Action Rule**: DO NOT deploy fresh cash. While accounting Graham MoS is positive, Earnings Yield fails to beat the Bangladesh Bank 91-day rate ({rf_rate:.2f}%) + 3.50% ERP = {rf_rate + 3.5:.2f}% Minimum Equity Hurdle.",
             "",
-            "| Ticker | Sector | Price (৳) | Graham Fair Value (৳) | Margin of Safety (%) | P/E | Earnings Yield (%) | Deficit vs 15.10% Hurdle |",
+            f"| Ticker | Sector | Price (৳) | Graham Fair Value (৳) | Margin of Safety (%) | P/E | Earnings Yield (%) | Deficit vs {rf_rate + 3.5:.2f}% Hurdle |",
             "| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: |"
         ])
         for m in macro_hurdle_fails:
@@ -369,14 +388,14 @@ def generate_5_factor_reports():
         f"## ১. আন্ডারভ্যালুড সেরা কোম্পানি: ইতিবাচক Margin of Safety সহ ({len(undervalued)}টি কোম্পানি)",
         "> **অ্যাকশন রুল**: নতুন ক্যাপিটাল strictly এই কোম্পানিগুলোতে বিনিয়োগ করুন যেখানে মার্কেট প্রাইস < Graham Fair Value।",
         "",
-        "| Ticker | Sector | Shariah স্ট্যাটাস | মার্কেট প্রাইস (৳) | Graham Fair Value (৳) | Margin of Safety (%) | P/E | Div Yield (%) | Earnings Yield (%) | ERP vs T-Bill (8.84%) | D/E | প্রমোটর (%) | CFO কোয়ালিটি |",
+        f"| Ticker | Sector | Shariah স্ট্যাটাস | মার্কেট প্রাইস (৳) | Graham Fair Value (৳) | Margin of Safety (%) | P/E | Div Yield (%) | Earnings Yield (%) | ERP vs T-Bill ({rf_rate:.2f}%) | D/E | প্রমোটর (%) | CFO কোয়ালিটি |",
         "| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |"
     ]
 
     for u in undervalued:
         erp_tag = 'PRIME' if u['equity_risk_premium_pct'] >= 5.0 else ('COMPETITIVE' if u['equity_risk_premium_pct'] >= 0.0 else 'UNCOMPETITIVE')
         bn_lines.append(
-            f"| **{u['ticker']}** | {u['sector']} | `{'HALAL' if u.get('is_halal') else 'CONVENTIONAL'}` | ৳{u['price']:.2f} | ৳{u['graham_value']:.2f} | **+{u['margin_of_safety_pct']:.1f}%** | {u['pe']:.1f} | **{u['yield']:.2f}%** | **{u['earnings_yield_pct']:.1f}%** | **{u['equity_risk_premium_pct']:+.1f}%** ({erp_tag}) | {u['de']:.2f} | {u['promoter_block_pct']:.1f}% | {u['cfo_status']} |"
+            f"| **{u['ticker']}** | {u['sector']} | `{u.get('shariah_status', 'CONVENTIONAL')}` | ৳{u['price']:.2f} | ৳{u['graham_value']:.2f} | **+{u['margin_of_safety_pct']:.1f}%** | {u['pe']:.1f} | **{u['yield']:.2f}%** | **{u['earnings_yield_pct']:.1f}%** | **{u['equity_risk_premium_pct']:+.1f}%** ({erp_tag}) | {u['de']:.2f} | {u['promoter_block_pct']:.1f}% | {u['cfo_status']} |"
         )
 
     bn_lines.extend([

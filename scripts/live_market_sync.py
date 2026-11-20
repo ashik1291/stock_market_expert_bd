@@ -95,6 +95,9 @@ def get_sync_status(conn: Optional[sqlite3.Connection] = None) -> Dict[str, Any]
                         missing_dates.append(c_str)
                 cur += datetime.timedelta(days=1)
 
+        coverage_gaps, _ = find_coverage_gaps(conn, today_dhaka)
+        missing_dates = sorted(set(missing_dates) | set(coverage_gaps))
+
         is_stale = False
         if not latest_price_date:
             is_stale = True
@@ -122,6 +125,68 @@ def get_sync_status(conn: Optional[sqlite3.Connection] = None) -> Dict[str, Any]
     finally:
         if close_conn:
             conn.close()
+
+
+COVERAGE_LOOKBACK_DAYS = 400
+COVERAGE_MIN_RATIO = 0.8
+BACKFILL_RETRY_DAYS = 7
+
+
+def _ensure_backfill_attempts_table(conn: sqlite3.Connection) -> None:
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS backfill_attempts (
+            date TEXT PRIMARY KEY,
+            attempted_at TEXT NOT NULL,
+            bars_after INTEGER
+        )
+    """)
+
+
+def find_coverage_gaps(conn: sqlite3.Connection, today_dhaka: str,
+                       lookback_days: int = COVERAGE_LOOKBACK_DAYS,
+                       min_ratio: float = COVERAGE_MIN_RATIO) -> Tuple[List[str], int]:
+    """
+    Past calendar trading days whose distinct-ticker count is below min_ratio of the
+    90th-percentile daily coverage in the lookback window. A median would be dragged
+    down by a long under-covered stretch, so the reference uses the upper tail.
+    Dates already attempted within BACKFILL_RETRY_DAYS are skipped so an unfillable
+    gap does not trigger a full-universe refetch on every command.
+    """
+    start = (datetime.date.fromisoformat(today_dhaka) - datetime.timedelta(days=lookback_days)).isoformat()
+    rows = conn.execute("""
+        SELECT t.date, COUNT(DISTINCT p.ticker)
+        FROM trading_calendar t
+        LEFT JOIN prices p ON p.date = t.date
+        WHERE t.is_trading_day = 1 AND t.date >= ? AND t.date < ?
+        GROUP BY t.date ORDER BY t.date
+    """, (start, today_dhaka)).fetchall()
+    counts = sorted(c for _, c in rows if c > 0)
+    if len(counts) < 10:
+        return [], 0
+    reference = counts[int(0.9 * (len(counts) - 1))]
+    threshold = int(reference * min_ratio)
+
+    retry_cutoff = (datetime.date.fromisoformat(today_dhaka) - datetime.timedelta(days=BACKFILL_RETRY_DAYS)).isoformat()
+    has_table = conn.execute(
+        "SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = 'backfill_attempts'"
+    ).fetchone()
+    recently_attempted = {r[0] for r in conn.execute(
+        "SELECT date FROM backfill_attempts WHERE attempted_at >= ?", (retry_cutoff,)
+    ).fetchall()} if has_table else set()
+    gaps = [d for d, c in rows if c < threshold and d not in recently_attempted]
+    return gaps, threshold
+
+
+def get_backfill_universe(conn: sqlite3.Connection, start_date: str, end_date: str,
+                          window_days: int = 120) -> List[str]:
+    """Every ticker that traded within window_days before start_date or after end_date."""
+    lo = (datetime.date.fromisoformat(start_date) - datetime.timedelta(days=window_days)).isoformat()
+    hi = (datetime.date.fromisoformat(end_date) + datetime.timedelta(days=window_days)).isoformat()
+    rows = conn.execute("""
+        SELECT DISTINCT ticker FROM prices
+        WHERE (date >= ? AND date < ?) OR (date > ? AND date <= ?)
+    """, (lo, start_date, end_date, hi)).fetchall()
+    return sorted({r[0].strip().upper() for r in rows} | set(get_tracked_tickers(conn)))
 
 
 def get_tracked_tickers(conn: sqlite3.Connection) -> List[str]:
@@ -198,18 +263,44 @@ def backfill_intermediate_dates(missing_dates: List[str], conn: sqlite3.Connecti
                 log.warning(f"Error processing cached snapshot for {d}: {e}")
 
     # Step B: For dates still missing from prices table, fetch historical bars for tracked tickers
+    _, threshold = find_coverage_gaps(conn, today_dhaka)
+    threshold = max(threshold, 20)
     unfilled_dates = []
     for d in past_missing:
-        cnt = conn.execute("SELECT COUNT(*) FROM prices WHERE date = ?", (d,)).fetchone()[0]
-        if cnt < 20:  # Need substantial coverage
+        cnt = conn.execute("SELECT COUNT(DISTINCT ticker) FROM prices WHERE date = ?", (d,)).fetchone()[0]
+        if cnt < threshold:
             unfilled_dates.append(d)
 
     if unfilled_dates:
         start_date = min(unfilled_dates)
         end_date = max(unfilled_dates)
-        tracked = get_tracked_tickers(conn)
+        tracked = get_backfill_universe(conn, start_date, end_date)
+        # One official day-end archive request per date covers every instrument; per-ticker fetching
+        # below only handles dates the archive did not return.
+        from repair_price_history import fetch_day_end_all
+        archive_dates = []
+        for d in unfilled_dates:
+            src = {t: r for t, r in fetch_day_end_all(d).items() if t in set(tracked)}
+            if len(src) < threshold:
+                continue
+            before = conn.total_changes
+            for t, r in src.items():
+                conn.execute(
+                    "INSERT OR IGNORE INTO prices (ticker, date, open, high, low, close, volume, value) VALUES (?,?,?,?,?,?,?,?)",
+                    (t, d, r["open"], r["high"], r["low"], r["close"], r["volume"], r["value"]),
+                )
+            records_inserted += conn.total_changes - before
+            from provenance import new_ingest, stamp_prices
+            fresh = [(t, d) for (t,) in conn.execute("SELECT ticker FROM prices WHERE date = ? AND source IS NULL", (d,)) if t in src]
+            stamp_prices(conn, new_ingest(conn, "dse_day_end_archive", f"bdshare get_historical_data {d} All Instrument", raw=src),
+                         "dse_day_end_archive", fresh, verified_on=datetime.date.today().isoformat())
+            archive_dates.append(d)
+        conn.commit()
+        unfilled_dates = [d for d in unfilled_dates if d not in archive_dates]
+        if not unfilled_dates:
+            tracked = []
         if verbose:
-            log.info(f"Fetching historical bars for {len(tracked)} tracked equities ({start_date} to {end_date})...")
+            log.info(f"Fetching historical bars for {len(tracked)} equities ({start_date} to {end_date})...")
 
         try:
             import bdshare
@@ -239,9 +330,24 @@ def backfill_intermediate_dates(missing_dates: List[str], conn: sqlite3.Connecti
             if records:
                 matching = [r for r in records if (r.get("date") or r.get("Date")) in unfilled_dates]
                 if matching:
+                    before = conn.total_changes
                     insert_prices(conn, ticker, matching, fallback_date=unfilled_dates[0])
-                    records_inserted += len(matching)
+                    records_inserted += conn.total_changes - before
 
+        from provenance import new_ingest, stamp_unattributed
+        if conn.execute(f"SELECT 1 FROM prices WHERE source IS NULL AND date IN ({','.join('?' * len(unfilled_dates))}) LIMIT 1",
+                        unfilled_dates).fetchone():
+            iid = new_ingest(conn, "dse_historical_scrape", f"per-ticker historical fetch {start_date}..{end_date}")
+            for d in unfilled_dates:
+                stamp_unattributed(conn, iid, "dse_historical_scrape", d)
+        _ensure_backfill_attempts_table(conn)
+        attempted_at = get_dhaka_today_str()
+        for d in unfilled_dates:
+            cnt = conn.execute("SELECT COUNT(DISTINCT ticker) FROM prices WHERE date = ?", (d,)).fetchone()[0]
+            conn.execute(
+                "INSERT OR REPLACE INTO backfill_attempts (date, attempted_at, bars_after) VALUES (?, ?, ?)",
+                (d, attempted_at, cnt),
+            )
         conn.commit()
 
     if verbose:
@@ -420,8 +526,8 @@ def build_live_readiness_artifact(sync_res: Dict[str, Any], initial_status: Dict
 
         lines.extend([
             f"- **Live Instruments Ingested for Today**: `{sync_res.get('prices_synced', 0)}` instruments",
-            f"- **Benchmark 91-Day T-Bill Yield**: `{m_rates.get('risk_free_91d', 11.60)}%`",
-            f"- **Statutory Minimum Equity Hurdle Rate**: `{m_rates.get('equity_hurdle', 15.10)}%` (T-Bill + 3.5% ERP)",
+            f"- **Bangladesh Bank 91-Day Risk-Free Rate**: `{m_rates['risk_free_rate_pct']}%` ({m_rates.get('risk_free_source')})",
+            f"- **Minimum Equity Hurdle Rate**: `{m_rates['equity_hurdle_rate_pct']}%` (risk-free + 3.5% ERP)",
             f"",
             f"---",
             f"",

@@ -1,29 +1,29 @@
 {
   "ticker": "BAYLEASING",
-  "audited_at": "2026-11-17 15:01:21",
+  "audited_at": "2026-11-19 14:54:30",
   "worth_vs_greed": {
-    "current_price": 4.6,
-    "intrinsic_worth": 2.3,
+    "current_price": 4.7,
+    "intrinsic_worth": 2.35,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 80.0,
-    "greed_index": 80.0,
-    "rsi_14": 70.0,
-    "price_vs_ema50_pct": 16.6,
-    "price_vs_ema200_pct": 3.8,
+    "extension_froth_score": 90.0,
+    "greed_index": 90.0,
+    "rsi_14": 66.7,
+    "price_vs_ema50_pct": 17.3,
+    "price_vs_ema200_pct": 5.9,
     "merit_status": "SPECULATIVE_JUNK_PUMP",
     "merit_reason": "Price is surging aggressively without positive EPS backing. Pure speculative risk.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f34.5 \u2013 \u09f34.6",
-      "chase_cutoff_price": 4.7,
-      "when_to_wait": "If price opens or rises above \u09f34.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f34.5.",
-      "weekly_target_short": 4.8,
-      "monthly_target_swing": 5.3,
-      "long_term_target_asset": 6.0,
+      "optimal_entry_corridor": "\u09f34.6 \u2013 \u09f34.7",
+      "chase_cutoff_price": 4.8,
+      "when_to_wait": "If price opens or rises above \u09f34.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f34.6.",
+      "weekly_target_short": 4.9,
+      "monthly_target_swing": 5.4,
+      "long_term_target_asset": 6.1,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "OVERVALUED_EUPHORIA",
     "worth_decision": "SELL_TAKE_PROFIT",
-    "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (80.0/100). Danger of sharp mean reversion.",
+    "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (90.0/100). Danger of sharp mean reversion.",
     "is_blacklisted": true,
     "blacklist_reason": "Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-11-12 \u2014 Mid-tier volume is 6.3x 20-day average (1,269,885 vs 201,255) | Price up +7.14% on untracked / high-risk security without verified earnings]",
     "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-11-12 \u2014 Mid-tier volume is 6.3x 20-day average (1,269,885 vs 201,255) | Price up +7.14% on untracked / high-risk security without verified earnings]"
@@ -31,31 +31,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 9.52,
-        "high": 5.0,
-        "low": 4.2,
-        "range_volatility_pct": 19.05
+        "return_pct": 4.44,
+        "high": 4.9,
+        "low": 4.3,
+        "range_volatility_pct": 13.95
       },
       "monthly_21d": {
-        "return_pct": 9.52,
+        "return_pct": 14.63,
         "high": 5.0,
         "low": 3.9,
         "range_volatility_pct": 28.21
       },
       "quarterly_63d": {
-        "return_pct": 58.62,
+        "return_pct": 62.07,
         "high": 5.0,
         "low": 2.7,
         "range_volatility_pct": 85.19
       },
       "half_yearly_126d": {
-        "return_pct": -6.12,
+        "return_pct": 0.0,
         "high": 5.0,
         "low": 2.5,
         "range_volatility_pct": 100.0
       },
       "yearly_252d": {
-        "return_pct": -26.98,
+        "return_pct": -25.4,
         "high": 6.5,
         "low": 2.5,
         "range_volatility_pct": 160.0
@@ -67,7 +67,7 @@
       "avg_wave_duration_bars": 32.0
     },
     "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (7.0%). Wait for stabilizing base.",
+    "phase_guidance": "Ongoing pullback from peak (9.3%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "Jan",

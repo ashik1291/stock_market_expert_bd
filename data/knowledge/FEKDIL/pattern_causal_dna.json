@@ -1,61 +1,61 @@
 {
   "ticker": "FEKDIL",
-  "audited_at": "2026-11-17 15:01:28",
+  "audited_at": "2026-11-19 14:54:37",
   "worth_vs_greed": {
-    "current_price": 22.9,
-    "intrinsic_worth": 11.45,
+    "current_price": 23.3,
+    "intrinsic_worth": 11.65,
     "margin_of_safety_pct": -50.0,
     "extension_froth_score": 80.0,
     "greed_index": 80.0,
-    "rsi_14": 80.7,
+    "rsi_14": 76.7,
     "price_vs_ema50_pct": 23.5,
-    "price_vs_ema200_pct": 31.6,
+    "price_vs_ema200_pct": 33.1,
     "merit_status": "SPECULATIVE_JUNK_PUMP",
     "merit_reason": "Price is surging aggressively without positive EPS backing. Pure speculative risk.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f322.4 \u2013 \u09f323.1",
-      "chase_cutoff_price": 23.5,
-      "when_to_wait": "If price opens or rises above \u09f323.5, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f322.4.",
-      "weekly_target_short": 23.7,
-      "monthly_target_swing": 26.3,
-      "long_term_target_asset": 29.8,
+      "optimal_entry_corridor": "\u09f322.8 \u2013 \u09f323.5",
+      "chase_cutoff_price": 23.9,
+      "when_to_wait": "If price opens or rises above \u09f323.9, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f322.8.",
+      "weekly_target_short": 24.1,
+      "monthly_target_swing": 26.8,
+      "long_term_target_asset": 30.3,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "OVERVALUED_EUPHORIA",
     "worth_decision": "SELL_TAKE_PROFIT",
     "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (80.0/100). Danger of sharp mean reversion.",
     "is_blacklisted": true,
-    "blacklist_reason": "Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-11-15 \u2014 Large-cap volume is 5.5x 20-day average (6,501,259 vs 1,179,236) | Price up +14.07% with poor fundamentals (Negative EPS)]",
-    "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-11-15 \u2014 Large-cap volume is 5.5x 20-day average (6,501,259 vs 1,179,236) | Price up +14.07% with poor fundamentals (Negative EPS)]"
+    "blacklist_reason": "Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-11-19 \u2014 Large-cap volume is 4.7x 20-day average (5,202,148 vs 1,109,545) | Price up +4.95% with poor fundamentals (Negative EPS)]",
+    "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-11-19 \u2014 Large-cap volume is 4.7x 20-day average (5,202,148 vs 1,109,545) | Price up +4.95% with poor fundamentals (Negative EPS)]"
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 14.5,
+        "return_pct": 17.09,
         "high": 23.7,
-        "low": 19.7,
-        "range_volatility_pct": 20.3
+        "low": 20.6,
+        "range_volatility_pct": 15.05
       },
       "monthly_21d": {
-        "return_pct": 11.17,
+        "return_pct": 20.1,
         "high": 23.7,
         "low": 17.7,
         "range_volatility_pct": 33.9
       },
       "quarterly_63d": {
-        "return_pct": 57.93,
+        "return_pct": 62.94,
         "high": 23.7,
         "low": 13.5,
         "range_volatility_pct": 75.56
       },
       "half_yearly_126d": {
-        "return_pct": 23.12,
+        "return_pct": 22.63,
         "high": 23.7,
         "low": 13.1,
         "range_volatility_pct": 80.92
       },
       "yearly_252d": {
-        "return_pct": 25.82,
+        "return_pct": 27.32,
         "high": 23.7,
         "low": 13.1,
         "range_volatility_pct": 80.92
@@ -67,7 +67,7 @@
       "avg_wave_duration_bars": 28.0
     },
     "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (5.5%). Wait for stabilizing base.",
+    "phase_guidance": "Ongoing pullback from peak (7.4%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "May",

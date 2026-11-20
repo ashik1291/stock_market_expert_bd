@@ -1,24 +1,24 @@
 {
   "ticker": "DBH1STMF",
-  "audited_at": "2026-11-17 15:01:25",
+  "audited_at": "2026-11-19 14:54:34",
   "worth_vs_greed": {
-    "current_price": 5.1,
-    "intrinsic_worth": 2.55,
+    "current_price": 5.0,
+    "intrinsic_worth": 2.5,
     "margin_of_safety_pct": -50.0,
     "extension_froth_score": 20.0,
     "greed_index": 20.0,
-    "rsi_14": 50.0,
-    "price_vs_ema50_pct": -5.7,
-    "price_vs_ema200_pct": -7.0,
+    "rsi_14": 36.4,
+    "price_vs_ema50_pct": -7.0,
+    "price_vs_ema200_pct": -8.7,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f35.0 \u2013 \u09f35.2",
-      "chase_cutoff_price": 5.2,
-      "when_to_wait": "If price opens or rises above \u09f35.2, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f35.0.",
-      "weekly_target_short": 5.3,
-      "monthly_target_swing": 5.9,
-      "long_term_target_asset": 6.6,
+      "optimal_entry_corridor": "\u09f34.9 \u2013 \u09f35.0",
+      "chase_cutoff_price": 5.1,
+      "when_to_wait": "If price opens or rises above \u09f35.1, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f34.9.",
+      "weekly_target_short": 5.2,
+      "monthly_target_swing": 5.8,
+      "long_term_target_asset": 6.5,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -30,31 +30,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 4.08,
+        "return_pct": -1.96,
         "high": 5.2,
-        "low": 4.8,
-        "range_volatility_pct": 8.33
+        "low": 4.9,
+        "range_volatility_pct": 6.12
       },
       "monthly_21d": {
-        "return_pct": -1.92,
+        "return_pct": -5.66,
         "high": 5.4,
         "low": 4.8,
         "range_volatility_pct": 12.5
       },
       "quarterly_63d": {
-        "return_pct": -13.56,
+        "return_pct": -20.63,
         "high": 7.7,
         "low": 4.8,
         "range_volatility_pct": 60.42
       },
       "half_yearly_126d": {
-        "return_pct": -12.07,
+        "return_pct": -13.79,
         "high": 7.7,
         "low": 4.8,
         "range_volatility_pct": 60.42
       },
       "yearly_252d": {
-        "return_pct": 41.67,
+        "return_pct": 38.89,
         "high": 7.7,
         "low": 3.5,
         "range_volatility_pct": 120.0

@@ -11,14 +11,14 @@
 [![Code Safety: AST Verified](https://img.shields.io/badge/Code%20Safety-AST%20Verified-brightgreen.svg)](SECURITY.md)
 [![Spec Invariants](https://img.shields.io/badge/spec%20guard-8%2F8%20invariants%20pass-brightgreen.svg)](SPEC.md)
 [![Integrity Harness](https://img.shields.io/badge/integrity-9%2F9%20fails%3D0-brightgreen.svg)](tests)
-[![PIT Fundamentals](https://img.shields.io/badge/PIT%20coverage-100%25%20verified%20(Grade%20A%2B)-brightgreen.svg)](data/processed)
+[![PIT Fundamentals](https://img.shields.io/badge/PIT-zero%20look--ahead%20%7C%2012%25%20observed%20dates-blue.svg)](data/processed)
 [![Forensic Shield](https://img.shields.io/badge/risk%20filter-90%25%20screened-brightgreen.svg)](reports)
 [![Alpha Predictor](https://img.shields.io/badge/forward%20alpha-Block%2027%20active-blue.svg)](data/portfolio/forward_test_ledger_v2.json)
 [![Wiki Manual](https://img.shields.io/badge/wiki-documentation-blue.svg)](docs/wiki/Home.md)
 
-`stock_market_expert_bd` is an institutional-grade quantitative finance platform and autonomous investment intelligence system built specifically for the **Dhaka Stock Exchange (DSE)** and Bangladesh capital markets.
+`stock_market_expert_bd` is an open-source quantitative research and personal decision-support system for academic and research use, built specifically for the **Dhaka Stock Exchange (DSE)** and Bangladesh capital markets.
 
-Designed with the rigorous mathematical standards of top quantitative asset managers, the platform combines **zero-lookahead Point-in-Time (PIT) accounting**, **central bank sovereign hurdle rates**, **forensic syndicate pump surveillance**, **Graham/Buffett value screening**, **risk-parity volatility targeting**, and a **cryptographically hashed forward test ledger**.
+The platform combines **zero-lookahead Point-in-Time (PIT) accounting**, **central bank sovereign hurdle rates**, **forensic syndicate pump surveillance**, **Graham/Buffett value screening**, **risk-parity volatility targeting**, and a **cryptographically hashed forward test ledger**.
 
 ---
 
@@ -29,9 +29,9 @@ In institutional quantitative finance, scientific honesty and statistical humili
 | Evaluation Pillar | Score | Verdict | 🟢 Deterministic Strengths | 🟡 Honest Limitations & Forward Research |
 | :--- | :---: | :---: | :--- | :--- |
 | **System Architecture & Data Invariants** | **98%** | `Grade A+` | 100/100 unit tests passing, 8/8 SPEC.md invariants enforced, universal SQLite WAL with 30s timeout guards, zero-broken bootstrap. | Fully hardened production engineering. |
-| **Point-in-Time (PIT) Fundamentals** | **98%** | `Grade A+` | **100% verified disclosure timestamps** across all 1,707 company filing periods with zero lookahead bias (`tradable_date >= publication_date >= snapshot_date`). Verified via 687 DSE PSI news disclosures (40.2%), 403 DSE corporate actions (23.6%), 409 BSEC statutory compliance filings (24.0%), and 208 live scrapes (12.2%). | Covers 141 actively reporting companies (2018–2026); OTC and delisted debt instruments excluded. |
+| **Point-in-Time (PIT) Fundamentals** | **—** | `Honest` | Zero look-ahead by construction: every row satisfies `tradable_date >= publication_date >= snapshot_date` (enforced by DB triggers). Of 1,707 filing periods, **12% have an observed publication date** (live exchange scrapes + exact PSI matches); the rest use the **statutory filing deadline** (annual 120 d, half-year 60 d, Q1/Q3 45 d) or the board-declaration bound, which are never earlier than the real release. Per-company fiscal year ends (127 December, 2 March). | Only 141 companies have PIT rows; estimated dates are conservative but late, so signals react slowly. Late filers past the deadline are the residual risk. |
 | **Forensic Surveillance & Risk Shield** | **90%** | `Grade A` | Mathematically screens volume anomalies (VAR $\ge 3\times$), negative cash-flow traps (NOCFPS $\le 0$), toxic leverage in a 12–14% interest regime, and flags regulatory probe actions. | Cannot detect private off-market sponsor placement deals or audited statement falsification prior to official regulatory enforcement. |
-| **Market Microstructure & Macro Economics** | **95%** | `Grade A` | Anchored to live Bangladesh Bank 91-Day T-Bills (11.60%) with a mandatory 15.10% equity hurdle rate. Real-world fees enforced in all backtests: **0.415% buy / 0.465% sell** (including statutory Section 53BBB Advance Income Tax). | Models standard retail brokerage fee (0.40%); institutional DMA discounts not modeled. |
+| **Market Microstructure & Macro Economics** | **95%** | `Grade A` | Anchored to Bangladesh Bank's observed 91-day rate (BCR / T-bill) plus a 3.5% equity risk premium (12.00% on 2026-11-20). Real-world fees enforced in all backtests: **0.415% buy / 0.465% sell** (including statutory Section 53BBB Advance Income Tax). | Models standard retail brokerage fee (0.40%); institutional DMA discounts not modeled. |
 | **Directional Alpha & Market Timing** | **52%** | `Active Trial` | Walk-forward Bayesian factor weights, Wilder's smoothed RSI, shadow challenger registry with Holm-Bonferroni multi-testing deflation. | Forward ledger currently has 22 blocks ($N < 200$ sample size; permutation test $p = 0.608$ vs random null). Validated as a capital protection filter, uncertified as a market timer. |
 
 > [!NOTE]
@@ -63,7 +63,7 @@ The platform operates as a modular, 6-layer pipeline that transforms raw market 
 flowchart TD
     subgraph L1["Layer 1: External Data Ingestion & Live Feeds"]
         DSE["DSE Live / bdshare API<br/>(395 Instruments, OHLCV)"]
-        BB["Bangladesh Bank Rates<br/>(91d T-Bill 11.60%, Repo 10%)"]
+        BB["Bangladesh Bank Rates<br/>(91-day BCR / T-Bill, DOMMR)"]
         PSI["DSE PSI & News Feeds<br/>(Dividends, AGM, EPS, Reg 19/16)"]
     end
 
@@ -107,15 +107,15 @@ flowchart TD
 
 ## 🔬 Dual-Use Architecture: Academic / Quantitative Research + Personal Decision Engine
 
-`stock_market_expert_bd` serves two distinct, production-grade objectives:
+`stock_market_expert_bd` serves two non-commercial objectives: academic research and personal decision support.
 
-### 🎓 1. Institutional & Academic Quantitative Research Dataset
-For researchers, financial economists, and quantitative analysts, finding clean, survivorship-free, and lookahead-free data in frontier markets is notoriously difficult. This repository provides an end-to-end, scientifically reproducible empirical finance environment:
+### 🎓 1. Academic & Quantitative Research Dataset
+For researchers, financial economists, and quantitative analysts, finding clean, lookahead-safe data in frontier markets is notoriously difficult. This repository provides a reproducible empirical finance environment built from publicly available DSE data. Known limitations are documented in the Data Quality & Limitations section below.
 
-* **1,093,000+ Continuous Historical Bars**: Complete daily OHLCV, turnover, and volume across all **396 DSE securities** spanning 2018–2026.
-* **Strict Point-in-Time (PIT) Temporal Isolation (`INV-1`)**: Solves the #1 flaw in emerging market empirical finance literature (**Look-Ahead Bias**). Financial statements in `fundamentals_pit` are strictly keyed to the exact publication date (`tradable_date >= publication_date`), preventing retroactive data leakage.
+* **1,172,000+ Daily Bars**: Raw (unadjusted) daily OHLCV and turnover for **484 DSE tickers** from 2012-10 to the latest session, reconciled daily against the official DSE day-end archive.
+* **Strict Point-in-Time (PIT) Temporal Isolation (`INV-1`)**: Solves the #1 flaw in emerging market empirical finance literature (**Look-Ahead Bias**). Financial statements in `fundamentals_pit` are keyed to a publication date (`tradable_date >= publication_date >= snapshot_date`); where the true date was not observed, a conservative statutory-deadline estimate is used and flagged `publication_is_estimated`.
 * **Frontier Market Microstructure Realism (`INV-4`)**: Enforces exact statutory DSE trading frictions (0.415% buy fee, 0.465% sell fee including Section 53BBB AIT), real-world upper circuit-lock buy rejection (+9.9%), and lower circuit floor-lock exit censoring (zero-volume days).
-* **Corporate Actions & Dividend Accounting**: Granular ledger of cash dividends, stock bonuses, and rights issues with statutory 10% AIT tax deductions.
+* **Corporate Actions & Dividend Accounting**: Ledger of cash dividends and stock bonuses (official or price-gap-verified ex-dates) with statutory 10% AIT tax deductions.
 * **Cryptographic Tamper-Proof Audit Trail (`INV-6`)**: SHA-256 hash-chained forward ledger prevents post-hoc curve fitting, p-hacking, or cherry-picked backtest results.
 * **Open Research Opportunities**:
   - *Empirical Asset Pricing*: Fama-French multi-factor anomalies (Value, Quality, Size, Momentum) under high transaction costs.
@@ -124,7 +124,7 @@ For researchers, financial economists, and quantitative analysts, finding clean,
   - *Machine Learning / NLP*: Cross-sectional Rank-IC evaluation using Purged Walk-Forward Cross-Validation and regulatory disclosure sentiment.
 
 ### 💼 2. Autonomous Intelligent Application for Personal Use
-For retail investors, swing traders, and family office/HNWI allocators, the repository runs out-of-the-box as an autonomous, self-healing decision-support intelligence application:
+For individual investors doing their own research, the repository runs out-of-the-box as an autonomous, self-healing decision-support intelligence application:
 
 * **Tri-Horizon Portfolio Pacing**: Generates actionable, risk-calibrated allocation plans divided into **60% Long-Term Core Moats**, **30% Mid-Term Cycle Swings**, and **10% Tactical Cash Reserves**.
 * **Forensic Capital Protection**: Automatically screens out ~90% of toxic speculative traps, syndicate-driven pumps, debt-burdened zombies, and governance red flags.
@@ -162,7 +162,7 @@ $$
 \text{Equity Risk Premium (ERP)} = \text{Earnings Yield} - R_{\text{91d T-Bill}} \ge 0.035
 $$
 
-- With the Bangladesh Bank 91-Day Treasury Bill auction yield at **11.60%**, the non-negotiable minimum equity hurdle rate is **15.10%** (+350 bps ERP spread). Any company earning less than this threshold is disqualified.
+- The minimum equity hurdle follows Bangladesh Bank's observed 91-day rate plus a 350 bps equity risk premium (8.50% + 3.50% = **12.00%** on 2026-11-20). Any company earning less than this threshold is disqualified.
 
 ### 3. Forensic Anti-Manipulation & Volume Anomaly Surveillance
 Emerging markets frequently witness syndicate-driven pump-and-dump operations. The engine tracks volume spikes decoupled from earnings:
@@ -203,7 +203,7 @@ $$
 $$
 
 ### 6. Point-in-Time (PIT) Temporal Isolation Invariant
-To eliminate survivorship and lookahead bias in historical evaluations:
+To eliminate lookahead bias in historical evaluations:
 ```sql
 tradable_date >= publication_date >= snapshot_date
 ```
@@ -229,7 +229,7 @@ cd stock_market_expert_bd
 > 📦 **Storage Footprint**:
 > - **Shallow Clone Download (`--depth=1`)**: **~33 MB** (Includes compressed master database archive `dse.db.gz`).
 > - **Clean Working Tree**: **~41 MB** (Source scripts, model weights, config, and documentation — reduced from 72 MB after isolating ephemeral reports).
-> - **Post-Bootstrap SQLite Database**: **~141 MB** (`dse.db` expanded with 1,093,326 continuous historical bars + 100% Point-in-Time disclosures).
+> - **Post-Bootstrap SQLite Database**: **~141 MB** (`dse.db` expanded with 1,172,000+ daily bars and 1,707 Point-in-Time filing records).
 
 ---
 
@@ -400,6 +400,23 @@ python -m unittest discover tests -p "test_security_posture.py"
 
 ---
 
+## 📋 Data Quality & Limitations
+
+All data comes from public Dhaka Stock Exchange publications (day-end archive, company pages, price-sensitive information) and Bangladesh Bank publications. Cite these limitations in any academic use:
+
+| Layer | Coverage | Known limitations |
+|---|---|---|
+| Prices | 2012-10 → latest, 484 instruments (384 equities, 36 funds, 64 bonds) in `instruments` with first/last trade and status | SME-board stocks are not served by any reachable DSE feed after 2026-01-22 (marked inactive); 3 tickers (ACI, APEXFOOT, IDLC) carry unadjusted pre-archive history; some zero-volume bars are imputed. Use `instrument_master.universe_asof()` for survivorship-free universes |
+| Fundamentals (PIT) | 3,574 filings since 2008; 325 companies with official DSE filings | 74% of publication dates observed (99% of filings since Sep 2024, from DSE's announcement archive); older dates are conservative statutory estimates (`publication_is_estimated = 1`). Every correction is logged in `pit_corrections` |
+| Corporate actions | Cash, bonus and rights (official DSE declarations + exchange record-date notices since Nov 2024) | Pre-Nov-2024 rows audited against DSE's per-year dividend history (2021+); 242 older placeholder rows still carry estimated dates and are flagged. Log: `corporate_action_corrections` |
+| Category / index membership | `category_history` exact from Nov 2024; DSEX/DS30 snapshots from Nov 2026 | Earlier categories unknown |
+| Bank asset quality | Sourced NPL/CAR only (`bank_asset_quality`) | No structured official feed; empty until sourced rows are added |
+| Macro rates | Bangladesh Bank 91-day BCR and overnight DOMMR captured daily at their publication dates | 91-day T-bill cut-off yield, repo and CPI are manual entries; readers report staleness |
+
+Run `python scripts/integrity_harness.py --data-gate` to reproduce the integrity checks on your copy.
+
+---
+
 ## ⚖️ Legal Disclaimer
 
-`stock_market_expert_bd` is a quantitative algorithmic financial intelligence and decision-support platform designed for research, risk screening, and capital preservation. Past statistical backtests on historical DSE data do not guarantee future returns. Equity investments in Bangladesh capital markets carry risk. Always evaluate capital allocations against central bank sovereign risk-free benchmarks.
+`stock_market_expert_bd` is a non-commercial research project intended for academic research, education, and personal decision support only. It is not investment advice, not a commercial data product, and makes no warranty of data accuracy or completeness. Market data is sourced from public Dhaka Stock Exchange publications; verify against official sources before relying on it. Past statistical backtests on historical DSE data do not guarantee future returns. Equity investments in Bangladesh capital markets carry risk. Always evaluate capital allocations against central bank sovereign risk-free benchmarks.

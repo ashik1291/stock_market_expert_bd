@@ -1,61 +1,61 @@
 {
   "ticker": "METROSPIN",
-  "audited_at": "2026-11-17 15:01:37",
+  "audited_at": "2026-11-19 14:54:45",
   "worth_vs_greed": {
-    "current_price": 9.1,
-    "intrinsic_worth": 4.55,
+    "current_price": 9.6,
+    "intrinsic_worth": 4.8,
     "margin_of_safety_pct": -50.0,
     "extension_froth_score": 80.0,
     "greed_index": 80.0,
-    "rsi_14": 60.0,
-    "price_vs_ema50_pct": 3.2,
-    "price_vs_ema200_pct": -8.3,
+    "rsi_14": 62.0,
+    "price_vs_ema50_pct": 8.5,
+    "price_vs_ema200_pct": -3.1,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f38.9 \u2013 \u09f39.2",
-      "chase_cutoff_price": 9.3,
-      "when_to_wait": "If price opens or rises above \u09f39.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f38.9.",
-      "weekly_target_short": 9.4,
-      "monthly_target_swing": 10.5,
-      "long_term_target_asset": 11.8,
+      "optimal_entry_corridor": "\u09f39.4 \u2013 \u09f39.7",
+      "chase_cutoff_price": 9.8,
+      "when_to_wait": "If price opens or rises above \u09f39.8, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f39.4.",
+      "weekly_target_short": 9.9,
+      "monthly_target_swing": 11.0,
+      "long_term_target_asset": 12.5,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "OVERVALUED_EUPHORIA",
     "worth_decision": "SELL_TAKE_PROFIT",
     "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (80.0/100). Danger of sharp mean reversion.",
     "is_blacklisted": true,
-    "blacklist_reason": "Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-11-11 \u2014 Low-float spike is 21.1x 20-day average (831,782 vs 39,508) | Price up +9.68% on untracked / high-risk security without verified earnings]",
-    "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [CRITICAL: EXTREME_VOLUME_SPIKE on 2026-11-11 \u2014 Low-float spike is 21.1x 20-day average (831,782 vs 39,508) | Price up +9.68% on untracked / high-risk security without verified earnings]"
+    "blacklist_reason": "Blocked by Forensic Surveillance [CRITICAL: ABNORMAL_VOLUME_SURGE on 2026-11-19 \u2014 Mid-tier volume is 3.5x 20-day average (185,374 vs 52,203) | Price up +6.67% on untracked / high-risk security without verified earnings]",
+    "disparity_label": "CRITICAL_MANIPULATION_RISK: Blocked by Forensic Surveillance [CRITICAL: ABNORMAL_VOLUME_SURGE on 2026-11-19 \u2014 Mid-tier volume is 3.5x 20-day average (185,374 vs 52,203) | Price up +6.67% on untracked / high-risk security without verified earnings]"
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": -2.15,
-        "high": 10.6,
+        "return_pct": -6.8,
+        "high": 10.3,
         "low": 8.7,
-        "range_volatility_pct": 21.84
+        "range_volatility_pct": 18.39
       },
       "monthly_21d": {
-        "return_pct": 2.25,
+        "return_pct": 9.09,
         "high": 10.6,
         "low": 8.0,
         "range_volatility_pct": 32.5
       },
       "quarterly_63d": {
-        "return_pct": 4.6,
+        "return_pct": 18.52,
         "high": 10.6,
         "low": 7.5,
         "range_volatility_pct": 41.33
       },
       "half_yearly_126d": {
-        "return_pct": -18.75,
+        "return_pct": -15.04,
         "high": 12.7,
         "low": 7.0,
         "range_volatility_pct": 81.43
       },
       "yearly_252d": {
-        "return_pct": -34.53,
+        "return_pct": -29.41,
         "high": 15.4,
         "low": 7.0,
         "range_volatility_pct": 120.0
@@ -63,11 +63,11 @@
     },
     "wave_metrics": {
       "median_rally_gain_pct": 21.2,
-      "median_correction_drop_pct": -22.9,
+      "median_correction_drop_pct": -22.5,
       "avg_wave_duration_bars": 21.0
     },
-    "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-9.0%). Wait for stabilizing base.",
+    "current_wave_phase": "LATE_MARKUP",
+    "phase_guidance": "Approaching historical rally limit (+20.0% vs median +21.2%). Tighten stop.",
     "top_seasonal_months": [
       {
         "month": "Sep",

@@ -83,32 +83,34 @@ def evaluate_ticker_12factors(ticker: str, conn: sqlite3.Connection, reg: dict, 
 
     # Fetch latest closing price from prices table
     p_row = conn.execute("""
-        SELECT close FROM prices WHERE ticker = ? ORDER BY date DESC LIMIT 1
+        SELECT close, date FROM prices WHERE ticker = ? ORDER BY date DESC LIMIT 1
     """, (ticker,)).fetchone()
     price = float(p_row[0]) if (p_row and p_row[0]) else 0.0
+    asof = p_row[1] if p_row else datetime.now().strftime("%Y-%m-%d")
 
-    # Fetch primary fundamental record
+    # Latest annual filing that was publicly tradable as of the price date (point-in-time).
     f_row = conn.execute("""
-        SELECT eps, nav, pe_ratio, dividend_yield, roe, raw_data, debt_equity, cash_flow_ops
-        FROM fundamentals
-        WHERE ticker = ? AND (pe_ratio IS NOT NULL OR raw_data LIKE '%"price":%')
-        ORDER BY id ASC LIMIT 1
+        SELECT eps, nav, dividend_yield, roe, debt_equity, cash_flow_ops
+        FROM fundamentals_pit
+        WHERE ticker = ? AND filing_type = 'annual'
+          AND tradable_date <= ? AND publication_date <= ?
+          AND eps IS NOT NULL
+        ORDER BY tradable_date DESC, publication_date DESC, snapshot_date DESC LIMIT 1
+    """, (ticker, asof, asof)).fetchone()
+    (eps, nav, div_yield, roe, debt_equity, cash_flow_ops) = f_row if f_row else (0, 0, 0, 0, None, None)
+
+    # Shareholding breakdown lives only in the scraped company payload.
+    h_row = conn.execute("""
+        SELECT raw_data FROM fundamentals
+        WHERE ticker = ? AND raw_data LIKE '%holding_pct%'
+        ORDER BY id DESC LIMIT 1
     """, (ticker,)).fetchone()
-
-    if not f_row:
-        f_row = conn.execute("""
-            SELECT eps, nav, pe_ratio, dividend_yield, roe, raw_data, debt_equity, cash_flow_ops
-            FROM fundamentals WHERE ticker = ? ORDER BY id DESC LIMIT 1
-        """, (ticker,)).fetchone()
-
-    (eps, nav, pe, div_yield, roe, raw_data_str, debt_equity, cash_flow_ops) = f_row if f_row else (0,0,0,0,0,None,None,None)
-
-    raw = json.loads(raw_data_str) if raw_data_str else {}
+    raw = json.loads(h_row[0]) if (h_row and h_row[0]) else {}
     if price == 0.0:
         price = float(raw.get("price") or 0.0)
     eps = float(eps or 0.0)
     nav = float(nav or 0.0)
-    pe = float(pe or 0.0) if pe else 0.0
+    pe = round(price / eps, 2) if (eps > 0 and price > 0) else 0.0
     div_yield = float(div_yield or 0.0) if div_yield else 0.0
     roe = float(roe or 0.0) if roe else (round(eps / nav * 100, 2) if nav > 0 else 0.0)
 
@@ -124,8 +126,10 @@ def evaluate_ticker_12factors(ticker: str, conn: sqlite3.Connection, reg: dict, 
     c_lead = lead.get(ticker, {})
 
     founding_yr = c_reg.get("founding_year", 2000)
-    age = 2026 - founding_yr
-    bank_npl = c_reg.get("bank_npl_pct")
+    age = int(asof[:4]) - founding_yr
+    from bank_asset_quality import asset_quality_asof
+    aq = asset_quality_asof(conn, ticker, asof)
+    bank_npl = aq["npl_pct"] if aq else None
     moat_stars = c_reg.get("moat_rating", 3.0)
     primary_moat = c_reg.get("primary_moat", "Listed corporate franchise")
     sector_tailwind = c_reg.get("sector_tailwind", "Standard domestic demand")
@@ -134,8 +138,8 @@ def evaluate_ticker_12factors(ticker: str, conn: sqlite3.Connection, reg: dict, 
     px_row = conn.execute("""
         SELECT max(close), min(close)
         FROM prices
-        WHERE ticker = ? AND date >= date('now', '-365 days')
-    """, (ticker,)).fetchone()
+        WHERE ticker = ? AND date >= date(?, '-365 days') AND date <= ?
+    """, (ticker, asof, asof)).fetchone()
     peak_52w = float(px_row[0]) if (px_row and px_row[0]) else price
     low_52w  = float(px_row[1]) if (px_row and px_row[1]) else price
     drawdown_pct = round(((price - peak_52w) / peak_52w * 100), 2) if peak_52w > 0 else 0.0

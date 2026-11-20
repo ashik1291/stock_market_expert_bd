@@ -2,18 +2,18 @@
   "ticker": "GSPFINANCE",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-17T09:01:31.134836",
-  "asof_price_date": "2026-11-17",
+  "analyzed_at": "2026-11-19T08:54:39.536216",
+  "asof_price_date": "2026-11-19",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 47.7531,
+    "rsi_14": 47.7885,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "HOLD_MANIPULATION_RISK",
-  "confidence": 44.09,
+  "confidence": 44.0,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -22,11 +22,11 @@
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+12.9%",
+      "upside_potential_pct": "+9.7%",
       "downside_risk_pct": "-6.5%",
-      "target_price": 3.5,
+      "target_price": 3.4,
       "support_price": 2.9,
-      "risk_reward_ratio": "2.0x"
+      "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
@@ -47,8 +47,8 @@
   },
   "trade_levels": {
     "entry": 3.1,
-    "stop_loss": 2.74,
-    "target": 3.82
+    "stop_loss": 2.75,
+    "target": 3.8
   },
   "precision": {
     "ticker": "GSPFINANCE",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 78930,
+      "avg_daily_volume": 93673,
       "daily_turnover_bdt_cr": 0.01,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 3946,
-      "max_daily_accumulation_shares": 11839,
-      "max_order_bdt": 3946.0,
-      "directive": "Max single order: 3,946 shares (Tk 3,946) to prevent >1% execution slippage"
+      "max_single_order_shares": 4683,
+      "max_daily_accumulation_shares": 14051,
+      "max_order_bdt": 4683.0,
+      "directive": "Max single order: 4,683 shares (Tk 4,683) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -96,23 +96,23 @@
       "visual_gauge": "[ \u09f31.1 |\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591| \u09f33.9 ] (71.4% (Truncated))",
       "conviction_bonus": 5.0,
       "is_truncated_window": true,
-      "bars_evaluated": 100,
+      "bars_evaluated": 101,
       "signal": "Price is in upper channel (71.4%) \u2014 upward breakout momentum"
     },
     "total_precision_bonus": 5.0
   },
   "pattern_dna": {
     "ticker": "GSPFINANCE",
-    "audited_at": "2026-11-17 15:01:31",
+    "audited_at": "2026-11-19 14:54:39",
     "worth_vs_greed": {
       "current_price": 3.1,
       "intrinsic_worth": 1.55,
       "margin_of_safety_pct": -50.0,
       "extension_froth_score": 50.0,
       "greed_index": 50.0,
-      "rsi_14": 40.0,
-      "price_vs_ema50_pct": 8.0,
-      "price_vs_ema200_pct": -11.9,
+      "rsi_14": 37.5,
+      "price_vs_ema50_pct": 7.2,
+      "price_vs_ema200_pct": -11.7,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
@@ -134,19 +134,19 @@
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
+          "return_pct": -13.89,
+          "high": 3.6,
+          "low": 3.0,
+          "range_volatility_pct": 20.0
+        },
+        "monthly_21d": {
           "return_pct": -8.82,
           "high": 3.9,
           "low": 3.0,
           "range_volatility_pct": 30.0
         },
-        "monthly_21d": {
-          "return_pct": -6.06,
-          "high": 3.9,
-          "low": 3.0,
-          "range_volatility_pct": 30.0
-        },
         "quarterly_63d": {
-          "return_pct": 82.35,
+          "return_pct": 106.67,
           "high": 3.9,
           "low": 1.1,
           "range_volatility_pct": 254.55
@@ -158,7 +158,7 @@
           "range_volatility_pct": 254.55
         },
         "yearly_252d": {
-          "return_pct": -52.31,
+          "return_pct": -50.79,
           "high": 6.7,
           "low": 1.1,
           "range_volatility_pct": 509.09
@@ -274,11 +274,11 @@
       "macd": "bearish_crossover",
       "sma_trend": "bullish",
       "bb": "at_lower_band_bullish",
-      "atr": 0.24,
-      "rsi_value": 47.74,
+      "atr": 0.23,
+      "rsi_value": 47.79,
       "last_close": 3.1,
-      "sma20": 3.41,
-      "sma50": 2.59,
+      "sma20": 3.38,
+      "sma50": 2.66,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -343,23 +343,25 @@
     }
   },
   "manipulation": {
-    "manipulation_score": 0,
+    "manipulation_score": 10,
     "manipulation_risk": "low",
     "block_buy": false,
-    "flags": [],
+    "flags": [
+      "price_surge_no_news: price_-8.8pct_zero_news"
+    ],
     "checks": {
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 83006,
-        "avg_volume": 89419.0,
+        "last_volume": 229360,
+        "avg_volume": 91634.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.81,
-        "avg_volume": 102451.0,
-        "today_volume": 83006,
+        "spike_ratio": 2.53,
+        "avg_volume": 90581.0,
+        "today_volume": 229360,
         "detail": "ok"
       },
       "serial_trading": {
@@ -377,21 +379,21 @@
         "detail": "insufficient_fundamental_history"
       },
       "price_surge_no_news": {
-        "flag": false,
-        "price_change_3d": -3.13,
+        "flag": true,
+        "price_change_3d": -8.82,
         "news_count_3d": 0,
-        "detail": "ok"
+        "detail": "price_-8.8pct_zero_news"
       }
     }
   },
   "composite": {
-    "composite_score": 44.09,
+    "composite_score": 44.0,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.662,
+      "fundamental": 0.66,
       "technical": 0.205,
-      "governance": 0.134,
+      "governance": 0.135,
       "sentiment": 0.0
     }
   }

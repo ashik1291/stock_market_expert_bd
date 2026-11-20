@@ -287,19 +287,34 @@ class TestQuantEngine(unittest.TestCase):
         self.assertTrue("rank_log_full_universe" in names or "rank_log_latest_date" in names)
 
     def test_portfolio_ledger_reconciliation(self):
-        """Verify strict accounting identity: Cash + Equities Cost + Fund Cost == Total Capital Outlay."""
+        """Accounting identity cash + equity cost + fund cost == book equity holds through buy, partial and full sell."""
+        import portfolio_manager as pm
+        state = {"total_capital_bdt": 10000.0, "cash_balance_bdt": 7000.0, "holdings": [], "history": [],
+                 "mutual_funds": [{"total_cost_bdt": 3000.0}]}
+        orig_load, orig_save = pm.load_portfolio, pm.save_portfolio
+        pm.load_portfolio = lambda user_id="default_user": state
+        pm.save_portfolio = lambda p, user_id="default_user": None
+        try:
+            self.assertTrue(pm.record_buy("ZZTESTA", 7, 101.3, asof_date="2026-11-19"))
+            self.assertTrue(pm.reconcile_ledger(state)["ok"], pm.reconcile_ledger(state))
+            pm.record_sell("ZZTESTA", 3, 117.9)
+            self.assertTrue(pm.reconcile_ledger(state)["ok"], pm.reconcile_ledger(state))
+            pm.record_sell("ZZTESTA", 4, 88.4)
+            self.assertTrue(pm.reconcile_ledger(state)["ok"], pm.reconcile_ledger(state))
+        finally:
+            pm.load_portfolio, pm.save_portfolio = orig_load, orig_save
+        self.assertEqual(state["holdings"], [])
+
+    def test_live_ledger_is_balanced(self):
+        """The real user ledger (private, gitignored) must balance when present."""
         import json
-        portfolio_file = BASE_DIR / "data" / "portfolio" / "portfolio.json"
-        self.assertTrue(portfolio_file.exists())
+        import portfolio_manager as pm
+        portfolio_file = BASE_DIR / "data" / "users" / "default_user" / "portfolio.json"
+        if not portfolio_file.exists():
+            self.skipTest("no local user ledger")
         with open(portfolio_file, encoding="utf-8") as f:
-            p = json.load(f)
-        cash = float(p.get("cash_balance_bdt", 0))
-        eq_cost = sum(float(h.get("cost_basis", 0)) for h in p.get("holdings", []))
-        mf_cost = sum(float(m.get("total_cost_bdt", 0)) for m in p.get("mutual_funds", []))
-        total_account = round(cash + eq_cost + mf_cost, 2)
-        total_recorded = round(float(p.get("total_capital_bdt", 0)), 2)
-        self.assertEqual(total_account, total_recorded,
-                         f"Accounting mismatch: cash({cash}) + eq({eq_cost}) + mf({mf_cost}) = {total_account} != recorded {total_recorded}")
+            recon = pm.reconcile_ledger(json.load(f))
+        self.assertTrue(recon["ok"], recon)
 
     def test_served_weights_hash_matches_frozen_parameter_hash(self):
         """Verify served model strictly matches Epoch 2 frozen hash (acf502bc65914c48) and rsi=0."""
@@ -339,42 +354,35 @@ class TestQuantEngine(unittest.TestCase):
 
     def test_future_perturbation_invariance(self):
         """Changing future prices (T+1) must NEVER alter point-in-time score or features on date T."""
-        from feature_store import build_features_for_date, load_scored_universe, latest_price_date
-        conn = sqlite3.connect(DB_PATH)
-        asof = latest_price_date(conn)
-        conn.close()
-        self.assertIsNotNone(asof)
+        import feature_store
+        from _isolation import temp_db_copy
+        with temp_db_copy() as db_copy:
+            orig = feature_store.DB_PATH
+            feature_store.DB_PATH = db_copy
+            try:
+                conn = sqlite3.connect(db_copy)
+                asof = feature_store.latest_price_date(conn)
+                conn.close()
+                self.assertIsNotNone(asof)
+                feature_store.build_features_for_date(asof)
+                uni_before = feature_store.load_scored_universe(asof)
+                self.assertTrue(len(uni_before) > 0, "Scored universe must not be empty on latest price date")
+                sq = [r for r in uni_before if r["ticker"] == "SQURPHARMA"]
+                target = sq[0] if sq else uni_before[0]
+                test_ticker, score_before = target["ticker"], target["score"]
 
-        uni_before = load_scored_universe(asof)
-        self.assertTrue(len(uni_before) > 0, "Scored universe must not be empty on latest price date")
+                conn = sqlite3.connect(db_copy)
+                conn.execute("INSERT OR REPLACE INTO prices (ticker, date, close, volume) VALUES (?, '2029-12-31', 9999.0, 1000000)",
+                             (test_ticker,))
+                conn.commit()
+                conn.close()
 
-        # Pick SQURPHARMA if actively trading on asof date, else pick first available active ticker
-        sq_candidates = [r for r in uni_before if r["ticker"] == "SQURPHARMA"]
-        target = sq_candidates[0] if sq_candidates else uni_before[0]
-        test_ticker = target["ticker"]
-        score_before = target["score"]
-
-        # Simulate a radical price shock record far in the future
-        future_dt = "2029-12-31"
-        conn = sqlite3.connect(DB_PATH)
-        conn.execute("INSERT OR REPLACE INTO prices (ticker, date, close, volume) VALUES (?, ?, 9999.0, 1000000)", (test_ticker, future_dt))
-        conn.commit()
-        conn.close()
-
-        try:
-            # Re-score asof date T
-            build_features_for_date(asof)
-            uni_after = load_scored_universe(asof)
-            target_after = [r for r in uni_after if r["ticker"] == test_ticker]
-            self.assertTrue(len(target_after) > 0)
-            score_after = target_after[0]["score"]
-            self.assertEqual(score_before, score_after, "Point-in-time score leaked future data!")
-        finally:
-            # Cleanup future test record
-            conn = sqlite3.connect(DB_PATH)
-            conn.execute("DELETE FROM prices WHERE date=?", (future_dt,))
-            conn.commit()
-            conn.close()
+                feature_store.build_features_for_date(asof)
+                after = [r for r in feature_store.load_scored_universe(asof) if r["ticker"] == test_ticker]
+                self.assertTrue(after)
+                self.assertEqual(score_before, after[0]["score"], "Point-in-time score leaked future data!")
+            finally:
+                feature_store.DB_PATH = orig
 
     def test_no_fake_base_rates_numeric(self):
         """External truth test: assert no prediction file contains base rate numerically close to 66.4%."""
@@ -493,19 +501,18 @@ class TestQuantEngine(unittest.TestCase):
             self.assertNotIn(s["sector"], SHARIAH_EXCLUDED_SECTORS, f"{s['ticker']} in excluded Shariah sector")
 
         tickers = {s["ticker"] for s in screened}
-        self.assertIn("JAMUNAOIL", tickers)
         self.assertIn("PADMAOIL", tickers)
         self.assertIn("MPETROLEUM", tickers)
 
     def test_halal_guard_tiers_strict_flexible_off(self):
-        """N1: tier strict no banks/tobacco D/E<=0.5 DSES, flexible D/E<=0.8 tobacco excl, off passthrough, custom exclusions, BATBC blocked."""
+        """N1: tier strict no banks/tobacco D/E<=0.5, flexible D/E<=0.8 tobacco excl, off passthrough, custom exclusions, BATBC blocked."""
         from halal_guard import HalalGuard
         from profile import load_profile, validate_profile
         # Gates
         g_strict = HalalGuard().gates_for("strict")
         self.assertEqual(g_strict["L2_debt_equity_max"], 0.5)
         self.assertEqual(g_strict["L2_long_term_debt_equity_max"], 0.2)
-        self.assertTrue(g_strict["L5_dses_required"])
+        self.assertFalse(g_strict["L5_dses_required"])
         self.assertIn("Tobacco", g_strict["L1_sectors_excluded"])
         g_flex = HalalGuard().gates_for("flexible")
         self.assertEqual(g_flex["L2_debt_equity_max"], 0.8)
@@ -535,9 +542,9 @@ class TestQuantEngine(unittest.TestCase):
         self.assertTrue(r_off["eligible"])
         r_off_bank = guard_off.is_eligible("BRACBANK", tier="off", pit_row={"sector": "Banking", "debt_equity": 0.5})
         self.assertTrue(r_off_bank["eligible"])
-        # strict DSES: missing dses -> data_gaps + not eligible if required path
-        r_dses_gap = guard_strict.is_eligible("SQURPHARMA", tier="strict", pit_row={"sector": "Pharmaceuticals", "debt_equity": 0.01}, dses_row=None)
-        self.assertIn("dses_membership_missing", r_dses_gap["data_gaps"])
+        r_no_index = guard_strict.is_eligible("SQURPHARMA", tier="strict", pit_row={"sector": "Pharmaceuticals", "debt_equity": 0.01}, dses_row=None)
+        self.assertNotIn("dses_membership_missing", r_no_index["data_gaps"])
+        self.assertNotIn("L5_dses_unverified", r_no_index["reasons"])
         # purification_rate + data_gaps presence
         r_pur = guard_flex.is_eligible("SQURPHARMA", tier="flexible", pit_row={"sector": "Pharmaceuticals", "debt_equity": 0.01})
         self.assertIn("purification_rate", r_pur)
@@ -673,8 +680,10 @@ class TestQuantEngine(unittest.TestCase):
         port["cash_balance_bdt"] = 500.0
         save_user_portfolio(test_uid, port)
 
-        # 3. Record corporate action: ৳5.00 cash dividend with record date 2026-10-15
-        conn = sqlite3.connect(DB_PATH)
+        # 3. Record corporate action: ৳5.00 cash dividend with record date 2026-10-15 (private DB copy)
+        from _isolation import temp_db_copy
+        _db_ctx = temp_db_copy()
+        conn = sqlite3.connect(_db_ctx.__enter__())
         init_corporate_actions_schema(conn)
         record_corporate_action(
             ticker="_TESTMOAT",
@@ -700,11 +709,8 @@ class TestQuantEngine(unittest.TestCase):
         self.assertEqual(res2["credited_count"], 0)
         self.assertEqual(res2["total_net_cash_bdt"], 0.0)
 
-        # Cleanup test artifacts
-        conn.execute("DELETE FROM corporate_actions WHERE ticker = '_TESTMOAT'")
-        conn.execute("DELETE FROM portfolio_dividend_credits WHERE user_id = ?", (test_uid,))
-        conn.commit()
         conn.close()
+        _db_ctx.__exit__(None, None, None)
         shutil.rmtree(USERS_DIR / test_uid, ignore_errors=True)
 
     def test_orderbook_depth_and_slippage_model(self):

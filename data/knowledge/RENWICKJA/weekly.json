@@ -2,18 +2,18 @@
   "ticker": "RENWICKJA",
   "timeframe": "weekly",
   "horizon": "short",
-  "analyzed_at": "2026-11-17T09:01:44.594693",
-  "asof_price_date": "2026-11-17",
+  "analyzed_at": "2026-11-19T08:54:52.346113",
+  "asof_price_date": "2026-11-19",
   "served_model": {
     "model_id": "frozen_epoch2_pit_v2",
     "score": -999.0,
     "is_eligible": false,
-    "rsi_14": 55.2409,
+    "rsi_14": 52.1185,
     "pe_ratio": null,
     "debt_equity": null
   },
   "signal": "SELL",
-  "confidence": 44.34,
+  "confidence": 44.26,
   "trajectory": {
     "direction": "CONSOLIDATION_RANGE",
     "direction_icon": "\ud83d\udfe1",
@@ -22,33 +22,33 @@
     "momentum_status": "Neutral Range Consolidation",
     "short_term": {
       "predicted_path": "Upward momentum swing",
-      "upside_potential_pct": "+8.7%",
-      "downside_risk_pct": "-5.8%",
-      "target_price": 824.9,
-      "support_price": 714.6,
+      "upside_potential_pct": "+8.9%",
+      "downside_risk_pct": "-5.9%",
+      "target_price": 808.6,
+      "support_price": 698.4,
       "risk_reward_ratio": "1.5x"
     },
     "mid_term": {
       "predicted_path": "Cycle valuation recovery to historical median",
-      "upside_potential_pct": "+17.2%",
+      "upside_potential_pct": "+19.7%",
       "downside_risk_pct": "-10.0%",
       "target_price": 889.1,
-      "trailing_stop": 682.8,
-      "risk_reward_ratio": "1.7x"
+      "trailing_stop": 668.2,
+      "risk_reward_ratio": "2.0x"
     },
     "long_term": {
       "predicted_path": "Defensive compounding, moat expansion & dividend reinvestment",
       "upside_potential_pct": "+30.0%",
       "downside_risk_pct": "-12.0%",
-      "target_price": 986.3,
+      "target_price": 965.2,
       "dividend_cagr": "5%\u20138%",
       "risk_reward_ratio": "2.5x"
     }
   },
   "trade_levels": {
-    "entry": 758.7,
-    "stop_loss": 692.48,
-    "target": 891.14
+    "entry": 742.5,
+    "stop_loss": 676.41,
+    "target": 874.68
   },
   "precision": {
     "ticker": "RENWICKJA",
@@ -72,14 +72,14 @@
       "is_valid_evidence": false
     },
     "liquidity": {
-      "avg_daily_volume": 4877,
+      "avg_daily_volume": 4969,
       "daily_turnover_bdt_cr": 0.0,
       "liquidity_rating": "THIN_RETAIL_LIQUIDITY",
       "slippage_risk": "HIGH",
-      "max_single_order_shares": 243,
-      "max_daily_accumulation_shares": 731,
-      "max_order_bdt": 243.0,
-      "directive": "Max single order: 243 shares (Tk 243) to prevent >1% execution slippage"
+      "max_single_order_shares": 248,
+      "max_daily_accumulation_shares": 745,
+      "max_order_bdt": 248.0,
+      "directive": "Max single order: 248 shares (Tk 248) to prevent >1% execution slippage"
     },
     "earnings_acceleration": {
       "status": "INSUFFICIENT_QUARTERLY_DATA",
@@ -91,73 +91,73 @@
       "status": "VALID",
       "low_52w": 422.5,
       "high_52w": 955.7,
-      "range_52w_pct": 63.1,
+      "range_52w_pct": 60.0,
       "channel_regime": "EQUILIBRIUM_CHANNEL",
-      "visual_gauge": "[ \u09f3422.5 |\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591| \u09f3955.7 ] (63.1% (Truncated))",
+      "visual_gauge": "[ \u09f3422.5 |\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2591\u2591\u2591| \u09f3955.7 ] (60.0% (Truncated))",
       "conviction_bonus": 0.0,
       "is_truncated_window": true,
-      "bars_evaluated": 98,
-      "signal": "Price is in mid-channel (63.1% between \u09f3422.5 and \u09f3955.7)"
+      "bars_evaluated": 97,
+      "signal": "Price is in mid-channel (60.0% between \u09f3422.5 and \u09f3955.7)"
     },
     "total_precision_bonus": 0.0
   },
   "pattern_dna": {
     "ticker": "RENWICKJA",
-    "audited_at": "2026-11-17 15:01:44",
+    "audited_at": "2026-11-19 14:54:52",
     "worth_vs_greed": {
-      "current_price": 758.7,
-      "intrinsic_worth": 379.35,
+      "current_price": 742.5,
+      "intrinsic_worth": 371.25,
       "margin_of_safety_pct": -50.0,
-      "extension_froth_score": 80.0,
-      "greed_index": 80.0,
-      "rsi_14": 39.9,
-      "price_vs_ema50_pct": 10.4,
-      "price_vs_ema200_pct": 19.9,
+      "extension_froth_score": 70.0,
+      "greed_index": 70.0,
+      "rsi_14": 38.6,
+      "price_vs_ema50_pct": 7.7,
+      "price_vs_ema200_pct": 17.1,
       "merit_status": "NEUTRAL_MERIT",
       "merit_reason": "Valuation is within normal historical ranges.",
       "timing_directives": {
-        "optimal_entry_corridor": "\u09f3743.5 \u2013 \u09f3766.3",
-        "chase_cutoff_price": 777.7,
-        "when_to_wait": "If price opens or rises above \u09f3777.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3743.5.",
-        "weekly_target_short": 785.3,
-        "monthly_target_swing": 872.5,
-        "long_term_target_asset": 986.3,
+        "optimal_entry_corridor": "\u09f3727.6 \u2013 \u09f3749.9",
+        "chase_cutoff_price": 761.1,
+        "when_to_wait": "If price opens or rises above \u09f3761.1, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f3727.6.",
+        "weekly_target_short": 768.5,
+        "monthly_target_swing": 853.9,
+        "long_term_target_asset": 965.2,
         "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
       },
       "status": "OVERVALUED_EUPHORIA",
       "worth_decision": "SELL_TAKE_PROFIT",
-      "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (80.0/100). Danger of sharp mean reversion.",
+      "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (70.0/100). Danger of sharp mean reversion.",
       "is_blacklisted": false,
       "blacklist_reason": null
     },
     "multi_interval_wave": {
       "intervals": {
         "weekly_5d": {
-          "return_pct": 4.85,
-          "high": 766.5,
-          "low": 705.0,
-          "range_volatility_pct": 8.72
+          "return_pct": 4.61,
+          "high": 778.8,
+          "low": 710.1,
+          "range_volatility_pct": 9.67
         },
         "monthly_21d": {
-          "return_pct": -1.99,
+          "return_pct": -10.77,
           "high": 885.0,
           "low": 702.0,
           "range_volatility_pct": 26.07
         },
         "quarterly_63d": {
-          "return_pct": 41.13,
+          "return_pct": 39.94,
           "high": 955.7,
           "low": 422.5,
           "range_volatility_pct": 126.2
         },
         "half_yearly_126d": {
-          "return_pct": 13.78,
+          "return_pct": 10.2,
           "high": 955.7,
           "low": 422.5,
           "range_volatility_pct": 126.2
         },
         "yearly_252d": {
-          "return_pct": 24.07,
+          "return_pct": 28.44,
           "high": 955.7,
           "low": 422.5,
           "range_volatility_pct": 126.2
@@ -169,7 +169,7 @@
         "avg_wave_duration_bars": 21.0
       },
       "current_wave_phase": "BOTTOMING_SUPPORT",
-      "phase_guidance": "Drop (-20.6%) matches historical correction depth (-18.9%). Prepare to accumulate.",
+      "phase_guidance": "Drop (-22.3%) matches historical correction depth (-18.9%). Prepare to accumulate.",
       "top_seasonal_months": [
         {
           "month": "Aug",
@@ -273,11 +273,11 @@
       "macd": "neutral",
       "sma_trend": "bullish",
       "bb": "inside_bands",
-      "atr": 44.15,
-      "rsi_value": 55.65,
-      "last_close": 758.7,
-      "sma20": 769.92,
-      "sma50": 652.83,
+      "atr": 44.06,
+      "rsi_value": 52.45,
+      "last_close": 742.5,
+      "sma20": 765.44,
+      "sma50": 657.93,
       "sma200": null,
       "support_resistance": {
         "supports": [
@@ -308,7 +308,7 @@
       "error": "no_fundamental_data",
       "downturn_resilience": {
         "status": "normal",
-        "drawdown_pct": 20.6,
+        "drawdown_pct": 22.3,
         "high_52w": 955.7,
         "low_52w": 422.5
       }
@@ -344,25 +344,23 @@
     }
   },
   "manipulation": {
-    "manipulation_score": 10,
+    "manipulation_score": 0,
     "manipulation_risk": "low",
     "block_buy": false,
-    "flags": [
-      "price_surge_no_news: price_5.9pct_zero_news"
-    ],
+    "flags": [],
     "checks": {
       "volume_price_divergence": {
         "flag": false,
         "price_chg": 0,
-        "last_volume": 3398,
-        "avg_volume": 7530.0,
+        "last_volume": 11293,
+        "avg_volume": 7891.0,
         "detail": "ok"
       },
       "volume_spike": {
         "flag": false,
-        "spike_ratio": 0.46,
-        "avg_volume": 7429.0,
-        "today_volume": 3398,
+        "spike_ratio": 1.5,
+        "avg_volume": 7530.0,
+        "today_volume": 11293,
         "detail": "ok"
       },
       "serial_trading": {
@@ -380,21 +378,21 @@
         "detail": "insufficient_fundamental_history"
       },
       "price_surge_no_news": {
-        "flag": true,
-        "price_change_3d": 5.86,
+        "flag": false,
+        "price_change_3d": 3.12,
         "news_count_3d": 0,
-        "detail": "price_5.9pct_zero_news"
+        "detail": "ok"
       }
     }
   },
   "composite": {
-    "composite_score": 44.34,
+    "composite_score": 44.26,
     "governance_score": 0.0,
     "sentiment_score": 50.0,
     "applied_weights": {
-      "fundamental": 0.662,
+      "fundamental": 0.66,
       "technical": 0.205,
-      "governance": 0.134,
+      "governance": 0.135,
       "sentiment": 0.0
     }
   }

@@ -155,6 +155,8 @@ def ingest_14y_historical_archive():
         INSERT OR IGNORE INTO trading_calendar (date, is_trading_day, session_type, total_volume, total_trades, notes)
         VALUES (?, ?, ?, ?, ?, ?)
     """, cal_inserts)
+    from provenance import new_ingest, stamp_unattributed
+    stamp_unattributed(conn, new_ingest(conn, "historical_archive_csv", "14-year DSE CSV archive"), "historical_archive_csv")
     conn.commit()
 
     # 4. Run dynamic integrity audits

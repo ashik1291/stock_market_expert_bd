@@ -20,8 +20,15 @@ import json
 import logging
 import datetime
 import sqlite3
+import functools
 import sys
 from pathlib import Path
+
+
+@functools.lru_cache(maxsize=1)
+def _macro() -> dict:
+    from macro_rate_feed import get_latest_macro_rates
+    return get_latest_macro_rates()
 
 if hasattr(sys.stdout, "reconfigure"):
     try:
@@ -256,7 +263,7 @@ def scan_daily_rise_and_fall(timeframe: str = "weekly", user_id: str = "default_
                             except Exception:
                                 pe_num = None
                     ey_pct = round(100.0 / pe_num, 1) if (pe_num is not None and pe_num > 0) else 0.0
-                    passes_macro = (ey_pct >= 15.10) if ey_pct > 0 else False
+                    passes_macro = (ey_pct >= _macro()['equity_hurdle_rate_pct']) if ey_pct > 0 else False
                     gate_reasons = served.get("gate_reasons", [])
                     is_eligible = served.get("is_eligible", False) and passes_macro
 
@@ -293,7 +300,7 @@ def scan_daily_rise_and_fall(timeframe: str = "weekly", user_id: str = "default_
                     if served_score is not None and served_score > 0 and is_eligible:
                         user_directive_en = "🟢 BUY (CLEARED)"
                         user_directive_bn = "🟢 ক্রয়যোগ্য (BUY)"
-                        hurdle_status_en = f"✅ Beats Bank ({ey_pct}% Yield vs 11.6% T-Bill)"
+                        hurdle_status_en = f"✅ Beats Bank ({ey_pct}% Yield vs {_macro()['equity_hurdle_rate_pct']:.2f}% hurdle)"
                         hurdle_status_bn = f"✅ ব্যাংকের চেয়ে লাভ বেশি ({ey_pct}% আয় vs ১১.৬% ব্যাংক)"
                         pe_disp = f"{pe_num:.1f}" if pe_num else "—"
                         div_txt = f" + {div_val:.1f}% cash dividend" if div_val > 0 else ""
@@ -302,7 +309,7 @@ def scan_daily_rise_and_fall(timeframe: str = "weekly", user_id: str = "default_
                     elif not passes_macro:
                         user_directive_en = "🟡 WAIT (DON'T CHASE)"
                         user_directive_bn = "🟡 অপেক্ষা করুন (এখন কেনা মানা)"
-                        hurdle_status_en = f"⏳ Bank Pays Better ({ey_pct}% vs 11.6% T-Bill)"
+                        hurdle_status_en = f"⏳ Bank Pays Better ({ey_pct}% vs {_macro()['equity_hurdle_rate_pct']:.2f}% hurdle)"
                         hurdle_status_bn = f"⏳ ব্যাংকে লাভ বেশি ({ey_pct}% vs ১১.৬% ব্যাংক)"
                         pe_disp = f"{pe_num:.1f}" if pe_num else "—"
                         support_note_en = f"Great company with strong business, but stock price is currently too high. Bank interest pays more safely. Wait for price to drop."
@@ -489,12 +496,12 @@ def _format_actionable_radar(res: dict, lang: str = "en") -> list:
                 high = round(p * 1.005, 1)
                 tgt = b.get("mid_term_target") or round(p * 1.08, 1)
                 stop = round(p * 0.95, 1)
-                why = b.get("support_note_en", "Passes business moat and 15.10% macro hurdle.")
+                why = b.get("support_note_en", f"Passes business moat and {_macro()['equity_hurdle_rate_pct']:.2f}% macro hurdle.")
                 out.append(f"| **{b['ticker']}** | ৳{p:.1f} | **🟢 BUY** | ৳{low} – ৳{high} | ৳{tgt:.1f} (+{((tgt/p)-1)*100:.1f}%) | ৳{stop:.1f} (-5.0%) | 5–20 shs | {why} |")
             out.append("")
         else:
             out.append("### 🟢 1. WHAT TO BUY TODAY: `NONE (CASH PRESERVATION)`")
-            out.append("*No stocks currently beat the 11.60% Risk-Free Bank T-Bill hurdle with a wide margin of safety. Keep cash safe in mutual funds / liquid buffer.*\n")
+            out.append(f"*No stocks currently beat the {_macro()['equity_hurdle_rate_pct']:.2f}% risk-free + 3.5% hurdle with a wide margin of safety. Keep cash safe in mutual funds / liquid buffer.*\n")
 
         # 2. What to sell / avoid
         out.append("### 🔴 2. WHAT TO SELL / EXIT TODAY (Capital Protection)")
@@ -561,10 +568,10 @@ def publish_rise_fall_report(res: dict):
     lines.append("## 🟢 1. High-Conviction Stocks Screened for Value & Moats (Upside Trajectory)\n")
     lines.append("*Screened for: RSI oversold turns, debt-free moats, 100%+ real cash dividend coverage, smart-money buying.*\n")
     lines.append("> 💡 **Decision Guide**:\n"
-                 "> - 🟢 **BUY / ACCUMULATE**: Passes BOTH business moat AND Central Bank 15.10% T-Bill hurdle ($P/E \\le 6.62$). Deep margin of safety.\n"
-                 "> - 🟡 **WAIT / WATCHLIST**: Quality moat, but market price makes earnings yield lower than 11.60% Risk-Free T-Bill rate. Wait for price dip.\n"
+                 f"> - 🟢 **BUY / ACCUMULATE**: Passes BOTH business moat AND the {_macro()['equity_hurdle_rate_pct']:.2f}% Bangladesh Bank hurdle ($P/E \\le {100.0 / _macro()['equity_hurdle_rate_pct']:.2f}$). Deep margin of safety.\n"
+                 f"> - 🟡 **WAIT / WATCHLIST**: Quality moat, but earnings yield is below the {_macro()['equity_hurdle_rate_pct']:.2f}% hurdle (risk-free {_macro()['risk_free_rate_pct']:.2f}% + 3.5%). Wait for price dip.\n"
                  "> - ⚪ **HOLD / MONITOR**: Consolidating inside channel; monitor for volume breakout.\n")
-    lines.append("| Ticker | Price | Decision | 52-Week Channel Range | Macro Hurdle (15.10%) | Mid Target | Smart Money | Max Order | Investment Guidance / Why |")
+    lines.append(f"| Ticker | Price | Decision | 52-Week Channel Range | Macro Hurdle ({_macro()['equity_hurdle_rate_pct']:.2f}%) | Mid Target | Smart Money | Max Order | Investment Guidance / Why |")
     lines.append("|---|---|---|---|---|---|---|---|---|")
 
     for r in res["predicted_to_rise"][:12]:
@@ -732,7 +739,7 @@ def publish_rise_fall_report(res: dict):
 
     # Phase-2 learning loop: real feature flags + asof price date (not wall-clock)
     try:
-        from reinforcement_learning_engine import record_prediction, evaluate_pending_predictions
+        from reinforcement_learning_engine import record_prediction, evaluate_pending_predictions, load_ledger
         from feature_store import get_feature_row, latest_price_date, build_features_for_date
         import sqlite3
         build_features_for_date()
@@ -741,8 +748,13 @@ def publish_rise_fall_report(res: dict):
         asof = latest_price_date(db)
         db.close()
         asof = asof or today_str
+        # One prediction batch per session: re-runs (holidays, manual reruns) must not add picks to a
+        # date already logged, or the sample would depend on how many times the job ran.
+        batch_logged = any(p.get("date") == asof and p.get("timeframe") == "daily" for p in load_ledger())
+        if batch_logged:
+            log.info(f"Prediction batch for {asof} already logged; not adding more.")
 
-        for item in res.get("predicted_to_rise", [])[:10]:
+        for item in ([] if batch_logged else res.get("predicted_to_rise", [])[:10]):
             feat = get_feature_row(item["ticker"], asof) or {}
             record_prediction(
                 date_str=asof,
@@ -761,7 +773,7 @@ def publish_rise_fall_report(res: dict):
                 },
                 score=feat.get("score"),
             )
-        for item in res.get("predicted_to_fall", [])[:10]:
+        for item in ([] if batch_logged else res.get("predicted_to_fall", [])[:10]):
             p = item.get("price") or 0.0
             feat = get_feature_row(item["ticker"], asof) or {}
             record_prediction(

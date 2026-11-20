@@ -29,7 +29,7 @@ Every code change must adhere to the 8 core system invariants:
    - Never use future prices, lookahead indicators, or unadjusted backward leakage in price calculations.
 
 2. **Central Bank Macro Hurdle (`INV-2`)**:
-   - Minimum equity hurdle rate is anchored to 91-day T-Bill yield (**11.60%**) + 3.50% ERP = **15.10%**.
+   - Minimum equity hurdle = observed Bangladesh Bank 91-day rate (T-bill / BCR, point-in-time) + 3.50% ERP (`unified_score.equity_hurdle_pct`). Never hard-code 11.60% or 15.10%.
    - Do NOT lower this hurdle to inflate recommendation volume.
 
 3. **100% Shariah / Halal & Zero-Bank Shield (`INV-3`)**:
@@ -41,7 +41,10 @@ Every code change must adhere to the 8 core system invariants:
    - All transactions must reflect real-world friction: **0.415% Buy Fee**, **0.465% Sell Fee** (0.415% broker + 0.05% Section 53BBB AIT), and dynamic slippage (10–150 bps).
 
 5. **Frozen Champion Registry (`INV-5`)**:
-   - Champion model hash `acf502bc65914c48` (`frozen_epoch2_pit_v2`) is immutable.
+   - Champion model hash `acf502bc65914c48` (`frozen_epoch2_pit_v2`) is immutable, and so is its content hash over
+     `unified_score.py` + `feature_store.py`. Any edit to those files fails INV-5: it is a NEW model. Re-freeze only with
+     `python scripts/model_registry.py freeze --reason "<why>"` and say so; never edit the registry by hand.
+   - Promotion is never automatic: `model_registry.py promote` is a dry run; `--approve` is a human decision.
    - New models must prove statistically significant alpha under Holm-Bonferroni multi-testing deflation and Newey-West $t > 2.0$.
 
 6. **Cryptographic Forward Test Ledger V2 (`INV-6`)**:
@@ -56,7 +59,30 @@ Every code change must adhere to the 8 core system invariants:
 
 8. **Zero-Broken Portable Bootstrap (`INV-8`)**:
    - Code must run seamlessly across Windows, Linux, and macOS without hardcoded OS paths.
-   - Network scrapers must fail over gracefully to local cache when offline.
+   - Network scrapers fail over between live sources only. When every live source fails, produce NO snapshot:
+     never save a cached/older snapshot under today's date (that fabricated the 2026-10-22/24 holiday sessions).
+
+---
+
+## 🧯 Data Safety Rules (agents and humans)
+
+The database carries write guards (SQLite triggers, `scripts/db_guards.py`). If a write is rejected by a
+`guard:` error, the data is wrong; fix the data or the calendar. **Never drop or bypass a trigger.**
+
+1. **Never hand-edit** `dse.db`, `data/users/*/portfolio.json`, `forward_test_ledger_v2.json`, `model_registry.json`
+   or `prediction_ledger.json`. Use the owning script (`portfolio_manager.py buy/sell/capital`, the repair tools).
+2. **Prices are raw exchange bars.** Never store adjusted prices; corporate-action adjustment happens at read time.
+   Fix bad bars only with `scripts/repair_price_history.py` (compares against the DSE archive).
+3. **No invented dates or plug rows.** Corporate actions are only `cash_dividend`, `bonus_dividend`, `split`,
+   `rights_split`, `rights`. A bonus/split date must come from an official notice or the observed ex-date gap
+   (`infer_bonus_ex_date`). Never add rows to "explain" a price jump; a jump means missing price data.
+4. **Point-in-time honesty.** Statutory-deadline and board-declaration dates are estimates (`publication_is_estimated=1`).
+   Never set them to 0 to raise "verified coverage". Low verified coverage is a fact to report, not to fix.
+5. **Invested capital is derived**: `total_capital_bdt` = share cost basis + mutual fund cost, recomputed on save.
+6. **Never type a value you did not observe** (NAVs, rates, record dates). If a source fails, write nothing and report.
+7. **Tests must not touch real data.** Use `tests/_isolation.py` (`temp_db_copy`, injected portfolios);
+   `tests/test_zzz_real_data_untouched.py` fails the suite otherwise.
+8. Before finishing: `python scripts/integrity_harness.py --data-gate` must PASS.
 
 ---
 

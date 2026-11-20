@@ -1,15 +1,15 @@
 {
   "ticker": "AIBL1STIMF",
-  "audited_at": "2026-11-17 15:01:18",
+  "audited_at": "2026-11-19 14:54:28",
   "worth_vs_greed": {
     "current_price": 5.1,
     "intrinsic_worth": 2.55,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 60.0,
-    "greed_index": 60.0,
-    "rsi_14": 43.8,
-    "price_vs_ema50_pct": 7.7,
-    "price_vs_ema200_pct": 5.4,
+    "extension_froth_score": 70.0,
+    "greed_index": 70.0,
+    "rsi_14": 37.5,
+    "price_vs_ema50_pct": 6.9,
+    "price_vs_ema200_pct": 5.3,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
@@ -21,40 +21,40 @@
       "long_term_target_asset": 6.6,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
-    "status": "CHRONIC_OVERVALUATION",
-    "worth_decision": "AVOID",
-    "reason": "Fundamental value severely lags stock price (MoS: -50.0%).",
+    "status": "OVERVALUED_EUPHORIA",
+    "worth_decision": "SELL_TAKE_PROFIT",
+    "reason": "Price is 50.0% above intrinsic worth while market greed is euphoric (70.0/100). Danger of sharp mean reversion.",
     "is_blacklisted": false,
     "blacklist_reason": null
   },
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 2.0,
+        "return_pct": -1.92,
         "high": 5.4,
         "low": 5.0,
         "range_volatility_pct": 8.0
       },
       "monthly_21d": {
-        "return_pct": -3.77,
+        "return_pct": -5.56,
         "high": 5.7,
         "low": 5.0,
         "range_volatility_pct": 14.0
       },
       "quarterly_63d": {
-        "return_pct": 50.0,
+        "return_pct": 54.55,
         "high": 5.9,
         "low": 3.2,
         "range_volatility_pct": 84.38
       },
       "half_yearly_126d": {
-        "return_pct": 18.6,
+        "return_pct": 8.51,
         "high": 5.9,
         "low": 2.8,
         "range_volatility_pct": 110.71
       },
       "yearly_252d": {
-        "return_pct": -28.17,
+        "return_pct": -27.14,
         "high": 7.5,
         "low": 2.8,
         "range_volatility_pct": 167.86

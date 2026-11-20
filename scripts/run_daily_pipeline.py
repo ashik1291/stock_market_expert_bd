@@ -105,6 +105,12 @@ def main():
         )
 
     steps.extend([
+        ("Reconciling Last 5 Sessions With Official DSE Day-End Archive", ["scripts/repair_price_history.py", "--recent", "5"], True),
+        ("Syncing Official DSE Financial Disclosures Into PIT Dates & Values", ["scripts/dse_disclosures.py", "daily"], True),
+        ("Syncing Official DSE Dividends, Bonus & Rights Into Corporate Actions", ["scripts/official_corporate_actions.py", "--apply"], True),
+        ("Refreshing Instrument Master & Point-in-Time Category History", ["scripts/instrument_master.py"], True),
+        ("Capturing Point-in-Time Index Membership (DSEX, DS30)", ["scripts/index_membership.py", "capture"], True),
+        ("Data Integrity Gate (blocks downstream writes on corrupt data)", ["scripts/integrity_harness.py", "--data-gate"], False),
         ("Running Anti-Manipulation Surveillance Engine (395 Tickers)", ["scripts/anti_manipulation_engine.py"], False),
         ("Running 5-Factor Fundamental Screener", ["scripts/five_factor_fundamental_screener.py"], False),
         ("Generating Daily Directional Rise/Fall Predictions (Bilingual)", ["scripts/daily_rise_fall_scanner.py", "weekly"], False),

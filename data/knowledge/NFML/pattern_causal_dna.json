@@ -1,24 +1,24 @@
 {
   "ticker": "NFML",
-  "audited_at": "2026-11-17 15:01:39",
+  "audited_at": "2026-11-19 14:54:46",
   "worth_vs_greed": {
-    "current_price": 14.9,
-    "intrinsic_worth": 7.45,
+    "current_price": 14.6,
+    "intrinsic_worth": 7.3,
     "margin_of_safety_pct": -50.0,
     "extension_froth_score": 40.0,
     "greed_index": 40.0,
-    "rsi_14": 78.4,
-    "price_vs_ema50_pct": 10.2,
-    "price_vs_ema200_pct": 20.9,
+    "rsi_14": 62.1,
+    "price_vs_ema50_pct": 7.3,
+    "price_vs_ema200_pct": 18.1,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f314.6 \u2013 \u09f315.0",
-      "chase_cutoff_price": 15.3,
-      "when_to_wait": "If price opens or rises above \u09f315.3, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f314.6.",
-      "weekly_target_short": 15.4,
-      "monthly_target_swing": 17.1,
-      "long_term_target_asset": 19.4,
+      "optimal_entry_corridor": "\u09f314.3 \u2013 \u09f314.7",
+      "chase_cutoff_price": 15.0,
+      "when_to_wait": "If price opens or rises above \u09f315.0, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f314.3.",
+      "weekly_target_short": 15.1,
+      "monthly_target_swing": 16.8,
+      "long_term_target_asset": 19.0,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -31,31 +31,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 8.76,
+        "return_pct": -0.68,
         "high": 15.0,
-        "low": 13.4,
-        "range_volatility_pct": 11.94
+        "low": 14.3,
+        "range_volatility_pct": 4.9
       },
       "monthly_21d": {
-        "return_pct": 17.32,
+        "return_pct": 14.96,
         "high": 15.0,
         "low": 12.1,
         "range_volatility_pct": 23.97
       },
       "quarterly_63d": {
-        "return_pct": 17.32,
+        "return_pct": 12.31,
         "high": 15.4,
-        "low": 11.7,
-        "range_volatility_pct": 31.62
+        "low": 11.8,
+        "range_volatility_pct": 30.51
       },
       "half_yearly_126d": {
-        "return_pct": 50.51,
+        "return_pct": 47.47,
         "high": 15.4,
         "low": 9.0,
         "range_volatility_pct": 71.11
       },
       "yearly_252d": {
-        "return_pct": 71.26,
+        "return_pct": 64.04,
         "high": 15.4,
         "low": 8.5,
         "range_volatility_pct": 81.18
@@ -67,7 +67,7 @@
       "avg_wave_duration_bars": 21.0
     },
     "current_wave_phase": "MARKDOWN_PULLBACK",
-    "phase_guidance": "Ongoing pullback from peak (-3.2%). Wait for stabilizing base.",
+    "phase_guidance": "Ongoing pullback from peak (-5.2%). Wait for stabilizing base.",
     "top_seasonal_months": [
       {
         "month": "May",

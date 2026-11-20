@@ -1,24 +1,24 @@
 {
   "ticker": "HRTEX",
-  "audited_at": "2026-11-17 15:01:31",
+  "audited_at": "2026-11-19 14:54:39",
   "worth_vs_greed": {
-    "current_price": 16.3,
-    "intrinsic_worth": 8.15,
+    "current_price": 17.3,
+    "intrinsic_worth": 8.65,
     "margin_of_safety_pct": -50.0,
-    "extension_froth_score": 40.0,
-    "greed_index": 40.0,
-    "rsi_14": 68.8,
-    "price_vs_ema50_pct": -2.3,
-    "price_vs_ema200_pct": -14.4,
+    "extension_froth_score": 50.0,
+    "greed_index": 50.0,
+    "rsi_14": 79.5,
+    "price_vs_ema50_pct": 3.5,
+    "price_vs_ema200_pct": -9.0,
     "merit_status": "NEUTRAL_MERIT",
     "merit_reason": "Valuation is within normal historical ranges.",
     "timing_directives": {
-      "optimal_entry_corridor": "\u09f316.0 \u2013 \u09f316.5",
-      "chase_cutoff_price": 16.7,
-      "when_to_wait": "If price opens or rises above \u09f316.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f316.0.",
-      "weekly_target_short": 16.9,
-      "monthly_target_swing": 18.7,
-      "long_term_target_asset": 21.2,
+      "optimal_entry_corridor": "\u09f317.0 \u2013 \u09f317.5",
+      "chase_cutoff_price": 17.7,
+      "when_to_wait": "If price opens or rises above \u09f317.7, DO NOT HOP IN. Wait 2\u20135 trading sessions for dip back to \u09f317.0.",
+      "weekly_target_short": 17.9,
+      "monthly_target_swing": 19.9,
+      "long_term_target_asset": 22.5,
       "capital_pacing_rule": "Deploy maximum 25%\u201330% of target budget on Day 1. Reserve remaining 70% for systematic pullbacks over the next 2\u20134 weeks."
     },
     "status": "CHRONIC_OVERVALUATION",
@@ -30,31 +30,31 @@
   "multi_interval_wave": {
     "intervals": {
       "weekly_5d": {
-        "return_pct": 1.24,
-        "high": 16.5,
+        "return_pct": 6.13,
+        "high": 17.9,
         "low": 15.8,
-        "range_volatility_pct": 4.43
+        "range_volatility_pct": 13.29
       },
       "monthly_21d": {
-        "return_pct": 0.0,
-        "high": 17.2,
+        "return_pct": 7.45,
+        "high": 17.9,
         "low": 15.0,
-        "range_volatility_pct": 14.67
+        "range_volatility_pct": 19.33
       },
       "quarterly_63d": {
-        "return_pct": -20.1,
-        "high": 21.1,
+        "return_pct": -16.02,
+        "high": 20.7,
         "low": 15.0,
-        "range_volatility_pct": 40.67
+        "range_volatility_pct": 38.0
       },
       "half_yearly_126d": {
-        "return_pct": -12.37,
+        "return_pct": -13.07,
         "high": 23.0,
         "low": 15.0,
         "range_volatility_pct": 53.33
       },
       "yearly_252d": {
-        "return_pct": -13.76,
+        "return_pct": -6.99,
         "high": 23.0,
         "low": 12.4,
         "range_volatility_pct": 85.48
@@ -65,8 +65,8 @@
       "median_correction_drop_pct": -20.0,
       "avg_wave_duration_bars": 16.0
     },
-    "current_wave_phase": "MARKUP_RALLY_MID",
-    "phase_guidance": "Midway through rally wave (+8.7% from base, historical target ~+14.1%).",
+    "current_wave_phase": "LATE_MARKUP",
+    "phase_guidance": "Approaching historical rally limit (+15.3% vs median +14.1%). Tighten stop.",
     "top_seasonal_months": [
       {
         "month": "Jul",
